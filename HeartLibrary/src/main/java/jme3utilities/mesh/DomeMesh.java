@@ -145,9 +145,10 @@ public class DomeMesh extends Mesh {
     // constructors
 
     /**
-     * No-argument constructor needed by SavableClassUtil.
+     * No-argument constructor needed by SavableClassUtil. Do not invoke
+     * directly!
      */
-    protected DomeMesh() {
+    public DomeMesh() {
     }
 
     /**

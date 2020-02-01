@@ -363,7 +363,7 @@ public class Misc {
      * @return project name, library name, branch, and revision
      */
     public static String version() {
-        return "jme3-utilities jme3-utilities-heart master $Rev: 4.4.0for33 $";
+        return "jme3-utilities Heart master $Rev: 4.4.0for32+1 $";
     }
 
     /**

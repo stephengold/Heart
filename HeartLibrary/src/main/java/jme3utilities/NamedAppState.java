@@ -66,6 +66,10 @@ public class NamedAppState extends AbstractAppState {
      * generator for unique names
      */
     final private static NameGenerator idGenerator = new NameGenerator();
+    /**
+     * unique ID for debugging (not null, not empty)
+     */
+    final private String id;
     // *************************************************************************
     // constructor
 
@@ -76,12 +80,20 @@ public class NamedAppState extends AbstractAppState {
      */
     public NamedAppState(boolean initialState) {
         String className = getClass().getSimpleName();
-        String id = idGenerator.unique(className);
-        setId(id);
+        id = idGenerator.unique(className);
         super.setEnabled(initialState);
     }
     // *************************************************************************
     // new methods exposed
+
+    /**
+     * Read the ID of this AppState.
+     *
+     * @return the unique ID for debugging (not null, not empty)
+     */
+    public String getId() {
+        return id;
+    }
 
     /**
      * Test whether this state influences the specified AppState.

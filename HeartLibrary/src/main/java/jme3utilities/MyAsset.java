@@ -29,7 +29,6 @@ package jme3utilities;
 import com.jme3.asset.AssetManager;
 import com.jme3.asset.TextureKey;
 import com.jme3.material.Material;
-import com.jme3.material.Materials;
 import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
@@ -83,11 +82,13 @@ final public class MyAsset {
     /**
      * asset path of the shaded material definition
      */
-    final public static String shadedMaterialAssetPath = Materials.LIGHTING;
+    final public static String shadedMaterialAssetPath
+            = "Common/MatDefs/Light/Lighting.j3md";
     /**
      * asset path to the Unshaded material definition
      */
-    final public static String unshadedMaterialAssetPath = Materials.UNSHADED;
+    final public static String unshadedMaterialAssetPath
+            = "Common/MatDefs/Misc/Unshaded.j3md";
     /**
      * asset path to the unicolor, default-shape wireframe material definition
      */

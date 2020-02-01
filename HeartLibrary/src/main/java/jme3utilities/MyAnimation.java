@@ -26,11 +26,6 @@
  */
 package jme3utilities;
 
-import com.jme3.anim.AnimClip;
-import com.jme3.anim.AnimTrack;
-import com.jme3.anim.Joint;
-import com.jme3.anim.TransformTrack;
-import com.jme3.anim.util.HasLocalTransform;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.Animation;
 import com.jme3.animation.AudioTrack;
@@ -48,8 +43,8 @@ import java.util.logging.Logger;
 import jme3utilities.math.MyArray;
 
 /**
- * Utility methods for manipulating animations, clips, and tracks. All methods
- * should be static.
+ * Utility methods for manipulating animations and tracks. All methods should be
+ * static.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -211,36 +206,6 @@ public class MyAnimation {
     }
 
     /**
-     * Find a TransformTrack in a specified AnimClip that targets the indexed
-     * Joint.
-     *
-     * @param clip which AnimClip (not null, unaffected)
-     * @param jointIndex which Joint (&ge;0)
-     * @return the pre-existing instance, or null if none found
-     */
-    public static TransformTrack findJointTrack(AnimClip clip,
-            int jointIndex) {
-        Validate.nonNegative(jointIndex, "joint index");
-
-        AnimTrack[] tracks = clip.getTracks();
-        for (AnimTrack track : tracks) {
-            if (track instanceof TransformTrack) {
-                TransformTrack transformTrack = (TransformTrack) track;
-                HasLocalTransform target = transformTrack.getTarget();
-                if (target instanceof Joint) {
-                    Joint joint = (Joint) target;
-                    int trackJointIndex = joint.getId();
-                    if (jointIndex == trackJointIndex) {
-                        return transformTrack;
-                    }
-                }
-            }
-        }
-
-        return null;
-    }
-
-    /**
      * Find the index of the keyframe (if any) at the specified time in the
      * specified Track.
      *
@@ -344,35 +309,6 @@ public class MyAnimation {
             if (track == tracks[index]) {
                 result = index;
                 break;
-            }
-        }
-
-        return result;
-    }
-
-    /**
-     * Find a TransformTrack in a specified AnimClip for the indexed Joint.
-     *
-     * @param clip which AnimClip (not null, unaffected)
-     * @param jointIndex which Joint (&ge;0)
-     * @return the pre-existing instance, or null if not found
-     */
-    public static TransformTrack findTransformTrack(AnimClip clip,
-            int jointIndex) {
-        TransformTrack result = null;
-
-        AnimTrack[] animTracks = clip.getTracks();
-        for (AnimTrack animTrack : animTracks) {
-            if (animTrack instanceof TransformTrack) {
-                TransformTrack track = (TransformTrack) animTrack;
-                HasLocalTransform target = track.getTarget();
-                if (target instanceof Joint) {
-                    int targetIndex = ((Joint) target).getId();
-                    if (targetIndex == jointIndex) {
-                        result = track;
-                        break;
-                    }
-                }
             }
         }
 
@@ -500,26 +436,6 @@ public class MyAnimation {
         } else {
             return true;
         }
-    }
-
-    /**
-     * Test whether the specified AnimTrack targets a Joint.
-     *
-     * @param track the AnimTrack to test (not null, unaffected)
-     * @return true if it targets a Joint, otherwise false
-     */
-    public static boolean isJointTrack(AnimTrack track) {
-        boolean result = false;
-
-        if (track instanceof TransformTrack) {
-            TransformTrack transformTrack = (TransformTrack) track;
-            HasLocalTransform target = transformTrack.getTarget();
-            if (target instanceof Joint) {
-                result = true;
-            }
-        }
-
-        return result;
     }
 
     /**

@@ -26,9 +26,6 @@
  */
 package jme3utilities;
 
-import com.jme3.anim.Armature;
-import com.jme3.anim.Joint;
-import com.jme3.anim.SkinningControl;
 import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
 import com.jme3.animation.SkeletonControl;
@@ -93,56 +90,6 @@ public class InfluenceUtil {
                 visualizer.setHeadColor(boneIndex, ColorRGBA.BlackNoAlpha);
             }
         }
-    }
-
-    /**
-     * De-visualize any joints that don't influence mesh vertices.
-     *
-     * @param visualizer the visualizer (not null, modified)
-     * @param skinningControl the Control to analyze (not null, unaffected)
-     */
-    public static void hideNonInfluencers(SkeletonVisualizer visualizer,
-            SkinningControl skinningControl) {
-        Spatial subtree = skinningControl.getSpatial();
-        Armature armature = ((SkinningControl) skinningControl).getArmature();
-        BitSet influencers = addAllInfluencers(subtree, armature);
-
-        int numJoints = armature.getJointCount();
-        for (int jointIndex = 0; jointIndex < numJoints; ++jointIndex) {
-            if (influencers.get(jointIndex) == false) {
-                visualizer.setHeadColor(jointIndex, ColorRGBA.BlackNoAlpha);
-            }
-        }
-    }
-
-    /**
-     * Generate a set of indices for joints that influence (directly or
-     * indirectly) vertices in the specified subtree of the scene graph. Note:
-     * recursive!
-     *
-     * @param subtree the subtree to traverse (may be null, unaffected)
-     * @param armature the Armature containing the joints (not null, unaffected)
-     * @return a new set of joint indices
-     */
-    public static BitSet addAllInfluencers(Spatial subtree, Armature armature) {
-        int numJoints = armature.getJointCount();
-        BitSet result = new BitSet(numJoints);
-
-        addDirectInfluencers(subtree, result);
-
-        for (int boneIndex = 0; boneIndex < numJoints; ++boneIndex) {
-            if (result.get(boneIndex)) {
-                Joint joint = armature.getJoint(boneIndex);
-                for (Joint parent = joint.getParent();
-                        parent != null;
-                        parent = parent.getParent()) {
-                    int parentIndex = armature.getJointIndex(parent);
-                    result.set(parentIndex);
-                }
-            }
-        }
-
-        return result;
     }
 
     /**

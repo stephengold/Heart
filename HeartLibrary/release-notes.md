@@ -10,7 +10,7 @@
  + Handle `mode=Points` in the `Dodecahedron` constructor.
  + Heart moved from the Jme3-utilities Project to a new GitHub repo.
 
-## Version 4.4.0for33 released on 24 January 2020
+## Version 4.4.0for32 released on 24 January 2020
 
  + Bugfix: `Generator.nextQuaternion()` returned unnormalized values.
  + Added `Dodecahedron` and `SphereMeshes` classes.
@@ -33,16 +33,17 @@
    to the `TestSolidMeshes` application.
  + Simplified the `LoopMesh` class, including deletion of its index buffer.
 
-## Version 4.3.0for33 released on 4 January 2020
+## Version 4.3.0for32 released on 4 January 2020
 
  + Bugfix: wrong mode in `LoopMesh`.
  + Added `addIndices()`, `areIdentical()`, `expand()`, `generateNormals()`,
    `hasIndices()`, `reverseNormals()`, and `reverseWinding()` methods
     to the `MyMesh` class.
- + Added `Cone`, `Element`, `Icosahedron`, `Octahedron`, `Prism`, and
+ + Added the `Cone`, `Element`, `Icosahedron`, `Octahedron`, `Prism`, and
    `Tetrahedron` classes.
  + Added `get()`, `normalize()`, `put()`, `rotate()`, and `scale()` methods to
    the `MyBuffer` class.
+ + Added a single-argument `listSpatials()` method to the `MySpatial` class.
  + Added a `Dumper` option to dump mesh-vertex data.
  + Improved dumping of meshes, including number of vertices.
  + Changed default list separator to " " in the `Describer` class.
@@ -53,38 +54,28 @@
  + Added caller-provided storage to `BoundsVisualizer.copyLineColor()`.
  + Added `TestSolidMeshes` application to the tests sub-project.
  + Added `TestCloneControls` class to the automated test suite.
- + Targeted the NEW jMonkeyEngine version 3.3.0-beta1.
 
-## Version 4.2.0for33 released on 8 December 2019
+## Version 4.1.0for32 released on 5 October 2019
 
- + Added a single-argument `listSpatials()` method to the `MySpatial` class.
- + Targeted jMonkeyEngine version v3.3.0-beta1, which was later deleted!
-
-## Version 4.1.0for33 released on 5 October 2019
-
- + Added `addAllInfluencers()` and `hideNonInfluencers()` methods for the new
-   animation system to the `InfluenceUtil` class.
- + Added `findJointTrack()`, `findTransformTrack()`, and `isJointTrack()`
-   methods to the `MyAnimation` class.
  + Added a `positive()` method for `Vector3f` arguments to the `Validate` class.
  + Publicized 3 methods in the `InfluenceUtil` class.
 
-## Version 4.0.0for33 released on 23 September 2019
+## Version 4.0.0for32 released on 23 September 2019
 
- + Protected no-arg constructors used only for serialization. (API changes!)
  + Deleted the `traverse()` method from `SubtreeControl`. (API change!)
  + Privatized the `subtree` field of a `SubtreeControl`. (API change!)
- + Based `NamedAppState` on `AbstractAppState`. (API change!)
- + Targeted jMonkeyEngine version 3.3.0-alpha5.
+ + Privatized the name field of a `NamedAppState`. (API change!)
+ + Based `NamedAppState` on `AbstractAppState`.
+ + Added a `getId()` method to `NamedAppState`.
  + Added `Icosphere` and `InfluenceUtil` classes.
  + Added `distinct()`, `ensureCapacity()`, `frequency()`, `toFloatArray()`,
    and `toIntArray()` methods to the `MyBuffer` class.
  + Added a constructor for a `RectangularSolid` that takes an `AbstractBox`.
  + Changed `SubtreeControl` so the subtree can be a `Geometry`.
- + Changed `Dumper` to dump the ID of each `AbstractAppState`.
+ + Changed `Dumper` to dump the ID of each `NamedAppState`.
  + Changed `NamedAppState` so it doesn't require a `SimpleApplication`.
 
-## Version 3.0.0for33 released on 25 August 2019
+## Version 3.0.0for32 released on 25 August 2019
 
  + Deleted deprecated methods. (API changes!)
  + Added a 3-argument `sumOfSquares()` method to the `MyMath` class.
@@ -97,28 +88,32 @@
  + Describe the `BlendMode` of a `RenderState`.
  + Strengthened argument validation.
 
-## Version 2.31.0for33 released on 6 August 2019
+## Version 2.31.0for32 released on 7 August 2019
 
- + When dumping a parented `Spatial`, flag it if it's not indented.
- + Changed all `Validate` methods to return `true`, so they can be used
-   in assertions.
  + Added support for `IntBuffer` in `MyMesh.readIndex()`.
  + Added a `MyBuffer` utility class.
  + Added a `RectangularSolid` constructor that takes a `FloatBuffer`.
  + Added `maxAbs()` methods to the `MyVector3f` and `VectorSet` classes.
- + Added a `nonZero()` method (for quaternions) and a `nonNullArray()` method
-   to the `Validate` class.
  + Added a `hasNormals()` method to the `MyMesh` class.
+
+## Version 2.30.0for32 released on 26 July 2019
+
+ + When dumping a parented `Spatial`, flag it if it's not indented.
+ + Changed all `Validate` methods to return `true`, so they can be used
+   in assertions.
+ + Added a `nonZero()` method for quaternions and a `nonNullArray()` method
+   to the `Validate` class.
  + Added an `isZero()` method to the `MyQuaternion` class.
  + Added 2 methods using caller-allocated storage to the `ReadXZ` class.
  + Avoided some unnecessary modifications of buffer positions in `MyMesh`.
 
-## Version 2.29.0for33 released on 5 July 2019
+## Version 2.29.1for32 released on 13 July 2019
 
- + Removed the `PoseDemo` application.
- + Targeted jMonkeyEngine version 3.3.0-alpha2.
- + Added support for the `com.jme3.anim` animation system to
-   `MySkeleton` and `SkeletonVisualizer`.
+Targeted jMonkeyEngine version 3.2.4-stable
+
+## Version 2.29.0for32 released on 5 July 2019
+
+ + Bugfix: NPEs in `PoseDemo` while renaming a bone or animation.
  + Terminate each `AppState` dump with a newline.
  + Specify `Locale` for portable `toLowerCase()`.
  + Added a `Dumper` flag to describe the world bounds of spatials.

@@ -26,8 +26,6 @@
  */
 package jme3utilities.debug;
 
-import com.jme3.anim.Armature;
-import com.jme3.anim.Joint;
 import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
 import com.jme3.math.ColorRGBA;
@@ -41,13 +39,14 @@ import com.jme3.scene.mesh.IndexBuffer;
 import com.jme3.util.BufferUtils;
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
+import java.nio.ShortBuffer;
 import java.util.logging.Logger;
 import jme3utilities.MySkeleton;
 
 /**
- * A Mesh used to visualize an Armature or Skeleton. Each vertex corresponds to
- * an armature joint (or skeleton bone) and follows that object's head. Lines
- * connect children with their parents.
+ * A Mesh used to visualize a Skeleton. Each vertex corresponds to a skeleton
+ * bone and follows that bone's head. Lines connect children with their parents.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -68,20 +67,14 @@ class SkeletonMesh extends Mesh {
     // constructors
 
     /**
-     * Instantiate a Mesh to visualize the specified Armature or Skeleton.
+     * Instantiate a Mesh to visualize the specified Skeleton.
      *
-     * @param armature the Armature to visualize (may be null, unaffected)
      * @param skeleton the Skeleton to visualize (may be null, unaffected)
      * @param mode mode for the Mesh (Mode.Lines or Mode.Points)
      */
-    SkeletonMesh(Armature armature, Skeleton skeleton, Mode mode) {
-        assert armature == null || skeleton == null;
-
+    SkeletonMesh(Skeleton skeleton, Mode mode) {
         int boneCount = 0, numRoots = 0;
-        if (armature != null) {
-            boneCount = armature.getJointCount();
-            numRoots = MySkeleton.countRootJoints(armature);
-        } else if (skeleton != null) {
+        if (skeleton != null) {
             boneCount = skeleton.getBoneCount();
             numRoots = MySkeleton.countRootBones(skeleton);
         }
@@ -96,20 +89,14 @@ class SkeletonMesh extends Mesh {
              * Populate the index buffer.
              */
             for (int boneIndex = 0; boneIndex < boneCount; ++boneIndex) {
-                if (armature == null) {
-                    Bone child = skeleton.getBone(boneIndex);// skeleton != null
-                    Bone parent = child.getParent();
-                    if (parent != null) {
-                        int parentIndex = skeleton.getBoneIndex(parent);
-                        ib.put(parentIndex).put(boneIndex);
-                    }
-                } else {
-                    Joint child = armature.getJoint(boneIndex);
-                    Joint parent = child.getParent();
-                    if (parent != null) {
-                        int parentIndex = parent.getId();
-                        ib.put(parentIndex).put(boneIndex);
-                    }
+                Bone child = skeleton.getBone(boneIndex);// skeleton != null
+                Bone parent = child.getParent();
+                if (parent != null) {
+                    int parentIndex = skeleton.getBoneIndex(parent);
+                    int bufPosition = ib.getBuffer().position();
+                    ib.put(bufPosition, parentIndex);
+                    ib.put(bufPosition + 1, boneIndex);
+                    ib.getBuffer().position(bufPosition + 2);
                 }
             }
             ib.getBuffer().flip(); // prepare for reading
@@ -144,30 +131,20 @@ class SkeletonMesh extends Mesh {
     /**
      * Update the position of each vertex in the Mesh.
      *
-     * @param armature the Armature to visualize (may be null, unaffected)
      * @param skeleton the Skeleton to visualize (may be null, unaffected)
      */
-    void updatePositions(Armature armature, Skeleton skeleton) {
+    void updatePositions(Skeleton skeleton) {
         FloatBuffer floats = getFloatBuffer(Type.Position);
         floats.clear(); // prepare for writing
 
         int boneCount = 0;
-        if (armature != null) {
-            boneCount = armature.getJointCount();
-        } else if (skeleton != null) {
+        if (skeleton != null) {
             boneCount = skeleton.getBoneCount();
         }
 
         for (int boneIndex = 0; boneIndex < boneCount; ++boneIndex) {
-            Vector3f location;
-            if (armature == null) {
-                Bone bone = skeleton.getBone(boneIndex); // skeleton != null
-                location = bone.getModelSpacePosition();
-            } else {
-                Joint joint = armature.getJoint(boneIndex);
-                location = joint.getModelTransform().getTranslation();
-            }
-
+            Bone bone = skeleton.getBone(boneIndex); // skeleton != null
+            Vector3f location = bone.getModelSpacePosition();
             floats.put(location.x).put(location.y).put(location.z);
         }
         floats.flip(); // prepare for reading
@@ -219,8 +196,14 @@ class SkeletonMesh extends Mesh {
 
         int numIndices = 2 * numLines;
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numBones, numIndices);
-        VertexBuffer.Format ibFormat = ib.getFormat();
         Buffer ibData = ib.getBuffer();
+        VertexBuffer.Format ibFormat;
+        if (ibData instanceof ShortBuffer) {
+            ibFormat = VertexBuffer.Format.UnsignedShort;
+        } else {
+            assert ibData instanceof IntBuffer;
+            ibFormat = VertexBuffer.Format.UnsignedInt;
+        }
         setBuffer(VertexBuffer.Type.Index, 1, ibFormat, ibData);
 
         return ib;

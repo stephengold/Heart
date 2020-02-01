@@ -66,9 +66,10 @@ public class Icosahedron extends Mesh {
     // constructors
 
     /**
-     * No-argument constructor needed by SavableClassUtil.
+     * No-argument constructor needed by SavableClassUtil. Do not invoke
+     * directly!
      */
-    protected Icosahedron() {
+    public Icosahedron() {
     }
 
     /**

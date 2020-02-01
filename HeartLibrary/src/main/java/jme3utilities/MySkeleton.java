@@ -26,8 +26,6 @@
  */
 package jme3utilities;
 
-import com.jme3.anim.Armature;
-import com.jme3.anim.Joint;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
@@ -47,8 +45,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 /**
- * Utility methods for manipulating skeletonized spatials, armatures, armature
- * joints, skeletons, and skeleton bones.
+ * Utility methods for manipulating skeletonized spatials, skeletons, and bones.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -93,28 +90,6 @@ public class MySkeleton {
 
         try {
             attachNodeField.set(bone, null);
-        } catch (IllegalAccessException exception) {
-            throw new RuntimeException();
-        }
-    }
-
-    /**
-     * Cancel the attachments node (if any) of the specified Joint. The invoker
-     * is responsible for removing the Node from the scene graph.
-     *
-     * @param joint the Joint to modify (not null, modified)
-     */
-    public static void cancelAttachments(Joint joint) {
-        Field attachedNodeField;
-        try {
-            attachedNodeField = Joint.class.getDeclaredField("attachedNode");
-        } catch (NoSuchFieldException exception) {
-            throw new RuntimeException();
-        }
-        attachedNodeField.setAccessible(true);
-
-        try {
-            attachedNodeField.set(joint, null);
         } catch (IllegalAccessException exception) {
             throw new RuntimeException();
         }
@@ -232,19 +207,6 @@ public class MySkeleton {
     }
 
     /**
-     * Count the root joints in the specified Armature.
-     *
-     * @param armature the Armature to read (not null, unaffected)
-     * @return the count (&ge;0)
-     */
-    public static int countRootJoints(Armature armature) {
-        Joint[] roots = armature.getRoots();
-        int result = roots.length;
-
-        return result;
-    }
-
-    /**
      * Test whether the indexed bone descends from the indexed ancestor in the
      * specified Skeleton.
      *
@@ -342,35 +304,6 @@ public class MySkeleton {
         Node result;
         try {
             result = (Node) attachNodeField.get(bone);
-        } catch (IllegalAccessException exception) {
-            throw new RuntimeException(exception);
-        }
-
-        return result;
-    }
-
-    /**
-     * Access the attachments node of the specified Joint.
-     * <p>
-     * Unlike
-     * {@link com.jme3.anim.Joint#getAttachmentsNode(int, com.jme3.util.SafeArrayList)}
-     * this won't add a node to the scene graph.
-     *
-     * @param joint the Joint to read (not null, unaffected)
-     * @return the pre-existing instance, or null if none
-     */
-    public static Node getAttachments(Joint joint) {
-        Field attachedNodeField;
-        try {
-            attachedNodeField = Joint.class.getDeclaredField("attachedNode");
-        } catch (NoSuchFieldException exception) {
-            throw new RuntimeException(exception);
-        }
-        attachedNodeField.setAccessible(true);
-
-        Node result;
-        try {
-            result = (Node) attachedNodeField.get(joint);
         } catch (IllegalAccessException exception) {
             throw new RuntimeException(exception);
         }
@@ -542,25 +475,6 @@ public class MySkeleton {
     }
 
     /**
-     * Enumerate all joints in a pre-order, depth-first traversal of the
-     * specified Armature, such that child joints never precede their ancestors.
-     *
-     * @param armature the Armature to traverse (not null, unaffected)
-     * @return a new list of pre-existing joints
-     */
-    public static List<Joint> preOrderJoints(Armature armature) {
-        int numJoints = armature.getJointCount();
-        List<Joint> result = new ArrayList<>(numJoints);
-        Joint[] rootJoints = armature.getRoots();
-        for (Joint rootJoint : rootJoints) {
-            addPreOrderJoints(rootJoint, result);
-        }
-
-        assert result.size() == numJoints : result.size();
-        return result;
-    }
-
-    /**
      * Rename of the specified bone. The caller is responsible for avoiding
      * duplicate names.
      *
@@ -675,23 +589,6 @@ public class MySkeleton {
         List<Bone> children = bone.getChildren();
         for (Bone child : children) {
             addPreOrderBones(child, addResult);
-        }
-    }
-
-    /**
-     * Helper method: append the specified Joint and all its descendants to the
-     * specified List, using a pre-order, depth-first traversal of the Armature,
-     * such that child joints never precede their ancestors. Note: recursive!
-     *
-     * @param joint the next Joint to append (not null, aliases created)
-     * @param addResult the List to append to (modified)
-     */
-    private static void addPreOrderJoints(Joint joint, List<Joint> addResult) {
-        assert joint != null;
-        addResult.add(joint);
-        List<Joint> children = joint.getChildren();
-        for (Joint child : children) {
-            addPreOrderJoints(child, addResult);
         }
     }
 }

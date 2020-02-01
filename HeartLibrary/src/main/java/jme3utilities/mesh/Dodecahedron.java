@@ -63,9 +63,10 @@ public class Dodecahedron extends Mesh {
     // constructors
 
     /**
-     * No-argument constructor needed by SavableClassUtil.
+     * No-argument constructor needed by SavableClassUtil. Do not invoke
+     * directly!
      */
-    protected Dodecahedron() {
+    public Dodecahedron() {
     }
 
     /**

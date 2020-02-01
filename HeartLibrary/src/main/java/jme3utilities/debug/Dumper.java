@@ -28,7 +28,6 @@ package jme3utilities.debug;
 
 import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
-import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppState;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.bounding.BoundingVolume;
@@ -57,6 +56,7 @@ import java.util.TreeSet;
 import java.util.logging.Logger;
 import jme3utilities.MyRender;
 import jme3utilities.MyString;
+import jme3utilities.NamedAppState;
 import jme3utilities.Validate;
 import jme3utilities.math.MyColor;
 
@@ -779,8 +779,8 @@ public class Dumper implements Cloneable {
         String className = appState.getClass().getSimpleName();
         stream.print(className);
 
-        if (appState instanceof AbstractAppState) {
-            String id = ((AbstractAppState) appState).getId();
+        if (appState instanceof NamedAppState) {
+            String id = ((NamedAppState) appState).getId();
             if (id != null) {
                 stream.print(" id=");
                 stream.print(id);
