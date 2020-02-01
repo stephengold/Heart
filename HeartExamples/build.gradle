@@ -1,0 +1,80 @@
+// Note: "common.gradle" in the root project contains additional initialization
+//   for this project. This initialization is applied in the "build.gradle"
+//   of the root project.
+
+description = 'demos, examples, and tests that do not generate reports'
+
+dependencies {
+    implementation "jme3utilities:jme3-utilities-ui:$jme3utilitiesuiVersion"
+    implementation 'org.jmonkeyengine:jme3-desktop:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-testdata:3.1.0-stable'
+
+    // HeartExamples doesn't use jme3-blender, jme3-jogg, or jme3-plugins
+    //  -- they are included solely to avoid warnings from AssetConfig
+    runtimeOnly 'org.jmonkeyengine:jme3-blender:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jmonkeyengineVersion
+
+    //implementation "jme3utilities:jme3-utilities-heart:$jme3utilitiesheartVersion"
+    implementation project(':HeartLibrary')
+}
+
+// cleanup tasks
+clean.dependsOn('cleanDLLs', 'cleanDyLibs', 'cleanLogs', 'cleanSOs', 'cleanWrittenAssets')
+
+task cleanDLLs(type: Delete) {
+    delete fileTree(dir: '.', include: '*.dll')
+}
+task cleanDyLibs(type: Delete) {
+    delete fileTree(dir: '.', include: '*.dylib')
+}
+task cleanLogs(type: Delete) {
+    delete fileTree(dir: '.', include: 'hs_err_pid*.log')
+}
+task cleanSOs(type: Delete) {
+    delete fileTree(dir: '.', include: '*.so')
+}
+task cleanWrittenAssets(type: Delete) {
+    delete 'Written Assets'
+}
+
+task TestBoundsVisualizer(type: JavaExec) {
+    main 'jme3utilities.debug.test.TestBoundsVisualizer'
+}
+task TestPas(type: JavaExec) {
+    main 'jme3utilities.debug.test.TestPas'
+}
+
+task TestGenerator(type: JavaExec) {
+    main 'jme3utilities.math.test.TestGenerator'
+}
+task TestMyMath(type: JavaExec) {
+    main 'jme3utilities.math.test.TestMyMath'
+}
+task TestMyVector3f(type: JavaExec) {
+    main 'jme3utilities.math.test.TestMyVector3f'
+}
+task TestVectorXZ(type: JavaExec) {
+    main 'jme3utilities.math.test.TestVectorXZ'
+}
+
+task TestLoopMesh(type: JavaExec) {
+    main 'jme3utilities.mesh.test.LoopMeshTest'
+}
+task TestSolidMeshes(type: JavaExec) {
+    main 'jme3utilities.mesh.test.TestSolidMeshes'
+}
+
+task TestMySkeleton(type: JavaExec) {
+    main 'jme3utilities.test.TestMySkeleton'
+}
+task TestMySpatial(type: JavaExec) {
+    main 'jme3utilities.test.TestMySpatial'
+}
+task TestNameGenerator(type: JavaExec) {
+    main 'jme3utilities.test.TestNameGenerator'
+}
+task TestWireframe(type: JavaExec) {
+    main 'jme3utilities.test.TestWireframe'
+}
