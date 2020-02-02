@@ -39,7 +39,7 @@
  + Added `addIndices()`, `areIdentical()`, `expand()`, `generateNormals()`,
    `hasIndices()`, `reverseNormals()`, and `reverseWinding()` methods
     to the `MyMesh` class.
- + Added `Cone`, `Element`, `Icosahedron`, `Octahedron`, `Prism`, and
+ + Added the `Cone`, `Element`, `Icosahedron`, `Octahedron`, `Prism`, and
    `Tetrahedron` classes.
  + Added `get()`, `normalize()`, `put()`, `rotate()`, and `scale()` methods to
    the `MyBuffer` class.
