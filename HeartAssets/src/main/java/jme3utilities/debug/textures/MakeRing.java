@@ -32,7 +32,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jme3utilities.Misc;
+import jme3utilities.Heart;
 import jme3utilities.MyString;
 
 /**
@@ -90,12 +90,12 @@ public class MakeRing {
         /*
          * Mute the chatty loggers found in some imported packages.
          */
-        Misc.setLoggingLevels(Level.WARNING);
+        Heart.setLoggingLevels(Level.WARNING);
         /*
-         * Set the logging level for this class and also for writeMap().
+         * Set the logging level for this class and also for writeImage().
          */
         //logger.setLevel(Level.INFO);
-        //Logger.getLogger(Misc.class.getName()).setLevel(Level.INFO);
+        //Logger.getLogger(Heart.class.getName()).setLevel(Level.INFO);
         /*
          * Instantiate the application.
          */
@@ -138,7 +138,7 @@ public class MakeRing {
         String assetPath = "Textures/shapes/ring.png";
         String filePath = String.format("%s/%s", assetDirPath, assetPath);
         try {
-            Misc.writeMap(filePath, image);
+            Heart.writeImage(filePath, image);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

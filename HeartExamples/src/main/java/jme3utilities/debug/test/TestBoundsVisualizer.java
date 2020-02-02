@@ -44,7 +44,7 @@ import com.jme3.scene.Spatial;
 import com.jme3.system.AppSettings;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jme3utilities.Misc;
+import jme3utilities.Heart;
 import jme3utilities.MyAsset;
 import jme3utilities.MyMesh;
 import jme3utilities.MyString;
@@ -102,7 +102,7 @@ public class TestBoundsVisualizer
         /*
          * Mute the chatty loggers found in some imported packages.
          */
-        Misc.setLoggingLevels(Level.WARNING);
+        Heart.setLoggingLevels(Level.WARNING);
 
         TestBoundsVisualizer application = new TestBoundsVisualizer();
         /*

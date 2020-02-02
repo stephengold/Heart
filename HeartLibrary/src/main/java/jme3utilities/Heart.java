@@ -64,10 +64,8 @@ import jme3utilities.math.VectorXZ;
  * Miscellaneous utility methods in the Heart Library.
  *
  * @author Stephen Gold sgold@sonic.net
- * @deprecated use {@link jme3utilities.Heart}
  */
-@Deprecated
-public class Misc {
+public class Heart {
     // *************************************************************************
     // constants and loggers
 
@@ -75,14 +73,14 @@ public class Misc {
      * message logger for this class
      */
     final private static Logger logger
-            = Logger.getLogger(Misc.class.getName());
+            = Logger.getLogger(Heart.class.getName());
     // *************************************************************************
     // constructors
 
     /**
      * A private constructor to inhibit instantiation of this class.
      */
-    private Misc() {
+    private Heart() {
     }
     // *************************************************************************
     // new methods exposed
@@ -383,28 +381,6 @@ public class Misc {
     }
 
     /**
-     * Write a Savable to a J3O file.
-     *
-     * @param filePath (not null, not empty, should end in ".j3o")
-     * @param savable (not null, unaffected)
-     */
-    public static void writeJ3O(String filePath, Savable savable) {
-        Validate.nonEmpty(filePath, "file path");
-        Validate.nonNull(savable, "savable");
-
-        JmeExporter exporter = BinaryExporter.getInstance();
-        File file = new File(filePath);
-        try {
-            exporter.save(savable, file);
-        } catch (IOException exception) {
-            logger.log(Level.SEVERE, "write to {0} failed",
-                    MyString.quote(filePath));
-            throw new RuntimeException(exception);
-        }
-        logger.log(Level.INFO, "wrote file {0}", MyString.quote(filePath));
-    }
-
-    /**
      * Write an image to a PNG file, attempting to overwrite any pre-existing
      * file.
      *
@@ -412,7 +388,7 @@ public class Misc {
      * @param image image to be written (not null)
      * @throws IOException if the image cannot be written
      */
-    public static void writeMap(String filePath, RenderedImage image)
+    public static void writeImage(String filePath, RenderedImage image)
             throws IOException {
         Validate.nonEmpty(filePath, "path");
         Validate.nonNull(image, "image");
@@ -447,5 +423,27 @@ public class Misc {
             }
             throw exception;
         }
+    }
+
+    /**
+     * Write a Savable to a J3O file.
+     *
+     * @param filePath (not null, not empty, should end in ".j3o")
+     * @param savable (not null, unaffected)
+     */
+    public static void writeJ3O(String filePath, Savable savable) {
+        Validate.nonEmpty(filePath, "file path");
+        Validate.nonNull(savable, "savable");
+
+        JmeExporter exporter = BinaryExporter.getInstance();
+        File file = new File(filePath);
+        try {
+            exporter.save(savable, file);
+        } catch (IOException exception) {
+            logger.log(Level.SEVERE, "write to {0} failed",
+                    MyString.quote(filePath));
+            throw new RuntimeException(exception);
+        }
+        logger.log(Level.INFO, "wrote file {0}", MyString.quote(filePath));
     }
 }
