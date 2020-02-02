@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2018, Stephen Gold
+ Copyright (c) 2014-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import com.jme3.audio.openal.ALAudioRenderer;
 import com.jme3.system.AppSettings;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jme3utilities.Misc;
+import jme3utilities.Heart;
 import jme3utilities.debug.PerformanceAppState;
 
 /**
@@ -66,7 +66,7 @@ public class TestPas extends SimpleApplication {
         /*
          * Mute the chatty loggers found in some imported packages.
          */
-        Misc.setLoggingLevels(Level.WARNING);
+        Heart.setLoggingLevels(Level.WARNING);
         Logger.getLogger(ALAudioRenderer.class.getName())
                 .setLevel(Level.SEVERE);
         /*
@@ -95,6 +95,6 @@ public class TestPas extends SimpleApplication {
         /*
          * Detach any JME stats app state(s).
          */
-        Misc.detachAll(stateManager, StatsAppState.class);
+        Heart.detachAll(stateManager, StatsAppState.class);
     }
 }

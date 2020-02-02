@@ -38,7 +38,7 @@ import com.jme3.scene.control.AbstractControl;
 import com.jme3.system.JmeSystem;
 import com.jme3.system.MockJmeSystemDelegate;
 import com.jme3.texture.plugins.AWTLoader;
-import jme3utilities.Misc;
+import jme3utilities.Heart;
 import jme3utilities.debug.AxesVisualizer;
 import jme3utilities.debug.BoundsVisualizer;
 import jme3utilities.debug.SkeletonVisualizer;
@@ -76,14 +76,15 @@ public class TestCloneControls {
         node.addControl(axes);
         setParameters(axes, 0f);
         verifyParameters(axes, 0f);
-        AxesVisualizer axesClone = (AxesVisualizer) Misc.deepCopy(axes);
+        AxesVisualizer axesClone = (AxesVisualizer) Heart.deepCopy(axes);
         cloneTest(axes, axesClone);
 
         BoundsVisualizer bounds = new BoundsVisualizer(assetManager);
         node.addControl(bounds);
         setParameters(bounds, 0f);
         verifyParameters(bounds, 0f);
-        BoundsVisualizer boundsClone = (BoundsVisualizer) Misc.deepCopy(bounds);
+        BoundsVisualizer boundsClone
+                = (BoundsVisualizer) Heart.deepCopy(bounds);
         cloneTest(bounds, boundsClone);
 
         SkeletonControl subject = null; // TODO more interesting subject
@@ -93,7 +94,7 @@ public class TestCloneControls {
         setParameters(skeleton, 0f);
         verifyParameters(skeleton, 0f);
         SkeletonVisualizer skeletonClone
-                = (SkeletonVisualizer) Misc.deepCopy(skeleton);
+                = (SkeletonVisualizer) Heart.deepCopy(skeleton);
         cloneTest(skeleton, skeletonClone);
     }
     // *************************************************************************

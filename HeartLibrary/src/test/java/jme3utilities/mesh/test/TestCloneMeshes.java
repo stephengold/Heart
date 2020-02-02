@@ -30,7 +30,7 @@ import com.jme3.asset.AssetManager;
 import com.jme3.asset.DesktopAssetManager;
 import com.jme3.export.binary.BinaryExporter;
 import com.jme3.scene.Mesh;
-import jme3utilities.Misc;
+import jme3utilities.Heart;
 import jme3utilities.mesh.Cone;
 import jme3utilities.mesh.Dodecahedron;
 import jme3utilities.mesh.DomeMesh;
@@ -73,61 +73,62 @@ public class TestCloneMeshes {
         float yHeight = 3f;
         boolean generatePyramid = false;
         Cone cone = new Cone(numSides, radius, yHeight, generatePyramid);
-        Cone coneClone = (Cone) Misc.deepCopy(cone);
+        Cone coneClone = (Cone) Heart.deepCopy(cone);
         cloneTest(cone, coneClone);
 
         Mesh.Mode mode = Mesh.Mode.Triangles;
         Dodecahedron dodec = new Dodecahedron(radius, mode);
-        Dodecahedron dodecClone = (Dodecahedron) Misc.deepCopy(dodec);
+        Dodecahedron dodecClone = (Dodecahedron) Heart.deepCopy(dodec);
         cloneTest(dodec, dodecClone);
 
         int rimSamples = 48;
         int quadrantSamples = 12;
         DomeMesh dome = new DomeMesh(rimSamples, quadrantSamples);
-        DomeMesh domeClone = (DomeMesh) Misc.deepCopy(dome);
+        DomeMesh domeClone = (DomeMesh) Heart.deepCopy(dome);
         cloneTest(dome, domeClone);
 
         boolean generateNormals = true;
         Icosahedron ico = new Icosahedron(radius, generateNormals);
-        Icosahedron icoClone = (Icosahedron) Misc.deepCopy(ico);
+        Icosahedron icoClone = (Icosahedron) Heart.deepCopy(ico);
         cloneTest(ico, icoClone);
 
         int numRefineSteps = 1;
         Icosphere sphere = new Icosphere(numRefineSteps, radius);
-        Icosphere sphereClone = (Icosphere) Misc.deepCopy(sphere);
+        Icosphere sphereClone = (Icosphere) Heart.deepCopy(sphere);
         cloneTest(sphere, sphereClone);
 
         int vertexCount = 10;
         LoopMesh loop = new LoopMesh(vertexCount);
-        LoopMesh loopClone = (LoopMesh) Misc.deepCopy(loop);
+        LoopMesh loopClone = (LoopMesh) Heart.deepCopy(loop);
         cloneTest(loop, loopClone);
 
         Octahedron oct = new Octahedron(radius, generateNormals);
-        Octahedron octClone = (Octahedron) Misc.deepCopy(oct);
+        Octahedron octClone = (Octahedron) Heart.deepCopy(oct);
         cloneTest(oct, octClone);
 
         PointMesh point = new PointMesh();
-        PointMesh pointClone = (PointMesh) Misc.deepCopy(point);
+        PointMesh pointClone = (PointMesh) Heart.deepCopy(point);
         cloneTest(point, pointClone);
 
         Prism prism = new Prism(numSides, radius, yHeight, generateNormals);
-        Prism prismClone = (Prism) Misc.deepCopy(prism);
+        Prism prismClone = (Prism) Heart.deepCopy(prism);
         cloneTest(prism, prismClone);
 
         RectangleMesh rect = new RectangleMesh();
-        RectangleMesh rectClone = (RectangleMesh) Misc.deepCopy(rect);
+        RectangleMesh rectClone = (RectangleMesh) Heart.deepCopy(rect);
         cloneTest(rect, rectClone);
 
         RectangleOutlineMesh ro = new RectangleOutlineMesh();
-        RectangleOutlineMesh roClone = (RectangleOutlineMesh) Misc.deepCopy(ro);
+        RectangleOutlineMesh roClone
+                = (RectangleOutlineMesh) Heart.deepCopy(ro);
         cloneTest(ro, roClone);
 
         RoundedRectangle round = new RoundedRectangle();
-        RoundedRectangle roundClone = (RoundedRectangle) Misc.deepCopy(round);
+        RoundedRectangle roundClone = (RoundedRectangle) Heart.deepCopy(round);
         cloneTest(round, roundClone);
 
         Tetrahedron tetra = new Tetrahedron(radius, generateNormals);
-        Tetrahedron tetraClone = (Tetrahedron) Misc.deepCopy(tetra);
+        Tetrahedron tetraClone = (Tetrahedron) Heart.deepCopy(tetra);
         cloneTest(tetra, tetraClone);
     }
     // *************************************************************************
