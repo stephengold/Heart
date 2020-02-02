@@ -1,6 +1,6 @@
 # release notes for the Heart Library and related tests
 
-## Version 4.5.0for33 released on TBD
+## Version 4.5.0for33 released on 1 February 2020
 
  + Bugfix: `Icosphere` lacked a no-arg constructor.
  + Bugfix: `Tetrahedron` generated an irregular polyhedron.
