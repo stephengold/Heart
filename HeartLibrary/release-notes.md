@@ -1,12 +1,18 @@
 # release notes for the Heart Library and related tests
 
+## Version 4.5.0for33 released on TBD
+
+ + Bugfix: `Icosphere` lacked a no-arg constructor.
  + Bugfix: `Tetrahedron` generated an irregular polyhedron.
+ + Copied `Misc` class to `Heart`, renamed `Heart.writeMap()`,
+   and deprecated the `Misc` class.
  + Added a `require()` method to the `Validate` class.
  + Added `setBoneIndexBuffer()` and `trianglesToLines()` methods
    to the `MyMesh` class.
  + Added an `IntPair` class.
  + Added `isSorted()` methods for floats and Strings and deprecated the
    one for `List<Comparable>`.
+ + Added a test `TestCloneMeshes`.
  + Handle `mode=Points` in the `Dodecahedron` constructor.
  + Heart moved from the Jme3-utilities Project to a new GitHub repo.
 
