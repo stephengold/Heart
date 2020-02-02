@@ -119,6 +119,13 @@ public class Icosphere extends Mesh {
     // constructors
 
     /**
+     * No-argument constructor needed by SavableClassUtil.
+     */
+    protected Icosphere() {
+        radius = 1f;
+    }
+
+    /**
      * Instantiate an icosphere with the specified radius and number of
      * refinement steps:
      * <ul><li>
