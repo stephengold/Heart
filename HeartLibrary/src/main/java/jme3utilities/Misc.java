@@ -61,8 +61,7 @@ import jme3utilities.math.RectangularSolid;
 import jme3utilities.math.VectorXZ;
 
 /**
- * Miscellaneous utility methods in the jme3-utilities-heart library. TODO
- * rename Heart
+ * Miscellaneous utility methods in the Heart Library. TODO rename Heart
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -363,7 +362,7 @@ public class Misc {
      * @return project name, library name, branch, and revision
      */
     public static String version() {
-        return "jme3-utilities Heart master $Rev: 4.4.0for32+1 $";
+        return "Heart Heart for_jME3.2 $Rev: 4.4.0for32+1 $";
     }
 
     /**
