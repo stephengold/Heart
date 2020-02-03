@@ -55,6 +55,10 @@ public class VectorSetUsingBuffer implements VectorSet {
     // fields
 
     /**
+     * true&rarr;allocate direct buffers, false&rarr;allocate indirect buffers
+     */
+    final private boolean useDirectBuffers;
+    /**
      * buffer to hold the Vector3f values
      */
     private FloatBuffer buffer;
@@ -90,10 +94,13 @@ public class VectorSetUsingBuffer implements VectorSet {
      *
      * @param numVectors the number of vectors the set must hold without needing
      * enlargement (&gt;0)
+     * @param direct true&rarr;allocate direct buffers, false&rarr;allocate
+     * indirect buffers
      */
-    public VectorSetUsingBuffer(int numVectors) {
+    public VectorSetUsingBuffer(int numVectors, boolean direct) {
         Validate.positive(numVectors, "number of vectors");
 
+        useDirectBuffers = direct;
         allocate(numVectors);
         flip();
     }
@@ -365,7 +372,11 @@ public class VectorSetUsingBuffer implements VectorSet {
         assert numVectors > 0 : numVectors;
 
         int numFloats = numAxes * numVectors + 1;
-        buffer = BufferUtils.createFloatBuffer(numFloats);
+        if (useDirectBuffers) {
+            buffer = BufferUtils.createFloatBuffer(numFloats);
+        } else {
+            buffer = FloatBuffer.wrap(new float[numFloats]);
+        }
         startPositionPlus1 = new int[numFloats]; // initialized to all 0s
         endPosition = new int[numFloats];
     }
