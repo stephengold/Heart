@@ -180,20 +180,6 @@ public class BoundsVisualizer extends SubtreeControl {
     /**
      * Copy the color of the lines.
      *
-     * @return a new instance
-     * @deprecated use {@link #copyLineColor(com.jme3.math.ColorRGBA)}
-     */
-    @Deprecated
-    public ColorRGBA copyLineColor() {
-        MatParam parameter = lineMaterial.getParam("Color");
-        ColorRGBA color = (ColorRGBA) parameter.getValue();
-
-        return color.clone();
-    }
-
-    /**
-     * Copy the color of the lines.
-     *
      * @param storeResult storage for the result (modified if not null)
      * @return a new instance
      */
