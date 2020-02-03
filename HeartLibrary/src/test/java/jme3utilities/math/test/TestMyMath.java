@@ -41,11 +41,23 @@ public class TestMyMath {
 
     @Test
     public void testMyMath() {
+        float zero = MyMath.hypotenuse();
+        Assert.assertEquals(0f, zero, 0f);
+
         float thirteen = MyMath.hypotenuse(-5f, -12f);
-        Assert.assertEquals(13f, thirteen, 1e-5);
+        Assert.assertEquals(13f, thirteen, 0f);
+
+        float four = MyMath.hypotenuse(-2f, 2f, 2f, -2f);
+        Assert.assertEquals(4f, four, 0f);
 
         double five = MyMath.hypotenuseDouble(3.0, 4.0);
         Assert.assertEquals(5.0, five, 1e-15);
+
+        float max1 = MyMath.max();
+        Assert.assertEquals(Float.NEGATIVE_INFINITY, max1, 0f);
+
+        float max2 = MyMath.max(-10f);
+        Assert.assertEquals(-10f, max2, 0f);
 
         float max3 = MyMath.max(-4f, -12f, 3f);
         Assert.assertEquals(3f, max3, 0f);
@@ -59,6 +71,12 @@ public class TestMyMath {
         double max6 = MyMath.maxDouble(-4.0, -12.0, 3.0);
         Assert.assertEquals(3.0, max6, 0.0);
 
+        float min1 = MyMath.min();
+        Assert.assertEquals(Float.POSITIVE_INFINITY, min1, 0f);
+
+        float min2 = MyMath.min(10f);
+        Assert.assertEquals(10f, min2, 0f);
+
         float min3 = MyMath.min(-4f, -12f, 3f);
         Assert.assertEquals(-12f, min3, 0f);
 
@@ -70,6 +88,12 @@ public class TestMyMath {
 
         double min6 = MyMath.minDouble(-4.0, -12.0, 3.0);
         Assert.assertEquals(-12.0, min6, 0.0);
+
+        double zero2 = MyMath.sumOfSquares();
+        Assert.assertEquals(0.0, zero2, 0.0);
+
+        double four2 = MyMath.sumOfSquares(1f, -1f, -1f, -1f);
+        Assert.assertEquals(4.0, four2, 0.0);
 
         double six = MyMath.sumOfSquares(1f, -1f, -2f);
         Assert.assertEquals(6.0, six, 0.0);

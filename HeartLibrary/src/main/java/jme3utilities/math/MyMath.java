@@ -276,26 +276,25 @@ public class MyMath {
     }
 
     /**
-     * Compute the hypotenuse of a right triangle using the Pythagorean Theorem.
-     * This method accepts negative arguments.
+     * Determine the root sum of squares of some single-precision values.
+     * Double-precision arithmetic is used to reduce the risk of overflow.
      *
-     * @param legA length of the first leg (may be negative)
-     * @param legB length of the 2nd leg (may be negative)
-     * @return length of the hypotenuse (&ge;0)
-     * @see #sumOfSquares(float,float)
-     * @see java.lang.Math#hypot(double, double)
+     * @param fValues the input values
+     * @return the positive square root of the sum of squares (&ge;0)
      */
-    public static float hypotenuse(float legA, float legB) {
-        double sumSquares = sumOfSquares(legA, legB);
-        float result = (float) Math.sqrt(sumSquares);
+    public static float hypotenuse(float... fValues) {
+        double sum = 0.0;
+        for (float value : fValues) {
+            sum += value * value;
+        }
 
-        assert result >= 0f : result;
+        float result = (float) Math.sqrt(sum);
+        assert result >= 0.0 : result;
         return result;
     }
 
     /**
-     * Determine the positive square root of the sum-of-squares of some
-     * double-precision values.
+     * Determine the root sum of squares of some double-precision values.
      *
      * @param dValues the input values
      * @return the positive square root of the sum of squares (&ge;0)
@@ -425,22 +424,21 @@ public class MyMath {
     }
 
     /**
-     * Find the maximum of 3 single-precision values. TODO float... version
+     * Find the maximum of some single-precision values.
      *
-     * @param a the first input value
-     * @param b the 2nd input value
-     * @param c the 3rd input value
-     * @return the most positive of the 3 values
+     * @param fValues the input values
+     * @return the most positive value
      * @see java.lang.Math#max(float, float)
      */
-    public static float max(float a, float b, float c) {
-        if (a >= b && a >= c) {
-            return a;
-        } else if (b >= c) {
-            return b;
-        } else {
-            return c;
+    public static float max(float... fValues) {
+        float result = Float.NEGATIVE_INFINITY;
+        for (float value : fValues) {
+            if (value > result) {
+                result = value;
+            }
         }
+
+        return result;
     }
 
     /**
@@ -514,22 +512,21 @@ public class MyMath {
     }
 
     /**
-     * Find the minimum of 3 single-precision values. TODO float... version
+     * Find the minimum of some single-precision values.
      *
-     * @param a the first input value
-     * @param b the 2nd input value
-     * @param c the 3rd input value
-     * @return the most negative of the 3 values
+     * @param fValues the input values
+     * @return the most negative value
      * @see java.lang.Math#min(float, float)
      */
-    public static float min(float a, float b, float c) {
-        if (a <= b && a <= c) {
-            return a;
-        } else if (b <= c) {
-            return b;
-        } else {
-            return c;
+    public static float min(float... fValues) {
+        float result = Float.POSITIVE_INFINITY;
+        for (float value : fValues) {
+            if (value < result) {
+                result = value;
+            }
         }
+
+        return result;
     }
 
     /**
@@ -718,36 +715,17 @@ public class MyMath {
     }
 
     /**
-     * Compute the sum-of-squares of 2 single-precision values. Double-precision
-     * arithmetic is used to reduce the risk of overflow.
+     * Compute the sum of squares of some single-precision values.
+     * Double-precision arithmetic is used to reduce the risk of overflow.
      *
-     * @param firstValue the first input value
-     * @param secondValue the 2nd input value
-     * @return sum of squares (&ge;0)
+     * @param fValues the input values
+     * @return the sum of squares (&ge;0)
      */
-    public static double sumOfSquares(float firstValue, float secondValue) {
-        double x = firstValue;
-        double y = secondValue;
-        double result = x * x + y * y;
-
-        assert result >= 0.0 : result;
-        return result;
-    }
-
-    /**
-     * Compute the sum-of-squares of 3 single-precision values. Double-precision
-     * arithmetic is used to reduce the risk of overflow. TODO float... version
-     *
-     * @param v1 the first input value
-     * @param v2 the 2nd input value
-     * @param v3 the 3rd input value
-     * @return sum of squares (&ge;0)
-     */
-    public static double sumOfSquares(float v1, float v2, float v3) {
-        double x = v1;
-        double y = v2;
-        double z = v3;
-        double result = x * x + y * y + z * z;
+    public static double sumOfSquares(float... fValues) {
+        double result = 0.0;
+        for (float value : fValues) {
+            result += value * value;
+        }
 
         assert result >= 0.0 : result;
         return result;
