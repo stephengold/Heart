@@ -843,7 +843,7 @@ public class MyMesh {
          * Re-normalize the normal sum for each distinct position.
          */
         for (int dpid = 0; dpid < normalSum.length; ++dpid) {
-            normalSum[dpid].normalizeLocal();
+            MyVector3f.normalizeLocal(normalSum[dpid]);
         }
         /*
          * Write new normals to the buffer.
@@ -1125,7 +1125,7 @@ public class MyMesh {
                     result.z += weight * zOf;
                 }
             }
-            result.normalizeLocal();
+            MyVector3f.normalizeLocal(result);
 
         } else { // not an animated mesh
             vertexVector3f(mesh, VertexBuffer.Type.Normal, vertexIndex, result);
