@@ -61,8 +61,11 @@ public class TestVectorSet {
         VectorSet vectorSet1 = new VectorSetUsingCollection(1);
         test(vectorSet1);
 
-        VectorSet vectorSet2 = new VectorSetUsingBuffer(1);
+        VectorSet vectorSet2 = new VectorSetUsingBuffer(1, true);
         test(vectorSet2);
+
+        VectorSet vectorSet3 = new VectorSetUsingBuffer(1, false);
+        test(vectorSet3);
     }
     // *************************************************************************
     // private methods

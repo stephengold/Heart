@@ -54,11 +54,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
+import jme3utilities.math.IntPair;
 import jme3utilities.math.MyBuffer;
 import jme3utilities.math.MyVector3f;
 import jme3utilities.math.VectorSet;
 import jme3utilities.math.VectorSetUsingBuffer;
-import jme3utilities.math.IntPair;
 
 /**
  * Utility methods for meshes and mesh vertices.
@@ -591,7 +591,9 @@ public class MyMesh {
             VectorSet storeResult) {
         VectorSet result;
         if (storeResult == null) {
-            result = new VectorSetUsingBuffer(64);
+            int numVectors = 64;
+            boolean direct = false;
+            result = new VectorSetUsingBuffer(numVectors, direct);
         } else {
             result = storeResult;
         }

@@ -93,7 +93,8 @@ final public class MyBuffer {
         if (numVectors > 20) {
             result = new VectorSetUsingCollection(numVectors);
         } else {
-            result = new VectorSetUsingBuffer(numVectors);
+            boolean direct = false;
+            result = new VectorSetUsingBuffer(numVectors, direct);
         }
 
         Vector3f tmpVector = new Vector3f();
