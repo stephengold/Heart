@@ -268,7 +268,7 @@ public class MyVector3f {
      * @param input (not null, modified)
      */
     public static void cardinalizeLocal(Vector3f input) {
-        input.normalizeLocal();
+        normalizeLocal(input);
         /*
          * Generate each of the 6 cardinal directions.
          */

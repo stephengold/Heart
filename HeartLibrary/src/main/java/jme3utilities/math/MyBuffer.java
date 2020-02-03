@@ -493,7 +493,7 @@ final public class MyBuffer {
         for (int vectorIndex = 0; vectorIndex < numVectors; ++vectorIndex) {
             int position = startPosition + vectorIndex * numAxes;
             get(buffer, position, tmpVector);
-            tmpVector.normalizeLocal();
+            MyVector3f.normalizeLocal(tmpVector);
             put(buffer, position, tmpVector);
         }
     }
