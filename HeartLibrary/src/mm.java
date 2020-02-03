@@ -276,6 +276,27 @@ public class MyMath {
     }
 
     /**
+     * Compute sqrt(x^2 + y^2 + z^2).
+     *
+     * @param x the first input value
+     * @param y the 2nd input value
+     * @param z the 3nd input value
+     * @return the positive square root of the sum of squares (&ge;0)
+     * @see java.lang.Math#hypot(double, double)
+     */
+    public static double hypotenuse(double x, double y, double z) {
+        Validate.finite(x, "first input value");
+        Validate.finite(y, "2nd input value");
+        Validate.finite(z, "3rd input value");
+
+        double sum = x * x + y * y + z * z;
+        double result = Math.sqrt(sum);
+
+        assert result >= 0f : result;
+        return result;
+    }
+
+    /**
      * Compute the hypotenuse of a right triangle using the Pythagorean Theorem.
      * This method accepts negative arguments.
      *
@@ -290,24 +311,6 @@ public class MyMath {
         float result = (float) Math.sqrt(sumSquares);
 
         assert result >= 0f : result;
-        return result;
-    }
-
-    /**
-     * Determine the positive square root of the sum-of-squares of some
-     * double-precision values.
-     *
-     * @param dValues the input values
-     * @return the positive square root of the sum of squares (&ge;0)
-     */
-    public static double hypotenuseDouble(double... dValues) {
-        double sum = 0.0;
-        for (double value : dValues) {
-            sum += value * value;
-        }
-
-        double result = Math.sqrt(sum);
-        assert result >= 0.0 : result;
         return result;
     }
 
@@ -444,21 +447,22 @@ public class MyMath {
     }
 
     /**
-     * Find the maximum of some double-precision values.
+     * Find the maximum of 3 double-precision values. TODO double... version
      *
-     * @param dValues the input values
-     * @return the most positive value
+     * @param a the first input value
+     * @param b the 2nd input value
+     * @param c the 3rd input value
+     * @return the most positive of the 3 values
      * @see java.lang.Math#max(double, double)
      */
-    public static double maxDouble(double... dValues) {
-        double result = Double.NEGATIVE_INFINITY;
-        for (double value : dValues) {
-            if (value > result) {
-                result = value;
-            }
+    public static double max(double a, double b, double c) {
+        if (a >= b && a >= c) {
+            return a;
+        } else if (b >= c) {
+            return b;
+        } else {
+            return c;
         }
-
-        return result;
     }
 
     /**
@@ -533,21 +537,22 @@ public class MyMath {
     }
 
     /**
-     * Find the minimum of some double-precision values.
+     * Find the minimum of 3 double-precision values. TODO double... version
      *
-     * @param dValues the input values
-     * @return the most negative value
+     * @param a the first input value
+     * @param b the 2nd input value
+     * @param c the 3rd input value
+     * @return the most negative of the 3 values
      * @see java.lang.Math#min(double, double)
      */
-    public static double minDouble(double... dValues) {
-        double result = Double.POSITIVE_INFINITY;
-        for (double value : dValues) {
-            if (value < result) {
-                result = value;
-            }
+    public static double min(double a, double b, double c) {
+        if (a <= b && a <= c) {
+            return a;
+        } else if (b <= c) {
+            return b;
+        } else {
+            return c;
         }
-
-        return result;
     }
 
     /**

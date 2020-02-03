@@ -225,7 +225,7 @@ public class MyQuaternion {
         double qx = q.getX();
         double qy = q.getY();
         double qz = q.getZ();
-        double theta = MyMath.hypotenuse(qx, qy, qz);
+        double theta = MyMath.hypotenuseDouble(qx, qy, qz);
         if (theta == 0.0) {
             result.loadIdentity();
         } else {
@@ -314,7 +314,7 @@ public class MyQuaternion {
             double qx = q.getX();
             double qy = q.getY();
             double qz = q.getZ();
-            double sineTheta = MyMath.hypotenuse(qx, qy, qz);
+            double sineTheta = MyMath.hypotenuseDouble(qx, qy, qz);
             sineTheta = MyMath.clamp(sineTheta, 0.0, 1.0);
             if (sineTheta == 0.0) {
                 result.set(0f, 0f, 0f, 0f);
@@ -370,7 +370,7 @@ public class MyQuaternion {
             double baseX = base.getX();
             double baseY = base.getY();
             double baseZ = base.getZ();
-            double sineTheta = MyMath.hypotenuse(baseX, baseY, baseZ);
+            double sineTheta = MyMath.hypotenuseDouble(baseX, baseY, baseZ);
             sineTheta = MyMath.clamp(sineTheta, 0.0, 1.0);
             if (sineTheta == 0.0) {
                 result.loadIdentity();
