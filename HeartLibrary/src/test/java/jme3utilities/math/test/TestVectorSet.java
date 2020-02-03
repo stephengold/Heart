@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019, Stephen Gold
+ Copyright (c) 2019-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package jme3utilities.math.test;
 import com.jme3.math.FastMath;
 import com.jme3.math.Vector3f;
 import java.nio.FloatBuffer;
+import jme3utilities.math.MyVector3f;
 import jme3utilities.math.VectorSet;
 import jme3utilities.math.VectorSetUsingBuffer;
 import jme3utilities.math.VectorSetUsingCollection;
@@ -160,6 +161,15 @@ public class TestVectorSet {
         assert string != null;
         assert !string.isEmpty();
         /*
+         * Convert to arrays.
+         */
+        float[] fa = vectorSet.toFloatArray();
+        assert fa != null;
+        assert fa.length == 2 * MyVector3f.numAxes;
+        Vector3f[] va = vectorSet.toVectorArray();
+        assert va != null;
+        assert va.length == 2;
+        /*
          * Add the 4th vector.
          */
         vectorSet.add(testData[3]);
@@ -186,6 +196,6 @@ public class TestVectorSet {
          */
         FloatBuffer buffer = vectorSet.toBuffer();
         assert buffer != null;
-        assert buffer.limit() == 3 * 3;
+        assert buffer.limit() == 3 * MyVector3f.numAxes;
     }
 }

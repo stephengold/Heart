@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019 Stephen Gold
+ Copyright (c) 2019-2020 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -34,8 +34,7 @@ import java.util.logging.Logger;
 import jme3utilities.Validate;
 
 /**
- * A simplified collection of Vector3f values without duplicates, implemented
- * using a FloatBuffer.
+ * A VectorSet implemented using FloatBuffer.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -89,11 +88,12 @@ public class VectorSetUsingBuffer implements VectorSet {
     /**
      * Instantiate an empty set with the specified initial capacity.
      *
-     * @param numVectors the number of vectors this set can hold without
+     * @param numVectors the number of vectors the set must hold without needing
      * enlargement (&gt;0)
      */
     public VectorSetUsingBuffer(int numVectors) {
         Validate.positive(numVectors, "number of vectors");
+
         allocate(numVectors);
         flip();
     }
@@ -128,6 +128,31 @@ public class VectorSetUsingBuffer implements VectorSet {
     // VectorSet methods
 
     /**
+     * Add the specified value to this set, if it's not already present.
+     *
+     * @param x the X component of the new value
+     * @param y the Y component of the new value
+     * @param z the Z component of the new value
+     */
+    @Override
+    public void add(float x, float y, float z) {
+        if (startPositionPlus1 == null) {
+            throw new IllegalStateException("toBuffer() has been invoked.");
+        }
+
+        int hashCode = hash(x, y, z);
+        if (!contains(x, y, z, hashCode)) {
+            unflip();
+            if (buffer.remaining() < numAxes) {
+                enlarge();
+                assert buffer.remaining() >= numAxes;
+            }
+            add(x, y, z, hashCode);
+            flip();
+        }
+    }
+
+    /**
      * Add the value of the specified Vector3f to this set, if it's not already
      * present.
      *
@@ -139,29 +164,34 @@ public class VectorSetUsingBuffer implements VectorSet {
             throw new IllegalStateException("toBuffer() has been invoked.");
         }
 
-        int hashCode = vector.hashCode();
-        if (!contains(vector, hashCode)) {
-            unflip();
-            if (buffer.remaining() < numAxes) {
-                enlarge();
-                assert buffer.remaining() >= numAxes;
-            }
-            add(vector, hashCode);
-            flip();
-        }
+        add(vector.x, vector.y, vector.z);
     }
 
     /**
      * Test whether this set contains the specified value.
+     *
+     * @param x the X component of the value to find
+     * @param y the Y component of the value to find
+     * @param z the Z component of the value to find
+     * @return true if found, otherwise false
+     */
+    @Override
+    public boolean contains(float x, float y, float z) {
+        int hashCode = hash(x, y, z);
+        boolean result = contains(x, y, z, hashCode);
+
+        return result;
+    }
+
+    /**
+     * Test whether this set contains the value of the specified Vector3f.
      *
      * @param vector the value to find (not null, unaffected)
      * @return true if found, otherwise false
      */
     @Override
     public boolean contains(Vector3f vector) {
-        int hashCode = vector.hashCode();
-        boolean result = contains(vector, hashCode);
-
+        boolean result = contains(vector.x, vector.y, vector.z);
         return result;
     }
 
@@ -195,7 +225,7 @@ public class VectorSetUsingBuffer implements VectorSet {
     }
 
     /**
-     * Find the length of the longest Vector3f value in this set.
+     * Find the magnitude of the longest vector in this set.
      *
      * @return the magnitude (&ge;0)
      */
@@ -242,8 +272,8 @@ public class VectorSetUsingBuffer implements VectorSet {
     public int numVectors() {
         int limit = buffer.limit();
         int numFloats = (limit < buffer.capacity()) ? limit : buffer.position();
-        assert numFloats % 3 == 0 : numFloats;
-        int numVectors = numFloats / 3;
+        assert numFloats % numAxes == 0 : numFloats;
+        int numVectors = numFloats / numAxes;
 
         assert numVectors >= 0 : numVectors;
         return numVectors;
@@ -262,17 +292,55 @@ public class VectorSetUsingBuffer implements VectorSet {
 
         return buffer;
     }
+
+    /**
+     * Create an array of floats containing all values in this set.
+     *
+     * @return a new array
+     */
+    @Override
+    public float[] toFloatArray() {
+        int numFloats = numAxes * numVectors();
+        float[] result = new float[numFloats];
+
+        for (int floatIndex = 0; floatIndex < numFloats; ++floatIndex) {
+            result[floatIndex] = buffer.get(floatIndex);
+        }
+
+        return result;
+    }
+
+    /**
+     * Create an array of vectors containing all values in this set.
+     *
+     * @return a new array
+     */
+    @Override
+    public Vector3f[] toVectorArray() {
+        int numVectors = numVectors();
+        Vector3f[] result = new Vector3f[numVectors];
+
+        for (int vectorIndex = 0; vectorIndex < numVectors; ++vectorIndex) {
+            int startPosition = numAxes * vectorIndex;
+            result[vectorIndex] = new Vector3f();
+            MyBuffer.get(buffer, startPosition, result[vectorIndex]);
+        }
+
+        return result;
+    }
     // *************************************************************************
     // private methods
 
     /**
-     * Add the specified vector's value to this set without checking for
-     * capacity or duplication. The buffer cannot be in a flipped state.
+     * Add the specified value to this set without checking for capacity or
+     * duplication. The buffer must not be in a flipped state.
      *
-     * @param vector the value to add (not null, unaffected)
-     * @param hasCode the hash code of vector
+     * @param x the X component of the value
+     * @param y the Y component of the value
+     * @param z the Z component of the value
+     * @param hashCode the hash code of vector
      */
-    private void add(Vector3f vector, int hashCode) {
+    private void add(float x, float y, float z, int hashCode) {
         assert buffer.limit() == buffer.capacity();
 
         int position = buffer.position();
@@ -283,15 +351,15 @@ public class VectorSetUsingBuffer implements VectorSet {
         }
         endPosition[hashIndex] = position;
 
-        buffer.put(vector.x);
-        buffer.put(vector.y);
-        buffer.put(vector.z);
+        buffer.put(x);
+        buffer.put(y);
+        buffer.put(z);
     }
 
     /**
      * Initialize an empty, unflipped set with the specified initial capacity.
      *
-     * @param numVectors (&gt;0)
+     * @param numVectors the initial capacity (&gt;0)
      */
     private void allocate(int numVectors) {
         assert numVectors > 0 : numVectors;
@@ -303,13 +371,15 @@ public class VectorSetUsingBuffer implements VectorSet {
     }
 
     /**
-     * Test whether the specified vector's value is in the set.
+     * Test whether the specified value is in the set.
      *
-     * @param vector the value to find (not null, unaffected)
-     * @param hashCode the hash code of vector
+     * @param x the X component of the value to find
+     * @param y the Y component of the value to find
+     * @param z the Z component of the value to find
+     * @param hashCode the hash code of value
      * @return true if found, otherwise false
      */
-    private boolean contains(Vector3f vector, int hashCode) {
+    private boolean contains(float x, float y, float z, int hashCode) {
         boolean result = false;
         int hashIndex = MyMath.modulo(hashCode, startPositionPlus1.length);
         int spp1 = startPositionPlus1[hashIndex];
@@ -317,16 +387,18 @@ public class VectorSetUsingBuffer implements VectorSet {
             int end = endPosition[hashIndex];
             buffer.position(spp1 - 1);
             while (buffer.position() <= end) {
-                float x = buffer.get();
-                float y = buffer.get();
-                float z = buffer.get();
-                if (x == vector.x && y == vector.y && z == vector.z) {
+                float bx = buffer.get();
+                float by = buffer.get();
+                float bz = buffer.get();
+                if (Float.compare(bx, x) == 0
+                        && Float.compare(by, y) == 0
+                        && Float.compare(bz, z) == 0) {
                     result = true;
                     break;
                 }
             }
             ++numSearches;
-            numReads += (end - spp1 + 1) / 3;
+            numReads += (end - spp1 + 1) / numAxes;
         }
 
         return result;
@@ -336,18 +408,17 @@ public class VectorSetUsingBuffer implements VectorSet {
      * Quadruple the capacity of the buffer, which must be unflipped.
      */
     private void enlarge() {
-        Vector3f tempVector = new Vector3f();
         int numVectors = numVectors();
 
         FloatBuffer oldBuffer = toBuffer();
         allocate(4 * numVectors);
         oldBuffer.flip();
         while (oldBuffer.hasRemaining()) {
-            tempVector.x = oldBuffer.get();
-            tempVector.y = oldBuffer.get();
-            tempVector.z = oldBuffer.get();
-            int hashCode = tempVector.hashCode();
-            add(tempVector, hashCode);
+            float x = oldBuffer.get();
+            float y = oldBuffer.get();
+            float z = oldBuffer.get();
+            int hashCode = hash(x, y, z);
+            add(x, y, z, hashCode);
         }
         assert numVectors() == numVectors;
         ++numEnlargements;
@@ -360,6 +431,25 @@ public class VectorSetUsingBuffer implements VectorSet {
         assert buffer.limit() == buffer.capacity();
         buffer.limit(buffer.position());
         assert buffer.limit() != buffer.capacity();
+    }
+
+    /**
+     * Hash function for vectors, used to index into endPosition[] and
+     * startPositionPlus1[]. Because floatToIntBit()s is used, -0 is
+     * distinguished from 0.
+     *
+     * @param x the X component of the value
+     * @param y the Y component of the value
+     * @param z the Z component of the value
+     * @return the hash code of the value
+     */
+    private static int hash(float x, float y, float z) {
+        int hashCode = 37;
+        hashCode += 37 * hashCode + Float.floatToIntBits(x);
+        hashCode += 37 * hashCode + Float.floatToIntBits(y);
+        hashCode += 37 * hashCode + Float.floatToIntBits(z);
+
+        return hashCode;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019 Stephen Gold
+ Copyright (c) 2019-2020 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,7 @@ import java.util.logging.Logger;
 import jme3utilities.Validate;
 
 /**
- * A simplified collection of Vector3f values without duplicates, implemented
- * using a Collection.
+ * A VectorSet implemented using HashSet.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -78,6 +77,19 @@ public class VectorSetUsingCollection implements VectorSet {
     // VectorSet methods
 
     /**
+     * Add the specified value to this set, if it's not already present.
+     *
+     * @param x the X component of the new value
+     * @param y the Y component of the new value
+     * @param z the Z component of the new value
+     */
+    @Override
+    public void add(float x, float y, float z) {
+        Vector3f v = new Vector3f(x, y, z);
+        set.add(v);
+    }
+
+    /**
      * Add the value of the specified Vector3f to this set, if it's not already
      * present.
      *
@@ -91,6 +103,22 @@ public class VectorSetUsingCollection implements VectorSet {
 
     /**
      * Test whether this set contains the specified value.
+     *
+     * @param x the X component of the value to find
+     * @param y the Y component of the value to find
+     * @param z the Z component of the value to find
+     * @return true if found, otherwise false
+     */
+    @Override
+    public boolean contains(float x, float y, float z) {
+        Vector3f v = new Vector3f(x, y, z); // TODO garbage
+        boolean result = set.contains(v);
+
+        return result;
+    }
+
+    /**
+     * Test whether this set contains the value of the specified Vector3f.
      *
      * @param vector the value to find (not null, unaffected)
      * @return true if found, otherwise false
@@ -171,7 +199,7 @@ public class VectorSetUsingCollection implements VectorSet {
     }
 
     /**
-     * Find the length of the longest Vector3f value in this set.
+     * Find the magnitude of the longest vector in this set.
      *
      * @return the magnitude (&ge;0)
      */
@@ -252,7 +280,7 @@ public class VectorSetUsingCollection implements VectorSet {
      */
     @Override
     public FloatBuffer toBuffer() {
-        int numFloats = 3 * set.size();
+        int numFloats = numAxes * set.size();
         FloatBuffer buffer = BufferUtils.createFloatBuffer(numFloats);
         for (Vector3f tempVector : set) {
             buffer.put(tempVector.x);
@@ -262,5 +290,46 @@ public class VectorSetUsingCollection implements VectorSet {
         buffer.flip();
 
         return buffer;
+    }
+
+    /**
+     * Create an array of floats containing all values in this set.
+     *
+     * @return a new array
+     */
+    @Override
+    public float[] toFloatArray() {
+        int numFloats = numAxes * numVectors();
+        float[] result = new float[numFloats];
+
+        int vectorIndex = 0;
+        for (Vector3f tempVector : set) {
+            int startIndex = numAxes * vectorIndex;
+            result[startIndex + MyVector3f.xAxis] = tempVector.x;
+            result[startIndex + MyVector3f.yAxis] = tempVector.y;
+            result[startIndex + MyVector3f.zAxis] = tempVector.z;
+            ++vectorIndex;
+        }
+
+        return result;
+    }
+
+    /**
+     * Create an array of vectors containing all values in this set.
+     *
+     * @return a new array of new vectors
+     */
+    @Override
+    public Vector3f[] toVectorArray() {
+        int numVectors = numVectors();
+        Vector3f[] result = new Vector3f[numVectors];
+
+        int vectorIndex = 0;
+        for (Vector3f tempVector : set) {
+            result[vectorIndex] = tempVector.clone();
+            ++vectorIndex;
+        }
+
+        return result;
     }
 }

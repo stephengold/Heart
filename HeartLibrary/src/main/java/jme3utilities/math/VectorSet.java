@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019 Stephen Gold
+ Copyright (c) 2019-2020 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -31,11 +31,22 @@ import com.jme3.math.Vector3f;
 import java.nio.FloatBuffer;
 
 /**
- * A simplified collection of Vector3f values without duplicates.
+ * A collection of Vector3f values without duplicates.
+ * <p>
+ * When determining duplicates, -0 is distinguished from 0.
  *
  * @author Stephen Gold sgold@sonic.net
  */
 public interface VectorSet {
+    /**
+     * Add the specified value to this set, if it's not already present.
+     *
+     * @param x the X component of the new value
+     * @param y the Y component of the new value
+     * @param z the Z component of the new value
+     */
+    void add(float x, float y, float z);
+
     /**
      * Add the value of the specified Vector3f to this set, if it's not already
      * present.
@@ -43,10 +54,20 @@ public interface VectorSet {
      * @param vector the value to add (not null, unaffected)
      */
     void add(Vector3f vector);
-    // TODO addAll(), add(float, float, float)
+    // TODO addAll()
 
     /**
      * Test whether this set contains the specified value.
+     *
+     * @param x the X component of the value to find
+     * @param y the Y component of the value to find
+     * @param z the Z component of the value to find
+     * @return true if found, otherwise false
+     */
+    boolean contains(float x, float y, float z);
+
+    /**
+     * Test whether this set contains the value of the specified Vector3f.
      *
      * @param vector the value to find (not null, unaffected)
      * @return true if found, otherwise false
@@ -73,7 +94,7 @@ public interface VectorSet {
     Vector3f maxAbs(Vector3f storeResult);
 
     /**
-     * Find the magnitude of the longest value in this set.
+     * Find the magnitude of the longest vector in this set.
      *
      * @return the magnitude (&ge;0)
      */
@@ -111,6 +132,18 @@ public interface VectorSet {
      * @return a Buffer, flipped but possibly not rewound
      */
     FloatBuffer toBuffer();
-    // TODO toFloatArray()
-    // TODO toVectorArray()
+
+    /**
+     * Create an array of floats containing all values in this set.
+     *
+     * @return a new array
+     */
+    float[] toFloatArray();
+
+    /**
+     * Create an array of vectors containing all values in this set.
+     *
+     * @return a new array of new vectors
+     */
+    Vector3f[] toVectorArray();
 }
