@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2019, Stephen Gold
+ Copyright (c) 2017-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -99,7 +99,7 @@ public class MyQuaternion {
     public static void cardinalizeLocal(Quaternion input) {
         Validate.nonNull(input, "input");
 
-        input.normalizeLocal();
+        normalizeLocal(input);
         /*
          * Generate each of the 24 cardinal rotations.
          */
@@ -348,6 +348,24 @@ public class MyQuaternion {
                 || a.getY() != b.getY()
                 || a.getZ() != b.getZ();
         return result;
+    }
+
+    /**
+     * Normalize the specified quaternion in place. This method is less
+     * vulnerable to overflow than
+     * {@link com.jme3.math.Quaternion#normalizeLocal()}.
+     *
+     * @param input (not null, modified)
+     */
+    public static void normalizeLocal(Quaternion input) {
+        Validate.nonNull(input, "input");
+
+        double lengthSquared = lengthSquared(input);
+        double dScale = Math.sqrt(lengthSquared);
+        float fScale = (float) dScale;
+        if (fScale != 0f && fScale != 1f) {
+            input.multLocal(1f / fScale);
+        }
     }
 
     /**
