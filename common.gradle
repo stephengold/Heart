@@ -28,7 +28,8 @@ gradle.projectsEvaluated {
     }
 }
 
-ext { // current versions of various libraries
+ext {
+    // current versions of various libraries
     heartVersion = '5.0.0for33'
     jme3utilitiesuiVersion = '0.8.0for33'
     jmonkeyengineVersion = '3.3.0-beta1'
@@ -36,9 +37,9 @@ ext { // current versions of various libraries
 
 repositories {
     //mavenLocal()
-    jcenter()
     maven { url 'https://dl.bintray.com/stephengold/jme3utilities' }
     maven { url 'https://dl.bintray.com/stephengold/org.jmonkeyengine' } // for jme3-testdata
+    jcenter()
 }
 
 // custom tasks for creating source/javadoc JARs
