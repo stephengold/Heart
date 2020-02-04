@@ -1,6 +1,6 @@
 # release notes for the Heart Library and related tests
 
-## Version 5.0.0for32 released on TBD
+## Version 5.0.0for32 released on 3 February 2020
 
  + Changed the Maven groupId from `jme3utilities` to `com.github.stephengold`.
  + Changed the Maven artifactId from `jme3-utilities-heart` to `Heart`.
