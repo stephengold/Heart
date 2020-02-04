@@ -58,7 +58,7 @@ Both [Minie][] and [Wes][] depend on the Heart Library.
    + generate pseudo-random quaternions and vectors
    + generate 2-D Perlin noise
    + operations on scalars, arrays, and buffers
- + asset loaders for `Properties` and `String`
+ + loaders for `Properties` and `String` assets
  + `ContrastAdjustmentFilter`
  + an `AppState` to manage `ViewPort` updating
  + and much, much more!
@@ -75,7 +75,10 @@ Newer releases (since v4.5.0) can be downloaded from
 Older releases (v0.9.5 through v4.4.0) can be downloaded from
 [the Jme3-utilities Project](https://github.com/stephengold/jme3-utilities/releases).
 
-Maven artifacts are available from
+Newer Maven artifacts (since v5.0.0) are available from
+[JCenter](https://bintray.com/stephengold/com.github.stephengold/Heart).
+
+Older Maven artifacts (v0.9.5 through v4.5.0) are available from
 [JFrog Bintray](https://bintray.com/stephengold/jme3utilities/jme3-utilities-heart).
 
 [Jump to table of contents](#toc)
@@ -199,9 +202,9 @@ Clone the Heart repository using Git:
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
      + `cd Heart`
-     + `git checkout -b latest 4.5.0for32`
+     + `git checkout -b latest 5.0.0for32`
    + using a web browser:
-     + browse to [https://github.com/stephengold/Heart/releases/tag/4.5.0for32](https://github.com/stephengold/Heart/releases/tag/4.5.0for32)
+     + browse to [https://github.com/stephengold/Heart/releases/tag/5.0.0for32](https://github.com/stephengold/Heart/releases/tag/5.0.0for32)
      + follow the "Source code (zip)" link
      + save the ZIP file
      + unzip the saved ZIP file
@@ -237,22 +240,18 @@ For projects built using Maven or Gradle, it is sufficient to specify the
 dependency on the Heart Library.  The build tools should automatically
 resolve the remaining dependencies automatically.
 
-Because Heart is not on JCenter yet,
-you must explicitly specify its repository URL:
-
     repositories {
-        maven { url 'https://dl.bintray.com/stephengold/jme3utilities' }
         jcenter()
     }
     dependencies {
-        compile 'jme3utilities:jme3-utilities-heart:4.5.0for32'
+        compile 'com.github.stephengold:Heart:5.0.0for32'
     }
 
 #### For Ant projects
 
 For projects built using [Ant][], download the library:
 
- + https://github.com/stephengold/Heart/releases/tag/4.5.0for32
+ + https://github.com/stephengold/Heart/releases/tag/5.0.0for32
 
 You'll want the class jars
 and probably the `-sources` and `-javadoc` jars as well.
@@ -268,15 +267,15 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
     + Navigate to the "jme3-utilities" project folder.
     + Open the "heart" sub-project folder.
     + Navigate to the "build/libs" folder.
-    + Select the "jme3-utilities-heart-4.5.0for32.jar" file.
+    + Select the "jme3-utilities-heart-5.0.0for32.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
     + Click on the "Edit" button.
     + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "jme3-utilities-heart-4.5.0for32-javadoc.jar" file.
+    + Select the "jme3-utilities-heart-5.0.0for32-javadoc.jar" file.
     + Click on the "Open" button.
     + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "jme3-utilities-heart-4.5.0for32-sources.jar" file.
+    + Select the "jme3-utilities-heart-5.0.0for32-sources.jar" file.
     + Click on the "Open" button again.
     + Click on the "OK" button to close the "Edit Jar Reference" dialog.
  7. Click on the "OK" button to exit the "Project Properties" dialog.
