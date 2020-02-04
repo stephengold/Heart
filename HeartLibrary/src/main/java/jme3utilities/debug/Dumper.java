@@ -899,6 +899,7 @@ public class Dumper implements Cloneable {
 
         if (dumpVertexFlag) {
             IndexBuffer indexBuffer = mesh.getIndexBuffer();
+            Mesh.Mode mode = mesh.getMode();
             if (indexBuffer != null) {
                 stream.println();
                 stream.print(indent);
@@ -906,7 +907,12 @@ public class Dumper implements Cloneable {
                 stream.print("index[");
                 for (int ibPos = 0; ibPos < indexBuffer.size(); ++ibPos) {
                     if (ibPos > 0) {
-                        stream.print(' ');
+                        if (mode == Mesh.Mode.Triangles && ibPos % 3 == 0
+                                || mode == Mesh.Mode.Lines && ibPos % 2 == 0) {
+                            stream.print('|');
+                        } else {
+                            stream.print(' ');
+                        }
                     }
                     int index = indexBuffer.get(ibPos);
                     stream.print(index);
