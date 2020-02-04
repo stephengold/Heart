@@ -16,7 +16,7 @@ dependencies {
     runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jmonkeyengineVersion
     runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jmonkeyengineVersion
 
-    //implementation "jme3utilities:jme3-utilities-heart:$jme3utilitiesheartVersion"
+    //implementation "com.github.stephengold:Heart:$heartVersion"
     implementation project(':HeartLibrary')
 }
 

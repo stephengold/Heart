@@ -9,8 +9,8 @@ plugins {
 
 description = 'the Heart Library for jMonkeyEngine'
 ext {
-    artifact = 'jme3-utilities-heart'
-    version = jme3utilitiesheartVersion
+    artifact = 'Heart'
+    version = heartVersion
     baseName = "$artifact-$version"
 }
 
