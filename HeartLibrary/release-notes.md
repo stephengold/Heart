@@ -1,5 +1,27 @@
 # release notes for the Heart Library and related tests
 
+## Version 5.0.0for32 released on TBD
+
+ + Changed the Maven groupId from `jme3utilities` to `com.github.stephengold`.
+ + Changed the Maven artifactId from `jme3-utilities-heart` to `Heart`.
+ + Deleted the deprecated `Misc` class. (API change!)
+ + Deleted the deprecated `copyLineColor()` method
+   from the `BoundsVisualizer` class. (API change!)
+ + Deleted the deprecated `isSorted(List<Comparable>)` method
+   from the `MyMath` class. (API change!)
+ + Added 4 methods to the `VectorSet` interface: (API changes!)
+   + `add(float, float, float)`
+   + `contains(float, float, float)`
+   + `toFloatArray()`
+   + `toVectorArray()`
+ + Added an option to the `VectorSetUsingBuffer` constructor to use wrapped
+   arrays instead of a direct buffers. (API change!)
+ + Generalized the `hypotenuse()`, `max()`, `min()`, and `sumOfSquares()`
+   methods in the `MyMath` class to accept
+   variable numbers of arguments. (API changes!)
+ + Added a `normalizeLocal()` method to the `MyQuaternion` class.
+ + When dumping an `IndexBuffer`, organize the indices into lines or triangles.
+
 ## Version 4.5.0for32 released on 1 February 2020
 
  + Bugfix: `Icosphere` lacked a no-arg constructor.
