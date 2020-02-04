@@ -253,7 +253,7 @@ For projects built using [Ant][], download the library:
 
  + https://github.com/stephengold/Heart/releases/tag/5.0.0for32
 
-You'll want the class jars
+You'll want the class jar
 and probably the `-sources` and `-javadoc` jars as well.
 
 Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
@@ -267,15 +267,15 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
     + Navigate to the "jme3-utilities" project folder.
     + Open the "heart" sub-project folder.
     + Navigate to the "build/libs" folder.
-    + Select the "jme3-utilities-heart-5.0.0for32.jar" file.
+    + Select the "Heart-5.0.0for32.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
     + Click on the "Edit" button.
     + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "jme3-utilities-heart-5.0.0for32-javadoc.jar" file.
+    + Select the "Heart-5.0.0for32-javadoc.jar" file.
     + Click on the "Open" button.
     + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "jme3-utilities-heart-5.0.0for32-sources.jar" file.
+    + Select the "Heart-5.0.0for32-sources.jar" file.
     + Click on the "Open" button again.
     + Click on the "OK" button to close the "Edit Jar Reference" dialog.
  7. Click on the "OK" button to exit the "Project Properties" dialog.
