@@ -1,7 +1,7 @@
 <img height="150" src="https://i.imgur.com/O7MMp7A.png">
 
 The [Heart Project][heart] provides a general-purpose add-on library for the
-[jMonkeyEngine Game Engine][jme].
+[jMonkeyEngine game engine][jme].
 
 It contains 3 sub-projects:
 
@@ -9,10 +9,10 @@ It contains 3 sub-projects:
  2. HeartExamples: demos, examples, and non-automated test software (in Java)
  3. HeartAssets: generate assets included in HeartLibrary (in Java)
 
-Java source code is provided under
+Complete source code (in Java) is provided under
 [a BSD license](https://github.com/stephengold/Heart/blob/master/license.txt).
 
-Both [Minie][] and [Wes][] depend on the Heart Library.
+Both [Minie] and [Wes] depend on the Heart Library.
 
 <a name="toc"/>
 
@@ -107,13 +107,13 @@ but I use the IDE, so I tend to assume you will too.
 If you already have the IDE installed, skip to step 6.
 
 The hardware and software requirements of the IDE are documented at
-[the JME wiki](https://jmonkeyengine.github.io/wiki/jme3/requirements.html).
+[the jMonkeyEngine wiki](https://jmonkeyengine.github.io/wiki/jme3/requirements.html).
 
  1. Download a jMonkeyEngine 3.2 Software Development Kit (SDK) from
     [GitHub](https://github.com/jMonkeyEngine/sdk/releases).
  2. Install the SDK, which includes:
     + the engine itself,
-    + an IDE based on [NetBeans][],
+    + an IDE based on [NetBeans],
     + various IDE plugins, and
     + the [Blender 3D][blender] application.
  3. Open the IDE.
@@ -201,7 +201,7 @@ Clone the Heart repository using Git:
 
 After a successful build, new jars will be found in `HeartLibrary/build/libs`.
 
-You can also install the library artifact to your local Maven cache:
+You can install the Maven artifacts to your local cache:
  + using Bash:  `./gradlew :HeartLibrary:publishToMavenLocal`
  + using Windows Command Prompt:  `.\gradlew :HeartLibrary:publishToMavenLocal`
 
@@ -211,7 +211,7 @@ You can also install the library artifact to your local Maven cache:
 
 ## How to add Heart to an existing project
 
-Adding the Heart Library to an existing JME3 project should be
+Adding the Heart Library to an existing [jMonkeyEngine][jme] project should be
 a simple matter of adding it to the classpath.
 
 Heart comes pre-built as a single library that depends on
@@ -232,7 +232,7 @@ resolve the remaining dependencies automatically.
 
 #### For Ant projects
 
-For projects built using [Ant][], download the library:
+For projects built using [Ant], download the library:
 
  + https://github.com/stephengold/Heart/releases/tag/5.0.0for32
 
@@ -245,11 +245,9 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
  2. Select "Properties to open the "Project Properties" dialog.
  3. Under "Categories:" select "Libraries".
  4. Click on the "Compile" tab.
- 5. Add the `jme3-utilities-heart` class jar:
+ 5. Add the `Heart` class jar:
     + Click on the "Add JAR/Folder" button.
-    + Navigate to the "jme3-utilities" project folder.
-    + Open the "heart" sub-project folder.
-    + Navigate to the "build/libs" folder.
+    + Navigate to the download folder.
     + Select the "Heart-5.0.0for32.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
@@ -278,6 +276,7 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 [heart]: https://github.com/stephengold/Heart "Heart Project"
 [jfrog]: https://www.jfrog.com "JFrog"
 [jme]: http://jmonkeyengine.org  "jMonkeyEngine Project"
+[log]: https://github.com/stephengold/Heart/blob/for_jME3.2/HeartLibrary/release-notes.md "release log"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
 [minie]: https://github.com/stephengold/Minie "Minie Project"
 [mint]: https://linuxmint.com "Linux Mint Project"
@@ -291,16 +290,16 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 
 ## History
 
+The evolution of this project is chronicled in
+[its release log][log].
+
 The oldest parts of the Heart Library were originally included in SkyControl.
 
-From May 2017 to February 2020, the Heart Library was a sub-project of
+From May 2017 to February 2020, Heart was a sub-project of
 [the Jme3-utilities Project][utilities].
 
-Since February 2020, the Heart Project has been a separate project at
+Since February 2020, Heart has been a separate project at
 [GitHub][heart].
-
-The evolution of the project is chronicled in
-[its release notes](https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md).
 
 [Jump to table of contents](#toc)
 
@@ -315,23 +314,24 @@ software developers:
  + "jayfella", for creating and sharing the original `Icosphere.java`
  + Paul Speed, for helpful insights
  + plus the creators of (and contributors to) the following software:
-    + the [Blender][] 3-D animation suite
-    + the [FindBugs][] source-code analyzer
-    + the [Git][] revision-control system and GitK commit viewer
-    + the [Firefox][] and [Google Chrome][chrome] web browsers
-    + the [Gradle][] build tool
+    + the [Blender] 3-D animation suite
+    + the [FindBugs] source-code analyzer
+    + the [Git] revision-control system and GitK commit viewer
+    + the [Firefox] and [Google Chrome][chrome] web browsers
+    + the [Gradle] build tool
     + the Java compiler, standard doclet, and runtime environment
     + [jMonkeyEngine][jme] and the jME3 Software Development Kit
     + the [Linux Mint][mint] operating system
     + LWJGL, the Lightweight Java Game Library
-    + the [Markdown][] document conversion tool
+    + the [Markdown] document-conversion tool
     + Microsoft Windows
-    + the [NetBeans][] integrated development environment
+    + the [NetBeans] integrated development environment
     + the PMD source-code analyzer
-    + the [WinMerge][] differencing and merging tool
+    + the [WinMerge] differencing and merging tool
 
-I am grateful to [JFrog][] and [Github][] for providing free hosting for the
-Heart Project and many other open-source projects.
+I am grateful to [JFrog] and [Github]
+for providing free hosting for this project
+and many other open-source projects.
 
 I'm also grateful to my dear Holly, for keeping me sane.
 
