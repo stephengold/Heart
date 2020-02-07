@@ -10,7 +10,7 @@ It contains 3 sub-projects:
  3. HeartAssets: generate assets included in HeartLibrary (in Java)
 
 Complete source code (in Java) is provided under
-[a BSD license](https://github.com/stephengold/Heart/blob/master/license.txt).
+[a BSD license][license].
 
 Both [Minie] and [Wes] depend on the Heart Library.
 
@@ -199,7 +199,8 @@ Clone the Heart repository using Git:
    + using Bash:  `./gradlew build`
    + using Windows Command Prompt:  `.\gradlew build`
 
-After a successful build, new jars will be found in `HeartLibrary/build/libs`.
+After a successful build,
+Maven artifacts will be found in `HeartLibrary/build/libs`.
 
 You can install the Maven artifacts to your local cache:
  + using Bash:  `./gradlew :HeartLibrary:publishToMavenLocal`
@@ -275,7 +276,8 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 [gradle]: https://gradle.org "Gradle Project"
 [heart]: https://github.com/stephengold/Heart "Heart Project"
 [jfrog]: https://www.jfrog.com "JFrog"
-[jme]: http://jmonkeyengine.org  "jMonkeyEngine Project"
+[jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
+[license]: https://github.com/stephengold/Heart/blob/for_jME3.2/license.txt "Heart license"
 [log]: https://github.com/stephengold/Heart/blob/for_jME3.2/HeartLibrary/release-notes.md "release log"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
 [minie]: https://github.com/stephengold/Minie "Minie Project"
