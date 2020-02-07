@@ -21,9 +21,9 @@ Both [Minie][] and [Wes][] depend on the Heart Library.
  + [Important features](#features)
  + [Downloads](#downloads)
  + [Conventions](#conventions)
- + [History](#history)
  + [How to build Heart from source](#build)
  + [How to add Heart to an existing project](#add)
+ + [History](#history)
  + [Acknowledgments](#acks)
 
 <a name="features"/>
@@ -90,23 +90,6 @@ Older Maven artifacts (v0.9.5 through v4.5.0) are available from
 Package names begin with `jme3utilities.`
 
 Both the source code and the pre-built libraries are compatible with JDK 7.
-
-[Jump to table of contents](#toc)
-
-<a name="history"/>
-
-## History
-
-The oldest parts of the Heart Library were originally included in SkyControl.
-
-From May 2017 to February 2020, the Heart Library was a sub-project of
-[the Jme3-utilities Project][utilities].
-
-Since February 2020, the Heart Project has been a separate project at
-[GitHub][heart].
-
-The evolution of the project is chronicled in
-[its release notes](https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md).
 
 [Jump to table of contents](#toc)
 
@@ -302,6 +285,24 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 [utilities]: https://github.com/stephengold/jme3-utilities "Jme3-utilities Project"
 [wes]: https://github.com/stephengold/Wes "Wes Project"
 [winmerge]: http://winmerge.org "WinMerge Project"
+
+
+<a name="history"/>
+
+## History
+
+The oldest parts of the Heart Library were originally included in SkyControl.
+
+From May 2017 to February 2020, the Heart Library was a sub-project of
+[the Jme3-utilities Project][utilities].
+
+Since February 2020, the Heart Project has been a separate project at
+[GitHub][heart].
+
+The evolution of the project is chronicled in
+[its release notes](https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md).
+
+[Jump to table of contents](#toc)
 
 <a name="acks"/>
 
