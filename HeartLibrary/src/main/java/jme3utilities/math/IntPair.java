@@ -105,18 +105,21 @@ public class IntPair {
     /**
      * Test for exact equivalence with another Object.
      *
-     * @param otherObject the object to compare to (may be null)
+     * @param otherObject the object to compare to (may be null, unaffected)
      * @return true if the objects are equivalent, otherwise false
      */
     @Override
     public boolean equals(Object otherObject) {
-        boolean result = false;
+        boolean result;
         if (otherObject == this) {
             result = true;
-        } else if (otherObject instanceof IntPair) {
-            IntPair otherPair = (IntPair) otherObject;
-            result = otherPair.smaller == smaller
-                    && otherPair.larger == larger;
+        } else if (otherObject != null
+                && otherObject.getClass() == getClass()) {
+            IntPair otherEdge = (IntPair) otherObject;
+            result = (otherEdge.larger == larger)
+                    && (otherEdge.smaller == smaller);
+        } else {
+            result = false;
         }
 
         return result;
