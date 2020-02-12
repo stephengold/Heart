@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -952,10 +952,10 @@ public class VectorXZ
     // Object methods
 
     /**
-     * Test for exact equality, distinguishing 0 and -0.
+     * Test for exact equivalence with another Object, distinguishing 0 and -0.
      *
-     * @param otherObject (may be null)
-     * @return true if the vectors are equal, otherwise false
+     * @param otherObject the object to compare to (may be null, unaffected)
+     * @return true if the objects are equivalent, otherwise false
      * @see #aboutEquals(jme3utilities.math.ReadXZ, float)
      */
     @Override
@@ -963,7 +963,8 @@ public class VectorXZ
         boolean result;
         if (this == otherObject) {
             result = true;
-        } else if (otherObject instanceof ReadXZ) {
+        } else if (otherObject != null
+                && otherObject.getClass() == getClass()) {
             ReadXZ otherVector = (ReadXZ) otherObject;
             float otherX = otherVector.getX();
             float otherZ = otherVector.getZ();
