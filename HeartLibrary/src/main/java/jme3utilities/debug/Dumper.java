@@ -482,9 +482,9 @@ public class Dumper implements Cloneable {
             String descP = describer.describeProcessors(viewPort);
             stream.print(" procs[");
             stream.print(descP);
-            stream.println(']');
+            stream.print(']');
 
-            stream.print(indent);
+            addLine(indent);
             stream.print(" ");
             Camera camera = viewPort.getCamera();
             desc = describer.describe(camera);
@@ -494,8 +494,7 @@ public class Dumper implements Cloneable {
                 stream.printf("%n%s  %s", indent, desc2);
             }
 
-            stream.println();
-            stream.print(indent);
+            addLine(indent);
             stream.print(" with ");
             List<Spatial> scenes = viewPort.getScenes();
             dump(scenes, indent);
@@ -768,6 +767,18 @@ public class Dumper implements Cloneable {
     }
 
     /**
+     * Print a newline, followed by the specified indentation.
+     *
+     * @param indent (not null)
+     */
+    protected void addLine(String indent) {
+        Validate.nonNull(indent, "indent");
+
+        stream.println();
+        stream.print(indent);
+    }
+
+    /**
      * Dump the specified AppState.
      *
      * @param appState the app state to dump (not null, unaffected)
@@ -792,8 +803,8 @@ public class Dumper implements Cloneable {
         } else {
             stream.print(" dis");
         }
-        stream.println("abled");
-        stream.print(indent);
+        stream.print("abled");
+        addLine(indent);
     }
     // *************************************************************************
     // Cloneable methods
@@ -829,8 +840,7 @@ public class Dumper implements Cloneable {
              */
             Set<String> names = new TreeSet<>(map.keySet());
             for (String name : names) {
-                stream.println();
-                stream.print(indent);
+                addLine(indent);
                 MatParam matParam = map.get(name);
                 String description = describer.describe(matParam);
                 stream.print(description);
@@ -882,8 +892,7 @@ public class Dumper implements Cloneable {
         Material material = geometry.getMaterial();
         String description = describer.describe(material);
         if (!description.isEmpty()) {
-            stream.println();
-            stream.print(indent);
+            addLine(indent);
             stream.print(" mat");
             stream.print(description);
             if (dumpMatParamFlag) {
@@ -893,16 +902,14 @@ public class Dumper implements Cloneable {
 
         Mesh mesh = geometry.getMesh();
         description = describer.describe(mesh);
-        stream.println();
-        stream.print(indent);
+        addLine(indent);
         addDescription(description);
 
         if (dumpVertexFlag) {
             IndexBuffer indexBuffer = mesh.getIndexBuffer();
             Mesh.Mode mode = mesh.getMode();
             if (indexBuffer != null) {
-                stream.println();
-                stream.print(indent);
+                addLine(indent);
                 stream.print(indentIncrement);
                 stream.print("index[");
                 for (int ibPos = 0; ibPos < indexBuffer.size(); ++ibPos) {
@@ -922,8 +929,7 @@ public class Dumper implements Cloneable {
 
             int numVertices = mesh.getVertexCount();
             for (int vertexI = 0; vertexI < numVertices; ++vertexI) {
-                stream.println();
-                stream.print(indent);
+                addLine(indent);
                 stream.print(indentIncrement);
                 description = describer.describeVertexData(mesh, vertexI);
                 stream.print(description);
