@@ -859,7 +859,7 @@ final public class Validate {
     public static boolean positive(Vector3f vector, String description) {
         nonNull(vector, description);
 
-        if (MyVector3f.isAllPositive(vector)) {
+        if (!MyVector3f.isAllPositive(vector)) {
             String what;
             if (description == null) {
                 what = "Vector3f argument";
