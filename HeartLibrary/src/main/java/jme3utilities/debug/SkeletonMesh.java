@@ -39,10 +39,10 @@ import com.jme3.scene.mesh.IndexBuffer;
 import com.jme3.util.BufferUtils;
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import java.nio.ShortBuffer;
 import java.util.logging.Logger;
+import jme3utilities.MyMesh;
 import jme3utilities.MySkeleton;
+import jme3utilities.math.MyBuffer;
 
 /**
  * A Mesh used to visualize a Skeleton. Each vertex corresponds to a skeleton
@@ -194,16 +194,10 @@ class SkeletonMesh extends Mesh {
     private IndexBuffer createLineIndices(int numBones, int numLines) {
         assert numLines >= 0 : numLines;
 
-        int numIndices = 2 * numLines;
+        int numIndices = MyMesh.vpe * numLines;
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numBones, numIndices);
+        VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);
         Buffer ibData = ib.getBuffer();
-        VertexBuffer.Format ibFormat;
-        if (ibData instanceof ShortBuffer) {
-            ibFormat = VertexBuffer.Format.UnsignedShort;
-        } else {
-            assert ibData instanceof IntBuffer;
-            ibFormat = VertexBuffer.Format.UnsignedInt;
-        }
         setBuffer(VertexBuffer.Type.Index, 1, ibFormat, ibData);
 
         return ib;

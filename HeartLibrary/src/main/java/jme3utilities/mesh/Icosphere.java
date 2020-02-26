@@ -28,9 +28,10 @@ import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.VertexBuffer;
+import com.jme3.scene.mesh.IndexBuffer;
 import com.jme3.util.BufferUtils;
+import java.nio.Buffer;
 import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 import jme3utilities.MyMesh;
 import jme3utilities.Validate;
+import jme3utilities.math.MyBuffer;
 import jme3utilities.math.MyVector3f;
 
 /**
@@ -208,14 +210,15 @@ public class Icosphere extends Mesh {
         setBuffer(VertexBuffer.Type.Position, numAxes, posBuffer);
 
         int numIndices = faces.size();
-        IntBuffer indexBuffer = BufferUtils.createIntBuffer(numIndices);
+        IndexBuffer ib = IndexBuffer.createIndexBuffer(numVertices, numIndices);
         for (int i = 0; i < numIndices; ++i) {
             int vertexIndex = faces.get(i);
-            indexBuffer.put(vertexIndex);
+            MyBuffer.putRelative(ib, vertexIndex);
         }
-        indexBuffer.flip();
-        setBuffer(VertexBuffer.Type.Index, vpt, VertexBuffer.Format.UnsignedInt,
-                indexBuffer);
+        VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);
+        Buffer ibData = ib.getBuffer();
+        ibData.flip();
+        setBuffer(VertexBuffer.Type.Index, vpt, ibFormat, ibData);
 
         FloatBuffer uvBuffer = BufferUtils.createFloatBuffer(2 * numVertices);
         for (Vector3f pos : locations) {

@@ -30,9 +30,16 @@ import com.jme3.math.Matrix3f;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.VertexBuffer;
+import com.jme3.scene.mesh.IndexBuffer;
+import com.jme3.scene.mesh.IndexByteBuffer;
+import com.jme3.scene.mesh.IndexIntBuffer;
+import com.jme3.scene.mesh.IndexShortBuffer;
 import com.jme3.util.BufferUtils;
+import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
+import java.nio.ShortBuffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Validate;
@@ -260,6 +267,26 @@ final public class MyBuffer {
         }
 
         return result;
+    }
+
+    /**
+     * Returns the format of the data stored in the specified IndexBuffer.
+     * Intended for source-code compatability with JME-3.2 and earlier.
+     *
+     * @param indexBuffer (not null, unaffected)
+     * @return an enum value (not null)
+     */
+    public static VertexBuffer.Format getFormat(IndexBuffer indexBuffer) {
+        if (indexBuffer instanceof IndexByteBuffer) {
+            return VertexBuffer.Format.UnsignedByte;
+        } else if (indexBuffer instanceof IndexShortBuffer) {
+            return VertexBuffer.Format.UnsignedShort;
+        } else if (indexBuffer instanceof IndexIntBuffer) {
+            return VertexBuffer.Format.UnsignedInt;
+        } else {
+            String message = "class=" + indexBuffer.getClass().getSimpleName();
+            throw new IllegalArgumentException(message);
+        }
     }
 
     /**
@@ -518,6 +545,26 @@ final public class MyBuffer {
         buffer.put(startPosition + MyVector3f.xAxis, vector.x);
         buffer.put(startPosition + MyVector3f.yAxis, vector.y);
         buffer.put(startPosition + MyVector3f.zAxis, vector.z);
+    }
+
+    /**
+     * Perform a relative put to the specified IndexBuffer. Intended for
+     * source-code compatability with JME 3.2 and earlier.
+     *
+     * @param indexBuffer (not null, modified)
+     * @param value the value to write
+     */
+    public static void putRelative(IndexBuffer indexBuffer, int value) {
+        if (indexBuffer instanceof IndexByteBuffer) {
+            ((ByteBuffer) indexBuffer.getBuffer()).put((byte) value);
+        } else if (indexBuffer instanceof IndexShortBuffer) {
+            ((ShortBuffer) indexBuffer.getBuffer()).put((short) value);
+        } else if (indexBuffer instanceof IndexIntBuffer) {
+            ((IntBuffer) indexBuffer.getBuffer()).put(value);
+        } else {
+            String message = "class=" + indexBuffer.getClass().getSimpleName();
+            throw new IllegalArgumentException(message);
+        }
     }
 
     /**
