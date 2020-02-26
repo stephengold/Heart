@@ -175,7 +175,7 @@ public class MyMesh {
             int newI = old2new[oldI];
             ib.put(oldI, newI);
         }
-        VertexBuffer.Format ibFormat = ib.getFormat();
+        VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);
         Buffer ibData = ib.getBuffer();
         result.setBuffer(VertexBuffer.Type.Index, 1, ibFormat, ibData);
         /*
@@ -885,7 +885,7 @@ public class MyMesh {
             ib.put(edge.smaller());
             ib.put(edge.larger());
         }
-        VertexBuffer.Format ibFormat = ib.getFormat();
+        VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);
         Buffer ibData = ib.getBuffer();
         ibData.flip();
         mesh.setBuffer(VertexBuffer.Type.Index, vpe, ibFormat, ibData);

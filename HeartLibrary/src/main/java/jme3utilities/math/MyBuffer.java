@@ -30,6 +30,11 @@ import com.jme3.math.Matrix3f;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.VertexBuffer;
+import com.jme3.scene.mesh.IndexBuffer;
+import com.jme3.scene.mesh.IndexByteBuffer;
+import com.jme3.scene.mesh.IndexIntBuffer;
+import com.jme3.scene.mesh.IndexShortBuffer;
 import com.jme3.util.BufferUtils;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -260,6 +265,26 @@ final public class MyBuffer {
         }
 
         return result;
+    }
+
+    /**
+     * Returns the format of the data stored in the specified IndexBuffer.
+     * Intended for source-code compatability with JME-3.2 and earlier.
+     *
+     * @param indexBuffer (not null, unaffected)
+     * @return an enum value (not null)
+     */
+    public static VertexBuffer.Format getFormat(IndexBuffer indexBuffer) {
+        if (indexBuffer instanceof IndexByteBuffer) {
+            return VertexBuffer.Format.UnsignedByte;
+        } else if (indexBuffer instanceof IndexShortBuffer) {
+            return VertexBuffer.Format.UnsignedShort;
+        } else if (indexBuffer instanceof IndexIntBuffer) {
+            return VertexBuffer.Format.UnsignedInt;
+        } else {
+            String message = "class=" + indexBuffer.getClass().getSimpleName();
+            throw new IllegalArgumentException(message);
+        }
     }
 
     /**

@@ -43,6 +43,7 @@ import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.util.logging.Logger;
 import jme3utilities.MySkeleton;
+import jme3utilities.math.MyBuffer;
 
 /**
  * A Mesh used to visualize an Armature or Skeleton. Each vertex corresponds to
@@ -219,7 +220,7 @@ class SkeletonMesh extends Mesh {
 
         int numIndices = 2 * numLines;
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numBones, numIndices);
-        VertexBuffer.Format ibFormat = ib.getFormat();
+        VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);
         Buffer ibData = ib.getBuffer();
         setBuffer(VertexBuffer.Type.Index, 1, ibFormat, ibData);
 
