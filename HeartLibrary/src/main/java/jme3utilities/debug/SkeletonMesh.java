@@ -102,14 +102,16 @@ class SkeletonMesh extends Mesh {
                     Bone parent = child.getParent();
                     if (parent != null) {
                         int parentIndex = skeleton.getBoneIndex(parent);
-                        ib.put(parentIndex).put(boneIndex);
+                        MyBuffer.putRelative(ib, parentIndex);
+                        MyBuffer.putRelative(ib, boneIndex);
                     }
                 } else {
                     Joint child = armature.getJoint(boneIndex);
                     Joint parent = child.getParent();
                     if (parent != null) {
                         int parentIndex = parent.getId();
-                        ib.put(parentIndex).put(boneIndex);
+                        MyBuffer.putRelative(ib, parentIndex);
+                        MyBuffer.putRelative(ib, boneIndex);
                     }
                 }
             }

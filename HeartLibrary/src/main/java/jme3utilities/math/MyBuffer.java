@@ -269,7 +269,7 @@ final public class MyBuffer {
 
     /**
      * Returns the format of the data stored in the specified IndexBuffer.
-     * Intended for source-code compatability with JME-3.2 and earlier.
+     * Intended for source-code compatability with JME 3.2 and earlier.
      *
      * @param indexBuffer (not null, unaffected)
      * @return an enum value (not null)
@@ -277,10 +277,13 @@ final public class MyBuffer {
     public static VertexBuffer.Format getFormat(IndexBuffer indexBuffer) {
         if (indexBuffer instanceof IndexByteBuffer) {
             return VertexBuffer.Format.UnsignedByte;
+
         } else if (indexBuffer instanceof IndexShortBuffer) {
             return VertexBuffer.Format.UnsignedShort;
+
         } else if (indexBuffer instanceof IndexIntBuffer) {
             return VertexBuffer.Format.UnsignedInt;
+
         } else {
             String message = "class=" + indexBuffer.getClass().getSimpleName();
             throw new IllegalArgumentException(message);
@@ -543,6 +546,29 @@ final public class MyBuffer {
         buffer.put(startPosition + MyVector3f.xAxis, vector.x);
         buffer.put(startPosition + MyVector3f.yAxis, vector.y);
         buffer.put(startPosition + MyVector3f.zAxis, vector.z);
+    }
+
+    /**
+     * Perform a relative put to the specified IndexBuffer. Intended for
+     * source-code compatability with JME 3.2 and earlier.
+     *
+     * @param indexBuffer (not null, modified)
+     * @param value the value to write
+     */
+    public static void putRelative(IndexBuffer indexBuffer, int value) {
+        if (indexBuffer instanceof IndexByteBuffer) {
+            ((IndexByteBuffer) indexBuffer).put((byte) value);
+
+        } else if (indexBuffer instanceof IndexShortBuffer) {
+            ((IndexShortBuffer) indexBuffer).put((short) value);
+
+        } else if (indexBuffer instanceof IndexIntBuffer) {
+            ((IndexIntBuffer) indexBuffer).put(value);
+
+        } else {
+            String message = "class=" + indexBuffer.getClass().getSimpleName();
+            throw new IllegalArgumentException(message);
+        }
     }
 
     /**
