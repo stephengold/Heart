@@ -93,10 +93,8 @@ class SkeletonMesh extends Mesh {
                 Bone parent = child.getParent();
                 if (parent != null) {
                     int parentIndex = skeleton.getBoneIndex(parent);
-                    int bufPosition = ib.getBuffer().position();
-                    ib.put(bufPosition, parentIndex);
-                    ib.put(bufPosition + 1, boneIndex);
-                    ib.getBuffer().position(bufPosition + 2);
+                    MyBuffer.putRelative(ib, parentIndex);
+                    MyBuffer.putRelative(ib, boneIndex);
                 }
             }
             ib.getBuffer().flip(); // prepare for reading

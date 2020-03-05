@@ -175,14 +175,8 @@ public class MyMesh {
             int newI = old2new[oldI];
             ib.put(oldI, newI);
         }
+        VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);
         Buffer ibData = ib.getBuffer();
-        VertexBuffer.Format ibFormat;
-        if (ibData instanceof ShortBuffer) {
-            ibFormat = VertexBuffer.Format.UnsignedShort;
-        } else {
-            assert ibData instanceof IntBuffer;
-            ibFormat = VertexBuffer.Format.UnsignedInt;
-        }
         result.setBuffer(VertexBuffer.Type.Index, 1, ibFormat, ibData);
         /*
          * Flip each buffer.
@@ -887,21 +881,13 @@ public class MyMesh {
         mesh.clearBuffer(VertexBuffer.Type.Index);
 
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numVertices, numIndices);
-        int bufferPosition = 0;
         for (IntPair edge : edgeSet) {
-            ib.put(bufferPosition, edge.smaller());
-            ib.put(bufferPosition + 1, edge.larger());
-            bufferPosition += vpe;
+            MyBuffer.putRelative(ib, edge.smaller());
+            MyBuffer.putRelative(ib, edge.larger());
         }
+        VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);
         Buffer ibData = ib.getBuffer();
-        VertexBuffer.Format ibFormat;
-        if (ibData instanceof ShortBuffer) {
-            ibFormat = VertexBuffer.Format.UnsignedShort;
-        } else {
-            assert ibData instanceof IntBuffer;
-            ibFormat = VertexBuffer.Format.UnsignedInt;
-        }
-        ibData.limit(bufferPosition);
+        ibData.flip();
         mesh.setBuffer(VertexBuffer.Type.Index, vpe, ibFormat, ibData);
 
         mesh.setMode(Mesh.Mode.Lines);
