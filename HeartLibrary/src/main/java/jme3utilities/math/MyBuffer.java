@@ -36,8 +36,10 @@ import com.jme3.scene.mesh.IndexByteBuffer;
 import com.jme3.scene.mesh.IndexIntBuffer;
 import com.jme3.scene.mesh.IndexShortBuffer;
 import com.jme3.util.BufferUtils;
+import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
+import java.nio.ShortBuffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Validate;
@@ -557,13 +559,13 @@ final public class MyBuffer {
      */
     public static void putRelative(IndexBuffer indexBuffer, int value) {
         if (indexBuffer instanceof IndexByteBuffer) {
-            ((IndexByteBuffer) indexBuffer).put((byte) value);
+            ((ByteBuffer) indexBuffer.getBuffer()).put((byte) value);
 
         } else if (indexBuffer instanceof IndexShortBuffer) {
-            ((IndexShortBuffer) indexBuffer).put((short) value);
+            ((ShortBuffer) indexBuffer.getBuffer()).put((short) value);
 
         } else if (indexBuffer instanceof IndexIntBuffer) {
-            ((IndexIntBuffer) indexBuffer).put(value);
+            ((IntBuffer) indexBuffer.getBuffer()).put(value);
 
         } else {
             String message = "class=" + indexBuffer.getClass().getSimpleName();
