@@ -1,5 +1,11 @@
 # release notes for the Heart Library and related tests
 
+## Version 5.1.0for33 released on TBD
+
+ + Bugfix: logic error in `Validate.positive()` for `Vector3f` argument.
+ + Added `getFormat()` and `putRelative()` methods to the `MyBuffer` class.
+ + Added an `addLine()` method to the `Dumper` class.
+
 ## Version 5.0.0for33 released on 3 February 2020
 
  + Changed the Maven groupId from `jme3utilities` to `com.github.stephengold`.
@@ -15,7 +21,7 @@
    + `toFloatArray()`
    + `toVectorArray()`
  + Added an option to the `VectorSetUsingBuffer` constructor to use wrapped
-   arrays instead of a direct buffers. (API change!)
+   arrays instead of direct buffers. (API change!)
  + Generalized the `hypotenuse()`, `max()`, `min()`, and `sumOfSquares()`
    methods in the `MyMath` class to accept
    variable numbers of arguments. (API changes!)
