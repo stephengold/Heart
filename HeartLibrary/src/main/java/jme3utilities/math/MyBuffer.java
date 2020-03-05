@@ -271,7 +271,7 @@ final public class MyBuffer {
 
     /**
      * Returns the format of the data stored in the specified IndexBuffer.
-     * Intended for source-code compatability with JME-3.2 and earlier.
+     * Intended for source-code compatability with JME 3.2 and earlier.
      *
      * @param indexBuffer (not null, unaffected)
      * @return an enum value (not null)
@@ -279,10 +279,13 @@ final public class MyBuffer {
     public static VertexBuffer.Format getFormat(IndexBuffer indexBuffer) {
         if (indexBuffer instanceof IndexByteBuffer) {
             return VertexBuffer.Format.UnsignedByte;
+
         } else if (indexBuffer instanceof IndexShortBuffer) {
             return VertexBuffer.Format.UnsignedShort;
+
         } else if (indexBuffer instanceof IndexIntBuffer) {
             return VertexBuffer.Format.UnsignedInt;
+
         } else {
             String message = "class=" + indexBuffer.getClass().getSimpleName();
             throw new IllegalArgumentException(message);
@@ -557,10 +560,13 @@ final public class MyBuffer {
     public static void putRelative(IndexBuffer indexBuffer, int value) {
         if (indexBuffer instanceof IndexByteBuffer) {
             ((ByteBuffer) indexBuffer.getBuffer()).put((byte) value);
+
         } else if (indexBuffer instanceof IndexShortBuffer) {
             ((ShortBuffer) indexBuffer.getBuffer()).put((short) value);
+
         } else if (indexBuffer instanceof IndexIntBuffer) {
             ((IntBuffer) indexBuffer.getBuffer()).put(value);
+
         } else {
             String message = "class=" + indexBuffer.getClass().getSimpleName();
             throw new IllegalArgumentException(message);
