@@ -1,6 +1,6 @@
-# release notes for the Heart Library and related tests
+# release log for the Heart Library and related tests
 
-## Version 5.1.0for32 released on TBD
+## Version 5.1.0for32 released on 5 March 2020
 
  + Bugfix: logic error in `Validate.positive()` for `Vector3f` argument.
  + Added `getFormat()` and `putRelative()` methods to the `MyBuffer` class.
