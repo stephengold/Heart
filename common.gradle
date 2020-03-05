@@ -31,13 +31,12 @@ gradle.projectsEvaluated {
 ext {
     // current versions of various libraries
     heartVersion = '5.0.0for32'
-    jme3utilitiesuiVersion = '0.8.0for32'
+    jme3utilitiesuiVersion = '0.8.1for32'
     jmonkeyengineVersion = '3.2.4-stable'
 }
 
 repositories {
     //mavenLocal()
-    maven { url 'https://dl.bintray.com/stephengold/jme3utilities' }
     maven { url 'https://dl.bintray.com/stephengold/org.jmonkeyengine' } // for jme3-testdata
     jcenter()
 }
