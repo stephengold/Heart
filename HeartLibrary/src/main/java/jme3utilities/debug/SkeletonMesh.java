@@ -42,6 +42,7 @@ import com.jme3.util.BufferUtils;
 import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.util.logging.Logger;
+import jme3utilities.MyMesh;
 import jme3utilities.MySkeleton;
 import jme3utilities.math.MyBuffer;
 
@@ -220,7 +221,7 @@ class SkeletonMesh extends Mesh {
     private IndexBuffer createLineIndices(int numBones, int numLines) {
         assert numLines >= 0 : numLines;
 
-        int numIndices = 2 * numLines;
+        int numIndices = MyMesh.vpe * numLines;
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numBones, numIndices);
         VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);
         Buffer ibData = ib.getBuffer();
