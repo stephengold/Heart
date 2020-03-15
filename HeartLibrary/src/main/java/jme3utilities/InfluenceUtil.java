@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2019, Stephen Gold
+ Copyright (c) 2017-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -84,7 +84,7 @@ public class InfluenceUtil {
     public static void hideNonInfluencers(SkeletonVisualizer visualizer,
             SkeletonControl skeletonControl) {
         Spatial subtree = skeletonControl.getSpatial();
-        Skeleton skeleton = ((SkeletonControl) skeletonControl).getSkeleton();
+        Skeleton skeleton = skeletonControl.getSkeleton();
         BitSet influencers = addAllInfluencers(subtree, skeleton);
 
         int numBones = skeleton.getBoneCount();
@@ -104,7 +104,7 @@ public class InfluenceUtil {
     public static void hideNonInfluencers(SkeletonVisualizer visualizer,
             SkinningControl skinningControl) {
         Spatial subtree = skinningControl.getSpatial();
-        Armature armature = ((SkinningControl) skinningControl).getArmature();
+        Armature armature = skinningControl.getArmature();
         BitSet influencers = addAllInfluencers(subtree, armature);
 
         int numJoints = armature.getJointCount();
