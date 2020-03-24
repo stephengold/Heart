@@ -23,8 +23,8 @@ gradle.projectsEvaluated {
         //jvmArgs '-Xbatch'
         //jvmArgs '-Xms512m', '-Xmx512m'
         //jvmArgs '-XX:+PrintCompilation'
-        jvmArgs '-XX:+UseConcMarkSweepGC'
-        //jvmArgs '-XX:+UseG1GC', '-XX:MaxGCPauseMillis=10'
+        //jvmArgs '-XX:+UseConcMarkSweepGC'
+        jvmArgs '-XX:+UseG1GC', '-XX:MaxGCPauseMillis=10'
     }
 }
 
