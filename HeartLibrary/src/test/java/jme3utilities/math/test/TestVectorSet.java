@@ -58,14 +58,22 @@ public class TestVectorSet {
 
     @Test
     public void testVectorSet() {
-        VectorSet vectorSet1 = new VectorSetUsingCollection(1);
-        test(vectorSet1);
+        VectorSetUsingCollection vectorSet1 = new VectorSetUsingCollection(1);
+        test(vectorSet1, true);
+        vectorSet1.clear();
+        test(vectorSet1, true);
 
-        VectorSet vectorSet2 = new VectorSetUsingBuffer(1, true);
-        test(vectorSet2);
+        VectorSetUsingBuffer vectorSet2 = new VectorSetUsingBuffer(1, true);
+        test(vectorSet2, true);
+        vectorSet2.clear();
+        test(vectorSet2, true);
 
-        VectorSet vectorSet3 = new VectorSetUsingBuffer(1, false);
-        test(vectorSet3);
+        VectorSetUsingBuffer vectorSet3 = new VectorSetUsingBuffer(1, false);
+        test(vectorSet3, true);
+        vectorSet3.clear();
+        test(vectorSet3, false);
+        vectorSet3.clear();
+        test(vectorSet3, true);
     }
     // *************************************************************************
     // private methods
@@ -73,7 +81,7 @@ public class TestVectorSet {
     /**
      * Test the specified VectorSet instance.
      */
-    private void test(VectorSet vectorSet) {
+    private void test(VectorSet vectorSet, boolean toBuffer) {
         float maxLength;
         String string;
         Vector3f max = new Vector3f();
@@ -194,11 +202,17 @@ public class TestVectorSet {
         string = vectorSet.toString();
         assert string != null;
         assert !string.isEmpty();
-        /*
-         * Convert to a FloatBuffer.
-         */
-        FloatBuffer buffer = vectorSet.toBuffer();
-        assert buffer != null;
-        assert buffer.limit() == 3 * MyVector3f.numAxes;
+
+        vectorSet.toFloatArray();
+        vectorSet.toVectorArray();
+
+        if (toBuffer) {
+            /*
+             * Convert to a FloatBuffer.
+             */
+            FloatBuffer buffer = vectorSet.toBuffer();
+            assert buffer != null;
+            assert buffer.limit() == 3 * MyVector3f.numAxes;
+        }
     }
 }

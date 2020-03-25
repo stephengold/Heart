@@ -74,6 +74,16 @@ public class VectorSetUsingCollection implements VectorSet {
         set = new HashSet<>(numVectors);
     }
     // *************************************************************************
+    // new methods exposed
+
+    /**
+     * Reset this set to its initial (empty) state without altering its
+     * capacity.
+     */
+    public void clear() {
+        set.clear();
+    }
+    // *************************************************************************
     // VectorSet methods
 
     /**
@@ -273,8 +283,7 @@ public class VectorSetUsingCollection implements VectorSet {
     }
 
     /**
-     * Access a Buffer containing all values in this set. No further add() is
-     * allowed.
+     * Access a Buffer containing all values in this set.
      *
      * @return a new Buffer, flipped and rewound
      */
