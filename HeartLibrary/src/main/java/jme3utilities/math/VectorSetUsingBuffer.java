@@ -108,6 +108,29 @@ public class VectorSetUsingBuffer implements VectorSet {
     // new methods exposed
 
     /**
+     * Reset this set to its initial (empty, flipped, rewound) state without
+     * altering its capacity. The hashing statistics are unaffected.
+     */
+    public void clear() {
+        int numFloats = buffer.capacity();
+        if (startPositionPlus1 == null) { // user has invoked toBuffer()
+            int numVectors = (numFloats - 1) / numAxes;
+            allocate(numVectors);
+            assert endPosition.length == numFloats;
+
+        } else {
+            // reuse the existing buffer
+            for (int floatIndex = 0; floatIndex < numFloats; ++floatIndex) {
+                startPositionPlus1[floatIndex] = 0;
+            }
+        }
+
+        buffer.rewind();
+        buffer.limit(0);
+        assert isFlipped();
+    }
+
+    /**
      * Reset the hashing statistics.
      */
     public static void clearStats() {
@@ -439,9 +462,9 @@ public class VectorSetUsingBuffer implements VectorSet {
      * Switch from writing to reading.
      */
     private void flip() {
-        assert buffer.limit() == buffer.capacity();
+        assert !isFlipped();
         buffer.limit(buffer.position());
-        assert buffer.limit() != buffer.capacity();
+        assert isFlipped();
     }
 
     /**
@@ -464,12 +487,25 @@ public class VectorSetUsingBuffer implements VectorSet {
     }
 
     /**
+     * Test whether the buffer is flipped.
+     *
+     * @return true if flipped for reading (its usual state), false if unflipped
+     * for writing (temporary state while adding a vector)
+     */
+    private boolean isFlipped() {
+        boolean result = (buffer.limit() != buffer.capacity());
+        return result;
+    }
+
+    /**
      * Switch from reading to writing.
      */
     private void unflip() {
-        assert buffer.limit() != buffer.capacity();
+        assert isFlipped();
+
         buffer.position(buffer.limit());
         buffer.limit(buffer.capacity());
-        assert buffer.limit() == buffer.capacity();
+
+        assert !isFlipped();
     }
 }
