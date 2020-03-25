@@ -38,11 +38,11 @@ MaterialDef wireframe {
         Defines {
             NUM_BONES : NumberOfBones
         }
-        FragmentShader GLSL110: Shaders/wireframe/wireframe.frag
+        FragmentShader GLSL100 GLSL150: Shaders/wireframe/wireframe.frag
         RenderState {
             Wireframe On
         }
-        VertexShader GLSL110:   Shaders/wireframe/wireframe.vert
+        VertexShader GLSL100 GLSL150:   Shaders/wireframe/wireframe.vert
         WorldParameters {
             ViewMatrix
             ViewProjectionMatrix
