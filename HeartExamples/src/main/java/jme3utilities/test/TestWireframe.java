@@ -31,6 +31,7 @@ import com.jme3.audio.openal.ALAudioRenderer;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.scene.Geometry;
+import com.jme3.system.AppSettings;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
@@ -39,7 +40,8 @@ import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.RectangleMesh;
 
 /**
- * A simple application to test MyAsset.createWireframeMaterial().
+ * A SimpleApplication to test MyAsset.createWireframeMaterial(). If successful,
+ * a green wireframe quad will be displayed.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -52,6 +54,11 @@ public class TestWireframe extends SimpleApplication {
      */
     final private static Logger logger
             = Logger.getLogger(TestWireframe.class.getName());
+    /**
+     * application name (for the title bar of the app's window)
+     */
+    final private static String applicationName
+            = TestWireframe.class.getSimpleName();
     // *************************************************************************
     // new methods exposed
 
@@ -69,9 +76,18 @@ public class TestWireframe extends SimpleApplication {
                 .setLevel(Level.SEVERE);
 
         TestWireframe app = new TestWireframe();
+        /*
+         * Customize the window's title bar.
+         */
+        boolean loadDefaults = true;
+        AppSettings settings = new AppSettings(loadDefaults);
+        settings.setTitle(applicationName);
+
+        //settings.setRenderer(AppSettings.LWJGL_OPENGL32);
+        app.setSettings(settings);
         app.start();
         /*
-         * ... and onward to LoopMeshTest.simpleInitApp()!
+         * ... and onward to TestWireframe.simpleInitApp()!
          */
     }
     // *************************************************************************
@@ -86,12 +102,12 @@ public class TestWireframe extends SimpleApplication {
 
         Material material = MyAsset.createWireframeMaterial(assetManager,
                 ColorRGBA.Green);
-        Geometry geom = new Geometry("loop", new RectangleMesh());
-        geom.setMaterial(material);
-        rootNode.attachChild(geom);
+        Geometry quadGeometry = new Geometry("quad", new RectangleMesh());
+        quadGeometry.setMaterial(material);
+        rootNode.attachChild(quadGeometry);
 
-        Dumper d = new Dumper();
-        d.setDumpTransform(true);
-        d.dump(renderManager);
+        Dumper dumper = new Dumper();
+        dumper.setDumpTransform(true);
+        dumper.dump(renderManager);
     }
 }
