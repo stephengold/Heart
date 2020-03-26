@@ -147,7 +147,7 @@ public class TestContrast extends ActionApplication {
         addLighting();
         rootNode.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
         /*
-         * Apply a contrast correction filter to the viewport.
+         * Apply a contrast adjustment filter to the viewport.
          */
         int numSamples = settings.getSamples();
         FilterPostProcessor fpp
