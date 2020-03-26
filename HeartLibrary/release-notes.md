@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 5.2.0for33 released on TBD
+## Version 5.2.0for33 released on 26 March 2020
 
  + Bugfix: shader crashes on macOS with OpenGL3.2 core profile.
  + Changed the default line widths in `BoundsVisualizer`
