@@ -50,14 +50,15 @@ import com.jme3.scene.Spatial;
 import com.jme3.scene.control.AbstractControl;
 import com.jme3.texture.Texture;
 import com.jme3.util.clone.Cloner;
-import java.io.IOException;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.logging.Logger;
 import jme3utilities.MyAsset;
 import jme3utilities.MySpatial;
 import jme3utilities.SubtreeControl;
 import jme3utilities.Validate;
+
+import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.logging.Logger;
 
 /**
  * A SubtreeControl to visualize a Skeleton.
@@ -90,7 +91,7 @@ public class SkeletonVisualizer extends SubtreeControl {
     /**
      * default width for link lines (in pixels)
      */
-    final private static float defaultLineWidth = 2f;
+    final private static float defaultLineWidth = 1f;
     /**
      * child position of the heads geometry in the subtree Node
      */
@@ -191,6 +192,7 @@ public class SkeletonVisualizer extends SubtreeControl {
     public SkeletonVisualizer(AssetManager assetManager,
             AbstractControl subject) {
         super();
+        System.out.println("############ ksdflmqsjkdflmqsjfmldsqjflsdq ###############");
         Validate.nonNull(assetManager, "asset manager");
 
         lineMaterial = MyAsset.createMulticolor2Material(assetManager,
