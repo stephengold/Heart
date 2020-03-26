@@ -185,9 +185,9 @@ Clone the Heart repository using Git:
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
      + `cd Heart`
-     + `git checkout -b latest 5.1.0for32`
+     + `git checkout -b latest 5.2.0for32`
    + using a web browser:
-     + browse to [https://github.com/stephengold/Heart/releases/tag/5.1.0for32](https://github.com/stephengold/Heart/releases/tag/5.1.0for32)
+     + browse to [https://github.com/stephengold/Heart/releases/tag/5.2.0for32](https://github.com/stephengold/Heart/releases/tag/5.2.0for32)
      + follow the "Source code (zip)" link
      + save the ZIP file
      + unzip the saved ZIP file
@@ -228,14 +228,14 @@ resolve the remaining dependencies automatically.
         jcenter()
     }
     dependencies {
-        compile 'com.github.stephengold:Heart:5.1.0for32'
+        compile 'com.github.stephengold:Heart:5.2.0for32'
     }
 
 #### For Ant projects
 
 For projects built using [Ant], download the library:
 
- + https://github.com/stephengold/Heart/releases/tag/5.1.0for32
+ + https://github.com/stephengold/Heart/releases/tag/5.2.0for32
 
 You'll want the class jar
 and probably the `-sources` and `-javadoc` jars as well.
@@ -249,15 +249,15 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
  5. Add the `Heart` class jar:
     + Click on the "Add JAR/Folder" button.
     + Navigate to the download folder.
-    + Select the "Heart-5.1.0for32.jar" file.
+    + Select the "Heart-5.2.0for32.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
     + Click on the "Edit" button.
     + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "Heart-5.1.0for32-javadoc.jar" file.
+    + Select the "Heart-5.2.0for32-javadoc.jar" file.
     + Click on the "Open" button.
     + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "Heart-5.1.0for32-sources.jar" file.
+    + Select the "Heart-5.2.0for32-sources.jar" file.
     + Click on the "Open" button again.
     + Click on the "OK" button to close the "Edit Jar Reference" dialog.
  7. Click on the "OK" button to exit the "Project Properties" dialog.
@@ -315,6 +315,7 @@ software developers:
 
  + "jayfella", for creating and sharing the original `Icosphere.java`
  + Paul Speed, for helpful insights
+ + "rvandoosselaer", for reporting and fixing issue #2.
  + plus the creators of (and contributors to) the following software:
     + the [Blender] 3-D animation suite
     + the [FindBugs] source-code analyzer
