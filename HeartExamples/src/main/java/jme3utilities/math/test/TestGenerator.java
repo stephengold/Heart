@@ -26,7 +26,6 @@
  */
 package jme3utilities.math.test;
 
-import com.jme3.app.Application;
 import com.jme3.font.BitmapText;
 import com.jme3.font.Rectangle;
 import com.jme3.input.CameraInput;
@@ -117,29 +116,34 @@ public class TestGenerator extends ActionApplication {
     // new methods exposed
 
     /**
-     * Main entry point for the TestRectangularSolid application.
+     * Main entry point for the TestGenerator application.
      *
      * @param ignored array of command-line arguments (not null)
      */
     public static void main(String[] ignored) {
         /*
-         * Mute the chatty loggers in certain packages.
+         * Mute the chatty loggers found in some imported packages.
          */
         Heart.setLoggingLevels(Level.WARNING);
 
-        Application application = new TestGenerator();
+        TestGenerator application = new TestGenerator();
         /*
          * Customize the window's title bar.
          */
-        AppSettings settings = new AppSettings(true);
+        boolean loadDefaults = true;
+        AppSettings settings = new AppSettings(loadDefaults);
         settings.setTitle(applicationName);
 
+        settings.setRenderer(AppSettings.LWJGL_OPENGL32);
         settings.setGammaCorrection(true);
         settings.setSamples(4); // anti-aliasing
         settings.setVSync(true);
         application.setSettings(settings);
 
         application.start();
+        /*
+         * ... and onward to TestGenerator.actionInitializeApplication()!
+         */
     }
     // *************************************************************************
     // ActionApplication methods
