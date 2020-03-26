@@ -123,6 +123,7 @@ public class TestContrast extends ActionApplication {
         settings.setTitle(applicationName);
 
         settings.setRenderer(AppSettings.LWJGL_OPENGL32);
+        application.setSettings(settings);
         application.start();
         /*
          * ... and onward to TestContrast.actionInitializeApplication()!
