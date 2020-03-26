@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 5.2.0for32 released on TBD
+## Version 5.2.0for32 released on 26 March 2020
 
  + Changed the default line widths in `BoundsVisualizer`
    and `SkeletonVisualizer` to 1.0, since that's the only value
