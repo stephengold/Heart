@@ -90,7 +90,7 @@ public class SkeletonVisualizer extends SubtreeControl {
     /**
      * default width for link lines (in pixels)
      */
-    final private static float defaultLineWidth = 2f;
+    final private static float defaultLineWidth = 1f;
     /**
      * child position of the heads geometry in the subtree Node
      */
