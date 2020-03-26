@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2019, Stephen Gold
+ Copyright (c) 2014-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -87,7 +87,7 @@ public class SkeletonVisualizer extends SubtreeControl {
     /**
      * default width for link lines (in pixels)
      */
-    final private static float defaultLineWidth = 2f;
+    final private static float defaultLineWidth = 1f;
     /**
      * child position of the heads geometry in the subtree Node
      */
@@ -184,6 +184,7 @@ public class SkeletonVisualizer extends SubtreeControl {
     public SkeletonVisualizer(AssetManager assetManager,
             SkeletonControl subject) {
         super();
+        System.out.println("############ ksdflmqsjkdflmqsjfmldsqjflsdq ###############");
         Validate.nonNull(assetManager, "asset manager");
 
         lineMaterial = MyAsset.createMulticolor2Material(assetManager,
