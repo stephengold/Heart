@@ -1,5 +1,15 @@
 # release log for the Heart Library and related tests
 
+## Version 5.2.0for32 released on TBD
+
+ + Changed the default line widths in `BoundsVisualizer`
+   and `SkeletonVisualizer` to 1.0, since that's the only value
+   for which OpenGL guarantees support.
+ + Added `clear()` methods to `VectorSetUsingBuffer`
+   and `VectorSetUsingCollection`.
+ + Added 3 test apps: `TestContrast`, `TestSkeletonVisualizer`,
+   and `TestMulticolor`.
+
 ## Version 5.1.0for32 released on 5 March 2020
 
  + Bugfix: logic error in `Validate.positive()` for `Vector3f` argument.
