@@ -184,7 +184,6 @@ public class SkeletonVisualizer extends SubtreeControl {
     public SkeletonVisualizer(AssetManager assetManager,
             SkeletonControl subject) {
         super();
-        System.out.println("############ ksdflmqsjkdflmqsjfmldsqjflsdq ###############");
         Validate.nonNull(assetManager, "asset manager");
 
         lineMaterial = MyAsset.createMulticolor2Material(assetManager,
