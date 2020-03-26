@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2019, Stephen Gold
+// Copyright (c) 2017-2020, Stephen Gold
 // All rights reserved.
 
 // Redistribution and use in source and binary forms, with or without
@@ -45,11 +45,11 @@ MaterialDef multicolor2 {
             POINT_SHAPE : PointShape
             VERTEX_COLOR : UseVertexColor
         }
-        FragmentShader GLSL310 GLSL300 GLSL100 GLSL110 GLSL150: Shaders/wireframe/multicolor2.frag
+        FragmentShader GLSL100 GLSL110 GLSL150: Shaders/wireframe/multicolor2.frag
         RenderState {
             Wireframe On
         }
-        VertexShader GLSL310 GLSL300 GLSL100 GLSL110 GLSL150:   Shaders/wireframe/multicolor2.vert
+        VertexShader GLSL100 GLSL110 GLSL150:   Shaders/wireframe/multicolor2.vert
         WorldParameters {
             ViewMatrix
             ViewProjectionMatrix

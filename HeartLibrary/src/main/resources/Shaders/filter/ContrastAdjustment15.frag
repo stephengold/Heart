@@ -29,6 +29,7 @@
  * fragment shader used by ContrastAdjustment.j3md
  */
 
+#import "Common/ShaderLib/GLSLCompat.glsllib"
 #import "Common/ShaderLib/MultiSample.glsllib"
 
 in vec2 texCoord;
