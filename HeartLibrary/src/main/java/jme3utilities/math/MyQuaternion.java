@@ -549,7 +549,8 @@ public class MyQuaternion {
     }
 
     /**
-     * Validate a unit quaternion as a method argument.
+     * Validate a unit quaternion as a method argument. TODO should return a
+     * boolean
      *
      * @param q quaternion to validate (not null, unaffected)
      * @param description description of the quaternion
