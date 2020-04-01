@@ -362,7 +362,7 @@ public class Heart {
      * @return project name, library name, branch, and revision
      */
     public static String version() {
-        return "Heart Heart master $Rev: 5.2.1 $";
+        return "Heart Heart master $Rev: 5.2.1-SNAPSHOT $";
     }
 
     /**
