@@ -9,26 +9,56 @@ jobs:
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v1
       with:
-        java-version: 1.8
+        java-version: 8
     - uses: gradle/wrapper-validation-action@v1
     - run: ./gradlew build --console=plain --no-daemon
 
-  Java8-MacOSX64:
+  Java8-MacOS:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v1
       with:
-        java-version: 1.8
+        java-version: 8
     - uses: gradle/wrapper-validation-action@v1
     - run: ./gradlew build --console=plain --no-daemon
 
   Java8-Windows:
+    runs-on: windows-2016
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
+      with:
+        java-version: 8
+    - uses: gradle/wrapper-validation-action@v1
+    - run: ./gradlew build --console=plain --no-daemon
+
+  Java11-Linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - uses: gradle/wrapper-validation-action@v1
+    - run: ./gradlew build --console=plain --no-daemon
+
+  Java11-MacOS:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - uses: gradle/wrapper-validation-action@v1
+    - run: ./gradlew build --console=plain --no-daemon
+
+  Java11-Windows:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v1
       with:
-        java-version: 1.8
+        java-version: 11
     - uses: gradle/wrapper-validation-action@v1
     - run: ./gradlew build --console=plain --no-daemon
