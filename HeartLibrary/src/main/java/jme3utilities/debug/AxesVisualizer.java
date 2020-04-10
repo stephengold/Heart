@@ -150,7 +150,7 @@ public class AxesVisualizer extends SubtreeControl {
     }
 
     /**
-     * Instantiate a set of hidden solid coordinate axes.
+     * Instantiate a (disabled) set of hidden solid coordinate axes.
      *
      * @param manager for loading assets (not null)
      * @param length length of each axis arrow (in world units, &gt;0)
@@ -166,7 +166,7 @@ public class AxesVisualizer extends SubtreeControl {
     }
 
     /**
-     * Instantiate a set of hidden wireframe coordinate axes.
+     * Instantiate a (disabled) set of hidden wireframe coordinate axes.
      *
      * @param manager for loading material definitions (not null)
      * @param length length of each axis arrow (in world units, &gt;0)
