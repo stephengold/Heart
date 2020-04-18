@@ -218,7 +218,7 @@ public class MyQuaternion {
      * @return a unit quaternion (either storeResult or a new instance)
      */
     public static Quaternion exp(Quaternion q, Quaternion storeResult) {
-        assert q.getW() == 0f : q;
+        Validate.require(isPure(q), "a pure quaternion");
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
 
@@ -241,7 +241,23 @@ public class MyQuaternion {
     }
 
     /**
-     * Test whether the specified quaternion represents an identity rotation.
+     * Test for a pure Quaternion.
+     *
+     * @param q the input (not null, unaffected)
+     * @return true if w=0, false otherwise
+     */
+    public static boolean isPure(Quaternion q) {
+        float qw = q.getW();
+
+        if (qw == 0f) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Test whether the specified Quaternion represents an identity rotation.
      * This test is weaker than that implemented by
      * {@link com.jme3.math.Quaternion#isIdentity()} because it accepts any
      * non-zero value for w.
