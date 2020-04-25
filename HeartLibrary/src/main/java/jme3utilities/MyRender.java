@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019, Stephen Gold
+ Copyright (c) 2019-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,9 @@
  */
 package jme3utilities;
 
-import com.jme3.renderer.Caps;
 import com.jme3.renderer.opengl.GL;
-import com.jme3.renderer.opengl.GLExt;
 import com.jme3.renderer.opengl.GLRenderer;
 import java.lang.reflect.Field;
-import java.util.EnumSet;
 import java.util.logging.Logger;
 
 /**
@@ -60,29 +57,16 @@ final public class MyRender {
     // new methods exposed
 
     /**
-     * Read the default degree of anisotropic filtering. A partial workaround
-     * for JME issue #1074.
+     * Read the default degree of anisotropic filtering. This was created to
+     * work around JME issue #1074.
      *
      * @param renderer which renderer (not null, unaffected)
      * @return the degree (&ge;1)
+     * @deprecated use GLRenderer.getDefaultAnisotropicFilter()
      */
+    @Deprecated
     public static int defaultAnisotropicFilter(GLRenderer renderer) {
-        Field field;
-        try {
-            field = GLRenderer.class.getDeclaredField(
-                    "defaultAnisotropicFilter");
-        } catch (NoSuchFieldException exception) {
-            throw new RuntimeException(exception);
-        }
-        field.setAccessible(true);
-
-        int result;
-        try {
-            result = (int) field.get(renderer);
-        } catch (IllegalAccessException exception) {
-            throw new RuntimeException(exception);
-        }
-
+        int result = renderer.getDefaultAnisotropicFilter();
         assert result >= 1 : result;
         return result;
     }
@@ -114,20 +98,16 @@ final public class MyRender {
     }
 
     /**
-     * Test whether alpha-to-coverage is enabled for the specified renderer. A
-     * partial workaround for JME issue #1074.
+     * Test whether alpha-to-coverage is enabled for the specified renderer.
+     * This was created to work around JME issue #1074.
      *
      * @param renderer which renderer (not null, unaffected)
      * @return true if enabled, otherwise false
+     * @deprecated use GLRenderer.getAlphaToCoverage()
      */
+    @Deprecated
     public static boolean isAlphaToCoverage(GLRenderer renderer) {
-        boolean result = false;
-        EnumSet caps = renderer.getCaps();
-        if (caps.contains(Caps.Multisample)) {
-            GL gl = getGL(renderer);
-            result = gl.glIsEnabled(GLExt.GL_SAMPLE_ALPHA_TO_COVERAGE_ARB);
-        }
-
+        boolean result = renderer.getAlphaToCoverage();
         return result;
     }
 }
