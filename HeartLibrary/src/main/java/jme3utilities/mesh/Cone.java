@@ -126,7 +126,6 @@ public class Cone extends Mesh {
 
             if (generatePyramid) { // flat triangle for a pyramid
                 triangle.set(p1, p2, p3);
-                triangle.setNormal(null); // work around JME issue #957
                 Vector3f n = triangle.getNormal();
                 for (int j = 0; j < vpt; ++j) {
                     normalBuffer.put(n.x).put(n.y).put(n.z);

@@ -442,7 +442,6 @@ public class MyMesh {
             MyBuffer.get(positionBuffer, trianglePosition + 2 * numAxes, pos3);
             triangle.set(pos1, pos2, pos3);
 
-            triangle.setNormal(null); // work around JME issue #957
             Vector3f normal = triangle.getNormal();
             for (int j = 0; j < vpt; ++j) {
                 normalBuffer.put(normal.x);
