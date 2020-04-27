@@ -157,7 +157,8 @@ public class SimpleAppState extends NamedAppState {
      * Should be invoked only by a subclass or by the AppStateManager.
      *
      * @param sm the manager for this state (not null)
-     * @param app the application which owns this state (not null)
+     * @param app the application which owns this state (not null, alias
+     * created)
      */
     @Override
     public void initialize(AppStateManager sm, Application app) {

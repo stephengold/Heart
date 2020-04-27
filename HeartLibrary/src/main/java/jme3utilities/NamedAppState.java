@@ -59,7 +59,7 @@ public class NamedAppState extends AbstractAppState {
     // fields
 
     /**
-     * AppStates influenced by this one (not null)
+     * AppStates influenced by this one
      */
     final private List<AppState> influenceList = new ArrayList<>(2);
     /**

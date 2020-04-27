@@ -152,7 +152,7 @@ public class AxesVisualizer extends SubtreeControl {
     /**
      * Instantiate a (disabled) set of hidden solid coordinate axes.
      *
-     * @param manager for loading assets (not null)
+     * @param manager for loading assets (not null, alias created)
      * @param length length of each axis arrow (in world units, &gt;0)
      */
     public AxesVisualizer(AssetManager manager, float length) {
@@ -168,7 +168,7 @@ public class AxesVisualizer extends SubtreeControl {
     /**
      * Instantiate a (disabled) set of hidden wireframe coordinate axes.
      *
-     * @param manager for loading material definitions (not null)
+     * @param manager for loading material definitions (not null, alias created)
      * @param length length of each axis arrow (in world units, &gt;0)
      * @param width thickness of each axis arrow (in pixels, &ge;1)
      */
@@ -427,7 +427,7 @@ public class AxesVisualizer extends SubtreeControl {
      * Create and attach a solid arrow geometry to represent an axis.
      *
      * @param color for the arrow (not null, unaffected)
-     * @param name for the geometry (not null)
+     * @param name for the Geometry (not null, alias created)
      * @param direction for the arrow to point (in local coordinates, length=1,
      * unaffected)
      */
