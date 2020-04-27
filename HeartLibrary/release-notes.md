@@ -1,5 +1,12 @@
 # release log for the Heart Library and related tests
 
+## Version 5.3.0 released on TBD
+
+ + Deprecated the `defaultAnisotropicFilter()` and `isAlphaToCoverage()`
+   methods in the `MyRenderer` class.
+ + Added an `isPure()` method to the `MyQuaternion` class.
+ + Targeted jMonkeyEngine version 3.3.2-stable.
+
 ## Version 5.2.1 released on 1 April 2020
 
 Targeted jMonkeyEngine version 3.3.0-stable.
