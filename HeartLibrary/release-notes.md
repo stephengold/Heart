@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 5.3.0 released on TBD
+## Version 5.3.0 released on 27 April 2020
 
  + Deprecated the `defaultAnisotropicFilter()` and `isAlphaToCoverage()`
    methods in the `MyRenderer` class.
