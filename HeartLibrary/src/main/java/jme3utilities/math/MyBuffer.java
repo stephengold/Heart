@@ -270,29 +270,6 @@ final public class MyBuffer {
     }
 
     /**
-     * Returns the format of the data stored in the specified IndexBuffer.
-     * Intended for source-code compatability with JME 3.2 and earlier.
-     *
-     * @param indexBuffer (not null, unaffected)
-     * @return an enum value (not null)
-     */
-    public static VertexBuffer.Format getFormat(IndexBuffer indexBuffer) {
-        if (indexBuffer instanceof IndexByteBuffer) {
-            return VertexBuffer.Format.UnsignedByte;
-
-        } else if (indexBuffer instanceof IndexShortBuffer) {
-            return VertexBuffer.Format.UnsignedShort;
-
-        } else if (indexBuffer instanceof IndexIntBuffer) {
-            return VertexBuffer.Format.UnsignedInt;
-
-        } else {
-            String message = "class=" + indexBuffer.getClass().getSimpleName();
-            throw new IllegalArgumentException(message);
-        }
-    }
-
-    /**
      * Count the number of times the specified value occurs in the specified
      * IntBuffer range.
      *
@@ -342,6 +319,29 @@ final public class MyBuffer {
         storeVector.x = buffer.get(startPosition + MyVector3f.xAxis);
         storeVector.y = buffer.get(startPosition + MyVector3f.yAxis);
         storeVector.z = buffer.get(startPosition + MyVector3f.zAxis);
+    }
+
+    /**
+     * Returns the format of the data stored in the specified IndexBuffer.
+     * Intended for source-code compatability with JME 3.2 and earlier.
+     *
+     * @param indexBuffer (not null, unaffected)
+     * @return an enum value (not null)
+     */
+    public static VertexBuffer.Format getFormat(IndexBuffer indexBuffer) {
+        if (indexBuffer instanceof IndexByteBuffer) {
+            return VertexBuffer.Format.UnsignedByte;
+
+        } else if (indexBuffer instanceof IndexShortBuffer) {
+            return VertexBuffer.Format.UnsignedShort;
+
+        } else if (indexBuffer instanceof IndexIntBuffer) {
+            return VertexBuffer.Format.UnsignedInt;
+
+        } else {
+            String message = "class=" + indexBuffer.getClass().getSimpleName();
+            throw new IllegalArgumentException(message);
+        }
     }
 
     /**
