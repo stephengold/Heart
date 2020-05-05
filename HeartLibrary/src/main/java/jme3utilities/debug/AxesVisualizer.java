@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2019, Stephen Gold
+ Copyright (c) 2014-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -82,6 +82,10 @@ public class AxesVisualizer extends SubtreeControl {
      */
     final private static ColorRGBA zColor = new ColorRGBA(0f, 0f, 1f, 1f);
     /**
+     * magic width value used to specify a solid arrow
+     */
+    final public static float widthForSolid = 0f;
+    /**
      * message logger for this class
      */
     final private static Logger logger
@@ -162,7 +166,7 @@ public class AxesVisualizer extends SubtreeControl {
 
         assetManager = manager;
         axisLength = length;
-        lineWidth = 0f;
+        lineWidth = widthForSolid;
     }
 
     /**
