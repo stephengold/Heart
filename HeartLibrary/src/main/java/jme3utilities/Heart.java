@@ -48,12 +48,15 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import javax.imageio.ImageIO;
@@ -74,6 +77,13 @@ public class Heart {
      */
     final private static Logger logger
             = Logger.getLogger(Heart.class.getName());
+    // *************************************************************************
+    // fields
+
+    /**
+     * handler for logging
+     */
+    private static FileHandler fileHandler = null;
     // *************************************************************************
     // constructors
 
@@ -243,7 +253,42 @@ public class Heart {
     }
 
     /**
-     * Access the pre-existing filter post processor of the specified view port,
+     * Access the pre-existing FileHandler for logging, or if none if found,
+     * create one and use that.
+     *
+     * @return not null
+     */
+    public static FileHandler getFileHandler() {
+        if (fileHandler == null) {
+            Calendar rightNow = Calendar.getInstance();
+            int hours = rightNow.get(Calendar.HOUR_OF_DAY);
+            int minutes = rightNow.get(Calendar.MINUTE);
+            int seconds = rightNow.get(Calendar.SECOND);
+            String hhmmss
+                    = String.format("%02d%02d%02d", hours, minutes, seconds);
+            String fileName = hhmmss + ".txt";
+
+            try {
+                fileHandler = new FileHandler(fileName);
+            } catch (IOException exception) {
+                throw new RuntimeException(exception);
+            }
+            /*
+             * New file handlers default to XML format.
+             */
+            SimpleFormatter formatter = new SimpleFormatter();
+            fileHandler.setFormatter(formatter);
+
+            File file = new File(fileName);
+            String filePath = fixedPath(file);
+            System.out.println("logging to file " + MyString.quote(filePath));
+        }
+
+        return fileHandler;
+    }
+
+    /**
+     * Access the pre-existing FilterPostProcessor of the specified view port,
      * or if it has none, add a new FPP and use that.
      *
      * @param viewPort which view port (not null)
@@ -316,7 +361,7 @@ public class Heart {
                     result.add(entryName);
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException exception) {
             // quit reading entries
         }
 
