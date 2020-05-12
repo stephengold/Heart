@@ -133,8 +133,21 @@ public class Generator extends Random {
      * @return a new unit quaternion
      */
     public Quaternion nextQuaternion() {
-        Quaternion result = new Quaternion();
-        double lengthSquared = 2.0;
+        Quaternion result = nextQuaternion(null);
+        return result;
+    }
+
+    /**
+     * Generate a uniformly distributed, pseudo-random unit quaternion.
+     *
+     * @param storeResult storage for the result (modified if not null)
+     * @return a unit quaternion (either storeResult or a new instance)
+     */
+    public Quaternion nextQuaternion(Quaternion storeResult) {
+        Quaternion result = (storeResult == null) ? new Quaternion()
+                : storeResult;
+
+        double lengthSquared = 0.0;
         while (lengthSquared < 0.1 || lengthSquared > 1.0) {
             float x = nextFloat(-1f, 1f);
             float y = nextFloat(-1f, 1f);
