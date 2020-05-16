@@ -1,5 +1,13 @@
 # release log for the Heart Library and related tests
 
+## Version 5.4.0 released on TBD
+
+ + Added public constants `AxesVisualizer.widthForSolid` and `MyMath.phi`.
+ + Added a `getFileHandler()` method to the `Heart` class.
+ + Added a `listAnimationSpatials()` method to the `MySpatial` class.
+ + Added a `nextQuaternion()` method with caller-allocated storage
+   to the `Generator` class.
+
 ## Version 5.3.0 released on 27 April 2020
 
  + Deprecated the `defaultAnisotropicFilter()` and `isAlphaToCoverage()`
