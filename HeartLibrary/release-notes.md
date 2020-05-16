@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 5.4.0 released on TBD
+## Version 5.4.0 released on 16 May 2020
 
  + Added public constants `AxesVisualizer.widthForSolid` and `MyMath.phi`.
  + Added a `getFileHandler()` method to the `Heart` class.

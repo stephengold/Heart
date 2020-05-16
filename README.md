@@ -104,7 +104,7 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
      + `cd Heart`
-     + `git checkout -b latest 5.3.0`
+     + `git checkout -b latest 5.4.0`
    + using a web browser:
      + browse to [https://github.com/stephengold/Heart/releases/latest](https://github.com/stephengold/Heart/releases/latest)
      + follow the "Source code (zip)" link
@@ -147,14 +147,14 @@ resolve the remaining dependencies automatically.
         jcenter()
     }
     dependencies {
-        compile 'com.github.stephengold:Heart:5.3.0'
+        compile 'com.github.stephengold:Heart:5.4.0'
     }
 
 #### For Ant projects
 
 For projects built using [Ant], download the library:
 
- + https://github.com/stephengold/Heart/releases/tag/5.3.0
+ + https://github.com/stephengold/Heart/releases/tag/5.4.0
 
 You'll want the class jar
 and probably the `-sources` and `-javadoc` jars as well.
@@ -168,15 +168,15 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
  5. Add the `Heart` class jar:
     + Click on the "Add JAR/Folder" button.
     + Navigate to the download folder.
-    + Select the "Heart-5.3.0.jar" file.
+    + Select the "Heart-5.4.0.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
     + Click on the "Edit" button.
     + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "Heart-5.3.0-javadoc.jar" file.
+    + Select the "Heart-5.4.0-javadoc.jar" file.
     + Click on the "Open" button.
     + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "Heart-5.3.0-sources.jar" file.
+    + Select the "Heart-5.4.0-sources.jar" file.
     + Click on the "Open" button again.
     + Click on the "OK" button to close the "Edit Jar Reference" dialog.
  7. Click on the "OK" button to exit the "Project Properties" dialog.
