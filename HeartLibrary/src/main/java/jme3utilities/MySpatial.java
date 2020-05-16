@@ -26,6 +26,8 @@
  */
 package jme3utilities;
 
+import com.jme3.anim.SkinningControl;
+import com.jme3.animation.SkeletonControl;
 import com.jme3.app.StatsView;
 import com.jme3.asset.AssetManager;
 import com.jme3.audio.AudioNode;
@@ -709,6 +711,47 @@ public class MySpatial {
         }
 
         return storeResult;
+    }
+
+    /**
+     * Enumerate all spatials with a SkeletonControl or SkinningControl in the
+     * specified subtree. Useful when adding a DynamicAnimControl to a model
+     * whose structure is complex or unknown. Note: recursive!
+     *
+     * @param subtree the subtree to analyze (may be null, aliases created)
+     * @param addResults storage for results (added to if not null)
+     * @return an expanded List of pre-existing instances (either addResults or
+     * a new List)
+     */
+    public static List<Spatial> listAnimationSpatials(Spatial subtree,
+            List<Spatial> addResults) {
+        List<Spatial> results;
+        if (addResults == null) {
+            results = new ArrayList<>(4);
+        } else {
+            results = addResults;
+        }
+
+        if (subtree != null) {
+            int numControls = subtree.getNumControls();
+            for (int controlI = 0; controlI < numControls; ++controlI) {
+                Control control = subtree.getControl(controlI);
+                if (control instanceof SkinningControl
+                        || control instanceof SkeletonControl) {
+                    results.add(subtree);
+                    break;
+                }
+            }
+
+            if (subtree instanceof Node) {
+                List<Spatial> children = ((Node) subtree).getChildren();
+                for (Spatial child : children) {
+                    results = listAnimationSpatials(child, results);
+                }
+            }
+        }
+
+        return results;
     }
 
     /**
