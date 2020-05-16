@@ -50,7 +50,7 @@ public class Icosahedron extends Mesh {
     // constants and loggers
 
     /**
-     * golden ratio = 1.618...
+     * golden ratio = 1.618... TODO use MyMath
      */
     final public static float phi = (1f + FastMath.sqrt(5f)) / 2f;
     /**
