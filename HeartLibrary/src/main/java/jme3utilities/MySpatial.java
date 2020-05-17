@@ -720,8 +720,7 @@ public class MySpatial {
      *
      * @param subtree the subtree to analyze (may be null, aliases created)
      * @param addResults storage for results (added to if not null)
-     * @return an expanded List of pre-existing instances (either addResults or
-     * a new List)
+     * @return an expanded List (either addResults or a new List)
      */
     public static List<Spatial> listAnimationSpatials(Spatial subtree,
             List<Spatial> addResults) {
@@ -892,7 +891,7 @@ public class MySpatial {
      * @see com.jme3.scene.Node#descendantMatches(java.lang.Class)
      *
      * @param subtree (not null, aliases created)
-     * @return a new List (not null, not empty)
+     * @return a new List of pre-existing instances (not null, not empty)
      */
     public static List<Spatial> listSpatials(Spatial subtree) {
         Validate.nonNull(subtree, "subtree");
