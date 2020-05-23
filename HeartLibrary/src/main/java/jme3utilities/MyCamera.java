@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -52,6 +52,14 @@ final public class MyCamera {
     // *************************************************************************
     // constants and loggers
 
+    /**
+     * Z value for the far clipping plane (in screen coordinates)
+     */
+    final public static float farZ = 1f;
+    /**
+     * Z value for the near clipping plane (in screen coordinates)
+     */
+    final public static float nearZ = 0f;
     /**
      * message logger for this class
      */
@@ -323,8 +331,9 @@ final public class MyCamera {
         /*
          * Convert screen coordinates to world coordinates.
          */
-        Vector3f vertex = camera.getWorldCoordinates(screenXY, 0f); // TODO garbage
-        Vector3f far = camera.getWorldCoordinates(screenXY, 1f);
+        Vector3f vertex
+                = camera.getWorldCoordinates(screenXY, nearZ); // TODO garbage
+        Vector3f far = camera.getWorldCoordinates(screenXY, farZ);
 
         Vector3f direction = far.subtract(vertex);
         Line line = new Line(vertex, direction);
@@ -345,8 +354,9 @@ final public class MyCamera {
         /*
          * Convert screen coordinates to world coordinates.
          */
-        Vector3f vertex = camera.getWorldCoordinates(screenXY, 0f); // TODO garbage
-        Vector3f far = camera.getWorldCoordinates(screenXY, 1f);
+        Vector3f vertex
+                = camera.getWorldCoordinates(screenXY, nearZ); // TODO garbage
+        Vector3f far = camera.getWorldCoordinates(screenXY, farZ);
 
         Vector3f direction = far.subtract(vertex);
         MyVector3f.normalizeLocal(direction);
