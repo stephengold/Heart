@@ -60,6 +60,7 @@ import jme3utilities.mesh.DomeMesh;
 import jme3utilities.mesh.Icosahedron;
 import jme3utilities.mesh.Icosphere;
 import jme3utilities.mesh.Octahedron;
+import jme3utilities.mesh.Octasphere;
 import jme3utilities.mesh.Prism;
 import jme3utilities.mesh.Tetrahedron;
 
@@ -308,6 +309,12 @@ public class TestSolidMeshes
         geometry = new Geometry("dodecahedron", mesh);
         rootNode.attachChild(geometry);
         geometry.move(4f, 4f, 0f);
+
+        refineSteps = 3;
+        mesh = new Octasphere(refineSteps, radius);
+        geometry = new Geometry("octaSphere", mesh);
+        rootNode.attachChild(geometry);
+        geometry.move(6f, 0f, 0f);
 
         allGeometries
                 = MySpatial.listSpatials(rootNode, Geometry.class, null);
