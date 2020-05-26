@@ -98,9 +98,7 @@ public class Tetrahedron extends Mesh {
                 +h, -h, +h // C
         );
         setBuffer(VertexBuffer.Type.Position, numAxes, positionBuffer);
-        int numFloats = positionBuffer.capacity();
-        assert numFloats == 4 * MyMesh.vpt * numAxes;
-        positionBuffer.limit(numFloats);
+        positionBuffer.clear();
 
         if (generateNormals) {
             MyMesh.generateNormals(this);

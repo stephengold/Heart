@@ -130,9 +130,7 @@ public class Dodecahedron extends Mesh {
         );
         setBuffer(VertexBuffer.Type.Position, MyVector3f.numAxes,
                 positionBuffer);
-        int numFloats = positionBuffer.capacity();
-        assert numFloats == 20 * MyVector3f.numAxes;
-        positionBuffer.limit(numFloats);
+        positionBuffer.clear();
 
         IntBuffer indexBuffer;
         if (mode == Mode.Lines) {
@@ -144,8 +142,7 @@ public class Dodecahedron extends Mesh {
                     10, 15, 11, 16, 12, 17, 13, 18, 14, 19,
                     15, 16, 16, 17, 17, 18, 18, 19, 19, 15
             );
-            int numInts = indexBuffer.capacity();
-            indexBuffer.limit(numInts);
+            indexBuffer.clear();
             setBuffer(VertexBuffer.Type.Index, MyMesh.vpe, indexBuffer);
 
         } else if (mode == Mode.Triangles) {
@@ -163,8 +160,7 @@ public class Dodecahedron extends Mesh {
                     9, 11, 16, 9, 16, 17, 9, 17, 12,
                     15, 19, 18, 15, 18, 17, 15, 17, 16
             );
-            int numInts = indexBuffer.capacity();
-            indexBuffer.limit(numInts);
+            indexBuffer.clear();
             setBuffer(VertexBuffer.Type.Index, MyMesh.vpt, indexBuffer);
 
         } else if (mode != Mode.Points) {

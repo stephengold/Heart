@@ -113,9 +113,7 @@ public class Octahedron extends Mesh {
                 0f, -radius, 0f // B
         );
         setBuffer(VertexBuffer.Type.Position, numAxes, positionBuffer);
-        int numFloats = positionBuffer.capacity();
-        assert numFloats == 8 * MyMesh.vpt * numAxes;
-        positionBuffer.limit(numFloats);
+        positionBuffer.clear();
 
         if (generateNormals) {
             MyMesh.generateNormals(this);

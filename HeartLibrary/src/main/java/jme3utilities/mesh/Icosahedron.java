@@ -170,9 +170,7 @@ public class Icosahedron extends Mesh {
                 +a, +b, 0f // p1
         );
         setBuffer(VertexBuffer.Type.Position, numAxes, positionBuffer);
-        int numFloats = positionBuffer.capacity();
-        assert numFloats == 20 * MyMesh.vpt * numAxes;
-        positionBuffer.limit(numFloats);
+        positionBuffer.clear();
 
         if (generateNormals) {
             MyMesh.generateNormals(this);
