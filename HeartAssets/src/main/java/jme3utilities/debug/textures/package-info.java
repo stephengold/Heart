@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018, Stephen Gold
+ Copyright (c) 2018-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -25,6 +25,7 @@
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 /**
- * Classes to generate static textures for use with SkeletonVisualizer.
+ * Classes to generate static textures for use with PointVisualizer or
+ * SkeletonVisualizer.
  */
 package jme3utilities.debug.textures;

@@ -36,7 +36,7 @@ import jme3utilities.Heart;
 import jme3utilities.MyString;
 
 /**
- * Console application to generate the texture "saltire.png".
+ * A console application to generate the texture "saltire.png".
  *
  * @author Stephen Gold sgold@sonic.net
  */

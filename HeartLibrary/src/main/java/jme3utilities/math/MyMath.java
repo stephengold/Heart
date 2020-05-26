@@ -50,7 +50,7 @@ public class MyMath {
      */
     final public static double halfPi = Math.PI / 2.0;
     /**
-     * golden ratio = 1.618... TODO use MyMath
+     * golden ratio = 1.618...
      */
     final public static float phi = (1f + FastMath.sqrt(5f)) / 2f;
     /**
