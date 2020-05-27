@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 5.5.0 released on TBD
+## Version 5.5.0 released on 26 May 2020
 
  + Added an `Octasphere` class.
  + Added public constants `farZ` and `nearZ` to the `MyCamera` class.
