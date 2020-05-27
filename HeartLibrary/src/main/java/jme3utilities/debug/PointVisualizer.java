@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2019, Stephen Gold
+ Copyright (c) 2018-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -79,8 +79,8 @@ public class PointVisualizer extends Geometry {
      * @param size the desired size (in pixels, &gt;0)
      * @param color the desired color (unaffected) or null for the default
      * @param shapeName the name of a sprite texture (either "cross", "lozenge",
-     * "mascle", "ring", "saltire", "solid circle", or "square", or null for a
-     * solid square)
+     * "mascle", "pin", "ring", "saltire", "solid circle", or "square", or null
+     * for a solid square)
      */
     public PointVisualizer(AssetManager assetManager, int size,
             ColorRGBA color, String shapeName) {
