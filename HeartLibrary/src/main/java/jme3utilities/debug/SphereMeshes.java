@@ -34,6 +34,7 @@ import jme3utilities.MyMesh;
 import jme3utilities.Validate;
 import jme3utilities.mesh.Icosphere;
 import jme3utilities.mesh.LoopMesh;
+import jme3utilities.mesh.Octasphere;
 
 /**
  * Enumerate mesh options for visualizing spheres.
@@ -52,6 +53,10 @@ public enum SphereMeshes {
      * LoopMesh with 32 vertices (wants Y-axis billboarding)
      */
     LoopMesh,
+    /**
+     * Octasphere with numRefineSteps=2 (66 vertices)
+     */
+    Octasphere,
     /**
      * com.jme3.scene.shape.Sphere with 172 vertices
      */
@@ -78,6 +83,10 @@ public enum SphereMeshes {
 
             case LoopMesh:
                 result = mesh instanceof LoopMesh;
+                break;
+
+            case Octasphere:
+                result = mesh instanceof Octasphere;
                 break;
 
             case PoleSphere:
@@ -117,6 +126,11 @@ public enum SphereMeshes {
             case LoopMesh:
                 int numVertices = 32;
                 result = new LoopMesh(numVertices, radius);
+                break;
+
+            case Octasphere:
+                numRefineSteps = 2;
+                result = new Octasphere(numRefineSteps, radius);
                 break;
 
             case PoleSphere:
