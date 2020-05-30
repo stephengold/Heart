@@ -82,23 +82,23 @@ public class PointVisualizer extends Geometry {
      * "mascle", "pin", "ring", "saltire", "solid circle", or "square", or null
      * for a solid square)
      */
-    public PointVisualizer(AssetManager assetManager, int size,
-            ColorRGBA color, String shapeName) {
+    public PointVisualizer(AssetManager assetManager, int size, ColorRGBA color,
+            String shapeName) {
         super(shapeName, new PointMesh());
         Validate.nonNull(assetManager, "asset manager");
         Validate.positive(size, "size");
 
         this.assetManager = assetManager;
 
-        Material material
+        Material mat
                 = MyAsset.createMulticolor2Material(assetManager, null, size);
-        setMaterial(material);
-        material.setName("point");
+        setMaterial(mat);
+        mat.setName("point");
 
         if (color != null) {
-            material.setColor("Color", color.clone());
+            mat.setColor("Color", color.clone());
         }
-        RenderState renderState = material.getAdditionalRenderState();
+        RenderState renderState = mat.getAdditionalRenderState();
         renderState.setBlendMode(RenderState.BlendMode.Alpha);
         renderState.setDepthTest(false);
 
