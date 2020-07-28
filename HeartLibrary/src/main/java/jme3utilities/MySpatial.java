@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -788,6 +788,20 @@ public class MySpatial {
         }
 
         return storeResult;
+    }
+
+    /**
+     * Enumerate all geometries in the specified subtree of a scene graph.
+     *
+     * @see com.jme3.scene.Node#descendantMatches(java.lang.Class)
+     *
+     * @param subtree (not null, aliases created)
+     * @return a new List of pre-existing instances (not null, not empty)
+     */
+    public static List<Geometry> listGeometries(Spatial subtree) {
+        Validate.nonNull(subtree, "subtree");
+        List<Geometry> result = listSpatials(subtree, Geometry.class, null);
+        return result;
     }
 
     /**
