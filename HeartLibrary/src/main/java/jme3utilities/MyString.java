@@ -111,7 +111,7 @@ public class MyString {
                 return axisIndex;
             }
         }
-        String quoted = MyString.quote(axisName);
+        String quoted = quote(axisName);
         throw new IllegalArgumentException(quoted);
     }
 
@@ -175,7 +175,7 @@ public class MyString {
      */
     public static String describe(float fValue) {
         String raw = String.format("%g", fValue);
-        String result = MyString.trimFloat(raw);
+        String result = trimFloat(raw);
 
         assert result != null;
         assert !result.isEmpty();
@@ -191,7 +191,7 @@ public class MyString {
      */
     public static String describeFraction(float fValue) {
         String raw = String.format("%.3f", fValue);
-        String result = MyString.trimFloat(raw);
+        String result = trimFloat(raw);
 
         assert result != null;
         assert !result.isEmpty();
@@ -479,7 +479,7 @@ public class MyString {
         Validate.nonNull(prefix, "prefix");
         if (!input.startsWith(prefix)) {
             logger.log(Level.SEVERE, "input={0}, prefix={1}", new Object[]{
-                MyString.quote(input), MyString.quote(prefix)
+                quote(input), quote(prefix)
             });
             throw new IllegalArgumentException("input must start with prefix.");
         }
@@ -503,7 +503,7 @@ public class MyString {
         Validate.nonNull(suffix, "suffix");
         if (!input.endsWith(suffix)) {
             logger.log(Level.SEVERE, "input={0}, suffix={1}", new Object[]{
-                MyString.quote(input), MyString.quote(suffix)
+                quote(input), quote(suffix)
             });
             throw new IllegalArgumentException("input must end with suffix.");
         }

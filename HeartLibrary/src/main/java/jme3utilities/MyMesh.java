@@ -603,7 +603,7 @@ public class MyMesh {
             int numVertices = mesh.getVertexCount();
             Vector3f tempLocation = new Vector3f();
             for (int vertexI = 0; vertexI < numVertices; ++vertexI) {
-                MyMesh.vertexVector3f(mesh, VertexBuffer.Type.Position, vertexI,
+                vertexVector3f(mesh, VertexBuffer.Type.Position, vertexI,
                         tempLocation);
                 if (!geometry.isIgnoreTransform()) {
                     geometry.localToWorld(tempLocation, tempLocation);
