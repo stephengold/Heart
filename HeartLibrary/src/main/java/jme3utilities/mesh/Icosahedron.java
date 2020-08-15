@@ -26,7 +26,6 @@
  */
 package jme3utilities.mesh;
 
-import com.jme3.math.FastMath;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.VertexBuffer;
 import com.jme3.util.BufferUtils;
@@ -49,10 +48,6 @@ public class Icosahedron extends Mesh {
     // *************************************************************************
     // constants and loggers
 
-    /**
-     * golden ratio = 1.618... TODO use MyMath
-     */
-    final public static float phi = (1f + FastMath.sqrt(5f)) / 2f;
     /**
      * number of axes in a vector
      */
@@ -84,9 +79,9 @@ public class Icosahedron extends Mesh {
     public Icosahedron(float radius, boolean generateNormals) {
         Validate.positive(radius, "radius");
 
-        float denom = MyMath.hypotenuse(1f, phi) / radius;
+        float denom = MyMath.hypotenuse(1f, MyMath.phi) / radius;
         float a = 1f / denom; // small offset
-        float b = phi / denom; // big offset
+        float b = MyMath.phi / denom; // big offset
 
         FloatBuffer positionBuffer = BufferUtils.createFloatBuffer(
                 -a, +b, 0f, // p0

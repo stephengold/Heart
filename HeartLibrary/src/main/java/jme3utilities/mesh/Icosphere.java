@@ -40,6 +40,7 @@ import java.util.logging.Logger;
 import jme3utilities.MyMesh;
 import jme3utilities.Validate;
 import jme3utilities.math.MyBuffer;
+import jme3utilities.math.MyMath;
 import jme3utilities.math.MyVector3f;
 
 /**
@@ -60,9 +61,9 @@ public class Icosphere extends Mesh {
     // constants and loggers
 
     /**
-     * golden ratio = 1.618... TODO use MyMath
+     * golden ratio = 1.618...
      */
-    final public static float phi = (1f + FastMath.sqrt(5f)) / 2f;
+    final private static float phi = MyMath.phi;
     /**
      * number of axes in a vector
      */

@@ -51,10 +51,6 @@ public class Dodecahedron extends Mesh {
     // constants and loggers
 
     /**
-     * golden ratio = 1.618... TODO use MyMath
-     */
-    final public static float phi = (1f + FastMath.sqrt(5f)) / 2f;
-    /**
      * message logger for this class
      */
     final public static Logger logger
@@ -82,6 +78,7 @@ public class Dodecahedron extends Mesh {
         Validate.positive(radius, "radius");
         Validate.nonNull(mode, "mode");
 
+        float phi = MyMath.phi;
         float denom = MyMath.hypotenuse(2f, phi + 1f) / radius;
 
         float za = (phi + 1f) / denom;
