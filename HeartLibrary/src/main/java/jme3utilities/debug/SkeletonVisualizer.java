@@ -307,7 +307,7 @@ public class SkeletonVisualizer extends SubtreeControl {
         Validate.nonNull(newColor, "new color");
 
         setLineColor(newColor);
-        SkeletonVisualizer.this.setHeadColor(newColor);
+        setHeadColor(newColor);
     }
 
     /**
