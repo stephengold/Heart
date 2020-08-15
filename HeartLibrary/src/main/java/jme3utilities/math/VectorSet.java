@@ -54,7 +54,13 @@ public interface VectorSet {
      * @param vector the value to add (not null, unaffected)
      */
     void add(Vector3f vector);
-    // TODO addAll(), clear()
+    // TODO addAll()
+
+    /**
+     * Reset this set to its initial (empty) state without altering its
+     * capacity.
+     */
+    void clear();
 
     /**
      * Test whether this set contains the specified value.

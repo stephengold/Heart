@@ -74,16 +74,6 @@ public class VectorSetUsingCollection implements VectorSet {
         set = new HashSet<>(numVectors);
     }
     // *************************************************************************
-    // new methods exposed
-
-    /**
-     * Reset this set to its initial (empty) state without altering its
-     * capacity.
-     */
-    public void clear() {
-        set.clear();
-    }
-    // *************************************************************************
     // VectorSet methods
 
     /**
@@ -109,6 +99,15 @@ public class VectorSetUsingCollection implements VectorSet {
     public void add(Vector3f vector) {
         Validate.nonNull(vector, "vector");
         set.add(vector.clone());
+    }
+
+    /**
+     * Reset this set to its initial (empty) state without altering its
+     * capacity.
+     */
+    @Override
+    public void clear() {
+        set.clear();
     }
 
     /**
