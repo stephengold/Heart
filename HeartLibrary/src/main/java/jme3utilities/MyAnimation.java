@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2019, Stephen Gold
+ Copyright (c) 2014-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package jme3utilities;
 import com.jme3.anim.AnimClip;
 import com.jme3.anim.AnimTrack;
 import com.jme3.anim.Joint;
+import com.jme3.anim.MorphTrack;
 import com.jme3.anim.TransformTrack;
 import com.jme3.anim.util.HasLocalTransform;
 import com.jme3.animation.AnimControl;
@@ -301,6 +302,25 @@ public class MyAnimation {
     }
 
     /**
+     * Find the index of the last keyframe at or before the specified time in
+     * the specified TransformTrack.
+     *
+     * @param track the TransformTrack to search (not null, unaffected)
+     * @param time the track time (in seconds, &ge;0)
+     * @return the keyframe's index (&ge;0)
+     */
+    public static int findPreviousKeyframeIndex(TransformTrack track,
+            float time) {
+        Validate.nonNegative(time, "time");
+
+        float[] times = track.getTimes();
+        int result = MyArray.findPreviousIndex(time, times);
+
+        assert result >= 0 : result;
+        return result;
+    }
+
+    /**
      * Find a SpatialTrack in the specified animation for the specified spatial.
      *
      * @param animControl the AnimControl containing the Animation (not null,
@@ -376,6 +396,33 @@ public class MyAnimation {
             }
         }
 
+        return result;
+    }
+
+    /**
+     * Access the time array of the specified track.
+     *
+     * @param object the input track (a MorphTrack, TransformTrack, or Track)
+     * @return the pre-existing array (not null, length&gt;0)
+     */
+    public static float[] getKeyFrameTimes(Object object) {
+        float[] result;
+        if (object instanceof MorphTrack) {
+            MorphTrack morphTrack = (MorphTrack) object;
+            result = morphTrack.getTimes();
+        } else if (object instanceof Track) {
+            Track t = (Track) object;
+            result = t.getKeyFrameTimes();
+        } else if (object instanceof TransformTrack) {
+            TransformTrack transformTrack = (TransformTrack) object;
+            result = transformTrack.getTimes();
+        } else {
+            String className = object.getClass().getSimpleName();
+            throw new IllegalArgumentException(className);
+        }
+
+        assert result != null;
+        assert result.length > 0 : result.length;
         return result;
     }
 
