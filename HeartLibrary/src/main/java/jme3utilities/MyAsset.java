@@ -65,10 +65,11 @@ final public class MyAsset {
     final private static Mesh squareMesh
             = new RectangleMesh(-1f, 1f, -1f, 1f, 1f);
     /**
-     * asset path of the ShowNormals material definition
+     * asset path of the ShowNormals material definition with support for gamma
+     * correction
      */
     final public static String debugMaterialAssetPath
-            = "Common/MatDefs/Misc/ShowNormals.j3md";
+            = "MatDefs/debug/ShowNormals.j3md";
     /**
      * asset path to the multicolor wireframe material definition with support
      * for alpha discard and non-default point shapes
@@ -180,12 +181,17 @@ final public class MyAsset {
      * Create a material for debugging mesh normals.
      *
      * @param assetManager (not null)
+     * @param gamma 1 &rarr; no gamma correction, 2.2 &rarr; standard gamma
+     * correction (&gt;0)
      * @return a new instance
      */
-    public static Material createDebugMaterial(AssetManager assetManager) {
+    public static Material createDebugMaterial(AssetManager assetManager,
+            float gamma) {
+        Validate.positive(gamma, "gamma");
         Validate.nonNull(assetManager, "asset manager");
 
         Material material = new Material(assetManager, debugMaterialAssetPath);
+        material.setFloat("Gamma", gamma);
         material.setName("debug");
 
         return material;

@@ -422,7 +422,9 @@ public class TestSolidMeshes
         mat.setName("back-only wireframe");
         allMaterials.add(mat);
 
-        mat = MyAsset.createDebugMaterial(assetManager);
+        boolean gammaCorrection = settings.isGammaCorrection();
+        float gamma = gammaCorrection ? 2.2f : 1f;
+        mat = MyAsset.createDebugMaterial(assetManager, gamma);
         allMaterials.add(mat);
 
         String assetPath = "Interface/Logo/Monkey.jpg";
