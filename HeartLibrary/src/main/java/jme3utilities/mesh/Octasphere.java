@@ -99,11 +99,11 @@ public class Octasphere extends Mesh {
      * map vertex indices to location vectors in mesh coordinates, all with
      * length=radius
      */
-    final private List<Vector3f> locations = new ArrayList<>(128);
+    final private List<Vector3f> locations = new ArrayList<>(74);
     /**
      * cache to avoid duplicate vertices: map index pairs to midpoint indices
      */
-    final private Map<Long, Integer> midpointCache = new HashMap<>(480);
+    final private Map<Long, Integer> midpointCache = new HashMap<>(67);
     /**
      * vertex locations in a regular octahedron with radius=1
      */
@@ -131,6 +131,8 @@ public class Octasphere extends Mesh {
      * 1 step &rarr; 18 vertices, 48 edges, 32 triangular faces
      * </li><li>
      * 2 steps &rarr; 66 vertices, 192 edges, 128 triangular faces
+     * </li><li>
+     * 3 steps &rarr; 258 vertices, 768 edges, 512 triangular faces
      * </li><li>
      * etcetera
      * </ul>
@@ -193,6 +195,13 @@ public class Octasphere extends Mesh {
 
             faces = newFaces;
         }
+
+        //System.out.println("numRefineSteps  = " + numRefineSteps);
+        //System.out.println("numVertices     = " + locations.size());
+        //System.out.println("numFaces        = " + faces.size() / vpt);
+        //System.out.println("numCacheEntries = " + midpointCache.size());
+        //System.out.println();
+
         midpointCache.clear();
 
         int numVertices = locations.size();
@@ -216,10 +225,10 @@ public class Octasphere extends Mesh {
         setBuffer(VertexBuffer.Type.Index, vpt, ibFormat, ibData);
 
         FloatBuffer uvBuffer = BufferUtils.createFloatBuffer(2 * numVertices);
-        for (Vector3f pos : locations) {
+        for (int i = 0; i < numVertices; ++i) {
+            Vector3f pos = locations.get(i);
             Vector2f longLat = cartesianToSpherical(pos);
             float u = 0.5f + longLat.x / FastMath.TWO_PI;
-            // u = MyMath.modulo(0.5f - u, 1f);// to match TextureMode.Projected
             float v = 0.5f + longLat.y / FastMath.PI;
             uvBuffer.put(u).put(v);
         }
@@ -245,6 +254,7 @@ public class Octasphere extends Mesh {
     private int addVertex(Vector3f location) {
         float length = location.length();
         locations.add(location.mult(radius / length));
+
         int result = nextVertexIndex;
         ++nextVertexIndex;
 
