@@ -1,5 +1,17 @@
 # release log for the Heart Library and related tests
 
+## Version 6.0.0 released on TBD
+
+ + Added a "gamma" argument to `createDebugMaterial()`
+   in the `MyAsset` class. (API change)
+ + Removed or privatized the `phi` constants in 3 mesh classes. (API change)
+ + Added a `clear()` method to the `VectorSet` interface. (API change)
+ + Added a return value to the `validateUnit()` method
+   in the `MyQuaternion` class.
+ + Added a U-V seam to `Octasphere` so it can display textures without glitches.
+ + Added a `listGeometries()` convenience method to the `MySpatial` class.
+ + Added an `Octasphere` value to the `SphereMeshes` enum.
+
 ## Version 5.5.0 released on 26 May 2020
 
  + Added an `Octasphere` class.
