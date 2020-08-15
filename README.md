@@ -12,7 +12,8 @@ It contains 3 sub-projects:
 Complete source code (in Java) is provided under
 [a 3-clause BSD license][license].
 
-Both [Minie] and [Wes] depend on the Heart Library.
+Many other libraries (including [Minie], [SkyControl], and [Wes])
+depend on the Heart Library.
 
 <a name="toc"/>
 
@@ -38,11 +39,14 @@ Both [Minie] and [Wes] depend on the Heart Library.
    + `BoundsVisualizer` to visualize the world bounds of a `Spatial`
    + `PointVisualizer` to visualize a particular location in the world
    + `SkeletonVisualizer` to visualize the bones/joints of an animated model
+   + `MyAsset.createDebugMaterial()` to visualize mesh normals
+      with or without gamma correction
    + `MyMesh.boneWeightMaterial()` to visualize bone weights in a `Mesh`
  + `Mesh` subclasses:
    + `Dodecahedron`, `Icosahedron`, `Octahedron`, and `Tetrahedron`
      to generate meshes for Platonic solids
-   + `Cone`, `DomeMesh`, `Icosphere`, `Prism` to generate familiar 3-D shapes
+   + `Cone`, `DomeMesh`, `Icosphere`, `Octasphere`, and `Prism`
+     to generate familiar 3-D shapes
    + `RectangleMesh` to generate custom quads
    + `RoundedRectangle` to generate eye-pleasing backgrounds
      for user-interface text
@@ -56,8 +60,10 @@ Both [Minie] and [Wes] depend on the Heart Library.
    + convert mesh triangles to lines
  + JME-oriented math aids:
    + generate pseudo-random quaternions and vectors
+   + interpolate and cardinalize quaternions and vectors
+   + other useful operations on scalars, quaternions, vectors,
+     arrays, and buffers
    + generate 2-D Perlin noise
-   + operations on scalars, arrays, and buffers
  + loaders for `Properties` and `String` assets
  + `ContrastAdjustmentFilter`
  + an `AppState` to manage `ViewPort` updating
@@ -104,7 +110,7 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
      + `cd Heart`
-     + `git checkout -b latest 5.5.0`
+     + `git checkout -b latest 6.0.0`
    + using a web browser:
      + browse to [https://github.com/stephengold/Heart/releases/latest](https://github.com/stephengold/Heart/releases/latest)
      + follow the "Source code (zip)" link
@@ -147,14 +153,14 @@ resolve the remaining dependencies automatically.
         jcenter()
     }
     dependencies {
-        compile 'com.github.stephengold:Heart:5.5.0'
+        compile 'com.github.stephengold:Heart:6.0.0'
     }
 
 #### For Ant projects
 
 For projects built using [Ant], download the library:
 
- + https://github.com/stephengold/Heart/releases/tag/5.5.0
+ + https://github.com/stephengold/Heart/releases/latest
 
 You'll want the class jar
 and probably the `-sources` and `-javadoc` jars as well.
@@ -168,15 +174,15 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
  5. Add the `Heart` class jar:
     + Click on the "Add JAR/Folder" button.
     + Navigate to the download folder.
-    + Select the "Heart-5.5.0.jar" file.
+    + Select the "Heart-6.0.0.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
     + Click on the "Edit" button.
     + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "Heart-5.5.0-javadoc.jar" file.
+    + Select the "Heart-6.0.0-javadoc.jar" file.
     + Click on the "Open" button.
     + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "Heart-5.5.0-sources.jar" file.
+    + Select the "Heart-6.0.0-sources.jar" file.
     + Click on the "Open" button again.
     + Click on the "OK" button to close the "Edit Jar Reference" dialog.
  7. Click on the "OK" button to exit the "Project Properties" dialog.
@@ -202,6 +208,7 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 [minie]: https://github.com/stephengold/Minie "Minie Project"
 [mint]: https://linuxmint.com "Linux Mint Project"
 [netbeans]: https://netbeans.org "NetBeans Project"
+[skycontrol]: https://github.com/stephengold/SkyControl "SkyControl Project"
 [utilities]: https://github.com/stephengold/jme3-utilities "Jme3-utilities Project"
 [wes]: https://github.com/stephengold/Wes "Wes Project"
 [winmerge]: http://winmerge.org "WinMerge Project"
