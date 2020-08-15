@@ -5,12 +5,12 @@ The [Heart Project][heart] provides a general-purpose add-on library for the
 
 It contains 3 sub-projects:
 
- 1. HeartLibrary: the Heart runtime library and its automated tests (in Java)
- 2. HeartExamples: demos, examples, and non-automated test software (in Java)
- 3. HeartAssets: generate assets included in HeartLibrary (in Java)
+ 1. HeartLibrary: the Heart runtime library and its automated tests
+ 2. HeartExamples: demos, examples, and non-automated test software
+ 3. HeartAssets: generate assets included in HeartLibrary
 
 Complete source code (in Java) is provided under
-[a BSD license][license].
+[a 3-clause BSD license][license].
 
 Both [Minie] and [Wes] depend on the Heart Library.
 
@@ -238,8 +238,8 @@ software developers:
  + plus the creators of (and contributors to) the following software:
     + the [Blender] 3-D animation suite
     + the [FindBugs] source-code analyzer
-    + the [Git] revision-control system and GitK commit viewer
     + the [Firefox] and [Google Chrome][chrome] web browsers
+    + the [Git] revision-control system and GitK commit viewer
     + the [Gradle] build tool
     + the Java compiler, standard doclet, and runtime environment
     + [jMonkeyEngine][jme] and the jME3 Software Development Kit
@@ -251,7 +251,7 @@ software developers:
     + the PMD source-code analyzer
     + the [WinMerge] differencing and merging tool
 
-I am grateful to [JFrog] and [Github]
+I am grateful to [Github], [JFrog], and Imgur
 for providing free hosting for this project
 and many other open-source projects.
 
