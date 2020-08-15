@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 6.0.0 released on TBD
+## Version 6.0.0 released on 15 August 2020
 
  + Added a "gamma" argument to `createDebugMaterial()`
    in the `MyAsset` class. (API change)
