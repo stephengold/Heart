@@ -565,16 +565,16 @@ public class MyQuaternion {
     }
 
     /**
-     * Validate a unit quaternion as a method argument. TODO should return a
-     * boolean
+     * Validate a unit quaternion as a method argument.
      *
      * @param q quaternion to validate (not null, unaffected)
      * @param description description of the quaternion
      * @param tolerance for the norm (&ge;0)
+     * @return true
      * @throws IllegalArgumentException if the norm is out of tolerance
      * @throws NullPointerException if the quaternion is null
      */
-    public static void validateUnit(Quaternion q, String description,
+    public static boolean validateUnit(Quaternion q, String description,
             float tolerance) {
         Validate.nonNull(q, description);
 
@@ -592,5 +592,7 @@ public class MyQuaternion {
                     "norm(%s) must be within %f of 1.", what, tolerance);
             throw new IllegalArgumentException(message);
         }
+
+        return true;
     }
 }
