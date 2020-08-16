@@ -173,17 +173,13 @@ public class TestContrast extends ActionApplication {
         InputMode dim = getDefaultInputMode();
 
         dim.bind("dump viewport", KeyInput.KEY_P);
+        dim.bind("next exponent", KeyInput.KEY_EQUALS, KeyInput.KEY_NUMPAD6);
+        dim.bind("previous exponent", KeyInput.KEY_MINUS, KeyInput.KEY_NUMPAD4);
 
-        dim.bind("next exponent", KeyInput.KEY_EQUALS);
-        dim.bind("next exponent", KeyInput.KEY_NUMPAD6);
-
-        dim.bind("previous exponent", KeyInput.KEY_MINUS);
-        dim.bind("previous exponent", KeyInput.KEY_NUMPAD4);
-
-        dim.bind("signal " + CameraInput.FLYCAM_LOWER, KeyInput.KEY_DOWN);
-        dim.bind("signal " + CameraInput.FLYCAM_RISE, KeyInput.KEY_UP);
-        dim.bind("signal orbitLeft", KeyInput.KEY_LEFT);
-        dim.bind("signal orbitRight", KeyInput.KEY_RIGHT);
+        dim.bindSignal(CameraInput.FLYCAM_LOWER, KeyInput.KEY_DOWN);
+        dim.bindSignal(CameraInput.FLYCAM_RISE, KeyInput.KEY_UP);
+        dim.bindSignal("orbitLeft", KeyInput.KEY_LEFT);
+        dim.bindSignal("orbitRight", KeyInput.KEY_RIGHT);
 
         dim.bind("toggle help", KeyInput.KEY_H);
 
