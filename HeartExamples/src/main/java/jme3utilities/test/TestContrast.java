@@ -122,6 +122,7 @@ public class TestContrast extends ActionApplication {
         AppSettings settings = new AppSettings(loadDefaults);
         settings.setTitle(applicationName);
 
+        settings.setAudioRenderer(null);
         settings.setRenderer(AppSettings.LWJGL_OPENGL32);
         application.setSettings(settings);
         application.start();

@@ -78,6 +78,8 @@ public class TestPas extends SimpleApplication {
          */
         AppSettings settings = new AppSettings(true);
         settings.setTitle(windowTitle);
+
+        settings.setAudioRenderer(null);
         application.setSettings(settings);
         /*
          * Invoke the JME startup code, which in turn invokes simpleInitApp().

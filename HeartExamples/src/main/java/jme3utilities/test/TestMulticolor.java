@@ -84,6 +84,7 @@ public class TestMulticolor extends SimpleApplication {
         AppSettings settings = new AppSettings(loadDefaults);
         settings.setTitle(applicationName);
 
+        settings.setAudioRenderer(null);
         settings.setRenderer(AppSettings.LWJGL_OPENGL32);
         app.setSettings(settings);
         app.start();
