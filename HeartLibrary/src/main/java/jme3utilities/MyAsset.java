@@ -260,7 +260,8 @@ final public class MyAsset {
     }
 
     /**
-     * Create a non-shiny shaded material with the specified color.
+     * Create a non-shiny, single-sided shaded material with the specified
+     * color.
      *
      * @param assetManager (not null)
      * @param color ambient/diffuse color (not null, unaffected)
@@ -280,7 +281,8 @@ final public class MyAsset {
     }
 
     /**
-     * Create a non-shiny shaded material with the specified diffuse texture.
+     * Create a non-shiny, single-sided shaded material with the specified
+     * diffuse texture.
      *
      * @param assetManager (not null)
      * @param texture (not null, alias created)
@@ -298,7 +300,7 @@ final public class MyAsset {
     }
 
     /**
-     * Create a shiny shaded material with the specified color.
+     * Create a shiny, single-sided shaded material with the specified color.
      *
      * @param assetManager (not null)
      * @param color ambient/diffuse color (not null, unaffected)
