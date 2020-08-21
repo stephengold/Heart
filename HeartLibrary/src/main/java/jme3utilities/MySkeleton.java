@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -35,6 +35,7 @@ import com.jme3.animation.SkeletonControl;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.control.Control;
@@ -371,6 +372,31 @@ public class MySkeleton {
         Node result;
         try {
             result = (Node) attachedNodeField.get(joint);
+        } catch (IllegalAccessException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        return result;
+    }
+
+    /**
+     * Access the target geometry of the specified Joint.
+     *
+     * @param joint the Joint to read (not null, unaffected)
+     * @return the pre-existing instance, or null if none
+     */
+    public static Geometry getTargetGeometry(Joint joint) {
+        Field attachNodeField;
+        try {
+            attachNodeField = Joint.class.getDeclaredField("targetGeometry");
+        } catch (NoSuchFieldException exception) {
+            throw new RuntimeException(exception);
+        }
+        attachNodeField.setAccessible(true);
+
+        Geometry result;
+        try {
+            result = (Geometry) attachNodeField.get(joint);
         } catch (IllegalAccessException exception) {
             throw new RuntimeException(exception);
         }
