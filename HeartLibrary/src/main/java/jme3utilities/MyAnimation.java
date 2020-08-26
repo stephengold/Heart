@@ -443,7 +443,8 @@ public class MyAnimation {
             result = spatialTrack.getRotations();
 
         } else {
-            throw new IllegalArgumentException();
+            String className = track.getClass().getSimpleName();
+            throw new IllegalArgumentException(className);
         }
 
         return result;
@@ -466,7 +467,8 @@ public class MyAnimation {
             result = spatialTrack.getScales();
 
         } else {
-            throw new IllegalArgumentException();
+            String className = track.getClass().getSimpleName();
+            throw new IllegalArgumentException(className);
         }
 
         return result;
@@ -501,7 +503,8 @@ public class MyAnimation {
             result = spatial.getName();
 
         } else {
-            throw new IllegalArgumentException();
+            String className = track.getClass().getSimpleName();
+            throw new IllegalArgumentException(className);
         }
 
         return result;
@@ -524,7 +527,8 @@ public class MyAnimation {
             result = spatialTrack.getTranslations();
 
         } else {
-            throw new IllegalArgumentException();
+            String className = track.getClass().getSimpleName();
+            throw new IllegalArgumentException(className);
         }
 
         return result;
