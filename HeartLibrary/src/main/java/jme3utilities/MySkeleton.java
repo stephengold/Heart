@@ -28,6 +28,7 @@ package jme3utilities;
 
 import com.jme3.anim.Armature;
 import com.jme3.anim.Joint;
+import com.jme3.anim.SkinningControl;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
@@ -311,8 +312,8 @@ public class MySkeleton {
         }
 
         if (skeleton == null) {
-            SkeletonControl skeletonControl;
-            skeletonControl = spatial.getControl(SkeletonControl.class);
+            SkeletonControl skeletonControl
+                    = spatial.getControl(SkeletonControl.class);
             if (skeletonControl != null) {
                 skeleton = skeletonControl.getSkeleton();
             }
@@ -402,6 +403,43 @@ public class MySkeleton {
         }
 
         return result;
+    }
+
+    /**
+     * Enumerate all Armature instances in the specified subtree of a scene
+     * graph. Note: recursive!
+     *
+     * @param subtree (not null, aliases created)
+     * @param addResult storage for results (added to if not null)
+     * @return an expanded list (either storeResult or a new instance)
+     */
+    public static List<Armature> listArmatures(Spatial subtree,
+            List<Armature> addResult) {
+        Validate.nonNull(subtree, "subtree");
+        if (addResult == null) {
+            addResult = new ArrayList<>(4);
+        }
+
+        int numSgcs = subtree.getNumControls();
+        for (int sgcIndex = 0; sgcIndex < numSgcs; ++sgcIndex) {
+            Control sgc = subtree.getControl(sgcIndex);
+            if (sgc instanceof SkinningControl) {
+                Armature armature = ((SkinningControl) sgc).getArmature();
+                if (armature != null && !addResult.contains(armature)) {
+                    addResult.add(armature);
+                }
+            }
+        }
+
+        if (subtree instanceof Node) {
+            Node node = (Node) subtree;
+            List<Spatial> children = node.getChildren();
+            for (Spatial child : children) {
+                listArmatures(child, addResult);
+            }
+        }
+
+        return addResult;
     }
 
     /**
