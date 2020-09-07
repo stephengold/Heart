@@ -112,7 +112,7 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
      + `cd Heart`
      + `git checkout -b latest 6.0.0`
    + using a web browser:
-     + browse to [https://github.com/stephengold/Heart/releases/latest](https://github.com/stephengold/Heart/releases/latest)
+     + browse to [https://github.com/stephengold/Heart/releases/latest][latest]
      + follow the "Source code (zip)" link
      + save the ZIP file
      + unzip the saved ZIP file
@@ -143,11 +143,13 @@ a simple matter of adding it to the classpath.
 Heart comes pre-built as a single library that depends on
 the standard jme3-core library from jMonkeyEngine.
 
-#### For Gradle projects
-
 For projects built using Maven or Gradle, it is sufficient to specify the
 dependency on the Heart Library.  The build tools should automatically
 resolve the remaining dependencies automatically.
+
+#### Gradle-built projects
+
+Add to the project’s "build.gradle" file:
 
     repositories {
         jcenter()
@@ -156,9 +158,27 @@ resolve the remaining dependencies automatically.
         compile 'com.github.stephengold:Heart:6.0.0'
     }
 
-#### For Ant projects
+#### Maven-built projects
 
-For projects built using [Ant], download the library:
+Add to the project’s "pom.xml" file:
+
+    <repositories>
+      <repository>
+        <id>jcenter</id>
+        <url>https://jcenter.bintray.com/</url>
+      </repository>
+    </repositories>
+
+    <dependency>
+      <groupId>com.github.stephengold</groupId>
+      <artifactId>Heart</artifactId>
+      <version>6.0.0</version>
+      <type>pom</type>
+    </dependency>
+
+#### Ant-built projects
+
+For projects built using [Ant], download the library from GitHub:
 
  + https://github.com/stephengold/Heart/releases/latest
 
@@ -202,6 +222,7 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 [heart]: https://github.com/stephengold/Heart "Heart Project"
 [jfrog]: https://www.jfrog.com "JFrog"
 [jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
+[latest]: https://github.com/stephengold/Heart/releases/latest "latest release"
 [license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
 [log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
