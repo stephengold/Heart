@@ -147,9 +147,19 @@ public class PointVisualizer extends Geometry {
     }
 
     /**
+     * Enable or disable the depth test.
+     *
+     * @param enable true &rarr; enable, false &rarr; disable (default=false)
+     */
+    public void setDepthTest(boolean enable) {
+        RenderState renderState = material.getAdditionalRenderState();
+        renderState.setDepthTest(enable);
+    }
+
+    /**
      * Enable or disable this visualizer.
      *
-     * @param enable true &rarr; enable, false &rarr; disable
+     * @param enable true &rarr; enable, false &rarr; disable (default=true)
      */
     public void setEnabled(boolean enable) {
         if (enable) {
