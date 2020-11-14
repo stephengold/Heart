@@ -25,7 +25,7 @@ processResources.dependsOn(':HeartAssets:shapeTextures')
 dependencies {
     api 'org.jmonkeyengine:jme3-core:' + jmonkeyengineVersion
 
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.13.1'
     testImplementation 'org.jmonkeyengine:jme3-desktop:' + jmonkeyengineVersion
 }
 
