@@ -32,6 +32,7 @@ import com.jme3.export.binary.BinaryExporter;
 import com.jme3.scene.Mesh;
 import jme3utilities.Heart;
 import jme3utilities.mesh.Cone;
+import jme3utilities.mesh.DiscMesh;
 import jme3utilities.mesh.Dodecahedron;
 import jme3utilities.mesh.DomeMesh;
 import jme3utilities.mesh.Icosahedron;
@@ -75,6 +76,10 @@ public class TestCloneMeshes {
         Cone cone = new Cone(numSides, radius, yHeight, generatePyramid);
         Cone coneClone = (Cone) Heart.deepCopy(cone);
         cloneTest(cone, coneClone);
+
+        DiscMesh disc = new DiscMesh(radius, numSides);
+        DiscMesh discClone = (DiscMesh) Heart.deepCopy(disc);
+        cloneTest(disc, discClone);
 
         Mesh.Mode mode = Mesh.Mode.Triangles;
         Dodecahedron dodec = new Dodecahedron(radius, mode);
