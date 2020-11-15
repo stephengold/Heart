@@ -1,5 +1,20 @@
 # release log for the Heart Library and related tests
 
+## Version 6.1.0 released on TBD
+
+ + Added to the library:
+   + `MyAnimation.findPreviousKeyframeIndex()`
+   + `MyAnimation.getKeyFrameTimes()`
+   + `MySkeleton.getTargetGeometry()`
+   + `MySkeleton.listArmatures()`
+   + `PointVisualizer.setDepthTest()`
+   + the `DiscMesh` class
+ + Improved the examples:
+   + disabled audio rendering
+   + upgraded the jme3-utilities-ui library to v0.9.0
+ + Upgraded Gradle to v6.7
+ + Upgrade JUnit to v4.13.1
+
 ## Version 6.0.0 released on 15 August 2020
 
  + Added a "gamma" argument to `createDebugMaterial()`
