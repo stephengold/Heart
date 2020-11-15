@@ -58,6 +58,13 @@ public class DiscMesh extends Mesh {
     // constructors
 
     /**
+     * Instantiate a unit disc with 25 vertices.
+     */
+    public DiscMesh() {
+        this(1f, 25);
+    }
+
+    /**
      * Instantiate a disc with the specified radius and number of vertices.
      *
      * @param radius the radius of the disc (&ge;0)
