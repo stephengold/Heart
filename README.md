@@ -48,7 +48,7 @@ depend on the Heart Library.
    + `Cone`, `DomeMesh`, `Icosphere`, `Octasphere`, and `Prism`
      to generate familiar 3-D shapes
    + `RectangleMesh` to generate custom quads
-   + `RoundedRectangle` to generate eye-pleasing backgrounds
+   + `DiscMesh` and `RoundedRectangle` to generate eye-pleasing backgrounds
      for user-interface text
  + `MyMesh` utilities to analyze and manipulate JMonkeyEngine meshes:
    + compress a `Mesh` by introducing an index buffer
@@ -110,7 +110,7 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
      + `cd Heart`
-     + `git checkout -b latest 6.0.0`
+     + `git checkout -b latest 6.1.0`
    + using a web browser:
      + browse to [https://github.com/stephengold/Heart/releases/latest][latest]
      + follow the "Source code (zip)" link
@@ -155,7 +155,7 @@ Add to the project’s "build.gradle" file:
         jcenter()
     }
     dependencies {
-        compile 'com.github.stephengold:Heart:6.0.0'
+        compile 'com.github.stephengold:Heart:6.1.0'
     }
 
 #### Maven-built projects
@@ -172,7 +172,7 @@ Add to the project’s "pom.xml" file:
     <dependency>
       <groupId>com.github.stephengold</groupId>
       <artifactId>Heart</artifactId>
-      <version>6.0.0</version>
+      <version>6.1.0</version>
       <type>pom</type>
     </dependency>
 
@@ -194,15 +194,15 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
  5. Add the `Heart` class jar:
     + Click on the "Add JAR/Folder" button.
     + Navigate to the download folder.
-    + Select the "Heart-6.0.0.jar" file.
+    + Select the "Heart-6.1.0.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
     + Click on the "Edit" button.
     + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "Heart-6.0.0-javadoc.jar" file.
+    + Select the "Heart-6.1.0-javadoc.jar" file.
     + Click on the "Open" button.
     + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "Heart-6.0.0-sources.jar" file.
+    + Select the "Heart-6.1.0-sources.jar" file.
     + Click on the "Open" button again.
     + Click on the "OK" button to close the "Edit Jar Reference" dialog.
  7. Click on the "OK" button to exit the "Project Properties" dialog.

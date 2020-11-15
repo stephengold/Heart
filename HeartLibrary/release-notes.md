@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 6.1.0 released on TBD
+## Version 6.1.0 released on 15 November 2020
 
  + Added to the library:
    + `MyAnimation.findPreviousKeyframeIndex()`
