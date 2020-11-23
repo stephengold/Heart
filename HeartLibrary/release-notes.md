@@ -1,5 +1,10 @@
 # release log for the Heart Library and related tests
 
+## Version 6.2.0 released on TBD
+
+ + Added a `SignalTracker` class to the library.
+ + Upgraded Gradle to v6.7.1
+
 ## Version 6.1.0 released on 15 November 2020
 
  + Added to the library:
