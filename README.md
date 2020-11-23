@@ -1,6 +1,6 @@
 <img height="150" src="https://i.imgur.com/O7MMp7A.png">
 
-The [Heart Project][heart] provides a general-purpose add-on library for the
+[The Heart Project][heart] provides a general-purpose add-on library for the
 [jMonkeyEngine game engine][jme].
 
 It contains 3 sub-projects:
@@ -19,13 +19,13 @@ depend on the Heart Library.
 
 ## Contents of this document
 
- + [Important features](#features)
- + [Downloads](#downloads)
- + [Conventions](#conventions)
- + [How to build Heart from source](#build)
- + [How to add Heart to an existing project](#add)
- + [History](#history)
- + [Acknowledgments](#acks)
++ [Important features](#features)
++ [Downloads](#downloads)
++ [Conventions](#conventions)
++ [How to build Heart from source](#build)
++ [How to add Heart to an existing project](#add)
++ [History](#history)
++ [Acknowledgments](#acks)
 
 <a name="features"/>
 
@@ -58,7 +58,7 @@ depend on the Heart Library.
    + flip mesh normals and/or triangle windings
    + enumerate all vertices in a scene-graph subtree
    + convert mesh triangles to lines
- + JME-oriented math aids:
+ + JME-oriented math:
    + generate pseudo-random quaternions and vectors
    + interpolate and cardinalize quaternions and vectors
    + other useful operations on scalars, quaternions, vectors,
@@ -110,7 +110,7 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
      + `cd Heart`
-     + `git checkout -b latest 6.1.0`
+     + `git checkout -b latest 6.2.0`
    + using a web browser:
      + browse to [https://github.com/stephengold/Heart/releases/latest][latest]
      + follow the "Source code (zip)" link
@@ -155,7 +155,7 @@ Add to the project’s "build.gradle" file:
         jcenter()
     }
     dependencies {
-        compile 'com.github.stephengold:Heart:6.1.0'
+        compile 'com.github.stephengold:Heart:6.2.0'
     }
 
 #### Maven-built projects
@@ -172,7 +172,7 @@ Add to the project’s "pom.xml" file:
     <dependency>
       <groupId>com.github.stephengold</groupId>
       <artifactId>Heart</artifactId>
-      <version>6.1.0</version>
+      <version>6.2.0</version>
       <type>pom</type>
     </dependency>
 
@@ -194,15 +194,15 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
  5. Add the `Heart` class jar:
     + Click on the "Add JAR/Folder" button.
     + Navigate to the download folder.
-    + Select the "Heart-6.1.0.jar" file.
+    + Select the "Heart-6.2.0.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
     + Click on the "Edit" button.
     + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "Heart-6.1.0-javadoc.jar" file.
+    + Select the "Heart-6.2.0-javadoc.jar" file.
     + Click on the "Open" button.
     + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "Heart-6.1.0-sources.jar" file.
+    + Select the "Heart-6.2.0-sources.jar" file.
     + Click on the "Open" button again.
     + Click on the "OK" button to close the "Edit Jar Reference" dialog.
  7. Click on the "OK" button to exit the "Project Properties" dialog.
