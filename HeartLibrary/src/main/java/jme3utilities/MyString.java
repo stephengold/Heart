@@ -238,6 +238,30 @@ public class MyString {
     }
 
     /**
+     * Find the specified string value in an array, using a linear search.
+     * Unlike
+     * {@link java.util.Arrays#binarySearch(java.lang.Object[], java.lang.Object)},
+     * the array need not be sorted.
+     *
+     * @param array the array to search (not null, unaffected)
+     * @param value the value to find (not null)
+     * @return the index of the first match (&ge;0, &lt;length) or -1 if not
+     * found
+     */
+    public static int findIndex(String[] array, String value) {
+        Validate.nonNull(array, "array");
+        Validate.nonNull(value, "value");
+
+        for (int index = 0; index < array.length; ++index) {
+            if (value.equals(array[index])) {
+                return index;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
      * Find the longest repeated prefix in a collection of strings.
      *
      * @param collection (not null, unaffected)
