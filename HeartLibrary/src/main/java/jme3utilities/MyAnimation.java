@@ -45,6 +45,7 @@ import com.jme3.math.Quaternion;
 import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Spatial;
+import java.util.Arrays;
 import java.util.logging.Logger;
 import jme3utilities.math.MyArray;
 
@@ -253,8 +254,28 @@ public class MyAnimation {
         Validate.nonNegative(time, "time");
 
         float[] times = track.getKeyFrameTimes();
-        int result = MyArray.findPreviousIndex(time, times);
+        int result = MyArray.findPreviousIndex(time, times); // TODO use Arrays
         if (result >= 0 && times[result] != time) {
+            result = -1;
+        }
+
+        return result;
+    }
+
+    /**
+     * Find the index of the keyframe (if any) at the specified time in the
+     * specified TransformTrack.
+     *
+     * @param track the TransformTrack to search (not null, unaffected)
+     * @param time the track time (in seconds, &ge;0)
+     * @return the keyframe's index (&ge;0) or -1 if no keyframe at that time
+     */
+    public static int findKeyframeIndex(TransformTrack track, float time) {
+        Validate.nonNegative(time, "time");
+
+        float[] times = track.getTimes();
+        int result = Arrays.binarySearch(times, time);
+        if (result < 0) {
             result = -1;
         }
 
