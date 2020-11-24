@@ -74,65 +74,93 @@ public class TestCloneMeshes {
         float yHeight = 3f;
         boolean generatePyramid = false;
         Cone cone = new Cone(numSides, radius, yHeight, generatePyramid);
+        Assert.assertEquals(62, cone.getTriangleCount());
+        Assert.assertEquals(186, cone.getVertexCount());
         Cone coneClone = (Cone) Heart.deepCopy(cone);
         cloneTest(cone, coneClone);
 
         DiscMesh disc = new DiscMesh(radius, numSides);
+        Assert.assertEquals(30, disc.getTriangleCount());
+        Assert.assertEquals(32, disc.getVertexCount());
         DiscMesh discClone = (DiscMesh) Heart.deepCopy(disc);
         cloneTest(disc, discClone);
 
         Mesh.Mode mode = Mesh.Mode.Triangles;
         Dodecahedron dodec = new Dodecahedron(radius, mode);
+        Assert.assertEquals(36, dodec.getTriangleCount());
+        Assert.assertEquals(20, dodec.getVertexCount());
         Dodecahedron dodecClone = (Dodecahedron) Heart.deepCopy(dodec);
         cloneTest(dodec, dodecClone);
 
         int rimSamples = 48;
         int quadrantSamples = 12;
         DomeMesh dome = new DomeMesh(rimSamples, quadrantSamples);
+        Assert.assertEquals(1008, dome.getTriangleCount());
+        Assert.assertEquals(529, dome.getVertexCount());
         DomeMesh domeClone = (DomeMesh) Heart.deepCopy(dome);
         cloneTest(dome, domeClone);
 
         boolean generateNormals = true;
         Icosahedron ico = new Icosahedron(radius, generateNormals);
+        Assert.assertEquals(20, ico.getTriangleCount());
+        Assert.assertEquals(60, ico.getVertexCount());
         Icosahedron icoClone = (Icosahedron) Heart.deepCopy(ico);
         cloneTest(ico, icoClone);
 
         int numRefineSteps = 1;
         Icosphere sphere = new Icosphere(numRefineSteps, radius);
+        Assert.assertEquals(80, sphere.getTriangleCount());
+        Assert.assertEquals(42, sphere.getVertexCount());
         Icosphere sphereClone = (Icosphere) Heart.deepCopy(sphere);
         cloneTest(sphere, sphereClone);
 
         int vertexCount = 10;
         LoopMesh loop = new LoopMesh(vertexCount);
+        Assert.assertEquals(vertexCount, loop.getTriangleCount());
+        Assert.assertEquals(vertexCount, loop.getVertexCount());
         LoopMesh loopClone = (LoopMesh) Heart.deepCopy(loop);
         cloneTest(loop, loopClone);
 
         Octahedron oct = new Octahedron(radius, generateNormals);
+        Assert.assertEquals(8, oct.getTriangleCount());
+        Assert.assertEquals(24, oct.getVertexCount());
         Octahedron octClone = (Octahedron) Heart.deepCopy(oct);
         cloneTest(oct, octClone);
 
         PointMesh point = new PointMesh();
+        Assert.assertEquals(1, point.getTriangleCount());
+        Assert.assertEquals(1, point.getVertexCount());
         PointMesh pointClone = (PointMesh) Heart.deepCopy(point);
         cloneTest(point, pointClone);
 
         Prism prism = new Prism(numSides, radius, yHeight, generateNormals);
+        Assert.assertEquals(124, prism.getTriangleCount());
+        Assert.assertEquals(372, prism.getVertexCount());
         Prism prismClone = (Prism) Heart.deepCopy(prism);
         cloneTest(prism, prismClone);
 
         RectangleMesh rect = new RectangleMesh();
+        Assert.assertEquals(2, rect.getTriangleCount());
+        Assert.assertEquals(4, rect.getVertexCount());
         RectangleMesh rectClone = (RectangleMesh) Heart.deepCopy(rect);
         cloneTest(rect, rectClone);
 
         RectangleOutlineMesh ro = new RectangleOutlineMesh();
+        Assert.assertEquals(4, ro.getTriangleCount());
+        Assert.assertEquals(4, ro.getVertexCount());
         RectangleOutlineMesh roClone
                 = (RectangleOutlineMesh) Heart.deepCopy(ro);
         cloneTest(ro, roClone);
 
         RoundedRectangle round = new RoundedRectangle();
+        Assert.assertEquals(20, round.getTriangleCount());
+        Assert.assertEquals(21, round.getVertexCount());
         RoundedRectangle roundClone = (RoundedRectangle) Heart.deepCopy(round);
         cloneTest(round, roundClone);
 
         Tetrahedron tetra = new Tetrahedron(radius, generateNormals);
+        Assert.assertEquals(4, tetra.getTriangleCount());
+        Assert.assertEquals(12, tetra.getVertexCount());
         Tetrahedron tetraClone = (Tetrahedron) Heart.deepCopy(tetra);
         cloneTest(tetra, tetraClone);
     }
