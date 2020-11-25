@@ -103,10 +103,8 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
 
 ## How to build Heart from source
 
- 1. Install build software:
-   + a Java Development Kit and
-   + [Gradle]
- 2. Download and extract the source code from GitHub:
+ 1. Install a Java Development Kit (JDK), if you don't already have one.
+ 2. Download and extract the Heart source code from GitHub:
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
      + `cd Heart`
@@ -120,7 +118,7 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
  3. Set the `JAVA_HOME` environment variable:
    + using Bash:  `export JAVA_HOME="` *path to your JDK* `"`
    + using Windows Command Prompt:  `set JAVA_HOME="` *path to your JDK* `"`
- 4. Run the Gradle wrapper:
+ 4. Run the [Gradle] wrapper:
    + using Bash:  `./gradlew build`
    + using Windows Command Prompt:  `.\gradlew build`
 
@@ -143,7 +141,7 @@ a simple matter of adding it to the classpath.
 Heart comes pre-built as a single library that depends on
 the standard jme3-core library from jMonkeyEngine.
 
-For projects built using Maven or Gradle, it is sufficient to specify the
+For projects built using Maven or [Gradle], it is sufficient to specify the
 dependency on the Heart Library.  The build tools should automatically
 resolve the remaining dependencies automatically.
 
