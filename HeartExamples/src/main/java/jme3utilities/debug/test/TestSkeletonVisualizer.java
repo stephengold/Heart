@@ -180,7 +180,7 @@ public class TestSkeletonVisualizer extends ActionApplication {
     public void moreDefaultBindings() {
         InputMode dim = getDefaultInputMode();
 
-        dim.bind("dump viewport", KeyInput.KEY_P);
+        dim.bind("dump render", KeyInput.KEY_P);
 
         dim.bindSignal(CameraInput.FLYCAM_LOWER, KeyInput.KEY_DOWN);
         dim.bindSignal(CameraInput.FLYCAM_RISE, KeyInput.KEY_UP);
@@ -213,8 +213,8 @@ public class TestSkeletonVisualizer extends ActionApplication {
     public void onAction(String actionString, boolean ongoing, float tpf) {
         if (ongoing) {
             switch (actionString) {
-                case "dump viewport":
-                    dumper.dump(viewPort);
+                case "dump render":
+                    dumper.dump(renderManager);
                     return;
                 case "toggle help":
                     toggleHelp();
