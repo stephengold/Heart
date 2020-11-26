@@ -157,30 +157,48 @@ final public class MyCamera {
      * @see #describe(com.jme3.renderer.Camera)
      */
     public static String describeMore(Camera camera) {
-        String projection = camera.isParallelProjection() ? "para" : "persp";
-        float fAspect = frustumAspectRatio(camera);
-        float vAspect = viewAspectRatio(camera);
-        String result = String.format("%s F%s:1 V%s:1", projection,
-                MyString.describeFraction(fAspect),
-                MyString.describeFraction(vAspect));
+        StringBuilder builder = new StringBuilder(100);
 
+        String projection = camera.isParallelProjection() ? "para" : "persp";
+        builder.append(projection);
+
+        builder.append(" F");
+        float fAspect = frustumAspectRatio(camera);
+        builder.append(MyString.describeFraction(fAspect));
+
+        builder.append(":1 V");
+        float vAspect = viewAspectRatio(camera);
+        builder.append(MyString.describeFraction(vAspect));
+
+        builder.append(":1 fz[");
         float near = camera.getFrustumNear();
         float far = camera.getFrustumFar();
+        builder.append(MyString.describe(near));
+        builder.append(' ');
+        builder.append(MyString.describe(far));
+
+        builder.append("] vx[");
         float left = camera.getViewPortLeft();
         float right = camera.getViewPortRight();
+        builder.append(MyString.describeFraction(left));
+        builder.append(' ');
+        builder.append(MyString.describeFraction(right));
+
+        builder.append("] vy[");
         float bottom = camera.getViewPortBottom();
         float top = camera.getViewPortTop();
-        int dWidth = camera.getWidth();
-        int dHeight = camera.getHeight();
-        result += String.format(" fz[%s %s] vx[%s %s] vy[%s %s] %dx%d",
-                MyString.describe(near),
-                MyString.describe(far),
-                MyString.describeFraction(left),
-                MyString.describeFraction(right),
-                MyString.describeFraction(bottom),
-                MyString.describeFraction(top),
-                dWidth, dHeight);
+        builder.append(MyString.describeFraction(bottom));
+        builder.append(' ');
+        builder.append(MyString.describeFraction(top));
 
+        builder.append("] ");
+        int dWidth = camera.getWidth();
+        builder.append(dWidth);
+        builder.append('x');
+        int dHeight = camera.getHeight();
+        builder.append(dHeight);
+
+        String result = builder.toString();
         return result;
     }
 
