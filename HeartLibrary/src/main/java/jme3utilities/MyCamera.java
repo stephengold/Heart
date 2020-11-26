@@ -169,8 +169,26 @@ final public class MyCamera {
         builder.append(":1 V");
         float vAspect = viewAspectRatio(camera);
         builder.append(MyString.describeFraction(vAspect));
+        builder.append(":1");
 
-        builder.append(":1 fz[");
+        if (camera.isParallelProjection()) {
+            builder.append(" fx[");
+            float left = camera.getFrustumLeft();
+            float right = camera.getFrustumRight();
+            builder.append(MyString.describe(left));
+            builder.append(' ');
+            builder.append(MyString.describe(right));
+
+            builder.append("] fy[");
+            float bottom = camera.getFrustumBottom();
+            float top = camera.getFrustumTop();
+            builder.append(MyString.describe(bottom));
+            builder.append(' ');
+            builder.append(MyString.describe(top));
+            builder.append(']');
+        }
+
+        builder.append(" fz[");
         float near = camera.getFrustumNear();
         float far = camera.getFrustumFar();
         builder.append(MyString.describe(near));
@@ -197,6 +215,16 @@ final public class MyCamera {
         builder.append('x');
         int dHeight = camera.getHeight();
         builder.append(dHeight);
+
+        if (!camera.isParallelProjection()) {
+            builder.append(" fovDeg[x=");
+            float xDegrees = xDegrees(camera);
+            float yDegrees = yDegrees(camera);
+            builder.append(MyString.describe(xDegrees));
+            builder.append(" y=");
+            builder.append(MyString.describe(yDegrees));
+            builder.append(']');
+        }
 
         String result = builder.toString();
         return result;
