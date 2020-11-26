@@ -92,9 +92,9 @@ final public class MyCamera {
      */
     public static float azimuth(Camera camera) {
         Vector3f direction = camera.getDirection();
-        float azimuth = MyVector3f.azimuth(direction);
+        float result = MyVector3f.azimuth(direction);
 
-        return azimuth;
+        return result;
     }
 
     /**
@@ -201,10 +201,10 @@ final public class MyCamera {
         float width = camera.getWidth();
         assert width > 0f : width;
 
-        float ratio = width / height;
+        float result = width / height;
 
-        assert ratio > 0f : ratio;
-        return ratio;
+        assert result > 0f : result;
+        return result;
     }
 
     /**
@@ -233,9 +233,9 @@ final public class MyCamera {
         Validate.nonNull(camera, "camera");
 
         float yTangent = yTangent(camera);
-        float fovY = 2f * FastMath.atan(yTangent);
+        float result = 2f * FastMath.atan(yTangent);
 
-        return fovY;
+        return result;
     }
 
     /**
@@ -256,10 +256,10 @@ final public class MyCamera {
         float width = camera.getFrustumRight() - camera.getFrustumLeft();
         assert width > 0f : width;
 
-        float ratio = width / height;
+        float result = width / height;
 
-        assert ratio > 0f : ratio;
-        return ratio;
+        assert result > 0f : result;
+        return result;
     }
 
     /**
@@ -352,9 +352,9 @@ final public class MyCamera {
         Vector3f far = camera.getWorldCoordinates(screenXY, farZ);
 
         Vector3f direction = far.subtract(vertex);
-        Line line = new Line(vertex, direction);
+        Line result = new Line(vertex, direction);
 
-        return line;
+        return result;
     }
 
     /**
@@ -376,9 +376,9 @@ final public class MyCamera {
 
         Vector3f direction = far.subtract(vertex);
         MyVector3f.normalizeLocal(direction);
-        Ray ray = new Ray(vertex, direction);
+        Ray result = new Ray(vertex, direction);
 
-        return ray;
+        return result;
     }
 
     /**
@@ -469,10 +469,10 @@ final public class MyCamera {
         float width = camera.getWidth() * xFraction;
         assert width > 0f : width;
 
-        float ratio = width / height;
+        float result = width / height;
 
-        assert ratio > 0f : ratio;
-        return ratio;
+        assert result > 0f : result;
+        return result;
     }
 
     /**
@@ -530,9 +530,9 @@ final public class MyCamera {
 
         float yTangent = yTangent(camera);
         float yRadians = 2f * FastMath.atan(yTangent);
-        float yDegrees = MyMath.toDegrees(yRadians);
+        float result = MyMath.toDegrees(yRadians);
 
-        return yDegrees;
+        return result;
     }
 
     /**
@@ -542,9 +542,9 @@ final public class MyCamera {
      * @return tangent of the vertical field-of-view half-angle (&ge;0)
      */
     public static float yTangent(Camera camera) {
-        float yTangent;
+        float result;
         if (camera.isParallelProjection()) {
-            yTangent = 0f;
+            result = 0f;
         } else {
             float near = camera.getFrustumNear();
             assert near > 0f : near;
@@ -552,11 +552,11 @@ final public class MyCamera {
             float height = camera.getFrustumTop() - camera.getFrustumBottom();
             assert height > 0f : height;
             float halfHeight = height / 2f;
-            yTangent = halfHeight / near;
-            assert yTangent > 0f : yTangent;
+            result = halfHeight / near;
+            assert result > 0f : result;
         }
 
-        return yTangent;
+        return result;
     }
 
     /**
