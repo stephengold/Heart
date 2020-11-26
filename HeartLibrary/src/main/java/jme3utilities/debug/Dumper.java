@@ -253,6 +253,39 @@ public class Dumper implements Cloneable {
     }
 
     /**
+     * Dump the specified Camera.
+     *
+     * @param camera (not null, unaffected)
+     */
+    public void dump(Camera camera) {
+        Validate.nonNull(camera, "camera");
+
+        dump(camera, "");
+        stream.flush();
+    }
+
+    /**
+     * Dump the specified Camera, with indentation.
+     *
+     * @param camera (not null, unaffected)
+     * @param indent the indent text (not null, may be empty)
+     */
+    public void dump(Camera camera, String indent) {
+        Validate.nonNull(camera, "camera");
+
+        stream.print(indent);
+        String description = describer.describe(camera);
+        stream.print(description);
+
+        if (camera != null) {
+            addLine(indent);
+            String desc2 = describer.describeMore(camera);
+            stream.print(' ');
+            stream.print(desc2);
+        }
+    }
+
+    /**
      * Dump the specified list of scenes.
      *
      * @param sceneList the root nodes of the scenes to dump (not null,
@@ -482,17 +515,10 @@ public class Dumper implements Cloneable {
             String descP = describer.describeProcessors(viewPort);
             stream.print(" procs[");
             stream.print(descP);
-            stream.print(']');
+            stream.println(']');
 
-            addLine(indent);
-            stream.print(" ");
             Camera camera = viewPort.getCamera();
-            desc = describer.describe(camera);
-            stream.print(desc);
-            if (camera != null) {
-                String desc2 = describer.describeMore(camera);
-                stream.printf("%n%s  %s", indent, desc2);
-            }
+            dump(camera, indent + "  ");
 
             addLine(indent);
             stream.print(" with ");
