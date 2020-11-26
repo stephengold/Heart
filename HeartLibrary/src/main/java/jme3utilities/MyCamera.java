@@ -208,6 +208,22 @@ final public class MyCamera {
     }
 
     /**
+     * Determine the horizontal field-of-view angle of the specified Camera.
+     *
+     * @param camera the Camera to analyze (not null, unaffected)
+     * @return radians from the left of the frustum to the right of the frustum
+     * (&ge;0)
+     */
+    public static float fovX(Camera camera) {
+        Validate.nonNull(camera, "camera");
+
+        float xTangent = xTangent(camera);
+        float result = 2f * FastMath.atan(xTangent);
+
+        return result;
+    }
+
+    /**
      * Calculate the vertical field-of-view angle of the specified Camera.
      *
      * @param camera the Camera to analyze (not null, unaffected)
@@ -457,6 +473,48 @@ final public class MyCamera {
 
         assert ratio > 0f : ratio;
         return ratio;
+    }
+
+    /**
+     * Determine the horizontal field-of-view angle of the specified Camera.
+     *
+     * @param camera the Camera to analyze (not null, unaffected)
+     * @return the horizontal angle in degrees (&gt;0)
+     */
+    public static float xDegrees(Camera camera) {
+        if (camera.isParallelProjection()) {
+            return 0f;
+        }
+
+        float xTangent = xTangent(camera);
+        float xRadians = 2f * FastMath.atan(xTangent);
+        float result = MyMath.toDegrees(xRadians);
+
+        return result;
+    }
+
+    /**
+     * Determine the horizontal field-of-view tangent of the specified Camera.
+     *
+     * @param camera the Camera to analyze (not null, unaffected)
+     * @return tangent of the horizontal field-of-view half-angle (&ge;0)
+     */
+    public static float xTangent(Camera camera) {
+        float result;
+        if (camera.isParallelProjection()) {
+            result = 0f;
+        } else {
+            float near = camera.getFrustumNear();
+            assert near > 0f : near;
+
+            float width = camera.getFrustumRight() - camera.getFrustumLeft();
+            assert width > 0f : width;
+            float halfWidth = width / 2f;
+            result = halfWidth / near;
+            assert result > 0f : result;
+        }
+
+        return result;
     }
 
     /**
