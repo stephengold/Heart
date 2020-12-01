@@ -1,7 +1,7 @@
 <img height="150" src="https://i.imgur.com/O7MMp7A.png">
 
-[The Heart Project][heart] provides a general-purpose add-on library for the
-[jMonkeyEngine game engine][jme].
+[The Heart Project][heart] provides a general-purpose add-on library for
+[the jMonkeyEngine (JME) game engine][jme].
 
 It contains 3 sub-projects:
 
@@ -20,10 +20,10 @@ depend on the Heart Library.
 ## Contents of this document
 
 + [Important features](#features)
++ [How to add Heart to an existing project](#add)
 + [Downloads](#downloads)
 + [Conventions](#conventions)
 + [How to build Heart from source](#build)
-+ [How to add Heart to an existing project](#add)
 + [History](#history)
 + [Acknowledgments](#acks)
 
@@ -68,66 +68,6 @@ depend on the Heart Library.
  + `ContrastAdjustmentFilter`
  + an `AppState` to manage `ViewPort` updating
  + and much, much more!
-
-[Jump to table of contents](#toc)
-
-<a name="downloads"/>
-
-## Downloads
-
-Newer releases (since v4.5.0) can be downloaded from
-[GitHub](https://github.com/stephengold/Heart/releases).
-
-Older releases (v0.9.5 through v4.4.0) can be downloaded from
-[the Jme3-utilities Project](https://github.com/stephengold/jme3-utilities/releases).
-
-Newer Maven artifacts (since v5.0.0) are available from
-[JCenter](https://bintray.com/stephengold/com.github.stephengold/Heart).
-
-Older Maven artifacts (v0.9.5 through v4.5.0) are available from
-[JFrog Bintray](https://bintray.com/stephengold/jme3utilities/jme3-utilities-heart).
-
-[Jump to table of contents](#toc)
-
-<a name="conventions"/>
-
-## Conventions
-
-Package names begin with `jme3utilities.`
-
-Both the source code and the pre-built libraries are compatible with JDK 7.
-
-[Jump to table of contents](#toc)
-
-<a name="build"/>
-
-## How to build Heart from source
-
- 1. Install a Java Development Kit (JDK), if you don't already have one.
- 2. Download and extract the Heart source code from GitHub:
-   + using Git:
-     + `git clone https://github.com/stephengold/Heart.git`
-     + `cd Heart`
-     + `git checkout -b latest 6.2.0`
-   + using a web browser:
-     + browse to [https://github.com/stephengold/Heart/releases/latest][latest]
-     + follow the "Source code (zip)" link
-     + save the ZIP file
-     + unzip the saved ZIP file
-     + `cd` to the extracted directory/folder
- 3. Set the `JAVA_HOME` environment variable:
-   + using Bash:  `export JAVA_HOME="` *path to your JDK* `"`
-   + using Windows Command Prompt:  `set JAVA_HOME="` *path to your JDK* `"`
- 4. Run the [Gradle] wrapper:
-   + using Bash:  `./gradlew build`
-   + using Windows Command Prompt:  `.\gradlew build`
-
-After a successful build,
-Maven artifacts will be found in `HeartLibrary/build/libs`.
-
-You can install the Maven artifacts to your local cache:
- + using Bash:  `./gradlew :HeartLibrary:publishToMavenLocal`
- + using Windows Command Prompt:  `.\gradlew :HeartLibrary:publishToMavenLocal`
 
 [Jump to table of contents](#toc)
 
@@ -207,6 +147,66 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 
 [Jump to table of contents](#toc)
 
+<a name="downloads"/>
+
+## Downloads
+
+Newer releases (since v4.5.0) can be downloaded from
+[GitHub](https://github.com/stephengold/Heart/releases).
+
+Older releases (v0.9.5 through v4.4.0) can be downloaded from
+[the Jme3-utilities Project](https://github.com/stephengold/jme3-utilities/releases).
+
+Newer Maven artifacts (since v5.0.0) are available from
+[JCenter](https://bintray.com/stephengold/com.github.stephengold/Heart).
+
+Older Maven artifacts (v0.9.5 through v4.5.0) are available from
+[JFrog Bintray](https://bintray.com/stephengold/jme3utilities/jme3-utilities-heart).
+
+[Jump to table of contents](#toc)
+
+<a name="conventions"/>
+
+## Conventions
+
+Package names begin with `jme3utilities.`
+
+Both the source code and the pre-built libraries are compatible with JDK 7.
+
+[Jump to table of contents](#toc)
+
+<a name="build"/>
+
+## How to build Heart from source
+
+ 1. Install a Java Development Kit (JDK), if you don't already have one.
+ 2. Download and extract the Heart source code from GitHub:
+   + using Git:
+     + `git clone https://github.com/stephengold/Heart.git`
+     + `cd Heart`
+     + `git checkout -b latest 6.2.0`
+   + using a web browser:
+     + browse to https://github.com/stephengold/Heart/releases/latest
+     + follow the "Source code (zip)" link
+     + save the ZIP file
+     + extract the contents of the saved ZIP file
+     + `cd` to the extracted directory/folder
+ 3. Set the `JAVA_HOME` environment variable:
+   + using Bash:  `export JAVA_HOME="` *path to your JDK* `"`
+   + using Windows Command Prompt:  `set JAVA_HOME="` *path to your JDK* `"`
+ 4. Run the [Gradle] wrapper:
+   + using Bash:  `./gradlew build`
+   + using Windows Command Prompt:  `.\gradlew build`
+
+After a successful build,
+Maven artifacts will be found in `HeartLibrary/build/libs`.
+
+You can install the Maven artifacts to your local cache:
+ + using Bash:  `./gradlew :HeartLibrary:publishToMavenLocal`
+ + using Windows Command Prompt:  `.\gradlew :HeartLibrary:publishToMavenLocal`
+
+[Jump to table of contents](#toc)
+
 [ant]: https://ant.apache.org "Apache Ant Project"
 [blender]: https://docs.blender.org "Blender Project"
 [bsd3]: https://opensource.org/licenses/BSD-3-Clause "3-Clause BSD License"
@@ -220,7 +220,6 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 [heart]: https://github.com/stephengold/Heart "Heart Project"
 [jfrog]: https://www.jfrog.com "JFrog"
 [jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
-[latest]: https://github.com/stephengold/Heart/releases/latest "latest release"
 [license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
 [log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
