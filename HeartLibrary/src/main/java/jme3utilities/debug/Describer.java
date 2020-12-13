@@ -37,6 +37,7 @@ import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.light.Light;
 import com.jme3.light.LightList;
+import com.jme3.light.LightProbe;
 import com.jme3.light.PointLight;
 import com.jme3.light.SpotLight;
 import com.jme3.material.MatParam;
@@ -869,6 +870,20 @@ public class Describer implements Cloneable {
                 String dir = MyVector3f.describeDirection(direction);
                 result = String.format("DL%s(%s; %s)", name, rgb, dir);
 
+            } else if (light instanceof LightProbe) {
+                LightProbe probe = (LightProbe) light;
+                if (probe.isReady()) {
+                    LightProbe.AreaType areaType = probe.getAreaType();
+                    float radius = probe.getArea().getRadius();
+                    String r = MyString.describe(radius);
+                    Vector3f location = probe.getPosition(); // alias
+                    String loc = MyVector3f.describe(location);
+                    result = String.format("LP%s(%s r=%s %s)",
+                            name, areaType, r, loc);
+                } else {
+                    result = String.format("LP%s(unready)", name);
+                }
+
             } else if (light instanceof PointLight) {
                 Vector3f location = ((PointLight) light).getPosition();
                 String loc = MyVector3f.describe(location);
@@ -887,6 +902,10 @@ public class Describer implements Cloneable {
                 if (result.isEmpty()) {
                     result = String.format("?L%s(%s)", name, rgb);
                 }
+            }
+
+            if (!light.isEnabled()) {
+                result += "DISABLED";
             }
         }
 
