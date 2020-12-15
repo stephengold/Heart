@@ -426,17 +426,40 @@ public class Heart {
     }
 
     /**
-     * Write an image to a PNG file, attempting to overwrite any pre-existing
-     * file.
+     * Write an image to a file, attempting to overwrite any pre-existing file.
      *
-     * @param filePath path to the output file (not null, not empty)
-     * @param image image to be written (not null)
-     * @throws IOException if the image cannot be written
+     * @param filePath the path to the output file (not null, not empty)
+     * @param image the image to be written (not null)
+     * @throws IOException if the file cannot be written
      */
     public static void writeImage(String filePath, RenderedImage image)
             throws IOException {
         Validate.nonEmpty(filePath, "path");
         Validate.nonNull(image, "image");
+        /*
+         * Determine the output format based on the filename
+         * or else default to PNG.
+         */
+        String formatName = "png";
+        String lowerCase = filePath.toLowerCase();
+        if (lowerCase.endsWith(".bmp")) {
+            formatName = "bmp";
+        } else if (lowerCase.endsWith(".gif")) {
+            formatName = "gif";
+        } else if (lowerCase.endsWith(".jpg") || lowerCase.endsWith(".jpeg")) {
+            formatName = "jpeg";
+        }
+        // TODO write MicroSoft's DDS file format as well
+        /*
+         * ImageIO fails silently when asked to write alpha to a BMP.
+         * It throws an IIOException when asked to write alpha to a JPEG.
+         */
+        boolean hasAlpha = image.getColorModel().hasAlpha();
+        if (hasAlpha
+                && (formatName.equals("bmp") || formatName.equals("jpeg"))) {
+            logger.log(Level.SEVERE, "unable to write alpha channel to a {0}",
+                    formatName.toUpperCase());
+        }
 
         File textureFile = new File(filePath);
         try {
@@ -451,7 +474,7 @@ public class Heart {
                 }
             }
 
-            ImageIO.write(image, "png", textureFile);
+            ImageIO.write(image, formatName, textureFile);
             logger.log(Level.INFO, "wrote texture to {0}",
                     MyString.quote(filePath));
 
