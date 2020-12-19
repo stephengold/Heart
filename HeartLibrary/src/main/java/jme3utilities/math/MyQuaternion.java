@@ -79,8 +79,8 @@ public class MyQuaternion {
      */
     public static void accumulateScaled(Quaternion total, Quaternion input,
             float scale) {
-        Validate.nonNull(total, "total");
-        Validate.nonNull(input, "input");
+        assert Validate.nonNull(total, "total");
+        assert Validate.nonNull(input, "input");
 
         float x = total.getX() + input.getX() * scale;
         float y = total.getY() + input.getY() * scale;
@@ -97,7 +97,7 @@ public class MyQuaternion {
      * @param input (not null, modified)
      */
     public static void cardinalizeLocal(Quaternion input) {
-        Validate.nonNull(input, "input");
+        assert Validate.nonNull(input, "input");
 
         normalizeLocal(input);
         /*
@@ -218,7 +218,7 @@ public class MyQuaternion {
      * @return a unit quaternion (either storeResult or a new instance)
      */
     public static Quaternion exp(Quaternion q, Quaternion storeResult) {
-        Validate.require(isPure(q), "a pure quaternion");
+        assert Validate.require(isPure(q), "a pure quaternion");
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
 
@@ -356,8 +356,8 @@ public class MyQuaternion {
      * @return true if distinct, otherwise false
      */
     public static boolean ne(Quaternion a, Quaternion b) {
-        Validate.nonNull(a, "first input quaternion");
-        Validate.nonNull(b, "2nd input quaternion");
+        assert Validate.nonNull(a, "first input quaternion");
+        assert Validate.nonNull(b, "2nd input quaternion");
 
         boolean result = a.getW() != b.getW()
                 || a.getX() != b.getX()
@@ -374,7 +374,7 @@ public class MyQuaternion {
      * @param input (not null, modified)
      */
     public static void normalizeLocal(Quaternion input) {
-        Validate.nonNull(input, "input");
+        assert Validate.nonNull(input, "input");
 
         double lengthSquared = lengthSquared(input);
         double dScale = Math.sqrt(lengthSquared);
@@ -441,9 +441,9 @@ public class MyQuaternion {
      */
     public static Quaternion slerp(float t, Quaternion q0, Quaternion q1,
             Quaternion storeResult) {
-        Validate.inRange(t, "t", 0f, 1f);
-        validateUnit(q0, "q0", 0.0001f);
-        validateUnit(q1, "q1", 0.0001f);
+        assert Validate.inRange(t, "t", 0f, 1f);
+        assert validateUnit(q0, "q0", 0.0001f);
+        assert validateUnit(q1, "q1", 0.0001f);
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
 
@@ -463,7 +463,7 @@ public class MyQuaternion {
      * @param axisIndex which axis (&ge;0, &lt;3)
      */
     public static void snapLocal(Quaternion input, int axisIndex) {
-        Validate.inRange(axisIndex, "axis index", MyVector3f.firstAxis,
+        assert Validate.inRange(axisIndex, "axis index", MyVector3f.firstAxis,
                 MyVector3f.lastAxis);
 
         float[] angles = new float[MyVector3f.numAxes];
@@ -489,11 +489,11 @@ public class MyQuaternion {
      */
     public static Quaternion squad(float t, Quaternion p, Quaternion a,
             Quaternion b, Quaternion q, Quaternion storeResult) {
-        Validate.inRange(t, "t", 0f, 1f);
-        validateUnit(p, "p", 0.0001f);
-        validateUnit(a, "a", 0.0001f);
-        validateUnit(b, "b", 0.0001f);
-        validateUnit(q, "q", 0.0001f);
+        assert Validate.inRange(t, "t", 0f, 1f);
+        assert validateUnit(p, "p", 0.0001f);
+        assert validateUnit(a, "a", 0.0001f);
+        assert validateUnit(b, "b", 0.0001f);
+        assert validateUnit(q, "q", 0.0001f);
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
 
@@ -517,9 +517,9 @@ public class MyQuaternion {
      */
     public static Quaternion squadA(Quaternion q0, Quaternion q1,
             Quaternion q2, Quaternion storeResult) {
-        validateUnit(q0, "q0", 0.0001f);
-        validateUnit(q1, "q1", 0.0001f);
-        validateUnit(q2, "q2", 0.0001f);
+        assert validateUnit(q0, "q0", 0.0001f);
+        assert validateUnit(q1, "q1", 0.0001f);
+        assert validateUnit(q2, "q2", 0.0001f);
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
 
@@ -547,7 +547,7 @@ public class MyQuaternion {
      */
     public static Quaternion standardize(Quaternion input,
             Quaternion storeResult) {
-        Validate.nonNull(input, "input quaternion");
+        assert Validate.nonNull(input, "input quaternion");
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
 
@@ -576,7 +576,7 @@ public class MyQuaternion {
      */
     public static boolean validateUnit(Quaternion q, String description,
             float tolerance) {
-        Validate.nonNull(q, description);
+        assert Validate.nonNull(q, description);
 
         double norm = lengthSquared(q);
         double delta = Math.abs(1.0 - norm);
