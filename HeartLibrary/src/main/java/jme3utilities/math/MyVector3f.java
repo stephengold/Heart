@@ -158,8 +158,8 @@ public class MyVector3f {
      */
     public static void accumulateScaled(Vector3f total, Vector3f input,
             float scale) {
-        Validate.nonNull(total, "total");
-        Validate.nonNull(input, "input");
+        assert Validate.nonNull(total, "total");
+        assert Validate.nonNull(input, "input");
 
         total.x += input.x * scale;
         total.y += input.y * scale;
@@ -174,7 +174,7 @@ public class MyVector3f {
      * @return angle above the X-Z plane (in radians, &le;Pi/2, &ge;-Pi/2)
      */
     public static float altitude(Vector3f offset) {
-        Validate.nonZero(offset, "offset");
+        assert Validate.nonZero(offset, "offset");
 
         float xzRange = MyMath.hypotenuse(offset.x, offset.z);
         float result = (float) Math.atan2(offset.y, xzRange);
@@ -195,9 +195,9 @@ public class MyVector3f {
      */
     public static boolean areCollinear(Vector3f point1, Vector3f point2,
             Vector3f point3, float tolerance2) {
-        Validate.nonNull(point1, "first location");
-        Validate.nonNull(point2, "2nd location");
-        Validate.nonNegative(tolerance2, "tolerance");
+        assert Validate.nonNull(point1, "first location");
+        assert Validate.nonNull(point2, "2nd location");
+        assert Validate.nonNegative(tolerance2, "tolerance");
         /*
          * Shortcut:
          * If point1 and point3 coincide, then the 3 points are collinear.
@@ -236,8 +236,8 @@ public class MyVector3f {
      */
     public static Vector3f axisVector(int axisIndex, float length,
             Vector3f storeResult) {
-        Validate.inRange(axisIndex, "axis index", firstAxis, lastAxis);
-        Validate.nonNegative(length, "length");
+        assert Validate.inRange(axisIndex, "axis index", firstAxis, lastAxis);
+        assert Validate.nonNegative(length, "length");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         result.zero();
@@ -295,8 +295,8 @@ public class MyVector3f {
      * if v1 comes after v2
      */
     public static int compare(Vector3f v1, Vector3f v2) {
-        Validate.nonNull(v1, "v1");
-        Validate.nonNull(v2, "v2");
+        assert Validate.nonNull(v1, "v1");
+        assert Validate.nonNull(v2, "v2");
 
         int result = Float.compare(v1.x, v2.x);
         if (result == 0) {
@@ -319,7 +319,7 @@ public class MyVector3f {
      */
     public static Matrix3f covariance(Collection<Vector3f> collection,
             Matrix3f storeResult) {
-        Validate.nonEmpty(collection, "collection");
+        assert Validate.nonEmpty(collection, "collection");
         int numSamples = collection.size();
         assert numSamples > 1 : numSamples;
         Matrix3f result = (storeResult == null) ? new Matrix3f() : storeResult;
@@ -516,9 +516,9 @@ public class MyVector3f {
      */
     public static boolean doCoincide(Vector3f point1, Vector3f point2,
             float tolerance2) {
-        Validate.nonNull(point1, "first point");
-        Validate.nonNull(point2, "second point");
-        Validate.nonNegative(tolerance2, "tolerance");
+        assert Validate.nonNull(point1, "first point");
+        assert Validate.nonNull(point2, "second point");
+        assert Validate.nonNegative(tolerance2, "tolerance");
 
         double d2 = distanceSquared(point1, point2);
         if (d2 > tolerance2) {
@@ -557,8 +557,8 @@ public class MyVector3f {
      * @return true if equal, otherwise false
      */
     public static boolean eq(Vector3f v1, Vector3f v2) {
-        Validate.nonNull(v1, "first input vector");
-        Validate.nonNull(v2, "2nd input vector");
+        assert Validate.nonNull(v1, "first input vector");
+        assert Validate.nonNull(v2, "2nd input vector");
 
         boolean result = v1.x == v2.x && v1.y == v2.y && v1.z == v2.z;
         return result;
@@ -591,9 +591,9 @@ public class MyVector3f {
      */
     public static void generateBasis(Vector3f in1, Vector3f store2,
             Vector3f store3) {
-        Validate.nonZero(in1, "starting direction");
-        Validate.nonNull(store2, "2nd basis vector");
-        Validate.nonNull(store3, "3nd basis vector");
+        assert Validate.nonZero(in1, "starting direction");
+        assert Validate.nonNull(store2, "2nd basis vector");
+        assert Validate.nonNull(store3, "3nd basis vector");
 
         normalizeLocal(in1);
         /*
@@ -627,7 +627,7 @@ public class MyVector3f {
      * @return a unit vector or a zero vector
      */
     public static ReadXZ horizontalDirection(Vector3f offset) {
-        Validate.nonNull(offset, "offset");
+        assert Validate.nonNull(offset, "offset");
 
         VectorXZ horizontalOffset = new VectorXZ(offset);
         ReadXZ result = horizontalOffset.normalize();
@@ -647,10 +647,10 @@ public class MyVector3f {
      */
     public static Vector3f intersectSegments(Vector3f start1, Vector3f end1,
             Vector3f start2, Vector3f end2, float tolerance2) {
-        Validate.nonNull(start1, "start of first segment");
-        Validate.nonNull(start2, "start of 2nd segment");
-        Validate.nonNull(end2, "end of 2nd segment");
-        Validate.nonNegative(tolerance2, "tolerance2");
+        assert Validate.nonNull(start1, "start of first segment");
+        assert Validate.nonNull(start2, "start of 2nd segment");
+        assert Validate.nonNull(end2, "end of 2nd segment");
+        assert Validate.nonNegative(tolerance2, "tolerance2");
         /*
          * Calculate direction of the first segment.
          */
@@ -854,8 +854,8 @@ public class MyVector3f {
      */
     public static Vector3f lerp(float t, Vector3f v0, Vector3f v1,
             Vector3f storeResult) {
-        Validate.nonNull(v0, "v0");
-        Validate.nonNull(v1, "v1");
+        assert Validate.nonNull(v0, "v0");
+        assert Validate.nonNull(v1, "v1");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         result.x = MyMath.lerp(t, v0.x, v1.x);
@@ -905,8 +905,8 @@ public class MyVector3f {
      */
     public static Vector3f lineMeetsSphere(Line line, Vector3f center,
             float radius, boolean farSide) {
-        Validate.nonNull(center, "center");
-        Validate.nonNegative(radius, "radius");
+        assert Validate.nonNull(center, "center");
+        assert Validate.nonNegative(radius, "radius");
 
         Vector3f direction = line.getDirection().normalize();
         Vector3f lineOrigin = line.getOrigin();
@@ -963,7 +963,7 @@ public class MyVector3f {
      */
     public static Vector3f localizeDirection(Vector3f worldDirection,
             Spatial spatial, Vector3f storeResult) {
-        Validate.nonZero(worldDirection, "direction");
+        assert Validate.nonZero(worldDirection, "direction");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         if (MySpatial.isIgnoringTransforms(spatial)) {
@@ -994,8 +994,8 @@ public class MyVector3f {
      */
     public static Vector3f maxAbs(Vector3f vector1, Vector3f vector2,
             Vector3f storeResult) {
-        Validate.nonNull(vector1, "vector1");
-        Validate.nonNull(vector2, "vector2");
+        assert Validate.nonNull(vector1, "vector1");
+        assert Validate.nonNull(vector2, "vector2");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         result.x = Math.max(Math.abs(vector1.x), Math.abs(vector2.x));
@@ -1015,7 +1015,7 @@ public class MyVector3f {
      */
     public static Vector3f mean(Collection<Vector3f> collection,
             Vector3f storeResult) {
-        Validate.nonEmpty(collection, "collection");
+        assert Validate.nonEmpty(collection, "collection");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         result.zero();
@@ -1041,8 +1041,8 @@ public class MyVector3f {
      */
     public static Vector3f midpoint(Vector3f vector1, Vector3f vector2,
             Vector3f storeResult) {
-        Validate.finite(vector1, "first location");
-        Validate.finite(vector2, "2nd location");
+        assert Validate.finite(vector1, "first location");
+        assert Validate.finite(vector2, "2nd location");
 
         float x = (vector1.x + vector2.x) / 2f;
         float y = (vector1.y + vector2.y) / 2f;
@@ -1064,7 +1064,7 @@ public class MyVector3f {
      * @return a new array of 2 locations, or null if no pairs found
      */
     public static Vector3f[] mostRemote(List<Vector3f> locations) {
-        Validate.nonNull(locations, "locations");
+        assert Validate.nonNull(locations, "locations");
 
         double largestSD = -1.0;
         Vector3f[] result = null;
@@ -1096,8 +1096,8 @@ public class MyVector3f {
      * @return true if distinct, otherwise false
      */
     public static boolean ne(Vector3f v1, Vector3f v2) {
-        Validate.nonNull(v1, "first input vector");
-        Validate.nonNull(v2, "2nd input vector");
+        assert Validate.nonNull(v1, "first input vector");
+        assert Validate.nonNull(v2, "2nd input vector");
 
         boolean result = v1.x != v2.x || v1.y != v2.y || v1.z != v2.z;
         return result;
@@ -1110,7 +1110,7 @@ public class MyVector3f {
      * @param input (not null, modified)
      */
     public static void normalizeLocal(Vector3f input) {
-        Validate.nonNull(input, "input");
+        assert Validate.nonNull(input, "input");
 
         double lengthSquared = lengthSquared(input);
         double dScale = Math.sqrt(lengthSquared);
@@ -1127,7 +1127,7 @@ public class MyVector3f {
      * @return a new vector, or null if the text is invalid
      */
     public static Vector3f parse(String textString) {
-        Validate.nonEmpty(textString, "text string");
+        assert Validate.nonEmpty(textString, "text string");
 
         Vector3f result = null;
         Matcher matcher = pattern.matcher(textString);
@@ -1162,8 +1162,8 @@ public class MyVector3f {
      */
     public static Vector3f projection(Vector3f vector1, Vector3f vector2,
             Vector3f storeResult) {
-        Validate.nonNull(vector1, "vector1");
-        Validate.nonZero(vector2, "vector2");
+        assert Validate.nonNull(vector1, "vector1");
+        assert Validate.nonZero(vector2, "vector2");
 
         double lengthSquared = lengthSquared(vector2);
         double dot = dot(vector1, vector2);
@@ -1181,7 +1181,7 @@ public class MyVector3f {
      * @return the scalar projection of vector1 onto vector2
      */
     public static float scalarProjection(Vector3f vector1, Vector3f vector2) {
-        Validate.nonZero(vector2, "vector2");
+        assert Validate.nonZero(vector2, "vector2");
 
         double dot = dot(vector1, vector2);
         double lengthSquared = lengthSquared(vector2);
@@ -1201,7 +1201,7 @@ public class MyVector3f {
      * storeResult or a new instance)
      */
     public static Vector3f standardize(Vector3f input, Vector3f storeResult) {
-        Validate.nonNull(input, "input vector");
+        assert Validate.nonNull(input, "input vector");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         result.x = MyMath.standardize(input.x);
@@ -1245,9 +1245,9 @@ public class MyVector3f {
      */
     private static boolean allCollinear(Vector3f first, Vector3f last,
             List<Vector3f> list, float tolerance2) {
-        Validate.nonNull(first, "first location");
-        Validate.nonNull(list, "list");
-        Validate.nonNegative(tolerance2, "tolerance2");
+        assert Validate.nonNull(first, "first location");
+        assert Validate.nonNull(list, "list");
+        assert Validate.nonNegative(tolerance2, "tolerance2");
 
         Vector3f fl = last.subtract(first);
         double normSquaredFL = lengthSquared(fl);
