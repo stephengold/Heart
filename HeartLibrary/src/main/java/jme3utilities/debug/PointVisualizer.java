@@ -32,6 +32,7 @@ import com.jme3.material.MatParam;
 import com.jme3.material.Material;
 import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
+import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.texture.Texture;
 import java.io.IOException;
@@ -92,16 +93,17 @@ public class PointVisualizer extends Geometry {
 
         Material mat
                 = MyAsset.createMulticolor2Material(assetManager, null, size);
-        setMaterial(mat);
         mat.setName("point");
-
         if (color != null) {
             mat.setColor("Color", color.clone());
         }
         RenderState renderState = mat.getAdditionalRenderState();
         renderState.setBlendMode(RenderState.BlendMode.Alpha);
         renderState.setDepthTest(false);
+        setMaterial(mat);
 
+        setQueueBucket(RenderQueue.Bucket.Translucent);
+        setShadowMode(RenderQueue.ShadowMode.Off);
         if (shapeName != null) {
             setShape(shapeName);
         }
