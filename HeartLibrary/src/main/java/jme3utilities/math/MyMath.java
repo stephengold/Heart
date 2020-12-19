@@ -102,7 +102,7 @@ public class MyMath {
      * &ge;0)
      */
     public static double circle(double abscissa) {
-        Validate.inRange(abscissa, "abscissa", -1.0, 1.0);
+        assert Validate.inRange(abscissa, "abscissa", -1.0, 1.0);
 
         double y = Math.sqrt(1.0 - abscissa * abscissa);
 
@@ -120,7 +120,7 @@ public class MyMath {
      * &ge;0)
      */
     public static float circle(float abscissa) {
-        Validate.inRange(abscissa, "abscissa", -1f, 1f);
+        assert Validate.inRange(abscissa, "abscissa", -1f, 1f);
 
         double x = abscissa;
         float y = (float) circle(x);
@@ -140,7 +140,7 @@ public class MyMath {
      * @see com.jme3.math.FastMath#clamp(float,float,float)
      */
     public static float clamp(float fValue, float maxMagnitude) {
-        Validate.nonNegative(maxMagnitude, "limit");
+        assert Validate.nonNegative(maxMagnitude, "limit");
         float result = FastMath.clamp(fValue, -maxMagnitude, maxMagnitude);
 
         assert result >= -maxMagnitude : result;
@@ -158,7 +158,7 @@ public class MyMath {
      * @see com.jme3.math.FastMath#clamp(float,float,float)
      */
     public static double clamp(double dValue, double maxMagnitude) {
-        Validate.nonNegative(maxMagnitude, "limit");
+        assert Validate.nonNegative(maxMagnitude, "limit");
 
         if (dValue < -maxMagnitude) {
             return -maxMagnitude;
@@ -250,7 +250,7 @@ public class MyMath {
      * @return 6*t^5 - 15*t^4 + 10*t^3 (&le;1, &ge;0)
      */
     public static float fade(float t) {
-        Validate.fraction(t, "t");
+        assert Validate.fraction(t, "t");
 
         double tt = t;
         double ff = tt * tt * tt * (10.0 + tt * (-15.0 + 6.0 * tt));
@@ -270,7 +270,7 @@ public class MyMath {
      * @see java.lang.Math#cbrt(double)
      */
     public static double fourthRoot(double dValue) {
-        Validate.nonNegative(dValue, "dValue");
+        assert Validate.nonNegative(dValue, "dValue");
 
         double sqrt = Math.sqrt(dValue);
         double result = Math.sqrt(sqrt);
@@ -562,7 +562,7 @@ public class MyMath {
      * @return iValue MOD modulus (&lt;modulus, &ge;0)
      */
     public static int modulo(int iValue, int modulus) {
-        Validate.positive(modulus, "modulus");
+        assert Validate.positive(modulus, "modulus");
 
         int remainder = iValue % modulus;
         int result;
@@ -588,7 +588,7 @@ public class MyMath {
      * @return fValue MOD modulus (&lt;modulus, &ge;0)
      */
     public static float modulo(float fValue, float modulus) {
-        Validate.positive(modulus, "modulus");
+        assert Validate.positive(modulus, "modulus");
 
         float remainder = fValue % modulus;
         float result;
@@ -614,7 +614,7 @@ public class MyMath {
      * @return dValue MOD modulus (&lt;modulus, &ge;0)
      */
     public static double modulo(double dValue, double modulus) {
-        Validate.positive(modulus, "modulus");
+        assert Validate.positive(modulus, "modulus");
 
         double remainder = dValue % modulus;
         double result;
@@ -647,9 +647,9 @@ public class MyMath {
      */
     public static Transform slerp(float t, Transform t0, Transform t1,
             Transform storeResult) {
-        Validate.inRange(t, "t", 0f, 1f);
-        Validate.nonNull(t0, "t0");
-        Validate.nonNull(t1, "t1");
+        assert Validate.inRange(t, "t", 0f, 1f);
+        assert Validate.nonNull(t0, "t0");
+        assert Validate.nonNull(t1, "t1");
         Transform result
                 = (storeResult == null) ? new Transform() : storeResult;
 
