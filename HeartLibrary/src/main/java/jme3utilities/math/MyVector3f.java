@@ -1041,6 +1041,9 @@ public class MyVector3f {
      */
     public static Vector3f midpoint(Vector3f vector1, Vector3f vector2,
             Vector3f storeResult) {
+        Validate.finite(vector1, "first location");
+        Validate.finite(vector2, "2nd location");
+
         float x = (vector1.x + vector2.x) / 2f;
         float y = (vector1.y + vector2.y) / 2f;
         float z = (vector1.z + vector2.z) / 2f;
