@@ -244,7 +244,7 @@ public class VectorXZ
     }
 
     /**
-     * Calculate the azimuth of this vector. Note: the directional convention is
+     * Determine the azimuth of this vector. Note: the directional convention is
      * left-handed. If this vector is zero, return zero.
      *
      * @return angle in radians (&gt;-Pi, &le;Pi), measured CW from north (the
@@ -414,7 +414,7 @@ public class VectorXZ
     }
 
     /**
-     * Calculate the cosine of the angle between this vector and another. This
+     * Determine the cosine of the angle between this vector and another. This
      * is used to compare the similarity of direction vectors. Returns a
      * double-precision value for precise comparisons.
      *
@@ -446,7 +446,7 @@ public class VectorXZ
     }
 
     /**
-     * Calculate the (left-handed) cross product of this vector with another.
+     * Determine the (left-handed) cross product of this vector with another.
      * For example, north.cross(east) = +1 and east.cross(north) = -1.
      *
      * @param otherVector the other vector (not null)
@@ -460,7 +460,7 @@ public class VectorXZ
     }
 
     /**
-     * Calculate a signed directional error of this vector with respect to a
+     * Determine a signed directional error of this vector with respect to a
      * goal. The result is positive if the goal is to the right and negative if
      * the goal is to the left.
      *
@@ -514,7 +514,7 @@ public class VectorXZ
     }
 
     /**
-     * Calculate the dot (scalar) product of this vector with another.
+     * Determine the dot (scalar) product of this vector with another.
      *
      * @param otherVector other vector (not null)
      * @return the dot product
@@ -633,7 +633,7 @@ public class VectorXZ
     }
 
     /**
-     * Calculate the length (or magnitude or norm) of this vector.
+     * Determine the length (or magnitude or norm) of this vector.
      *
      * @return the length (&ge;0)
      * @see com.jme3.math.Vector3f#length()
@@ -645,7 +645,7 @@ public class VectorXZ
     }
 
     /**
-     * Calculate the squared length of this vector. This is used to compare the
+     * Determine the squared length of this vector. This is used to compare the
      * lengths of vectors. Returns a double-precision value for precise
      * comparisons.
      *

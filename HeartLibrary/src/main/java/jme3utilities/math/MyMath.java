@@ -74,7 +74,7 @@ public class MyMath {
     // new methods exposed
 
     /**
-     * Calculate the area of the specified triangle.
+     * Determine the area of the specified triangle.
      *
      * @param triangle (not null, unaffected)
      * @return the area (&ge;0)

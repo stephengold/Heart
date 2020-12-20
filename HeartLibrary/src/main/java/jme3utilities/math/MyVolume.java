@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2019, Stephen Gold
+ Copyright (c) 2014-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -133,7 +133,7 @@ public class MyVolume {
     }
 
     /**
-     * Calculate the volume of the specified tetrahedron.
+     * Determine the volume of the specified tetrahedron.
      *
      * @param v1 location of the first vertex (not null, unaffected)
      * @param v2 location of the 2nd vertex (not null, unaffected)

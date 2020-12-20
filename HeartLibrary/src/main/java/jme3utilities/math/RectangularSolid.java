@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2019, Stephen Gold
+ Copyright (c) 2018-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -292,7 +292,7 @@ public class RectangularSolid implements Savable {
     // new methods exposed
 
     /**
-     * Calculate the half extents of the solid.
+     * Determine the half extents of the solid.
      *
      * @param storeResult storage for the result (modified if not null)
      * @return the half extent of each local axis (either storeResult or a new
@@ -403,7 +403,7 @@ public class RectangularSolid implements Savable {
     }
 
     /**
-     * Calculate the volume of the solid.
+     * Determine the volume of the solid.
      *
      * @return the volume (in cubic world units, &ge;0)
      */

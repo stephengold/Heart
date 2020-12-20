@@ -81,7 +81,7 @@ public interface VectorSet {
     boolean contains(Vector3f vector);
 
     /**
-     * Calculate the sample covariance of the values in this set.
+     * Determine the sample covariance of the values in this set.
      *
      * @param storeResult storage for the result (modified if not null)
      * @return the unbiased sample covariance (either storeResult or a new
@@ -116,7 +116,7 @@ public interface VectorSet {
     void maxMin(Vector3f storeMaxima, Vector3f storeMinima);
 
     /**
-     * Calculate the sample mean for each axis among the values in this set.
+     * Determine the sample mean for each axis among the values in this set.
      *
      * @param storeResult storage for the result (modified if not null)
      * @return the sample mean for each axis (either storeResult or a new

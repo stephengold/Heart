@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -210,7 +210,7 @@ public class DomeMesh extends Mesh {
     // new methods exposed
 
     /**
-     * Calculate the texture coordinate of a point on this mesh that's in the
+     * Determine the texture coordinate of a point on this mesh that's in the
      * specified direction from the center of the mesh.
      *
      * @param direction (length&gt;0, unaffected)

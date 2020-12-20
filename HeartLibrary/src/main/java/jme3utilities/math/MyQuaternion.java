@@ -130,7 +130,7 @@ public class MyQuaternion {
     }
 
     /**
-     * Calculate the conjugate of a Quaternion. For unit quaternions, the
+     * Determine the conjugate of a Quaternion. For unit quaternions, the
      * conjugate is a faster way to calculate the inverse.
      *
      * @param q input value (not null, unaffected)
@@ -187,7 +187,7 @@ public class MyQuaternion {
     }
 
     /**
-     * Calculate the dot (scalar) product of 2 quaternions. Unlike
+     * Determine the dot (scalar) product of 2 quaternions. Unlike
      * {@link com.jme3.math.Quaternion#dot(com.jme3.math.Quaternion)}, this
      * method returns a double-precision value for precise calculation of
      * angles.
@@ -211,7 +211,7 @@ public class MyQuaternion {
     }
 
     /**
-     * Calculate the exponential of a pure Quaternion.
+     * Determine the exponential of a pure Quaternion.
      *
      * @param q input value (not null, unaffected, w=0)
      * @param storeResult storage for the result (modified if not null)
@@ -294,7 +294,7 @@ public class MyQuaternion {
     }
 
     /**
-     * Calculate the squared length of a quaternion. Unlike
+     * Determine the squared length of a quaternion. Unlike
      * {@link com.jme3.math.Quaternion#norm()}, this method returns a
      * double-precision value for precise comparison of lengths.
      *
@@ -312,7 +312,7 @@ public class MyQuaternion {
     }
 
     /**
-     * Calculate the natural logarithm of a unit quaternion. Generally the
+     * Determine the natural logarithm of a unit quaternion. Generally the
      * logarithm isn't itself a unit.
      *
      * @param q input value (not null, unaffected, norm=1)
@@ -505,7 +505,7 @@ public class MyQuaternion {
     }
 
     /**
-     * Calculate Squad parameter "a" for a continuous first derivative at the
+     * Determine Squad parameter "a" for a continuous first derivative at the
      * middle point of 3 specified control points.
      *
      * @param q0 previous control point (not null, unaffected, norm=1)

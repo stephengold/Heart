@@ -1155,7 +1155,7 @@ public class MySpatial {
     }
 
     /**
-     * Calculate the world scale factor of a uniformly scaled spatial.
+     * Determine the world scale factor of a uniformly scaled spatial.
      *
      * @param spatial the Spatial to analyze (not null, unaffected)
      * @return the scale factor
@@ -1205,7 +1205,7 @@ public class MySpatial {
     }
 
     /**
-     * Calculate the world location of a spatial's center.
+     * Determine the world location of a spatial's center.
      *
      * @param spatial spatial to locate (not null)
      * @param storeResult storage for the result (modified if not null)
@@ -1228,7 +1228,7 @@ public class MySpatial {
     }
 
     /**
-     * Calculate the world orientation of a spatial.
+     * Determine the world orientation of a spatial.
      *
      * @param spatial the Spatial to analyze (not null)
      * @param storeResult storage for the result (modified if not null)
@@ -1252,7 +1252,7 @@ public class MySpatial {
     }
 
     /**
-     * Calculate the world scale of a spatial.
+     * Determine the world scale of a spatial.
      *
      * @param spatial the Spatial to analyze (not null)
      * @param storeResult storage for the result (modified if not null)
@@ -1274,7 +1274,7 @@ public class MySpatial {
     }
 
     /**
-     * Calculate the world transform of a Spatial.
+     * Determine the world transform of a Spatial.
      *
      * @param spatial the Spatial to analyze (not null)
      * @param storeResult storage for the result (modified if not null)

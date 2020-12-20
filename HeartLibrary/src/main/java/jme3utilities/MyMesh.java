@@ -1001,7 +1001,7 @@ public class MyMesh {
     }
 
     /**
-     * Calculate the location of the indexed vertex in mesh space using the
+     * Determine the location of the indexed vertex in mesh space using the
      * skinning matrices provided.
      *
      * @param mesh the subject mesh (not null)
@@ -1061,7 +1061,7 @@ public class MyMesh {
     }
 
     /**
-     * Calculate the normal of the indexed vertex in mesh space using the
+     * Determine the normal of the indexed vertex in mesh space using the
      * skinning matrices provided.
      *
      * @param mesh the subject mesh (not null)
@@ -1137,7 +1137,7 @@ public class MyMesh {
     }
 
     /**
-     * Calculate the tangent of the indexed vertex in mesh space using the
+     * Determine the tangent of the indexed vertex in mesh space using the
      * skinning matrices provided.
      *
      * @param mesh the subject mesh (not null)
@@ -1295,7 +1295,7 @@ public class MyMesh {
     }
 
     /**
-     * Calculate the location of the indexed vertex in world space using the
+     * Determine the location of the indexed vertex in world space using the
      * skinning matrices provided.
      *
      * @param geometry Geometry containing the subject mesh (not null)

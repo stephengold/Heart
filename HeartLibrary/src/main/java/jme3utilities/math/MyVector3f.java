@@ -167,7 +167,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the altitude angle of a non-zero offset.
+     * Determine the altitude angle of a non-zero offset.
      *
      * @param offset difference of world coordinates (not null, not zero,
      * unaffected)
@@ -247,7 +247,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the azimuth angle of an offset.
+     * Determine the azimuth angle of an offset.
      *
      * @param offset difference of world coordinates (not null, unaffected)
      * @return horizontal angle in radians (measured CW from the X axis) or 0 if
@@ -310,7 +310,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the sample covariance of a collection of vectors.
+     * Determine the sample covariance of a collection of vectors.
      *
      * @param collection the sample vectors (not null, at least 2, unaffected)
      * @param storeResult storage for the result (modified if not null)
@@ -439,7 +439,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the squared distance between 2 vectors. Unlike
+     * Determine the squared distance between 2 vectors. Unlike
      * {@link com.jme3.math.Vector3f#distanceSquared(Vector3f)}, this method
      * returns a double-precision value for precise comparison of distances.
      *
@@ -457,7 +457,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate square of the distance between a location and a line segment.
+     * Determine square of the distance between a location and a line segment.
      *
      * @param location coordinates of input location (not null, unaffected)
      * @param segStart coordinates of start of segment (not null, unaffected)
@@ -529,7 +529,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the dot (scalar) product of 2 vectors. Unlike
+     * Determine the dot (scalar) product of 2 vectors. Unlike
      * {@link com.jme3.math.Vector3f#dot(Vector3f)}, this method returns a
      * double-precision value for precise calculation of angles.
      *
@@ -621,7 +621,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the horizontal direction of an offset in world space.
+     * Determine the horizontal direction of an offset in world space.
      *
      * @param offset difference of world coordinates (not null, unaffected)
      * @return a unit vector or a zero vector
@@ -636,7 +636,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate where (if at all) 2 line segments intersect.
+     * Determine where (if at all) 2 line segments intersect.
      *
      * @param start1 coordinates of start of the first segment (not null)
      * @param end1 coordinates of end of the first segment (not null)
@@ -825,7 +825,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the squared length of a vector. Unlike
+     * Determine the squared length of a vector. Unlike
      * {@link com.jme3.math.Vector3f#lengthSquared()}, this method returns a
      * double-precision value for precise comparison of lengths.
      *
@@ -981,7 +981,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the component-wise maximum of absolute values of 2 vectors.
+     * Determine the component-wise maximum of absolute values of 2 vectors.
      *
      * @param vector1 the first input vector (not null, unaffected unless it's
      * also storeResult)
@@ -1006,7 +1006,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the arithmetic mean of a non-empty collection of vectors.
+     * Determine the arithmetic mean of a non-empty collection of vectors.
      *
      * @param collection the vectors to average (not null, not empty,
      * unaffected)
@@ -1029,7 +1029,7 @@ public class MyVector3f {
     }
 
     /**
-     * Calculate the midpoint between 2 locations.
+     * Determine the midpoint between 2 locations.
      *
      * @param vector1 coordinates of the first location (not null, unaffected
      * unless it's storeResult)

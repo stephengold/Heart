@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -112,7 +112,7 @@ public class TimeOfDay extends NamedAppState {
     }
 
     /**
-     * Calculate the simulated time of day in hours.
+     * Determine the simulated time of day in hours.
      *
      * @return hours since midnight (&lt;24, &ge;0)
      */
@@ -128,7 +128,7 @@ public class TimeOfDay extends NamedAppState {
     }
 
     /**
-     * Calculate the simulated time of day in whole seconds.
+     * Determine the simulated time of day in whole seconds.
      *
      * @return seconds since midnight (&lt;86400, &ge;0)
      */

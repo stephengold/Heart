@@ -61,7 +61,7 @@ final public class MyArray {
     // new methods exposed
 
     /**
-     * Calculate the smallest axis-aligned bounding box for the vectors in the
+     * Determine the smallest axis-aligned bounding box for the vectors in the
      * specified array.
      *
      * @see com.jme3.bounding.BoundingBox#containAABB(java.nio.FloatBuffer)
@@ -98,7 +98,7 @@ final public class MyArray {
     }
 
     /**
-     * Calculate the sample covariance of the 3-D vectors in the specified float
+     * Determine the sample covariance of the 3-D vectors in the specified float
      * array.
      *
      * @param input the input array (not null, at least 6 elements, length a
@@ -282,7 +282,7 @@ final public class MyArray {
     }
 
     /**
-     * Calculate the arithmetic mean of the 3-D vectors in the specified float
+     * Determine the arithmetic mean of the 3-D vectors in the specified float
      * array.
      *
      * @param input the array to analyze (not null, not empty, length a multiple
@@ -309,7 +309,7 @@ final public class MyArray {
     }
 
     /**
-     * Calculate the arithmetic mean of a non-empty array of vectors.
+     * Determine the arithmetic mean of a non-empty array of vectors.
      *
      * @param array the vectors to average (not null, not empty, unaffected)
      * @param storeResult storage for the result (modified if not null)

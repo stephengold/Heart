@@ -85,7 +85,7 @@ final public class MyCamera {
     // new methods exposed
 
     /**
-     * Calculate the azimuth angle of the specified Camera.
+     * Determine the azimuth angle of the specified Camera.
      *
      * @param camera the Camera to analyze (not null, unaffected)
      * @return radians east of north
@@ -231,7 +231,7 @@ final public class MyCamera {
     }
 
     /**
-     * Calculate the aspect ratio of the display.
+     * Determine the aspect ratio of the display.
      *
      * @param camera the Camera to use (not null, unaffected)
      * @return width divided by height (&gt;0)
@@ -270,7 +270,7 @@ final public class MyCamera {
     }
 
     /**
-     * Calculate the vertical field-of-view angle of the specified Camera.
+     * Determine the vertical field-of-view angle of the specified Camera.
      *
      * @param camera the Camera to analyze (not null, unaffected)
      * @return radians from bottom of frustum to top of frustum (&ge;0)
@@ -285,7 +285,7 @@ final public class MyCamera {
     }
 
     /**
-     * Calculate the aspect ratio of the specified camera's frustum.
+     * Determine the aspect ratio of the specified camera's frustum.
      *
      * @param camera the Camera to analyze (not null, unaffected)
      * @return width divided by height (&gt;0)
@@ -476,7 +476,7 @@ final public class MyCamera {
     }
 
     /**
-     * Calculate the aspect ratio of the specified camera's viewport.
+     * Determine the aspect ratio of the specified camera's viewport.
      *
      * @param camera the Camera to analyze (not null, unaffected)
      * @return width divided by height (&gt;0)
@@ -564,7 +564,7 @@ final public class MyCamera {
     }
 
     /**
-     * Calculate the vertical field-of-view angle of the specified Camera.
+     * Determine the vertical field-of-view angle of the specified Camera.
      *
      * @param camera the Camera to analyze (not null, unaffected)
      * @return the vertical angle in degrees (&gt;0)
@@ -582,7 +582,7 @@ final public class MyCamera {
     }
 
     /**
-     * Calculate the vertical field-of-view tangent of the specified Camera.
+     * Determine the vertical field-of-view tangent of the specified Camera.
      *
      * @param camera the Camera to analyze (not null, unaffected)
      * @return tangent of the vertical field-of-view half-angle (&ge;0)

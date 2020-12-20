@@ -274,7 +274,7 @@ public class AxesVisualizer extends SubtreeControl {
     }
 
     /**
-     * Calculate the tip location of the indexed axis arrow.
+     * Determine the tip location of the indexed axis arrow.
      *
      * @param axisIndex which axis: 0&rarr;X, 1&rarr;Y, 2&rarr;Z
      * @return a new vector (in world coordinates) or null if not displayed

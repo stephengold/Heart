@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2019, Stephen Gold
+ Copyright (c) 2017-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,7 @@ public interface ReadXZ {
     ReadXZ add(ReadXZ increment);
 
     /**
-     * Calculate the azimuth of this vector. Note: the directional convention is
+     * Determine the azimuth of this vector. Note: the directional convention is
      * left-handed. If this vector is zero, return zero.
      *
      * @return angle in radians (&gt;-Pi, &le;Pi), measured CW from north (the
@@ -115,7 +115,7 @@ public interface ReadXZ {
     int compareTo(float hX, float hZ);
 
     /**
-     * Calculate the cosine of the angle between this vector and another. This
+     * Determine the cosine of the angle between this vector and another. This
      * is used to compare the similarity of direction vectors. Returns a
      * double-precision value for precise comparisons.
      *
@@ -127,7 +127,7 @@ public interface ReadXZ {
     double cosineAngleBetween(ReadXZ otherVector);
 
     /**
-     * Calculate the (left-handed) cross product of this vector with another.
+     * Determine the (left-handed) cross product of this vector with another.
      * For example, north.cross(east) = +1 and east.cross(north) = -1.
      *
      * @param otherVector the other vector (not null)
@@ -137,7 +137,7 @@ public interface ReadXZ {
     float cross(ReadXZ otherVector);
 
     /**
-     * Calculate a signed directional error of this vector with respect to a
+     * Determine a signed directional error of this vector with respect to a
      * goal. The result is positive if the goal is to the right and negative if
      * the goal is to the left.
      *
@@ -158,7 +158,7 @@ public interface ReadXZ {
     ReadXZ divide(float scalar);
 
     /**
-     * Calculate the dot (scalar) product of this vector with another.
+     * Determine the dot (scalar) product of this vector with another.
      *
      * @param otherVector other vector (not null)
      * @return the dot product
@@ -226,7 +226,7 @@ public interface ReadXZ {
     boolean isZero();
 
     /**
-     * Calculate the length (or magnitude or norm) of this vector.
+     * Determine the length (or magnitude or norm) of this vector.
      *
      * @return the length (&ge;0)
      * @see com.jme3.math.Vector3f#length()
@@ -234,7 +234,7 @@ public interface ReadXZ {
     float length();
 
     /**
-     * Calculate the squared length of this vector. This is used to compare the
+     * Determine the squared length of this vector. This is used to compare the
      * lengths of vectors. Returns a double-precision value for precise
      * comparisons.
      *

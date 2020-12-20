@@ -115,7 +115,7 @@ final public class MyBuffer {
     }
 
     /**
-     * Calculate the sample covariance of 3-D vectors in the specified
+     * Determine the sample covariance of 3-D vectors in the specified
      * FloatBuffer range.
      *
      * @param buffer the buffer that contains the vectors (not null, unaffected)
@@ -461,7 +461,7 @@ final public class MyBuffer {
     }
 
     /**
-     * Calculate the arithmetic mean of 3-D vectors in the specified FloatBuffer
+     * Determine the arithmetic mean of 3-D vectors in the specified FloatBuffer
      * range.
      *
      * @param buffer the buffer that contains the vectors (not null, unaffected)
