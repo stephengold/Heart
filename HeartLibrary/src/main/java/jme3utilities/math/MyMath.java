@@ -192,6 +192,27 @@ public class MyMath {
     }
 
     /**
+     * Clamp an integer value between 2 limits.
+     *
+     * @param iValue input value to be clamped
+     * @param min the lower limit
+     * @param max the upper limit
+     * @return the value between min and max inclusive that is closest to iValue
+     */
+    public static int clamp(int iValue, int min, int max) {
+        int result;
+        if (iValue < min) {
+            result = min;
+        } else if (iValue > max) {
+            result = max;
+        } else {
+            result = iValue;
+        }
+
+        return result;
+    }
+
+    /**
      * Cube the specified single-precision value. Logs a warning in case of
      * overflow.
      *
