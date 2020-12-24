@@ -56,6 +56,7 @@ import java.util.Set;
 import java.util.logging.Logger;
 import jme3utilities.math.IntPair;
 import jme3utilities.math.MyBuffer;
+import jme3utilities.math.MyMath;
 import jme3utilities.math.MyVector3f;
 import jme3utilities.math.VectorSet;
 import jme3utilities.math.VectorSetUsingBuffer;
@@ -152,6 +153,7 @@ public class MyMesh {
             result.clearBuffer(type);
             VertexBuffer.Format format = oldVertexBuffer.getFormat();
             int numCperE = oldVertexBuffer.getNumComponents();
+            numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
             Buffer data = VertexBuffer.createBuffer(format, numCperE, newN);
             result.setBuffer(type, numCperE, format, data);
         }
@@ -379,6 +381,7 @@ public class MyMesh {
             if (type != VertexBuffer.Type.Index) {
                 VertexBuffer.Format format = inVertexBuffer.getFormat();
                 int numCperE = inVertexBuffer.getNumComponents();
+                numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
                 Buffer data = VertexBuffer.createBuffer(format, numCperE,
                         outVertexCount);
                 out.setBuffer(type, numCperE, format, data);
