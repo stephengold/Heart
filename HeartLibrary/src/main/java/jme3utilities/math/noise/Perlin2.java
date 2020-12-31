@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2019, Stephen Gold
+ Copyright (c) 2014-2020, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -113,13 +113,13 @@ public class Perlin2 implements Noise2 {
          * 2-D interpolation between the 4 corners of the square.
          */
         float fadeX = MyMath.fade(sampleX - squareX);
-        float nx0 = FastMath.interpolateLinear(fadeX, n00, n10);
-        float nx1 = FastMath.interpolateLinear(fadeX, n01, n11);
+        float nx0 = MyMath.lerp(fadeX, n00, n10);
+        float nx1 = MyMath.lerp(fadeX, n01, n11);
 
         float fadeY = MyMath.fade(sampleY - squareY);
-        float noise = FastMath.interpolateLinear(fadeY, nx0, nx1);
+        float result = MyMath.lerp(fadeY, nx0, nx1);
 
-        return noise;
+        return result;
     }
 
     /**
