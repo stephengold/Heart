@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -250,7 +250,7 @@ public class Describer implements Cloneable {
         result.append(' ');
         String paramName = matParam.getName();
         result.append(paramName);
-        result.append(' ');
+        result.append(": ");
 
         String valueString;
         Object obj = matParam.getValue();
