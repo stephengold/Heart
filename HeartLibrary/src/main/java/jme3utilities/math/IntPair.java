@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020, Stephen Gold
+ * Copyright (c) 2020-2021, Stephen Gold
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -116,8 +116,8 @@ public class IntPair {
         } else if (otherObject != null
                 && otherObject.getClass() == getClass()) {
             IntPair otherEdge = (IntPair) otherObject;
-            result = (otherEdge.larger == larger)
-                    && (otherEdge.smaller == smaller);
+            result = (otherEdge.larger() == larger)
+                    && (otherEdge.smaller() == smaller);
         } else {
             result = false;
         }
@@ -126,7 +126,7 @@ public class IntPair {
     }
 
     /**
-     * Generate the hash code for this IntPair.
+     * Generate the hash code for this pair.
      *
      * @return the value to use for hashing
      */
@@ -136,6 +136,17 @@ public class IntPair {
         result = 29 * result + smaller;
         result = 29 * result + larger;
 
+        return result;
+    }
+
+    /**
+     * Represent this pair as a text string. The format is: {smaller,larger}
+     *
+     * @return a descriptive string of text (not null)
+     */
+    @Override
+    public String toString() {
+        String result = String.format("{%d,%d}", smaller, larger);
         return result;
     }
 }
