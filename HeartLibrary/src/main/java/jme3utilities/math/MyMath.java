@@ -264,6 +264,52 @@ public class MyMath {
     }
 
     /**
+     * Quartic easing function for animation: slow at the start, fast at the
+     * end.
+     *
+     * @param time the elapsed time since the start of the animation (&ge;0,
+     * &le;duration)
+     * @param start the starting value
+     * @param end the ending value
+     * @param duration the duration of the animation (&gt;0)
+     * @return the current value
+     */
+    public static float easeInQuartic(float time, float start, float end,
+            float duration) {
+        assert Validate.positive(duration, "duration");
+
+        float t = time / duration; // goes from 0 -> 1
+        float t2 = t * t;
+        float fraction = t2 * t2; // goes from 0 -> 1
+        float result = MyMath.lerp(fraction, start, end);
+
+        return result;
+    }
+
+    /**
+     * Quartic easing function for animation: fast at the start, slow at the
+     * end.
+     *
+     * @param time the elapsed time since the start of the animation (&ge;0,
+     * &le;duration)
+     * @param start the starting value
+     * @param end the ending value
+     * @param duration the duration of the animation (&gt;0)
+     * @return the current value
+     */
+    public static float easeOutQuartic(float time, float start, float end,
+            float duration) {
+        assert Validate.positive(duration, "duration");
+
+        float t = time / duration - 1f; // goes from -1 -> 0
+        float t2 = t * t;
+        float fraction = 1f - t2 * t2; // goes from 0 -> 1
+        float result = MyMath.lerp(fraction, start, end);
+
+        return result;
+    }
+
+    /**
      * Fade polynomial for Perlin noise. Double-precision arithmetic is used to
      * reduce rounding error.
      *
