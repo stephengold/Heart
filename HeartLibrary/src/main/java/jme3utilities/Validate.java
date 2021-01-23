@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2020, Stephen Gold
+ Copyright (c) 2014-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -49,9 +49,9 @@ final public class Validate {
     // constants and loggers
 
     /**
-     * message logger for this class TODO publicize
+     * message logger for this class
      */
-    final private static Logger logger
+    final public static Logger logger
             = Logger.getLogger(Validate.class.getName());
     // *************************************************************************
     // fields
