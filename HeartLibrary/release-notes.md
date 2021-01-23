@@ -1,5 +1,28 @@
 # release log for the Heart Library and related tests
 
+## Version 6.3.0 released on TBD
+
+ + Bugfix: `IllegalArgumentException` while expanding a `Mesh`.
+ + Extended `Heart.writeImage()` to write BMPs, GIFs, and JPEGs.
+ + Added an option to `Validate` to configure the type of exception
+   thrown for a null argument.
+ + Modified `PointVisualizer` to configure its render bucket
+   and disable shadows.
+ + Reduced argument validation when assertions are disabled.
+ + Added to the library:
+   + `Dumper.dump()` methods for a `Camera`
+   + `MyAnimation.findKeyframeIndex()` for a `TransformTrack`
+   + `MyCamera.fovX()`
+   + `MyCamera.xDegrees()`
+   + `MyCamera.xTangent()`
+   + `MyMath.clamp()` for ints
+   + `MyMath.easeInQuartic()`
+   + `MyMath.easeOutQuartic()`
+   + `MyString.findIndex()`
+   + a `Vector3i` class
+ + Publicized many loggers.
+ + Upgraded Gradle to v6.8.1
+
 ## Version 6.2.0 released on 23 November 2020
 
  + Added a `SignalTracker` class to the library.
@@ -18,7 +41,7 @@
    + disabled audio rendering
    + upgraded the jme3-utilities-ui library to v0.9.0
  + Upgraded Gradle to v6.7
- + Upgrade JUnit to v4.13.1
+ + Upgraded JUnit to v4.13.1
 
 ## Version 6.0.0 released on 15 August 2020
 

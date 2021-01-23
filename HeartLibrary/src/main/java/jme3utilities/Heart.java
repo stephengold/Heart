@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -407,7 +407,7 @@ public class Heart {
      * @return project name, library name, branch, and revision
      */
     public static String version() {
-        return "Heart Heart master $Rev: 6.2.0-SNAPSHOT $";
+        return "Heart Heart master $Rev: 6.3.0 $";
     }
 
     /**
