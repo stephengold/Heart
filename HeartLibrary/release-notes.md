@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 6.3.0 released on TBD
+## Version 6.3.0 released on 23 January 2021
 
  + Bugfix: `IllegalArgumentException` while expanding a `Mesh`.
  + Extended `Heart.writeImage()` to write BMPs, GIFs, and JPEGs.
