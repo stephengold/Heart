@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ public class VectorXZ
     /**
      * message logger for this class
      */
-    final private static Logger logger
+    final public static Logger logger
             = Logger.getLogger(VectorXZ.class.getName());
     /**
      * local copy of {@link com.jme3.math.Vector3f#UNIT_Y}

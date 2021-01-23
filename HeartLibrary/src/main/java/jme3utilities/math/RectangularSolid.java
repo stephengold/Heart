@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2020, Stephen Gold
+ Copyright (c) 2018-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -62,7 +62,7 @@ public class RectangularSolid implements Savable {
     /**
      * message logger for this class
      */
-    final private static Logger logger
+    final public static Logger logger
             = Logger.getLogger(RectangularSolid.class.getName());
     // *************************************************************************
     // fields

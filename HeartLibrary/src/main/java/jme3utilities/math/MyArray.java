@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@ final public class MyArray {
     /**
      * message logger for this class
      */
-    final private static Logger logger
+    final public static Logger logger
             = Logger.getLogger(MyArray.class.getName());
     // *************************************************************************
     // constructors
