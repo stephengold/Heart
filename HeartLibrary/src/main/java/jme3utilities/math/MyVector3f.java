@@ -826,7 +826,8 @@ public class MyVector3f {
 
     /**
      * Determine the squared length of a vector. Unlike
-     * {@link com.jme3.math.Vector3f#lengthSquared()}, this method returns a
+     * {@link com.jme3.math.Vector3f#lengthSquared()}, this method uses
+     * double-precision arithmetic to reduce the risk of overflow and returns a
      * double-precision value for precise comparison of lengths.
      *
      * @param vector input (not null, unaffected)
