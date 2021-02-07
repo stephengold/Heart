@@ -71,3 +71,6 @@ signing {
     sign configurations.archives
     sign publishing.publications.maven
 }
+tasks.withType(Sign) {
+    onlyIf { gradle.rootProject.hasProperty('signing.keyId') }
+}
