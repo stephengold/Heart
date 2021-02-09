@@ -1,5 +1,10 @@
 # release log for the Heart Library and related tests
 
+## Version 6.4.1 released on TBD
+
++ Bugfix: single-precision arithmetic in `MyMath.sumOfSquares()`
++ Upgraded Gradle to v6.8.2
+
 ## Version 6.4.0 released on 30 January 2021
 
 Added the `Loadable` interface.
