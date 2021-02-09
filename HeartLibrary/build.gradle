@@ -54,6 +54,13 @@ publishing {
             artifactId artifact
             from components.java
             pom {
+                description 'A general-purpose add-on library for jMonkeyEngine'
+                developers {
+                    developer {
+                        email = 'sgold@sonic.net'
+                        name = 'Stephen Gold'
+                    }
+                }
                 licenses {
                     license {
                         distribution = 'repo'
@@ -61,6 +68,13 @@ publishing {
                         url = 'https://opensource.org/licenses/BSD-3-Clause'
                     }
                 }
+                name = 'com.github.stephengold:Heart'
+                scm {
+                    connection = 'scm:git:git://github.com/stephengold/Heart.git'
+                    developerConnection = 'scm:git:ssh://github.com:stephengold/Heart.git'
+                    url = 'http://github.com/stephengold/Heart/tree/master'
+                }
+                url = 'https://github.com/stephengold/Heart'
             }
             version project.ext.version
         }
