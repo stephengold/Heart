@@ -51,10 +51,12 @@ publishToMavenLocal.doLast {
 publishing {
     publications {
         maven(MavenPublication) {
+            artifact jar
+            artifact javadocJar
+            artifact sourcesJar
             artifactId artifact
-            from components.java
             pom {
-                description 'A general-purpose add-on library for jMonkeyEngine'
+                description = 'A general-purpose add-on library for jMonkeyEngine'
                 developers {
                     developer {
                         email = 'sgold@sonic.net'
