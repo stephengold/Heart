@@ -91,10 +91,11 @@ resolve the remaining dependencies automatically.
 Add to the project’s "build.gradle" file:
 
     repositories {
+        mavenCentral()
         jcenter()
     }
     dependencies {
-        compile 'com.github.stephengold:Heart:6.4.0'
+        compile 'com.github.stephengold:Heart:6.4.2'
     }
 
 #### Maven-built projects
@@ -102,6 +103,10 @@ Add to the project’s "build.gradle" file:
 Add to the project’s "pom.xml" file:
 
     <repositories>
+      <repository>
+        <id>mvnrepository</id>
+        <url>https://repo1.maven.org/maven2/</url>
+      </repository>
       <repository>
         <id>jcenter</id>
         <url>https://jcenter.bintray.com/</url>
@@ -111,7 +116,7 @@ Add to the project’s "pom.xml" file:
     <dependency>
       <groupId>com.github.stephengold</groupId>
       <artifactId>Heart</artifactId>
-      <version>6.4.0</version>
+      <version>6.4.2</version>
       <type>pom</type>
     </dependency>
 
@@ -133,15 +138,15 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
  5. Add the `Heart` class jar:
     + Click on the "Add JAR/Folder" button.
     + Navigate to the download folder.
-    + Select the "Heart-6.4.0.jar" file.
+    + Select the "Heart-6.4.2.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
     + Click on the "Edit" button.
     + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "Heart-6.4.0-javadoc.jar" file.
+    + Select the "Heart-6.4.2-javadoc.jar" file.
     + Click on the "Open" button.
     + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "Heart-6.4.0-sources.jar" file.
+    + Select the "Heart-6.4.2-sources.jar" file.
     + Click on the "Open" button again.
     + Click on the "OK" button to close the "Edit Jar Reference" dialog.
  7. Click on the "OK" button to exit the "Project Properties" dialog.
@@ -158,10 +163,13 @@ Newer releases (since v4.5.0) can be downloaded from
 Older releases (v0.9.5 through v4.4.0) can be downloaded from
 [the Jme3-utilities Project](https://github.com/stephengold/jme3-utilities/releases).
 
-Newer Maven artifacts (since v5.0.0) are available from
+Newer Maven artifacts (since v6.4.2) are available from
+[MavenCentral](https://search.maven.org/artifact/com.github.stephengold/Heart).
+
+Old Maven artifacts (v5.0.0 through v6.4.0) are available from
 [JCenter](https://bintray.com/stephengold/com.github.stephengold/Heart).
 
-Older Maven artifacts (v0.9.5 through v4.5.0) are available from
+The oldest Maven artifacts (v0.9.5 through v4.5.0) are available from
 [JFrog Bintray](https://bintray.com/stephengold/jme3utilities/jme3-utilities-heart).
 
 [Jump to table of contents](#toc)
@@ -185,7 +193,7 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
      + `cd Heart`
-     + `git checkout -b latest 6.4.0`
+     + `git checkout -b latest 6.4.2`
    + using a web browser:
      + browse to https://github.com/stephengold/Heart/releases/latest
      + follow the "Source code (zip)" link
@@ -228,6 +236,7 @@ You can install the Maven artifacts to your local cache:
 [mint]: https://linuxmint.com "Linux Mint Project"
 [netbeans]: https://netbeans.org "NetBeans Project"
 [skycontrol]: https://github.com/stephengold/SkyControl "SkyControl Project"
+[sonatype]: https://www.sonatype.com "Sonatype"
 [utilities]: https://github.com/stephengold/jme3-utilities "Jme3-utilities Project"
 [wes]: https://github.com/stephengold/Wes "Wes Project"
 [winmerge]: http://winmerge.org "WinMerge Project"
@@ -277,7 +286,7 @@ software developers:
     + the PMD source-code analyzer
     + the [WinMerge] differencing and merging tool
 
-I am grateful to [Github], [JFrog], and Imgur
+I am grateful to [Github], [Sonatype], [JFrog], and Imgur
 for providing free hosting for this project
 and many other open-source projects.
 
