@@ -79,6 +79,12 @@ publishing {
             version project.ext.version
         }
     }
+    repositories {
+        maven {
+            name = 'OSSRH'
+            url = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
+        }
+    }
 }
 
 signing {
