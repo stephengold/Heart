@@ -2,9 +2,9 @@
 
 ## Version 6.4.2 released on 9 February 2021
 
-+ Bugfix: single-precision arithmetic in `MyMath.sumOfSquares()`
-+ Published to MavenLocal instead of JCenter.
-+ Upgraded Gradle to v6.8.2
+ + Bugfix: single-precision arithmetic in `MyMath.sumOfSquares()`
+ + Published to MavenLocal instead of JCenter.
+ + Upgraded Gradle to v6.8.2
 
 ## Version 6.4.0 released on 30 January 2021
 
