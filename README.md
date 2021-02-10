@@ -84,7 +84,7 @@ the standard jme3-core library from jMonkeyEngine.
 
 For projects built using Maven or [Gradle], it is sufficient to specify the
 dependency on the Heart Library.  The build tools should automatically
-resolve the remaining dependencies automatically.
+resolve the remaining dependencies .
 
 #### Gradle-built projects
 
@@ -163,7 +163,7 @@ Newer releases (since v4.5.0) can be downloaded from
 Older releases (v0.9.5 through v4.4.0) can be downloaded from
 [the Jme3-utilities Project](https://github.com/stephengold/jme3-utilities/releases).
 
-Newer Maven artifacts (since v6.4.2) are available from
+Newer Maven artifacts (since v6.3.0) are available from
 [MavenCentral](https://search.maven.org/artifact/com.github.stephengold/Heart).
 
 Old Maven artifacts (v5.0.0 through v6.4.0) are available from
