@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -174,7 +174,7 @@ public class MyString {
      * @return a description (not null, not empty)
      */
     public static String describe(float fValue) {
-        String raw = String.format("%g", fValue);
+        String raw = String.format(Locale.US, "%g", fValue);
         String result = trimFloat(raw);
 
         assert result != null;
@@ -190,7 +190,7 @@ public class MyString {
      * @return a description (not null, not empty)
      */
     public static String describeFraction(float fValue) {
-        String raw = String.format("%.3f", fValue);
+        String raw = String.format(Locale.US, "%.3f", fValue);
         String result = trimFloat(raw);
 
         assert result != null;
