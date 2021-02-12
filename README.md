@@ -13,7 +13,7 @@ It contains 4 sub-projects:
 Complete source code (in Java) is provided under
 [a 3-clause BSD license][license].
 
-Many other libraries (including [Minie], [SkyControl], and [Wes])
+Many other libraries (including [JmePower], [Minie], [SkyControl], and [Wes])
 depend on the Heart Library.
 
 <a name="toc"/>
@@ -92,7 +92,6 @@ Add to the project’s "build.gradle" file:
 
     repositories {
         mavenCentral()
-        jcenter()
     }
     dependencies {
         compile 'com.github.stephengold:Heart:6.4.2'
@@ -106,10 +105,6 @@ Add to the project’s "pom.xml" file:
       <repository>
         <id>mvnrepository</id>
         <url>https://repo1.maven.org/maven2/</url>
-      </repository>
-      <repository>
-        <id>jcenter</id>
-        <url>https://jcenter.bintray.com/</url>
       </repository>
     </repositories>
 
@@ -229,6 +224,7 @@ You can install the Maven artifacts to your local cache:
 [heart]: https://github.com/stephengold/Heart "Heart Project"
 [jfrog]: https://www.jfrog.com "JFrog"
 [jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
+[jmepower]: https://github.com/stephengold/JmePower "JmePower Project"
 [license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
 [log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
