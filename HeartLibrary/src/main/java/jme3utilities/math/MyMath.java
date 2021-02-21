@@ -355,12 +355,13 @@ public class MyMath {
      */
     public static float hypotenuse(float... fValues) {
         double sum = 0.0;
-        for (float value : fValues) {
+        for (float fValue : fValues) {
+            double value = fValue;
             sum += value * value;
         }
 
         float result = (float) Math.sqrt(sum);
-        assert result >= 0.0 : result;
+        assert result >= 0f : result;
         return result;
     }
 
