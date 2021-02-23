@@ -476,23 +476,23 @@ public class MyMath {
      * Interpolate between (or extrapolate from) 2 single-precision values using
      * linear (Lerp) *polation. Unlike
      * {@link com.jme3.math.FastMath#interpolateLinear(float, float, float)}, no
-     * rounding error is introduced when y1==y2.
+     * rounding error is introduced when y0==y1.
      *
-     * @param t descaled parameter value (0&rarr;v0, 1&rarr;v1)
-     * @param y1 function value at t=0
-     * @param y2 function value at t=1
+     * @param t descaled parameter value (0&rarr;y0, 1&rarr;y1)
+     * @param y0 function value at t=0
+     * @param y1 function value at t=1
      * @return an interpolated function value
      */
-    public static float lerp(float t, float y1, float y2) {
-        float lerp;
-        if (y1 == y2) {
-            lerp = y1;
+    public static float lerp(float t, float y0, float y1) {
+        float result;
+        if (y0 == y1) {
+            result = y0;
         } else {
             float u = 1f - t;
-            lerp = u * y1 + t * y2;
+            result = u * y0 + t * y1;
         }
 
-        return lerp;
+        return result;
     }
 
     /**
