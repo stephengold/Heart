@@ -132,7 +132,8 @@ public class Heart {
 
     /**
      * Return a deep copy of the specified object. This works around JME issue
-     * #879, but still doesn't handle all classes.
+     * #879, but still doesn't handle all classes. TODO return same type of
+     * object
      *
      * @param object input (unaffected)
      * @return an object equivalent to the input
