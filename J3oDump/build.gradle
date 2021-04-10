@@ -21,3 +21,7 @@ dependencies {
     //implementation "com.github.stephengold:Heart:$heartVersion"
     implementation project(':HeartLibrary')
 }
+
+distTar.dependsOn(':HeartLibrary:pom', ':HeartLibrary:pomAsc')
+distZip.dependsOn(':HeartLibrary:pom', ':HeartLibrary:pomAsc')
+startScripts.dependsOn(':HeartLibrary:pom', ':HeartLibrary:pomAsc')

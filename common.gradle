@@ -54,8 +54,3 @@ task javadocJar(type: Jar) {
     description 'Create a JAR of javadoc.'
     from javadoc.destinationDir
 }
-
-// add javadoc/source jar tasks as artifacts
-artifacts {
-    archives jar, sourcesJar, javadocJar
-}
