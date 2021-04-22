@@ -254,7 +254,7 @@ public class Heart {
     }
 
     /**
-     * Access the pre-existing FileHandler for logging, or if none if found,
+     * Access the pre-existing FileHandler for logging, or if none is found,
      * create one and use that.
      *
      * @return not null
