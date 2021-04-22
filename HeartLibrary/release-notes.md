@@ -1,5 +1,14 @@
 # release log for the Heart Library and related tests
 
+## Version 6.4.3+for33 released on TBD
+
+ + Bugfix: Locale not specified in the `MyString.describe()`
+   and `MyString.describeFraction()` methods.
+ + Made `MyMath.hypoteneuse()` more reliable by using double-precision
+   arithmetic.
+ + Upgraded the JUnit library to v4.13.2
+ + Upgraded Gradle to v7.0
+
 ## Version 6.4.2 released on 9 February 2021
 
  + Bugfix: single-precision arithmetic in `MyMath.sumOfSquares()`
