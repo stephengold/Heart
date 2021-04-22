@@ -9,12 +9,12 @@ dependencies {
         exclude group: 'com.github.stephengold', module: 'Heart'
     }
     implementation 'org.jmonkeyengine:jme3-desktop:' + jmonkeyengineVersion
+    runtimeOnly 'org.jmonkeyengine:jme3-effects:' + jmonkeyengineVersion
     runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jmonkeyengineVersion
     runtimeOnly 'org.jmonkeyengine:jme3-testdata:3.1.0-stable'
 
-    // HeartExamples doesn't use jme3-blender, jme3-jogg, or jme3-plugins
+    // HeartExamples doesn't use jme3-jogg or jme3-plugins
     //  -- they are included solely to avoid warnings from AssetConfig
-    runtimeOnly 'org.jmonkeyengine:jme3-blender:' + jmonkeyengineVersion
     runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jmonkeyengineVersion
     runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jmonkeyengineVersion
 
