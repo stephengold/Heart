@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 6.4.3+for33 released on TBD
+## Version 6.4.3+for33 released on 22 April 2021
 
  + Bugfix: Locale not specified in the `MyString.describe()`
    and `MyString.describeFraction()` methods.
