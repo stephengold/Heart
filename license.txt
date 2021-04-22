@@ -1,4 +1,3 @@
-com.jme3 software packages Copyright (c) 2009-2019 jMonkeyEngine
 jme3utilities software packages except Icosphere.java Copyright (c) 2013-2021 Stephen Gold
 
 All rights reserved.
