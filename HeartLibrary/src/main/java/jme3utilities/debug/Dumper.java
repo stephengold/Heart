@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -817,7 +817,7 @@ public class Dumper implements Cloneable {
         stream.print(className);
 
         if (appState instanceof AbstractAppState) {
-            String id = ((AbstractAppState) appState).getId();
+            String id = appState.getId();
             if (id != null) {
                 stream.print(" id=");
                 stream.print(id);
