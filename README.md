@@ -112,7 +112,6 @@ Add to the project’s "pom.xml" file:
       <groupId>com.github.stephengold</groupId>
       <artifactId>Heart</artifactId>
       <version>6.4.3+for33</version>
-      <type>pom</type>
     </dependency>
 
 #### Ant-built projects
