@@ -12,7 +12,7 @@ description = 'A general-purpose add-on library for jMonkeyEngine'
 ext {
     artifact = 'Heart'
     version = heartVersion
-    baseName = "$artifact-$version"
+    baseName = "${artifact}-${version}"
 }
 
 jar {
@@ -29,6 +29,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.jmonkeyengine:jme3-desktop:' + jmonkeyengineVersion
 }
+
+// publishing tasks
 
 build.dependsOn('pom', 'pomAsc')
 task('pom', type: Copy) {
@@ -93,6 +95,8 @@ publishing {
     }
 }
 generateMetadataFileForMavenPublication.dependsOn('pom')
+
+// signing tasks
 
 signing {
     sign publishing.publications.maven
