@@ -160,11 +160,7 @@ Older releases (v0.9.5 through v4.4.0) can be downloaded from
 Newer Maven artifacts (since v6.3.0) are available from
 [MavenCentral](https://search.maven.org/artifact/com.github.stephengold/Heart).
 
-Old Maven artifacts (v5.0.0 through v6.4.0) are available from
-[JCenter](https://bintray.com/stephengold/com.github.stephengold/Heart).
-
-The oldest Maven artifacts (v0.9.5 through v4.5.0) are available from
-[JFrog Bintray](https://bintray.com/stephengold/jme3utilities/jme3-utilities-heart).
+Old Maven artifacts (v5.0.0 through v6.4.0) are available from JCenter.
 
 [Jump to table of contents](#toc)
 
