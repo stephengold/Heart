@@ -3,12 +3,11 @@
 [The Heart Project][heart] provides a general-purpose add-on library for
 [the jMonkeyEngine (JME) game engine][jme].
 
-It contains 4 sub-projects:
+It contains 3 sub-projects:
 
  1. HeartLibrary: the Heart runtime library and its automated tests
  2. HeartExamples: demos, examples, and non-automated test software
- 3. HeartAssets: generate assets included in HeartLibrary
- 4. J3oDump: a command-line utility to dump J3O assets
+ 3. J3oDump: a command-line utility to dump J3O assets
 
 Complete source code (in Java) is provided under
 [a 3-clause BSD license][license].

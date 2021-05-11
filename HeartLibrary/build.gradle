@@ -21,7 +21,6 @@ jar {
 }
 javadocJar { archiveBaseName = project.ext.baseName }
 sourcesJar { archiveBaseName = project.ext.baseName }
-processResources.dependsOn(':HeartAssets:shapeTextures')
 
 dependencies {
     api 'org.jmonkeyengine:jme3-core:' + jmonkeyengineVersion
