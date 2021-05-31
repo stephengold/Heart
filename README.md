@@ -93,7 +93,7 @@ Add to the project’s "build.gradle" file:
         mavenCentral()
     }
     dependencies {
-        compile 'com.github.stephengold:Heart:6.4.3+for33'
+        compile 'com.github.stephengold:Heart:6.4.4'
     }
 
 #### Maven-built projects
@@ -110,7 +110,7 @@ Add to the project’s "pom.xml" file:
     <dependency>
       <groupId>com.github.stephengold</groupId>
       <artifactId>Heart</artifactId>
-      <version>6.4.3+for33</version>
+      <version>6.4.4</version>
     </dependency>
 
 #### Ant-built projects
@@ -131,15 +131,15 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
  5. Add the `Heart` class jar:
     + Click on the "Add JAR/Folder" button.
     + Navigate to the download folder.
-    + Select the "Heart-6.4.3+for33.jar" file.
+    + Select the "Heart-6.4.4.jar" file.
     + Click on the "Open" button.
  6. (optional) Add jars for javadoc and sources:
     + Click on the "Edit" button.
     + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "Heart-6.4.3+for33-javadoc.jar" file.
+    + Select the "Heart-6.4.4-javadoc.jar" file.
     + Click on the "Open" button.
     + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "Heart-6.4.3+for33-sources.jar" file.
+    + Select the "Heart-6.4.4-sources.jar" file.
     + Click on the "Open" button again.
     + Click on the "OK" button to close the "Edit Jar Reference" dialog.
  7. Click on the "OK" button to exit the "Project Properties" dialog.
@@ -182,7 +182,7 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
      + `cd Heart`
-     + `git checkout -b latest 6.4.3+for33`
+     + `git checkout -b latest 6.4.4`
    + using a web browser:
      + browse to https://github.com/stephengold/Heart/releases/latest
      + follow the "Source code (zip)" link

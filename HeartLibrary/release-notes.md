@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 6.4.4 released on TBD
+## Version 6.4.4 released on 30 May 2021
 
  + Targeted jMonkeyEngine version 3.4.0-stable.
  + Replaced HeartTextures with textures from the Georg project.
