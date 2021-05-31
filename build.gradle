@@ -11,3 +11,6 @@ subprojects {
 task('publishToMavenLocal') {
     dependsOn ':HeartLibrary:publishToMavenLocal'
 }
+task('release') {
+    dependsOn ':HeartLibrary:publishMavenPublicationToOSSRHRepository'
+}
