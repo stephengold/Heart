@@ -323,7 +323,7 @@ final public class MyBuffer {
 
     /**
      * Returns the format of the data stored in the specified IndexBuffer.
-     * Intended for source-code compatability with JME 3.2 and earlier.
+     * Intended for source-code compatibility with JME 3.2 and earlier.
      *
      * @param indexBuffer (not null, unaffected)
      * @return an enum value (not null)
@@ -552,7 +552,7 @@ final public class MyBuffer {
 
     /**
      * Perform a relative put to the specified IndexBuffer. Intended for
-     * source-code compatability with JME 3.2 and earlier.
+     * source-code compatibility with JME 3.2 and earlier.
      *
      * @param indexBuffer (not null, modified)
      * @param value the value to write

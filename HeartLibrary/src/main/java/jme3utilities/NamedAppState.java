@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2019, Stephen Gold
+ Copyright (c) 2017-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -107,7 +107,7 @@ public class NamedAppState extends AbstractAppState {
         }
         if (appState.isEnabled() != isEnabled()) {
             logger.log(Level.WARNING,
-                    "inflenced state {0} out-of-synch with {1}", new Object[]{
+                    "influenced state {0} out-of-synch with {1}", new Object[]{
                         appState, this
                     });
         }

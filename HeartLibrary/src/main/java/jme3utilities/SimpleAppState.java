@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2019, Stephen Gold
+ Copyright (c) 2014-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -192,7 +192,7 @@ public class SimpleAppState extends NamedAppState {
      * Immediate callback when this state gets detached. Should be invoked only
      * by a subclass or by the AppStateManager.
      * <p>
-     * Without knowing which thread invoked detatch(), it is unsafe to modify
+     * Without knowing which thread invoked detach(), it is unsafe to modify
      * the scene graph in this method. Instead, scene-graph modifications should
      * occur in {@link #cleanup()}.
      *

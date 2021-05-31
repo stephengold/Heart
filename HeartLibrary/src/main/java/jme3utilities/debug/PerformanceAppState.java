@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2019, Stephen Gold
+ Copyright (c) 2014-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -169,16 +169,16 @@ public class PerformanceAppState extends SimpleAppState {
         /*
          * Create and attach a colored background for the display.
          */
-        Material backgroudMaterial
+        Material backgroundMaterial
                 = MyAsset.createUnshadedMaterial(assetManager);
-        backgroudMaterial.setColor("Color", backgroundColor.clone());
-        RenderState renderState = backgroudMaterial.getAdditionalRenderState();
+        backgroundMaterial.setColor("Color", backgroundColor.clone());
+        RenderState renderState = backgroundMaterial.getAdditionalRenderState();
         renderState.setBlendMode(RenderState.BlendMode.Alpha);
         Quad quad = new Quad(backgroundWidth, lineHeight);
         background = new Geometry("perf stats background", quad);
         background.setCullHint(Spatial.CullHint.Never);
         background.setLocalTranslation(0f, 0f, -1f);
-        background.setMaterial(backgroudMaterial);
+        background.setMaterial(backgroundMaterial);
         guiNode.attachChild(background);
 
         reset();

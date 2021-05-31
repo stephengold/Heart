@@ -876,7 +876,7 @@ public class VectorXZ
         }
         /*
          * Vector3f.lookAt() orients the Z-axis, whereas VectorXZ.rotate()
-         * orients the X-axis, so a 90-degree tranformation of coordinates is
+         * orients the X-axis, so a 90-degree transformation of coordinates is
          * required.
          */
         Vector3f direction = new Vector3f(-z, 0f, x);

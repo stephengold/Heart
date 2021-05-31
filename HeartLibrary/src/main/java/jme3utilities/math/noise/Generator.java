@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2020, Stephen Gold
+ Copyright (c) 2017-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -308,10 +308,10 @@ public class Generator extends Random {
             return firstIndex;
         }
 
-        int numPossibilties = lastIndex - firstIndex + 1;
-        int bitIndex = firstIndex + nextInt(numPossibilties);
+        int numPossibilities = lastIndex - firstIndex + 1;
+        int bitIndex = firstIndex + nextInt(numPossibilities);
         while (bitset.get(bitIndex) != bitValue) {
-            bitIndex = firstIndex + nextInt(numPossibilties);
+            bitIndex = firstIndex + nextInt(numPossibilities);
         }
 
         return bitIndex;

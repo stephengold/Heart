@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -360,7 +360,7 @@ public class MySpatial {
     /**
      * Find the first child of the specified Node with the specified name. The
      * search is case-sensitive and looks only at the node's immediate children,
-     * not all its descendents.
+     * not all its descendants.
      *
      * @param node the Node to search (not null)
      * @param childName the name to search for (not null)

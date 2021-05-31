@@ -41,7 +41,7 @@ import java.util.logging.Logger;
 
 /**
  * Integer vector with 3 components, used to identify a chunk in a 3-D world or
- * respresent the offset between 2 chunks. Immutable except for
+ * represent the offset between 2 chunks. Immutable except for
  * {@link #read(com.jme3.export.JmeImporter)}.
  *
  * @author Stephen Gold sgold@sonic.net
