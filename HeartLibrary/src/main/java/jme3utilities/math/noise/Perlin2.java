@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2020, Stephen Gold
+ Copyright (c) 2014-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -149,7 +149,7 @@ public class Perlin2 implements Noise2 {
      * Generate an array of pseudo-random 2-D gradients for a specified seed.
      *
      * @param numGradients (&gt;1)
-     * @param gSeed seed for generating gradients
+     * @param seed seed for generating gradients
      */
     private void generateGradients(int numGradients, long seed) {
         Validate.inRange(numGradients, "number of gradients",
