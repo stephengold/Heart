@@ -1,5 +1,12 @@
 # release log for the Heart Library and related tests
 
+## Version 6.4.4 released on TBD
+
+ + Targeted jMonkeyEngine version 3.4.0-stable.
+ + Replaced HeartTextures with textures from the Georg project.
+ + Anti-aliased the "shapes" textures by downsampling them 10x.
+ + Upgraded Gradle to v7.0.2
+
 ## Version 6.4.3+for34 released on 22 April 2021
 
  + Bugfix: Locale not specified in the `MyString.describe()`
