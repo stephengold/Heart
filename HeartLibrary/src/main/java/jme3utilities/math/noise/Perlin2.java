@@ -75,8 +75,7 @@ public class Perlin2 implements Noise2 {
         if (period < numGradients) {
             logger.log(Level.SEVERE, "period={0}, numGradients={1}",
                     new Object[]{period, numGradients});
-            String message = String.format(
-                    "period shouldn't be less than numGradients");
+            String message = "period shouldn't be less than numGradients";
             throw new IllegalArgumentException(message);
         }
         Validate.inRange(numGradients, "number of gradients",
