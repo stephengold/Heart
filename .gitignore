@@ -1,4 +1,5 @@
 /.gradle/
+/.idea/
 /.nb-gradle/
 /HeartAssets/build/
 /HeartExamples/build/
