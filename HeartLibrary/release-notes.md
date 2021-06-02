@@ -571,7 +571,7 @@ Added `localToWorld(Quaternion)` and
  + Removed getMapLocation(), moveWorld(), moveChildWorld(), rotateChild(),
    rotateObject(), and rotateY() methods from the MySpatial class
  + Added checks for ignoreTransform
- + Improved handling of non-uniform scaling and disabled RigidBodyContols
+ + Improved handling of non-uniform scaling and disabled RigidBodyControls
  + Added findObject(), isIgnoringTransforms(), and setWorldTransform() methods
    to the MySpatial class
  + Added MyQuaternion.isRotationIdentity() and MyVector3f.isScaleIdentity()
