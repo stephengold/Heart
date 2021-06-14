@@ -42,41 +42,41 @@ task cleanWrittenAssets(type: Delete) {
 }
 
 task TestBoundsVisualizer(type: JavaExec) {
-    main 'jme3utilities.debug.test.TestBoundsVisualizer'
+    mainClass = 'jme3utilities.debug.test.TestBoundsVisualizer'
 }
 task TestPas(type: JavaExec) {
-    main 'jme3utilities.debug.test.TestPas'
+    mainClass = 'jme3utilities.debug.test.TestPas'
 }
 
 task TestGenerator(type: JavaExec) {
-    main 'jme3utilities.math.test.TestGenerator'
+    mainClass = 'jme3utilities.math.test.TestGenerator'
 }
 task TestMyMath(type: JavaExec) {
-    main 'jme3utilities.math.test.TestMyMath'
+    mainClass = 'jme3utilities.math.test.TestMyMath'
 }
 task TestMyVector3f(type: JavaExec) {
-    main 'jme3utilities.math.test.TestMyVector3f'
+    mainClass = 'jme3utilities.math.test.TestMyVector3f'
 }
 task TestVectorXZ(type: JavaExec) {
-    main 'jme3utilities.math.test.TestVectorXZ'
+    mainClass = 'jme3utilities.math.test.TestVectorXZ'
 }
 
 task TestLoopMesh(type: JavaExec) {
-    main 'jme3utilities.mesh.test.LoopMeshTest'
+    mainClass = 'jme3utilities.mesh.test.LoopMeshTest'
 }
 task TestSolidMeshes(type: JavaExec) {
-    main 'jme3utilities.mesh.test.TestSolidMeshes'
+    mainClass = 'jme3utilities.mesh.test.TestSolidMeshes'
 }
 
 task TestMySkeleton(type: JavaExec) {
-    main 'jme3utilities.test.TestMySkeleton'
+    mainClass = 'jme3utilities.test.TestMySkeleton'
 }
 task TestMySpatial(type: JavaExec) {
-    main 'jme3utilities.test.TestMySpatial'
+    mainClass = 'jme3utilities.test.TestMySpatial'
 }
 task TestNameGenerator(type: JavaExec) {
-    main 'jme3utilities.test.TestNameGenerator'
+    mainClass = 'jme3utilities.test.TestNameGenerator'
 }
 task TestWireframe(type: JavaExec) {
-    main 'jme3utilities.test.TestWireframe'
+    mainClass = 'jme3utilities.test.TestWireframe'
 }
