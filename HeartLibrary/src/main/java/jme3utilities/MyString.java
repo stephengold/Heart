@@ -149,7 +149,7 @@ public class MyString {
             }
             if (numInstances > 1) {
                 /*
-                 * Append a disinguishing suffix to each duplicate.
+                 * Append a distinguishing suffix to each duplicate.
                  */
                 int numElements = list.size();
                 int nextSuffix = 1;
