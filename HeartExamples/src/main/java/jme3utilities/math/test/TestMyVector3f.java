@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -69,13 +69,13 @@ public class TestMyVector3f {
         for (Vector3f v : vectorCases) {
             System.out.printf("v = %s%n", v.toString());
             System.out.printf(" yRotate(v, 0) = %s%n",
-                    MyVector3f.yRotate(v, 0).toString());
+                    MyVector3f.yRotate(v, 0));
             System.out.printf(" yRotate(v, PI/2) = %s%n",
-                    MyVector3f.yRotate(v, FastMath.HALF_PI).toString());
+                    MyVector3f.yRotate(v, FastMath.HALF_PI));
             System.out.printf(" yRotate(v, PI) = %s%n",
-                    MyVector3f.yRotate(v, FastMath.PI).toString());
+                    MyVector3f.yRotate(v, FastMath.PI));
             System.out.printf(" yRotate(v, 2*PI) = %s%n",
-                    MyVector3f.yRotate(v, FastMath.TWO_PI).toString());
+                    MyVector3f.yRotate(v, FastMath.TWO_PI));
             System.out.println();
         }
         System.out.println();
@@ -87,7 +87,7 @@ public class TestMyVector3f {
                 System.out.printf(" w = %s%n", w.toString());
                 if (w.length() != 0f) {
                     System.out.printf("  v proj w = %s%n",
-                            MyVector3f.projection(v, w, null).toString());
+                            MyVector3f.projection(v, w, null));
                 }
                 //System.out.printf("             %s%n",
                 //        v.project(w).toString());

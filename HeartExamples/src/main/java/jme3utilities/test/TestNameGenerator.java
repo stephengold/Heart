@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2020, Stephen Gold
+ Copyright (c) 2017-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -81,7 +81,7 @@ public class TestNameGenerator extends ActionApplication {
         System.out.printf("Test results for class NameGenerator:%n%n");
 
         NameGenerator example = new NameGenerator();
-        System.out.printf("pristine = %s%n", example.toString());
+        System.out.printf("pristine = %s%n", example);
 
         String apple1 = example.unique("apple");
         assert NameGenerator.isFrom(apple1, "apple");
@@ -103,7 +103,7 @@ public class TestNameGenerator extends ActionApplication {
         assert NameGenerator.getPrefix(apple3).equals("apple");
         assert !apple2.equals(apple3);
 
-        System.out.printf("used = %s%n", example.toString());
+        System.out.printf("used = %s%n", example);
 
         String exportPath = ActionApplication.filePath(exportAssetPath);
         File exportFile = new File(exportPath);
@@ -116,7 +116,7 @@ public class TestNameGenerator extends ActionApplication {
         System.out.printf("Successfully exported.%n");
 
         example.reset();
-        System.out.printf("reset = %s%n", example.toString());
+        System.out.printf("reset = %s%n", example);
 
         NameGenerator imported
                 = (NameGenerator) assetManager.loadAsset(exportAssetPath);

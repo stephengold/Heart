@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2017, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -71,8 +71,7 @@ public class TestVectorXZ {
 
             System.out.printf(
                     "vin = %s  azimuth(x)=%f (%f degrees)  vout = %s%n",
-                    vin.toString(), a, MyMath.toDegrees(a),
-                    vout.toString());
+                    vin, a, MyMath.toDegrees(a), vout);
             System.out.println();
 
             Vector3f v3 = new Vector3f(1f, 2f, 3f);
@@ -87,8 +86,7 @@ public class TestVectorXZ {
             VectorXZ r3 = new VectorXZ(q2.mult(v3));
 
             System.out.printf("vin=%s  r1=%s, r2=%s, r3=%s%n",
-                    vin.toString(), r1.toString(), r2.toString(),
-                    r3.toString());
+                    vin, r1.toString(), r2, r3);
             System.out.println();
         }
         System.out.println();
