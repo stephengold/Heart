@@ -58,7 +58,7 @@ public class Perlin2 implements Noise2 {
     /**
      * array of 2-D gradients (must all have length=1): set by constructor
      */
-    private Vector2f gradients[] = null;
+    private Vector2f[] gradients = null;
     // *************************************************************************
     // constructors
 

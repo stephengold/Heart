@@ -65,7 +65,7 @@ public class VectorSetUsingBuffer implements VectorSet {
     /**
      * look up last buffer position for hash index
      */
-    private int endPosition[];
+    private int[] endPosition;
     /**
      * number of enlargements since last clearStats()
      */
@@ -81,7 +81,7 @@ public class VectorSetUsingBuffer implements VectorSet {
     /**
      * look up first buffer position plus 1 for hash index
      */
-    private int startPositionPlus1[];
+    private int[] startPositionPlus1;
     /**
      * system milliseconds as of last clearStats()
      */
