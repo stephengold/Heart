@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -231,8 +231,7 @@ public class Octasphere extends Mesh {
 
         int numIndices = faces.size();
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numVertices, numIndices);
-        for (int i = 0; i < numIndices; ++i) {
-            int vertexIndex = faces.get(i);
+        for (int vertexIndex : faces) {
             MyBuffer.putRelative(ib, vertexIndex);
         }
         VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);

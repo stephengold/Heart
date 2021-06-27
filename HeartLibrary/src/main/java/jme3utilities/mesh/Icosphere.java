@@ -211,8 +211,7 @@ public class Icosphere extends Mesh {
 
         int numIndices = faces.size();
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numVertices, numIndices);
-        for (int i = 0; i < numIndices; ++i) {
-            int vertexIndex = faces.get(i);
+        for (int vertexIndex : faces) {
             MyBuffer.putRelative(ib, vertexIndex);
         }
         VertexBuffer.Format ibFormat = MyBuffer.getFormat(ib);
