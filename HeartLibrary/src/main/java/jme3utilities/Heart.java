@@ -205,7 +205,7 @@ public class Heart {
      * @return the pre-existing member, or null if none
      */
     @SuppressWarnings("unchecked")
-    public static <T extends Object> T first(Collection<T> collection) {
+    public static <T> T first(Collection<T> collection) {
         T result = null;
         if (!collection.isEmpty()) {
             int size = collection.size();
