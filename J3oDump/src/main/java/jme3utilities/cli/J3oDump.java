@@ -98,7 +98,7 @@ public class J3oDump {
         Spatial loadedAsset = assetManager.loadModel(modelKey);
 
         System.out.println("model:");
-        dumper.dump((Spatial) loadedAsset, "  ");
+        dumper.dump(loadedAsset, "  ");
         System.out.println();
         System.out.println();
     }
