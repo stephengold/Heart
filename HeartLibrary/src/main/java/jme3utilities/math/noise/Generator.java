@@ -259,7 +259,6 @@ public class Generator extends Random {
      * @param array the array to select from (not null, may be empty)
      * @return a pre-existing element of array, or null if it's empty
      */
-    @SuppressWarnings("rawtypes")
     public Object pick(Object[] array) {
         Validate.nonNull(array, "array");
 
