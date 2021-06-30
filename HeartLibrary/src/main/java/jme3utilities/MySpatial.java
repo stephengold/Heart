@@ -954,7 +954,8 @@ public class MySpatial {
 
     /**
      * Enumerate all non-null texture instances in the specified subtree of a
-     * scene graph.
+     * scene graph. Note that JME may consider 2 textures to be "equal" even
+     * when their asset keys differ.
      *
      * @param subtree the subtree to analyze (may be null)
      * @param addResult storage for results (added to if not null)
@@ -1337,7 +1338,8 @@ public class MySpatial {
 
     /**
      * If the specified parameter has a non-null texture value that's not
-     * already in the specified collection, add it.
+     * already in the specified collection, add it. Note that JME may consider 2
+     * textures to be "equal" even when their asset keys differ.
      *
      * @param collection (not null, modified)
      * @param parameter (not null, unaffected)
