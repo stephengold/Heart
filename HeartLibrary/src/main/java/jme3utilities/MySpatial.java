@@ -34,6 +34,7 @@ import com.jme3.audio.AudioNode;
 import com.jme3.effect.ParticleEmitter;
 import com.jme3.font.BitmapText;
 import com.jme3.light.Light;
+import com.jme3.material.MatParam;
 import com.jme3.material.MatParamOverride;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
@@ -56,6 +57,8 @@ import com.jme3.scene.control.Control;
 import com.jme3.scene.debug.SkeletonDebugger;
 import com.jme3.scene.instancing.InstancedGeometry;
 import com.jme3.scene.instancing.InstancedNode;
+import com.jme3.shader.VarType;
+import com.jme3.texture.Texture;
 import com.jme3.ui.Picture;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -950,6 +953,39 @@ public class MySpatial {
     }
 
     /**
+     * Enumerate all non-null texture instances in the specified subtree of a
+     * scene graph.
+     *
+     * @param subtree the subtree to analyze (may be null)
+     * @param addResult storage for results (added to if not null)
+     * @return an expanded List (either storeResult or a new List)
+     */
+    public static List<Texture> listTextures(Spatial subtree,
+            List<Texture> addResult) {
+        List<Texture> result
+                = (addResult == null) ? new ArrayList<Texture>(32) : addResult;
+
+        Iterable<Material> materials = listMaterials(subtree, null);
+        for (Material material : materials) {
+            Iterable<MatParam> parameters = material.getParams();
+            for (MatParam parameter : parameters) {
+                addTexture(result, parameter);
+            }
+        }
+
+        Iterable<Spatial> spatials = listSpatials(subtree);
+        for (Spatial spatial : spatials) {
+            Iterable<MatParamOverride> mpos
+                    = spatial.getLocalMatParamOverrides();
+            for (MatParamOverride mpo : mpos) {
+                addTexture(result, mpo);
+            }
+        }
+
+        return result;
+    }
+
+    /**
      * Clear all cached collision data from the specified subtree of the scene
      * graph and force a bound refresh. Note: recursive!
      *
@@ -1295,5 +1331,29 @@ public class MySpatial {
         }
 
         return result;
+    }
+    // *************************************************************************
+    // private methods
+
+    /**
+     * If the specified parameter has a non-null texture value that's not
+     * already in the specified collection, add it.
+     *
+     * @param collection (not null, modified)
+     * @param parameter (not null, unaffected)
+     */
+    private static void addTexture(Collection<Texture> collection,
+            MatParam parameter) {
+        VarType varType = parameter.getVarType();
+        switch (varType) {
+            case Texture2D:
+            case Texture3D:
+            case TextureArray:
+            case TextureCubeMap:
+                Texture texture = (Texture) parameter.getValue();
+                if (texture != null && !collection.contains(texture)) {
+                    collection.add(texture);
+                }
+        }
     }
 }
