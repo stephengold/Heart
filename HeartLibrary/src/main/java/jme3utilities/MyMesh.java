@@ -31,6 +31,7 @@ import com.jme3.material.Material;
 import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Matrix4f;
+import com.jme3.math.Quaternion;
 import com.jme3.math.Triangle;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
@@ -289,6 +290,31 @@ public class MyMesh {
         rs.setWireframe(true);
 
         return material;
+    }
+
+    /**
+     * Translate the specified VertexBuffer so that the center of its
+     * axis-aligned bounding box is at (0, 0, 0).
+     *
+     * @param mesh the subject mesh (not null)
+     * @param bufferType which buffer to modify (not null)
+     */
+    public static void centerBuffer(Mesh mesh, VertexBuffer.Type bufferType) {
+        Validate.nonNull(bufferType, "buffer type");
+
+        VertexBuffer vertexBuffer = mesh.getBuffer(bufferType);
+        if (vertexBuffer != null) {
+            FloatBuffer floatBuffer = (FloatBuffer) vertexBuffer.getData();
+            Vector3f max = new Vector3f();
+            Vector3f min = new Vector3f();
+            int numVertices = mesh.getVertexCount();
+            int numFloats = numAxes * numVertices;
+            MyBuffer.maxMin(floatBuffer, 0, numFloats, max, min);
+            Vector3f offset = MyVector3f.midpoint(max, min, null).negateLocal();
+            MyBuffer.translate(floatBuffer, 0, numFloats, offset);
+
+            vertexBuffer.setUpdateNeeded();
+        }
     }
 
     /**
@@ -755,6 +781,69 @@ public class MyMesh {
                     Element.swap(vb, v1Index, v3Index);
                 }
             }
+        }
+    }
+
+    /**
+     * Apply the specified rotation to all data in the specified VertexBuffer.
+     *
+     * @param mesh the subject mesh (not null)
+     * @param bufferType which buffer to modify (not null)
+     * @param rotation the rotation to apply (not null, unaffected)
+     */
+    public static void rotateBuffer(Mesh mesh, VertexBuffer.Type bufferType,
+            Quaternion rotation) {
+        Validate.nonNull(bufferType, "buffer type");
+        Validate.nonNull(rotation, "rotation");
+
+        VertexBuffer vertexBuffer = mesh.getBuffer(bufferType);
+        if (vertexBuffer != null) {
+            FloatBuffer floatBuffer = (FloatBuffer) vertexBuffer.getData();
+            int numVertices = mesh.getVertexCount();
+            int numFloats = numAxes * numVertices;
+            MyBuffer.rotate(floatBuffer, 0, numFloats, rotation);
+
+            vertexBuffer.setUpdateNeeded();
+        }
+    }
+
+    /**
+     * Apply the specified rotation to all data in the specified tangent buffer.
+     *
+     * @param mesh the subject mesh (not null)
+     * @param bufferType which buffer to modify (not null)
+     * @param rotation the rotation to apply (not null, unaffected)
+     */
+    public static void rotateTangentBuffer(Mesh mesh,
+            VertexBuffer.Type bufferType, Quaternion rotation) {
+        Validate.nonNull(bufferType, "buffer type");
+        Validate.nonNull(rotation, "rotation");
+
+        VertexBuffer vertexBuffer = mesh.getBuffer(bufferType);
+        if (vertexBuffer != null) {
+            FloatBuffer floatBuffer = (FloatBuffer) vertexBuffer.getData();
+            int numVertices = mesh.getVertexCount();
+            Vector3f tmpV3 = new Vector3f();
+            Vector4f tmpV4 = new Vector4f();
+            for (int vertexI = 0; vertexI < numVertices; ++vertexI) {
+                MyMesh.vertexVector4f(mesh, bufferType, vertexI, tmpV4);
+
+                tmpV3.x = tmpV4.x;
+                tmpV3.y = tmpV4.y;
+                tmpV3.z = tmpV4.z;
+                rotation.mult(tmpV3, tmpV3);
+                tmpV4.x = tmpV3.x;
+                tmpV4.y = tmpV3.y;
+                tmpV4.z = tmpV3.z;
+
+                int floatIndex = numAxes * vertexI;
+                floatBuffer.put(floatIndex, tmpV4.x);
+                floatBuffer.put(floatIndex + 1, tmpV4.y);
+                floatBuffer.put(floatIndex + 2, tmpV4.z);
+                floatBuffer.put(floatIndex + 3, tmpV4.w);
+            }
+
+            vertexBuffer.setUpdateNeeded();
         }
     }
 
