@@ -1337,9 +1337,8 @@ public class MySpatial {
     // private methods
 
     /**
-     * If the specified parameter has a non-null texture value that's not
-     * already in the specified collection, add it. Note that JME may consider 2
-     * textures to be "equal" even when their asset keys differ.
+     * If the value of the specified parameter is a non-null texture instance
+     * that isn't already in the specified collection, add it.
      *
      * @param collection (not null, modified)
      * @param parameter (not null, unaffected)
@@ -1353,9 +1352,32 @@ public class MySpatial {
             case TextureArray:
             case TextureCubeMap:
                 Texture texture = (Texture) parameter.getValue();
-                if (texture != null && !collection.contains(texture)) {
+                /*
+                 * Texture.equals() isn't strict enough,
+                 * so don't use collection.contains() here!
+                 */
+                if (texture != null && !contains(collection, texture)) {
                     collection.add(texture);
                 }
         }
+    }
+
+    /**
+     * Test whether the specified Collection contains the specified texture
+     * instance.
+     *
+     * @param collection (not null, unaffected)
+     * @param testInstance the instance to search for (not null, unaffected)
+     * @return true if found, otherwise false
+     */
+    private static boolean contains(Collection<Texture> collection,
+            Texture testInstance) {
+        for (Texture item : collection) {
+            if (item == testInstance) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
