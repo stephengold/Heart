@@ -327,21 +327,6 @@ public class MyString {
     }
 
     /**
-     * Join a collection of objects into a text string using spaces for
-     * separators and ignoring any empties/nulls. Note that Java 8 provides
-     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)}.
-     * TODO re-order methods
-     *
-     * @param objects objects to join (not null, unaffected, may contain nulls)
-     * @return joined string (not null)
-     */
-    public static String join(Iterable objects) {
-        Validate.nonNull(objects, "objects");
-        String result = join(" ", objects);
-        return result;
-    }
-
-    /**
      * Test whether the specified List is lexicographically sorted in ascending
      * order with no duplicates.
      *
@@ -357,32 +342,6 @@ public class MyString {
         }
 
         return true;
-    }
-
-    /**
-     * Join an array of objects into a text string using spaces for separators
-     * and ignoring any empties/nulls.
-     *
-     * @param array objects to join (not null, unaffected, may contain nulls)
-     * @return joined string (not null)
-     */
-    public static String join(Object[] array) {
-        Validate.nonNull(array, "array");
-
-        StringBuilder result = new StringBuilder(80);
-        for (Object element : array) {
-            if (element != null) {
-                if (result.length() > 0) {
-                    /*
-                     * Append a space as a separator.
-                     */
-                    result.append(' ');
-                }
-                result.append(element);
-            }
-        }
-
-        return result.toString();
     }
 
     /**
@@ -408,6 +367,46 @@ public class MyString {
                     result.append(separator);
                 }
                 result.append(item);
+            }
+        }
+
+        return result.toString();
+    }
+
+    /**
+     * Join a collection of objects into a text string using spaces for
+     * separators and ignoring any empties/nulls. Note that Java 8 provides
+     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)}.
+     *
+     * @param objects objects to join (not null, unaffected, may contain nulls)
+     * @return joined string (not null)
+     */
+    public static String join(Iterable objects) {
+        Validate.nonNull(objects, "objects");
+        String result = join(" ", objects);
+        return result;
+    }
+
+    /**
+     * Join an array of objects into a text string using spaces for separators
+     * and ignoring any empties/nulls.
+     *
+     * @param array objects to join (not null, unaffected, may contain nulls)
+     * @return joined string (not null)
+     */
+    public static String join(Object[] array) {
+        Validate.nonNull(array, "array");
+
+        StringBuilder result = new StringBuilder(80);
+        for (Object element : array) {
+            if (element != null) {
+                if (result.length() > 0) {
+                    /*
+                     * Append a space as a separator.
+                     */
+                    result.append(' ');
+                }
+                result.append(element);
             }
         }
 
