@@ -442,6 +442,23 @@ public class MyMath {
     }
 
     /**
+     * Test whether the specified floating-point value is finite. Note that Java
+     * 8 provides {@link java.lang.Float#isFinite(float)}.
+     *
+     * @param value the value to test
+     * @return true if finite, false if NaN or infinity
+     */
+    public static boolean isFinite(float value) {
+        if (Float.isInfinite(value)) {
+            return false;
+        } else if (Float.isNaN(value)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Test the specified transform for exact identity.
      *
      * @param transform which transform to test (not null, unaffected)
