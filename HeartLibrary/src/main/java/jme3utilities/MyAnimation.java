@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2020, Stephen Gold
+ Copyright (c) 2014-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -254,8 +254,8 @@ public class MyAnimation {
         Validate.nonNegative(time, "time");
 
         float[] times = track.getKeyFrameTimes();
-        int result = MyArray.findPreviousIndex(time, times); // TODO use Arrays
-        if (result >= 0 && times[result] != time) {
+        int result = Arrays.binarySearch(times, time);
+        if (result < 0) {
             result = -1;
         }
 
