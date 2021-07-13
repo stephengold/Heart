@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2020, Stephen Gold
+ Copyright (c) 2019-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -76,15 +76,14 @@ public class TestCloneControls {
         node.addControl(axes);
         setParameters(axes, 0f);
         verifyParameters(axes, 0f);
-        AxesVisualizer axesClone = (AxesVisualizer) Heart.deepCopy(axes);
+        AxesVisualizer axesClone = Heart.deepCopy(axes);
         cloneTest(axes, axesClone);
 
         BoundsVisualizer bounds = new BoundsVisualizer(assetManager);
         node.addControl(bounds);
         setParameters(bounds, 0f);
         verifyParameters(bounds, 0f);
-        BoundsVisualizer boundsClone
-                = (BoundsVisualizer) Heart.deepCopy(bounds);
+        BoundsVisualizer boundsClone = Heart.deepCopy(bounds);
         cloneTest(bounds, boundsClone);
 
         SkeletonControl subject = null; // TODO more interesting subject
@@ -93,8 +92,7 @@ public class TestCloneControls {
         node.addControl(skeleton);
         setParameters(skeleton, 0f);
         verifyParameters(skeleton, 0f);
-        SkeletonVisualizer skeletonClone
-                = (SkeletonVisualizer) Heart.deepCopy(skeleton);
+        SkeletonVisualizer skeletonClone = Heart.deepCopy(skeleton);
         cloneTest(skeleton, skeletonClone);
     }
     // *************************************************************************

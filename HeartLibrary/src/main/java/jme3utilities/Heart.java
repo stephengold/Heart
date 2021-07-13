@@ -132,14 +132,14 @@ public class Heart {
 
     /**
      * Return a deep copy of the specified object. This works around JME issue
-     * #879, but still doesn't handle all classes. TODO return same type of
-     * object
+     * #879, but still doesn't handle all classes.
      *
-     * @param object input (unaffected)
-     * @return an object equivalent to the input
+     * @param <T> the type of object to be copied
+     * @param object the input (unaffected)
+     * @return an instance equivalent to the input
      */
-    public static Object deepCopy(Object object) {
-        Object clone;
+    public static <T> T deepCopy(T object) {
+        T clone;
         if (object instanceof Boolean
                 || object instanceof Byte
                 || object instanceof Character
@@ -408,7 +408,7 @@ public class Heart {
      * @return project name, library name, branch, and revision
      */
     public static String version() {
-        return "Heart Heart master $Rev: 6.4.5-SNAPSHOT $";
+        return "Heart Heart master $Rev: 7.0.0-SNAPSHOT $";
     }
 
     /**
