@@ -939,7 +939,7 @@ public class MyMesh {
             Vector3f tmpV3 = new Vector3f();
             Vector4f tmpV4 = new Vector4f();
             for (int vertexI = 0; vertexI < numVertices; ++vertexI) {
-                MyMesh.vertexVector4f(mesh, bufferType, vertexI, tmpV4);
+                vertexVector4f(mesh, bufferType, vertexI, tmpV4);
 
                 tmpV3.x = tmpV4.x;
                 tmpV3.y = tmpV4.y;

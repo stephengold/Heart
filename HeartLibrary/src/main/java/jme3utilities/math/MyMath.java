@@ -281,7 +281,7 @@ public class MyMath {
         float t = time / duration; // goes from 0 -> 1
         float t2 = t * t;
         float fraction = t2 * t2; // goes from 0 -> 1
-        float result = MyMath.lerp(fraction, start, end);
+        float result = lerp(fraction, start, end);
 
         return result;
     }
@@ -304,7 +304,7 @@ public class MyMath {
         float t = time / duration - 1f; // goes from -1 -> 0
         float t2 = t * t;
         float fraction = 1f - t2 * t2; // goes from 0 -> 1
-        float result = MyMath.lerp(fraction, start, end);
+        float result = lerp(fraction, start, end);
 
         return result;
     }
