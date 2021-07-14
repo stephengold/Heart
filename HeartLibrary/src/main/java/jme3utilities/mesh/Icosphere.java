@@ -159,7 +159,7 @@ public class Icosphere extends Mesh {
         /*
          *  Add the 20 triangular faces of a regular icosahedron.
          */
-        List<Integer> faces = new ArrayList<>();
+        List<Integer> faces = new ArrayList<>(60);
         for (int icoIndex : icoIndices) {
             faces.add(icoIndex);
         }

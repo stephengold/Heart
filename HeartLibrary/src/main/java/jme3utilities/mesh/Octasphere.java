@@ -172,7 +172,7 @@ public class Octasphere extends Mesh {
         /*
          *  Add the 8 triangular faces of a regular octahedron.
          */
-        List<Integer> faces = new ArrayList<>();
+        List<Integer> faces = new ArrayList<>(24);
         for (int octaIndex : octaIndices) {
             faces.add(octaIndex);
         }
