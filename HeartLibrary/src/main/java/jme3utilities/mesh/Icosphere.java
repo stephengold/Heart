@@ -263,7 +263,7 @@ public class Icosphere extends Mesh {
      * @return a new vector (x=west longitude in radians, y=north latitude in
      * radians)
      */
-    private Vector2f cartesianToSpherical(Vector3f input) {
+    private static Vector2f cartesianToSpherical(Vector3f input) {
         Vector2f result = new Vector2f();
         float length = input.length();
 

@@ -87,7 +87,7 @@ public class TestVectorSet {
     /**
      * Test the specified VectorSet instance.
      */
-    private void test(VectorSet vectorSet, boolean toBuffer) {
+    private static void test(VectorSet vectorSet, boolean toBuffer) {
         float maxLength;
         String string;
         Vector3f max = new Vector3f();
