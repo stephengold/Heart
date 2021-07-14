@@ -1,4 +1,4 @@
-<img height="150" src="https://i.imgur.com/O7MMp7A.png">
+<img height="150" src="https://i.imgur.com/O7MMp7A.png" alt="Heart Project logo">
 
 [The Heart Project][heart] provides a general-purpose add-on library for
 [the jMonkeyEngine (JME) game engine][jme].
@@ -55,6 +55,7 @@ depend on the Heart Library.
    + expand a `Mesh` to ensure no vertex data are re-used
    + generate normals for an outward-facing sphere, a faceted mesh,
      or a smooth mesh
+   + merge 2 meshes into one
    + flip mesh normals and/or triangle windings
    + enumerate all vertices in a scene-graph subtree
    + convert mesh triangles to lines
