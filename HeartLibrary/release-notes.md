@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 7.0.0 released on TBD
+## Version 7.0.0 released on 14 July 2021
 
  + Changed the return type of `Heart.deepCopy()`. (API change!)
  + Deleted `defaultAnisotropicFilter()` and `isAlphaToCoverage()`
@@ -12,7 +12,7 @@
  + Added `centerBuffer()`, `expandedMode()`, `merge()`, `rotateBuffer()`,
    and `rotateTangentBuffer()` methods to the `MyMesh` class.
  + Added a `listTextures()` method to the `MySpatial` class.
- + Added a `join8()` method to the `MyString` class
+ + Added a `join8()` method to the `MyString` class.
  + Upgraded Gradle to v7.1.1
 
 ## Version 6.4.4 released on 30 May 2021
