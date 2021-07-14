@@ -109,8 +109,7 @@ public class MyMesh {
     private MyMesh() {
     }
     // *************************************************************************
-    // new methods exposed
-    // TODO add isConnected(), makeDoubleSided(), merge()
+    // new methods exposed TODO add isConnected() and makeDoubleSided()
 
     /**
      * Compress a Mesh by introducing an index buffer.
@@ -659,6 +658,107 @@ public class MyMesh {
                 listVertexLocations(child, result);
             }
         }
+
+        return result;
+    }
+
+    /**
+     * Merge 2 meshes.
+     *
+     * Doesn't handle hybrid meshes or tessellation meshes.
+     *
+     * Both meshes must be composed of the same sort of primitives. In other
+     * words, if mesh1 is composed of triangles, then so must mesh2, and vice
+     * versa.
+     *
+     * Apart from indices, both meshes must have the same set of vertex buffers.
+     * In other words, if mesh1 has normals, UVs, and bone animations, then so
+     * must mesh2, and vice versa. Furthermore, corresponding vertex buffers
+     * must have the same number of components per element.
+     *
+     * @param mesh1 the first input mesh (not null, unaffected)
+     * @param mesh2 the 2nd input mesh (not null, unaffected)
+     * @return a new Mesh (without an index buffer, mode = Triangles or Lines or
+     * Points)
+     */
+    public static Mesh merge(Mesh mesh1, Mesh mesh2) {
+        Validate.nonNull(mesh1, "mesh1");
+        Validate.nonNull(mesh2, "mesh2");
+
+        Mesh.Mode outMode = expandedMode(mesh1);
+        Mesh.Mode outMode2 = expandedMode(mesh2);
+        Validate.require(outMode == outMode2, "same primitives");
+
+        Mesh result = new Mesh();
+        result.setMode(outMode);
+
+        IndexBuffer indexList1 = mesh1.getIndicesAsList();
+        IndexBuffer indexList2 = mesh2.getIndicesAsList();
+        int numVertices1 = indexList1.size();
+        int numVertices2 = indexList2.size();
+        int outNumVertices = numVertices1 + numVertices2;
+
+        for (VertexBuffer.Type type : VertexBuffer.Type.values()) {
+            if (type == VertexBuffer.Type.Index) {
+                continue;
+            }
+            VertexBuffer vb1 = mesh1.getBuffer(type);
+            VertexBuffer vb2 = mesh2.getBuffer(type);
+            if (vb1 == null && vb2 == null) {
+                continue;
+            }
+            /*
+             * If one input mesh includes the buffer, then so must the other,
+             * and the components per element must be equal.
+             */
+            Validate.nonNull(vb1, "mesh1's " + type);
+            Validate.nonNull(vb2, "mesh2's " + type);
+            int numCperE = vb1.getNumComponents();
+            int numCperE2 = vb2.getNumComponents();
+            assert numCperE2 == numCperE : "numComponents differ in " + type;
+            /*
+             * If the buffer formats differ, use the larger one for output.
+             */
+            VertexBuffer.Format format1 = vb1.getFormat();
+            VertexBuffer.Format format2 = vb2.getFormat();
+            VertexBuffer.Format outFormat;
+            if (format1.getComponentSize() > format2.getComponentSize()) {
+                outFormat = format1;
+            } else {
+                outFormat = format2;
+            }
+            /*
+             * Create the vertex buffer for output.
+             */
+            numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
+            Buffer outBuffer = VertexBuffer.createBuffer(outFormat, numCperE,
+                    outNumVertices);
+            result.setBuffer(type, numCperE, outFormat, outBuffer);
+            VertexBuffer outVb = result.getBuffer(type);
+            /*
+             * Perform a component-by-component copy from the input buffers
+             * to the output buffer.
+             */
+            for (int vertexI = 0; vertexI < numVertices1; ++vertexI) {
+                int elementIndex = indexList1.get(vertexI);
+                for (int componentI = 0; componentI < numCperE; ++componentI) {
+                    Object value
+                            = vb1.getElementComponent(elementIndex, componentI);
+                    outVb.setElementComponent(vertexI, componentI, value);
+                }
+            }
+            for (int vertexI = 0; vertexI < numVertices2; ++vertexI) {
+                int outIndex = numVertices1 + vertexI;
+                int vb2Index = indexList2.get(vertexI);
+                for (int componentI = 0; componentI < numCperE; ++componentI) {
+                    Object value
+                            = vb2.getElementComponent(vb2Index, componentI);
+                    outVb.setElementComponent(outIndex, componentI, value);
+                }
+            }
+        }
+
+        result.updateBound();
 
         return result;
     }
