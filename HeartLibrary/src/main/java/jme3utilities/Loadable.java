@@ -34,9 +34,6 @@ import com.jme3.asset.AssetManager;
  * @author Stephen Gold sgold@sonic.net
  */
 public interface Loadable {
-    // *************************************************************************
-    // new methods exposed
-
     /**
      * Load the assets of this Loadable without attaching them to anything.
      *

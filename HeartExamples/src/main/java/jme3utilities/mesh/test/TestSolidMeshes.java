@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -143,7 +143,7 @@ public class TestSolidMeshes
 
         application.start();
         /*
-         * ... and onward to TestSolids.simpleInitApp()!
+         * ... and onward to TestSolidMeshes.simpleInitApp()!
          */
     }
     // *************************************************************************

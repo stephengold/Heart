@@ -213,7 +213,7 @@ public class MyMesh {
     }
 
     /**
-     * Test whether 2 vertices in the specified mesh are identical.
+     * Test whether specified vertices in the specified Mesh are identical.
      *
      * @param mesh (not null, unaffected)
      * @param vi1 the index of the first vertex (&ge;0)
@@ -390,7 +390,7 @@ public class MyMesh {
             }
         }
         /*
-         * Copy all vertex data to the new mesh.
+         * Copy all vertex data to the new Mesh.
          */
         for (int outVI = 0; outVI < outVertexCount; ++outVI) {
             int inVI = indexList.get(outVI);
@@ -808,7 +808,8 @@ public class MyMesh {
     }
 
     /**
-     * Read an index from a Buffer and advance the buffer's position.
+     * Read an index from a Buffer and advance the buffer's position. TODO move
+     * to MyBuffer
      *
      * @param buffer a Buffer of bytes or shorts (not null)
      * @return index (&ge;0)
@@ -1057,7 +1058,7 @@ public class MyMesh {
     /**
      * Convert mesh triangles to lines.
      *
-     * @param mesh the mesh to modify (not null,
+     * @param mesh the Mesh to modify (not null,
      * mode=Triangles/TriangleFan/TriangleStrip)
      */
     public static void trianglesToLines(Mesh mesh) {
