@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2020, Stephen Gold
+ Copyright (c) 2017-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -44,6 +44,7 @@ import java.util.BitSet;
 import java.util.List;
 import java.util.logging.Logger;
 import jme3utilities.debug.SkeletonVisualizer;
+import jme3utilities.math.MyBuffer;
 
 /**
  * Utility methods to determine which bones can influence mesh vertices. All
@@ -232,7 +233,7 @@ public class InfluenceUtil {
         for (int vIndex = 0; vIndex < numVertices; ++vIndex) {
             for (int wIndex = 0; wIndex < maxWeights; ++wIndex) {
                 float weight = weightBuffer.get();
-                int boneIndex = MyMesh.readIndex(boneIndexBuffer);
+                int boneIndex = MyBuffer.readIndex(boneIndexBuffer);
                 if (wIndex < maxWeightsPerVert && weight != 0f) {
                     addResult.set(boneIndex);
                 }

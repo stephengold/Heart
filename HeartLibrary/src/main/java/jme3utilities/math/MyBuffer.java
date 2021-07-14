@@ -36,6 +36,7 @@ import com.jme3.scene.mesh.IndexByteBuffer;
 import com.jme3.scene.mesh.IndexIntBuffer;
 import com.jme3.scene.mesh.IndexShortBuffer;
 import com.jme3.util.BufferUtils;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
@@ -571,6 +572,39 @@ final public class MyBuffer {
             String message = "class=" + indexBuffer.getClass().getSimpleName();
             throw new IllegalArgumentException(message);
         }
+    }
+
+    /**
+     * Read an index from a Buffer and advance the buffer's position.
+     *
+     * @param buffer a Buffer of bytes or ints or shorts (not null)
+     * @return index (&ge;0)
+     */
+    public static int readIndex(Buffer buffer) {
+        Validate.nonNull(buffer, "buffer");
+
+        int result;
+        if (buffer instanceof ByteBuffer) {
+            ByteBuffer byteBuffer = (ByteBuffer) buffer;
+            byte b = byteBuffer.get();
+            result = 0xff & b;
+
+        } else if (buffer instanceof IntBuffer) {
+            IntBuffer intBuffer = (IntBuffer) buffer;
+            result = intBuffer.get();
+
+        } else if (buffer instanceof ShortBuffer) {
+            ShortBuffer shortBuffer = (ShortBuffer) buffer;
+            short s = shortBuffer.get();
+            result = 0xffff & s;
+
+        } else {
+            String message = buffer.getClass().getName();
+            throw new IllegalArgumentException(message);
+        }
+
+        assert result >= 0 : result;
+        return result;
     }
 
     /**

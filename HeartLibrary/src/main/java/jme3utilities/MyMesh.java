@@ -345,10 +345,10 @@ public class MyMesh {
         for (int vIndex = 0; vIndex < numVertices; ++vIndex) {
             for (int wIndex = 0; wIndex < maxWeights; ++wIndex) {
                 float weight = weightBuffer.get();
-                int bIndex = readIndex(boneIndexBuffer);
+                int boneIndex = MyBuffer.readIndex(boneIndexBuffer);
                 if (wIndex < maxWeightsPerVert && weight != 0f
-                        && bIndex >= result) {
-                    result = bIndex + 1;
+                        && boneIndex >= result) {
+                    result = boneIndex + 1;
                 }
             }
         }
@@ -795,7 +795,7 @@ public class MyMesh {
         for (int vIndex = 0; vIndex < numVertices; ++vIndex) {
             for (int wIndex = 0; wIndex < maxWeights; ++wIndex) {
                 float weight = weightBuffer.get();
-                int bIndex = readIndex(boneIndexBuffer);
+                int bIndex = MyBuffer.readIndex(boneIndexBuffer);
                 if (wIndex < maxWeightsPerVert
                         && bIndex == boneIndex
                         && weight != 0f) {
@@ -808,36 +808,16 @@ public class MyMesh {
     }
 
     /**
-     * Read an index from a Buffer and advance the buffer's position. TODO move
-     * to MyBuffer
+     * Read an index from a Buffer and advance the buffer's position.
      *
      * @param buffer a Buffer of bytes or shorts (not null)
      * @return index (&ge;0)
+     * @deprecated use MyBuffer.readIndex()
      */
+    @Deprecated
     public static int readIndex(Buffer buffer) {
         Validate.nonNull(buffer, "buffer");
-
-        int result;
-        if (buffer instanceof ByteBuffer) {
-            ByteBuffer byteBuffer = (ByteBuffer) buffer;
-            byte b = byteBuffer.get();
-            result = 0xff & b;
-
-        } else if (buffer instanceof IntBuffer) {
-            IntBuffer intBuffer = (IntBuffer) buffer;
-            result = intBuffer.get();
-
-        } else if (buffer instanceof ShortBuffer) {
-            ShortBuffer shortBuffer = (ShortBuffer) buffer;
-            short s = shortBuffer.get();
-            result = 0xffff & s;
-
-        } else {
-            String message = buffer.getClass().getName();
-            throw new IllegalArgumentException(message);
-        }
-
-        assert result >= 0 : result;
+        int result = MyBuffer.readIndex(buffer);
         return result;
     }
 
@@ -1124,7 +1104,7 @@ public class MyMesh {
         Buffer boneIndexBuffer = biBuf.getDataReadOnly();
         boneIndexBuffer.position(maxWeights * vertexIndex);
         for (int wIndex = 0; wIndex < maxWeightsPerVert; ++wIndex) {
-            int boneIndex = readIndex(boneIndexBuffer);
+            int boneIndex = MyBuffer.readIndex(boneIndexBuffer);
             storeResult[wIndex] = boneIndex;
         }
         /*
@@ -1240,7 +1220,7 @@ public class MyMesh {
             int maxWeightsPerVertex = mesh.getMaxNumWeights();
             for (int wIndex = 0; wIndex < maxWeightsPerVertex; ++wIndex) {
                 float weight = weightBuffer.get();
-                int boneIndex = readIndex(boneIndexBuffer);
+                int boneIndex = MyBuffer.readIndex(boneIndexBuffer);
                 if (weight != 0f) {
                     Matrix4f s;
                     if (boneIndex < skinningMatrices.length) {
@@ -1299,7 +1279,7 @@ public class MyMesh {
             int maxWeightsPerVertex = mesh.getMaxNumWeights();
             for (int wIndex = 0; wIndex < maxWeightsPerVertex; ++wIndex) {
                 float weight = weightBuffer.get();
-                int boneIndex = readIndex(boneIndexBuffer);
+                int boneIndex = MyBuffer.readIndex(boneIndexBuffer);
                 if (weight != 0f) {
                     Matrix4f s;
                     if (boneIndex < skinningMatrices.length) {
@@ -1374,7 +1354,7 @@ public class MyMesh {
             int maxWeightsPerVertex = mesh.getMaxNumWeights();
             for (int wIndex = 0; wIndex < maxWeightsPerVertex; ++wIndex) {
                 float weight = weightBuffer.get();
-                int boneIndex = readIndex(boneIndexBuffer);
+                int boneIndex = MyBuffer.readIndex(boneIndexBuffer);
                 if (weight != 0f) {
                     Matrix4f s;
                     if (boneIndex < skinningMatrices.length) {
