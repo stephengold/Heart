@@ -41,11 +41,15 @@ task cleanWrittenAssets(type: Delete) {
     delete 'Written Assets'
 }
 
+// tasks to run the sample apps
 task TestBoundsVisualizer(type: JavaExec) {
     mainClass = 'jme3utilities.debug.test.TestBoundsVisualizer'
 }
 task TestPas(type: JavaExec) {
     mainClass = 'jme3utilities.debug.test.TestPas'
+}
+task TestSkeletonVisualizer(type: JavaExec) {
+    mainClass = 'jme3utilities.debug.test.TestSkeletonVisualizer'
 }
 
 task TestGenerator(type: JavaExec) {
@@ -68,6 +72,12 @@ task TestSolidMeshes(type: JavaExec) {
     mainClass = 'jme3utilities.mesh.test.TestSolidMeshes'
 }
 
+task TestContrast(type: JavaExec) {
+    mainClass = 'jme3utilities.test.TestContrast'
+}
+task TestMulticolor(type: JavaExec) {
+    mainClass = 'jme3utilities.test.TestMulticolor'
+}
 task TestMySkeleton(type: JavaExec) {
     mainClass = 'jme3utilities.test.TestMySkeleton'
 }
