@@ -342,9 +342,9 @@ public class VectorXZ
         float length = length();
         float sineTheta = z / length;
         float cosineTheta = x / length;
-        float asin = maxX * sineTheta;
-        float bcos = maxZ * cosineTheta;
-        double denominator = MyMath.sumOfSquares(asin, bcos);
+        float aSin = maxX * sineTheta;
+        float bCos = maxZ * cosineTheta;
+        double denominator = MyMath.sumOfSquares(aSin, bCos);
         double product = maxX * maxZ;
         final double rSquared = product * product / denominator;
         double lengthSquared = lengthSquared();

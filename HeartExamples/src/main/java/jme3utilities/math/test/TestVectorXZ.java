@@ -65,28 +65,28 @@ public class TestVectorXZ {
         cases[2] = VectorXZ.west;
         cases[3] = VectorXZ.zero;
 
-        for (VectorXZ vin : cases) {
-            float a = vin.azimuth();
-            VectorXZ vout = new VectorXZ(a);
+        for (VectorXZ vIn : cases) {
+            float a = vIn.azimuth();
+            VectorXZ vOut = new VectorXZ(a);
 
             System.out.printf(
-                    "vin = %s  azimuth(x)=%f (%f degrees)  vout = %s%n",
-                    vin, a, MyMath.toDegrees(a), vout);
+                    "vIn = %s  azimuth(x)=%f (%f degrees)  vOut = %s%n",
+                    vIn, a, MyMath.toDegrees(a), vOut);
             System.out.println();
 
             Vector3f v3 = new Vector3f(1f, 2f, 3f);
             VectorXZ vxz = new VectorXZ(v3);
-            ReadXZ r1 = vin.normalize().mult(vxz);
+            ReadXZ r1 = vIn.normalize().mult(vxz);
 
-            Quaternion q1 = vin.toQuaternion();
+            Quaternion q1 = vIn.toQuaternion();
             VectorXZ r2 = new VectorXZ(q1.mult(v3));
 
             Quaternion q2 = new Quaternion();
             q2.fromAngleNormalAxis(-a, new Vector3f(0f, 1f, 0f));
             VectorXZ r3 = new VectorXZ(q2.mult(v3));
 
-            System.out.printf("vin=%s  r1=%s, r2=%s, r3=%s%n",
-                    vin, r1.toString(), r2, r3);
+            System.out.printf("vIn=%s  r1=%s, r2=%s, r3=%s%n",
+                    vIn, r1.toString(), r2, r3);
             System.out.println();
         }
         System.out.println();

@@ -882,10 +882,10 @@ public class MyVector3f {
         Vector3f n2 = d2.cross(n);
 
         Vector3f result = null;
-        float denom = d1.dot(n2);
-        if (denom != 0f) {
-            float numer = p2.dot(n2) - p1.dot(n2);
-            result = d1.mult(numer / denom);
+        float denominator = d1.dot(n2);
+        if (denominator != 0f) {
+            float numerator = p2.dot(n2) - p1.dot(n2);
+            result = d1.mult(numerator / denominator);
             result.addLocal(p1);
         }
 
