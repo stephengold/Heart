@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package jme3utilities.math.test;
 
+import java.util.logging.Logger;
 import jme3utilities.math.MyMath;
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,6 +37,14 @@ import org.junit.Test;
  * @author Stephen Gold sgold@sonic.net
  */
 public class TestMyMath {
+    // *************************************************************************
+    // constants and loggers
+
+    /**
+     * message logger for this class
+     */
+    final public static Logger logger
+            = Logger.getLogger(TestMyMath.class.getName());
     // *************************************************************************
     // new methods exposed
 

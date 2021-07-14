@@ -35,6 +35,7 @@ import com.jme3.export.binary.BinaryLoader;
 import com.jme3.material.plugins.J3MLoader;
 import com.jme3.scene.Spatial;
 import com.jme3.texture.plugins.AWTLoader;
+import java.util.logging.Logger;
 import jme3utilities.debug.Dumper;
 
 /**
@@ -43,6 +44,14 @@ import jme3utilities.debug.Dumper;
  * @author Stephen Gold sgold@sonic.net
  */
 public class J3oDump {
+    // *************************************************************************
+    // constants and loggers
+
+    /**
+     * message logger for this class
+     */
+    final public static Logger logger
+            = Logger.getLogger(J3oDump.class.getName());
     // *************************************************************************
     // fields
 

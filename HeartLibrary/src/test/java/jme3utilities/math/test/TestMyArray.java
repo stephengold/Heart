@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019, Stephen Gold
+ Copyright (c) 2019-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package jme3utilities.math.test;
 
 import com.jme3.bounding.BoundingBox;
 import com.jme3.math.Vector3f;
+import java.util.logging.Logger;
 import jme3utilities.math.MyArray;
 import org.junit.Test;
 
@@ -38,8 +39,13 @@ import org.junit.Test;
  */
 public class TestMyArray {
     // *************************************************************************
-    // constants
+    // constants and loggers
 
+    /**
+     * message logger for this class
+     */
+    final public static Logger logger
+            = Logger.getLogger(TestMyArray.class.getName());
     /**
      * test data
      */

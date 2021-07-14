@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import com.jme3.asset.AssetManager;
 import com.jme3.asset.DesktopAssetManager;
 import com.jme3.export.binary.BinaryExporter;
 import com.jme3.scene.Mesh;
+import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.mesh.Cone;
 import jme3utilities.mesh.DiscMesh;
@@ -54,6 +55,14 @@ import org.junit.Test;
  * @author Stephen Gold sgold@sonic.net
  */
 public class TestCloneMeshes {
+    // *************************************************************************
+    // constants and loggers
+
+    /**
+     * message logger for this class
+     */
+    final public static Logger logger
+            = Logger.getLogger(TestCloneMeshes.class.getName());
     // *************************************************************************
     // fields
 

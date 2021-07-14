@@ -38,6 +38,7 @@ import com.jme3.scene.control.AbstractControl;
 import com.jme3.system.JmeSystem;
 import com.jme3.system.MockJmeSystemDelegate;
 import com.jme3.texture.plugins.AWTLoader;
+import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.debug.AxesVisualizer;
 import jme3utilities.debug.BoundsVisualizer;
@@ -51,6 +52,14 @@ import org.junit.Test;
  * @author Stephen Gold sgold@sonic.net
  */
 public class TestCloneControls {
+    // *************************************************************************
+    // constants and loggers
+
+    /**
+     * message logger for this class
+     */
+    final public static Logger logger
+            = Logger.getLogger(TestCloneControls.class.getName());
     // *************************************************************************
     // fields
 
