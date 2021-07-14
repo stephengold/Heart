@@ -1,5 +1,20 @@
 # release log for the Heart Library and related tests
 
+## Version 7.0.0 released on TBD
+
+ + Changed the return type of `Heart.deepCopy()`. (API change!)
+ + Deleted `defaultAnisotropicFilter()` and `isAlphaToCoverage()`
+   from the `MyRender` class. (API change!)
+ + Privatized 4 fields in the `VectorSetUsingBuffer` class. (API change!)
+ + Copied the `readIndex()` method from `MyMesh` to `MyBuffer`
+   and deprecated it.
+ + Added an `isFinite()` method to the `MyMath` class.
+ + Added `centerBuffer()`, `expandedMode()`, `merge()`, `rotateBuffer()`,
+   and `rotateTangentBuffer()` methods to the `MyMesh` class.
+ + Added a `listTextures()` method to the `MySpatial` class.
+ + Added a `join8()` method to the `MyString` class
+ + Upgraded Gradle to v7.1.1
+
 ## Version 6.4.4 released on 30 May 2021
 
  + Targeted jMonkeyEngine version 3.4.0-stable.
