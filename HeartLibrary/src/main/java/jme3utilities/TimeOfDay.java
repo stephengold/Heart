@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -75,7 +75,7 @@ public class TimeOfDay extends NamedAppState {
      * The simulated time is stored in double precision because it is
      * incremented by a small amount for each frame.
      */
-    private double timeOfDay = 0.0;
+    private double timeOfDay;
     /**
      * simulation rate relative to real time
      */
