@@ -69,15 +69,15 @@ public class VectorSetUsingBuffer implements VectorSet {
     /**
      * number of enlargements since last clearStats()
      */
-    static int numEnlargements = 0;
+    private static int numEnlargements = 0;
     /**
      * number of reads since last clearStats()
      */
-    static int numReads = 0;
+    private static int numReads = 0;
     /**
      * number of searches since last clearStats()
      */
-    static int numSearches = 0;
+    private static int numSearches = 0;
     /**
      * look up first buffer position plus 1 for hash index
      */
@@ -85,7 +85,7 @@ public class VectorSetUsingBuffer implements VectorSet {
     /**
      * system milliseconds as of last clearStats()
      */
-    static long resetMillis = 0L;
+    private static long resetMillis = 0L;
     // *************************************************************************
     // constructors
 
