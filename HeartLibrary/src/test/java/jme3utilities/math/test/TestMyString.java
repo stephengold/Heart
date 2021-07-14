@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -94,6 +94,6 @@ public class TestMyString {
 
         String[] a2 = {};
         String j2 = MyString.join(a2);
-        assert j2.equals("");
+        assert j2.isEmpty();
     }
 }
