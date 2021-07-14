@@ -368,32 +368,9 @@ public class MyMesh {
      * Points)
      */
     public static Mesh expand(Mesh in) {
-        Mesh.Mode outMode;
-        Mesh.Mode inMode = in.getMode();
-        switch (inMode) {
-            case Points:
-            case Lines:
-            case Triangles:
-                outMode = inMode;
-                break;
-
-            case LineLoop:
-            case LineStrip:
-                outMode = Mesh.Mode.Lines;
-                break;
-
-            case TriangleFan:
-            case TriangleStrip:
-                outMode = Mesh.Mode.Triangles;
-                break;
-
-            default:
-                String message = "mode = " + inMode;
-                throw new IllegalArgumentException(message);
-        }
-
         IndexBuffer indexList = in.getIndicesAsList();
         int outVertexCount = indexList.size();
+        Mesh.Mode outMode = expandedMode(in);
         /*
          * Create a shallow clone of the input mesh.
          */
@@ -438,6 +415,41 @@ public class MyMesh {
         out.updateCounts();
 
         return out;
+    }
+
+    /**
+     * Determine the type of primitives contained in the specified Mesh.
+     *
+     * @param inputMesh the Mesh to analyze (not null, mode not Hybrid or Patch,
+     * unaffected)
+     * @return an enum value (Points or Lines or Triangles)
+     * @see #hasTriangles(com.jme3.scene.Mesh)
+     */
+    public static Mesh.Mode expandedMode(Mesh inputMesh) {
+        Mesh.Mode mode = inputMesh.getMode();
+        Mesh.Mode result;
+        switch (mode) {
+            case Points:
+            case Lines:
+            case Triangles:
+                result = mode;
+                break;
+
+            case LineLoop:
+            case LineStrip:
+                result = Mesh.Mode.Lines;
+                break;
+
+            case TriangleFan:
+            case TriangleStrip:
+                result = Mesh.Mode.Triangles;
+                break;
+
+            default:
+                throw new IllegalArgumentException("mode = " + mode);
+        }
+
+        return result;
     }
 
     /**
