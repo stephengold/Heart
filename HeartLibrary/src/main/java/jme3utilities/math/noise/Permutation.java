@@ -52,7 +52,7 @@ public class Permutation {
     /**
      * indices that make up the permutation
      */
-    private int[] indices;
+    final private int[] indices;
     // *************************************************************************
     // constructors
 
