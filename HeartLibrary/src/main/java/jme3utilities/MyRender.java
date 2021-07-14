@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2020, Stephen Gold
+ Copyright (c) 2019-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -57,21 +57,6 @@ final public class MyRender {
     // new methods exposed
 
     /**
-     * Read the default degree of anisotropic filtering. This was created to
-     * work around JME issue #1074.
-     *
-     * @param renderer which renderer (not null, unaffected)
-     * @return the degree (&ge;1)
-     * @deprecated use GLRenderer.getDefaultAnisotropicFilter()
-     */
-    @Deprecated
-    public static int defaultAnisotropicFilter(GLRenderer renderer) {
-        int result = renderer.getDefaultAnisotropicFilter();
-        assert result >= 1 : result;
-        return result;
-    }
-
-    /**
      * Access the baseline OpenGL interface of the specified renderer.
      *
      * @param renderer which renderer (not null, unaffected)
@@ -94,20 +79,6 @@ final public class MyRender {
         }
 
         assert result != null;
-        return result;
-    }
-
-    /**
-     * Test whether alpha-to-coverage is enabled for the specified renderer.
-     * This was created to work around JME issue #1074.
-     *
-     * @param renderer which renderer (not null, unaffected)
-     * @return true if enabled, otherwise false
-     * @deprecated use GLRenderer.getAlphaToCoverage()
-     */
-    @Deprecated
-    public static boolean isAlphaToCoverage(GLRenderer renderer) {
-        boolean result = renderer.getAlphaToCoverage();
         return result;
     }
 }

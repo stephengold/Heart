@@ -41,7 +41,6 @@ import com.jme3.renderer.Camera;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.Renderer;
 import com.jme3.renderer.ViewPort;
-import com.jme3.renderer.opengl.GLRenderer;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
@@ -55,7 +54,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
-import jme3utilities.MyRender;
 import jme3utilities.MyString;
 import jme3utilities.Validate;
 import jme3utilities.math.MyColor;
@@ -324,13 +322,10 @@ public class Dumper implements Cloneable {
         className = renderer.getClass().getSimpleName();
         stream.print(" renderer=");
         stream.print(className);
-        if (renderer instanceof GLRenderer) {
-            GLRenderer glRenderer = (GLRenderer) renderer;
-            int factor = MyRender.defaultAnisotropicFilter(glRenderer);
-            boolean atoc = MyRender.isAlphaToCoverage(glRenderer);
-            String atocString = atoc ? "" : "NO";
-            stream.printf("[aniso=%d, %satoc]", factor, atocString);
-        }
+        int aniso = renderer.getDefaultAnisotropicFilter();
+        boolean atoc = renderer.getAlphaToCoverage();
+        String atocString = atoc ? "" : "NO";
+        stream.printf("[aniso=%d, %satoc]", aniso, atocString);
 
         List<ViewPort> pres = renderManager.getPreViews();
         int numPres = pres.size();
