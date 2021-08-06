@@ -254,7 +254,7 @@ public class Generator extends Random {
     }
 
     /**
-     * Pick a pseudo-random element from the specified array.
+     * Pick a pseudo-random element from the specified array. TODO use generics
      *
      * @param array the array to select from (not null, may be empty)
      * @return a pre-existing element of array, or null if it's empty
@@ -317,7 +317,7 @@ public class Generator extends Random {
     }
 
     /**
-     * Pick a pseudo-random element from the specified list.
+     * Pick a pseudo-random element from the specified list. TODO use generics
      *
      * @param list the list to select from (not null, may be empty)
      * @return a pre-existing element of list, or null if it's empty
