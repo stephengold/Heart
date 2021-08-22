@@ -21,9 +21,9 @@ depend on the Heart Library.
 
 + [Important features](#features)
 + [How to add Heart to an existing project](#add)
++ [How to build Heart from source](#build)
 + [Downloads](#downloads)
 + [Conventions](#conventions)
-+ [How to build Heart from source](#build)
 + [History](#history)
 + [Acknowledgments](#acks)
 
@@ -147,33 +147,6 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 
 [Jump to table of contents](#toc)
 
-<a name="downloads"/>
-
-## Downloads
-
-Newer releases (since v4.5.0) can be downloaded from
-[GitHub](https://github.com/stephengold/Heart/releases).
-
-Older releases (v0.9.5 through v4.4.0) can be downloaded from
-[the Jme3-utilities Project](https://github.com/stephengold/jme3-utilities/releases).
-
-Newer Maven artifacts (since v6.3.0) are available from
-[MavenCentral](https://search.maven.org/artifact/com.github.stephengold/Heart).
-
-Old Maven artifacts (v5.0.0 through v6.4.0) are available from JCenter.
-
-[Jump to table of contents](#toc)
-
-<a name="conventions"/>
-
-## Conventions
-
-Package names begin with `jme3utilities.`
-
-Both the source code and the pre-built libraries are compatible with JDK 7.
-
-[Jump to table of contents](#toc)
-
 <a name="build"/>
 
 ## How to build Heart from source
@@ -205,6 +178,33 @@ Maven artifacts will be found in `HeartLibrary/build/libs`.
 You can install the Maven artifacts to your local repository:
  + using Bash or PowerShell:  `./gradlew :HeartLibrary:publishToMavenLocal`
  + using Windows Command Prompt:  `.\gradlew :HeartLibrary:publishToMavenLocal`
+
+[Jump to table of contents](#toc)
+
+<a name="downloads"/>
+
+## Downloads
+
+Newer releases (since v4.5.0) can be downloaded from
+[GitHub](https://github.com/stephengold/Heart/releases).
+
+Older releases (v0.9.5 through v4.4.0) can be downloaded from
+[the Jme3-utilities Project](https://github.com/stephengold/jme3-utilities/releases).
+
+Newer Maven artifacts (since v6.3.0) are available from
+[MavenCentral](https://search.maven.org/artifact/com.github.stephengold/Heart).
+
+Old Maven artifacts (v5.0.0 through v6.4.0) are available from JCenter.
+
+[Jump to table of contents](#toc)
+
+<a name="conventions"/>
+
+## Conventions
+
+Package names begin with `jme3utilities.`
+
+Both the source code and the pre-built libraries are compatible with JDK 7.
 
 [Jump to table of contents](#toc)
 
@@ -271,7 +271,7 @@ software developers:
     + the [Firefox] and [Google Chrome][chrome] web browsers
     + the [Git] revision-control system and GitK commit viewer
     + the [Gradle] build tool
-    + the Java compiler, standard doclet, and runtime environment
+    + the Java compiler, standard doclet, and virtual machine
     + [jMonkeyEngine][jme] and the jME3 Software Development Kit
     + the [Linux Mint][mint] operating system
     + LWJGL, the Lightweight Java Game Library
