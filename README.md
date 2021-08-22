@@ -179,6 +179,10 @@ You can install the Maven artifacts to your local repository:
  + using Bash or PowerShell:  `./gradlew :HeartLibrary:publishToMavenLocal`
  + using Windows Command Prompt:  `.\gradlew :HeartLibrary:publishToMavenLocal`
 
+You can restore the repository to a pristine state:
+ + using Bash or PowerShell: `./gradlew clean`
+ + using Windows Command Prompt: `.\gradlew clean`
+
 [Jump to table of contents](#toc)
 
 <a name="downloads"/>
