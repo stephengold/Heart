@@ -84,7 +84,7 @@ the standard jme3-core library from jMonkeyEngine.
 
 For projects built using Maven or [Gradle], it is sufficient to specify the
 dependency on the Heart Library.  The build tools should automatically
-resolve the remaining dependencies .
+resolve the remaining dependencies.
 
 #### Gradle-built projects
 
@@ -126,7 +126,7 @@ and probably the `-sources` and `-javadoc` jars as well.
 Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 
  1. Right-click on the project (not its assets) in the "Projects" window.
- 2. Select "Properties to open the "Project Properties" dialog.
+ 2. Select "Properties" to open the "Project Properties" dialog.
  3. Under "Categories:" select "Libraries".
  4. Click on the "Compile" tab.
  5. Add the `Heart` class jar:
