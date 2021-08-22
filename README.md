@@ -178,7 +178,8 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
 
 ## How to build Heart from source
 
- 1. Install a Java Development Kit (JDK), if you don't already have one.
+ 1. Install a [Java Development Kit (JDK)][openJDK],
+    if you don't already have one.
  2. Download and extract the Heart source code from GitHub:
    + using Git:
      + `git clone https://github.com/stephengold/Heart.git`
@@ -193,15 +194,16 @@ Both the source code and the pre-built libraries are compatible with JDK 7.
  3. Set the `JAVA_HOME` environment variable:
    + using Bash:  `export JAVA_HOME="` *path to your JDK* `"`
    + using Windows Command Prompt:  `set JAVA_HOME="` *path to your JDK* `"`
+   + using PowerShell: `$env:JAVA_HOME = '` *path to your JDK* `'`
  4. Run the [Gradle] wrapper:
-   + using Bash:  `./gradlew build`
+   + using Bash or PowerShell:  `./gradlew build`
    + using Windows Command Prompt:  `.\gradlew build`
 
 After a successful build,
 Maven artifacts will be found in `HeartLibrary/build/libs`.
 
-You can install the Maven artifacts to your local cache:
- + using Bash:  `./gradlew :HeartLibrary:publishToMavenLocal`
+You can install the Maven artifacts to your local repository:
+ + using Bash or PowerShell:  `./gradlew :HeartLibrary:publishToMavenLocal`
  + using Windows Command Prompt:  `.\gradlew :HeartLibrary:publishToMavenLocal`
 
 [Jump to table of contents](#toc)
@@ -217,6 +219,7 @@ You can install the Maven artifacts to your local cache:
 [github]: https://github.com "GitHub"
 [gradle]: https://gradle.org "Gradle Project"
 [heart]: https://github.com/stephengold/Heart "Heart Project"
+[imgur]: https://imgur.com/ "Imgur"
 [jfrog]: https://www.jfrog.com "JFrog"
 [jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
 [jmepower]: https://github.com/stephengold/JmePower "JmePower Project"
@@ -226,6 +229,7 @@ You can install the Maven artifacts to your local cache:
 [minie]: https://github.com/stephengold/Minie "Minie Project"
 [mint]: https://linuxmint.com "Linux Mint Project"
 [netbeans]: https://netbeans.org "NetBeans Project"
+[openJDK]: https://openjdk.java.net "OpenJDK Project"
 [skycontrol]: https://github.com/stephengold/SkyControl "SkyControl Project"
 [sonatype]: https://www.sonatype.com "Sonatype"
 [utilities]: https://github.com/stephengold/jme3-utilities "Jme3-utilities Project"
@@ -277,7 +281,7 @@ software developers:
     + the PMD source-code analyzer
     + the [WinMerge] differencing and merging tool
 
-I am grateful to [Github], [Sonatype], [JFrog], and Imgur
+I am grateful to [Github], [Sonatype], [JFrog], and [Imgur]
 for providing free hosting for this project
 and many other open-source projects.
 
