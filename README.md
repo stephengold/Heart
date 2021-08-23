@@ -86,7 +86,7 @@ For projects built using Maven or [Gradle], it is sufficient to specify the
 dependency on the Heart Library.  The build tools should automatically
 resolve the remaining dependencies.
 
-#### Gradle-built projects
+### Gradle-built projects
 
 Add to the project’s "build.gradle" file:
 
@@ -97,7 +97,7 @@ Add to the project’s "build.gradle" file:
         compile 'com.github.stephengold:Heart:7.0.0'
     }
 
-#### Maven-built projects
+### Maven-built projects
 
 Add to the project’s "pom.xml" file:
 
@@ -114,7 +114,7 @@ Add to the project’s "pom.xml" file:
       <version>7.0.0</version>
     </dependency>
 
-#### Ant-built projects
+### Ant-built projects
 
 For projects built using [Ant], download the library from GitHub:
 
@@ -179,7 +179,7 @@ You can install the Maven artifacts to your local repository:
  + using Bash or PowerShell:  `./gradlew :HeartLibrary:publishToMavenLocal`
  + using Windows Command Prompt:  `.\gradlew :HeartLibrary:publishToMavenLocal`
 
-You can restore the repository to a pristine state:
+You can restore the project to a pristine state:
  + using Bash or PowerShell: `./gradlew clean`
  + using Windows Command Prompt: `.\gradlew clean`
 
@@ -211,34 +211,6 @@ Package names begin with `jme3utilities.`
 Both the source code and the pre-built libraries are compatible with JDK 7.
 
 [Jump to table of contents](#toc)
-
-[ant]: https://ant.apache.org "Apache Ant Project"
-[blender]: https://docs.blender.org "Blender Project"
-[bsd3]: https://opensource.org/licenses/BSD-3-Clause "3-Clause BSD License"
-[chrome]: https://www.google.com/chrome "Chrome"
-[elements]: http://www.adobe.com/products/photoshop-elements.html "Photoshop Elements"
-[findbugs]: http://findbugs.sourceforge.net "FindBugs Project"
-[firefox]: https://www.mozilla.org/en-US/firefox "Firefox"
-[git]: https://git-scm.com "Git"
-[github]: https://github.com "GitHub"
-[gradle]: https://gradle.org "Gradle Project"
-[heart]: https://github.com/stephengold/Heart "Heart Project"
-[imgur]: https://imgur.com/ "Imgur"
-[jfrog]: https://www.jfrog.com "JFrog"
-[jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
-[jmepower]: https://github.com/stephengold/JmePower "JmePower Project"
-[license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
-[log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
-[markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
-[minie]: https://github.com/stephengold/Minie "Minie Project"
-[mint]: https://linuxmint.com "Linux Mint Project"
-[netbeans]: https://netbeans.org "NetBeans Project"
-[openJDK]: https://openjdk.java.net "OpenJDK Project"
-[skycontrol]: https://github.com/stephengold/SkyControl "SkyControl Project"
-[sonatype]: https://www.sonatype.com "Sonatype"
-[utilities]: https://github.com/stephengold/jme3-utilities "Jme3-utilities Project"
-[wes]: https://github.com/stephengold/Wes "Wes Project"
-[winmerge]: http://winmerge.org "WinMerge Project"
 
 
 <a name="history"/>
@@ -295,3 +267,31 @@ If I've misattributed anything or left anyone out, please let me know so I can
 correct the situation: sgold@sonic.net
 
 [Jump to table of contents](#toc)
+
+
+[ant]: https://ant.apache.org "Apache Ant Project"
+[blender]: https://docs.blender.org "Blender Project"
+[bsd3]: https://opensource.org/licenses/BSD-3-Clause "3-Clause BSD License"
+[chrome]: https://www.google.com/chrome "Chrome"
+[findbugs]: http://findbugs.sourceforge.net "FindBugs Project"
+[firefox]: https://www.mozilla.org/en-US/firefox "Firefox"
+[git]: https://git-scm.com "Git"
+[github]: https://github.com "GitHub"
+[gradle]: https://gradle.org "Gradle Project"
+[heart]: https://github.com/stephengold/Heart "Heart Project"
+[imgur]: https://imgur.com/ "Imgur"
+[jfrog]: https://www.jfrog.com "JFrog"
+[jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
+[jmepower]: https://github.com/stephengold/JmePower "JmePower Project"
+[license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
+[log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
+[markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
+[minie]: https://github.com/stephengold/Minie "Minie Project"
+[mint]: https://linuxmint.com "Linux Mint Project"
+[netbeans]: https://netbeans.org "NetBeans Project"
+[openJDK]: https://openjdk.java.net "OpenJDK Project"
+[skycontrol]: https://github.com/stephengold/SkyControl "SkyControl Project"
+[sonatype]: https://www.sonatype.com "Sonatype"
+[utilities]: https://github.com/stephengold/jme3-utilities "Jme3-utilities Project"
+[wes]: https://github.com/stephengold/Wes "Wes Project"
+[winmerge]: http://winmerge.org "WinMerge Project"
