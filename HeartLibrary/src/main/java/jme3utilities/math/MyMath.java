@@ -459,6 +459,23 @@ public class MyMath {
     }
 
     /**
+     * Test whether the specified double-precision value is finite. Note that
+     * Java 8 provides {@link java.lang.Double#isFinite(double)}.
+     *
+     * @param dValue the value to test
+     * @return true if finite, false if NaN or infinity
+     */
+    public static boolean isFiniteDouble(double dValue) {
+        if (Double.isInfinite(dValue)) {
+            return false;
+        } else if (Double.isNaN(dValue)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Test the specified transform for exact identity.
      *
      * @param transform which transform to test (not null, unaffected)
