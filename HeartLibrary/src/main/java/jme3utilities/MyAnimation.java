@@ -224,8 +224,8 @@ public class MyAnimation {
             int jointIndex) {
         Validate.nonNegative(jointIndex, "joint index");
 
-        AnimTrack[] tracks = clip.getTracks();
-        for (AnimTrack track : tracks) {
+        AnimTrack<?>[] tracks = clip.getTracks();
+        for (AnimTrack<?> track : tracks) {
             if (track instanceof TransformTrack) {
                 TransformTrack transformTrack = (TransformTrack) track;
                 HasLocalTransform target = transformTrack.getTarget();
@@ -402,8 +402,8 @@ public class MyAnimation {
             int jointIndex) {
         TransformTrack result = null;
 
-        AnimTrack[] animTracks = clip.getTracks();
-        for (AnimTrack animTrack : animTracks) {
+        AnimTrack<?>[] animTracks = clip.getTracks();
+        for (AnimTrack<?> animTrack : animTracks) {
             if (animTrack instanceof TransformTrack) {
                 TransformTrack track = (TransformTrack) animTrack;
                 HasLocalTransform target = track.getTarget();
@@ -580,7 +580,7 @@ public class MyAnimation {
      * @param track the AnimTrack to test (not null, unaffected)
      * @return true if it targets a Joint, otherwise false
      */
-    public static boolean isJointTrack(AnimTrack track) {
+    public static boolean isJointTrack(AnimTrack<?> track) {
         boolean result = false;
 
         if (track instanceof TransformTrack) {
