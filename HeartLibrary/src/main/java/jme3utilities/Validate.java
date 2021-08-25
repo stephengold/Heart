@@ -32,6 +32,7 @@ import com.jme3.math.Vector3f;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jme3utilities.math.MyMath;
 import jme3utilities.math.MyQuaternion;
 import jme3utilities.math.MyVector3f;
 
@@ -81,7 +82,7 @@ final public class Validate {
      * @throws IllegalArgumentException if the value is NaN or infinite
      */
     public static boolean finite(float fValue, String description) {
-        if (Float.isNaN(fValue) || Float.isInfinite(fValue)) {
+        if (!MyMath.isFinite(fValue)) {
             String what;
             if (description == null) {
                 what = "float argument";
@@ -105,7 +106,7 @@ final public class Validate {
      * @throws IllegalArgumentException if the value is NaN or infinite
      */
     public static boolean finite(double dValue, String description) {
-        if (Double.isNaN(dValue) || Double.isInfinite(dValue)) {
+        if (!MyMath.isFiniteDouble(dValue)) {
             String what;
             if (description == null) {
                 what = "double argument";
