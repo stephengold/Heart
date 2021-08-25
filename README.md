@@ -257,7 +257,7 @@ software developers:
     + the PMD source-code analyzer
     + the [WinMerge] differencing and merging tool
 
-I am grateful to [Github], [Sonatype], [JFrog], and [Imgur]
+I am grateful to [GitHub], [Sonatype], [JFrog], and [Imgur]
 for providing free hosting for this project
 and many other open-source projects.
 
