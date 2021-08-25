@@ -10,7 +10,9 @@ subprojects {
 
 task('install') {
     dependsOn ':HeartLibrary:install'
+    description 'Installs Maven artifacts to the local repository.'
 }
 task('release') {
     dependsOn ':HeartLibrary:release'
+    description 'Stages Maven artifacts to Sonatype OSSRH.'
 }
