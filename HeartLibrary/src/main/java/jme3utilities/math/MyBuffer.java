@@ -180,7 +180,7 @@ final public class MyBuffer {
     }
 
     /**
-     * Find the the radius of a bounding cylinder for the specified FloatBuffer
+     * Find the radius of a bounding cylinder for the specified FloatBuffer
      * range.
      *
      * @param buffer the buffer that contains the vectors (not null, unaffected)
