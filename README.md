@@ -159,7 +159,7 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
      + `cd Heart`
      + `git checkout -b latest 7.0.0`
    + using a web browser:
-     + browse to https://github.com/stephengold/Heart/releases/latest
+     + browse to [the latest release][latest]
      + follow the "Source code (zip)" link
      + save the ZIP file
      + extract the contents of the saved ZIP file
@@ -175,7 +175,7 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 After a successful build,
 Maven artifacts will be found in `HeartLibrary/build/libs`.
 
-You can install the Maven artifacts to your local repository:
+You can install the Maven artifacts to your local Maven repository:
  + using Bash or PowerShell:  `./gradlew :HeartLibrary:publishToMavenLocal`
  + using Windows Command Prompt:  `.\gradlew :HeartLibrary:publishToMavenLocal`
 
@@ -263,7 +263,7 @@ and many other open-source projects.
 
 I'm also grateful to my dear Holly, for keeping me sane.
 
-If I've misattributed anything or left anyone out, please let me know so I can
+If I've misattributed anything or left anyone out, please let me know, so I can
 correct the situation: sgold@sonic.net
 
 [Jump to table of contents](#toc)
@@ -283,6 +283,7 @@ correct the situation: sgold@sonic.net
 [jfrog]: https://www.jfrog.com "JFrog"
 [jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
 [jmepower]: https://github.com/stephengold/JmePower "JmePower Project"
+[latest]: https://github.com/stephengold/Heart/releases/latest "latest release"
 [license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
 [log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
