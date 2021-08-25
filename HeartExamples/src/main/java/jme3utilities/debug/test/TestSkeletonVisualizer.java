@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -70,6 +70,11 @@ public class TestSkeletonVisualizer extends ActionApplication {
     // *************************************************************************
     // constants and loggers
 
+    /**
+     * speed setting to effectively freeze animations without freezing the
+     * camera
+     */
+    final private static float pausedSpeed = 1e-12f;
     /**
      * message logger for this class
      */
@@ -328,7 +333,7 @@ public class TestSkeletonVisualizer extends ActionApplication {
      * Toggle the animation: paused/running.
      */
     private void togglePause() {
-        float newSpeed = (speed > 1e-12f) ? 1e-12f : 1f;
+        float newSpeed = (speed > pausedSpeed) ? pausedSpeed : 1f;
         setSpeed(newSpeed);
     }
 
@@ -344,7 +349,7 @@ public class TestSkeletonVisualizer extends ActionApplication {
      * Update the status line in the GUI.
      */
     private void updateStatusLine() {
-        boolean isPaused = (speed <= 1e-12f);
+        boolean isPaused = (speed <= pausedSpeed);
         String message = isPaused ? "  PAUSED" : "";
         statusLine.setText(message);
     }
