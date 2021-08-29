@@ -804,7 +804,8 @@ public class MyMath {
     }
 
     /**
-     * Standardize a rotation angle to the range [-Pi, Pi).
+     * Standardize a rotation angle to the range [-Pi, Pi). TODO check for
+     * infinity/NAN
      *
      * @param angle input (in radians)
      * @return standardized angle (in radians, &lt;Pi, &ge;-Pi)
