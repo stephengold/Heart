@@ -175,15 +175,19 @@ public class MyAnimation {
      * @param track the track to describe (may be null, unaffected)
      * @return a mnemonic character
      */
-    public static char describeTrackType(Track track) {
+    public static char describeTrackType(Object track) {
         if (track instanceof AudioTrack) {
             return 'a';
         } else if (track instanceof BoneTrack) {
             return 'b';
         } else if (track instanceof EffectTrack) {
             return 'e';
+        } else if (track instanceof MorphTrack) {
+            return 'm';
         } else if (track instanceof SpatialTrack) {
             return 's';
+        } else if (track instanceof TransformTrack) {
+            return 't';
         }
         return '?';
     }
