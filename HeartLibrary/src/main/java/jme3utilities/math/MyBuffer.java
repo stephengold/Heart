@@ -328,7 +328,9 @@ final public class MyBuffer {
      *
      * @param indexBuffer (not null, unaffected)
      * @return an enum value (not null)
+     * @deprecated use {@link com.jme3.scene.mesh.IndexBuffer#getFormat()}
      */
+    @Deprecated
     public static VertexBuffer.Format getFormat(IndexBuffer indexBuffer) {
         if (indexBuffer instanceof IndexByteBuffer) {
             return VertexBuffer.Format.UnsignedByte;
