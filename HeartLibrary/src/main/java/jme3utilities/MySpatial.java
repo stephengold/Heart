@@ -247,17 +247,9 @@ public class MySpatial {
      */
     public static int countVertices(Spatial subtree) {
         int result = 0;
-        if (subtree instanceof Geometry) {
-            Geometry geometry = (Geometry) subtree;
-            Mesh mesh = geometry.getMesh();
-            result = mesh.getVertexCount();
-
-        } else if (subtree instanceof Node) {
-            Node node = (Node) subtree;
-            Collection<Spatial> children = node.getChildren();
-            for (Spatial child : children) {
-                result += countVertices(child);
-            }
+        List<Mesh> meshes = MyMesh.listMeshes(subtree, null);
+        for (Mesh mesh : meshes) {
+            result += mesh.getVertexCount();
         }
 
         assert result >= 0 : result;
