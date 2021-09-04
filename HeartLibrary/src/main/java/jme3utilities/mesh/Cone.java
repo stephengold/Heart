@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2020, Stephen Gold
+ Copyright (c) 2019-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -100,6 +100,7 @@ public class Cone extends Mesh {
         float yApex = yHeight / 2f;
         float yBase = -yHeight / 2f;
         float interiorAngle = FastMath.TWO_PI / numSides; // in radians
+        // TODO use double precision for angles
 
         Triangle triangle = new Triangle();
         Vector3f p1 = new Vector3f();
