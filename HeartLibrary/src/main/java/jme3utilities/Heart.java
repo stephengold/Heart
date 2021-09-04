@@ -36,6 +36,7 @@ import com.jme3.post.FilterPostProcessor;
 import com.jme3.post.SceneProcessor;
 import com.jme3.renderer.ViewPort;
 import com.jme3.util.clone.Cloner;
+import com.jme3.util.clone.JmeCloneable;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Graphics2D;
@@ -133,16 +134,21 @@ public class Heart {
     }
 
     /**
-     * Return a deep copy of the specified object. This works around JME issue
-     * #879, but still doesn't handle all classes.
+     * Copy the specified object using deepClone() if it's cloneable. This works
+     * around JME issue #879, but still doesn't handle all classes.
      *
      * @param <T> the type of object to be copied
      * @param object the input (unaffected)
      * @return an instance equivalent to the input
      */
     public static <T> T deepCopy(T object) {
-        T clone;
-        if (object instanceof Boolean
+        T copy;
+        if (object instanceof JmeCloneable
+                || object instanceof Cloneable
+                || object.getClass().isArray()) {
+            copy = Cloner.deepClone(object);
+
+        } else if (object instanceof Boolean
                 || object instanceof Byte
                 || object instanceof Character
                 || object instanceof Double
@@ -156,12 +162,13 @@ public class Heart {
                 || object instanceof String
                 || object instanceof Vector3i
                 || object instanceof VectorXZ) {
-            clone = object;
+            copy = object;
+
         } else {
-            clone = Cloner.deepClone(object);
+            copy = Cloner.deepClone(object);
         }
 
-        return clone;
+        return copy;
     }
 
     /**
