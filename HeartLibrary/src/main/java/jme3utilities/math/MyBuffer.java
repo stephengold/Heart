@@ -584,11 +584,14 @@ final public class MyBuffer {
 
     /**
      * Perform a relative put to the specified IndexBuffer. Intended for
-     * source-code compatibility with JME 3.2 and earlier. TODO deprecate
+     * source-code compatibility with JME 3.2 and earlier.
      *
      * @param indexBuffer (not null, modified)
      * @param value the value to write
+     *
+     * @deprecated use {@link com.jme3.scene.mesh.IndexBuffer#put(int)}
      */
+    @Deprecated
     public static void putRelative(IndexBuffer indexBuffer, int value) {
         if (indexBuffer instanceof IndexByteBuffer) {
             ((ByteBuffer) indexBuffer.getBuffer()).put((byte) value);

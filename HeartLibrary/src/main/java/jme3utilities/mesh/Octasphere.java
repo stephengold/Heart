@@ -42,7 +42,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 import jme3utilities.MyMesh;
 import jme3utilities.Validate;
-import jme3utilities.math.MyBuffer;
 import jme3utilities.math.MyVector3f;
 
 /**
@@ -217,7 +216,6 @@ public class Octasphere extends Mesh {
         //System.out.println("numFaces        = " + faces.size() / vpt);
         //System.out.println("numCacheEntries = " + midpointCache.size());
         //System.out.println();
-
         midpointCache.clear();
 
         int numVertices = locations.size();
@@ -232,7 +230,7 @@ public class Octasphere extends Mesh {
         int numIndices = faces.size();
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numVertices, numIndices);
         for (int vertexIndex : faces) {
-            MyBuffer.putRelative(ib, vertexIndex);
+            ib.put(vertexIndex);
         }
         VertexBuffer.Format ibFormat = ib.getFormat();
         Buffer ibData = ib.getBuffer();

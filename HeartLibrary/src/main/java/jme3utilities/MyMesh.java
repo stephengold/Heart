@@ -1066,8 +1066,8 @@ public class MyMesh {
 
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numVertices, numIndices);
         for (IntPair edge : edgeSet) {
-            MyBuffer.putRelative(ib, edge.smaller());
-            MyBuffer.putRelative(ib, edge.larger());
+            ib.put(edge.smaller());
+            ib.put(edge.larger());
         }
         VertexBuffer.Format ibFormat = ib.getFormat();
         Buffer ibData = ib.getBuffer();

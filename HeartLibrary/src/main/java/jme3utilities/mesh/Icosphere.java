@@ -39,7 +39,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 import jme3utilities.MyMesh;
 import jme3utilities.Validate;
-import jme3utilities.math.MyBuffer;
 import jme3utilities.math.MyMath;
 import jme3utilities.math.MyVector3f;
 
@@ -212,7 +211,7 @@ public class Icosphere extends Mesh {
         int numIndices = faces.size();
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numVertices, numIndices);
         for (int vertexIndex : faces) {
-            MyBuffer.putRelative(ib, vertexIndex);
+            ib.put(vertexIndex);
         }
         VertexBuffer.Format ibFormat = ib.getFormat();
         Buffer ibData = ib.getBuffer();

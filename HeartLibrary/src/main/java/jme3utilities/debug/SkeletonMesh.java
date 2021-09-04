@@ -44,7 +44,6 @@ import java.nio.FloatBuffer;
 import java.util.logging.Logger;
 import jme3utilities.MyMesh;
 import jme3utilities.MySkeleton;
-import jme3utilities.math.MyBuffer;
 
 /**
  * A Mesh used to visualize an Armature or Skeleton. Each vertex corresponds to
@@ -103,16 +102,16 @@ class SkeletonMesh extends Mesh {
                     Bone parent = child.getParent();
                     if (parent != null) {
                         int parentIndex = skeleton.getBoneIndex(parent);
-                        MyBuffer.putRelative(ib, parentIndex);
-                        MyBuffer.putRelative(ib, boneIndex);
+                        ib.put(parentIndex);
+                        ib.put(boneIndex);
                     }
                 } else {
                     Joint child = armature.getJoint(boneIndex);
                     Joint parent = child.getParent();
                     if (parent != null) {
                         int parentIndex = parent.getId();
-                        MyBuffer.putRelative(ib, parentIndex);
-                        MyBuffer.putRelative(ib, boneIndex);
+                        ib.put(parentIndex);
+                        ib.put(boneIndex);
                     }
                 }
             }
