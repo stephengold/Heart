@@ -566,6 +566,24 @@ public class MyMath {
     }
 
     /**
+     * Find the maximum of some int values.
+     *
+     * @param iValues the input values
+     * @return the most positive value
+     * @see java.lang.Math#max(int, int)
+     */
+    public static int maxInt(int... iValues) {
+        int result = Integer.MIN_VALUE;
+        for (int value : iValues) {
+            if (value > result) {
+                result = value;
+            }
+        }
+
+        return result;
+    }
+
+    /**
      * Find the median of 3 single-precision values.
      *
      * @param a the first input value
