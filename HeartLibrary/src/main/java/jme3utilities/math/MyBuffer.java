@@ -348,6 +348,35 @@ final public class MyBuffer {
     }
 
     /**
+     * Test whether all values in the specified FloatBuffer range are finite.
+     *
+     * @param buffer the buffer that contains the data (not null, unaffected)
+     * @param startPosition the position at which the data start (&ge;0,
+     * &le;endPosition)
+     * @param endPosition the position at which the data end (&ge;startPosition,
+     * &le;capacity)
+     * @return false if any value is NaN or infinite, otherwise true
+     */
+    public boolean isAllFinite(FloatBuffer buffer, int startPosition,
+            int endPosition) {
+        Validate.nonNull(buffer, "buffer");
+        Validate.inRange(startPosition, "start position", 0, endPosition);
+        Validate.inRange(endPosition, "end position", startPosition,
+                buffer.capacity());
+
+        boolean result = true;
+        for (int floatPos = startPosition; floatPos < endPosition; ++floatPos) {
+            float fValue = buffer.get(floatPos);
+            if (!MyMath.isFinite(fValue)) {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    /**
      * Find the maximum absolute coordinate for each axis in the specified
      * FloatBuffer range.
      *
@@ -555,7 +584,7 @@ final public class MyBuffer {
 
     /**
      * Perform a relative put to the specified IndexBuffer. Intended for
-     * source-code compatibility with JME 3.2 and earlier.
+     * source-code compatibility with JME 3.2 and earlier. TODO deprecate
      *
      * @param indexBuffer (not null, modified)
      * @param value the value to write
