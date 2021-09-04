@@ -511,7 +511,8 @@ public class MyVector3f {
      *
      * @param point1 coordinates of the first location (not null, unaffected)
      * @param point2 coordinates of the 2nd location (not null, unaffected)
-     * @param tolerance2 for coincidence (in squared units, &ge;0)
+     * @param tolerance2 for coincidence (in squared units, &ge;0) TODO should
+     * be double-precision
      * @return true if they coincide, otherwise false
      */
     public static boolean doCoincide(Vector3f point1, Vector3f point2,
