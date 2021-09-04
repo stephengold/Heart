@@ -60,7 +60,9 @@ import java.util.logging.SimpleFormatter;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import javax.imageio.ImageIO;
+import jme3utilities.math.IntPair;
 import jme3utilities.math.RectangularSolid;
+import jme3utilities.math.Vector3i;
 import jme3utilities.math.VectorXZ;
 
 /**
@@ -147,10 +149,12 @@ public class Heart {
                 || object instanceof Enum
                 || object instanceof Float
                 || object instanceof Integer
+                || object instanceof IntPair
                 || object instanceof Long
                 || object instanceof RectangularSolid
                 || object instanceof Short
                 || object instanceof String
+                || object instanceof Vector3i
                 || object instanceof VectorXZ) {
             clone = object;
         } else {
