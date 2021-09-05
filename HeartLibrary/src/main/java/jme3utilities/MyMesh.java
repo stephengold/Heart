@@ -759,6 +759,10 @@ public class MyMesh {
         }
 
         result.updateBound();
+        int maxNumWeights1 = mesh1.getMaxNumWeights();
+        int maxNumWeights2 = mesh2.getMaxNumWeights();
+        int maxNumWeights = Math.max(maxNumWeights1, maxNumWeights2);
+        result.setMaxNumWeights(maxNumWeights);
 
         return result;
     }
