@@ -665,7 +665,7 @@ public class MyMesh {
     /**
      * Merge 2 meshes.
      *
-     * Doesn't handle hybrid meshes or tessellation meshes.
+     * Doesn't handle levels of detail, hybrid meshes, or tessellation meshes.
      *
      * Both meshes must be composed of the same sort of primitives. In other
      * words, if mesh1 is composed of triangles, then so must mesh2, and vice
@@ -682,8 +682,10 @@ public class MyMesh {
      * Points)
      */
     public static Mesh merge(Mesh mesh1, Mesh mesh2) {
-        Validate.nonNull(mesh1, "mesh1");
-        Validate.nonNull(mesh2, "mesh2");
+        int levels1 = mesh1.getNumLodLevels();
+        Validate.require(levels1 == 0, "no LODs in mesh1");
+        int levels2 = mesh1.getNumLodLevels();
+        Validate.require(levels2 == 0, "no LODs in mesh2");
 
         Mesh.Mode outMode = expandedMode(mesh1);
         Mesh.Mode outMode2 = expandedMode(mesh2);
