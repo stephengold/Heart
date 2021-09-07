@@ -170,7 +170,9 @@ public class MyMesh {
                 VertexBuffer.Type type = newVB.getBufferType();
                 VertexBuffer oldVB = input.getBuffer(type);
                 assert oldVB != newVB;
-                Element.copy(oldVB, oldI, newVB, newI);
+                if (oldVB.getNumElements() > 0) {
+                    Element.copy(oldVB, oldI, newVB, newI);
+                }
             }
         }
         /*
@@ -236,7 +238,8 @@ public class MyMesh {
 
         for (VertexBuffer vertexBuffer : mesh.getBufferList()) {
             VertexBuffer.Type type = vertexBuffer.getBufferType();
-            if (type != VertexBuffer.Type.Index) {
+            if (type != VertexBuffer.Type.Index
+                    && vertexBuffer.getNumElements() > 0) {
                 if (!Element.equals(vertexBuffer, vi1, vi2)) {
                     return false;
                 }
