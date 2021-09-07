@@ -151,7 +151,11 @@ public class MyMesh {
         for (VertexBuffer oldVertexBuffer : input.getBufferList()) {
             VertexBuffer.Type type = oldVertexBuffer.getBufferType();
             result.clearBuffer(type);
+
             VertexBuffer.Format format = oldVertexBuffer.getFormat();
+            if (format == null) {
+                format = VertexBuffer.Format.Float; // to avoid an NPE
+            }
             int numCperE = oldVertexBuffer.getNumComponents();
             numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
             Buffer data = VertexBuffer.createBuffer(format, numCperE, newN);
@@ -382,6 +386,9 @@ public class MyMesh {
 
             if (type != VertexBuffer.Type.Index) {
                 VertexBuffer.Format format = inVertexBuffer.getFormat();
+                if (format == null) {
+                    format = VertexBuffer.Format.Float; // to avoid an NPE
+                }
                 int numCperE = inVertexBuffer.getNumComponents();
                 numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
                 Buffer data = VertexBuffer.createBuffer(format, numCperE,
@@ -398,7 +405,9 @@ public class MyMesh {
                 VertexBuffer.Type type = outVB.getBufferType();
                 VertexBuffer inVB = in.getBuffer(type);
                 assert inVB != outVB;
-                Element.copy(inVB, inVI, outVB, outVI);
+                if (inVB.getNumElements() > 0) {
+                    Element.copy(inVB, inVI, outVB, outVI);
+                }
             }
         }
         /*
@@ -722,7 +731,13 @@ public class MyMesh {
              * If the buffer formats differ, use the larger one for output.
              */
             VertexBuffer.Format format1 = vb1.getFormat();
+            if (format1 == null) {
+                format1 = VertexBuffer.Format.Float; // to avoid an NPE
+            }
             VertexBuffer.Format format2 = vb2.getFormat();
+            if (format2 == null) {
+                format2 = VertexBuffer.Format.Float; // to avoid an NPE
+            }
             VertexBuffer.Format outFormat;
             if (format1.getComponentSize() > format2.getComponentSize()) {
                 outFormat = format1;
