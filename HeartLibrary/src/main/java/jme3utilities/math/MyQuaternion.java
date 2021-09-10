@@ -29,6 +29,8 @@ package jme3utilities.math;
 import com.jme3.math.FastMath;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.MyString;
@@ -146,6 +148,28 @@ public class MyQuaternion {
         float qz = q.getZ();
         float qw = q.getW();
         result.set(-qx, -qy, -qz, qw);
+
+        return result;
+    }
+
+    /**
+     * Count the number of distinct quaternions, without distinguishing 0 from
+     * -0.
+     *
+     * @param quaternions (unaffected)
+     * @return the count (&ge;0)
+     */
+    public static int countNe(Quaternion[] quaternions) {
+        if (quaternions == null) {
+            return 0;
+        }
+
+        Set<Quaternion> distinct = new HashSet<>(quaternions.length);
+        for (Quaternion rot : quaternions) {
+            Quaternion standard = standardize(rot, null);
+            distinct.add(standard);
+        }
+        int result = distinct.size();
 
         return result;
     }
