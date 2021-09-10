@@ -1002,7 +1002,7 @@ public class MyVector3f {
 
         result.x = Math.max(Math.abs(vector1.x), Math.abs(vector2.x));
         result.y = Math.max(Math.abs(vector1.y), Math.abs(vector2.y));
-        result.x = Math.max(Math.abs(vector1.z), Math.abs(vector2.z));
+        result.z = Math.max(Math.abs(vector1.z), Math.abs(vector2.z));
 
         return result;
     }
