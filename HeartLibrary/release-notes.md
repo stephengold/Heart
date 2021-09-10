@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 7.1.0 released on TBD
+## Version 7.1.0 released on 9 September 2021
 
  + Bugfix: `maxNumWeights` isn't initialized by `MyMesh.merge()`
  + Bugfix: instanced meshes are double-counted by `MySpatial.countVertices()`
