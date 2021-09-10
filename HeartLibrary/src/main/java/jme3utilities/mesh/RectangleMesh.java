@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2020, Stephen Gold
+ Copyright (c) 2017-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -81,8 +81,8 @@ public class RectangleMesh extends Mesh {
      */
     public RectangleMesh(Rectangle rect, float zNorm) {
         this(0f, 1f, 0f, 1f,
-                rect.x, rect.y,
-                rect.x + rect.width, rect.y + rect.height,
+                rect.x, rect.x + rect.width,
+                rect.y, rect.y + rect.height,
                 zNorm);
     }
 
