@@ -1,5 +1,22 @@
 # release log for the Heart Library and related tests
 
+## Version 7.1.0 released on TBD
+
+ + Bugfix: `maxNumWeights` isn't initialized by `MyMesh.merge()`
+ + Bugfix: instanced meshes are double-counted by `MySpatial.countVertices()`
+ + Bugfix: `MyVector3f.maxAbs()` doesn't set the Z component
+ + Bugfix: a logic error in one of the `RectangleMesh` constructors
+ + Disabled mergers of meshes that have levels of detail.
+ + Deprecated `MyBuffer.getFormat()` and `MyBuffer.putRelative()`.
+ + Extended `MyAnimation.describeTrackType()` to handle
+   the new animation system.
+ + Added the `DistinctVectorValues`, `MeshNormals`, and `Population` classes.
+ + Added a `Comparable` interface to the `IntPair` class.
+ + Added an `isAllFinite()` method to the `MyBuffer` class.
+ + Added `isFiniteDouble()` and `maxInt()` methods to the `MyMath` class.
+ + Added `countNe()` and `mirrorAxis()` methods to the `MyQuaternion` class.
+ + Updated Gradle to v7.2
+
 ## Version 7.0.0 released on 14 July 2021
 
  + Changed the return type of `Heart.deepCopy()`. (API change!)
@@ -25,7 +42,7 @@
 ## Version 6.4.3+for34 released on 22 April 2021
 
  + Bugfix: Locale not specified in the `MyString.describe()`
-   and `MyString.describeFraction()` methods.
+   and `MyString.describeFraction()` methods
  + Made `MyMath.hypoteneuse()` more reliable by using double-precision
    arithmetic.
  + Targeted jMonkeyEngine version 3.4.0-beta1.
