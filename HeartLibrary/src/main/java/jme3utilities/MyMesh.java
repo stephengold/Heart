@@ -119,7 +119,7 @@ public class MyMesh {
      */
     public static Mesh addIndices(Mesh input) {
         Validate.nonNull(input, "input");
-        assert !hasIndices(input);
+        assert !hasIndices(input); // TODO use Validate
         /*
          * Assign new indices and create mappings between
          * the old and new indices.
@@ -208,7 +208,7 @@ public class MyMesh {
      */
     public static void addSphereNormals(Mesh mesh) {
         Validate.nonNull(mesh, "mesh");
-        assert !hasNormals(mesh);
+        assert !hasNormals(mesh); // TODO use Validate
 
         FloatBuffer positions = mesh.getFloatBuffer(VertexBuffer.Type.Position);
         FloatBuffer normals = BufferUtils.clone(positions);
@@ -332,7 +332,7 @@ public class MyMesh {
      */
     public static int countBones(Mesh mesh) {
         int maxWeightsPerVert = mesh.getMaxNumWeights();
-        assert maxWeightsPerVert > 0 : maxWeightsPerVert;
+        assert maxWeightsPerVert > 0 : maxWeightsPerVert; // TODO use Validate
         assert maxWeightsPerVert <= maxWeights : maxWeightsPerVert;
 
         VertexBuffer biBuf = mesh.getBuffer(VertexBuffer.Type.BoneIndex);
@@ -370,8 +370,7 @@ public class MyMesh {
      * Lines.
      *
      * @param in the input mesh (not null, mode not Hybrid or Patch, unaffected)
-     * @return a new Mesh (without an index buffer, mode = Triangles or Lines or
-     * Points)
+     * @return a new Mesh (without an index buffer, in one of the list modes)
      */
     public static Mesh expand(Mesh in) {
         IndexBuffer indexList = in.getIndicesAsList();
@@ -433,7 +432,7 @@ public class MyMesh {
      *
      * @param inputMesh the Mesh to analyze (not null, mode not Hybrid or Patch,
      * unaffected)
-     * @return an enum value (Points or Lines or Triangles)
+     * @return an enum value (one of the list modes)
      * @see #hasTriangles(com.jme3.scene.Mesh)
      */
     public static Mesh.Mode expandedMode(Mesh inputMesh) {
@@ -472,7 +471,7 @@ public class MyMesh {
      */
     public static void generateNormals(Mesh mesh) {
         assert mesh.getMode() == Mesh.Mode.Triangles : mesh.getMode();
-        assert !hasIndices(mesh);
+        assert !hasIndices(mesh); // TODO use Validate
 
         FloatBuffer positionBuffer
                 = mesh.getFloatBuffer(VertexBuffer.Type.Position);
@@ -690,8 +689,7 @@ public class MyMesh {
      *
      * @param mesh1 the first input mesh (not null, unaffected)
      * @param mesh2 the 2nd input mesh (not null, unaffected)
-     * @return a new Mesh (without an index buffer, mode = Triangles or Lines or
-     * Points)
+     * @return a new Mesh (without an index buffer, in one of the list modes)
      */
     public static Mesh merge(Mesh mesh1, Mesh mesh2) {
         int levels1 = mesh1.getNumLodLevels();
@@ -870,7 +868,7 @@ public class MyMesh {
      * @param mesh the Mesh to modify (not null, mode=Triangles)
      */
     public static void reverseWinding(Mesh mesh) {
-        assert mesh.getMode() == Mesh.Mode.Triangles : mesh.getMode();
+        assert mesh.getMode() == Mesh.Mode.Triangles : mesh.getMode(); // TODO use Validate
 
         mesh.updateCounts();
         int numTriangles = mesh.getTriangleCount();
@@ -998,7 +996,7 @@ public class MyMesh {
      */
     public static void smoothNormals(Mesh mesh) {
         Validate.nonNull(mesh, "mesh");
-        assert hasNormals(mesh);
+        assert hasNormals(mesh); // TODO use Validate
 
         FloatBuffer positionBuffer
                 = mesh.getFloatBuffer(VertexBuffer.Type.Position);
@@ -1067,7 +1065,7 @@ public class MyMesh {
      */
     public static void trianglesToLines(Mesh mesh) {
         Validate.nonNull(mesh, "mesh");
-        assert hasTriangles(mesh);
+        assert hasTriangles(mesh); // TODO use Validate
 
         IndexBuffer indexList = mesh.getIndicesAsList();
         int numTriangles = indexList.size() / vpt;
@@ -1418,7 +1416,7 @@ public class MyMesh {
     public static Vector2f vertexVector2f(Mesh mesh,
             VertexBuffer.Type bufferType, int vertexIndex,
             Vector2f storeResult) {
-        assert bufferType == VertexBuffer.Type.TexCoord
+        assert bufferType == VertexBuffer.Type.TexCoord // TODO use Validate
                 || bufferType == VertexBuffer.Type.TexCoord2
                 || bufferType == VertexBuffer.Type.TexCoord3
                 || bufferType == VertexBuffer.Type.TexCoord4
@@ -1443,8 +1441,8 @@ public class MyMesh {
      * Copy Vector3f data for the indexed vertex from the specified
      * VertexBuffer.
      * <p>
-     * A software skin update is required BEFORE reading vertex
-     * positions/normals/tangents from an animated mesh
+     * A software skin update is required BEFORE reading positions/normals from
+     * an animated mesh.
      *
      * @param mesh the subject mesh (not null, unaffected)
      * @param bufferType which buffer to read (5 legal values)
@@ -1455,7 +1453,7 @@ public class MyMesh {
     public static Vector3f vertexVector3f(Mesh mesh,
             VertexBuffer.Type bufferType, int vertexIndex,
             Vector3f storeResult) {
-        assert bufferType == VertexBuffer.Type.BindPoseNormal
+        assert bufferType == VertexBuffer.Type.BindPoseNormal // TODO use Validate
                 || bufferType == VertexBuffer.Type.BindPosePosition
                 || bufferType == VertexBuffer.Type.Binormal
                 || bufferType == VertexBuffer.Type.Normal
@@ -1473,6 +1471,9 @@ public class MyMesh {
     /**
      * Copy Vector4f data for the indexed vertex from the specified vertex
      * buffer.
+     * <p>
+     * A software skin update is required BEFORE reading tangents from an
+     * animated mesh.
      *
      * @param mesh the subject mesh (not null, unaffected)
      * @param bufferType which buffer to read (5 legal values)
@@ -1483,7 +1484,7 @@ public class MyMesh {
     public static Vector4f vertexVector4f(Mesh mesh,
             VertexBuffer.Type bufferType, int vertexIndex,
             Vector4f storeResult) {
-        assert bufferType == VertexBuffer.Type.BindPoseTangent
+        assert bufferType == VertexBuffer.Type.BindPoseTangent // TODO use Validate
                 || bufferType == VertexBuffer.Type.BoneWeight
                 || bufferType == VertexBuffer.Type.Color
                 || bufferType == VertexBuffer.Type.HWBoneWeight
