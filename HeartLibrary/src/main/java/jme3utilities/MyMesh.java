@@ -199,6 +199,7 @@ public class MyMesh {
 
         result.updateCounts();
 
+        assert hasIndices(result);
         return result;
     }
 
@@ -425,6 +426,8 @@ public class MyMesh {
 
         out.updateCounts();
 
+        assert out.getMode().isListMode();
+        assert !hasIndices(out);
         return out;
     }
 
@@ -460,6 +463,7 @@ public class MyMesh {
                 throw new IllegalArgumentException("mode = " + mode);
         }
 
+        assert result.isListMode();
         return result;
     }
 
@@ -783,6 +787,8 @@ public class MyMesh {
         int maxNumWeights = Math.max(maxNumWeights1, maxNumWeights2);
         result.setMaxNumWeights(maxNumWeights);
 
+        assert result.getMode().isListMode();
+        assert !hasIndices(result);
         return result;
     }
 
