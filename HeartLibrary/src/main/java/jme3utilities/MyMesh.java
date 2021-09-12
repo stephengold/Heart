@@ -120,7 +120,7 @@ public class MyMesh {
      */
     public static Mesh addIndices(Mesh input) {
         Validate.nonNull(input, "input");
-        assert !hasIndices(input); // TODO use Validate
+        Validate.require(!hasIndices(input), "not have an index buffer");
         /*
          * Assign new indices and create mappings between
          * the old and new indices.
@@ -210,7 +210,7 @@ public class MyMesh {
      */
     public static void addSphereNormals(Mesh mesh) {
         Validate.nonNull(mesh, "mesh");
-        assert !hasNormals(mesh); // TODO use Validate
+        Validate.require(!hasNormals(mesh), "not have normals");
 
         FloatBuffer positions = mesh.getFloatBuffer(VertexBuffer.Type.Position);
         FloatBuffer normals = BufferUtils.clone(positions);
@@ -334,8 +334,8 @@ public class MyMesh {
      */
     public static int countBones(Mesh mesh) {
         int maxWeightsPerVert = mesh.getMaxNumWeights();
-        assert maxWeightsPerVert > 0 : maxWeightsPerVert; // TODO use Validate
-        assert maxWeightsPerVert <= maxWeights : maxWeightsPerVert;
+        Validate.inRange(maxWeightsPerVert, "mesh max num weights",
+                1, maxWeights);
 
         VertexBuffer biBuf = mesh.getBuffer(VertexBuffer.Type.BoneIndex);
         Buffer boneIndexBuffer = biBuf.getDataReadOnly();
@@ -475,8 +475,9 @@ public class MyMesh {
      * @param mesh the Mesh to modify (not null, mode=Triangles, not indexed)
      */
     public static void generateNormals(Mesh mesh) {
-        assert mesh.getMode() == Mesh.Mode.Triangles : mesh.getMode();
-        assert !hasIndices(mesh); // TODO use Validate
+        Validate.require(mesh.getMode() == Mesh.Mode.Triangles,
+                "be in Triangles mode");
+        Validate.require(!hasIndices(mesh), "not have an index buffer");
 
         FloatBuffer positionBuffer
                 = mesh.getFloatBuffer(VertexBuffer.Type.Position);
@@ -875,7 +876,8 @@ public class MyMesh {
      * @param mesh the Mesh to modify (not null, mode=Triangles)
      */
     public static void reverseWinding(Mesh mesh) {
-        assert mesh.getMode() == Mesh.Mode.Triangles : mesh.getMode(); // TODO use Validate
+        Validate.require(mesh.getMode() == Mesh.Mode.Triangles,
+                "be in Triangles mode");
 
         mesh.updateCounts();
         int numTriangles = mesh.getTriangleCount();
@@ -1003,7 +1005,7 @@ public class MyMesh {
      */
     public static void smoothNormals(Mesh mesh) {
         Validate.nonNull(mesh, "mesh");
-        assert hasNormals(mesh); // TODO use Validate
+        Validate.require(hasNormals(mesh), "have normals");
 
         FloatBuffer positionBuffer
                 = mesh.getFloatBuffer(VertexBuffer.Type.Position);
@@ -1096,7 +1098,7 @@ public class MyMesh {
      */
     public static void trianglesToLines(Mesh mesh) {
         Validate.nonNull(mesh, "mesh");
-        assert hasTriangles(mesh); // TODO use Validate
+        Validate.require(hasTriangles(mesh), "contain triangles");
 
         IndexBuffer indexList = mesh.getIndicesAsList();
         int numTriangles = indexList.size() / vpt;
@@ -1447,7 +1449,7 @@ public class MyMesh {
     public static Vector2f vertexVector2f(Mesh mesh,
             VertexBuffer.Type bufferType, int vertexIndex,
             Vector2f storeResult) {
-        assert bufferType == VertexBuffer.Type.TexCoord // TODO use Validate
+        assert bufferType == VertexBuffer.Type.TexCoord
                 || bufferType == VertexBuffer.Type.TexCoord2
                 || bufferType == VertexBuffer.Type.TexCoord3
                 || bufferType == VertexBuffer.Type.TexCoord4
@@ -1484,7 +1486,7 @@ public class MyMesh {
     public static Vector3f vertexVector3f(Mesh mesh,
             VertexBuffer.Type bufferType, int vertexIndex,
             Vector3f storeResult) {
-        assert bufferType == VertexBuffer.Type.BindPoseNormal // TODO use Validate
+        assert bufferType == VertexBuffer.Type.BindPoseNormal
                 || bufferType == VertexBuffer.Type.BindPosePosition
                 || bufferType == VertexBuffer.Type.Binormal
                 || bufferType == VertexBuffer.Type.Normal
