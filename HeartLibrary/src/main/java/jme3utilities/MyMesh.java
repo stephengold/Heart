@@ -32,6 +32,7 @@ import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Matrix4f;
 import com.jme3.math.Quaternion;
+import com.jme3.math.Transform;
 import com.jme3.math.Triangle;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
@@ -1054,6 +1055,30 @@ public class MyMesh {
             MyVector3f.standardize(tmpPosition, tmpPosition);
             int dpid = mapPosToDpid.get(tmpPosition);
             MyBuffer.put(normalBuffer, start, normalSum[dpid]);
+        }
+    }
+
+    /**
+     * Apply the specified coordinate transform to all data in the specified
+     * VertexBuffer.
+     *
+     * @param mesh the subject mesh (not null)
+     * @param bufferType which buffer to read (not null)
+     * @param transform the Transform to apply (not null, unaffected)
+     */
+    public static void transformBuffer(Mesh mesh, VertexBuffer.Type bufferType,
+            Transform transform) {
+        Validate.nonNull(bufferType, "buffer type");
+        Validate.nonNull(transform, "transform");
+
+        VertexBuffer vertexBuffer = mesh.getBuffer(bufferType);
+        if (vertexBuffer != null) {
+            FloatBuffer floatBuffer = (FloatBuffer) vertexBuffer.getData();
+            int numVertices = mesh.getVertexCount();
+            int numFloats = numAxes * numVertices;
+            MyBuffer.transform(floatBuffer, 0, numFloats, transform);
+
+            vertexBuffer.setUpdateNeeded();
         }
     }
 
