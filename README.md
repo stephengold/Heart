@@ -97,8 +97,8 @@ Add to the project’s "build.gradle" file:
         implementation 'com.github.stephengold:Heart:7.1.0'
     }
 
-    For some older versions of Gradle,
-    it's necessary to replace `implementation` with `compile`.
+For some older versions of Gradle,
+it's necessary to replace `implementation` with `compile`.
 
 ### Maven-built projects
 
