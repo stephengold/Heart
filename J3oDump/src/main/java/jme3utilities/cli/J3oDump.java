@@ -34,6 +34,7 @@ import com.jme3.asset.plugins.FileLocator;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.binary.BinaryLoader;
 import com.jme3.export.xml.XMLExporter;
+import com.jme3.material.Material;
 import com.jme3.material.plugins.J3MLoader;
 import com.jme3.scene.Spatial;
 import com.jme3.texture.Texture;
@@ -41,6 +42,7 @@ import com.jme3.texture.plugins.AWTLoader;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.MySpatial;
 import jme3utilities.debug.Dumper;
@@ -88,6 +90,11 @@ public class J3oDump {
      */
     public static void main(String[] arguments) {
         setupAssetManager();
+        /*
+         * Mute a disruptive logger.
+         */
+        Logger materialLogger = Logger.getLogger(Material.class.getName());
+        materialLogger.setLevel(Level.SEVERE);
         /*
          * Process the command-line arguments.
          */
