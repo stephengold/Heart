@@ -31,11 +31,18 @@ import com.jme3.asset.DesktopAssetManager;
 import com.jme3.asset.ModelKey;
 import com.jme3.asset.plugins.ClasspathLocator;
 import com.jme3.asset.plugins.FileLocator;
+import com.jme3.export.JmeExporter;
 import com.jme3.export.binary.BinaryLoader;
+import com.jme3.export.xml.XMLExporter;
 import com.jme3.material.plugins.J3MLoader;
 import com.jme3.scene.Spatial;
+import com.jme3.texture.Texture;
 import com.jme3.texture.plugins.AWTLoader;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
+import jme3utilities.MySpatial;
 import jme3utilities.debug.Dumper;
 
 /**
@@ -60,6 +67,14 @@ public class J3oDump {
      */
     final private static AssetManager assetManager = new DesktopAssetManager();
     /**
+     * option to generate XML
+     */
+    private static boolean generateXml = false;
+    /**
+     * option to list textures
+     */
+    private static boolean listTextures = false;
+    /**
      * dump asset descriptions to System.out
      */
     final private static Dumper dumper = new Dumper();
@@ -77,7 +92,10 @@ public class J3oDump {
          * Process the command-line arguments.
          */
         for (String argument : arguments) {
-            if (argument.equals("--verbose") || argument.equals("-v")) {
+            if (argument.equals("--textures") || argument.equals("-t")) {
+                listTextures = true;
+
+            } else if (argument.equals("--verbose") || argument.equals("-v")) {
                 dumper.setDumpBounds(true)
                         .setDumpBucket(true)
                         .setDumpCull(true)
@@ -86,6 +104,10 @@ public class J3oDump {
                         .setDumpShadow(true)
                         .setDumpTransform(true)
                         .setDumpVertex(true);
+
+            } else if (argument.equals("--xml") || argument.equals("-x")) {
+                generateXml = true;
+
             } else if (argument.endsWith(".j3o")) {
                 dumpAsset(argument);
             }
@@ -107,9 +129,27 @@ public class J3oDump {
         Spatial loadedAsset = assetManager.loadModel(modelKey);
 
         System.out.println("model:");
-        dumper.dump(loadedAsset, "  ");
+        if (listTextures) {
+            List<Texture> textures = MySpatial.listTextures(loadedAsset, null);
+            for (Texture texture : textures) {
+                System.out.println(texture.toString());
+            }
+        } else {
+            dumper.dump(loadedAsset, "  ");
+            System.out.println();
+        }
         System.out.println();
-        System.out.println();
+
+        if (generateXml) {
+            String xmlPath = assetPath.replace(".j3o", ".xml");
+            File xmlFile = new File(xmlPath);
+            JmeExporter exporter = XMLExporter.getInstance();
+            try {
+                exporter.save(loadedAsset, xmlFile);
+            } catch (IOException exception) {
+                System.err.println(exception);
+            }
+        }
     }
 
     /**
