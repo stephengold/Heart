@@ -37,6 +37,7 @@ import com.jme3.math.Triangle;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.math.Vector4f;
+import com.jme3.scene.CollisionData;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
@@ -44,6 +45,7 @@ import com.jme3.scene.Spatial;
 import com.jme3.scene.VertexBuffer;
 import com.jme3.scene.mesh.IndexBuffer;
 import com.jme3.util.BufferUtils;
+import java.lang.reflect.Field;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
@@ -507,6 +509,31 @@ public class MyMesh {
             }
         }
         normalBuffer.flip();
+    }
+
+    /**
+     * Access the collision tree of the specified Mesh
+     *
+     * @param mesh the Mesh to access (not null, unaffected)
+     * @return the pre-existing instance, or null if none
+     */
+    public static CollisionData getCollisionTree(Mesh mesh) {
+        Field field;
+        try {
+            field = Mesh.class.getDeclaredField("collisionTree");
+        } catch (NoSuchFieldException exception) {
+            throw new RuntimeException(exception);
+        }
+        field.setAccessible(true);
+
+        CollisionData result;
+        try {
+            result = (CollisionData) field.get(mesh);
+        } catch (IllegalAccessException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        return result;
     }
 
     /**
