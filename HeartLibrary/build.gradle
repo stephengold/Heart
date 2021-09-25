@@ -13,6 +13,7 @@ ext {
     artifact = 'Heart'
     version = heartVersion
     baseName = "${artifact}-${version}"
+    websiteUrl = 'https://github.com/stephengold/Heart'
 }
 
 description = 'A general-purpose add-on library for jMonkeyEngine'
@@ -85,9 +86,9 @@ publishing {
                 scm {
                     connection = 'scm:git:git://github.com/stephengold/Heart.git'
                     developerConnection = 'scm:git:ssh://github.com:stephengold/Heart.git'
-                    url = 'https://github.com/stephengold/Heart/tree/master'
+                    url = project.ext.websiteUrl + '/tree/master'
                 }
-                url = 'https://github.com/stephengold/Heart'
+                url = project.ext.websiteUrl
             }
             version project.ext.version
         }
