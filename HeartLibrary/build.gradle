@@ -8,19 +8,13 @@ plugins {
     id 'signing'
 }
 
-description = 'A general-purpose add-on library for jMonkeyEngine'
 ext {
     artifact = 'Heart'
     version = heartVersion
     baseName = "${artifact}-${version}"
 }
 
-jar {
-    archiveBaseName = project.ext.baseName
-    exclude('**/arrow.blend')
-}
-javadocJar { archiveBaseName = project.ext.baseName }
-sourcesJar { archiveBaseName = project.ext.baseName }
+description = 'A general-purpose add-on library for jMonkeyEngine'
 
 dependencies {
     api 'org.jmonkeyengine:jme3-core:' + jmonkeyengineVersion
@@ -39,6 +33,13 @@ task('release') {
     dependsOn 'publishMavenPublicationToOSSRHRepository'
     description 'Stages Maven artifacts to Sonatype OSSRH.'
 }
+
+jar {
+    archiveBaseName = project.ext.baseName
+    exclude('**/arrow.blend')
+}
+javadocJar { archiveBaseName = project.ext.baseName }
+sourcesJar { archiveBaseName = project.ext.baseName }
 
 build.dependsOn('pom', 'pomAsc')
 task('pom', type: Copy) {
