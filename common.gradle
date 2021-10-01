@@ -1,4 +1,4 @@
-// Gradle settings and tasks common to all subprojects
+// Gradle settings and tasks common to all Heart subprojects
 
 apply plugin: 'java'
 
