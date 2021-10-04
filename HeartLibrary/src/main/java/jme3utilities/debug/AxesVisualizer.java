@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2020, Stephen Gold
+ Copyright (c) 2014-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -164,9 +164,9 @@ public class AxesVisualizer extends SubtreeControl {
         Validate.nonNull(manager, "asset manager");
         Validate.positive(length, "axis length");
 
-        assetManager = manager;
-        axisLength = length;
-        lineWidth = widthForSolid;
+        this.assetManager = manager;
+        this.axisLength = length;
+        this.lineWidth = widthForSolid;
     }
 
     /**
@@ -182,9 +182,9 @@ public class AxesVisualizer extends SubtreeControl {
         Validate.positive(length, "axis length");
         Validate.inRange(width, "line width", 1f, Float.MAX_VALUE);
 
-        assetManager = manager;
-        axisLength = length;
-        lineWidth = width;
+        this.assetManager = manager;
+        this.axisLength = length;
+        this.lineWidth = width;
     }
     // *************************************************************************
     // new methods exposed
@@ -240,7 +240,7 @@ public class AxesVisualizer extends SubtreeControl {
      */
     public void setAxisLength(float length) {
         Validate.positive(length, "length");
-        axisLength = length;
+        this.axisLength = length;
     }
 
     /**
@@ -250,7 +250,7 @@ public class AxesVisualizer extends SubtreeControl {
      * @param newSetting true to enable test, false to disable it
      */
     public void setDepthTest(boolean newSetting) {
-        depthTest = newSetting;
+        this.depthTest = newSetting;
     }
 
     /**
@@ -260,7 +260,7 @@ public class AxesVisualizer extends SubtreeControl {
      */
     public void setNumAxes(int newNumber) {
         Validate.inRange(newNumber, "new number", 1, MyVector3f.numAxes);
-        numAxes = newNumber;
+        this.numAxes = newNumber;
     }
 
     /**
@@ -270,7 +270,7 @@ public class AxesVisualizer extends SubtreeControl {
      */
     public void setLineWidth(float width) {
         Validate.inRange(width, "width", 0f, Float.MAX_VALUE);
-        lineWidth = width;
+        this.lineWidth = width;
     }
 
     /**
