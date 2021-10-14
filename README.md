@@ -179,8 +179,8 @@ After a successful build,
 Maven artifacts will be found in `HeartLibrary/build/libs`.
 
 You can install the Maven artifacts to your local Maven repository:
- + using Bash or PowerShell:  `./gradlew :HeartLibrary:publishToMavenLocal`
- + using Windows Command Prompt:  `.\gradlew :HeartLibrary:publishToMavenLocal`
+ + using Bash or PowerShell:  `./gradlew install`
+ + using Windows Command Prompt:  `.\gradlew install`
 
 You can restore the project to a pristine state:
  + using Bash or PowerShell: `./gradlew clean`
