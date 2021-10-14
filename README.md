@@ -154,26 +154,26 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 
 ## How to build Heart from source
 
- 1. Install a [Java Development Kit (JDK)][openJDK],
-    if you don't already have one.
- 2. Download and extract the Heart source code from GitHub:
-   + using Git:
-     + `git clone https://github.com/stephengold/Heart.git`
-     + `cd Heart`
-     + `git checkout -b latest 7.1.0`
-   + using a web browser:
-     + browse to [the latest release][latest]
-     + follow the "Source code (zip)" link
-     + save the ZIP file
-     + extract the contents of the saved ZIP file
-     + `cd` to the extracted directory/folder
- 3. Set the `JAVA_HOME` environment variable:
-   + using Bash:  `export JAVA_HOME="` *path to your JDK* `"`
-   + using Windows Command Prompt:  `set JAVA_HOME="` *path to your JDK* `"`
-   + using PowerShell: `$env:JAVA_HOME = '` *path to your JDK* `'`
- 4. Run the [Gradle] wrapper:
-   + using Bash or PowerShell:  `./gradlew build`
-   + using Windows Command Prompt:  `.\gradlew build`
+1. Install a [Java Development Kit (JDK)][openJDK],
+   if you don't already have one.
+2. Download and extract the Heart source code from GitHub:
+  + using Git:
+    + `git clone https://github.com/stephengold/Heart.git`
+    + `cd Heart`
+    + `git checkout -b latest 7.1.0`
+  + using a web browser:
+    + browse to [the latest release][latest]
+    + follow the "Source code (zip)" link
+    + save the ZIP file
+    + extract the contents of the saved ZIP file
+    + `cd` to the extracted directory/folder
+3. Set the `JAVA_HOME` environment variable:
+  + using Bash: `export JAVA_HOME="` *path to your JDK* `"`
+  + using Windows Command Prompt: `set JAVA_HOME="` *path to your JDK* `"`
+  + using PowerShell: `$env:JAVA_HOME = '` *path to your JDK* `'`
+4. Run the [Gradle] wrapper:
+  + using Bash or PowerShell: `./gradlew build`
+  + using Windows Command Prompt: `.\gradlew build`
 
 After a successful build,
 Maven artifacts will be found in `HeartLibrary/build/libs`.
@@ -232,6 +232,7 @@ Since February 2020, Heart has been a separate project at
 [GitHub][heart].
 
 [Jump to table of contents](#toc)
+
 
 <a name="acks"/>
 
