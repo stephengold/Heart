@@ -248,16 +248,16 @@ software developers:
  + plus the creators of (and contributors to) the following software:
     + the [Blender] 3-D animation suite
     + the [FindBugs] source-code analyzer
-    + the [Firefox] and [Google Chrome][chrome] web browsers
+    + the [Firefox] and [Chrome] web browsers
     + the [Git] revision-control system and GitK commit viewer
     + the [Gradle] build tool
-    + the Java compiler, standard doclet, and virtual machine
+    + the [IntelliJ IDEA][idea] and [NetBeans] integrated development environments
+    + the [Java] compiler, standard doclet, and virtual machine
     + [jMonkeyEngine][jme] and the jME3 Software Development Kit
     + the [Linux Mint][mint] operating system
     + LWJGL, the Lightweight Java Game Library
     + the [Markdown] document-conversion tool
     + Microsoft Windows
-    + the [NetBeans] integrated development environment
     + the PMD source-code analyzer
     + the [WinMerge] differencing and merging tool
 
@@ -275,7 +275,6 @@ correct the situation: sgold@sonic.net
 
 [ant]: https://ant.apache.org "Apache Ant Project"
 [blender]: https://docs.blender.org "Blender Project"
-[bsd3]: https://opensource.org/licenses/BSD-3-Clause "3-Clause BSD License"
 [chrome]: https://www.google.com/chrome "Chrome"
 [findbugs]: http://findbugs.sourceforge.net "FindBugs Project"
 [firefox]: https://www.mozilla.org/en-US/firefox "Firefox"
@@ -283,7 +282,9 @@ correct the situation: sgold@sonic.net
 [github]: https://github.com "GitHub"
 [gradle]: https://gradle.org "Gradle Project"
 [heart]: https://github.com/stephengold/Heart "Heart Project"
+[idea]: https://www.jetbrains.com/idea/ "IntelliJ IDEA"
 [imgur]: https://imgur.com/ "Imgur"
+[java]: https://java.com "Java"
 [jfrog]: https://www.jfrog.com "JFrog"
 [jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
 [jmepower]: https://github.com/stephengold/JmePower "JmePower Project"
