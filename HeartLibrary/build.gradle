@@ -8,6 +8,7 @@ plugins {
     id 'signing'
 }
 
+description = 'A general-purpose add-on library for jMonkeyEngine'
 ext {
     group = 'com.github.stephengold'
     artifact = 'Heart'
@@ -15,8 +16,6 @@ ext {
     baseName = "${artifact}-${version}"
     websiteUrl = 'https://github.com/stephengold/Heart'
 }
-
-description = 'A general-purpose add-on library for jMonkeyEngine'
 
 dependencies {
     api 'org.jmonkeyengine:jme3-core:' + jmonkeyengineVersion
