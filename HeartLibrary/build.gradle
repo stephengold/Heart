@@ -18,10 +18,10 @@ ext {
 }
 
 dependencies {
-    api 'org.jmonkeyengine:jme3-core:' + jmonkeyengineVersion
+    api 'org.jmonkeyengine:jme3-core:' + jme3Version
 
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.jmonkeyengine:jme3-desktop:' + jmonkeyengineVersion
+    testImplementation 'org.jmonkeyengine:jme3-desktop:' + jme3Version
 }
 
 // publishing tasks

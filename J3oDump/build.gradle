@@ -15,8 +15,8 @@ if (!hasProperty('mainClass')) {
 jar.manifest.attributes('Main-Class': mainClassName)
 
 dependencies {
-    implementation 'org.jmonkeyengine:jme3-desktop:' + jmonkeyengineVersion
-    implementation 'org.jmonkeyengine:jme3-plugins:' + jmonkeyengineVersion
+    implementation 'org.jmonkeyengine:jme3-desktop:' + jme3Version
+    implementation 'org.jmonkeyengine:jme3-plugins:' + jme3Version
 
     //implementation "com.github.stephengold:Heart:$heartVersion"
     implementation project(':HeartLibrary')
