@@ -8,6 +8,10 @@ plugins {
 
 description = 'command-line tool to dump J3O assets'
 
+tasks.withType(JavaCompile) { // Java compile-time options:
+    options.deprecation = true
+}
+
 mainClassName = 'jme3utilities.cli.J3oDump'
 if (!hasProperty('mainClass')) {
     ext.mainClass = mainClassName
@@ -18,7 +22,7 @@ dependencies {
     implementation 'org.jmonkeyengine:jme3-desktop:' + jme3Version
     implementation 'org.jmonkeyengine:jme3-plugins:' + jme3Version
 
-    //implementation "com.github.stephengold:Heart:$heartVersion"
+    //implementation 'com.github.stephengold:Heart:' + heartVersion
     implementation project(':HeartLibrary')
 }
 
