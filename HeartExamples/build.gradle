@@ -23,12 +23,12 @@ dependencies {
     runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jme3Version
     runtimeOnly 'org.jmonkeyengine:jme3-testdata:' + jme3Version
 
-    // HeartExamples doesn't use jme3-jogg or jme3-plugins
+    // HeartExamples doesn't use jme3-jogg nor jme3-plugins
     //  -- they are included solely to avoid warnings from AssetConfig
     runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jme3Version
     runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jme3Version
 
-    //implementation "com.github.stephengold:Heart:$heartVersion"
+    //implementation 'com.github.stephengold:Heart:' + heartVersion
     implementation project(':HeartLibrary')
 }
 
