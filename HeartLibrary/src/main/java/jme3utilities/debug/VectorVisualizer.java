@@ -407,7 +407,7 @@ public class VectorVisualizer extends SubtreeControl {
      * Create and attach a wire arrow geometry.
      */
     private void addWireArrow() {
-        Arrow mesh = (Arrow) new Arrow(tipOffset);
+        Arrow mesh = new Arrow(tipOffset);
         Geometry geometry = new Geometry("arrow", mesh);
         Node subtreeNode = (Node) getSubtree();
         subtreeNode.attachChild(geometry);
@@ -428,7 +428,7 @@ public class VectorVisualizer extends SubtreeControl {
      * @param material the Material to update (not null)
      */
     private void updateColor(Material material) {
-        ColorRGBA oldColor = (ColorRGBA) material.getParamValue("Color");
+        ColorRGBA oldColor = material.getParamValue("Color");
         if (!oldColor.equals(color)) {
             material.setColor("Color", color.clone());
         }
