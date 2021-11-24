@@ -487,16 +487,20 @@ public class Heart {
             }
 
             ImageIO.write(image, formatName, textureFile);
-            logger.log(Level.INFO, "wrote texture to {0}",
-                    MyString.quote(filePath));
+            if (logger.isLoggable(Level.INFO)) {
+                logger.log(Level.INFO, "wrote texture to {0}",
+                        MyString.quote(filePath));
+            }
 
         } catch (IOException exception) {
             logger.log(Level.SEVERE, "write to {0} failed",
                     MyString.quote(filePath));
             boolean success = textureFile.delete();
             if (success) {
-                logger.log(Level.INFO, "deleted file {0}",
-                        MyString.quote(filePath));
+                if (logger.isLoggable(Level.INFO)) {
+                    logger.log(Level.INFO, "deleted file {0}",
+                            MyString.quote(filePath));
+                }
             } else {
                 logger.log(Level.SEVERE, "delete of {0} failed",
                         MyString.quote(filePath));
@@ -524,6 +528,8 @@ public class Heart {
                     MyString.quote(filePath));
             throw new RuntimeException(exception);
         }
-        logger.log(Level.INFO, "wrote file {0}", MyString.quote(filePath));
+        if (logger.isLoggable(Level.INFO)) {
+            logger.log(Level.INFO, "wrote file {0}", MyString.quote(filePath));
+        }
     }
 }

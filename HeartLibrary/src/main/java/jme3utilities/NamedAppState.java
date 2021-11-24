@@ -148,7 +148,9 @@ public class NamedAppState extends AbstractAppState {
      */
     @Override
     public void initialize(AppStateManager sm, Application app) {
-        logger.log(Level.INFO, "initialize {0}", getId());
+        if (logger.isLoggable(Level.INFO)) {
+            logger.log(Level.INFO, "initialize {0}", getId());
+        }
         if (isInitialized()) {
             throw new IllegalStateException("already initialized");
         }
@@ -224,10 +226,12 @@ public class NamedAppState extends AbstractAppState {
     public void setEnabled(boolean newSetting) {
         boolean oldSetting = isEnabled();
         if (oldSetting != newSetting) {
-            if (newSetting) {
-                logger.log(Level.INFO, "enable {0}", getId());
-            } else {
-                logger.log(Level.INFO, "disable {0}", getId());
+            if (logger.isLoggable(Level.INFO)) {
+                if (newSetting) {
+                    logger.log(Level.INFO, "enable {0}", getId());
+                } else {
+                    logger.log(Level.INFO, "disable {0}", getId());
+                }
             }
             super.setEnabled(newSetting);
             /*
@@ -247,7 +251,9 @@ public class NamedAppState extends AbstractAppState {
      */
     @Override
     public void stateAttached(AppStateManager sm) {
-        logger.log(Level.INFO, "attach {0}", getId());
+        if (logger.isLoggable(Level.INFO)) {
+            logger.log(Level.INFO, "attach {0}", getId());
+        }
         Validate.nonNull(sm, "state manager");
 
         super.stateAttached(sm);
@@ -261,7 +267,9 @@ public class NamedAppState extends AbstractAppState {
      */
     @Override
     public void stateDetached(AppStateManager sm) {
-        logger.log(Level.INFO, "detach {0}", getId());
+        if (logger.isLoggable(Level.INFO)) {
+            logger.log(Level.INFO, "detach {0}", getId());
+        }
         Validate.nonNull(sm, "state manager");
 
         super.stateDetached(sm);
