@@ -128,25 +128,25 @@ and probably the `-sources` and `-javadoc` jars as well.
 
 Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 
- 1. Right-click on the project (not its assets) in the "Projects" window.
- 2. Select "Properties" to open the "Project Properties" dialog.
- 3. Under "Categories:" select "Libraries".
- 4. Click on the "Compile" tab.
- 5. Add the `Heart` class jar:
-    + Click on the "Add JAR/Folder" button.
-    + Navigate to the download folder.
-    + Select the "Heart-7.1.0.jar" file.
-    + Click on the "Open" button.
- 6. (optional) Add jars for javadoc and sources:
-    + Click on the "Edit" button.
-    + Click on the "Browse..." button to the right of "Javadoc:"
-    + Select the "Heart-7.1.0-javadoc.jar" file.
-    + Click on the "Open" button.
-    + Click on the "Browse..." button to the right of "Sources:"
-    + Select the "Heart-7.1.0-sources.jar" file.
-    + Click on the "Open" button again.
-    + Click on the "OK" button to close the "Edit Jar Reference" dialog.
- 7. Click on the "OK" button to exit the "Project Properties" dialog.
+1. Right-click on the project (not its assets) in the "Projects" window.
+2. Select "Properties" to open the "Project Properties" dialog.
+3. Under "Categories:" select "Libraries".
+4. Click on the "Compile" tab.
+5. Add the `Heart` class jar:
+  + Click on the "Add JAR/Folder" button.
+  + Navigate to the download folder.
+  + Select the "Heart-7.1.0.jar" file.
+  + Click on the "Open" button.
+6. (optional) Add jars for javadoc and sources:
+  + Click on the "Edit" button.
+  + Click on the "Browse..." button to the right of "Javadoc:"
+  + Select the "Heart-7.1.0-javadoc.jar" file.
+  + Click on the "Open" button.
+  + Click on the "Browse..." button to the right of "Sources:"
+  + Select the "Heart-7.1.0-sources.jar" file.
+  + Click on the "Open" button again.
+  + Click on the "OK" button to close the "Edit Jar Reference" dialog.
+7. Click on the "OK" button to exit the "Project Properties" dialog.
 
 [Jump to table of contents](#toc)
 
