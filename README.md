@@ -12,7 +12,7 @@ It contains 3 sub-projects:
 Complete source code (in Java) is provided under
 [a 3-clause BSD license][license].
 
-Many other libraries (including [JmePower], [Minie], [SkyControl], and [Wes])
+Many other libraries (including [jme3-wireframe], [JmePower], [Minie], [SkyControl], and [Wes])
 depend on the Heart Library.
 
 <a name="toc"/>
@@ -178,7 +178,7 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 After a successful build,
 Maven artifacts will be found in `HeartLibrary/build/libs`.
 
-You can install the Maven artifacts to your local Maven repository:
+You can install the artifacts to your local Maven repository:
  + using Bash or PowerShell:  `./gradlew install`
  + using Windows Command Prompt:  `.\gradlew install`
 
@@ -287,6 +287,7 @@ correct the situation: sgold@sonic.net
 [java]: https://java.com "Java"
 [jfrog]: https://www.jfrog.com "JFrog"
 [jme]: https://jmonkeyengine.org  "jMonkeyEngine Project"
+[jme3-wireframe]: https://github.com/joliver82/jme3-wireframe "jME3 Wireframe render library"
 [jmepower]: https://github.com/stephengold/JmePower "JmePower Project"
 [latest]: https://github.com/stephengold/Heart/releases/latest "latest release"
 [license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
