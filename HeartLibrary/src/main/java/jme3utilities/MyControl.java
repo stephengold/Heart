@@ -87,40 +87,49 @@ public class MyControl {
     }
 
     /**
-     * Generate a textual description of a scene-graph control.
+     * Generate a textual description of the specified scene-graph control.
      * TODO AnimComposer, MorphControl, SkinningControl
      *
-     * @param control instance to describe (not null, unaffected)
-     * @return description (not null, not empty)
+     * @param control the instance to describe (not null, unaffected)
+     * @return a description (not null, not empty)
      */
     public static String describe(Control control) {
-        String result = describeType(control);
+        StringBuffer result = new StringBuffer(80);
+        String typeString = describeType(control);
+        result.append(typeString);
 
         if (control instanceof AnimControl) {
             AnimControl animControl = (AnimControl) control;
+            result.append('[');
             Collection<String> nameCollection = animControl.getAnimationNames();
             int numAnimations = nameCollection.size();
             if (numAnimations > 2) {
-                result += String.format("[%d]", numAnimations);
+                result.append(numAnimations);
             } else {
-                List<String> descs = new ArrayList<>(numAnimations);
+                boolean isFirst = true;
                 for (String animationName : nameCollection) {
+                    if (isFirst) {
+                        isFirst = false;
+                    } else {
+                        result.append(',');
+                    }
                     Animation animation = animControl.getAnim(animationName);
                     String desc = MyAnimation.describe(animation, animControl);
-                    descs.add(desc);
+                    result.append(desc);
                 }
-                String names = MyString.join(descs);
-                result += String.format("[%s]", names);
             }
+            result.append(']');
 
         } else if (control instanceof SkeletonControl) {
             SkeletonControl skeletonControl = (SkeletonControl) control;
+            result.append('[');
             int boneCount = skeletonControl.getSkeleton().getBoneCount();
+            result.append(boneCount);
             boolean useHw = skeletonControl.isHardwareSkinningUsed();
-            result += String.format("[%d %s]", boneCount, useHw ? "hw" : "sw");
+            result.append(useHw ? " hw]" : " sw]");
         }
 
-        return result;
+        return result.toString();
     }
 
     /**
