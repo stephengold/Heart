@@ -1152,7 +1152,7 @@ public class MyVector3f {
      * {@link com.jme3.math.Vector3f#project(Vector3f)} for this because (as of
      * jME 3.0.10) it contained a logic bug which gave the wrong magnitude when
      * vector2 had length != 1.
-     * 
+     *
      * TODO add a rejection() method to calculate vector rejection
      *
      * @param vector1 the first input vector (not null, unaffected unless it's

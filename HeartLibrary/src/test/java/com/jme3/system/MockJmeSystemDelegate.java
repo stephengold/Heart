@@ -74,5 +74,5 @@ public class MockJmeSystemDelegate extends JmeSystemDelegate {
     @Override
     public void showSoftKeyboard(boolean show) {
     }
-    
+
 }
