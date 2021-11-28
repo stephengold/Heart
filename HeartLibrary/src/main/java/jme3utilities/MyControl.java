@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -71,7 +71,7 @@ public class MyControl {
 
     /**
      * Check whether a scene-graph control implements isEnabled() and
-     * setEnabled().
+     * setEnabled(). TODO use reflection
      *
      * @param sgc control to test (may be null, unaffected)
      * @return true if it's implemented, otherwise false
@@ -88,6 +88,7 @@ public class MyControl {
 
     /**
      * Generate a textual description of a scene-graph control.
+     * TODO AnimComposer, MorphControl, SkinningControl
      *
      * @param control instance to describe (not null, unaffected)
      * @return description (not null, not empty)
@@ -182,6 +183,7 @@ public class MyControl {
 
     /**
      * Test whether the specified scene-graph control is enabled.
+     * TODO use reflection
      *
      * @param sgc the control to test (not null, unaffected)
      * @return true if the control is enabled, otherwise false
@@ -220,7 +222,7 @@ public class MyControl {
     }
 
     /**
-     * Alter the enabled state of a scene-graph control.
+     * Alter the enabled state of a scene-graph control. TODO use reflection
      *
      * @param sgc control to alter (not null)
      * @param newState true means enable the control, false means disable it
