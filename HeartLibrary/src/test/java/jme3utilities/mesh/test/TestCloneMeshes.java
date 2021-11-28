@@ -95,11 +95,11 @@ public class TestCloneMeshes {
         cloneTest(disc, discClone);
 
         Mesh.Mode mode = Mesh.Mode.Triangles;
-        Dodecahedron dodec = new Dodecahedron(radius, mode);
-        Assert.assertEquals(36, dodec.getTriangleCount());
-        Assert.assertEquals(20, dodec.getVertexCount());
-        Dodecahedron dodecClone = Heart.deepCopy(dodec);
-        cloneTest(dodec, dodecClone);
+        Dodecahedron dodecahedron = new Dodecahedron(radius, mode);
+        Assert.assertEquals(36, dodecahedron.getTriangleCount());
+        Assert.assertEquals(20, dodecahedron.getVertexCount());
+        Dodecahedron dodecahedronClone = Heart.deepCopy(dodecahedron);
+        cloneTest(dodecahedron, dodecahedronClone);
 
         int rimSamples = 48;
         int quadrantSamples = 12;
