@@ -27,6 +27,7 @@
 package jme3utilities;
 
 import com.jme3.anim.AnimClip;
+import com.jme3.anim.AnimComposer;
 import com.jme3.anim.AnimTrack;
 import com.jme3.anim.Joint;
 import com.jme3.anim.MorphTrack;
@@ -44,6 +45,7 @@ import com.jme3.animation.Track;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import java.util.Arrays;
 import java.util.logging.Logger;
@@ -130,6 +132,79 @@ public class MyAnimation {
         }
 
         return result;
+    }
+
+    /**
+     * Describe an AnimClip.
+     *
+     * @param clip the AnimClip to describe (not null, unaffected)
+     * @param composer the Control that contains the clip (not null, unaffected)
+     * @return textual description (not null, not empty)
+     */
+    public static String describe(AnimClip clip, AnimComposer composer) {
+        Validate.nonNull(composer, "composer");
+
+        String name = clip.getName();
+        AnimTrack[] tracks = clip.getTracks();
+
+        String result;
+        int numTracks = tracks.length;
+        if (numTracks > 3) {
+            result = String.format("%s[%d]", MyString.quote(name), numTracks);
+        } else {
+            String[] trackDescriptions = new String[numTracks];
+            for (int trackIndex = 0; trackIndex < numTracks; ++trackIndex) {
+                AnimTrack track = tracks[trackIndex];
+                trackDescriptions[trackIndex] = describe(track);
+            }
+            String joined = MyString.join(trackDescriptions);
+            result = String.format("%s(%s)", name, joined);
+        }
+
+        return result;
+    }
+
+    /**
+     * Describe an AnimTrack.
+     *
+     * @param track the AnimTrack to describe (not null, unaffected)
+     * @return a textual description (not null, not empty)
+     */
+    public static String describe(AnimTrack track) {
+        Validate.nonNull(track, "track");
+
+        StringBuilder builder = new StringBuilder(32);
+
+        char typeChar = describeTrackType(track);
+        builder.append(typeChar);
+
+        if (track instanceof MorphTrack) {
+            Geometry target = ((MorphTrack) track).getTarget();
+            builder.append(target.getClass().getSimpleName());
+            String targetName = target.getName();
+            targetName = MyString.quote(targetName);
+            builder.append(targetName);
+
+        } else if (track instanceof TransformTrack) {
+            TransformTrack transformTrack = (TransformTrack) track;
+            HasLocalTransform target = transformTrack.getTarget();
+            builder.append(target.getClass().getSimpleName());
+            String targetName = getTargetName(target);
+            targetName = MyString.quote(targetName);
+            builder.append(targetName);
+
+            if (transformTrack.getTranslations() != null) {
+                builder.append("T");
+            }
+            if (transformTrack.getRotations() != null) {
+                builder.append("R");
+            }
+            if (transformTrack.getScales() != null) {
+                builder.append("S");
+            }
+        }
+
+        return builder.toString();
     }
 
     /**
@@ -494,6 +569,30 @@ public class MyAnimation {
         } else {
             String className = track.getClass().getSimpleName();
             throw new IllegalArgumentException(className);
+        }
+
+        return result;
+    }
+
+    /**
+     * Determine the name of the specified animation target.
+     *
+     * @param target the target to analyze (not null, unaffected)
+     * @return the name of target joint/spatial
+     */
+    public static String getTargetName(HasLocalTransform target) {
+        Validate.nonNull(target, "target");
+
+        String result;
+        if (target instanceof Joint) {
+            result = ((Joint) target).getName();
+
+        } else if (target instanceof Spatial) {
+            result = ((Spatial) target).getName();
+
+        } else {
+            String className = target.getClass().getSimpleName();
+            throw new IllegalArgumentException("className = " + className);
         }
 
         return result;
