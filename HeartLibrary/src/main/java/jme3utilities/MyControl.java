@@ -37,9 +37,7 @@ import com.jme3.input.ChaseCamera;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -94,7 +92,7 @@ public class MyControl {
      * @return a description (not null, not empty)
      */
     public static String describe(Control control) {
-        StringBuffer result = new StringBuffer(80);
+        StringBuilder result = new StringBuilder(80);
         String typeString = describeType(control);
         result.append(typeString);
 
