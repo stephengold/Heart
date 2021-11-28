@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2017, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ public class TestMyMath {
      */
     public static void main(String[] ignored) {
         PrintStream console = System.out;
-        console.print("Test results for class MyMath:\n\n");
+        console.printf("Test results for class MyMath:%n%n");
 
         float h = MyMath.hypotenuse(3f, 4f);
         console.printf("hypot(3,4) = %f%n", h);

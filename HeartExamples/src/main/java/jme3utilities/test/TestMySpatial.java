@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -74,7 +74,7 @@ public class TestMySpatial extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         logger.setLevel(Level.INFO);
-        System.out.print("Test results for class MySpatial:\n\n");
+        System.out.printf("Test results for class MySpatial:%n%n");
 
         Node parent = new Node("parent");
         rootNode.attachChild(parent);

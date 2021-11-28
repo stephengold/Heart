@@ -54,7 +54,7 @@ public class TestMyVector3f {
      * @param ignored command-line arguments
      */
     public static void main(String[] ignored) {
-        System.out.print("Test results for class MyVector3f:\n\n");
+        System.out.printf("Test results for class MyVector3f:%n%n");
 
         // vector test cases
         Vector3f[] vectorCases = new Vector3f[]{

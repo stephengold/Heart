@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -68,7 +68,7 @@ public class TestMySkeleton extends SimpleApplication {
     @Override
     public void simpleInitApp() {
         logger.setLevel(Level.INFO);
-        System.out.print("Test results for class MySkeleton:\n\n");
+        System.out.printf("Test results for class MySkeleton:%n%n");
 
         String modelPath = "Models/Oto/Oto.mesh.xml";
         Node node = (Node) assetManager.loadModel(modelPath);
