@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2019, Stephen Gold
+ Copyright (c) 2014-2021, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -63,7 +63,7 @@ final public class Noise {
     /**
      * Sample fractional Brownian motion (FBM) noise in 2 dimensions.
      *
-     * @param generator base noise generator (not null)
+     * @param noise2 base noise noise2 (not null)
      * @param sampleX the first coordinate of the sample point
      * @param sampleY the 2nd coordinate of the sample point
      * @param numOctaves number of noise components (&gt;0)
@@ -72,10 +72,10 @@ final public class Noise {
      * @param lacunarity frequency ratio between octaves (&gt;1)
      * @return noise value (range depends on parameters)
      */
-    public static float fbmNoise(Noise2 generator, float sampleX,
+    public static float fbmNoise(Noise2 noise2, float sampleX,
             float sampleY, int numOctaves, float fundamental, float gain,
             float lacunarity) {
-        Validate.nonNull(generator, "generator");
+        Validate.nonNull(noise2, "noise2");
         Validate.positive(numOctaves, "octaves");
         Validate.positive(fundamental, "fundamental");
         if (!(gain > 0f && gain < 1f)) {
@@ -93,7 +93,7 @@ final public class Noise {
         float frequency = fundamental;
         float total = 0f;
         for (int octave = 0; octave < numOctaves; ++octave) {
-            float sample = generator.sampleNormalized(sampleX * frequency,
+            float sample = noise2.sampleNormalized(sampleX * frequency,
                     sampleY * frequency);
             total += amplitude * sample;
             frequency *= lacunarity;
