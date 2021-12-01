@@ -26,6 +26,9 @@
  */
 package jme3utilities;
 
+import com.jme3.anim.AnimClip;
+import com.jme3.anim.AnimComposer;
+import com.jme3.anim.SkinningControl;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.Animation;
 import com.jme3.animation.Skeleton;
@@ -85,8 +88,8 @@ public class MyControl {
     }
 
     /**
-     * Generate a textual description of the specified scene-graph control.
-     * TODO AnimComposer, MorphControl, SkinningControl
+     * Generate a textual description of the specified scene-graph control. TODO
+     * MorphControl
      *
      * @param control the instance to describe (not null, unaffected)
      * @return a description (not null, not empty)
@@ -96,7 +99,29 @@ public class MyControl {
         String typeString = describeType(control);
         result.append(typeString);
 
-        if (control instanceof AnimControl) {
+        if (control instanceof AnimComposer) {
+            AnimComposer composer = (AnimComposer) control;
+            result.append('[');
+            Collection<String> nameCollection = composer.getAnimClipsNames();
+            int numClips = nameCollection.size();
+            if (numClips > 3) {
+                result.append(numClips);
+            } else {
+                boolean isFirst = true;
+                for (String clipName : nameCollection) {
+                    if (isFirst) {
+                        isFirst = false;
+                    } else {
+                        result.append(',');
+                    }
+                    AnimClip clip = composer.getAnimClip(clipName);
+                    String desc = MyAnimation.describe(clip, composer);
+                    result.append(desc);
+                }
+            }
+            result.append(']');
+
+        } else if (control instanceof AnimControl) {
             AnimControl animControl = (AnimControl) control;
             result.append('[');
             Collection<String> nameCollection = animControl.getAnimationNames();
@@ -124,6 +149,14 @@ public class MyControl {
             int boneCount = skeletonControl.getSkeleton().getBoneCount();
             result.append(boneCount);
             boolean useHw = skeletonControl.isHardwareSkinningUsed();
+            result.append(useHw ? " hw]" : " sw]");
+
+        } else if (control instanceof SkinningControl) {
+            SkinningControl skinningControl = (SkinningControl) control;
+            result.append('[');
+            int jointCount = skinningControl.getArmature().getJointCount();
+            result.append(jointCount);
+            boolean useHw = skinningControl.isHardwareSkinningUsed();
             result.append(useHw ? " hw]" : " sw]");
         }
 
@@ -189,8 +222,8 @@ public class MyControl {
     }
 
     /**
-     * Test whether the specified scene-graph control is enabled.
-     * TODO use reflection
+     * Test whether the specified scene-graph control is enabled. TODO use
+     * reflection
      *
      * @param sgc the control to test (not null, unaffected)
      * @return true if the control is enabled, otherwise false
