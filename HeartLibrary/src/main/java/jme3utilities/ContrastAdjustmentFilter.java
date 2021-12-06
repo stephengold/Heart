@@ -110,13 +110,12 @@ public class ContrastAdjustmentFilter extends Filter {
     // Filter methods
 
     /**
-     * Access the material for the filter. Invoked on every frame.
+     * Access the Material used in this Filter. This method is invoked on every frame.
      *
-     * @return the pre-existing instance (not null)
+     * @return the pre-existing instance, or null if the Filter hasn't been initialized
      */
     @Override
     protected Material getMaterial() {
-        assert material != null;
         return material;
     }
 
