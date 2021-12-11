@@ -69,6 +69,12 @@ class SkeletonMesh extends Mesh {
     // constructors
 
     /**
+     * No-argument constructor needed by SavableClassUtil.
+     */
+    SkeletonMesh() {
+    }
+
+    /**
      * Instantiate a Mesh to visualize the specified Armature or Skeleton.
      *
      * @param armature the Armature to visualize (may be null, unaffected)
