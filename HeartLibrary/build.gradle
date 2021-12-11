@@ -22,6 +22,7 @@ dependencies {
 
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.jmonkeyengine:jme3-desktop:' + jme3Version
+    testRuntimeOnly 'org.jmonkeyengine:jme3-testdata:' + jme3Version
 }
 
 // publishing tasks
