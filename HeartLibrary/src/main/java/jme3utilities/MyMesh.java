@@ -1119,6 +1119,32 @@ public class MyMesh {
     }
 
     /**
+     * Translate all vertices in the specified Mesh by the specified offset.
+     *
+     * @param mesh the Mesh to translate (not null, modified)
+     * @param offset the amount to add to each position (not null, unaffected)
+     */
+    public static void translate(Mesh mesh, Vector3f offset) {
+        int numVertices = mesh.getVertexCount();
+        int numFloats = numAxes * numVertices;
+
+        VertexBuffer posBuffer = mesh.getBuffer(VertexBuffer.Type.Position);
+        FloatBuffer posFloats = (FloatBuffer) posBuffer.getData();
+        MyBuffer.translate(posFloats, 0, numFloats, offset);
+        posBuffer.setUpdateNeeded();
+
+        VertexBuffer bindPosBuffer
+                = mesh.getBuffer(VertexBuffer.Type.BindPosePosition);
+        if (bindPosBuffer != null) {
+            FloatBuffer bpFloats = (FloatBuffer) bindPosBuffer.getData();
+            MyBuffer.translate(bpFloats, 0, numFloats, offset);
+            bindPosBuffer.setUpdateNeeded();
+        }
+
+        mesh.updateBound();
+    }
+
+    /**
      * Convert mesh triangles to lines.
      *
      * @param mesh the Mesh to modify (not null,
