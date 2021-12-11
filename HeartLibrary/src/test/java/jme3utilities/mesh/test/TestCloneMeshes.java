@@ -40,6 +40,7 @@ import jme3utilities.mesh.Icosahedron;
 import jme3utilities.mesh.Icosphere;
 import jme3utilities.mesh.LoopMesh;
 import jme3utilities.mesh.Octahedron;
+import jme3utilities.mesh.Octasphere;
 import jme3utilities.mesh.PointMesh;
 import jme3utilities.mesh.Prism;
 import jme3utilities.mesh.RectangleMesh;
@@ -135,6 +136,12 @@ public class TestCloneMeshes {
         Assert.assertEquals(24, oct.getVertexCount());
         Octahedron octClone = Heart.deepCopy(oct);
         cloneTest(oct, octClone);
+
+        Octasphere oSphere = new Octasphere(numRefineSteps, radius);
+        Assert.assertEquals(32, oSphere.getTriangleCount());
+        Assert.assertEquals(21, oSphere.getVertexCount());
+        Octasphere oSphereClone = Heart.deepCopy(oSphere);
+        cloneTest(oSphere, oSphereClone);
 
         PointMesh point = new PointMesh();
         Assert.assertEquals(1, point.getTriangleCount());
