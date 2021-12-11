@@ -140,9 +140,7 @@ public class RectangleMesh extends Mesh {
             0f, 0f, zNorm});
 
         if ((x2 - x1) * (y2 - y1) * zNorm > 0f) {
-            setBuffer(Type.Index, vpt, new short[]{0, 3, 2, 1});
-        } else {
-            setBuffer(Type.Index, vpt, new short[]{0, 1, 2, 3});
+            setBuffer(Type.Index, vpt, new byte[]{0, 3, 2, 1});
         }
 
         updateBound();
