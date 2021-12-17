@@ -4,11 +4,11 @@ apply plugin: 'java'
 
 ext { // current versions of various libraries:
     heartVersion = '7.1.1-SNAPSHOT'
-    jme3Version = '3.4.1-stable'
+    jme3Version = '3.5.0-beta4'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_8
 
 tasks.withType(JavaCompile) { // Java compile-time options:
     options.compilerArgs << '-Xdiags:verbose'
