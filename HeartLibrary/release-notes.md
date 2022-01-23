@@ -1,5 +1,17 @@
 # release log for the Heart Library and related tests
 
+## Version 7.2.0 released on TBD
+
+ + Bugfix:  can't de-serialize a `SkeletonMesh`
+ + Added the `VectorVisualizer` class for debug visualization.
+ + Added the `translate()` method to the `MyMesh` class.
+ + Added the `velocity()` method to the `MyVector3f` class.
+ + Added the `getCollisionTree()` and `transformBuffer()` methods
+   to the `MyBuffer` class.
+ + More detailed descriptions of controls used in the new animation system.
+ + Targeted jMonkeyEngine version 3.5.0-stable and Java 8+.
+ + Updated Gradle to v7.3.3
+
 ## Version 7.1.0 released on 9 September 2021
 
  + Bugfix: `maxNumWeights` isn't initialized by `MyMesh.merge()`
