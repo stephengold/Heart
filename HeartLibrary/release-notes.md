@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 7.2.0 released on TBD
+## Version 7.2.0 released on 23 January 2022
 
  + Bugfix:  can't de-serialize a `SkeletonMesh`
  + Added the `VectorVisualizer` class for debug visualization.
