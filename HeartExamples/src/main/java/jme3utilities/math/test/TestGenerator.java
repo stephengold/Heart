@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,6 @@ import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
-import com.jme3.scene.Spatial;
 import com.jme3.system.AppSettings;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -49,9 +48,8 @@ import jme3utilities.MyString;
 import jme3utilities.math.noise.Generator;
 import jme3utilities.mesh.Icosphere;
 import jme3utilities.mesh.PointMesh;
-import jme3utilities.ui.ActionApplication;
+import jme3utilities.ui.AbstractDemo;
 import jme3utilities.ui.CameraOrbitAppState;
-import jme3utilities.ui.HelpUtils;
 import jme3utilities.ui.InputMode;
 
 /**
@@ -59,7 +57,7 @@ import jme3utilities.ui.InputMode;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestGenerator extends ActionApplication {
+public class TestGenerator extends AbstractDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -100,10 +98,6 @@ public class TestGenerator extends ActionApplication {
      * material for visualizing sample points
      */
     private Material samplePointMaterial;
-    /**
-     * GUI node for displaying hotkey help/hints
-     */
-    private Node helpNode;
     /**
      * scene-graph node for the current trial
      */
@@ -184,17 +178,17 @@ public class TestGenerator extends ActionApplication {
         dim.bind("test nextUnitVector3f", KeyInput.KEY_F2);
         dim.bind("test nextVector3f", KeyInput.KEY_F3);
 
-        dim.bind("toggle help", KeyInput.KEY_H);
-
+        dim.bind(asToggleHelp, KeyInput.KEY_H);
+        /*
+         * The help node can't be created until all hotkeys are bound.
+         */
         float x = 10f;
         float y = cam.getHeight() - 30f;
         float width = cam.getWidth() - 20f;
         float height = cam.getHeight() - 20f;
         Rectangle rectangle = new Rectangle(x, y, width, height);
 
-        float space = 20f;
-        helpNode = HelpUtils.buildNode(dim, rectangle, guiFont, space);
-        guiNode.attachChild(helpNode);
+        attachHelpNode(rectangle);
     }
 
     /**
@@ -207,11 +201,6 @@ public class TestGenerator extends ActionApplication {
     @Override
     public void onAction(String actionString, boolean ongoing, float tpf) {
         if (ongoing) {
-            switch (actionString) {
-                case "toggle help":
-                    toggleHelp();
-                    return;
-            }
             String[] words = actionString.split(" ");
             if (words.length >= 2 && "test".equals(words[0])) {
                 test(words[1]);
@@ -251,17 +240,6 @@ public class TestGenerator extends ActionApplication {
         testName = name;
         trialNode.removeFromParent();
         trial();
-    }
-
-    /**
-     * Toggle visibility of the helpNode.
-     */
-    private void toggleHelp() {
-        if (helpNode.getCullHint() == Spatial.CullHint.Always) {
-            helpNode.setCullHint(Spatial.CullHint.Never);
-        } else {
-            helpNode.setCullHint(Spatial.CullHint.Always);
-        }
     }
 
     /**
