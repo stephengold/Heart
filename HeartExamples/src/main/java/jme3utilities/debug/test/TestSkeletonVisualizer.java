@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2021, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,6 @@ import com.jme3.math.Vector3f;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
-import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.system.AppSettings;
@@ -56,25 +55,19 @@ import jme3utilities.MyCamera;
 import jme3utilities.debug.Dumper;
 import jme3utilities.debug.SkeletonVisualizer;
 import jme3utilities.mesh.RectangleMesh;
-import jme3utilities.ui.ActionApplication;
+import jme3utilities.ui.AbstractDemo;
 import jme3utilities.ui.CameraOrbitAppState;
-import jme3utilities.ui.HelpUtils;
 import jme3utilities.ui.InputMode;
 
 /**
- * An ActionApplication to test SkeletonVisualizer.
+ * An AbstracDemo to test SkeletonVisualizer.
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestSkeletonVisualizer extends ActionApplication {
+public class TestSkeletonVisualizer extends AbstractDemo {
     // *************************************************************************
     // constants and loggers
 
-    /**
-     * speed setting to effectively freeze animations without freezing the
-     * camera
-     */
-    final private static float pausedSpeed = 1e-12f;
     /**
      * message logger for this class
      */
@@ -96,10 +89,6 @@ public class TestSkeletonVisualizer extends ActionApplication {
      * dump debugging information to System.out
      */
     final private Dumper dumper = new Dumper();
-    /**
-     * GUI node for displaying hotkey help/hints
-     */
-    private Node helpNode;
     /**
      * visualizer for the skeleton of the C-G model
      */
@@ -135,7 +124,7 @@ public class TestSkeletonVisualizer extends ActionApplication {
          */
     }
     // *************************************************************************
-    // ActionApplication methods
+    // AbstractDemo methods
 
     /**
      * Initialize this application.
@@ -192,19 +181,19 @@ public class TestSkeletonVisualizer extends ActionApplication {
         dim.bindSignal("orbitLeft", KeyInput.KEY_LEFT);
         dim.bindSignal("orbitRight", KeyInput.KEY_RIGHT);
 
-        dim.bind("toggle help", KeyInput.KEY_H);
-        dim.bind("toggle pause", KeyInput.KEY_PERIOD);
+        dim.bind(asToggleHelp, KeyInput.KEY_H);
+        dim.bind(asTogglePause, KeyInput.KEY_PERIOD);
         dim.bind("toggle skeleton", KeyInput.KEY_V);
-
+        /*
+         * The help node can't be created until all hotkeys are bound.
+         */
         float x = 10f;
         float y = cam.getHeight() - 30f;
         float width = cam.getWidth() - 20f;
         float height = cam.getHeight() - 20f;
         Rectangle rectangle = new Rectangle(x, y, width, height);
 
-        float space = 20f;
-        helpNode = HelpUtils.buildNode(dim, rectangle, guiFont, space);
-        guiNode.attachChild(helpNode);
+        attachHelpNode(rectangle);
     }
 
     /**
@@ -220,12 +209,6 @@ public class TestSkeletonVisualizer extends ActionApplication {
             switch (actionString) {
                 case "dump render":
                     dumper.dump(renderManager);
-                    return;
-                case "toggle help":
-                    toggleHelp();
-                    return;
-                case "toggle pause":
-                    togglePause();
                     return;
                 case "toggle skeleton":
                     toggleSkeleton();
@@ -316,25 +299,6 @@ public class TestSkeletonVisualizer extends ActionApplication {
      */
     private void configureDumper() {
         dumper.setDumpTransform(true);
-    }
-
-    /**
-     * Toggle visibility of the helpNode.
-     */
-    private void toggleHelp() {
-        if (helpNode.getCullHint() == Spatial.CullHint.Always) {
-            helpNode.setCullHint(Spatial.CullHint.Never);
-        } else {
-            helpNode.setCullHint(Spatial.CullHint.Always);
-        }
-    }
-
-    /**
-     * Toggle the animation: paused/running.
-     */
-    private void togglePause() {
-        float newSpeed = (speed > pausedSpeed) ? pausedSpeed : 1f;
-        setSpeed(newSpeed);
     }
 
     /**
