@@ -133,13 +133,15 @@ public class TestMergeMeshes extends AbstractDemo {
         Mesh mesh2 = null;
         for (int rowI = 0; rowI < numRows; ++rowI) {
             for (int columnI = 0; columnI < numColumns; ++columnI) {
+                boolean isOddSquare = ((rowI + columnI) % 2 == 1);
+
                 // Calculate the center location in world coordinates.
                 float x = columnI - numColumns / 2f;
                 float y = rowI - numRows / 2f;
-                Vector3f centerInWorld = new Vector3f(x, y, 0f);
+                float z = isOddSquare ? 0.4f : 0f;
+                Vector3f centerInWorld = new Vector3f(x, y, z);
 
                 // Create a square mesh with the appropriate color.
-                boolean isOddSquare = ((rowI + columnI) % 2 == 1);
                 ColorRGBA color = isOddSquare ? oddColor : evenColor;
                 Mesh squareMesh = coloredSquare(color);
 
