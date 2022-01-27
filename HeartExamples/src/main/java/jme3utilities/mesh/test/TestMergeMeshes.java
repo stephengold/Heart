@@ -39,7 +39,9 @@ import com.jme3.scene.Node;
 import com.jme3.scene.VertexBuffer;
 import com.jme3.scene.shape.CenterQuad;
 import com.jme3.system.AppSettings;
+import com.jme3.util.BufferUtils;
 import com.jme3.util.clone.Cloner;
+import java.nio.FloatBuffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
@@ -47,6 +49,7 @@ import jme3utilities.MyCamera;
 import jme3utilities.MyMesh;
 import jme3utilities.MySpatial;
 import jme3utilities.debug.Dumper;
+import jme3utilities.math.MyBuffer;
 import jme3utilities.ui.AbstractDemo;
 import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
@@ -261,21 +264,12 @@ public class TestMergeMeshes extends AbstractDemo {
         /*
          * Add a color buffer.
          */
-        int floatsPerColor = 4;
         int numVertices = result.getVertexCount();
-        float[] array = new float[floatsPerColor * numVertices];
-        int floatI = 0;
-        for (int vertexI = 0; vertexI < numVertices; ++vertexI) {
-            array[floatI] = color.r;
-            ++floatI;
-            array[floatI] = color.g;
-            ++floatI;
-            array[floatI] = color.b;
-            ++floatI;
-            array[floatI] = color.a;
-            ++floatI;
-        }
-        result.setBuffer(VertexBuffer.Type.Color, floatsPerColor, array);
+        int floatsPerColor = 4;
+        FloatBuffer colorBuffer
+                = BufferUtils.createFloatBuffer(numVertices * floatsPerColor);
+        MyBuffer.fill(colorBuffer, color.r, color.g, color.b, color.a);
+        result.setBuffer(VertexBuffer.Type.Color, floatsPerColor, colorBuffer);
 
         return result;
     }

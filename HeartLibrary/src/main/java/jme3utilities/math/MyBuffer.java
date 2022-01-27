@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2021, Stephen Gold
+ Copyright (c) 2019-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -268,6 +268,26 @@ final public class MyBuffer {
         }
 
         return result;
+    }
+
+    /**
+     * Fill the specified FloatBuffer with a cyclic sequence of values.
+     *
+     * @param buffer the buffer to modify (not null)
+     * @param floatValues the sequence of values (not null, unaffected)
+     */
+    public static void fill(FloatBuffer buffer, float... floatValues) {
+        Validate.nonNull(buffer, "buffer");
+        Validate.nonNull(floatValues, "float values");
+
+        int limit = buffer.limit();
+        int arrayLength = floatValues.length;
+        int arrayIndex = 0;
+        for (int position = 0; position < limit; ++position) {
+            float floatValue = floatValues[arrayIndex];
+            buffer.put(position, floatValue);
+            arrayIndex = (++arrayIndex) % arrayLength;
+        }
     }
 
     /**
