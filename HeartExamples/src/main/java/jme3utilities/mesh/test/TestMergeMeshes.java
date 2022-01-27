@@ -61,25 +61,9 @@ public class TestMergeMeshes extends AbstractDemo {
     // constants and loggers
 
     /**
-     * Color for even squares, such as (0, 0): dark green.
-     */
-    private static final ColorRGBA evenColor = new ColorRGBA(0f, 0.3f, 0f, 1f);
-    /**
-     * Color for odd squares, such as (0, 1): white.
-     */
-    private static final ColorRGBA oddColor = ColorRGBA.White;
-    /**
-     * The number of squares along the X axis of the board.
-     */
-    private static final int numColumns = 10;
-    /**
-     * The number of squares along the Y axis of the board.
-     */
-    private static final int numRows = 10;
-    /**
      * message logger for this class
      */
-    private static final Logger logger
+    final private static Logger logger
             = Logger.getLogger(TestMergeMeshes.class.getName());
     /**
      * application name (for the title bar of the app's window)
@@ -125,12 +109,25 @@ public class TestMergeMeshes extends AbstractDemo {
     public void actionInitializeApplication() {
         ColorRGBA bgColor = new ColorRGBA(0.2f, 0.2f, 0.2f, 1f);
         viewPort.setBackgroundColor(bgColor);
+        /*
+         * The dimensions of the board, in terms of squares:
+         *  numColumns along the X axis
+         *  numRows along the Y axis
+         */
+        int numColumns = 10;
+        int numRows = 10;
 
         float cameraX = 1f + numColumns / 2f;
         configureCamera(cameraX);
         /*
+         * Even squares, such as (0, 0), will be dark green.
+         * Odd squares, such as (0, 1), will be white.
+         */
+        ColorRGBA evenColor = new ColorRGBA(0f, 0.3f, 0f, 1f);
+        ColorRGBA oddColor = ColorRGBA.White;
+        /*
          * Create one checkerboard (board1) with a mesh for each square
-         * and another(board2) with a merged mesh .
+         * and another (board2) with a merged mesh.
          */
         Node board1 = new Node("board1");
         Mesh mesh2 = null;
@@ -139,7 +136,7 @@ public class TestMergeMeshes extends AbstractDemo {
                 // Calculate the center location in world coordinates.
                 float x = columnI - numColumns / 2f;
                 float y = rowI - numRows / 2f;
-                Vector3f centerInWorld = new Vector3f(x, y, 0);
+                Vector3f centerInWorld = new Vector3f(x, y, 0f);
 
                 // Create a square mesh with the appropriate color.
                 boolean isOddSquare = ((rowI + columnI) % 2 == 1);
@@ -152,7 +149,7 @@ public class TestMergeMeshes extends AbstractDemo {
                 board1.attachChild(squareGeometry);
                 squareGeometry.move(centerInWorld);
 
-                // Merge a translated clone of the mesh into mesh2.
+                // Merge a translated clone of squareMesh into mesh2.
                 Mesh translatedClone = Cloner.deepClone(squareMesh);
                 MyMesh.translate(translatedClone, centerInWorld);
                 if (mesh2 == null) {
@@ -162,10 +159,17 @@ public class TestMergeMeshes extends AbstractDemo {
                 }
             }
         }
-
+        /*
+         * MyMesh.merge() returns an unindexed Mesh, which is inefficient.
+         * To reduce the complexity of mesh2, we add indices.
+         */
         mesh2 = MyMesh.addIndices(mesh2);
+
         Geometry board2 = new Geometry("board2", mesh2);
-        board2.move(2f * cameraX, 0, 0); // offset the location of board2
+        /*
+         * Move board2 so that board1 and board2 can be compared visually.
+         */
+        board2.move(2f * cameraX, 0f, 0f);
         /*
          * Create an unshaded material and apply it to both checkerboards.
          */
@@ -174,7 +178,7 @@ public class TestMergeMeshes extends AbstractDemo {
         board1.setMaterial(material);
         board2.setMaterial(material);
         /*
-         * Attach the checkerboards to the scene graph.
+         * Attach both checkerboards to the scene graph.
          */
         rootNode.attachChild(board1);
         rootNode.attachChild(board2);
@@ -247,8 +251,8 @@ public class TestMergeMeshes extends AbstractDemo {
      * @return a new Mesh with no normals and no texture coordinates
      */
     private static Mesh coloredSquare(ColorRGBA color) {
-        float width = 1f;
-        float height = 1f;
+        float width = 1f; // mesh units
+        float height = 1f; // mesh units
         Mesh result = new CenterQuad(width, height);
         result.clearBuffer(VertexBuffer.Type.Normal);
         result.clearBuffer(VertexBuffer.Type.TexCoord);
@@ -287,7 +291,7 @@ public class TestMergeMeshes extends AbstractDemo {
 
         cam.setName("cam");
         float cameraZ = 4f * cameraX;
-        cam.setLocation(new Vector3f(cameraX, 0, cameraZ));
+        cam.setLocation(new Vector3f(cameraX, 0f, cameraZ));
 
         CameraOrbitAppState orbitState
                 = new CameraOrbitAppState(cam, "orbitLeft", "orbitRight");
