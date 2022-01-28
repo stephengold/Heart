@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -145,7 +145,7 @@ public class MyAnimation {
         Validate.nonNull(composer, "composer");
 
         String name = clip.getName();
-        AnimTrack[] tracks = clip.getTracks();
+        AnimTrack<?>[] tracks = clip.getTracks();
 
         String result;
         int numTracks = tracks.length;
@@ -154,7 +154,7 @@ public class MyAnimation {
         } else {
             String[] trackDescriptions = new String[numTracks];
             for (int trackIndex = 0; trackIndex < numTracks; ++trackIndex) {
-                AnimTrack track = tracks[trackIndex];
+                AnimTrack<?> track = tracks[trackIndex];
                 trackDescriptions[trackIndex] = describe(track);
             }
             String joined = MyString.join(trackDescriptions);
