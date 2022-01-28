@@ -1346,23 +1346,23 @@ public class MySpatial {
                  * Texture.equals() isn't strict enough,
                  * so don't use collection.contains() here!
                  */
-                if (texture != null && !contains(collection, texture)) {
+                if (texture != null && !containsInstance(collection, texture)) {
                     collection.add(texture);
                 }
         }
     }
 
     /**
-     * Test whether the specified Collection contains the specified texture
+     * Test whether the specified Iterable contains the specified texture
      * instance.
      *
-     * @param collection (not null, unaffected)
+     * @param iterable (not null, unaffected)
      * @param testInstance the instance to search for (not null, unaffected)
      * @return true if found, otherwise false
      */
-    private static boolean contains(Collection<Texture> collection,
+    private static boolean containsInstance(Iterable<Texture> iterable,
             Texture testInstance) {
-        for (Texture item : collection) {
+        for (Texture item : iterable) {
             if (item == testInstance) {
                 return true;
             }
