@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -354,9 +354,7 @@ public class MySkeleton {
     /**
      * Access the attachments node of the specified Joint.
      * <p>
-     * Unlike
-     * {@link com.jme3.anim.Joint#getAttachmentsNode(int, com.jme3.util.SafeArrayList)}
-     * this won't add a node to the scene graph.
+     * Unlike Joint.getAttachmentsNode(), this won't add a node to the scene graph.
      *
      * @param joint the Joint to read (not null, unaffected)
      * @return the pre-existing instance, or null if none
@@ -650,9 +648,7 @@ public class MySkeleton {
          */
         Node attachmentsNode = getAttachments(bone);
         if (attachmentsNode != null) {
-            /*
-             * Also rename the attach node.
-             */
+            // Also rename the attachments node.
             String newNodeName = newName + "_attachnode";
             attachmentsNode.setName(newNodeName);
         }

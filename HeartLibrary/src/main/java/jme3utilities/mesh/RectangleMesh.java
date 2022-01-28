@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2021, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ import java.util.logging.Logger;
  * in the X-Y plane.
  * <p>
  * In local space, the rectangle extends from (x1,y1,0) to (x2,y2,0) with
- * normals set to (0,0,zNorm). In texture space, it extends extends from (s1,t1)
+ * normals set to (0,0,zNorm). In texture space, it extends from (s1,t1)
  * to (s2, t2).
  * <p>
  * The key differences between this class and com.jme3.scene.shape.Quad are:<ol>

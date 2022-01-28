@@ -1140,7 +1140,7 @@ public class Describer implements Cloneable {
     }
 
     /**
-     * Generate a single-character description of a spatial.
+     * Generate a single-character description of the specified Spatial.
      *
      * @param spatial the spatial to describe (unaffected, may be null)
      * @return a mnemonic character

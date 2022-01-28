@@ -369,6 +369,7 @@ final public class MyBuffer {
 
     /**
      * Test whether all values in the specified FloatBuffer range are finite.
+     * TODO make static
      *
      * @param buffer the buffer that contains the data (not null, unaffected)
      * @param startPosition the position at which the data start (&ge;0,

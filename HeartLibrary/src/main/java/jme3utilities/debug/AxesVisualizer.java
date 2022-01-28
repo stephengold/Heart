@@ -122,7 +122,7 @@ public class AxesVisualizer extends SubtreeControl {
     // fields
 
     /**
-     * asset manager to use (not null)
+     * asset manager to use
      */
     private AssetManager assetManager;
     /**

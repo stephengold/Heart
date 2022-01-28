@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -1042,7 +1042,7 @@ public class MySpatial {
     }
 
     /**
-     * Alter the world orientation of a spatial.
+     * Alter the world orientation of the specified Spatial.
      *
      * @param spatial spatial to reorient (not null)
      * @param worldOrientation desired world orientation (not null, unaffected)
@@ -1067,7 +1067,7 @@ public class MySpatial {
     }
 
     /**
-     * Alter the (uniform) world scaling of a spatial.
+     * Alter the (uniform) world scaling of the specified Spatial.
      *
      * @param spatial spatial to rescale (not null)
      * @param worldScale desired world scale (&gt;0)
@@ -1099,7 +1099,7 @@ public class MySpatial {
     }
 
     /**
-     * Alter the world transform of a spatial.
+     * Alter the world transform of the specified Spatial.
      *
      * @param spatial spatial to alter (not null)
      * @param worldTransform desired world transform (not null, unaffected)
@@ -1255,7 +1255,7 @@ public class MySpatial {
     }
 
     /**
-     * Determine the world orientation of a spatial.
+     * Determine the world orientation of the specified Spatial.
      *
      * @param spatial the Spatial to analyze (not null)
      * @param storeResult storage for the result (modified if not null)
@@ -1279,7 +1279,7 @@ public class MySpatial {
     }
 
     /**
-     * Determine the world scale of a spatial.
+     * Determine the world scale of the specified Spatial.
      *
      * @param spatial the Spatial to analyze (not null)
      * @param storeResult storage for the result (modified if not null)
@@ -1301,7 +1301,7 @@ public class MySpatial {
     }
 
     /**
-     * Determine the world transform of a Spatial.
+     * Determine the world transform of the specified Spatial.
      *
      * @param spatial the Spatial to analyze (not null)
      * @param storeResult storage for the result (modified if not null)

@@ -60,7 +60,7 @@ import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
 /**
- * An AbstracDemo to test SkeletonVisualizer.
+ * An AbstractDemo to test SkeletonVisualizer.
  *
  * @author Stephen Gold sgold@sonic.net
  */
