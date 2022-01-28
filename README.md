@@ -213,7 +213,8 @@ Old Maven artifacts (v5.0.0 through v6.4.0) are available from JCenter.
 
 Package names begin with `jme3utilities.`
 
-Both the source code and the pre-built libraries are compatible with JDK 7.
+The source code is compatible with JDK 7.
+The pre-built libraries are compatible with JDK 8.
 
 [Jump to table of contents](#toc)
 
