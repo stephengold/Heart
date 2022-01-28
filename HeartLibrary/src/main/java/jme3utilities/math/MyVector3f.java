@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -1295,8 +1295,8 @@ public class MyVector3f {
              * Don't use Vector3f.project() because (as of jME 3.0.10)
              * it contained a logic bug.
              */
-            double fm_dot_fl = dot(fm, fl);
-            double fraction = fm_dot_fl / normSquaredFL;
+            double fmDotFl = dot(fm, fl);
+            double fraction = fmDotFl / normSquaredFL;
             Vector3f projection = fl.mult((float) fraction);
             /*
              * If the projection coincides with FM,

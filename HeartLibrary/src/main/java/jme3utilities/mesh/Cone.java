@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2021, Stephen Gold
+ Copyright (c) 2019-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -127,9 +127,9 @@ public class Cone extends Mesh {
 
             if (generatePyramid) { // flat triangle for a pyramid
                 triangle.set(p1, p2, p3);
-                Vector3f n = triangle.getNormal();
+                Vector3f normal = triangle.getNormal();
                 for (int j = 0; j < vpt; ++j) {
-                    normalBuffer.put(n.x).put(n.y).put(n.z);
+                    normalBuffer.put(normal.x).put(normal.y).put(normal.z);
                 }
 
             } else { // curved triangle for a cone

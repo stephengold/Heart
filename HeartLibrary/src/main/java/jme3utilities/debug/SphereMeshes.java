@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -119,8 +119,8 @@ public enum SphereMeshes {
         Mesh result;
         switch (this) {
             case Icosphere:
-                int numRefineSteps = 1;
-                result = new Icosphere(numRefineSteps, radius);
+                int refineOnce = 1;
+                result = new Icosphere(refineOnce, radius);
                 break;
 
             case LoopMesh:
@@ -129,8 +129,8 @@ public enum SphereMeshes {
                 break;
 
             case Octasphere:
-                numRefineSteps = 2;
-                result = new Octasphere(numRefineSteps, radius);
+                int refineTwice = 2;
+                result = new Octasphere(refineTwice, radius);
                 break;
 
             case PoleSphere:
