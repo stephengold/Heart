@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2021, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -1268,7 +1268,8 @@ public class MyMesh {
     }
 
     /**
-     * Copy the color of the indexed vertex from the color buffer.
+     * Copy the color of the indexed vertex from the color buffer of the
+     * specified Mesh. The buffer must have 4 components per element.
      *
      * @param mesh the subject mesh (not null, unaffected)
      * @param vertexIndex index into the mesh's vertices (&ge;0)
@@ -1284,12 +1285,28 @@ public class MyMesh {
         }
 
         VertexBuffer vertexBuffer = mesh.getBuffer(VertexBuffer.Type.Color);
-        FloatBuffer floatBuffer = (FloatBuffer) vertexBuffer.getDataReadOnly();
-        int floatIndex = 4 * vertexIndex;
-        storeResult.r = floatBuffer.get(floatIndex);
-        storeResult.g = floatBuffer.get(floatIndex + 1);
-        storeResult.b = floatBuffer.get(floatIndex + 2);
-        storeResult.a = floatBuffer.get(floatIndex + 3);
+        int numComponents = vertexBuffer.getNumComponents();
+        Validate.require(numComponents == 4, "4 components per element");
+
+        int bufferPosition = numComponents * vertexIndex;
+        Buffer data = vertexBuffer.getDataReadOnly();
+        if (data instanceof ByteBuffer) {
+            // BitmapTextPage (for example) puts byte data in its Color buffer!
+            ByteBuffer byteBuffer = (ByteBuffer) data;
+            int r = byteBuffer.get(bufferPosition) & 0xFF;
+            int g = byteBuffer.get(bufferPosition + 1) & 0xFF;
+            int b = byteBuffer.get(bufferPosition + 2) & 0xFF;
+            int a = byteBuffer.get(bufferPosition + 3) & 0xFF;
+            storeResult.set(r, g, b, a);
+            storeResult.multLocal(1f / 255);
+
+        } else {
+            FloatBuffer floatBuffer = (FloatBuffer) data;
+            storeResult.r = floatBuffer.get(bufferPosition);
+            storeResult.g = floatBuffer.get(bufferPosition + 1);
+            storeResult.b = floatBuffer.get(bufferPosition + 2);
+            storeResult.a = floatBuffer.get(bufferPosition + 3);
+        }
 
         return storeResult;
     }
