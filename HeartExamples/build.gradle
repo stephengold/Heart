@@ -18,7 +18,7 @@ dependencies {
     implementation ('com.github.stephengold:jme3-utilities-ui:0.9.6') {
         exclude group: 'com.github.stephengold', module: 'Heart'
     }
-    implementation 'org.jmonkeyengine:jme3-desktop:' + jme3Version
+    runtimeOnly 'org.jmonkeyengine:jme3-desktop:' + jme3Version
     runtimeOnly 'org.jmonkeyengine:jme3-effects:' + jme3Version
     runtimeOnly 'org.jmonkeyengine:jme3-lwjgl3:' + jme3Version
     runtimeOnly 'org.jmonkeyengine:jme3-testdata:' + jme3Version
