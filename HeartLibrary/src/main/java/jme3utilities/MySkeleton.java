@@ -354,7 +354,8 @@ public class MySkeleton {
     /**
      * Access the attachments node of the specified Joint.
      * <p>
-     * Unlike Joint.getAttachmentsNode(), this won't add a node to the scene graph.
+     * Unlike Joint.getAttachmentsNode(), this won't add a node to the scene
+     * graph.
      *
      * @param joint the Joint to read (not null, unaffected)
      * @return the pre-existing instance, or null if none
@@ -567,8 +568,8 @@ public class MySkeleton {
     public static Map<Bone, Spatial> mapAttachments(Spatial subtree,
             Map<Bone, Spatial> storeResult) {
         Validate.nonNull(subtree, "subtree");
-        Map<Bone, Spatial> result = (storeResult == null) ?
-                new HashMap<Bone, Spatial>(4) : storeResult;
+        Map<Bone, Spatial> result = (storeResult == null)
+                ? new HashMap<Bone, Spatial>(4) : storeResult;
 
         List<SkeletonControl> list
                 = MySpatial.listControls(subtree, SkeletonControl.class, null);

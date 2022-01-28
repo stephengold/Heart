@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2020, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -110,9 +110,11 @@ public class ContrastAdjustmentFilter extends Filter {
     // Filter methods
 
     /**
-     * Access the Material used in this Filter. This method is invoked on every frame.
+     * Access the Material used in this Filter. This method is invoked on every
+     * frame.
      *
-     * @return the pre-existing instance, or null if the Filter hasn't been initialized
+     * @return the pre-existing instance, or null if the Filter hasn't been
+     * initialized
      */
     @Override
     protected Material getMaterial() {

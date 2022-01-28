@@ -1261,8 +1261,8 @@ public class MyVector3f {
      *
      * @param first coordinates of first location on line (not null, unaffected)
      * @param last coordinates of last location on line (not null, unaffected)
-     * @param testLocations coordinates of test locations (not null, all elements
-     * non-null, unaffected)
+     * @param testLocations coordinates of test locations (not null, all
+     * elements non-null, unaffected)
      * @param tolerance2 for coincidence (in squared units, &ge;0)
      * @return true if all middle locations lie on the line, false otherwise
      */
