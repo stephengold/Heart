@@ -1519,14 +1519,15 @@ public class MyMesh {
     public static Vector2f vertexVector2f(Mesh mesh,
             VertexBuffer.Type bufferType, int vertexIndex,
             Vector2f storeResult) {
-        assert bufferType == VertexBuffer.Type.TexCoord
+        assert Validate.require(bufferType == VertexBuffer.Type.TexCoord
                 || bufferType == VertexBuffer.Type.TexCoord2
                 || bufferType == VertexBuffer.Type.TexCoord3
                 || bufferType == VertexBuffer.Type.TexCoord4
                 || bufferType == VertexBuffer.Type.TexCoord5
                 || bufferType == VertexBuffer.Type.TexCoord6
                 || bufferType == VertexBuffer.Type.TexCoord7
-                || bufferType == VertexBuffer.Type.TexCoord8 : bufferType;
+                || bufferType == VertexBuffer.Type.TexCoord8,
+                "legal VertexBuffer type");
         Validate.nonNegative(vertexIndex, "vertex index");
         Vector2f result = (storeResult == null) ? new Vector2f() : storeResult;
 
@@ -1554,11 +1555,12 @@ public class MyMesh {
     public static Vector3f vertexVector3f(Mesh mesh,
             VertexBuffer.Type bufferType, int vertexIndex,
             Vector3f storeResult) {
-        assert bufferType == VertexBuffer.Type.BindPoseNormal
+        assert Validate.require(bufferType == VertexBuffer.Type.BindPoseNormal
                 || bufferType == VertexBuffer.Type.BindPosePosition
                 || bufferType == VertexBuffer.Type.Binormal
                 || bufferType == VertexBuffer.Type.Normal
-                || bufferType == VertexBuffer.Type.Position : bufferType;
+                || bufferType == VertexBuffer.Type.Position,
+                "legal VertexBuffer type");
         Validate.nonNegative(vertexIndex, "vertex index");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
@@ -1585,11 +1587,12 @@ public class MyMesh {
     public static Vector4f vertexVector4f(Mesh mesh,
             VertexBuffer.Type bufferType, int vertexIndex,
             Vector4f storeResult) {
-        assert bufferType == VertexBuffer.Type.BindPoseTangent // TODO use Validate
+        assert Validate.require(bufferType == VertexBuffer.Type.BindPoseTangent
                 || bufferType == VertexBuffer.Type.BoneWeight
                 || bufferType == VertexBuffer.Type.Color
                 || bufferType == VertexBuffer.Type.HWBoneWeight
-                || bufferType == VertexBuffer.Type.Tangent : bufferType;
+                || bufferType == VertexBuffer.Type.Tangent,
+                "legal VertexBuffer type");
         Validate.nonNegative(vertexIndex, "vertex index");
         Vector4f result = (storeResult == null) ? new Vector4f() : storeResult;
 
