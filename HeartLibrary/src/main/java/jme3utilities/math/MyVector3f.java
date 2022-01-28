@@ -1256,20 +1256,20 @@ public class MyVector3f {
     // private methods
 
     /**
-     * Test whether all locations in the specified list lie on the line
+     * Test whether all locations in the specified iterable lie on the line
      * connecting 2 specified locations.
      *
      * @param first coordinates of first location on line (not null, unaffected)
      * @param last coordinates of last location on line (not null, unaffected)
-     * @param list coordinates of test locations (not null, all elements
+     * @param testLocations coordinates of test locations (not null, all elements
      * non-null, unaffected)
      * @param tolerance2 for coincidence (in squared units, &ge;0)
      * @return true if all middle locations lie on the line, false otherwise
      */
     private static boolean allCollinear(Vector3f first, Vector3f last,
-            List<Vector3f> list, float tolerance2) {
+            Iterable<Vector3f> testLocations, float tolerance2) {
         assert Validate.nonNull(first, "first location");
-        assert Validate.nonNull(list, "list");
+        assert Validate.nonNull(testLocations, "testLocations");
         assert Validate.nonNegative(tolerance2, "tolerance2");
 
         Vector3f fl = last.subtract(first);
@@ -1283,7 +1283,7 @@ public class MyVector3f {
         /*
          * Calculate the offset of the last location from the first.
          */
-        for (Vector3f middle : list) {
+        for (Vector3f middle : testLocations) {
             assert middle != null;
             /*
              * Calculate the offset of the middle location from the first.
