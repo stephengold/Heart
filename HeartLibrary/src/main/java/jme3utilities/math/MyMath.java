@@ -824,13 +824,14 @@ public class MyMath {
     }
 
     /**
-     * Standardize a rotation angle to the range [-Pi, Pi). TODO check for
-     * infinity/NAN
+     * Standardize a rotation angle to the range [-Pi, Pi).
      *
      * @param angle input (in radians)
      * @return standardized angle (in radians, &lt;Pi, &ge;-Pi)
      */
     public static float standardizeAngle(float angle) {
+        Validate.finite(angle, "angle");
+
         float result = modulo(angle, FastMath.TWO_PI);
         if (result >= FastMath.PI) {
             result -= FastMath.TWO_PI;
