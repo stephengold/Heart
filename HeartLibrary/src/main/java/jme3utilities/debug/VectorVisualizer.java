@@ -289,10 +289,7 @@ public class VectorVisualizer extends SubtreeControl {
 
         Node subtreeNode = (Node) getSubtree();
         int numChildren = subtreeNode.getQuantity();
-        if (numChildren != 1) {
-            subtreeNode.detachAllChildren();
-            addArrow();
-        } else {
+        if (numChildren == 1) {
             Geometry arrow = (Geometry) subtreeNode.getChild(0);
             Mesh mesh = arrow.getMesh();
             boolean isWireArrow = mesh instanceof Arrow;
@@ -305,6 +302,9 @@ public class VectorVisualizer extends SubtreeControl {
                 subtreeNode.detachAllChildren();
                 addArrow();
             }
+        } else {
+            subtreeNode.detachAllChildren();
+            addArrow();
         }
     }
 
