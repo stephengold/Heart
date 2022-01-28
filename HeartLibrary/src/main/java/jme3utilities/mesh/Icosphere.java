@@ -164,7 +164,7 @@ public class Icosphere extends Mesh {
         }
 
         for (int stepIndex = 0; stepIndex < numRefineSteps; ++stepIndex) {
-            List<Integer> newFaces = new ArrayList<>();
+            List<Integer> newFaces = new ArrayList<>(4 * faces.size());
             /*
              * A refinement step: cut each edge in half; for each
              * triangle in faces, add 4 triangles to newFaces.

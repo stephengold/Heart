@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2021, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -177,7 +177,7 @@ public class Octasphere extends Mesh {
         }
 
         for (int stepIndex = 0; stepIndex < numRefineSteps; ++stepIndex) {
-            List<Integer> newFaces = new ArrayList<>();
+            List<Integer> newFaces = new ArrayList<>(4 * faces.size());
             /*
              * A refinement step: cut each edge in half; for each
              * triangle in faces, add 4 triangles to newFaces.
