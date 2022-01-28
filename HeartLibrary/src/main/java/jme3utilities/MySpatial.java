@@ -1092,7 +1092,8 @@ public class MySpatial {
             if (parentScale.x == 0f
                     || parentScale.y == 0f
                     || parentScale.z == 0f) {
-                throw new IllegalArgumentException();
+                String message = "parent scale = " + parentScale;
+                throw new IllegalArgumentException(message);
             }
             Vector3f scale = new Vector3f(worldScale, worldScale, worldScale);
             scale.divideLocal(parentScale);

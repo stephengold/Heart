@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -417,7 +417,8 @@ public class MyMath {
         } else if (a == c) {
             return a == b;
         } else {
-            throw new IllegalArgumentException();
+            String message = "a = " + a + " c = " + c;
+            throw new IllegalArgumentException(message);
         }
     }
 
@@ -437,7 +438,8 @@ public class MyMath {
         } else if (a == c) {
             return a == b;
         } else {
-            throw new IllegalArgumentException();
+            String message = "a = " + a + " c = " + c;
+            throw new IllegalArgumentException(message);
         }
     }
 

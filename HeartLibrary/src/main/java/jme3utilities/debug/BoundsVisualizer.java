@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2021, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -461,7 +461,7 @@ public class BoundsVisualizer extends SubtreeControl {
             boolean wantUVs = false;
             mesh = sphereType.makeSphere(radius, wantNormals, wantUVs);
         } else {
-            throw new IllegalStateException();
+            throw new IllegalStateException(bound.getClass().getName());
         }
 
         Geometry lines = new Geometry(linesName, mesh);

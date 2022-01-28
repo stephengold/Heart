@@ -89,14 +89,14 @@ public class MySkeleton {
         try {
             attachNodeField = Bone.class.getDeclaredField("attachNode");
         } catch (NoSuchFieldException exception) {
-            throw new RuntimeException();
+            throw new RuntimeException(exception);
         }
         attachNodeField.setAccessible(true);
 
         try {
             attachNodeField.set(bone, null);
         } catch (IllegalAccessException exception) {
-            throw new RuntimeException();
+            throw new RuntimeException(exception);
         }
     }
 
@@ -111,14 +111,14 @@ public class MySkeleton {
         try {
             attachedNodeField = Joint.class.getDeclaredField("attachedNode");
         } catch (NoSuchFieldException exception) {
-            throw new RuntimeException();
+            throw new RuntimeException(exception);
         }
         attachedNodeField.setAccessible(true);
 
         try {
             attachedNodeField.set(joint, null);
         } catch (IllegalAccessException exception) {
-            throw new RuntimeException();
+            throw new RuntimeException(exception);
         }
     }
 
