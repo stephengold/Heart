@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -320,11 +320,7 @@ public class AxesVisualizer extends SubtreeControl {
 
         Node subtreeNode = (Node) getSubtree();
         int numChildren = subtreeNode.getQuantity();
-        if (numChildren != numAxes) {
-            subtreeNode.detachAllChildren();
-            addArrows();
-
-        } else {
+        if (numChildren == numAxes) {
             Geometry xArrow = (Geometry) subtreeNode.getChild(0);
             Mesh xMesh = xArrow.getMesh();
             boolean arrowMesh = xMesh instanceof Arrow;
@@ -337,6 +333,10 @@ public class AxesVisualizer extends SubtreeControl {
                 subtreeNode.detachAllChildren();
                 addArrows();
             }
+        } else {
+            subtreeNode.detachAllChildren();
+            addArrows();
+
         }
     }
 
