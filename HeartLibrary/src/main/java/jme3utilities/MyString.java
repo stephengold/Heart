@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -512,7 +512,7 @@ public class MyString {
 
         while (collection.size() > sizeGoal) {
             String longestPrefix = findLongestPrefix(collection);
-            if (longestPrefix.length() == 0) {
+            if (longestPrefix.isEmpty()) {
                 return;
             }
             for (String string : toArray(collection)) {

@@ -286,7 +286,7 @@ final public class MyBuffer {
         for (int position = 0; position < limit; ++position) {
             float floatValue = floatValues[arrayIndex];
             buffer.put(position, floatValue);
-            arrayIndex = (++arrayIndex) % arrayLength;
+            arrayIndex = (arrayIndex + 1) % arrayLength;
         }
     }
 
