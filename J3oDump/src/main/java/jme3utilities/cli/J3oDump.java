@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -154,7 +154,7 @@ public class J3oDump {
             try {
                 exporter.save(loadedAsset, xmlFile);
             } catch (IOException exception) {
-                System.err.println(exception);
+                logger.log(Level.SEVERE, exception.getMessage(), exception);
             }
         }
     }
