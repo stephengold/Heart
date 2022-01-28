@@ -535,7 +535,7 @@ public class MySkeleton {
             Map<Bone, Spatial> storeResult) {
         Validate.nonNull(skeleton, "skeleton");
         Map<Bone, Spatial> result = (storeResult == null)
-                ? HashMap<Bone, Spatial>(4) : storeResult;
+                ? new HashMap<Bone, Spatial>(4) : storeResult;
 
         int numBones = skeleton.getBoneCount();
         for (int boneIndex = 0; boneIndex < numBones; ++boneIndex) {
