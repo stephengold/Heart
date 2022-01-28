@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -108,7 +108,7 @@ public class TestMulticolor extends SimpleApplication {
         /*
          * Add a Color buffer to the Mesh.
          */
-        ColorRGBA[] colorArray = new ColorRGBA[]{
+        ColorRGBA[] colorArray = {
             ColorRGBA.Red,
             ColorRGBA.Green,
             ColorRGBA.Blue,

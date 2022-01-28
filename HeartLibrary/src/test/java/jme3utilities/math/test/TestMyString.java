@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,7 @@ public class TestMyString {
     /**
      *
      */
-    final private static String[] stringCases = new String[]{
+    final private static String[] stringCases = {
         "\"he\"",
         "",
         "-0",

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@ public class TestMyVector3f {
         System.out.printf("Test results for class MyVector3f:%n%n");
 
         // vector test cases
-        Vector3f[] vectorCases = new Vector3f[]{
+        Vector3f[] vectorCases = {
             new Vector3f(3f, 4f, 12f),
             new Vector3f(2.5f, 4.5f, 11.5f),
             Vector3f.ZERO,

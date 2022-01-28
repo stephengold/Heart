@@ -59,7 +59,7 @@ public class TestMyMath {
         float h = MyMath.hypotenuse(3f, 4f);
         console.printf("hypot(3,4) = %f%n", h);
 
-        float[] floatCases = new float[]{
+        float[] floatCases = {
             -3f, 0f, 1f, 8f, Float.MAX_VALUE / 2f, Float.MAX_VALUE, -1f
         };
         for (float x : floatCases) {

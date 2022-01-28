@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2021, Stephen Gold
+ Copyright (c) 2018-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -69,7 +69,6 @@ public class PointVisualizer extends Geometry {
      * No-argument constructor needed by SavableClassUtil.
      */
     protected PointVisualizer() {
-        assetManager = null;
     }
 
     /**

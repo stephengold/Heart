@@ -152,7 +152,6 @@ public class BoundsVisualizer extends SubtreeControl {
      * @param assetManager for loading material definitions (not null)
      */
     public BoundsVisualizer(AssetManager assetManager) {
-        super();
         Validate.nonNull(assetManager, "asset manager");
 
         lineMaterial = MyAsset.createWireframeMaterial(assetManager,

@@ -150,7 +150,6 @@ public class AxesVisualizer extends SubtreeControl {
      * No-argument constructor needed by SavableClassUtil.
      */
     protected AxesVisualizer() {
-        assetManager = null;
     }
 
     /**
@@ -160,7 +159,6 @@ public class AxesVisualizer extends SubtreeControl {
      * @param length length of each axis arrow (in world units, &gt;0)
      */
     public AxesVisualizer(AssetManager manager, float length) {
-        super();
         Validate.nonNull(manager, "asset manager");
         Validate.positive(length, "axis length");
 
@@ -177,7 +175,6 @@ public class AxesVisualizer extends SubtreeControl {
      * @param width thickness of each axis arrow (in pixels, &ge;1)
      */
     public AxesVisualizer(AssetManager manager, float length, float width) {
-        super();
         Validate.nonNull(manager, "asset manager");
         Validate.positive(length, "axis length");
         Validate.inRange(width, "line width", 1f, Float.MAX_VALUE);

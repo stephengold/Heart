@@ -49,7 +49,7 @@ public class TestMyArray {
     /**
      * test data
      */
-    final private static Vector3f[] testData = new Vector3f[]{
+    final private static Vector3f[] testData = {
         new Vector3f(3f, 0f, -4f),
         new Vector3f(1f, 0f, 0f),
         new Vector3f(2f, 0f, -4f),

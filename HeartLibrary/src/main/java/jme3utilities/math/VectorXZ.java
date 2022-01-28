@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -983,8 +983,8 @@ public class VectorXZ
      */
     @Override
     public int hashCode() {
-        int hash = Float.floatToIntBits(this.x);
-        hash = 71 * hash + Float.floatToIntBits(this.z);
+        int hash = Float.floatToIntBits(x);
+        hash = 71 * hash + Float.floatToIntBits(z);
 
         return hash;
     }

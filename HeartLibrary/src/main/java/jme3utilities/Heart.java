@@ -143,8 +143,7 @@ public class Heart {
      */
     public static <T> T deepCopy(T object) {
         T copy;
-        if (object instanceof JmeCloneable
-                || object instanceof Cloneable
+        if (object instanceof Cloneable
                 || object.getClass().isArray()) {
             copy = Cloner.deepClone(object);
 

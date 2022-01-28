@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -124,7 +124,6 @@ public class VectorVisualizer extends SubtreeControl {
      * No-argument constructor needed by SavableClassUtil.
      */
     protected VectorVisualizer() {
-        assetManager = null;
     }
 
     /**
@@ -134,7 +133,6 @@ public class VectorVisualizer extends SubtreeControl {
      * @param width thickness of the arrow (in pixels, &ge;0)
      */
     public VectorVisualizer(AssetManager manager, float width) {
-        super();
         Validate.nonNull(manager, "asset manager");
         Validate.nonNegative(width, "line width");
 

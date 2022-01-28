@@ -496,7 +496,7 @@ public class MySpatial {
                 Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY);
         Vector3f min = new Vector3f(Float.POSITIVE_INFINITY,
                 Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY);
-        Vector3f[] result = new Vector3f[]{min, max};
+        Vector3f[] result = {min, max};
 
         Vector3f meshLocation = new Vector3f();
         Vector3f location = new Vector3f();
