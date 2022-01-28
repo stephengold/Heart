@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2020, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,6 @@ import com.jme3.export.Savable;
 import com.jme3.material.MatParam;
 import com.jme3.material.Material;
 import com.jme3.material.RenderState;
-import com.jme3.material.RenderState.BlendMode;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Transform;
 import com.jme3.renderer.queue.RenderQueue;
@@ -198,7 +197,7 @@ public class SkeletonVisualizer extends SubtreeControl {
         lineMaterial.setColor("Color", defaultLineColor.clone());
         lineMaterial.setFloat("AlphaDiscardThreshold", 0.9999f);
         RenderState lineState = lineMaterial.getAdditionalRenderState();
-        lineState.setBlendMode(BlendMode.Alpha);
+        lineState.setBlendMode(RenderState.BlendMode.Alpha);
         lineState.setDepthTest(false);
 
         boolean mipmaps = false;
@@ -210,7 +209,7 @@ public class SkeletonVisualizer extends SubtreeControl {
         headMaterial.setBoolean("UseVertexColor", true);
         headMaterial.setFloat("AlphaDiscardThreshold", 0.0001f);
         RenderState headState = headMaterial.getAdditionalRenderState();
-        headState.setBlendMode(BlendMode.Alpha);
+        headState.setBlendMode(RenderState.BlendMode.Alpha);
         headState.setDepthTest(false);
 
         setSubject(subject);

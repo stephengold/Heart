@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2020, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@ import com.jme3.material.RenderState;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
-import com.jme3.renderer.queue.RenderQueue.Bucket;
+import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
@@ -356,7 +356,7 @@ final public class MyAsset {
          * Create square faces.
          */
         Node result = new Node("star map");
-        result.setQueueBucket(Bucket.Sky);
+        result.setQueueBucket(RenderQueue.Bucket.Sky);
         for (int faceIndex = 0; faceIndex < 6; ++faceIndex) {
             String faceName = String.format("%s_face%d", name, faceIndex + 1);
             Geometry geometry = new Geometry(faceName, squareMesh);
