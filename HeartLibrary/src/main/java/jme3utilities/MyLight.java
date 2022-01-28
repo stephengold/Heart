@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2019, Stephen Gold
+ Copyright (c) 2018-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -206,17 +206,16 @@ public class MyLight {
     public static <T extends Light> List<T> listLights(Spatial subtree,
             Class<T> lightType, List<T> storeResult) {
         Validate.nonNull(subtree, "subtree");
-        if (storeResult == null) {
-            storeResult = new ArrayList<>(4);
-        }
+        List<T> result = (storeResult == null)
+                ? new ArrayList<T>(4) : storeResult;
 
         LightList lights = subtree.getLocalLightList();
         int numLights = lights.size();
         for (int lightIndex = 0; lightIndex < numLights; ++lightIndex) {
             T light = (T) lights.get(lightIndex);
             if (lightType.isAssignableFrom(light.getClass())
-                    && !storeResult.contains(light)) {
-                storeResult.add(light);
+                    && !result.contains(light)) {
+                result.add(light);
             }
         }
 
@@ -224,10 +223,10 @@ public class MyLight {
             Node node = (Node) subtree;
             List<Spatial> children = node.getChildren();
             for (Spatial child : children) {
-                listLights(child, lightType, storeResult);
+                listLights(child, lightType, result);
             }
         }
 
-        return storeResult;
+        return result;
     }
 }

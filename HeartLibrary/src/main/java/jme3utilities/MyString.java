@@ -84,18 +84,21 @@ public class MyString {
             String prefix, List<String> addResult) {
         Validate.nonNull(collection, "input collection");
         Validate.nonNull(prefix, "prefix");
+        List<String> result;
         if (addResult == null) {
             int size = collection.size();
-            addResult = new ArrayList<>(size);
+            result = new ArrayList<>(size);
+        } else {
+            result = addResult;
         }
 
         for (String string : collection) {
             if (string.startsWith(prefix)) {
-                addResult.add(string);
+                result.add(string);
             }
         }
 
-        return addResult;
+        return result;
     }
 
     /**

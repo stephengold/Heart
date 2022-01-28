@@ -416,17 +416,16 @@ public class MySkeleton {
     public static List<Armature> listArmatures(Spatial subtree,
             List<Armature> addResult) {
         Validate.nonNull(subtree, "subtree");
-        if (addResult == null) {
-            addResult = new ArrayList<>(4);
-        }
+        List<Armature> result = (addResult == null)
+                ? new ArrayList<Armature>(4) : addResult;
 
         int numSgcs = subtree.getNumControls();
         for (int sgcIndex = 0; sgcIndex < numSgcs; ++sgcIndex) {
             Control sgc = subtree.getControl(sgcIndex);
             if (sgc instanceof SkinningControl) {
                 Armature armature = ((SkinningControl) sgc).getArmature();
-                if (armature != null && !addResult.contains(armature)) {
-                    addResult.add(armature);
+                if (armature != null && !result.contains(armature)) {
+                    result.add(armature);
                 }
             }
         }
@@ -435,11 +434,11 @@ public class MySkeleton {
             Node node = (Node) subtree;
             List<Spatial> children = node.getChildren();
             for (Spatial child : children) {
-                listArmatures(child, addResult);
+                listArmatures(child, result);
             }
         }
 
-        return addResult;
+        return result;
     }
 
     /**
@@ -453,21 +452,20 @@ public class MySkeleton {
     public static List<String> listBones(Skeleton skeleton,
             List<String> addResult) {
         int boneCount = skeleton.getBoneCount();
-        if (addResult == null) {
-            addResult = new ArrayList<>(boneCount);
-        }
+        List<String> result = (addResult == null)
+                ? new ArrayList<String>(boneCount) : addResult;
 
         for (int boneIndex = 0; boneIndex < boneCount; ++boneIndex) {
             Bone bone = skeleton.getBone(boneIndex);
             if (bone != null) {
                 String name = bone.getName();
-                if (name != null && !addResult.contains(name)) {
-                    addResult.add(name);
+                if (name != null && !result.contains(name)) {
+                    result.add(name);
                 }
             }
         }
 
-        return addResult;
+        return result;
     }
 
     /**
@@ -505,16 +503,15 @@ public class MySkeleton {
     public static List<Skeleton> listSkeletons(Spatial subtree,
             List<Skeleton> addResult) {
         Validate.nonNull(subtree, "subtree");
-        if (addResult == null) {
-            addResult = new ArrayList<>(4);
-        }
+        List<Skeleton> result = (addResult == null)
+                ? new ArrayList<Skeleton>(4) : addResult;
 
         int numControls = subtree.getNumControls();
         for (int controlIndex = 0; controlIndex < numControls; ++controlIndex) {
             Control control = subtree.getControl(controlIndex);
             Skeleton skeleton = MyControl.findSkeleton(control);
-            if (skeleton != null && !addResult.contains(skeleton)) {
-                addResult.add(skeleton);
+            if (skeleton != null && !result.contains(skeleton)) {
+                result.add(skeleton);
             }
         }
 
@@ -522,11 +519,11 @@ public class MySkeleton {
             Node node = (Node) subtree;
             List<Spatial> children = node.getChildren();
             for (Spatial child : children) {
-                listSkeletons(child, addResult);
+                listSkeletons(child, result);
             }
         }
 
-        return addResult;
+        return result;
     }
 
     /**
@@ -539,27 +536,27 @@ public class MySkeleton {
     public static Map<Bone, Spatial> mapAttachments(Skeleton skeleton,
             Map<Bone, Spatial> storeResult) {
         Validate.nonNull(skeleton, "skeleton");
-        if (storeResult == null) {
-            storeResult = new HashMap<>(4);
-        }
+        Map<Bone, Spatial> result = (storeResult == null)
+                ? HashMap<Bone, Spatial>(4) : storeResult;
 
         int numBones = skeleton.getBoneCount();
         for (int boneIndex = 0; boneIndex < numBones; ++boneIndex) {
             Bone bone = skeleton.getBone(boneIndex);
             Node attachmentsNode = getAttachments(bone);
             if (attachmentsNode != null) {
-                if (storeResult.containsKey(bone)) {
-                    if (storeResult.get(bone) != attachmentsNode) {
-                        throw new IllegalStateException();
+                if (result.containsKey(bone)) {
+                    if (result.get(bone) != attachmentsNode) {
+                        String m = "bone " + MyString.quote(bone.getName());
+                        throw new IllegalArgumentException(m);
                     }
                 } else {
-                    storeResult.put(bone, attachmentsNode);
+                    result.put(bone, attachmentsNode);
                 }
             }
 
         }
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -572,18 +569,17 @@ public class MySkeleton {
     public static Map<Bone, Spatial> mapAttachments(Spatial subtree,
             Map<Bone, Spatial> storeResult) {
         Validate.nonNull(subtree, "subtree");
-        if (storeResult == null) {
-            storeResult = new HashMap<>(4);
-        }
+        Map<Bone, Spatial> result = (storeResult == null) ?
+                new HashMap<Bone, Spatial>(4) : storeResult;
 
         List<SkeletonControl> list
                 = MySpatial.listControls(subtree, SkeletonControl.class, null);
         for (SkeletonControl control : list) {
             Skeleton skeleton = control.getSkeleton();
-            mapAttachments(skeleton, storeResult);
+            mapAttachments(skeleton, result);
         }
 
-        return storeResult;
+        return result;
     }
 
     /**

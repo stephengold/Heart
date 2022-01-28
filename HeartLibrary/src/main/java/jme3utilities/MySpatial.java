@@ -686,26 +686,25 @@ public class MySpatial {
      */
     public static List<Mesh> listAnimatedMeshes(Spatial subtree,
             List<Mesh> storeResult) {
-        if (storeResult == null) {
-            storeResult = new ArrayList<>(10);
-        }
+        List<Mesh> result = (storeResult == null)
+                ? new ArrayList<Mesh>(10) : storeResult;
 
         if (subtree instanceof Geometry) {
             Geometry geometry = (Geometry) subtree;
             Mesh mesh = geometry.getMesh();
-            if (MyMesh.isAnimated(mesh) && !storeResult.contains(mesh)) {
-                storeResult.add(mesh);
+            if (MyMesh.isAnimated(mesh) && !result.contains(mesh)) {
+                result.add(mesh);
             }
 
         } else if (subtree instanceof Node) {
             Node node = (Node) subtree;
             List<Spatial> children = node.getChildren();
             for (Spatial child : children) {
-                listAnimatedMeshes(child, storeResult);
+                listAnimatedMeshes(child, result);
             }
         }
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -761,16 +760,15 @@ public class MySpatial {
     @SuppressWarnings("unchecked")
     public static <T extends Control> List<T> listControls(Spatial subtree,
             Class<T> controlType, List<T> storeResult) {
-        if (storeResult == null) {
-            storeResult = new ArrayList<>(4);
-        }
+        List<T> result = (storeResult == null)
+                ? new ArrayList<T>(4) : storeResult;
 
         int numControls = subtree.getNumControls();
         for (int controlIndex = 0; controlIndex < numControls; ++controlIndex) {
             T control = (T) subtree.getControl(controlIndex);
             if (controlType.isAssignableFrom(control.getClass())
-                    && !storeResult.contains(control)) {
-                storeResult.add(control);
+                    && !result.contains(control)) {
+                result.add(control);
             }
         }
 
@@ -778,11 +776,11 @@ public class MySpatial {
             Node node = (Node) subtree;
             List<Spatial> children = node.getChildren();
             for (Spatial child : children) {
-                listControls(child, controlType, storeResult);
+                listControls(child, controlType, result);
             }
         }
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -810,26 +808,25 @@ public class MySpatial {
      */
     public static List<Material> listMaterials(Spatial subtree,
             List<Material> storeResult) {
-        if (storeResult == null) {
-            storeResult = new ArrayList<>(10);
-        }
+        List<Material> result = (storeResult == null)
+                ? new ArrayList<Material>(10) : storeResult;
 
         if (subtree instanceof Geometry) {
             Geometry geometry = (Geometry) subtree;
             Material material = geometry.getMaterial();
-            if (!storeResult.contains(material)) {
-                storeResult.add(material);
+            if (!result.contains(material)) {
+                result.add(material);
             }
 
         } else if (subtree instanceof Node) {
             Node node = (Node) subtree;
             List<Spatial> children = node.getChildren();
             for (Spatial child : children) {
-                listMaterials(child, storeResult);
+                listMaterials(child, result);
             }
         }
 
-        return storeResult;
+        return result;
     }
 
     /**

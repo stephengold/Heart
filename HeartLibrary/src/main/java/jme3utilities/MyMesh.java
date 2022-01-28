@@ -641,26 +641,25 @@ public class MyMesh {
      */
     public static List<Mesh> listMeshes(Spatial subtree,
             List<Mesh> storeResult) {
-        if (storeResult == null) {
-            storeResult = new ArrayList<>(10);
-        }
+        List<Mesh> result = (storeResult == null)
+                ? new ArrayList<Mesh>(10) : storeResult;
 
         if (subtree instanceof Geometry) {
             Geometry geometry = (Geometry) subtree;
             Mesh mesh = geometry.getMesh();
-            if (!storeResult.contains(mesh)) {
-                storeResult.add(mesh);
+            if (!result.contains(mesh)) {
+                result.add(mesh);
             }
 
         } else if (subtree instanceof Node) {
             Node node = (Node) subtree;
             List<Spatial> children = node.getChildren();
             for (Spatial child : children) {
-                listMeshes(child, storeResult);
+                listMeshes(child, result);
             }
         }
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -1198,10 +1197,12 @@ public class MyMesh {
             int[] storeResult) {
         Validate.nonNull(mesh, "mesh");
         Validate.nonNegative(vertexIndex, "vertex index");
+        int[] result;
         if (storeResult == null) {
-            storeResult = new int[maxWeights];
+            result = new int[maxWeights];
         } else {
             assert storeResult.length >= maxWeights : storeResult.length;
+            result = storeResult;
         }
 
         int maxWeightsPerVert = mesh.getMaxNumWeights();
@@ -1214,17 +1215,17 @@ public class MyMesh {
         boneIndexBuffer.position(maxWeights * vertexIndex);
         for (int wIndex = 0; wIndex < maxWeightsPerVert; ++wIndex) {
             int boneIndex = MyBuffer.readIndex(boneIndexBuffer);
-            storeResult[wIndex] = boneIndex;
+            result[wIndex] = boneIndex;
         }
         /*
          * Fill with -1s.
          */
-        int length = storeResult.length;
+        int length = result.length;
         for (int wIndex = maxWeightsPerVert; wIndex < length; ++wIndex) {
-            storeResult[wIndex] = -1;
+            result[wIndex] = -1;
         }
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -1239,10 +1240,12 @@ public class MyMesh {
             float[] storeResult) {
         Validate.nonNull(mesh, "mesh");
         Validate.nonNegative(vertexIndex, "vertex index");
+        float[] result;
         if (storeResult == null) {
-            storeResult = new float[maxWeights];
+            result = new float[maxWeights];
         } else {
             assert storeResult.length >= maxWeights : storeResult.length;
+            result = storeResult;
         }
 
         int maxWeightsPerVert = mesh.getMaxNumWeights();
@@ -1254,17 +1257,17 @@ public class MyMesh {
                 = mesh.getFloatBuffer(VertexBuffer.Type.BoneWeight);
         int startIndex = maxWeights * vertexIndex;
         for (int wIndex = 0; wIndex < maxWeightsPerVert; ++wIndex) {
-            storeResult[wIndex] = weightBuffer.get(startIndex + wIndex);
+            result[wIndex] = weightBuffer.get(startIndex + wIndex);
         }
         /*
          * Fill with 0s.
          */
-        int length = storeResult.length;
+        int length = result.length;
         for (int wIndex = maxWeightsPerVert; wIndex < length; ++wIndex) {
-            storeResult[wIndex] = 0f;
+            result[wIndex] = 0f;
         }
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -1280,9 +1283,7 @@ public class MyMesh {
             ColorRGBA storeResult) {
         Validate.nonNull(mesh, "mesh");
         Validate.nonNegative(vertexIndex, "vertex index");
-        if (storeResult == null) {
-            storeResult = new ColorRGBA();
-        }
+        ColorRGBA result = (storeResult == null) ? new ColorRGBA() : storeResult;
 
         VertexBuffer vertexBuffer = mesh.getBuffer(VertexBuffer.Type.Color);
         int numComponents = vertexBuffer.getNumComponents();
@@ -1297,18 +1298,18 @@ public class MyMesh {
             int g = byteBuffer.get(bufferPosition + 1) & 0xFF;
             int b = byteBuffer.get(bufferPosition + 2) & 0xFF;
             int a = byteBuffer.get(bufferPosition + 3) & 0xFF;
-            storeResult.set(r, g, b, a);
-            storeResult.multLocal(1f / 255);
+            result.set(r, g, b, a);
+            result.multLocal(1f / 255);
 
         } else {
             FloatBuffer floatBuffer = (FloatBuffer) data;
-            storeResult.r = floatBuffer.get(bufferPosition);
-            storeResult.g = floatBuffer.get(bufferPosition + 1);
-            storeResult.b = floatBuffer.get(bufferPosition + 2);
-            storeResult.a = floatBuffer.get(bufferPosition + 3);
+            result.r = floatBuffer.get(bufferPosition);
+            result.g = floatBuffer.get(bufferPosition + 1);
+            result.b = floatBuffer.get(bufferPosition + 2);
+            result.a = floatBuffer.get(bufferPosition + 3);
         }
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -1326,9 +1327,7 @@ public class MyMesh {
         Validate.nonNull(mesh, "mesh");
         Validate.nonNegative(vertexIndex, "vertex index");
         Validate.nonNull(skinningMatrices, "skinning matrices");
-        if (storeResult == null) {
-            storeResult = new Vector3f();
-        }
+        Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         if (isAnimated(mesh)) {
             Vector3f b = vertexVector3f(mesh,
@@ -1342,7 +1341,7 @@ public class MyMesh {
             Buffer boneIndexBuffer = biBuf.getDataReadOnly();
             boneIndexBuffer.position(maxWeights * vertexIndex);
 
-            storeResult.zero();
+            result.zero();
             int maxWeightsPerVertex = mesh.getMaxNumWeights();
             for (int wIndex = 0; wIndex < maxWeightsPerVertex; ++wIndex) {
                 float weight = weightBuffer.get();
@@ -1357,18 +1356,18 @@ public class MyMesh {
                     float xOf = s.m00 * b.x + s.m01 * b.y + s.m02 * b.z + s.m03;
                     float yOf = s.m10 * b.x + s.m11 * b.y + s.m12 * b.z + s.m13;
                     float zOf = s.m20 * b.x + s.m21 * b.y + s.m22 * b.z + s.m23;
-                    storeResult.x += weight * xOf;
-                    storeResult.y += weight * yOf;
-                    storeResult.z += weight * zOf;
+                    result.x += weight * xOf;
+                    result.y += weight * yOf;
+                    result.z += weight * zOf;
                 }
             }
 
         } else { // not an animated mesh
             vertexVector3f(mesh, VertexBuffer.Type.Position, vertexIndex,
-                    storeResult);
+                    result);
         }
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -1529,16 +1528,14 @@ public class MyMesh {
                 || bufferType == VertexBuffer.Type.TexCoord7
                 || bufferType == VertexBuffer.Type.TexCoord8 : bufferType;
         Validate.nonNegative(vertexIndex, "vertex index");
-        if (storeResult == null) {
-            storeResult = new Vector2f();
-        }
+        Vector2f result = (storeResult == null) ? new Vector2f() : storeResult;
 
         FloatBuffer floatBuffer = mesh.getFloatBuffer(bufferType);
         int floatIndex = 2 * vertexIndex;
-        storeResult.x = floatBuffer.get(floatIndex);
-        storeResult.y = floatBuffer.get(floatIndex + 1);
+        result.x = floatBuffer.get(floatIndex);
+        result.y = floatBuffer.get(floatIndex + 1);
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -1594,18 +1591,16 @@ public class MyMesh {
                 || bufferType == VertexBuffer.Type.HWBoneWeight
                 || bufferType == VertexBuffer.Type.Tangent : bufferType;
         Validate.nonNegative(vertexIndex, "vertex index");
-        if (storeResult == null) {
-            storeResult = new Vector4f();
-        }
+        Vector4f result = (storeResult == null) ? new Vector4f() : storeResult;
 
         FloatBuffer floatBuffer = mesh.getFloatBuffer(bufferType);
         int floatIndex = 4 * vertexIndex;
-        storeResult.x = floatBuffer.get(floatIndex);
-        storeResult.y = floatBuffer.get(floatIndex + 1);
-        storeResult.z = floatBuffer.get(floatIndex + 2);
-        storeResult.w = floatBuffer.get(floatIndex + 3);
+        result.x = floatBuffer.get(floatIndex);
+        result.y = floatBuffer.get(floatIndex + 1);
+        result.z = floatBuffer.get(floatIndex + 2);
+        result.w = floatBuffer.get(floatIndex + 3);
 
-        return storeResult;
+        return result;
     }
 
     /**
@@ -1624,19 +1619,17 @@ public class MyMesh {
             Vector3f storeResult) {
         Validate.nonNegative(vertexIndex, "vertex index");
         Validate.nonNull(skinningMatrices, "skinning matrices");
-        if (storeResult == null) {
-            storeResult = new Vector3f();
-        }
+        Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         Mesh mesh = geometry.getMesh();
         Vector3f meshLocation
                 = vertexLocation(mesh, vertexIndex, skinningMatrices, null);
         if (geometry.isIgnoreTransform()) {
-            storeResult.set(meshLocation);
+            result.set(meshLocation);
         } else {
-            geometry.localToWorld(meshLocation, storeResult);
+            geometry.localToWorld(meshLocation, result);
         }
 
-        return storeResult;
+        return result;
     }
 }
