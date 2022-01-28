@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -770,6 +770,17 @@ public class Describer implements Cloneable {
             desc = MyVector3f.describeDirection(norm);
             builder.append(desc);
             builder.append(']');
+        }
+
+        if (mesh.getBuffer(VertexBuffer.Type.Color) != null) {
+            int length = builder.length();
+            if (length < 43) {
+                builder.append(MyString.repeat(" ", 43 - length));
+            }
+            builder.append(' ');
+            ColorRGBA color = MyMesh.vertexColor(mesh, vertexIndex, null);
+            desc = MyColor.describe(color);
+            builder.append(desc);
         }
 
         return builder.toString();
