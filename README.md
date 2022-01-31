@@ -266,6 +266,7 @@ software developers:
     + the [Linux Mint][mint] operating system
     + LWJGL, the Lightweight Java Game Library
     + the [Markdown] document-conversion tool
+    + the [Meld] visual merge tool
     + Microsoft Windows
     + the PMD source-code analyzer
     + the [WinMerge] differencing and merging tool
@@ -302,6 +303,7 @@ correct the situation: sgold@sonic.net
 [license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
 [log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
+[meld]: https://meldmerge.org "Meld Project"
 [minie]: https://github.com/stephengold/Minie "Minie Project"
 [mint]: https://linuxmint.com "Linux Mint Project"
 [netbeans]: https://netbeans.org "NetBeans Project"
