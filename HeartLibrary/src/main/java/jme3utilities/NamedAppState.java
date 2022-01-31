@@ -74,7 +74,7 @@ public class NamedAppState extends AbstractAppState {
      *
      * @param initialState true &rarr; enabled, false &rarr; disabled
      */
-    public NamedAppState(boolean initialState) {
+    public NamedAppState(boolean initialState) { // TODO use InitialState enum
         String className = getClass().getSimpleName();
         String id = idGenerator.unique(className);
         setId(id);

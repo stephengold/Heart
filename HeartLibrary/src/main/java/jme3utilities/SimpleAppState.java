@@ -109,7 +109,7 @@ public class SimpleAppState extends NamedAppState {
      *
      * @param enabled true &rarr; enabled, false &rarr; disabled
      */
-    public SimpleAppState(boolean enabled) {
+    public SimpleAppState(boolean enabled) { // TODO use InitialState enum
         super(enabled);
     }
     // *************************************************************************
