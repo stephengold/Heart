@@ -163,10 +163,10 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 
 1. Install a [Java Development Kit (JDK)][openJDK],
    if you don't already have one.
-2. Set the `JAVA_HOME` environment variable:
-  + using Bash: `export JAVA_HOME="` *path to your JDK* `"`
-  + using Windows Command Prompt: `set JAVA_HOME="` *path to your JDK* `"`
-  + using PowerShell: `$env:JAVA_HOME = '` *path to your JDK* `'`
+2. Point the `JAVA_HOME` environment variable to your JDK installation:
+  + using Bash: `export JAVA_HOME="` *path to installation* `"`
+  + using Windows Command Prompt: `set JAVA_HOME="` *path to installation* `"`
+  + using PowerShell: `$env:JAVA_HOME = '` *path to installation* `'`
 3. Download and extract the Heart source code from GitHub:
   + using Git:
     + `git clone https://github.com/stephengold/Heart.git`
@@ -233,12 +233,12 @@ The pre-built libraries are compatible with JDK 8.
 The evolution of this project is chronicled in
 [its release log][log].
 
-The oldest parts of the Heart Library were originally included in SkyControl.
+The oldest parts of the Heart Library were originally included in [SkyControl].
 
 From May 2017 to February 2020, Heart was a sub-project of
 [the Jme3-utilities Project][utilities].
 
-Since February 2020, Heart has been a separate project at
+Since February 2020, Heart has been a separate project, hosted at
 [GitHub][heart].
 
 [Jump to table of contents](#toc)
