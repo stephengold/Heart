@@ -15,7 +15,8 @@ Complete source code (in Java) is provided under
 Many other libraries (including [jme3-wireframe], [JmePower], [Minie], [SkyControl], and [Wes])
 depend on the Heart Library.
 
-<a name="toc"/>
+
+<a name="toc"></a>
 
 ## Contents of this document
 
@@ -27,7 +28,8 @@ depend on the Heart Library.
 + [History](#history)
 + [Acknowledgments](#acks)
 
-<a name="features"/>
+
+<a name="features"></a>
 
 ## Important features
 
@@ -74,7 +76,8 @@ depend on the Heart Library.
 
 [Jump to table of contents](#toc)
 
-<a name="add"/>
+
+<a name="add"></a>
 
 ## How to add Heart to an existing project
 
@@ -152,7 +155,8 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 
 [Jump to table of contents](#toc)
 
-<a name="build"/>
+
+<a name="build"></a>
 
 ## How to build Heart from source
 
@@ -190,7 +194,8 @@ You can restore the project to a pristine state:
 
 [Jump to table of contents](#toc)
 
-<a name="downloads"/>
+
+<a name="downloads"></a>
 
 ## Downloads
 
@@ -207,7 +212,8 @@ Old Maven artifacts (v5.0.0 through v6.4.0) are available from JCenter.
 
 [Jump to table of contents](#toc)
 
-<a name="conventions"/>
+
+<a name="conventions"></a>
 
 ## Conventions
 
@@ -219,7 +225,7 @@ The pre-built libraries are compatible with JDK 8.
 [Jump to table of contents](#toc)
 
 
-<a name="history"/>
+<a name="history"></a>
 
 ## History
 
@@ -237,7 +243,7 @@ Since February 2020, Heart has been a separate project at
 [Jump to table of contents](#toc)
 
 
-<a name="acks"/>
+<a name="acks"></a>
 
 ## Acknowledgments
 
