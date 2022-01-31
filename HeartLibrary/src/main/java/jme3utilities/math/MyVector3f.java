@@ -1218,18 +1218,18 @@ public class MyVector3f {
     /**
      * Determine the rate of change between 2 vectors.
      *
-     * @param dt the time interval (&gt;0)
-     * @param v1 the value at the start time (not null, unaffected)
-     * @param v2 the value at the end time (not null, unaffected)
+     * @param timeInterval the time interval (&gt;0)
+     * @param startValue the value at the start time (not null, unaffected)
+     * @param endValue the value at the end time (not null, unaffected)
      * @param storeResult storage for the result (modified if not null)
      * @return a derivative vector (either storeResult or a new instance)
      */
-    public static Vector3f velocity(float dt, Vector3f v1, Vector3f v2,
-            Vector3f storeResult) {
-        Validate.positive(dt, "dt");
+    public static Vector3f velocity(float timeInterval, Vector3f startValue,
+            Vector3f endValue, Vector3f storeResult) {
+        Validate.positive(timeInterval, "time interval");
 
-        Vector3f result = v2.subtract(v1, storeResult);
-        result.divideLocal(dt);
+        Vector3f result = endValue.subtract(startValue, storeResult);
+        result.divideLocal(timeInterval);
 
         return result;
     }
