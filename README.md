@@ -12,7 +12,8 @@ It contains 3 sub-projects:
 Complete source code (in Java) is provided under
 [a 3-clause BSD license][license].
 
-Many other libraries (including [jme3-wireframe], [JmePower], [Minie], [SkyControl], and [Wes])
+Many other libraries (including [Acorus], [jme3-wireframe], [JmePower],
+[Minie], [SkyControl], and [Wes])
 depend on the Heart Library.
 
 
@@ -283,6 +284,7 @@ correct the situation: sgold@sonic.net
 [Jump to table of contents](#toc)
 
 
+[acorus]: https://github.com/stephengold/Acorus "Acorus Project"
 [ant]: https://ant.apache.org "Apache Ant Project"
 [blender]: https://docs.blender.org "Blender Project"
 [chrome]: https://www.google.com/chrome "Chrome"
