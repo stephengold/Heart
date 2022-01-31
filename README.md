@@ -5,9 +5,9 @@
 
 It contains 3 sub-projects:
 
- 1. HeartLibrary: the Heart runtime library and its automated tests
- 2. HeartExamples: demos, examples, and non-automated test software
- 3. J3oDump: a command-line utility to dump J3O assets
+1. HeartLibrary: the Heart runtime library and its automated tests
+2. HeartExamples: demos, examples, and non-automated test software
+3. J3oDump: a command-line utility to dump J3O assets
 
 Complete source code (in Java) is provided under
 [a 3-clause BSD license][license].
@@ -34,46 +34,46 @@ depend on the Heart Library.
 
 ## Important features
 
- + debugging aids:
-   + `Dumper` to concisely dump a scene graph or a subtree thereof, or to
-      dump appstates or viewports
-   + `Validate` to validate arguments passed to a library method
-   + `AxesVisualizer` to visualize the coordinate axes of a `Node`
-   + `BoundsVisualizer` to visualize the world bounds of a `Spatial`
-   + `PointVisualizer` to visualize a particular location in the world
-   + `SkeletonVisualizer` to visualize the bones/joints of an animated model
-   + `VectorVisualizer` to visualize a vector
-   + `MyAsset.createDebugMaterial()` to visualize mesh normals
-      with or without gamma correction
-   + `MyMesh.boneWeightMaterial()` to visualize bone weights in a `Mesh`
- + `Mesh` subclasses:
-   + `Dodecahedron`, `Icosahedron`, `Octahedron`, and `Tetrahedron`
-     to generate meshes for Platonic solids
-   + `Cone`, `DomeMesh`, `Icosphere`, `Octasphere`, and `Prism`
-     to generate familiar 3-D shapes
-   + `RectangleMesh` to generate custom quads
-   + `DiscMesh` and `RoundedRectangle` to generate eye-pleasing backgrounds
-     for user-interface text
- + `MyMesh` utilities to analyze and manipulate JMonkeyEngine meshes:
-   + compress a `Mesh` by introducing an index buffer
-   + expand a `Mesh` to ensure no vertex data are re-used
-   + generate normals for an outward-facing sphere, a faceted mesh,
-     or a smooth mesh
-   + translate all vertices of a `Mesh`
-   + merge 2 meshes into one
-   + flip mesh normals and/or triangle windings
-   + enumerate all vertices in a scene-graph subtree
-   + convert mesh triangles to lines
- + JME-oriented math:
-   + generate pseudo-random quaternions and vectors
-   + interpolate and cardinalize quaternions and vectors
-   + other useful operations on scalars, quaternions, vectors,
-     arrays, and buffers
-   + generate 2-D Perlin noise
- + loaders for `Properties` and `String` assets
- + `ContrastAdjustmentFilter`
- + an `AppState` to manage `ViewPort` updating
- + and much, much more!
++ debugging aids:
+  + `Dumper` to concisely dump a scene graph or a subtree thereof, or to
+     dump appstates or viewports
+  + `Validate` to validate arguments passed to a library method
+  + `AxesVisualizer` to visualize the coordinate axes of a `Node`
+  + `BoundsVisualizer` to visualize the world bounds of a `Spatial`
+  + `PointVisualizer` to visualize a particular location in the world
+  + `SkeletonVisualizer` to visualize the bones/joints of an animated model
+  + `VectorVisualizer` to visualize a vector
+  + `MyAsset.createDebugMaterial()` to visualize mesh normals
+     with or without gamma correction
+  + `MyMesh.boneWeightMaterial()` to visualize bone weights in a `Mesh`
++ `Mesh` subclasses:
+  + `Dodecahedron`, `Icosahedron`, `Octahedron`, and `Tetrahedron`
+    to generate meshes for Platonic solids
+  + `Cone`, `DomeMesh`, `Icosphere`, `Octasphere`, and `Prism`
+    to generate familiar 3-D shapes
+  + `RectangleMesh` to generate custom quads
+  + `DiscMesh` and `RoundedRectangle` to generate eye-pleasing backgrounds
+    for user-interface text
++ `MyMesh` utilities to analyze and manipulate JMonkeyEngine meshes:
+  + compress a `Mesh` by introducing an index buffer
+  + expand a `Mesh` to ensure no vertex data are re-used
+  + generate normals for an outward-facing sphere, a faceted mesh,
+    or a smooth mesh
+  + translate all vertices of a `Mesh`
+  + merge 2 meshes into one
+  + flip mesh normals and/or triangle windings
+  + enumerate all vertices in a scene-graph subtree
+  + convert mesh triangles to lines
++ JME-oriented math:
+  + generate pseudo-random quaternions and vectors
+  + interpolate and cardinalize quaternions and vectors
+  + other useful operations on scalars, quaternions, vectors,
+    arrays, and buffers
+  + generate 2-D Perlin noise
++ loaders for `Properties` and `String` assets
++ `ContrastAdjustmentFilter`
++ an `AppState` to manage `ViewPort` updating
++ and much, much more!
 
 [Jump to table of contents](#toc)
 
@@ -186,12 +186,12 @@ After a successful build,
 Maven artifacts will be found in `HeartLibrary/build/libs`.
 
 You can install the artifacts to your local Maven repository:
- + using Bash or PowerShell:  `./gradlew install`
- + using Windows Command Prompt:  `.\gradlew install`
++ using Bash or PowerShell: `./gradlew install`
++ using Windows Command Prompt: `.\gradlew install`
 
 You can restore the project to a pristine state:
- + using Bash or PowerShell: `./gradlew clean`
- + using Windows Command Prompt: `.\gradlew clean`
++ using Bash or PowerShell: `./gradlew clean`
++ using Windows Command Prompt: `.\gradlew clean`
 
 [Jump to table of contents](#toc)
 
