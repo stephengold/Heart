@@ -310,4 +310,4 @@ correct the situation: sgold@sonic.net
 [sonatype]: https://www.sonatype.com "Sonatype"
 [utilities]: https://github.com/stephengold/jme3-utilities "Jme3-utilities Project"
 [wes]: https://github.com/stephengold/Wes "Wes Project"
-[winmerge]: http://winmerge.org "WinMerge Project"
+[winmerge]: https://winmerge.org "WinMerge Project"
