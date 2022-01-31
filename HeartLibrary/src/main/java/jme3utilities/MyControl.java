@@ -26,9 +26,10 @@
  */
 package jme3utilities;
 
-import com.jme3.anim.AnimClip;
 import com.jme3.anim.AnimComposer;
+import com.jme3.anim.AnimLayer;
 import com.jme3.anim.SkinningControl;
+import com.jme3.anim.tween.action.Action;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.Animation;
 import com.jme3.animation.Skeleton;
@@ -101,23 +102,38 @@ public class MyControl {
 
         if (control instanceof AnimComposer) {
             AnimComposer composer = (AnimComposer) control;
-            result.append('[');
+
+            result.append("[clips=");
             Collection<String> nameCollection = composer.getAnimClipsNames();
             int numClips = nameCollection.size();
-            if (numClips > 3) {
-                result.append(numClips);
-            } else {
-                boolean isFirst = true;
-                for (String clipName : nameCollection) {
-                    if (isFirst) {
-                        isFirst = false;
-                    } else {
-                        result.append(',');
-                    }
-                    AnimClip clip = composer.getAnimClip(clipName);
-                    String desc = MyAnimation.describe(clip, composer);
-                    result.append(desc);
+            result.append(numClips);
+
+            float gSpeed = composer.getGlobalSpeed();
+            if (gSpeed != 1f) {
+                result.append(" gSpeed=");
+                result.append(MyString.describe(gSpeed));
+            }
+
+            result.append(" layers");
+            nameCollection = composer.getLayerNames();
+            int numLayers = nameCollection.size();
+            if (numLayers == 1) {
+                String name = Heart.first(nameCollection);
+                AnimLayer layer = composer.getLayer(name);
+                result.append("[t=");
+                double animTime = layer.getTime();
+                result.append(MyString.describeFraction((float) animTime));
+
+                Action action = layer.getCurrentAction();
+                if (action != null) {
+                    result.append(" action[");
+                    result.append(action);
+                    result.append(']');
                 }
+                result.append(']');
+            } else {
+                result.append('=');
+                result.append(numLayers);
             }
             result.append(']');
 
