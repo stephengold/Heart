@@ -26,6 +26,6 @@ dependencies {
     implementation project(':HeartLibrary')
 }
 
-distTar.dependsOn(':HeartLibrary:pom', ':HeartLibrary:pomAsc')
-distZip.dependsOn(':HeartLibrary:pom', ':HeartLibrary:pomAsc')
-startScripts.dependsOn(':HeartLibrary:pom', ':HeartLibrary:pomAsc')
+distTar.dependsOn(':HeartLibrary:build')
+distZip.dependsOn(':HeartLibrary:build')
+startScripts.dependsOn(':HeartLibrary:build')
