@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2021, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -74,11 +74,20 @@ public class NamedAppState extends AbstractAppState {
      *
      * @param initialState true &rarr; enabled, false &rarr; disabled
      */
-    public NamedAppState(boolean initialState) { // TODO use InitialState enum
+    public NamedAppState(boolean initialState) {
+        this(initialState ? InitialState.Enabled : InitialState.Disabled);
+    }
+
+    /**
+     * Instantiate an uninitialized AppState with no influence.
+     *
+     * @param initialState Enabled or Disabled (null means disabled)
+     */
+    public NamedAppState(InitialState initialState) {
         String className = getClass().getSimpleName();
         String id = idGenerator.unique(className);
         setId(id);
-        super.setEnabled(initialState);
+        super.setEnabled(initialState == InitialState.Enabled);
     }
     // *************************************************************************
     // new methods exposed

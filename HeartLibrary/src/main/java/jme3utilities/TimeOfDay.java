@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 import jme3utilities.math.MyMath;
 
 /**
- * Named app state to simulate the time of day in a game.
+ * A named appstate to simulate the time of day in a game.
  * <p>
  * Each instance is enabled at creation.
  *
@@ -90,7 +90,7 @@ public class TimeOfDay extends NamedAppState {
      * @param startHour hours since midnight (&lt;24, &ge;0)
      */
     public TimeOfDay(float startHour) {
-        super(true);
+        super(InitialState.Enabled);
         if (!(startHour >= 0f && startHour < hoursPerDay)) {
             logger.log(Level.SEVERE, "startHour={0}", startHour);
             throw new IllegalArgumentException(

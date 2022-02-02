@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -107,10 +107,19 @@ public class SimpleAppState extends NamedAppState {
     /**
      * Instantiate an uninitialized state.
      *
-     * @param enabled true &rarr; enabled, false &rarr; disabled
+     * @param initialState true &rarr; enabled, false &rarr; disabled
      */
-    public SimpleAppState(boolean enabled) { // TODO use InitialState enum
-        super(enabled);
+    public SimpleAppState(boolean initialState) {
+        super(initialState);
+    }
+
+    /**
+     * Instantiate an uninitialized state.
+     *
+     * @param initialState Enabled or Disabled (null means disabled)
+     */
+    public SimpleAppState(InitialState initialState) {
+        super(initialState);
     }
     // *************************************************************************
     // new methods exposed
