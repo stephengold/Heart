@@ -36,7 +36,6 @@ import com.jme3.post.FilterPostProcessor;
 import com.jme3.post.SceneProcessor;
 import com.jme3.renderer.ViewPort;
 import com.jme3.util.clone.Cloner;
-import com.jme3.util.clone.JmeCloneable;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Graphics2D;
