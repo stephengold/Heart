@@ -32,6 +32,8 @@ import com.jme3.asset.AssetManager;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.Savable;
 import com.jme3.export.binary.BinaryExporter;
+import com.jme3.input.InputManager;
+import com.jme3.input.KeyInput;
 import com.jme3.post.FilterPostProcessor;
 import com.jme3.post.SceneProcessor;
 import com.jme3.renderer.ViewPort;
@@ -45,6 +47,7 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -328,6 +331,34 @@ public class Heart {
         viewPort.addProcessor(fpp);
 
         return fpp;
+    }
+
+    /**
+     * Access the keyboard interface of the specified InputManager.
+     *
+     * @param inputManager the InputManager to access (not null, unaffected)
+     * @return the pre-existing instance
+     */
+    public static KeyInput getKeyInput(InputManager inputManager) {
+        /*
+         * Use reflection to access the "keys" field of the input manager.
+         */
+        Field keyInputField;
+        try {
+            keyInputField = InputManager.class.getDeclaredField("keys");
+        } catch (NoSuchFieldException exception) {
+            throw new RuntimeException(exception);
+        }
+        keyInputField.setAccessible(true);
+
+        KeyInput result;
+        try {
+            result = (KeyInput) keyInputField.get(inputManager);
+        } catch (IllegalAccessException exception) {
+            throw new RuntimeException(exception);
+        }
+
+        return result;
     }
 
     /**
