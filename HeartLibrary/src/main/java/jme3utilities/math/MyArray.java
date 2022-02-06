@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -273,6 +273,22 @@ final public class MyArray {
      * @return true if sorted, otherwise false
      */
     public static boolean isSorted(float[] array) {
+        for (int i = 0; i < array.length - 1; ++i) {
+            if (array[i] >= array[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Test whether the specified array is sorted in ascending order with no
+     * duplicates.
+     *
+     * @param array the array to analyze (not null, unaffected)
+     * @return true if sorted, otherwise false
+     */
+    public static boolean isSorted(int[] array) {
         for (int i = 0; i < array.length - 1; ++i) {
             if (array[i] >= array[i + 1]) {
                 return false;
