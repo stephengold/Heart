@@ -137,8 +137,7 @@ public class SimpleAppState extends NamedAppState {
         cam = simpleApplication.getCamera();
         assert cam != null;
 
-        flyCam = simpleApplication.getFlyByCamera();
-        assert flyCam != null;
+        flyCam = simpleApplication.getFlyByCamera(); // may be null
 
         inputManager = simpleApplication.getInputManager();
         assert inputManager != null;
