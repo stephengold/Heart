@@ -86,7 +86,7 @@ Adding the Heart Library to an existing [jMonkeyEngine][jme] project should be
 a simple matter of adding it to the classpath.
 
 Heart comes pre-built as a single library that depends on
-the standard jme3-core library from jMonkeyEngine.
+the standard "jme3-core" library from jMonkeyEngine.
 
 For projects built using Maven or [Gradle], it is sufficient to specify the
 dependency on the Heart Library.  The build tools should automatically
@@ -218,7 +218,7 @@ Old Maven artifacts (v5.0.0 through v6.4.0) are available from JCenter.
 
 ## Conventions
 
-Package names begin with `jme3utilities.`
+Package names begin with `jme3utilities`
 
 The source code is compatible with JDK 7.
 The pre-built libraries are compatible with JDK 8.
