@@ -1,5 +1,28 @@
 # release log for the Heart Library and related tests
 
+## Version 7.3.0 released on TBD
+
+ + Bugfix:  `ClassCastException` in `MyMesh.vertexColor()` for some meshes
+ + Bugfix:  `AssertionError` in `SimpleAppState.refreshCachedFields()`
+   when no `FlyByCamera` is present
+ + Deprecated 3 Java 7 compatibility methods:
+   + `MyMath.isFinite(double)`
+   + `MyMath.isFinite(float)`
+   + `MyString.join8()`
+ + Added the `InitialState` enum and alternative constructors
+   for the `NamedAppState` and `SimpleAppState` classes.
+ + Added 4 methods:
+   + `Heart.getKeyInput()`
+   + `MyArray.isSorted(int[])`
+   + `MyBuffer.fill()`
+   + `MyVector3f.rejection()`
+ + Added vertex colors to mesh descriptions.
+ + Changed how an `AnimComposer` is described.
+ + Tests:
+   + Converted test applications to automated tests.
+   + Added the `TestMergeMeshes` test app.
+   + Upgraded 2 test apps to use the `AbstractDemo` class from Acorus.
+
 ## Version 7.2.0 released on 23 January 2022
 
  + Bugfix:  can't de-serialize a `SkeletonMesh`
