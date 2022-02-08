@@ -1225,13 +1225,6 @@ public class MyVector3f {
         return result;
     }
 
-   public static void main(String... args) {
-        Vector3f v1 = new Vector3f(1f, 2f, 3f);
-        Vector3f v2 = new Vector3f(0f, -1f, -1f);
-        Vector3f r12 = MyVector3f.rejection(v1, v2, null);
-        System.out.print("");
-    }
-
     /**
      * Standardize a vector in preparation for hashing.
      *
