@@ -67,9 +67,6 @@ task TestSkeletonVisualizer(type: JavaExec) {
 task TestGenerator(type: JavaExec) {
     mainClass = 'jme3utilities.math.test.TestGenerator'
 }
-task TestMyMath(type: JavaExec) {
-    mainClass = 'jme3utilities.math.test.TestMyMath'
-}
 task TestMyVector3f(type: JavaExec) {
     mainClass = 'jme3utilities.math.test.TestMyVector3f'
 }

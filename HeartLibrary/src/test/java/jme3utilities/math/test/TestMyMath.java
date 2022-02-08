@@ -48,6 +48,43 @@ public class TestMyMath {
     // *************************************************************************
     // new methods exposed
 
+    /**
+     * Test cube(), cubeRoot(), and modulo().
+     */
+    @Test
+    public void testMy1() {
+        Assert.assertEquals(0f, MyMath.cube(0f), 0f);
+        Assert.assertEquals(-27f, MyMath.cube(-3f), 0f);
+        Assert.assertEquals(512f, MyMath.cube(8f), 0f);
+        Assert.assertEquals(Float.POSITIVE_INFINITY,
+                MyMath.cube(Float.MAX_VALUE / 2f), 0f);
+
+        Assert.assertEquals(0f, MyMath.cubeRoot(0f), 0f);
+        Assert.assertEquals(-1.44225f, MyMath.cubeRoot(-3f), 1e-6f);
+        Assert.assertEquals(2f, MyMath.cubeRoot(8f), 0f);
+        Assert.assertEquals(5.5411915e12f,
+                MyMath.cubeRoot(Float.MAX_VALUE / 2f), 1e6f);
+
+        Assert.assertEquals(0, MyMath.modulo(0, 2));
+        Assert.assertEquals(1, MyMath.modulo(1, 3));
+        Assert.assertEquals(3, MyMath.modulo(-1, 4));
+        Assert.assertEquals(2, MyMath.modulo(12, 5), 0f);
+
+        Assert.assertEquals(0f, MyMath.modulo(0f, 2f), 0f);
+        Assert.assertEquals(1f, MyMath.modulo(1f, 3f), 0f);
+        Assert.assertEquals(3f, MyMath.modulo(-1f, 4f), 0f);
+        Assert.assertEquals(1.5f, MyMath.modulo(11.5f, 5f), 0f);
+
+        Assert.assertEquals(0.0, MyMath.modulo(0.0, 2.0), 0.0);
+        Assert.assertEquals(1.0, MyMath.modulo(1.0, 3.0), 0.0);
+        Assert.assertEquals(3.0, MyMath.modulo(-1.0, 4.0), 0.0);
+        Assert.assertEquals(1.5, MyMath.modulo(11.5, 5.0), 0.0);
+    }
+
+    /**
+     * Test hypotenuse(), hypotenuseDouble(), max(), maxDouble(), min(),
+     * minDouble(), and sumOfSquares().
+     */
     @Test
     public void testMyMath() {
         float zero = MyMath.hypotenuse();
