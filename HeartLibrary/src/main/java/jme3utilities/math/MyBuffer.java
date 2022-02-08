@@ -388,7 +388,7 @@ final public class MyBuffer {
         boolean result = true;
         for (int floatPos = startPosition; floatPos < endPosition; ++floatPos) {
             float fValue = buffer.get(floatPos);
-            if (!MyMath.isFinite(fValue)) {
+            if (!Float.isFinite(fValue)) {
                 result = false;
                 break;
             }

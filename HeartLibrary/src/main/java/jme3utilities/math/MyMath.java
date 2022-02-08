@@ -449,7 +449,9 @@ public class MyMath {
      *
      * @param value the value to test
      * @return true if finite, false if NaN or infinity
+     * @deprecated use {@link java.lang.Float#isFinite(float)}
      */
+    @Deprecated
     public static boolean isFinite(float value) {
         if (Float.isInfinite(value)) {
             return false;
@@ -466,7 +468,9 @@ public class MyMath {
      *
      * @param dValue the value to test
      * @return true if finite, false if NaN or infinity
+     * @deprecated use {@link java.lang.Double#isFinite(double)}
      */
+    @Deprecated
     public static boolean isFiniteDouble(double dValue) {
         if (Double.isInfinite(dValue)) {
             return false;

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,6 @@ import com.jme3.math.Vector3f;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jme3utilities.math.MyMath;
 import jme3utilities.math.MyQuaternion;
 import jme3utilities.math.MyVector3f;
 
@@ -82,7 +81,7 @@ final public class Validate {
      * @throws IllegalArgumentException if the value is NaN or infinite
      */
     public static boolean finite(float fValue, String description) {
-        if (!MyMath.isFinite(fValue)) {
+        if (!Float.isFinite(fValue)) {
             String what;
             if (description == null) {
                 what = "float argument";
@@ -106,7 +105,7 @@ final public class Validate {
      * @throws IllegalArgumentException if the value is NaN or infinite
      */
     public static boolean finite(double dValue, String description) {
-        if (!MyMath.isFiniteDouble(dValue)) {
+        if (!Double.isFinite(dValue)) {
             String what;
             if (description == null) {
                 what = "double argument";
