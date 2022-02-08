@@ -27,6 +27,7 @@
 package jme3utilities.test;
 
 import com.jme3.math.Vector3f;
+import jme3utilities.math.ReadXZ;
 import org.junit.Assert;
 
 /**
@@ -73,5 +74,18 @@ public class HeartTest {
     public static void assertEquals(Vector3f expected, Vector3f actual,
             float tolerance) {
         assertEquals(expected.x, expected.y, expected.z, actual, tolerance);
+    }
+
+    /**
+     * Verify that 2 X-Z vectors are equal to within some tolerance.
+     *
+     * @param expected the expected value (not null)
+     * @param actual the vector to test (not null)
+     * @param tolerance the allowable difference for each component
+     */
+    public static void assertEquals(ReadXZ expected, ReadXZ actual,
+            float tolerance) {
+        Assert.assertEquals(expected.getX(), actual.getX(), tolerance);
+        Assert.assertEquals(expected.getZ(), actual.getZ(), tolerance);
     }
 }
