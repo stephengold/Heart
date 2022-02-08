@@ -81,9 +81,6 @@ task TestContrast(type: JavaExec) {
 task TestMulticolor(type: JavaExec) {
     mainClass = 'jme3utilities.test.TestMulticolor'
 }
-task TestMySkeleton(type: JavaExec) {
-    mainClass = 'jme3utilities.test.TestMySkeleton'
-}
 task TestMySpatial(type: JavaExec) {
     mainClass = 'jme3utilities.test.TestMySpatial'
 }
