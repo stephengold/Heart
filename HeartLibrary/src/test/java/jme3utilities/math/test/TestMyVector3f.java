@@ -26,6 +26,7 @@
  */
 package jme3utilities.math.test;
 
+import com.jme3.math.FastMath;
 import com.jme3.math.Vector3f;
 import java.util.logging.Logger;
 import jme3utilities.math.MyVector3f;
@@ -135,5 +136,81 @@ public class TestMyVector3f {
             HeartTest.assertEquals(0f, 0f, 0f, r111, 1e-6f);
             Assert.assertSame(v1, r111);
         }
+    }
+
+    /**
+     * Test yRotate() and doCoincide().
+     */
+    @Test
+    public void test2() {
+        Vector3f v1 = new Vector3f(3f, 4f, 12f);
+        Vector3f saveV1 = v1.clone();
+
+        Vector3f v2 = new Vector3f(2.5f, 4.5f, 11.5f);
+        Vector3f saveV2 = v2.clone();
+
+        Vector3f v3 = new Vector3f(0f, 0f, 0f);
+        Vector3f saveV3 = v3.clone();
+
+        Vector3f v4 = new Vector3f(1f, 0f, 0f);
+        Vector3f saveV4 = v4.clone();
+
+        Vector3f v5 = new Vector3f(0f, 0f, 1f);
+        Vector3f saveV5 = v5.clone();
+
+        {
+            Vector3f v = MyVector3f.yRotate(v1, 0f);
+            HeartTest.assertEquals(3f, 4f, 12f, v, 1e-6f);
+            HeartTest.assertEquals(saveV1, v1, 0f);
+        }
+        {
+            Vector3f v = MyVector3f.yRotate(v2, FastMath.HALF_PI);
+            HeartTest.assertEquals(-11.5f, 4.5f, 2.5f, v, 1e-6f);
+            HeartTest.assertEquals(saveV2, v2, 0f);
+        }
+        {
+            Vector3f v = MyVector3f.yRotate(v2, FastMath.PI);
+            HeartTest.assertEquals(-2.5f, 4.5f, -11.5f, v, 1e-6f);
+            HeartTest.assertEquals(saveV2, v2, 0f);
+        }
+        {
+            Vector3f v = MyVector3f.yRotate(v3, 1f);
+            HeartTest.assertEquals(0f, 0f, 0f, v, 1e-6f);
+            HeartTest.assertEquals(saveV3, v3, 0f);
+        }
+        {
+            Vector3f v = MyVector3f.yRotate(v2, FastMath.TWO_PI);
+            HeartTest.assertEquals(2.5f, 4.5f, 11.5f, v, 1e-5f);
+            HeartTest.assertEquals(saveV2, v2, 0f);
+        }
+
+        {
+            Assert.assertTrue(MyVector3f.doCoincide(v1, v2, 0.76f));
+            Assert.assertFalse(MyVector3f.doCoincide(v2, v1, 0.74f));
+            HeartTest.assertEquals(saveV1, v1, 0f);
+            HeartTest.assertEquals(saveV2, v2, 0f);
+        }
+        {
+            Assert.assertTrue(MyVector3f.doCoincide(v4, v5, 2.01f));
+            Assert.assertFalse(MyVector3f.doCoincide(v5, v4, 1.99f));
+            HeartTest.assertEquals(saveV4, v4, 0f);
+            HeartTest.assertEquals(saveV5, v5, 0f);
+        }
+    }
+
+    /**
+     * Test areCollinear().
+     */
+    @Test
+    public void test3() {
+        Vector3f p1 = new Vector3f(1f, 2f, 3f);
+        Vector3f p2 = new Vector3f(2f, 0f, 5f);
+        Vector3f p2bad = new Vector3f(2f, 1f, 5f);
+        Vector3f p3 = new Vector3f(4f, -4f, 9f);
+
+        Assert.assertTrue(MyVector3f.areCollinear(p1, p1, p1, 1e-4f));
+        Assert.assertTrue(MyVector3f.areCollinear(p1, p2, p3, 1e-4f));
+        Assert.assertTrue(MyVector3f.areCollinear(p1, p2, p2, 1e-4f));
+        Assert.assertFalse(MyVector3f.areCollinear(p1, p2bad, p3, 0.1f));
     }
 }
