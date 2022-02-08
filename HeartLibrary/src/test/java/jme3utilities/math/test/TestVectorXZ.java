@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -29,12 +29,13 @@ package jme3utilities.math.test;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import java.util.logging.Logger;
-import jme3utilities.math.MyMath;
 import jme3utilities.math.ReadXZ;
 import jme3utilities.math.VectorXZ;
+import jme3utilities.test.HeartTest;
+import org.junit.Test;
 
 /**
- * Test cases for the VectorXZ class.
+ * Test the VectorXZ class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -45,20 +46,13 @@ public class TestVectorXZ {
     /**
      * message logger for this class
      */
-    final private static Logger logger
+    final public static Logger logger
             = Logger.getLogger(TestVectorXZ.class.getName());
     // *************************************************************************
     // new methods exposed
 
-    /**
-     * Console application to test the VectorXZ class.
-     *
-     * @param ignored command-line arguments
-     */
-    public static void main(String[] ignored) {
-        System.out.printf("Test results for class VectorXZ:%n%n");
-
-        // vector test cases
+    @Test
+    public void test1() {
         VectorXZ[] cases = new VectorXZ[4];
         cases[0] = VectorXZ.east;
         cases[1] = new VectorXZ(1f, 1f);
@@ -66,29 +60,28 @@ public class TestVectorXZ {
         cases[3] = VectorXZ.zero;
 
         for (VectorXZ vIn : cases) {
+            // reconstruct a VectorXZ from polar coordinates
             float a = vIn.azimuth();
-            VectorXZ vOut = new VectorXZ(a);
+            float length = vIn.length();
+            ReadXZ vOut = new VectorXZ(a).mult(length);
+            HeartTest.assertEquals(vIn, vOut, 1e-5f);
 
-            System.out.printf(
-                    "vIn = %s  azimuth(x)=%f (%f degrees)  vOut = %s%n",
-                    vIn, a, MyMath.toDegrees(a), vOut);
-            System.out.println();
+            if (!vIn.isZero()) {
+                // 3 different ways to combine rotations
+                Vector3f v3 = new Vector3f(1f, 2f, 3f);
+                VectorXZ vxz = new VectorXZ(v3);
+                ReadXZ r1 = vIn.normalize().mult(vxz);
 
-            Vector3f v3 = new Vector3f(1f, 2f, 3f);
-            VectorXZ vxz = new VectorXZ(v3);
-            ReadXZ r1 = vIn.normalize().mult(vxz);
+                Quaternion q1 = vIn.toQuaternion();
+                VectorXZ r2 = new VectorXZ(q1.mult(v3));
 
-            Quaternion q1 = vIn.toQuaternion();
-            VectorXZ r2 = new VectorXZ(q1.mult(v3));
+                Quaternion q2 = new Quaternion();
+                q2.fromAngleNormalAxis(-a, new Vector3f(0f, 1f, 0f));
+                VectorXZ r3 = new VectorXZ(q2.mult(v3));
 
-            Quaternion q2 = new Quaternion();
-            q2.fromAngleNormalAxis(-a, new Vector3f(0f, 1f, 0f));
-            VectorXZ r3 = new VectorXZ(q2.mult(v3));
-
-            System.out.printf("vIn=%s  r1=%s, r2=%s, r3=%s%n",
-                    vIn, r1.toString(), r2, r3);
-            System.out.println();
+                HeartTest.assertEquals(r1, r2, 1e-5f);
+                HeartTest.assertEquals(r2, r3, 1e-5f);
+            }
         }
-        System.out.println();
     }
 }

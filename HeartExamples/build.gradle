@@ -67,9 +67,6 @@ task TestSkeletonVisualizer(type: JavaExec) {
 task TestGenerator(type: JavaExec) {
     mainClass = 'jme3utilities.math.test.TestGenerator'
 }
-task TestVectorXZ(type: JavaExec) {
-    mainClass = 'jme3utilities.math.test.TestVectorXZ'
-}
 
 task TestLoopMesh(type: JavaExec) {
     mainClass = 'jme3utilities.mesh.test.LoopMeshTest'
