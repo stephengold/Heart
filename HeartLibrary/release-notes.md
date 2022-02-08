@@ -1,11 +1,11 @@
 # release log for the Heart Library and related tests
 
-## Version 7.3.0 released on TBD
+## Version 7.3.0 released on 7 February 2022
 
- + Bugfix:  `ClassCastException` in `MyMesh.vertexColor()` for some meshes
+ + Bugfix:  `ClassCastException` in `MyMesh.vertexColor()` for certain meshes
  + Bugfix:  `AssertionError` in `SimpleAppState.refreshCachedFields()`
    when no `FlyByCamera` is present
- + Deprecated 3 Java 7 compatibility methods:
+ + Deprecated 3 Java7-compatibility methods:
    + `MyMath.isFinite(double)`
    + `MyMath.isFinite(float)`
    + `MyString.join8()`
