@@ -1153,8 +1153,6 @@ public class MyVector3f {
      * jME 3.0.10) it contained a logic bug which gave the wrong magnitude when
      * vector2 had length != 1.
      *
-     * TODO add a rejection() method to calculate vector rejection
-     *
      * @param vector1 the first input vector (not null, unaffected unless it's
      * storeResult)
      * @param vector2 the 2nd input vector (length&gt;0, unaffected unless it's
@@ -1194,6 +1192,44 @@ public class MyVector3f {
         double projection = dot / length;
 
         return (float) projection;
+    }
+
+    /**
+     * Calculate the vector rejection of vector1 on vector2.
+     *
+     * @param vector1 the first input vector (not null, unaffected unless it's
+     * storeResult)
+     * @param vector2 the 2nd input vector (length&gt;0, unaffected unless it's
+     * storeResult)
+     * @param storeResult storage for the result (modified if not null, may be
+     * vector1 or vector2)
+     * @return a vector perpendicular to vector2 (either storeResult or a new
+     * instance)
+     */
+    public static Vector3f rejection(Vector3f vector1, Vector3f vector2,
+            Vector3f storeResult) {
+        assert Validate.nonNull(vector1, "vector1");
+        assert Validate.nonZero(vector2, "vector2");
+
+        // Save the components of vector1 in case storeResult is vector1.
+        float x = vector1.x;
+        float y = vector1.y;
+        float z = vector1.z;
+
+        double dot = dot(vector1, vector2);
+        double lengthSquared = lengthSquared(vector2);
+        double scaleFactor = -dot / lengthSquared;
+        Vector3f result = vector2.mult((float) scaleFactor, storeResult);
+        result.addLocal(x, y, z);
+
+        return result;
+    }
+
+   public static void main(String... args) {
+        Vector3f v1 = new Vector3f(1f, 2f, 3f);
+        Vector3f v2 = new Vector3f(0f, -1f, -1f);
+        Vector3f r12 = MyVector3f.rejection(v1, v2, null);
+        System.out.print("");
     }
 
     /**
