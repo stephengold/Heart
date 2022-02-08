@@ -1169,8 +1169,8 @@ public class MyVector3f {
         assert Validate.nonNull(vector1, "vector1");
         assert Validate.nonZero(vector2, "vector2");
 
-        double lengthSquared = lengthSquared(vector2);
         double dot = dot(vector1, vector2);
+        double lengthSquared = lengthSquared(vector2);
         double scaleFactor = dot / lengthSquared;
         Vector3f projection = vector2.mult((float) scaleFactor, storeResult);
 
@@ -1185,6 +1185,7 @@ public class MyVector3f {
      * @return the scalar projection of vector1 onto vector2
      */
     public static float scalarProjection(Vector3f vector1, Vector3f vector2) {
+        assert Validate.nonNull(vector1, "vector1");
         assert Validate.nonZero(vector2, "vector2");
 
         double dot = dot(vector1, vector2);
