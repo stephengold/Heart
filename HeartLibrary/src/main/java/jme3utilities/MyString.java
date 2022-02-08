@@ -350,10 +350,11 @@ public class MyString {
     /**
      * Join a collection of objects into a text string using the specified
      * separator, ignoring any empties/nulls. Note that Java 8 provides
-     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)}.
+     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)},
+     * which doesn't ignore nulls.
      *
-     * @param objects objects to join (not null, unaffected, may contain nulls)
      * @param separator text string (not null)
+     * @param objects objects to join (not null, unaffected, may contain nulls)
      * @return joined string (not null)
      */
     public static String join(CharSequence separator, Iterable objects) {
@@ -379,7 +380,8 @@ public class MyString {
     /**
      * Join a collection of objects into a text string using spaces for
      * separators and ignoring any empties/nulls. Note that Java 8 provides
-     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)}.
+     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)},
+     * which doesn't ignore nulls.
      *
      * @param objects objects to join (not null, unaffected, may contain nulls)
      * @return joined string (not null)
@@ -425,7 +427,10 @@ public class MyString {
      * @param separator text string (not null)
      * @param array strings to join (not null, unaffected, may contain nulls)
      * @return the joined string (not null)
+     * @deprecated use
+     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.CharSequence[])}
      */
+    @Deprecated
     public static String join8(CharSequence separator, CharSequence... array) {
         Validate.nonNull(array, "array");
         Validate.nonNull(separator, "separator");
