@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -37,6 +37,7 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Quad;
 import java.util.logging.Logger;
+import jme3utilities.InitialState;
 import jme3utilities.MyAsset;
 import jme3utilities.SimpleAppState;
 import jme3utilities.Validate;
@@ -106,7 +107,7 @@ public class PerformanceAppState extends SimpleAppState {
      * Instantiate a new enabled, uninitialized state.
      */
     public PerformanceAppState() {
-        super(true);
+        super(InitialState.Enabled);
     }
     // *************************************************************************
     // new methods exposed
