@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2021, Stephen Gold
+ Copyright (c) 2019-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import com.jme3.bounding.BoundingBox;
 import com.jme3.math.Vector3f;
 import java.util.logging.Logger;
 import jme3utilities.math.MyArray;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -77,5 +78,30 @@ public class TestMyArray {
         assert box2.getMax(null).x == 3f;
         assert box2.getMax(null).y == 0f;
         assert box2.getMax(null).z == 0f;
+    }
+
+    @Test
+    public void testCountNeSorted() {
+        int count = MyArray.countNeSorted();
+        Assert.assertEquals(0, count);
+
+        count = MyArray.countNeSorted(0.6f);
+        Assert.assertEquals(1, count);
+
+        count = MyArray.countNeSorted(1f, 4f, 5f);
+        Assert.assertEquals(3, count);
+
+        count = MyArray.countNeSorted(1f, 1f, 4f, 5f);
+        Assert.assertEquals(3, count);
+
+        count = MyArray.countNeSorted(-0f, 0f);
+        Assert.assertEquals(1, count);
+
+        count = MyArray.countNeSorted(Float.NEGATIVE_INFINITY, -Float.MAX_VALUE,
+                0f, Float.MIN_VALUE, Float.MAX_VALUE, Float.POSITIVE_INFINITY);
+        Assert.assertEquals(6, count);
+
+        count = MyArray.countNeSorted(Float.NaN);
+        Assert.assertEquals(1, count);
     }
 }

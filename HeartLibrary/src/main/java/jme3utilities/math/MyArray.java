@@ -150,7 +150,36 @@ final public class MyArray {
     }
 
     /**
-     * Count the number of distinct vectors in the specified array, without
+     * Count distinct the number of distinct values in the specified array,
+     * without distinguishing 0 from -0. The array must be sorted in ascending
+     * order.
+     *
+     * @param array the array to analyze (not null, unaffected)
+     * @return count (&ge;0)
+     */
+    public static int countNeSorted(float... array) {
+        Validate.nonNull(array, "array");
+
+        Float previousValue = null;
+        int result = 0;
+
+        for (float value : array) {
+            if (previousValue == null) {
+                ++result;
+            } else {
+                assert value >= previousValue : "not sorted: " + value;
+                if (value != previousValue) {
+                    ++result;
+                }
+            }
+            previousValue = value;
+        }
+
+        return result;
+    }
+
+    /**
+     * Count the number of distinct values in the specified array, without
      * distinguishing 0 from -0.
      *
      * @param array the array to analyze (not null, unaffected)
