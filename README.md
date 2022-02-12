@@ -127,7 +127,7 @@ Add to the project’s "pom.xml" file:
 
 For projects built using [Ant], download the library from GitHub:
 
- + https://github.com/stephengold/Heart/releases/latest
++ https://github.com/stephengold/Heart/releases/latest
 
 You'll want the class jar
 and probably the `-sources` and `-javadoc` jars as well.
@@ -262,7 +262,7 @@ software developers:
     + the [Git] revision-control system and GitK commit viewer
     + the [Gradle] build tool
     + the [IntelliJ IDEA][idea] and [NetBeans] integrated development environments
-    + the [Java] compiler, standard doclet, and virtual machine
+    + the [Java] compiler, standard doclet, and runtime environment
     + [jMonkeyEngine][jme] and the jME3 Software Development Kit
     + the [Linux Mint][mint] operating system
     + LWJGL, the Lightweight Java Game Library
