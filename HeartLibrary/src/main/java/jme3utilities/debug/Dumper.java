@@ -48,12 +48,14 @@ import com.jme3.scene.mesh.IndexBuffer;
 import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 import jme3utilities.MyString;
+import jme3utilities.NamedAppState;
 import jme3utilities.Validate;
 import jme3utilities.math.MyColor;
 
@@ -807,14 +809,13 @@ public class Dumper implements Cloneable {
     protected void dump(AppState appState, String indent) {
         Validate.nonNull(indent, "indent");
 
-        String className = appState.getClass().getSimpleName();
-        stream.print(className);
-
         String id = appState.getId();
-        if (id != null) {
-            stream.print(" id=");
-            stream.print(id);
+        if (id == null) {
+            id = appState.getClass().getSimpleName();
+        } else {
+            id = MyString.quote(id);
         }
+        stream.print(id);
 
         if (appState.isEnabled()) {
             stream.print(" en");
@@ -822,6 +823,25 @@ public class Dumper implements Cloneable {
             stream.print(" dis");
         }
         stream.print("abled");
+
+        if (appState instanceof NamedAppState) {
+            NamedAppState namedAppState = (NamedAppState) appState;
+            Collection<AppState> influences = namedAppState.getInfluence();
+            if (!influences.isEmpty()) {
+                stream.print("  influences[");
+                for (AppState appState2 : influences) {
+                    stream.print(' ');
+                    String id2 = appState2.getId();
+                    if (id2 == null) {
+                        id2 = appState2.getClass().getSimpleName();
+                    } else {
+                        id2 = MyString.quote(id2);
+                    }
+                    stream.print(id2);
+                }
+                stream.print(" ]");
+            }
+        }
         addLine(indent);
     }
     // *************************************************************************
