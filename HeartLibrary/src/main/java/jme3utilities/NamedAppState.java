@@ -133,7 +133,7 @@ public class NamedAppState extends AbstractAppState {
         influenceList.remove(appState);
     }
     // *************************************************************************
-    // AppState methods
+    // AbstractAppState methods
 
     /**
      * Clean up this state during the first update after it gets detached.
@@ -285,6 +285,19 @@ public class NamedAppState extends AbstractAppState {
     }
 
     /**
+     * Represent this state as a text string.
+     *
+     * @return descriptive string of text (not null, not empty)
+     */
+    @Override
+    public String toString() {
+        String result = String.format("%s (%sinitialized, %sabled)",
+                getId(), isInitialized() ? "" : "un",
+                isEnabled() ? "en" : "dis");
+        return result;
+    }
+
+    /**
      * Callback to update this state prior to rendering. (Invoked once per frame
      * while the state is attached and enabled.)
      *
@@ -301,20 +314,5 @@ public class NamedAppState extends AbstractAppState {
         }
 
         super.update(tpf);
-    }
-    // *************************************************************************
-    // Object methods
-
-    /**
-     * Represent this state as a text string.
-     *
-     * @return descriptive string of text (not null, not empty)
-     */
-    @Override
-    public String toString() {
-        String result = String.format("%s (%sinitialized, %sabled)",
-                getId(), isInitialized() ? "" : "un",
-                isEnabled() ? "en" : "dis");
-        return result;
     }
 }
