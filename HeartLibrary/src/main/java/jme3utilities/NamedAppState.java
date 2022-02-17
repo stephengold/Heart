@@ -32,6 +32,8 @@ import com.jme3.app.state.AppState;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.renderer.RenderManager;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -91,6 +93,16 @@ public class NamedAppState extends AbstractAppState {
     }
     // *************************************************************************
     // new methods exposed
+
+    /**
+     * Enumerate appstates that are influenced by this AppState.
+     *
+     * @return a new unmodifiable collection of pre-existing instances (not
+     * null)
+     */
+    public Collection<AppState> getInfluence() {
+        return Collections.unmodifiableCollection(influenceList);
+    }
 
     /**
      * Test whether this state influences the specified AppState.
