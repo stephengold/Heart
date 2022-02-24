@@ -30,6 +30,8 @@ import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
 import com.jme3.app.state.AppState;
 import com.jme3.app.state.AppStateManager;
+import com.jme3.audio.AudioNode;
+import com.jme3.audio.AudioSource;
 import com.jme3.bounding.BoundingVolume;
 import com.jme3.font.BitmapText;
 import com.jme3.light.LightList;
@@ -443,21 +445,27 @@ public class Dumper implements Cloneable {
             addDescription(description);
         }
 
-        if (dumpBucketFlag) {
-            description = describer.describeBucket(spatial);
+        if (spatial instanceof AudioNode) {
+            description = describer.describeAudioNode(spatial);
             addDescription(description);
-        }
-        if (dumpShadowFlag) {
-            description = describer.describeShadow(spatial);
-            addDescription(description);
-        }
-        if (dumpCullFlag) {
-            description = describer.describeCull(spatial);
-            addDescription(description);
-        }
-        if (dumpOverrideFlag) {
-            description = describer.describeOverrides(spatial);
-            addDescription(description);
+            
+        } else {
+            if (dumpBucketFlag) {
+                description = describer.describeBucket(spatial);
+                addDescription(description);
+            }
+            if (dumpShadowFlag) {
+                description = describer.describeShadow(spatial);
+                addDescription(description);
+            }
+            if (dumpCullFlag) {
+                description = describer.describeCull(spatial);
+                addDescription(description);
+            }
+            if (dumpOverrideFlag) {
+                description = describer.describeOverrides(spatial);
+                addDescription(description);
+            }
         }
 
         if (spatial instanceof BitmapText) {
