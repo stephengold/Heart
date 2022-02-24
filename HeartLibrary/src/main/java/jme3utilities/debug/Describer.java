@@ -30,6 +30,9 @@ import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
 import com.jme3.app.state.ScreenshotAppState;
 import com.jme3.asset.TextureKey;
+import com.jme3.audio.AudioData;
+import com.jme3.audio.AudioNode;
+import com.jme3.audio.AudioSource;
 import com.jme3.bounding.BoundingBox;
 import com.jme3.bounding.BoundingSphere;
 import com.jme3.bounding.BoundingVolume;
@@ -389,6 +392,50 @@ public class Describer implements Cloneable {
         String result = type + "%" + formatString;
 
         return result;
+    }
+
+    /**
+     * Generate a compact, textual description of an AudioNode.
+     *
+     * @param spatial the AudioNode to describe (not null, unaffected)
+     * @return a description (not null, not empty)
+     */
+    public String describeAudioNode(Spatial spatial) {
+        AudioNode audioNode = (AudioNode) spatial;
+        StringBuilder result = new StringBuilder(80);
+
+        AudioSource.Status status = audioNode.getStatus();
+        result.append(status);
+
+        if (status == AudioSource.Status.Playing) {
+            result.append(",");
+
+            AudioData.DataType type = audioNode.getAudioData().getDataType();
+            result.append(type);
+            result.append(",");
+
+            boolean isDirectional = audioNode.isDirectional();
+            if (!isDirectional) {
+                result.append("NOT");
+            }
+            result.append("directional,");
+
+            boolean isLooping = audioNode.isLooping();
+            if (!isLooping) {
+                result.append("NOT");
+            }
+            result.append("looping,");
+
+            result.append("pitch=");
+            float pitch = audioNode.getPitch();
+            result.append(MyString.describe(pitch));
+
+            result.append(",channel=");
+            int channel = audioNode.getChannel();
+            result.append(channel);
+        }
+
+        return result.toString();
     }
 
     /**
