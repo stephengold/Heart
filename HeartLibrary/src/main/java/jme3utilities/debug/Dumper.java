@@ -31,7 +31,6 @@ import com.jme3.animation.Skeleton;
 import com.jme3.app.state.AppState;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.audio.AudioNode;
-import com.jme3.audio.AudioSource;
 import com.jme3.bounding.BoundingVolume;
 import com.jme3.font.BitmapText;
 import com.jme3.light.LightList;
