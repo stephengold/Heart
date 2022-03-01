@@ -694,6 +694,37 @@ final public class MyBuffer {
     }
 
     /**
+     * Apply the specified rotation to the binormals in the specified
+     * FloatBuffer range. The W components are left untouched.
+     *
+     * @param buffer the buffer that contains the binormals (not null, MODIFIED)
+     * @param startPosition the position at which the binormals start (&ge;0,
+     * &le;endPosition)
+     * @param endPosition the position at which the binormals end
+     * (&ge;startPosition, &le;capacity)
+     * @param rotation the rotation to apply (not null, unaffected)
+     */
+    public static void rotateBinormals(FloatBuffer buffer, int startPosition,
+            int endPosition, Quaternion rotation) {
+        Validate.nonNull(buffer, "buffer");
+        Validate.nonNull(rotation, "rotation");
+        Validate.inRange(startPosition, "start position", 0, endPosition);
+        Validate.inRange(endPosition, "end position", startPosition,
+                buffer.capacity());
+        int numFloats = endPosition - startPosition;
+        assert (numFloats % 4 == 0) : numFloats;
+
+        int numVectors = numFloats / 4;
+        Vector3f tmpVector = new Vector3f();
+        for (int vectorIndex = 0; vectorIndex < numVectors; ++vectorIndex) {
+            int position = startPosition + vectorIndex * 4;
+            get(buffer, position, tmpVector);
+            rotation.mult(tmpVector, tmpVector);
+            put(buffer, position, tmpVector);
+        }
+    }
+
+    /**
      * Apply the specified scale factors to 3-D vectors in the specified
      * FloatBuffer range.
      *
