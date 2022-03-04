@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2020, Stephen Gold
+ Copyright (c) 2018-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -40,8 +40,8 @@ import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.RectangleMesh;
 
 /**
- * A SimpleApplication to test MyAsset.createWireframeMaterial(). If successful,
- * a green wireframe quad will be displayed.
+ * Test the MyAsset.createWireframeMaterial() method. If successful, a green
+ * wireframe quad will be displayed.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -63,39 +63,30 @@ public class TestWireframe extends SimpleApplication {
     // new methods exposed
 
     /**
-     * Main entry point for the application.
+     * Main entry point for the TestWireframe application.
      *
-     * @param unused array of command-line arguments
+     * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String[] unused) {
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+    public static void main(String[] arguments) {
         Heart.setLoggingLevels(Level.WARNING);
         Logger.getLogger(ALAudioRenderer.class.getName())
                 .setLevel(Level.SEVERE);
+        TestWireframe application = new TestWireframe();
 
-        TestWireframe app = new TestWireframe();
-        /*
-         * Customize the window's title bar.
-         */
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);
-        settings.setTitle(applicationName);
-
         settings.setAudioRenderer(null);
         //settings.setRenderer(AppSettings.LWJGL_OPENGL32);
-        app.setSettings(settings);
-        app.start();
-        /*
-         * ... and onward to TestWireframe.simpleInitApp()!
-         */
+        settings.setTitle(applicationName); // Customize the window's title bar.
+        application.setSettings(settings);
+
+        application.start();
     }
     // *************************************************************************
     // SimpleApplication methods
 
     /**
-     * Initialize the application.
+     * Initialize this application.
      */
     @Override
     public void simpleInitApp() {

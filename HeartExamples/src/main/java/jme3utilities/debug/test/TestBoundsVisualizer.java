@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2021, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@ import jme3utilities.math.MyVector3f;
 import jme3utilities.mesh.Cone;
 
 /**
- * A SimpleApplication to test the BoundsVisualizer class.
+ * Test the BoundsVisualizer class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -94,34 +94,24 @@ public class TestBoundsVisualizer
     // new methods exposed
 
     /**
-     * Main entry point for the application.
+     * Main entry point for the TestBoundsVisualizer application.
      *
-     * @param unused array of command-line arguments
+     * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String[] unused) {
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+    public static void main(String[] arguments) {
         Heart.setLoggingLevels(Level.WARNING);
-
         TestBoundsVisualizer application = new TestBoundsVisualizer();
-        /*
-         * Customize the window's title bar.
-         */
+
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);
-        settings.setTitle(applicationName);
-
         settings.setAudioRenderer(null);
         settings.setGammaCorrection(true);
         settings.setSamples(4); // anti-aliasing
+        settings.setTitle(applicationName); // Customize the window's title bar.
         settings.setVSync(true);
         application.setSettings(settings);
 
         application.start();
-        /*
-         * ... and onward to TestBoundsVisualizer.simpleInitApp()!
-         */
     }
     // *************************************************************************
     // ActionListener methods
@@ -177,7 +167,7 @@ public class TestBoundsVisualizer
     // SimpleApplication methods
 
     /**
-     * Initialize the application.
+     * Initialize this application.
      */
     @Override
     public void simpleInitApp() {

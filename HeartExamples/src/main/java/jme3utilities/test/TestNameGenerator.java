@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2021, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ import jme3utilities.NameGenerator;
 import jme3utilities.ui.ActionApplication;
 
 /**
- * Simple application to test the NameGenerator class.
+ * Test the NameGenerator class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -59,9 +59,9 @@ public class TestNameGenerator extends ActionApplication {
     // new methods exposed
 
     /**
-     * Entry point for test application.
+     * Main entry point for the TestNameGenerator application.
      *
-     * @param ignored command-line arguments
+     * @param ignored array of command-line arguments (not null)
      */
     public static void main(String[] ignored) {
         Heart.setLoggingLevels(Level.WARNING);
@@ -72,9 +72,11 @@ public class TestNameGenerator extends ActionApplication {
         application.setShowSettings(false);
         application.start();
     }
+    // *************************************************************************
+    // ActionApplication methods
 
     /**
-     * Initialize the application and perform tests.
+     * Run this application and then exit.
      */
     @Override
     public void actionInitializeApplication() {

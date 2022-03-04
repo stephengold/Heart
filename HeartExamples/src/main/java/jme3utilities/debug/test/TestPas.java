@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2020, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,7 @@ import jme3utilities.Heart;
 import jme3utilities.debug.PerformanceAppState;
 
 /**
- * Simple application to test the performance app state. The application's main
- * entry point is here.
+ * Test the PerformanceAppState class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -51,9 +50,10 @@ public class TestPas extends SimpleApplication {
     final private static Logger logger
             = Logger.getLogger(TestPas.class.getName());
     /**
-     * application name, displayed on its window's title bar
+     * application name (for the title bar of the app's window)
      */
-    final private static String windowTitle = "TestPas";
+    final private static String applicationName
+            = TestPas.class.getSimpleName();
     // *************************************************************************
     // new methods exposed
 
@@ -63,29 +63,21 @@ public class TestPas extends SimpleApplication {
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
         Heart.setLoggingLevels(Level.WARNING);
         Logger.getLogger(ALAudioRenderer.class.getName())
                 .setLevel(Level.SEVERE);
-        /*
-         * Instantiate the application.
-         */
         TestPas application = new TestPas();
-        /*
-         * Customize the window's title bar.
-         */
-        AppSettings settings = new AppSettings(true);
-        settings.setTitle(windowTitle);
 
+        boolean loadDefaults = true;
+        AppSettings settings = new AppSettings(loadDefaults);
         settings.setAudioRenderer(null);
+        settings.setTitle(applicationName); // Customize the window's title bar.
         application.setSettings(settings);
-        /*
-         * Invoke the JME startup code, which in turn invokes simpleInitApp().
-         */
+
         application.start();
     }
+    // *************************************************************************
+    // SimpleApplication methods
 
     /**
      * Initialization code: create and attach the app state for testing.

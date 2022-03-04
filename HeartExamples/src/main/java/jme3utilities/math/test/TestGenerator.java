@@ -76,7 +76,7 @@ public class TestGenerator extends AbstractDemo {
     /**
      * message logger for this class
      */
-    final public static Logger logger
+    final private static Logger logger
             = Logger.getLogger(TestGenerator.class.getName());
     /**
      * application name (for the title bar of the app's window)
@@ -112,33 +112,23 @@ public class TestGenerator extends AbstractDemo {
     /**
      * Main entry point for the TestGenerator application.
      *
-     * @param ignored array of command-line arguments (not null)
+     * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String[] ignored) {
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+    public static void main(String[] arguments) {
+        TestGenerator application = new TestGenerator();
         Heart.setLoggingLevels(Level.WARNING);
 
-        TestGenerator application = new TestGenerator();
-        /*
-         * Customize the window's title bar.
-         */
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);
-        settings.setTitle(applicationName);
-
         settings.setAudioRenderer(null);
         settings.setRenderer(AppSettings.LWJGL_OPENGL32);
         settings.setGammaCorrection(true);
         settings.setSamples(4); // anti-aliasing
+        settings.setTitle(applicationName); // Customize the window's title bar.
         settings.setVSync(true);
         application.setSettings(settings);
 
         application.start();
-        /*
-         * ... and onward to TestGenerator.actionInitializeApplication()!
-         */
     }
     // *************************************************************************
     // ActionApplication methods

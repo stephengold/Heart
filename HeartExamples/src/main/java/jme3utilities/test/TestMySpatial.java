@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ import jme3utilities.Heart;
 import jme3utilities.MySpatial;
 
 /**
- * Test cases for the MySpatial class.
+ * Test the MySpatial class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -54,9 +54,9 @@ public class TestMySpatial extends SimpleApplication {
     // new methods exposed
 
     /**
-     * Simple application to test the MySpatial class.
+     * Main entry point for the TestMySpatial application.
      *
-     * @param ignored command-line arguments
+     * @param ignored array of command-line arguments (not null)
      */
     public static void main(String[] ignored) {
         Heart.setLoggingLevels(Level.WARNING);
@@ -67,9 +67,11 @@ public class TestMySpatial extends SimpleApplication {
         application.setShowSettings(false);
         application.start();
     }
+    // *************************************************************************
+    // SimpleApplication methods
 
     /**
-     * Initialize the application and perform tests.
+     * Run this application and then exit.
      */
     @Override
     public void simpleInitApp() {

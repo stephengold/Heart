@@ -43,7 +43,7 @@ import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.RectangleMesh;
 
 /**
- * A SimpleApplication to test "multicolor.j3md". If successful, a colorful
+ * Test the "multicolor.j3md" material definitions. If successful, a colorful
  * wireframe quad will be displayed.
  *
  * @author Stephen Gold sgold@sonic.net
@@ -66,31 +66,22 @@ public class TestMulticolor extends SimpleApplication {
     // new methods exposed
 
     /**
-     * Main entry point for the application.
+     * Main entry point for the TestMulticolor application.
      *
-     * @param ignored array of command-line arguments (not null)
+     * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String[] ignored) {
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+    public static void main(String[] arguments) {
         Heart.setLoggingLevels(Level.WARNING);
+        TestMulticolor application = new TestMulticolor();
 
-        TestMulticolor app = new TestMulticolor();
-        /*
-         * Customize the window's title bar.
-         */
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);
-        settings.setTitle(applicationName);
-
         settings.setAudioRenderer(null);
         settings.setRenderer(AppSettings.LWJGL_OPENGL32);
-        app.setSettings(settings);
-        app.start();
-        /*
-         * ... and onward to TestMulticolor.simpleInitApp()!
-         */
+        settings.setTitle(applicationName); // Customize the window's title bar.
+        application.setSettings(settings);
+
+        application.start();
     }
     // *************************************************************************
     // SimpleApplication methods

@@ -79,28 +79,19 @@ public class TestMergeMeshes extends AbstractDemo {
     /**
      * Main entry point for the TestMergeMeshes application.
      *
-     * @param unused array of command-line arguments (not null)
+     * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String[] unused) {
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+    public static void main(String[] arguments) {
         Heart.setLoggingLevels(Level.WARNING);
-
         TestMergeMeshes application = new TestMergeMeshes();
-        /*
-         * Customize the window's title bar.
-         */
+
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);
-        settings.setTitle(applicationName);
-
         settings.setAudioRenderer(null);
+        settings.setTitle(applicationName); // Customize the window's title bar.
         application.setSettings(settings);
+
         application.start();
-        /*
-         * ... and onward to TestMergeMeshes.actionInitializeApplication()!
-         */
     }
     // *************************************************************************
     // AbstractDemo methods

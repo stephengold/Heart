@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2021, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -65,9 +65,9 @@ import jme3utilities.mesh.Prism;
 import jme3utilities.mesh.Tetrahedron;
 
 /**
- * A SimpleApplication to test the Cone, DomeMesh, Icosahedron, Icosphere,
- * Octahedron, Prism, and Tetrahedron classes. Also test MyMesh.reverseNormals()
- * and MyMesh.reverseWinding().
+ * Test the Cone, DomeMesh, Icosahedron, Icosphere, Octahedron, Prism, and
+ * Tetrahedron classes. Also test the MyMesh.reverseNormals() and
+ * MyMesh.reverseWinding() methods.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -118,33 +118,24 @@ public class TestSolidMeshes
     // new methods exposed
 
     /**
-     * Main entry point for the application.
+     * Main entry point for the TestSolidMeshes application.
      *
-     * @param unused array of command-line arguments
+     * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String[] unused) {
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+    public static void main(String[] arguments) {
         Heart.setLoggingLevels(Level.WARNING);
-
         TestSolidMeshes application = new TestSolidMeshes();
-        /*
-         * Customize the window's title bar.
-         */
-        AppSettings settings = new AppSettings(true);
-        settings.setTitle(applicationName);
 
+        boolean loadDefaults = true;
+        AppSettings settings = new AppSettings(loadDefaults);
         settings.setAudioRenderer(null);
         settings.setGammaCorrection(true);
         settings.setSamples(4); // anti-aliasing
+        settings.setTitle(applicationName); // Customize the window's title bar.
         settings.setVSync(true);
         application.setSettings(settings);
 
         application.start();
-        /*
-         * ... and onward to TestSolidMeshes.simpleInitApp()!
-         */
     }
     // *************************************************************************
     // ActionListener methods
@@ -182,7 +173,7 @@ public class TestSolidMeshes
     // SimpleApplication methods
 
     /**
-     * Initialize the application.
+     * Initialize this application.
      */
     @Override
     public void simpleInitApp() {

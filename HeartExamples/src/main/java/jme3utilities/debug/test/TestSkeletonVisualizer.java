@@ -60,7 +60,7 @@ import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
 /**
- * An AbstractDemo to test SkeletonVisualizer.
+ * Test the SkeletonVisualizer class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -71,7 +71,7 @@ public class TestSkeletonVisualizer extends AbstractDemo {
     /**
      * message logger for this class
      */
-    final public static Logger logger
+    final private static Logger logger
             = Logger.getLogger(TestSkeletonVisualizer.class.getName());
     /**
      * application name (for the title bar of the app's window)
@@ -99,29 +99,20 @@ public class TestSkeletonVisualizer extends AbstractDemo {
     /**
      * Main entry point for the TestSkeletonVisualizer application.
      *
-     * @param ignored array of command-line arguments (not null)
+     * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String[] ignored) {
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+    public static void main(String[] arguments) {
+        TestSkeletonVisualizer application = new TestSkeletonVisualizer();
         Heart.setLoggingLevels(Level.WARNING);
 
-        TestSkeletonVisualizer application = new TestSkeletonVisualizer();
-        /*
-         * Customize the window's title bar.
-         */
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);
-        settings.setTitle(applicationName);
-
         settings.setAudioRenderer(null);
         settings.setRenderer(AppSettings.LWJGL_OPENGL32);
+        settings.setTitle(applicationName); // Customize the window's title bar.
         application.setSettings(settings);
+
         application.start();
-        /*
-         * ... and onward to TestSkeletonVisualizer.actionInitializeApplication()!
-         */
     }
     // *************************************************************************
     // AbstractDemo methods

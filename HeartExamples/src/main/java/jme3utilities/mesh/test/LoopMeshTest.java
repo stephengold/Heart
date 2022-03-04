@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2020, Stephen Gold
+ Copyright (c) 2018-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.LoopMesh;
 
 /**
- * A simple application to test the LoopMesh class.
+ * Test the LoopMesh class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -58,29 +58,23 @@ public class LoopMeshTest extends SimpleApplication {
     // new methods exposed
 
     /**
-     * Main entry point for the application.
+     * Main entry point for the LoopMeshTest application.
      *
-     * @param unused array of command-line arguments
+     * @param arguments array of command-line arguments (not null)
      */
-    public static void main(String[] unused) {
-        /*
-         * Mute the chatty loggers found in some imported packages.
-         */
+    public static void main(String[] arguments) {
         Heart.setLoggingLevels(Level.WARNING);
         Logger.getLogger(ALAudioRenderer.class.getName())
                 .setLevel(Level.SEVERE);
+        LoopMeshTest application = new LoopMeshTest();
 
-        LoopMeshTest app = new LoopMeshTest();
-        app.start();
-        /*
-         * ... and onward to LoopMeshTest.simpleInitApp()!
-         */
+        application.start();
     }
     // *************************************************************************
     // SimpleApplication methods
 
     /**
-     * Initialize the application.
+     * Initialize this application.
      */
     @Override
     public void simpleInitApp() {
