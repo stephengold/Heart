@@ -26,6 +26,7 @@
  */
 package jme3utilities;
 
+import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppState;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
@@ -407,6 +408,43 @@ public class Heart {
         }
 
         return result;
+    }
+
+    /**
+     * Parse some conventional command-line arguments and apply them to the
+     * specified SimpleApplication.
+     *
+     * @param application the application to modify (not null)
+     * @param arguments array of command-line arguments (not null)
+     */
+    public static void parseAppArgs(SimpleApplication application,
+            String... arguments) {
+        boolean showSettingsDialog = false;
+        Level loggingLevel = Level.WARNING;
+        /*
+         * Process any command-line arguments.
+         */
+        for (String arg : arguments) {
+            switch (arg) {
+                case "-s":
+                case "--showSettingsDialog":
+                    showSettingsDialog = true;
+                    break;
+
+                case "-v":
+                case "--verbose":
+                    loggingLevel = Level.INFO;
+                    break;
+
+                default:
+                    logger.log(Level.INFO,
+                            "Unknown command-line argument {0} skipped",
+                            MyString.quote(arg));
+            }
+        }
+
+        setLoggingLevels(loggingLevel);
+        application.setShowSettings(showSettingsDialog);
     }
 
     /**
