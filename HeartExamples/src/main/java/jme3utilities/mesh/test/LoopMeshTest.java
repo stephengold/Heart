@@ -32,6 +32,7 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
+import com.jme3.system.AppSettings;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.MyAsset;
@@ -52,6 +53,11 @@ public class LoopMeshTest extends SimpleApplication {
      */
     final private static Logger logger
             = Logger.getLogger(LoopMeshTest.class.getName());
+    /**
+     * application name (for the title bar of the app's window)
+     */
+    final private static String applicationName
+            = LoopMeshTest.class.getSimpleName();
     // *************************************************************************
     // new methods exposed
 
@@ -63,6 +69,13 @@ public class LoopMeshTest extends SimpleApplication {
     public static void main(String[] arguments) {
         LoopMeshTest application = new LoopMeshTest();
         Heart.parseAppArgs(application, arguments);
+
+        boolean loadDefaults = true;
+        AppSettings settings = new AppSettings(loadDefaults);
+        settings.setAudioRenderer(null);
+        settings.setRenderer(AppSettings.LWJGL_OPENGL32);
+        settings.setTitle(applicationName); // Customize the window's title bar.
+        application.setSettings(settings);
 
         application.start();
     }
