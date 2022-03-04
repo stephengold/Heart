@@ -67,6 +67,7 @@ public class TestPas extends SimpleApplication {
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);
         settings.setAudioRenderer(null);
+        settings.setRenderer(AppSettings.LWJGL_OPENGL32);
         settings.setTitle(applicationName); // Customize the window's title bar.
         application.setSettings(settings);
 
