@@ -36,7 +36,6 @@ import com.jme3.scene.VertexBuffer;
 import com.jme3.system.AppSettings;
 import com.jme3.util.BufferUtils;
 import java.nio.FloatBuffer;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.debug.Dumper;
@@ -71,8 +70,8 @@ public class TestMulticolor extends SimpleApplication {
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
-        Heart.setLoggingLevels(Level.WARNING);
         TestMulticolor application = new TestMulticolor();
+        Heart.parseAppArgs(application, arguments);
 
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);

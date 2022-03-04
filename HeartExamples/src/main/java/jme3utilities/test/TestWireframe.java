@@ -27,12 +27,10 @@
 package jme3utilities.test;
 
 import com.jme3.app.SimpleApplication;
-import com.jme3.audio.openal.ALAudioRenderer;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.scene.Geometry;
 import com.jme3.system.AppSettings;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.MyAsset;
@@ -68,10 +66,8 @@ public class TestWireframe extends SimpleApplication {
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
-        Heart.setLoggingLevels(Level.WARNING);
-        Logger.getLogger(ALAudioRenderer.class.getName())
-                .setLevel(Level.SEVERE);
         TestWireframe application = new TestWireframe();
+        Heart.parseAppArgs(application, arguments);
 
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);

@@ -46,7 +46,6 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.Spatial;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.system.AppSettings;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.InfluenceUtil;
@@ -103,7 +102,7 @@ public class TestSkeletonVisualizer extends AbstractDemo {
      */
     public static void main(String[] arguments) {
         TestSkeletonVisualizer application = new TestSkeletonVisualizer();
-        Heart.setLoggingLevels(Level.WARNING);
+        Heart.parseAppArgs(application, arguments);
 
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);

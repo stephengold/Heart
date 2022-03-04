@@ -45,7 +45,6 @@ import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.MyAsset;
@@ -123,8 +122,8 @@ public class TestSolidMeshes
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
-        Heart.setLoggingLevels(Level.WARNING);
         TestSolidMeshes application = new TestSolidMeshes();
+        Heart.parseAppArgs(application, arguments);
 
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);

@@ -45,7 +45,6 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.system.AppSettings;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.ContrastAdjustmentFilter;
 import jme3utilities.Heart;
@@ -109,8 +108,8 @@ public class TestContrast extends ActionApplication {
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
-        Heart.setLoggingLevels(Level.WARNING);
         TestContrast application = new TestContrast();
+        Heart.parseAppArgs(application, arguments);
 
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);

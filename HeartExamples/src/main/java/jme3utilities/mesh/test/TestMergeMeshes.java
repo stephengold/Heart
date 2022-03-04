@@ -42,7 +42,6 @@ import com.jme3.system.AppSettings;
 import com.jme3.util.BufferUtils;
 import com.jme3.util.clone.Cloner;
 import java.nio.FloatBuffer;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.MyCamera;
@@ -82,8 +81,8 @@ public class TestMergeMeshes extends AbstractDemo {
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
-        Heart.setLoggingLevels(Level.WARNING);
         TestMergeMeshes application = new TestMergeMeshes();
+        Heart.parseAppArgs(application, arguments);
 
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);
