@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 7.4.0 released on TBD
+## Version 7.4.0 released on 5 March 2022
 
  + Added methods:
    + no-arg constructors for `ContrastAdjustmentFilter` and `UncachedKey`
