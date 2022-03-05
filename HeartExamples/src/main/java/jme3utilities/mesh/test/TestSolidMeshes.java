@@ -43,6 +43,7 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.shape.Sphere;
 import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
+import com.jme3.texture.image.ColorSpace;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -412,8 +413,8 @@ public class TestSolidMeshes
         mat.setName("back-only wireframe");
         allMaterials.add(mat);
 
-        boolean gammaCorrection = settings.isGammaCorrection();
-        float gamma = gammaCorrection ? 2.2f : 1f;
+        boolean isSrgb = renderer.isMainFrameBufferSrgb();
+        float gamma = isSrgb ? 2.2f : 1f;
         mat = MyAsset.createDebugMaterial(assetManager, gamma);
         allMaterials.add(mat);
 
