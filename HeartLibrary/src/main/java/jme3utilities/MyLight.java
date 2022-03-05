@@ -207,7 +207,7 @@ public class MyLight {
             Class<T> lightType, List<T> storeResult) {
         Validate.nonNull(subtree, "subtree");
         List<T> result = (storeResult == null)
-                ? new ArrayList<T>(4) : storeResult;
+                ? new ArrayList<>(4) : storeResult;
 
         LightList lights = subtree.getLocalLightList();
         int numLights = lights.size();

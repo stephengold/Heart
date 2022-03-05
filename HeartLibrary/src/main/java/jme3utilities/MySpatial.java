@@ -687,7 +687,7 @@ public class MySpatial {
     public static List<Mesh> listAnimatedMeshes(Spatial subtree,
             List<Mesh> storeResult) {
         List<Mesh> result = (storeResult == null)
-                ? new ArrayList<Mesh>(10) : storeResult;
+                ? new ArrayList<>(10) : storeResult;
 
         if (subtree instanceof Geometry) {
             Geometry geometry = (Geometry) subtree;
@@ -761,7 +761,7 @@ public class MySpatial {
     public static <T extends Control> List<T> listControls(Spatial subtree,
             Class<T> controlType, List<T> storeResult) {
         List<T> result = (storeResult == null)
-                ? new ArrayList<T>(4) : storeResult;
+                ? new ArrayList<>(4) : storeResult;
 
         int numControls = subtree.getNumControls();
         for (int controlIndex = 0; controlIndex < numControls; ++controlIndex) {
@@ -809,7 +809,7 @@ public class MySpatial {
     public static List<Material> listMaterials(Spatial subtree,
             List<Material> storeResult) {
         List<Material> result = (storeResult == null)
-                ? new ArrayList<Material>(10) : storeResult;
+                ? new ArrayList<>(10) : storeResult;
 
         if (subtree instanceof Geometry) {
             Geometry geometry = (Geometry) subtree;
@@ -841,7 +841,7 @@ public class MySpatial {
     public static List<Geometry> listMaterialUsers(Spatial subtree,
             Material material, List<Geometry> addResult) {
         List<Geometry> result
-                = (addResult == null) ? new ArrayList<Geometry>(50) : addResult;
+                = (addResult == null) ? new ArrayList<>(50) : addResult;
 
         if (subtree instanceof Geometry) {
             Geometry geometry = (Geometry) subtree;
@@ -872,7 +872,7 @@ public class MySpatial {
     public static List<Geometry> listMeshUsers(Spatial subtree, Mesh mesh,
             List<Geometry> addResult) {
         List<Geometry> result
-                = (addResult == null) ? new ArrayList<Geometry>(50) : addResult;
+                = (addResult == null) ? new ArrayList<>(50) : addResult;
 
         if (subtree instanceof Geometry) {
             Geometry geometry = (Geometry) subtree;
@@ -921,7 +921,7 @@ public class MySpatial {
     public static <T extends Spatial> List<T> listSpatials(Spatial subtree,
             Class<T> spatialType, List<T> addResult) {
         Validate.nonNull(subtree, "subtree");
-        List<T> result = (addResult == null) ? new ArrayList<T>(50) : addResult;
+        List<T> result = (addResult == null) ? new ArrayList<>(50) : addResult;
 
         if (spatialType.isAssignableFrom(subtree.getClass())) {
             T spatial = (T) subtree;
@@ -953,7 +953,7 @@ public class MySpatial {
     public static List<Texture> listTextures(Spatial subtree,
             List<Texture> addResult) {
         List<Texture> result
-                = (addResult == null) ? new ArrayList<Texture>(32) : addResult;
+                = (addResult == null) ? new ArrayList<>(32) : addResult;
 
         Iterable<Material> materials = listMaterials(subtree, null);
         for (Material material : materials) {

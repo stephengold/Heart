@@ -416,7 +416,7 @@ public class MySkeleton {
             List<Armature> addResult) {
         Validate.nonNull(subtree, "subtree");
         List<Armature> result = (addResult == null)
-                ? new ArrayList<Armature>(4) : addResult;
+                ? new ArrayList<>(4) : addResult;
 
         int numSgcs = subtree.getNumControls();
         for (int sgcIndex = 0; sgcIndex < numSgcs; ++sgcIndex) {
@@ -452,7 +452,7 @@ public class MySkeleton {
             List<String> addResult) {
         int boneCount = skeleton.getBoneCount();
         List<String> result = (addResult == null)
-                ? new ArrayList<String>(boneCount) : addResult;
+                ? new ArrayList<>(boneCount) : addResult;
 
         for (int boneIndex = 0; boneIndex < boneCount; ++boneIndex) {
             Bone bone = skeleton.getBone(boneIndex);
@@ -503,7 +503,7 @@ public class MySkeleton {
             List<Skeleton> addResult) {
         Validate.nonNull(subtree, "subtree");
         List<Skeleton> result = (addResult == null)
-                ? new ArrayList<Skeleton>(4) : addResult;
+                ? new ArrayList<>(4) : addResult;
 
         int numControls = subtree.getNumControls();
         for (int controlIndex = 0; controlIndex < numControls; ++controlIndex) {
@@ -536,7 +536,7 @@ public class MySkeleton {
             Map<Bone, Spatial> storeResult) {
         Validate.nonNull(skeleton, "skeleton");
         Map<Bone, Spatial> result = (storeResult == null)
-                ? new HashMap<Bone, Spatial>(4) : storeResult;
+                ? new HashMap<>(4) : storeResult;
 
         int numBones = skeleton.getBoneCount();
         for (int boneIndex = 0; boneIndex < numBones; ++boneIndex) {
@@ -569,7 +569,7 @@ public class MySkeleton {
             Map<Bone, Spatial> storeResult) {
         Validate.nonNull(subtree, "subtree");
         Map<Bone, Spatial> result = (storeResult == null)
-                ? new HashMap<Bone, Spatial>(4) : storeResult;
+                ? new HashMap<>(4) : storeResult;
 
         List<SkeletonControl> list
                 = MySpatial.listControls(subtree, SkeletonControl.class, null);
