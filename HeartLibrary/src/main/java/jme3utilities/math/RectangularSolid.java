@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2021, Stephen Gold
+ Copyright (c) 2018-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -426,17 +426,8 @@ public class RectangularSolid implements Savable {
      */
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(80);
-
-        builder.append("RectangularSolid[");
-        builder.append(localToWorld.toString());
-        builder.append(", min=");
-        builder.append(minima.toString());
-        builder.append(", max=");
-        builder.append(maxima.toString());
-        builder.append("]");
-
-        String description = builder.toString();
+        String description = "RectangularSolid[" + localToWorld +
+                ", min=" + minima + ", max=" + maxima + "]";
         return description;
     }
     // *************************************************************************
