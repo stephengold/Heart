@@ -163,7 +163,7 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 
 ## How to build Heart from source
 
-1. Install a [Java Development Kit (JDK)][openJDK],
+1. Install a [Java Development Kit (JDK)][adoptium],
    if you don't already have one.
 2. Point the `JAVA_HOME` environment variable to your JDK installation:
   + using Bash: `export JAVA_HOME="` *path to installation* `"`
@@ -306,6 +306,7 @@ correct the situation: sgold@sonic.net
 
 
 [acorus]: https://github.com/stephengold/Acorus "Acorus Project"
+[adoptium]: https://adoptium.net/releases.html "Adoptium Project"
 [ant]: https://ant.apache.org "Apache Ant Project"
 [blender]: https://docs.blender.org "Blender Project"
 [chrome]: https://www.google.com/chrome "Chrome"
@@ -330,7 +331,6 @@ correct the situation: sgold@sonic.net
 [minie]: https://github.com/stephengold/Minie "Minie Project"
 [mint]: https://linuxmint.com "Linux Mint Project"
 [netbeans]: https://netbeans.org "NetBeans Project"
-[openJDK]: https://openjdk.java.net "OpenJDK Project"
 [skycontrol]: https://github.com/stephengold/SkyControl "SkyControl Project"
 [sonatype]: https://www.sonatype.com "Sonatype"
 [utilities]: https://github.com/stephengold/jme3-utilities "Jme3-utilities Project"
