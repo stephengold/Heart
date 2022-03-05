@@ -773,13 +773,13 @@ public class MyAnimation {
         Vector3f[] translations = new Vector3f[numFrames];
         Quaternion[] rotations = new Quaternion[numFrames];
         Vector3f[] scales = new Vector3f[numFrames];
-        transform = transform.clone();
+        Transform clonedTransform = transform.clone();
 
         for (int frameIndex = 0; frameIndex < numFrames; ++frameIndex) {
             times[frameIndex] = frameTimes[frameIndex];
-            translations[frameIndex] = transform.getTranslation();
-            rotations[frameIndex] = transform.getRotation();
-            scales[frameIndex] = transform.getScale();
+            translations[frameIndex] = clonedTransform.getTranslation();
+            rotations[frameIndex] = clonedTransform.getRotation();
+            scales[frameIndex] = clonedTransform.getScale();
         }
         BoneTrack result = newBoneTrack(boneIndex, times, translations,
                 rotations, scales);
