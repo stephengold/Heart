@@ -73,8 +73,11 @@ task TestGenerator(type: JavaExec) {
     mainClass = 'jme3utilities.math.test.TestGenerator'
 }
 
-task TestLoopMesh(type: JavaExec) {
+task LoopMeshTest(type: JavaExec) {
     mainClass = 'jme3utilities.mesh.test.LoopMeshTest'
+}
+task TestMergeMeshes(type: JavaExec) {
+    mainClass = 'jme3utilities.mesh.test.TestMergeMeshes'
 }
 task TestSolidMeshes(type: JavaExec) {
     mainClass = 'jme3utilities.mesh.test.TestSolidMeshes'
