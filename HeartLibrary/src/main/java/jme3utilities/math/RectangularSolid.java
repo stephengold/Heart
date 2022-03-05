@@ -426,8 +426,8 @@ public class RectangularSolid implements Savable {
      */
     @Override
     public String toString() {
-        String description = "RectangularSolid[" + localToWorld +
-                ", min=" + minima + ", max=" + maxima + "]";
+        String description = "RectangularSolid[" + localToWorld
+                + ", min=" + minima + ", max=" + maxima + "]";
         return description;
     }
     // *************************************************************************

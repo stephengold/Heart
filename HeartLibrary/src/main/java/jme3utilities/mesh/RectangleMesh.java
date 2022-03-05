@@ -37,8 +37,8 @@ import java.util.logging.Logger;
  * in the X-Y plane.
  * <p>
  * In local space, the rectangle extends from (x1,y1,0) to (x2,y2,0) with
- * normals set to (0,0,zNorm). In texture space, it extends from (s1,t1)
- * to (s2, t2).
+ * normals set to (0,0,zNorm). In texture space, it extends from (s1,t1) to
+ * (s2,t2).
  * <p>
  * The key differences between this class and com.jme3.scene.shape.Quad are:<ol>
  * <li> the center and extent can be configured independently,

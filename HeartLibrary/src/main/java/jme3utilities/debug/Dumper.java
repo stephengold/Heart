@@ -447,7 +447,7 @@ public class Dumper implements Cloneable {
         if (spatial instanceof AudioNode) {
             description = describer.describeAudioNode(spatial);
             addDescription(description);
-            
+
         } else {
             if (dumpBucketFlag) {
                 description = describer.describeBucket(spatial);
