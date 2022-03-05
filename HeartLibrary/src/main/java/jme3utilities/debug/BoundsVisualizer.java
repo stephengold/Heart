@@ -85,7 +85,7 @@ public class BoundsVisualizer extends SubtreeControl {
      */
     final private static float defaultLineWidth = 1f;
     /**
-     * child position of the lines geometry in the subtree node
+     * child index of the "lines" geometry in the subtree node
      */
     final private static int linesChildPosition = 0;
     /**

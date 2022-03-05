@@ -91,11 +91,11 @@ public class SkeletonVisualizer extends SubtreeControl {
      */
     final private static float defaultLineWidth = 1f;
     /**
-     * child position of the heads geometry in the subtree Node
+     * child index of the "heads" geometry in the subtree Node
      */
     final private static int headsChildPosition = 0;
     /**
-     * child position of the links geometry in the subtree Node
+     * child index of the "links" geometry in the subtree Node
      */
     final private static int linksChildPosition = 1;
     /**
