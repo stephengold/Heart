@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -46,6 +46,13 @@ public class UncachedKey extends AssetKey<Object> {
             = Logger.getLogger(UncachedKey.class.getName());
     // *************************************************************************
     // constructors
+
+    /**
+     * No-argument constructor needed by SavableClassUtil. Do not invoke
+     * directly!
+     */
+    protected UncachedKey() {
+    }
 
     /**
      * Instantiate a key for the specified asset path.
