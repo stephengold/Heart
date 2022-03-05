@@ -1,5 +1,26 @@
 # release log for the Heart Library and related tests
 
+## Version 7.4.0 released on TBD
+
+ + Added methods:
+   + no-arg constructors for `ContrastAdjustmentFilter` and `UncachedKey`
+   + `Heart.parseAppArgs()` (an aid to portability)
+   + `MyBuffer.rotateBinormals()`
+   + `Describer.describeAudioNode()`
+   + `MyArray.countNeSorted()`
+   + `NamedAppState.getInfluence()`
+ + `Dumper` enhancements:
+   + Dump IDs of appstates, even those not based on `AbstractAppState`.
+   + Dump the influence lists of named appstates.
+   + Added special handling for audio nodes.
+ + Improved the examples:
+   + Bugfix:  unable to run examples from the command line
+   + Added command-line arguments to adjust the logging level
+     and bypass the Settings Dialog. (for portability)
+   + Disabled OpenGL "compatibility" profile. (for portability)
+   + Added LWJGL natives for MacOSX_ARM64. (for portability)
+ + Updated Gradle to v7.4
+
 ## Version 7.3.0 released on 7 February 2022
 
  + Bugfix:  `ClassCastException` in `MyMesh.vertexColor()` for certain meshes
