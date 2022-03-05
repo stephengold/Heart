@@ -71,6 +71,14 @@ public class ContrastAdjustmentFilter extends Filter {
     // constructors
 
     /**
+     * No-argument constructor needed by SavableClassUtil. Do not invoke
+     * directly!
+     */
+    protected ContrastAdjustmentFilter() {
+        super("ContrastAdjustmentFilter");
+    }
+
+    /**
      * Instantiate a filter with the specified exponent.
      *
      * @param exponent exponent for the power law (&gt;0)
