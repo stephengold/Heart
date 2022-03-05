@@ -26,6 +26,8 @@ depend on the Heart Library.
 + [How to build Heart from source](#build)
 + [Downloads](#downloads)
 + [Conventions](#conventions)
++ [An overview of the example applications](#examples)
++ [External links](#links)
 + [History](#history)
 + [Acknowledgments](#acks)
 
@@ -138,7 +140,7 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
 2. Select "Properties" to open the "Project Properties" dialog.
 3. Under "Categories:" select "Libraries".
 4. Click on the "Compile" tab.
-5. Add the `Heart` class jar:
+5. Add the Heart class jar:
   + Click on the "Add JAR/Folder" button.
   + Navigate to the download folder.
   + Select the "Heart-7.3.0.jar" file.
@@ -183,7 +185,7 @@ Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
   + using Windows Command Prompt: `.\gradlew build`
 
 After a successful build,
-Maven artifacts will be found in `HeartLibrary/build/libs`.
+Maven artifacts will be found in "HeartLibrary/build/libs".
 
 You can install the artifacts to your local Maven repository:
 + using Bash or PowerShell: `./gradlew install`
@@ -222,6 +224,25 @@ Package names begin with `jme3utilities`
 
 The source code is compatible with JDK 7.
 The pre-built libraries are compatible with JDK 8.
+
+[Jump to table of contents](#toc)
+
+
+<a name="examples"></a>
+
+## An overview of the example applications
+
+(under construction)
+
+[Jump to table of contents](#toc)
+
+
+<a name="links"></a>
+
+## External links
+
++ [the Heart page](https://store.jmonkeyengine.org/e534fc1e-5b78-46b7-a831-d5d40cbd9dcd)
+  at [JmonkeyStore](https://store.jmonkeyengine.org)
 
 [Jump to table of contents](#toc)
 
