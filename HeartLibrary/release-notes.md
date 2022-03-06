@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 7.4.1 released on TBD
+## Version 7.4.1 released on 6 March 2022
 
 Bugfix:  binaries built using JDK 11 aren't Java 8 compatible
 
