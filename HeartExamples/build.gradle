@@ -13,7 +13,7 @@ if (!hasProperty('mainClass')) {
 jar.manifest.attributes('Main-Class': mainClassName)
 
 dependencies {
-    implementation ('com.github.stephengold:Acorus:0.9.9') {
+    implementation ('com.github.stephengold:Acorus:0.9.10') {
         exclude group: 'com.github.stephengold', module: 'Heart'
     }
     runtimeOnly 'org.jmonkeyengine:jme3-desktop:' + jme3Version
@@ -22,7 +22,7 @@ dependencies {
     runtimeOnly 'org.jmonkeyengine:jme3-testdata:' + jme3Version
 
     // HeartExamples doesn't use jme3-jogg nor jme3-plugins
-    //  -- they are included solely to avoid warnings from AssetConfig
+    //  -- they are included solely to avoid warnings from AssetConfig.
     runtimeOnly 'org.jmonkeyengine:jme3-jogg:' + jme3Version
     runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jme3Version
 
@@ -37,27 +37,27 @@ dependencies {
     implementation project(':HeartLibrary')
 }
 
-// cleanup tasks
+// cleanup tasks:
 
 clean.dependsOn('cleanDLLs', 'cleanDyLibs', 'cleanLogs', 'cleanSOs', 'cleanWrittenAssets')
 
-task cleanDLLs(type: Delete) { // Windows native libraries
+task cleanDLLs(type: Delete) { // extracted Windows native libraries
     delete fileTree(dir: '.', include: '*.dll')
 }
-task cleanDyLibs(type: Delete) { // macOSX native libraries
+task cleanDyLibs(type: Delete) { // extracted macOSX native libraries
     delete fileTree(dir: '.', include: '*.dylib')
 }
 task cleanLogs(type: Delete) { // JVM crash logs
     delete fileTree(dir: '.', include: 'hs_err_pid*.log')
 }
-task cleanSOs(type: Delete) { // Linux and Android native libraries
+task cleanSOs(type: Delete) { // extracted Linux and Android native libraries
     delete fileTree(dir: '.', include: '*.so')
 }
 task cleanWrittenAssets(type: Delete) { // Acorus output directory
     delete 'Written Assets'
 }
 
-// tasks to run the example apps
+// tasks to run the example apps:
 
 task TestBoundsVisualizer(type: JavaExec) {
     mainClass = 'jme3utilities.debug.test.TestBoundsVisualizer'
