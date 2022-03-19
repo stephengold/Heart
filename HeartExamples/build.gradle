@@ -41,60 +41,60 @@ dependencies {
 
 clean.dependsOn('cleanDLLs', 'cleanDyLibs', 'cleanLogs', 'cleanSOs', 'cleanWrittenAssets')
 
-task cleanDLLs(type: Delete) { // extracted Windows native libraries
+tasks.register('cleanDLLs', Delete) { // extracted Windows native libraries
     delete fileTree(dir: '.', include: '*.dll')
 }
-task cleanDyLibs(type: Delete) { // extracted macOSX native libraries
+tasks.register('cleanDyLibs', Delete) { // extracted macOSX native libraries
     delete fileTree(dir: '.', include: '*.dylib')
 }
-task cleanLogs(type: Delete) { // JVM crash logs
+tasks.register('cleanLogs', Delete) { // JVM crash logs
     delete fileTree(dir: '.', include: 'hs_err_pid*.log')
 }
-task cleanSOs(type: Delete) { // extracted Linux and Android native libraries
+tasks.register('cleanSOs', Delete) { // extracted Linux and Android native libraries
     delete fileTree(dir: '.', include: '*.so')
 }
-task cleanWrittenAssets(type: Delete) { // Acorus output directory
+tasks.register('cleanWrittenAssets', Delete) { // Acorus output directory
     delete 'Written Assets'
 }
 
 // tasks to run the example apps:
 
-task TestBoundsVisualizer(type: JavaExec) {
+tasks.register('TestBoundsVisualizer', JavaExec) {
     mainClass = 'jme3utilities.debug.test.TestBoundsVisualizer'
 }
-task TestPas(type: JavaExec) {
+tasks.register('TestPas', JavaExec) {
     mainClass = 'jme3utilities.debug.test.TestPas'
 }
-task TestSkeletonVisualizer(type: JavaExec) {
+tasks.register('TestSkeletonVisualizer', JavaExec) {
     mainClass = 'jme3utilities.debug.test.TestSkeletonVisualizer'
 }
 
-task TestGenerator(type: JavaExec) {
+tasks.register('TestGenerator', JavaExec) {
     mainClass = 'jme3utilities.math.test.TestGenerator'
 }
 
-task LoopMeshTest(type: JavaExec) {
+tasks.register('LoopMeshTest', JavaExec) {
     mainClass = 'jme3utilities.mesh.test.LoopMeshTest'
 }
-task TestMergeMeshes(type: JavaExec) {
+tasks.register(' TestMergeMeshes', JavaExec) {
     mainClass = 'jme3utilities.mesh.test.TestMergeMeshes'
 }
-task TestSolidMeshes(type: JavaExec) {
+tasks.register('TestSolidMeshes', JavaExec) {
     mainClass = 'jme3utilities.mesh.test.TestSolidMeshes'
 }
 
-task TestContrast(type: JavaExec) {
+tasks.register('TestContrast', JavaExec) {
     mainClass = 'jme3utilities.test.TestContrast'
 }
-task TestMulticolor(type: JavaExec) {
+tasks.register('TestMulticolor', JavaExec) {
     mainClass = 'jme3utilities.test.TestMulticolor'
 }
-task TestMySpatial(type: JavaExec) {
+tasks.register('TestMySpatial', JavaExec) {
     mainClass = 'jme3utilities.test.TestMySpatial'
 }
-task TestNameGenerator(type: JavaExec) {
+tasks.register('TestNameGenerator', JavaExec) {
     mainClass = 'jme3utilities.test.TestNameGenerator'
 }
-task TestWireframe(type: JavaExec) {
+tasks.register('TestWireframe', JavaExec) {
     mainClass = 'jme3utilities.test.TestWireframe'
 }
