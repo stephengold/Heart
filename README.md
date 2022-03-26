@@ -12,9 +12,8 @@ It contains 3 sub-projects:
 Complete source code (in Java) is provided under
 [a 3-clause BSD license][license].
 
-Many other libraries (including [Acorus], [jme3-wireframe], [JmePower],
-[Minie], [SkyControl], and [Wes])
-depend on the Heart Library.
+Many other libraries depend on the Heart Library, including
+[Acorus], [jme3-wireframe], [JmePower], [Minie], [SkyControl], and [Wes].
 
 
 <a name="toc"></a>
@@ -84,13 +83,12 @@ depend on the Heart Library.
 
 ## How to add Heart to an existing project
 
-Adding the Heart Library to an existing [jMonkeyEngine][jme] project should be
-a simple matter of adding it to the classpath.
-
-Heart comes pre-built as a single library that depends on
+Heart comes pre-built as a library that depends on
 the standard "jme3-core" library from jMonkeyEngine.
+Adding Heart to an existing [jMonkeyEngine][jme] project should be
+a simple matter of adding this library to the classpath.
 
-For projects built using Maven or [Gradle], it is sufficient to specify the
+For projects built using [Maven] or [Gradle], it is sufficient to add a
 dependency on the Heart Library.  The build tools should automatically
 resolve the remaining dependencies.
 
@@ -223,7 +221,7 @@ Old Maven artifacts (v5.0.0 through v6.4.0) are available from JCenter.
 
 ## Conventions
 
-Package names begin with `jme3utilities`
+Package names begin with `jme3utilities`.
 
 The source code and pre-built libraries are compatible with JDK 8.
 
@@ -234,7 +232,11 @@ The source code and pre-built libraries are compatible with JDK 8.
 
 ## An overview of the example applications
 
-(under construction)
+(This section is under construction.)
+
+Applications have been created to test and demonstrate
+certain features of Heart.
+The following apps are found in the HeartExamples sub-project:
 
 ### TestBoundsVisualizer
 
@@ -343,7 +345,8 @@ correct the situation: sgold@sonic.net
 [license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
 [log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
-[meld]: https://meldmerge.org "Meld Project"
+[maven]: https://maven.apache.org "Maven Project"
+[meld]: https://meldmerge.org "Meld Tool"
 [minie]: https://github.com/stephengold/Minie "Minie Project"
 [mint]: https://linuxmint.com "Linux Mint Project"
 [netbeans]: https://netbeans.org "NetBeans Project"
