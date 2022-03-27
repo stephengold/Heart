@@ -108,6 +108,7 @@ public class TestSkeletonVisualizer extends AbstractDemo {
         AppSettings settings = new AppSettings(loadDefaults);
         settings.setAudioRenderer(null);
         settings.setRenderer(AppSettings.LWJGL_OPENGL32);
+        settings.setSamples(4); // anti-aliasing
         settings.setTitle(applicationName); // Customize the window's title bar.
         application.setSettings(settings);
 
@@ -124,8 +125,9 @@ public class TestSkeletonVisualizer extends AbstractDemo {
         configureCamera();
         configureDumper();
 
-        ColorRGBA bgColor = new ColorRGBA(0.2f, 0.2f, 0.2f, 1f);
-        viewPort.setBackgroundColor(bgColor);
+        // Set the background to light blue.
+        ColorRGBA backgroundColor = new ColorRGBA(0.2f, 0.2f, 1f, 1f);
+        viewPort.setBackgroundColor(backgroundColor);
 
         addFloor();
         addLighting();
@@ -170,9 +172,8 @@ public class TestSkeletonVisualizer extends AbstractDemo {
         dim.bindSignal(CameraInput.FLYCAM_RISE, KeyInput.KEY_UP);
         dim.bindSignal("orbitLeft", KeyInput.KEY_LEFT);
         dim.bindSignal("orbitRight", KeyInput.KEY_RIGHT);
-
         dim.bind(asToggleHelp, KeyInput.KEY_H);
-        dim.bind(asTogglePause, KeyInput.KEY_PERIOD);
+        dim.bind(asTogglePause, KeyInput.KEY_PERIOD, KeyInput.KEY_PAUSE);
         dim.bind("toggle skeleton", KeyInput.KEY_V);
         /*
          * The help node can't be created until all hotkeys are bound.
@@ -187,11 +188,11 @@ public class TestSkeletonVisualizer extends AbstractDemo {
     }
 
     /**
-     * Process an action that wasn't handled by the active input mode.
+     * Process an action that wasn't handled by the active InputMode.
      *
      * @param actionString textual description of the action (not null)
      * @param ongoing true if the action is ongoing, otherwise false
-     * @param tpf time interval between frames (in seconds, &ge;0)
+     * @param tpf the time interval between frames (in seconds, &ge;0)
      */
     @Override
     public void onAction(String actionString, boolean ongoing, float tpf) {
@@ -205,7 +206,9 @@ public class TestSkeletonVisualizer extends AbstractDemo {
                     return;
             }
         }
-
+        /*
+         * The action is not handled: forward it to the superclass.
+         */
         super.onAction(actionString, ongoing, tpf);
     }
 
@@ -265,7 +268,7 @@ public class TestSkeletonVisualizer extends AbstractDemo {
     }
 
     /**
-     * Configure the camera during startup.
+     * Configure the main camera during startup.
      */
     private void configureCamera() {
         float near = 0.002f;
@@ -273,7 +276,7 @@ public class TestSkeletonVisualizer extends AbstractDemo {
         MyCamera.setNearFar(cam, near, far);
 
         flyCam.setDragToRotate(true);
-        flyCam.setMoveSpeed(3f);
+        flyCam.setMoveSpeed(4f);
 
         cam.setName("cam");
         cam.setLocation(new Vector3f(-1.7f, 1.9f, 1.2f));
@@ -285,7 +288,7 @@ public class TestSkeletonVisualizer extends AbstractDemo {
     }
 
     /**
-     * Configure the PhysicsDumper during startup.
+     * Configure the Dumper during startup.
      */
     private void configureDumper() {
         dumper.setDumpTransform(true);
