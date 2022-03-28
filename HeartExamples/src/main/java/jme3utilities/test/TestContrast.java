@@ -157,6 +157,31 @@ public class TestContrast extends ActionApplication {
     }
 
     /**
+     * Callback invoked when the active InputMode changes.
+     *
+     * @param oldMode the old mode, or null if none
+     * @param newMode the new mode, or null if none
+     */
+    @Override
+    public void inputModeChange(InputMode oldMode, InputMode newMode) {
+        if (newMode != null) {
+            if (helpNode != null) {
+                helpNode.removeFromParent();
+            }
+
+            float x = 10f;
+            float y = cam.getHeight() - 30f;
+            float width = cam.getWidth() - 20f;
+            float height = cam.getHeight() - 20f;
+            Rectangle rectangle = new Rectangle(x, y, width, height);
+
+            float space = 20f;
+            helpNode = HelpUtils.buildNode(newMode, rectangle, guiFont, space);
+            guiNode.attachChild(helpNode);
+        }
+    }
+
+    /**
      * Add application-specific hotkey bindings and override existing ones.
      */
     @Override
@@ -173,16 +198,6 @@ public class TestContrast extends ActionApplication {
         dim.bindSignal("orbitRight", KeyInput.KEY_RIGHT);
 
         dim.bind("toggle help", KeyInput.KEY_H);
-
-        float x = 10f;
-        float y = cam.getHeight() - 30f;
-        float width = cam.getWidth() - 20f;
-        float height = cam.getHeight() - 20f;
-        Rectangle rectangle = new Rectangle(x, y, width, height);
-
-        float space = 20f;
-        helpNode = HelpUtils.buildNode(dim, rectangle, guiFont, space);
-        guiNode.attachChild(helpNode);
     }
 
     /**
