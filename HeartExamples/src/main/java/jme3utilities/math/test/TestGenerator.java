@@ -33,6 +33,7 @@ import com.jme3.input.KeyInput;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
+import com.jme3.renderer.Camera;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
@@ -49,6 +50,7 @@ import jme3utilities.mesh.Icosphere;
 import jme3utilities.mesh.PointMesh;
 import jme3utilities.ui.AbstractDemo;
 import jme3utilities.ui.CameraOrbitAppState;
+import jme3utilities.ui.HelpVersion;
 import jme3utilities.ui.InputMode;
 
 /**
@@ -147,6 +149,45 @@ public class TestGenerator extends AbstractDemo {
                 sampleColor, samplePointSize);
 
         trial();
+    }
+
+    /**
+     * Calculate screen bounds for a detailed help node. Meant to be overridden.
+     *
+     * @param viewPortWidth (in pixels, &gt;0)
+     * @param viewPortHeight (in pixels, &gt;0)
+     * @return a new instance
+     */
+    public Rectangle detailedHelpBounds(int viewPortWidth, int viewPortHeight) {
+        /*
+         * Position help nodes along the top of the viewport.
+         */
+        float margin = 10f; // in pixels
+        float height = viewPortHeight - (2f * margin)
+                - 20f; // 20px so as not to cover the status line
+        float width = viewPortWidth - (2f * margin);
+        float leftX = margin;
+        float topY = margin + height;
+        Rectangle result = new Rectangle(leftX, topY, width, height);
+
+        return result;
+    }
+
+    /**
+     * Callback invoked when the active InputMode changes.
+     *
+     * @param oldMode the old mode, or null if none
+     * @param newMode the new mode, or null if none
+     */
+    @Override
+    public void inputModeChange(InputMode oldMode, InputMode newMode) {
+        if (newMode != null) {
+            Camera guiCamera = guiViewPort.getCamera();
+            int viewPortWidth = guiCamera.getWidth();
+            int viewPortHeight = guiCamera.getHeight();
+            updateHelpNodes(newMode, viewPortWidth, viewPortHeight,
+                    HelpVersion.Detailed);
+        }
     }
 
     /**
