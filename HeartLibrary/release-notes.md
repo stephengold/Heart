@@ -1,5 +1,9 @@
 # release log for the Heart Library and related tests
 
+## Version 7.5.0 released on TBD
+
+Added 3 classes:  `ClothGrid`, `DividedLine`, and `RectSizeLimits`.
+
 ## Version 7.4.1 released on 6 March 2022
 
 Bugfix:  binaries built using JDK 11 aren't Java 8 compatible
