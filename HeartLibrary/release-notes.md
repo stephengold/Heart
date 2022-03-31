@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 7.5.0 released on TBD
+## Version 7.5.0 released on 31 March 2022
 
 Added 3 classes:  `ClothGrid`, `DividedLine`, and `RectSizeLimits`.
 
