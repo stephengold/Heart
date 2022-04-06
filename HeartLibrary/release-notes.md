@@ -2,7 +2,8 @@
 
 ## Version 7.5.0 released on 31 March 2022
 
-Added 3 classes:  `ClothGrid`, `DividedLine`, and `RectSizeLimits`.
++ Added 3 classes:  `ClothGrid`, `DividedLine`, and `RectSizeLimits`.
++ Added a `Validate.nonEmpty()` method for arrays of `int`s.
 
 ## Version 7.4.1 released on 6 March 2022
 
