@@ -28,7 +28,6 @@ package jme3utilities.math;
 
 import java.util.logging.Logger;
 import jme3utilities.Validate;
-import jme3utilities.math.MyMath;
 
 /**
  * Limits on the size of a non-degenerate rectangle. Immutable.
