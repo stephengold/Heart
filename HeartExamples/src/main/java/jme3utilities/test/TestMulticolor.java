@@ -26,7 +26,6 @@
  */
 package jme3utilities.test;
 
-import com.jme3.app.SimpleApplication;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -41,6 +40,7 @@ import jme3utilities.Heart;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.RectangleMesh;
+import jme3utilities.ui.AbstractDemo;
 
 /**
  * Test the "multicolor.j3md" material definitions. If successful, a colorful
@@ -48,7 +48,7 @@ import jme3utilities.mesh.RectangleMesh;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestMulticolor extends SimpleApplication {
+public class TestMulticolor extends AbstractDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -85,13 +85,16 @@ public class TestMulticolor extends SimpleApplication {
         application.start();
     }
     // *************************************************************************
-    // SimpleApplication methods
+    // AbstractDemo methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void simpleInitApp() {
+    public void actionInitializeApplication() {
+        ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
+        viewPort.setBackgroundColor(gray);
+
         flyCam.setEnabled(false);
         cam.setLocation(new Vector3f(0f, 0f, 4f));
         cam.setName("cam");
