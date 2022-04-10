@@ -26,7 +26,6 @@
  */
 package jme3utilities.mesh.test;
 
-import com.jme3.app.SimpleApplication;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
@@ -39,13 +38,14 @@ import jme3utilities.MyAsset;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.LoopMesh;
+import jme3utilities.ui.AbstractDemo;
 
 /**
  * Test the LoopMesh class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class LoopMeshTest extends SimpleApplication {
+public class LoopMeshTest extends AbstractDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -82,13 +82,16 @@ public class LoopMeshTest extends SimpleApplication {
         application.start();
     }
     // *************************************************************************
-    // SimpleApplication methods
+    // AbstractDemo methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void simpleInitApp() {
+    public void actionInitializeApplication() {
+        ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
+        viewPort.setBackgroundColor(gray);
+
         flyCam.setEnabled(false);
         cam.setLocation(Vector3f.UNIT_Y.mult(10f));
         cam.lookAt(Vector3f.ZERO, Vector3f.UNIT_Z.clone());
