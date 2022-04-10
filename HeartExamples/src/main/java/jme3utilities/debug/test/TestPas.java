@@ -26,20 +26,21 @@
  */
 package jme3utilities.debug.test;
 
-import com.jme3.app.SimpleApplication;
-import com.jme3.app.StatsAppState;
+import com.jme3.app.state.AppState;
+import com.jme3.math.ColorRGBA;
 import com.jme3.system.AppSettings;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.MyString;
 import jme3utilities.debug.PerformanceAppState;
+import jme3utilities.ui.AbstractDemo;
 
 /**
  * Test the PerformanceAppState class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestPas extends SimpleApplication {
+public class TestPas extends AbstractDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -53,6 +54,15 @@ public class TestPas extends SimpleApplication {
      */
     final private static String applicationName
             = TestPas.class.getSimpleName();
+    // *************************************************************************
+    // constructors
+
+    /**
+     * Instantiate an AbstractDemo without any initial appstates.
+     */
+    private TestPas() {
+        super((AppState[]) null);
+    }
     // *************************************************************************
     // new methods exposed
 
@@ -76,18 +86,17 @@ public class TestPas extends SimpleApplication {
         application.start();
     }
     // *************************************************************************
-    // SimpleApplication methods
+    // AbstractDemo methods
 
     /**
      * Initialization code: create and attach the app state for testing.
      */
     @Override
-    public void simpleInitApp() {
+    public void actionInitializeApplication() {
+        ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
+        viewPort.setBackgroundColor(gray);
+
         PerformanceAppState pas = new PerformanceAppState();
         stateManager.attach(pas);
-        /*
-         * Detach any JME stats app state(s).
-         */
-        Heart.detachAll(stateManager, StatsAppState.class);
     }
 }
