@@ -113,7 +113,75 @@ public class TestBoundsVisualizer extends AbstractDemo {
     // AbstractDemo methods
 
     /**
-     * Process an action from the InputManager. TODO re-order methods
+     * Initialize this application.
+     */
+    @Override
+    public void actionInitializeApplication() {
+        ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
+        viewPort.setBackgroundColor(gray);
+
+        configureCamera();
+        configureDumper();
+        /*
+         * Create a wireframe pyramid and attach it to the scene.
+         */
+        int numSides = 4;
+        float radius = 2f;
+        float height = 1f;
+        boolean generatePyramid = true;
+        Mesh mesh = new Cone(numSides, radius, height, generatePyramid);
+        mesh = MyMesh.addIndices(mesh);
+        Spatial pyramid = new Geometry("pyramid", mesh);
+        rootNode.attachChild(pyramid);
+
+        Material material = MyAsset.createWireframeMaterial(assetManager,
+                ColorRGBA.Green);
+        pyramid.setMaterial(material);
+        /*
+         * Add a bounds visualizer for the pyramid.
+         */
+        visualizer = new BoundsVisualizer(assetManager);
+        rootNode.addControl(visualizer);
+        visualizer.enableBillboarding(cam, MyVector3f.yAxis);
+        visualizer.setSubject(pyramid);
+        visualizer.setEnabled(true);
+        /*
+         * Create status text and attach it to the GUI.
+         */
+        statusText = new BitmapText(guiFont);
+        statusText.setLocalTranslation(0f, cam.getHeight(), 0f);
+        guiNode.attachChild(statusText);
+    }
+
+    /**
+     * Callback invoked immediately after initializing the hotkey bindings of
+     * the default input mode.
+     */
+    @Override
+    public void moreDefaultBindings() {
+        InputMode dim = getDefaultInputMode();
+        dim.bind("billboard off", KeyInput.KEY_N);
+        dim.bind("billboard X", KeyInput.KEY_X);
+        dim.bind("billboard Y", KeyInput.KEY_C);
+        dim.bind("billboard Z", KeyInput.KEY_V);
+        dim.bind("dump", KeyInput.KEY_P);
+        dim.bind("sphere Icosphere", KeyInput.KEY_F2);
+        dim.bind("sphere LoopMesh", KeyInput.KEY_F3);
+        dim.bind("sphere PoleSphere", KeyInput.KEY_F1);
+        dim.bind("sphere WireSphere", KeyInput.KEY_F4);
+        dim.bind("toggle bounds", KeyInput.KEY_B);
+        dim.bind(asToggleHelp, KeyInput.KEY_H);
+        dim.bind("toggle depthTest", KeyInput.KEY_T);
+        dim.bind("width 1", KeyInput.KEY_1);
+        dim.bind("width 2", KeyInput.KEY_2);
+        dim.bind("width 3", KeyInput.KEY_3);
+        dim.bind("width 4", KeyInput.KEY_4);
+        dim.bind("width 5", KeyInput.KEY_5);
+        dim.bind("width 6", KeyInput.KEY_6);
+    }
+
+    /**
+     * Process an action that wasn't handled by the active InputMode.
      *
      * @param actionString textual description of the action (not null)
      * @param ongoing true if the action is ongoing, otherwise false
@@ -164,47 +232,6 @@ public class TestBoundsVisualizer extends AbstractDemo {
     }
 
     /**
-     * Initialize this application.
-     */
-    @Override
-    public void actionInitializeApplication() {
-        ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
-        viewPort.setBackgroundColor(gray);
-
-        configureCamera();
-        configureDumper();
-        /*
-         * Create a wireframe pyramid and attach it to the scene.
-         */
-        int numSides = 4;
-        float radius = 2f;
-        float height = 1f;
-        boolean generatePyramid = true;
-        Mesh mesh = new Cone(numSides, radius, height, generatePyramid);
-        mesh = MyMesh.addIndices(mesh);
-        Spatial pyramid = new Geometry("pyramid", mesh);
-        rootNode.attachChild(pyramid);
-
-        Material material = MyAsset.createWireframeMaterial(assetManager,
-                ColorRGBA.Green);
-        pyramid.setMaterial(material);
-        /*
-         * Add a bounds visualizer for the pyramid.
-         */
-        visualizer = new BoundsVisualizer(assetManager);
-        rootNode.addControl(visualizer);
-        visualizer.enableBillboarding(cam, MyVector3f.yAxis);
-        visualizer.setSubject(pyramid);
-        visualizer.setEnabled(true);
-        /*
-         * Create status text and attach it to the GUI.
-         */
-        statusText = new BitmapText(guiFont);
-        statusText.setLocalTranslation(0f, cam.getHeight(), 0f);
-        guiNode.attachChild(statusText);
-    }
-
-    /**
      * Callback invoked once per frame.
      *
      * @param tpf the time interval between frames (in seconds, &ge;0)
@@ -213,33 +240,6 @@ public class TestBoundsVisualizer extends AbstractDemo {
     public void simpleUpdate(float tpf) {
         super.simpleUpdate(tpf);
         updateStatusText();
-    }
-
-    /**
-     * Callback invoked immediately after initializing the hotkey bindings of
-     * the default input mode.
-     */
-    @Override
-    public void moreDefaultBindings() {
-        InputMode dim = getDefaultInputMode();
-        dim.bind("billboard off", KeyInput.KEY_N);
-        dim.bind("billboard X", KeyInput.KEY_X);
-        dim.bind("billboard Y", KeyInput.KEY_C);
-        dim.bind("billboard Z", KeyInput.KEY_V);
-        dim.bind("dump", KeyInput.KEY_P);
-        dim.bind("sphere Icosphere", KeyInput.KEY_F2);
-        dim.bind("sphere LoopMesh", KeyInput.KEY_F3);
-        dim.bind("sphere PoleSphere", KeyInput.KEY_F1);
-        dim.bind("sphere WireSphere", KeyInput.KEY_F4);
-        dim.bind("toggle bounds", KeyInput.KEY_B);
-        dim.bind(asToggleHelp, KeyInput.KEY_H);
-        dim.bind("toggle depthTest", KeyInput.KEY_T);
-        dim.bind("width 1", KeyInput.KEY_1);
-        dim.bind("width 2", KeyInput.KEY_2);
-        dim.bind("width 3", KeyInput.KEY_3);
-        dim.bind("width 4", KeyInput.KEY_4);
-        dim.bind("width 5", KeyInput.KEY_5);
-        dim.bind("width 6", KeyInput.KEY_6);
     }
     // *************************************************************************
     // private methods
