@@ -26,14 +26,11 @@
  */
 package jme3utilities.debug.test;
 
-import com.jme3.app.SimpleApplication;
 import com.jme3.bounding.BoundingBox;
 import com.jme3.bounding.BoundingSphere;
 import com.jme3.bounding.BoundingVolume;
 import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
-import com.jme3.input.controls.ActionListener;
-import com.jme3.input.controls.KeyTrigger;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
@@ -52,15 +49,15 @@ import jme3utilities.debug.Dumper;
 import jme3utilities.debug.SphereMeshes;
 import jme3utilities.math.MyVector3f;
 import jme3utilities.mesh.Cone;
+import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.InputMode;
 
 /**
  * Test the BoundsVisualizer class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestBoundsVisualizer
-        extends SimpleApplication
-        implements ActionListener {
+public class TestBoundsVisualizer extends AbstractDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -113,10 +110,10 @@ public class TestBoundsVisualizer
         application.start();
     }
     // *************************************************************************
-    // ActionListener methods
+    // AbstractDemo methods
 
     /**
-     * Process an action from the InputManager.
+     * Process an action from the InputManager. TODO re-order methods
      *
      * @param actionString textual description of the action (not null)
      * @param ongoing true if the action is ongoing, otherwise false
@@ -159,18 +156,21 @@ public class TestBoundsVisualizer
             if (actionString.startsWith("width ")) {
                 int width = Integer.parseInt(actionString.split(" ")[1]);
                 visualizer.setLineWidth(width);
+                return;
             }
         }
+
+        super.onAction(actionString, ongoing, tpf);
     }
-    // *************************************************************************
-    // SimpleApplication methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void simpleInitApp() {
-        assignKeys();
+    public void actionInitializeApplication() {
+        ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
+        viewPort.setBackgroundColor(gray);
+
         configureCamera();
         configureDumper();
         /*
@@ -214,70 +214,35 @@ public class TestBoundsVisualizer
         super.simpleUpdate(tpf);
         updateStatusText();
     }
-    // *************************************************************************
-    // private methods
 
     /**
-     * Map keys to actions during startup.
+     * Callback invoked immediately after initializing the hotkey bindings of
+     * the default input mode.
      */
-    private void assignKeys() {
-        inputManager.addMapping("billboard off", new KeyTrigger(KeyInput.KEY_N));
-        inputManager.addListener(this, "billboard off");
-
-        inputManager.addMapping("billboard X", new KeyTrigger(KeyInput.KEY_X));
-        inputManager.addListener(this, "billboard X");
-
-        inputManager.addMapping("billboard Y", new KeyTrigger(KeyInput.KEY_Y));
-        inputManager.addListener(this, "billboard Y");
-
-        inputManager.addMapping("billboard Z", new KeyTrigger(KeyInput.KEY_V));
-        inputManager.addListener(this, "billboard Z");
-
-        inputManager.addMapping("dump", new KeyTrigger(KeyInput.KEY_P));
-        inputManager.addListener(this, "dump");
-
-        inputManager.addMapping("sphere Icosphere",
-                new KeyTrigger(KeyInput.KEY_F2));
-        inputManager.addListener(this, "sphere Icosphere");
-
-        inputManager.addMapping("sphere LoopMesh",
-                new KeyTrigger(KeyInput.KEY_F3));
-        inputManager.addListener(this, "sphere LoopMesh");
-
-        inputManager.addMapping("sphere PoleSphere",
-                new KeyTrigger(KeyInput.KEY_F1));
-        inputManager.addListener(this, "sphere PoleSphere");
-
-        inputManager.addMapping("sphere WireSphere",
-                new KeyTrigger(KeyInput.KEY_F4));
-        inputManager.addListener(this, "sphere WireSphere");
-
-        inputManager.addMapping("toggle bounds",
-                new KeyTrigger(KeyInput.KEY_B));
-        inputManager.addListener(this, "toggle bounds");
-
-        inputManager.addMapping("toggle depthTest",
-                new KeyTrigger(KeyInput.KEY_T));
-        inputManager.addListener(this, "toggle depthTest");
-
-        inputManager.addMapping("width 1", new KeyTrigger(KeyInput.KEY_1));
-        inputManager.addListener(this, "width 1");
-
-        inputManager.addMapping("width 2", new KeyTrigger(KeyInput.KEY_2));
-        inputManager.addListener(this, "width 2");
-
-        inputManager.addMapping("width 3", new KeyTrigger(KeyInput.KEY_3));
-        inputManager.addListener(this, "width 3");
-
-        inputManager.addMapping("width 4", new KeyTrigger(KeyInput.KEY_4));
-        inputManager.addListener(this, "width 4");
-
-        inputManager.addMapping("width 5", new KeyTrigger(KeyInput.KEY_5));
-        inputManager.addListener(this, "width 5");
-
-        inputManager.addMapping("width 6", new KeyTrigger(KeyInput.KEY_6));
-        inputManager.addListener(this, "width 6");
+    @Override
+    public void moreDefaultBindings() {
+        InputMode dim = getDefaultInputMode();
+        dim.bind("billboard off", KeyInput.KEY_N);
+        dim.bind("billboard X", KeyInput.KEY_X);
+        dim.bind("billboard Y", KeyInput.KEY_C);
+        dim.bind("billboard Z", KeyInput.KEY_V);
+        dim.bind("dump", KeyInput.KEY_P);
+        dim.bind("sphere Icosphere", KeyInput.KEY_F2);
+        dim.bind("sphere LoopMesh", KeyInput.KEY_F3);
+        dim.bind("sphere PoleSphere", KeyInput.KEY_F1);
+        dim.bind("sphere WireSphere", KeyInput.KEY_F4);
+        dim.bind("toggle bounds", KeyInput.KEY_B);
+        dim.bind(asToggleHelp, KeyInput.KEY_H);
+        dim.bind("toggle depthTest", KeyInput.KEY_T);
+        dim.bind("width 1", KeyInput.KEY_1);
+        dim.bind("width 2", KeyInput.KEY_2);
+        dim.bind("width 3", KeyInput.KEY_3);
+        dim.bind("width 4", KeyInput.KEY_4);
+        dim.bind("width 5", KeyInput.KEY_5);
+        dim.bind("width 6", KeyInput.KEY_6);
     }
+    // *************************************************************************
+    // private methods
 
     /**
      * Configure the Camera during startup.
@@ -304,7 +269,6 @@ public class TestBoundsVisualizer
         Mesh mesh = subject.getMesh();
         if (mesh.getBound() instanceof BoundingBox) {
             mesh.setBound(new BoundingSphere());
-
         } else {
             mesh.setBound(new BoundingBox());
         }
