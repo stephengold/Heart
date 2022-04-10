@@ -367,7 +367,8 @@ public class BoundsVisualizer extends SubtreeControl {
             addLines();
 
         } else {
-            Geometry lines = (Geometry) subtreeNode.getChild(linesChildPosition);
+            Geometry lines
+                    = (Geometry) subtreeNode.getChild(linesChildPosition);
             BoundingVolume bound = subject.getWorldBound();
             Mesh mesh = lines.getMesh();
             if (bound instanceof BoundingBox && mesh instanceof WireBox) {
