@@ -26,7 +26,6 @@
  */
 package jme3utilities.test;
 
-import com.jme3.app.SimpleApplication;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.scene.Geometry;
@@ -37,6 +36,7 @@ import jme3utilities.MyAsset;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.RectangleMesh;
+import jme3utilities.ui.AbstractDemo;
 
 /**
  * Test the MyAsset.createWireframeMaterial() method. If successful, a green
@@ -44,7 +44,7 @@ import jme3utilities.mesh.RectangleMesh;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestWireframe extends SimpleApplication {
+public class TestWireframe extends AbstractDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -81,13 +81,16 @@ public class TestWireframe extends SimpleApplication {
         application.start();
     }
     // *************************************************************************
-    // SimpleApplication methods
+    // AbstractDemo methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void simpleInitApp() {
+    public void actionInitializeApplication() {
+        ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
+        viewPort.setBackgroundColor(gray);
+
         flyCam.setEnabled(false);
 
         Material material = MyAsset.createWireframeMaterial(assetManager,
