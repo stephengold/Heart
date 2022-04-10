@@ -27,7 +27,6 @@
 package jme3utilities.test;
 
 import com.jme3.font.BitmapText;
-import com.jme3.font.Rectangle;
 import com.jme3.input.CameraInput;
 import com.jme3.input.KeyInput;
 import com.jme3.light.AmbientLight;
@@ -41,7 +40,6 @@ import com.jme3.post.FilterPostProcessor;
 import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
-import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
 import com.jme3.system.AppSettings;
@@ -53,9 +51,8 @@ import jme3utilities.MyCamera;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.RectangleMesh;
-import jme3utilities.ui.ActionApplication;
+import jme3utilities.ui.AbstractDemo;
 import jme3utilities.ui.CameraOrbitAppState;
-import jme3utilities.ui.HelpUtils;
 import jme3utilities.ui.InputMode;
 
 /**
@@ -63,7 +60,7 @@ import jme3utilities.ui.InputMode;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestContrast extends ActionApplication {
+public class TestContrast extends AbstractDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -96,10 +93,6 @@ public class TestContrast extends ActionApplication {
      * exponent passed to the filter
      */
     private float exponent = 1f;
-    /**
-     * GUI node for displaying hotkey help/hints
-     */
-    private Node helpNode;
     // *************************************************************************
     // new methods exposed
 
@@ -123,7 +116,7 @@ public class TestContrast extends ActionApplication {
         application.start();
     }
     // *************************************************************************
-    // ActionApplication methods
+    // AbstractDemo methods
 
     /**
      * Initialize this application.
@@ -159,31 +152,6 @@ public class TestContrast extends ActionApplication {
     }
 
     /**
-     * Callback invoked when the active InputMode changes.
-     *
-     * @param oldMode the old mode, or null if none
-     * @param newMode the new mode, or null if none
-     */
-    @Override
-    public void inputModeChange(InputMode oldMode, InputMode newMode) {
-        if (newMode != null) {
-            if (helpNode != null) {
-                helpNode.removeFromParent();
-            }
-
-            float x = 10f;
-            float y = cam.getHeight() - 30f;
-            float width = cam.getWidth() - 20f;
-            float height = cam.getHeight() - 20f;
-            Rectangle rectangle = new Rectangle(x, y, width, height);
-
-            float space = 20f;
-            helpNode = HelpUtils.buildNode(newMode, rectangle, guiFont, space);
-            guiNode.attachChild(helpNode);
-        }
-    }
-
-    /**
      * Add application-specific hotkey bindings and override existing ones.
      */
     @Override
@@ -199,7 +167,7 @@ public class TestContrast extends ActionApplication {
         dim.bindSignal("orbitLeft", KeyInput.KEY_LEFT);
         dim.bindSignal("orbitRight", KeyInput.KEY_RIGHT);
 
-        dim.bind("toggle help", KeyInput.KEY_H);
+        dim.bind(asToggleHelp, KeyInput.KEY_H, KeyInput.KEY_F1);
     }
 
     /**
@@ -321,17 +289,6 @@ public class TestContrast extends ActionApplication {
     private void increaseExponent(int numSteps) {
         exponent *= FastMath.exp(0.1f * numSteps);
         filter.setExponent(exponent);
-    }
-
-    /**
-     * Toggle visibility of the helpNode.
-     */
-    private void toggleHelp() {
-        if (helpNode.getCullHint() == Spatial.CullHint.Always) {
-            helpNode.setCullHint(Spatial.CullHint.Never);
-        } else {
-            helpNode.setCullHint(Spatial.CullHint.Always);
-        }
     }
 
     /**
