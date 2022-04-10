@@ -98,5 +98,7 @@ public class TestPas extends AbstractDemo {
 
         PerformanceAppState pas = new PerformanceAppState();
         stateManager.attach(pas);
+        
+        super.actionInitializeApplication();
     }
 }

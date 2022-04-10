@@ -164,6 +164,8 @@ public class TestSolidMeshes extends AbstractDemo {
         statusText = new BitmapText(guiFont);
         statusText.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusText);
+
+        super.actionInitializeApplication();
     }
 
     /**

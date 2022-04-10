@@ -147,6 +147,8 @@ public class TestContrast extends AbstractDemo {
         statusLine.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusLine);
 
+        super.actionInitializeApplication();
+
         Spatial jaime = assetManager.loadModel("Models/Jaime/Jaime.j3o");
         rootNode.attachChild(jaime);
     }

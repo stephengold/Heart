@@ -88,6 +88,8 @@ public class TestWireframe extends AbstractDemo {
      */
     @Override
     public void actionInitializeApplication() {
+        super.actionInitializeApplication();
+
         ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
         viewPort.setBackgroundColor(gray);
 

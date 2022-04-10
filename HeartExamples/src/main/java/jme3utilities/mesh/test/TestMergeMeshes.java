@@ -103,6 +103,8 @@ public class TestMergeMeshes extends AbstractDemo {
      */
     @Override
     public void actionInitializeApplication() {
+        super.actionInitializeApplication();
+
         ColorRGBA bgColor = new ColorRGBA(0.2f, 0.2f, 0.2f, 1f);
         viewPort.setBackgroundColor(bgColor);
         /*
