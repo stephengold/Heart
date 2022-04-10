@@ -122,6 +122,7 @@ public class TestSolidMeshes
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
+        String title = applicationName + " " + MyString.join(arguments);
         TestSolidMeshes application = new TestSolidMeshes();
         Heart.parseAppArgs(application, arguments);
 
@@ -130,7 +131,7 @@ public class TestSolidMeshes
         settings.setAudioRenderer(null);
         settings.setRenderer(AppSettings.LWJGL_OPENGL32);
         settings.setSamples(4); // anti-aliasing
-        settings.setTitle(applicationName); // Customize the window's title bar.
+        settings.setTitle(title); // Customize the window's title bar.
         application.setSettings(settings);
 
         application.start();
