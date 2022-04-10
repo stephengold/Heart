@@ -58,6 +58,7 @@ import jme3utilities.mesh.Octasphere;
 import jme3utilities.mesh.Prism;
 import jme3utilities.mesh.Tetrahedron;
 import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
 /**
@@ -212,16 +213,18 @@ public class TestSolidMeshes extends AbstractDemo {
         dim.bind("dump", KeyInput.KEY_P);
         dim.bind("flip normals", KeyInput.KEY_F);
         dim.bind("next material", KeyInput.KEY_N);
+        dim.bindSignal("orbitLeft", KeyInput.KEY_LEFT);
+        dim.bindSignal("orbitRight", KeyInput.KEY_RIGHT);
         dim.bind("reverse winding", KeyInput.KEY_R);
         dim.bind(asToggleHelp, KeyInput.KEY_H);
     }
 
     /**
-     * Process an action from the InputManager.
+     * Process an action that wasn't handled by the active InputMode.
      *
      * @param actionString textual description of the action (not null)
      * @param ongoing true if the action is ongoing, otherwise false
-     * @param tpf time interval between frames (in seconds, &ge;0)
+     * @param tpf the time interval between frames (in seconds, &ge;0)
      */
     @Override
     public void onAction(String actionString, boolean ongoing, float tpf) {
@@ -280,7 +283,7 @@ public class TestSolidMeshes extends AbstractDemo {
         mesh = new Sphere(zSamples, radialSamples, radius);
         geometry = new Geometry("sphere-original", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(0f, -2f, 0f);
+        geometry.move(-2f, -2f, 0f);
 
         numSides = 40;
         height = 1f;
@@ -289,7 +292,7 @@ public class TestSolidMeshes extends AbstractDemo {
         mesh = MyMesh.addIndices(mesh);
         geometry = new Geometry("cone", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(0f, 0f, 0f);
+        geometry.move(-2f, 0f, 0f);
 
         int rimSamples = 20;
         int quadrantSamples = 6;
@@ -300,67 +303,67 @@ public class TestSolidMeshes extends AbstractDemo {
                 inwardWinding);
         geometry = new Geometry("dome", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(0f, 2f, 0f);
+        geometry.move(-2f, 2f, 0f);
 
         generateNormals = true;
         mesh = new Icosahedron(radius, generateNormals);
         geometry = new Geometry("icosahedron", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(0f, 4f, 0f);
+        geometry.move(-2f, 4f, 0f);
 
         mesh = new Sphere(zSamples, radialSamples, radius);
         ((Sphere) mesh).setTextureMode(Sphere.TextureMode.Projected);
         geometry = new Geometry("sphere-projected", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(2f, -2f, 0f);
+        geometry.move(0f, -2f, 0f);
 
         int refineSteps = 3;
         mesh = new Icosphere(refineSteps, radius);
         geometry = new Geometry("icoSphere", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(2f, 0f, 0f);
+        geometry.move(0f, 0f, 0f);
 
         mesh = new Octahedron(radius, generateNormals);
         geometry = new Geometry("octahedron", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(2f, 2f, 0f);
+        geometry.move(0f, 2f, 0f);
 
         numSides = 3;
         mesh = new Prism(numSides, radius, height, generateNormals);
         geometry = new Geometry("prism", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(2f, 4f, 0f);
+        geometry.move(0f, 4f, 0f);
 
         mesh = new Sphere(zSamples, radialSamples, radius);
         ((Sphere) mesh).setTextureMode(Sphere.TextureMode.Polar);
         geometry = new Geometry("sphere-polar", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(4f, -2f, 0f);
+        geometry.move(2f, -2f, 0f);
 
         numSides = 4;
         generatePyramid = true;
         mesh = new Cone(numSides, radius, height, generatePyramid);
         geometry = new Geometry("pyramid", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(4f, 0f, 0f);
+        geometry.move(2f, 0f, 0f);
 
         mesh = new Tetrahedron(radius, generateNormals);
         geometry = new Geometry("tetrahedron", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(4f, 2f, 0f);
+        geometry.move(2f, 2f, 0f);
 
         mesh = new Dodecahedron(radius, Mesh.Mode.Triangles);
         mesh = MyMesh.expand(mesh);
         MyMesh.generateNormals(mesh);
         geometry = new Geometry("dodecahedron", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(4f, 4f, 0f);
+        geometry.move(2f, 4f, 0f);
 
         refineSteps = 3;
         mesh = new Octasphere(refineSteps, radius);
         geometry = new Geometry("octaSphere", mesh);
         rootNode.attachChild(geometry);
-        geometry.move(6f, 0f, 0f);
+        geometry.move(4f, 0f, 0f);
 
         allGeometries
                 = MySpatial.listSpatials(rootNode, Geometry.class, null);
@@ -401,6 +404,10 @@ public class TestSolidMeshes extends AbstractDemo {
 
         cam.setLocation(new Vector3f(-0.9f, 6.8f, 9f));
         cam.setRotation(new Quaternion(0.026f, 0.9644f, -0.243f, 0.1f));
+
+        CameraOrbitAppState orbitState
+                = new CameraOrbitAppState(cam, "orbitLeft", "orbitRight");
+        stateManager.attach(orbitState);
     }
 
     /**
