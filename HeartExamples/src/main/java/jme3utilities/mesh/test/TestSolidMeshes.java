@@ -146,6 +146,77 @@ public class TestSolidMeshes extends AbstractDemo {
     // AbstractDemo methods
 
     /**
+     * Initialize this application.
+     */
+    @Override
+    public void actionInitializeApplication() {
+        configureCamera();
+        configureDumper();
+        generateMaterials();
+
+        addGeometries();
+        addLighting();
+        applyMaterial();
+        /*
+         * Add the status text to the GUI.
+         */
+        statusText = new BitmapText(guiFont);
+        statusText.setLocalTranslation(0f, cam.getHeight(), 0f);
+        guiNode.attachChild(statusText);
+    }
+
+    /**
+     * Initialize the library of named materials. Invoke during startup.
+     */
+    @Override
+    public void generateMaterials() {
+        ColorRGBA green = new ColorRGBA(0f, 0.12f, 0f, 1f);
+        Material mat;
+
+        mat = MyAsset.createShadedMaterial(assetManager, green);
+        registerMaterial("front-only lit", mat);
+
+        mat = MyAsset.createShadedMaterial(assetManager, green);
+        mat.getAdditionalRenderState()
+                .setFaceCullMode(RenderState.FaceCullMode.Front);
+        registerMaterial("back-only lit", mat);
+
+        mat = MyAsset.createWireframeMaterial(assetManager, ColorRGBA.White);
+        registerMaterial("front-only wireframe", mat);
+
+        mat = MyAsset.createWireframeMaterial(assetManager, ColorRGBA.White);
+        mat.getAdditionalRenderState()
+                .setFaceCullMode(RenderState.FaceCullMode.Front);
+        registerMaterial("back-only wireframe", mat);
+
+        boolean isSrgb = renderer.isMainFrameBufferSrgb();
+        float gamma = isSrgb ? 2.2f : 1f;
+        mat = MyAsset.createDebugMaterial(assetManager, gamma);
+        registerMaterial("debug", mat);
+
+        String assetPath = "Interface/Logo/Monkey.jpg";
+        boolean generateMips = true;
+        Texture texture
+                = MyAsset.loadTexture(assetManager, assetPath, generateMips);
+        mat = MyAsset.createUnshadedMaterial(assetManager, texture);
+        registerMaterial("unshaded texture", mat);
+    }
+
+    /**
+     * Add application-specific hotkey bindings and override existing ones.
+     */
+    @Override
+    public void moreDefaultBindings() {
+        InputMode dim = getDefaultInputMode();
+
+        dim.bind("dump", KeyInput.KEY_P);
+        dim.bind("flip normals", KeyInput.KEY_F);
+        dim.bind("next material", KeyInput.KEY_N);
+        dim.bind("reverse winding", KeyInput.KEY_R);
+        dim.bind(asToggleHelp, KeyInput.KEY_H);
+    }
+
+    /**
      * Process an action from the InputManager.
      *
      * @param actionString textual description of the action (not null)
@@ -175,26 +246,6 @@ public class TestSolidMeshes extends AbstractDemo {
         }
 
         super.onAction(actionString, ongoing, tpf);
-    }
-
-    /**
-     * Initialize this application.
-     */
-    @Override
-    public void actionInitializeApplication() {
-        configureCamera();
-        configureDumper();
-        generateMaterials();
-
-        addGeometries();
-        addLighting();
-        applyMaterial();
-        /*
-         * Add the status text to the GUI.
-         */
-        statusText = new BitmapText(guiFont);
-        statusText.setLocalTranslation(0f, cam.getHeight(), 0f);
-        guiNode.attachChild(statusText);
     }
 
     /**
@@ -342,21 +393,6 @@ public class TestSolidMeshes extends AbstractDemo {
     }
 
     /**
-     * Add application-specific hotkey bindings and override existing ones. TODO
-     * re-order methods
-     */
-    @Override
-    public void moreDefaultBindings() {
-        InputMode dim = getDefaultInputMode();
-
-        dim.bind("dump", KeyInput.KEY_P);
-        dim.bind("flip normals", KeyInput.KEY_F);
-        dim.bind("next material", KeyInput.KEY_N);
-        dim.bind("reverse winding", KeyInput.KEY_R);
-        dim.bind(asToggleHelp, KeyInput.KEY_H);
-    }
-
-    /**
      * Configure the camera during startup.
      */
     private void configureCamera() {
@@ -385,44 +421,6 @@ public class TestSolidMeshes extends AbstractDemo {
             mesh.setDynamic();
         }
         inwardNormals = !inwardNormals;
-    }
-
-    /**
-     * Initialize the library of named materials. Invoke during startup. TODO
-     * re-order methods
-     */
-    @Override
-    public void generateMaterials() {
-        ColorRGBA green = new ColorRGBA(0f, 0.12f, 0f, 1f);
-        Material mat;
-
-        mat = MyAsset.createShadedMaterial(assetManager, green);
-        registerMaterial("front-only lit", mat);
-
-        mat = MyAsset.createShadedMaterial(assetManager, green);
-        mat.getAdditionalRenderState()
-                .setFaceCullMode(RenderState.FaceCullMode.Front);
-        registerMaterial("back-only lit", mat);
-
-        mat = MyAsset.createWireframeMaterial(assetManager, ColorRGBA.White);
-        registerMaterial("front-only wireframe", mat);
-
-        mat = MyAsset.createWireframeMaterial(assetManager, ColorRGBA.White);
-        mat.getAdditionalRenderState()
-                .setFaceCullMode(RenderState.FaceCullMode.Front);
-        registerMaterial("back-only wireframe", mat);
-
-        boolean isSrgb = renderer.isMainFrameBufferSrgb();
-        float gamma = isSrgb ? 2.2f : 1f;
-        mat = MyAsset.createDebugMaterial(assetManager, gamma);
-        registerMaterial("debug", mat);
-
-        String assetPath = "Interface/Logo/Monkey.jpg";
-        boolean generateMips = true;
-        Texture texture
-                = MyAsset.loadTexture(assetManager, assetPath, generateMips);
-        mat = MyAsset.createUnshadedMaterial(assetManager, texture);
-        registerMaterial("unshaded texture", mat);
     }
 
     /**
