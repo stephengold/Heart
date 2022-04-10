@@ -26,11 +26,8 @@
  */
 package jme3utilities.mesh.test;
 
-import com.jme3.app.SimpleApplication;
 import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
-import com.jme3.input.controls.ActionListener;
-import com.jme3.input.controls.KeyTrigger;
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
@@ -43,7 +40,6 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.shape.Sphere;
 import com.jme3.system.AppSettings;
 import com.jme3.texture.Texture;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
@@ -52,7 +48,6 @@ import jme3utilities.MyMesh;
 import jme3utilities.MySpatial;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
-import jme3utilities.math.MyMath;
 import jme3utilities.mesh.Cone;
 import jme3utilities.mesh.Dodecahedron;
 import jme3utilities.mesh.DomeMesh;
@@ -62,6 +57,8 @@ import jme3utilities.mesh.Octahedron;
 import jme3utilities.mesh.Octasphere;
 import jme3utilities.mesh.Prism;
 import jme3utilities.mesh.Tetrahedron;
+import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.InputMode;
 
 /**
  * Test the Cone, DomeMesh, Icosahedron, Icosphere, Octahedron, Prism, and
@@ -70,9 +67,7 @@ import jme3utilities.mesh.Tetrahedron;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestSolidMeshes
-        extends SimpleApplication
-        implements ActionListener {
+public class TestSolidMeshes extends AbstractDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -86,6 +81,17 @@ public class TestSolidMeshes
      */
     final private static String applicationName
             = TestSolidMeshes.class.getSimpleName();
+    /**
+     * names of all library materials, in alphabetic order
+     */
+    final private static String[] materialNames = {
+        "back-only lit",
+        "back-only wireframe",
+        "debug",
+        "front-only lit",
+        "front-only wireframe",
+        "unshaded texture"
+    };
     // *************************************************************************
     // fields
 
@@ -110,9 +116,9 @@ public class TestSolidMeshes
      */
     private List<Geometry> allGeometries;
     /**
-     * materials to visualize meshes
+     * name of the material that's currently applied (or about to be applied)
      */
-    private List<Material> allMaterials;
+    private String materialName = materialNames[1];
     // *************************************************************************
     // new methods exposed
 
@@ -137,7 +143,7 @@ public class TestSolidMeshes
         application.start();
     }
     // *************************************************************************
-    // ActionListener methods
+    // AbstractDemo methods
 
     /**
      * Process an action from the InputManager.
@@ -152,39 +158,37 @@ public class TestSolidMeshes
             switch (actionString) {
                 case "dump":
                     dumper.dump(rootNode);
-                    break;
+                    return;
 
                 case "flip normals":
                     flipNormals();
-                    break;
+                    return;
 
                 case "next material":
                     nextMaterial();
-                    break;
+                    return;
 
                 case "reverse winding":
                     reverseWinding();
-                    break;
+                    return;
             }
         }
+
+        super.onAction(actionString, ongoing, tpf);
     }
-    // *************************************************************************
-    // SimpleApplication methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void simpleInitApp() {
+    public void actionInitializeApplication() {
         configureCamera();
         configureDumper();
         generateMaterials();
 
         addGeometries();
         addLighting();
-        applyMaterial(allMaterials.get(0));
-        assignKeys();
-
+        applyMaterial();
         /*
          * Add the status text to the GUI.
          */
@@ -315,6 +319,9 @@ public class TestSolidMeshes
      * Add lighting to the scene during startup.
      */
     private void addLighting() {
+        ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
+        viewPort.setBackgroundColor(gray);
+
         ColorRGBA ambientColor = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
         AmbientLight ambient = new AmbientLight(ambientColor);
         rootNode.addLight(ambient);
@@ -325,39 +332,35 @@ public class TestSolidMeshes
     }
 
     /**
-     * Apply the specified Material to all geometries in the scene.
-     *
-     * @param material the desired material
+     * Apply the current Material to all geometries in the scene.
      */
-    private void applyMaterial(Material material) {
+    private void applyMaterial() {
+        Material material = findMaterial(materialName);
         for (Geometry geometry : allGeometries) {
             geometry.setMaterial(material);
         }
     }
 
     /**
-     * Map keys to actions during startup.
+     * Add application-specific hotkey bindings and override existing ones. TODO
+     * re-order methods
      */
-    private void assignKeys() {
-        inputManager.addMapping("dump", new KeyTrigger(KeyInput.KEY_P));
-        inputManager.addListener(this, "dump");
+    @Override
+    public void moreDefaultBindings() {
+        InputMode dim = getDefaultInputMode();
 
-        inputManager.addMapping("flip normals", new KeyTrigger(KeyInput.KEY_F));
-        inputManager.addListener(this, "flip normals");
-
-        inputManager.addMapping("next material",
-                new KeyTrigger(KeyInput.KEY_N));
-        inputManager.addListener(this, "next material");
-
-        inputManager.addMapping("reverse winding",
-                new KeyTrigger(KeyInput.KEY_R));
-        inputManager.addListener(this, "reverse winding");
+        dim.bind("dump", KeyInput.KEY_P);
+        dim.bind("flip normals", KeyInput.KEY_F);
+        dim.bind("next material", KeyInput.KEY_N);
+        dim.bind("reverse winding", KeyInput.KEY_R);
+        dim.bind(asToggleHelp, KeyInput.KEY_H);
     }
 
     /**
      * Configure the camera during startup.
      */
     private void configureCamera() {
+        flyCam.setDragToRotate(true);
         flyCam.setMoveSpeed(10f);
 
         cam.setLocation(new Vector3f(-0.9f, 6.8f, 9f));
@@ -385,61 +388,49 @@ public class TestSolidMeshes
     }
 
     /**
-     * Initialize materials during startup.
+     * Initialize the library of named materials. Invoke during startup. TODO
+     * re-order methods
      */
-    private void generateMaterials() {
-        allMaterials = new ArrayList<>(5);
-
+    @Override
+    public void generateMaterials() {
         ColorRGBA green = new ColorRGBA(0f, 0.12f, 0f, 1f);
         Material mat;
 
         mat = MyAsset.createShadedMaterial(assetManager, green);
-        mat.setName("front-only lit");
-        allMaterials.add(mat);
+        registerMaterial("front-only lit", mat);
 
         mat = MyAsset.createShadedMaterial(assetManager, green);
         mat.getAdditionalRenderState()
                 .setFaceCullMode(RenderState.FaceCullMode.Front);
-        mat.setName("back-only lit");
-        allMaterials.add(mat);
+        registerMaterial("back-only lit", mat);
 
-        mat = MyAsset.createWireframeMaterial(assetManager, green);
-        mat.setName("front-only wireframe");
-        allMaterials.add(mat);
+        mat = MyAsset.createWireframeMaterial(assetManager, ColorRGBA.White);
+        registerMaterial("front-only wireframe", mat);
 
-        mat = MyAsset.createWireframeMaterial(assetManager, green);
+        mat = MyAsset.createWireframeMaterial(assetManager, ColorRGBA.White);
         mat.getAdditionalRenderState()
                 .setFaceCullMode(RenderState.FaceCullMode.Front);
-        mat.setName("back-only wireframe");
-        allMaterials.add(mat);
+        registerMaterial("back-only wireframe", mat);
 
         boolean isSrgb = renderer.isMainFrameBufferSrgb();
         float gamma = isSrgb ? 2.2f : 1f;
         mat = MyAsset.createDebugMaterial(assetManager, gamma);
-        allMaterials.add(mat);
+        registerMaterial("debug", mat);
 
         String assetPath = "Interface/Logo/Monkey.jpg";
         boolean generateMips = true;
         Texture texture
                 = MyAsset.loadTexture(assetManager, assetPath, generateMips);
         mat = MyAsset.createUnshadedMaterial(assetManager, texture);
-        mat.setName("unshaded texture");
-        allMaterials.add(mat);
+        registerMaterial("unshaded texture", mat);
     }
 
     /**
      * Apply the next Material to all geometries in the scene.
      */
     private void nextMaterial() {
-        Material oldMaterial = allGeometries.get(0).getMaterial();
-        int oldIndex = allMaterials.indexOf(oldMaterial);
-        int numMaterials = allMaterials.size();
-        int newIndex = MyMath.modulo(oldIndex + 1, numMaterials);
-        Material newMaterial = allMaterials.get(newIndex);
-
-        for (Geometry geometry : allGeometries) {
-            geometry.setMaterial(newMaterial);
-        }
+        materialName = advanceString(materialNames, materialName, 1);
+        applyMaterial();
     }
 
     /**
