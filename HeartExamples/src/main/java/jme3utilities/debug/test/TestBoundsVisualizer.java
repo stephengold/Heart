@@ -50,6 +50,7 @@ import jme3utilities.debug.SphereMeshes;
 import jme3utilities.math.MyVector3f;
 import jme3utilities.mesh.Cone;
 import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
 /**
@@ -160,11 +161,14 @@ public class TestBoundsVisualizer extends AbstractDemo {
     @Override
     public void moreDefaultBindings() {
         InputMode dim = getDefaultInputMode();
+
         dim.bind("billboard off", KeyInput.KEY_N);
         dim.bind("billboard X", KeyInput.KEY_X);
         dim.bind("billboard Y", KeyInput.KEY_C);
         dim.bind("billboard Z", KeyInput.KEY_V);
         dim.bind("dump", KeyInput.KEY_P);
+        dim.bindSignal("orbitLeft", KeyInput.KEY_LEFT);
+        dim.bindSignal("orbitRight", KeyInput.KEY_RIGHT);
         dim.bind("sphere Icosphere", KeyInput.KEY_F2);
         dim.bind("sphere LoopMesh", KeyInput.KEY_F3);
         dim.bind("sphere PoleSphere", KeyInput.KEY_F1);
@@ -248,9 +252,15 @@ public class TestBoundsVisualizer extends AbstractDemo {
      * Configure the Camera during startup.
      */
     private void configureCamera() {
+        flyCam.setDragToRotate(true);
         flyCam.setMoveSpeed(10f);
         cam.setLocation(new Vector3f(10.5f, 3f, 8.3f));
         cam.setRotation(new Quaternion(-0.049f, 0.90316f, -0.1082f, -0.4126f));
+
+        CameraOrbitAppState orbitState
+                = new CameraOrbitAppState(cam, "orbitLeft", "orbitRight");
+        stateManager.attach(orbitState);
+
     }
 
     /**
