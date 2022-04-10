@@ -13,7 +13,7 @@ if (!hasProperty('mainClass')) {
 jar.manifest.attributes('Main-Class': mainClassName)
 
 dependencies {
-    implementation ('com.github.stephengold:Acorus:0.9.12') {
+    implementation ('com.github.stephengold:Acorus:0.9.13') {
         exclude group: 'com.github.stephengold', module: 'Heart'
     }
     runtimeOnly 'org.jmonkeyengine:jme3-desktop:' + jme3Version

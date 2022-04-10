@@ -144,6 +144,8 @@ public class TestGenerator extends AbstractDemo {
         statusLine.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusLine);
 
+        super.actionInitializeApplication();
+
         samplePointMaterial = MyAsset.createWireframeMaterial(assetManager,
                 sampleColor, samplePointSize);
 
@@ -189,16 +191,6 @@ public class TestGenerator extends AbstractDemo {
         dim.bind("test nextVector3f", KeyInput.KEY_F3);
 
         dim.bind(asToggleHelp, KeyInput.KEY_H);
-        /*
-         * The help node can't be created until all hotkeys are bound.
-         */
-        float x = 10f;
-        float y = cam.getHeight() - 30f;
-        float width = cam.getWidth() - 20f;
-        float height = cam.getHeight() - 20f;
-        Rectangle rectangle = new Rectangle(x, y, width, height);
-
-        attachHelpNode(rectangle);
     }
 
     /**
