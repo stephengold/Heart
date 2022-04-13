@@ -110,6 +110,7 @@ public class TestSkeletonVisualizer extends AbstractDemo {
         AppSettings settings = new AppSettings(loadDefaults);
         settings.setAudioRenderer(null);
         settings.setRenderer(AppSettings.LWJGL_OPENGL32);
+        settings.setResizable(true);
         settings.setSamples(4); // anti-aliasing
         settings.setTitle(title); // Customize the window's title bar.
         application.setSettings(settings);
@@ -140,7 +141,7 @@ public class TestSkeletonVisualizer extends AbstractDemo {
         statusLine = new BitmapText(guiFont);
         statusLine.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusLine);
-        
+
         super.actionInitializeApplication();
 
         Spatial jaime = assetManager.loadModel("Models/Jaime/Jaime.j3o");
