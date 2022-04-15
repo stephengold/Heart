@@ -143,7 +143,7 @@ public class Heart {
      * around JME issue #879, but still doesn't handle all classes.
      *
      * @param <T> the type of object to be copied
-     * @param object the input (not null, unaffected)
+     * @param object the input (unaffected)
      * @return an instance equivalent to the input
      */
     public static <T> T deepCopy(T object) {
