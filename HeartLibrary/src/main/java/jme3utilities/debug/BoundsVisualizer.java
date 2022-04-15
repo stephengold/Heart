@@ -179,7 +179,7 @@ public class BoundsVisualizer extends SubtreeControl {
      * Copy the color of the lines.
      *
      * @param storeResult storage for the result (modified if not null)
-     * @return a new instance
+     * @return the color (either {@code storeResult} or a new instance)
      */
     public ColorRGBA copyLineColor(ColorRGBA storeResult) {
         ColorRGBA result
