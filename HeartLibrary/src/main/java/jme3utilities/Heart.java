@@ -143,12 +143,15 @@ public class Heart {
      * around JME issue #879, but still doesn't handle all classes.
      *
      * @param <T> the type of object to be copied
-     * @param object the input (unaffected)
+     * @param object the input (not null, unaffected)
      * @return an instance equivalent to the input
      */
     public static <T> T deepCopy(T object) {
         T copy;
-        if (object instanceof Cloneable
+        if (object == null) {
+            copy = null;
+
+        } else if (object instanceof Cloneable
                 || object.getClass().isArray()) {
             copy = Cloner.deepClone(object);
 
@@ -176,7 +179,7 @@ public class Heart {
     }
 
     /**
-     * Delete the application's stored settings, if any. TODO use Heart library
+     * Delete the application's stored settings, if any.
      *
      * @param applicationName the name of the application
      */
