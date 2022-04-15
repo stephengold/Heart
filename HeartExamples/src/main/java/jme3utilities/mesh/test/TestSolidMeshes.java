@@ -57,7 +57,7 @@ import jme3utilities.mesh.Octahedron;
 import jme3utilities.mesh.Octasphere;
 import jme3utilities.mesh.Prism;
 import jme3utilities.mesh.Tetrahedron;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
@@ -68,7 +68,7 @@ import jme3utilities.ui.InputMode;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestSolidMeshes extends AbstractDemo {
+public class TestSolidMeshes extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -146,13 +146,13 @@ public class TestSolidMeshes extends AbstractDemo {
         application.start();
     }
     // *************************************************************************
-    // AbstractDemo methods
+    // AcorusDemo methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void actionInitializeApplication() {
+    public void acorusInit() {
         configureCamera();
         configureDumper();
         generateMaterials();
@@ -166,7 +166,7 @@ public class TestSolidMeshes extends AbstractDemo {
         statusText = new BitmapText(guiFont);
         guiNode.attachChild(statusText);
 
-        super.actionInitializeApplication();
+        super.acorusInit();
     }
 
     /**
@@ -261,9 +261,9 @@ public class TestSolidMeshes extends AbstractDemo {
      * @param newHeight the new height of the framebuffer (in pixels, &gt;0)
      */
     @Override
-    public void resize(int newWidth, int newHeight) {
+    public void onViewPortResize(int newWidth, int newHeight) {
         statusText.setLocalTranslation(0f, newHeight, 0f);
-        super.resize(newWidth, newHeight);
+        super.onViewPortResize(newWidth, newHeight);
     }
 
     /**

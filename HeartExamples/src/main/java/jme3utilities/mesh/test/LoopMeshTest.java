@@ -38,14 +38,14 @@ import jme3utilities.MyAsset;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.LoopMesh;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 
 /**
  * Test the LoopMesh class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class LoopMeshTest extends AbstractDemo {
+public class LoopMeshTest extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -83,14 +83,14 @@ public class LoopMeshTest extends AbstractDemo {
         application.start();
     }
     // *************************************************************************
-    // AbstractDemo methods
+    // AcorusDemo methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void actionInitializeApplication() {
-        super.actionInitializeApplication();
+    public void acorusInit() {
+        super.acorusInit();
 
         ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
         viewPort.setBackgroundColor(gray);

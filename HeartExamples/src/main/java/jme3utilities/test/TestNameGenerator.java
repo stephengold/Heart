@@ -79,7 +79,7 @@ public class TestNameGenerator extends ActionApplication {
      * Run this application and then exit.
      */
     @Override
-    public void actionInitializeApplication() {
+    public void acorusInit() {
         System.out.printf("Test results for class NameGenerator:%n%n");
 
         NameGenerator example = new NameGenerator();

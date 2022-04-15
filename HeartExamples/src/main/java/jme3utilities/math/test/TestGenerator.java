@@ -47,7 +47,7 @@ import jme3utilities.MyString;
 import jme3utilities.math.noise.Generator;
 import jme3utilities.mesh.Icosphere;
 import jme3utilities.mesh.PointMesh;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
@@ -56,7 +56,7 @@ import jme3utilities.ui.InputMode;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestGenerator extends AbstractDemo {
+public class TestGenerator extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -136,7 +136,7 @@ public class TestGenerator extends AbstractDemo {
      * Initialize this application.
      */
     @Override
-    public void actionInitializeApplication() {
+    public void acorusInit() {
         configureCamera();
         /*
          * Add the status text to the GUI.
@@ -144,7 +144,7 @@ public class TestGenerator extends AbstractDemo {
         statusLine = new BitmapText(guiFont);
         guiNode.attachChild(statusLine);
 
-        super.actionInitializeApplication();
+        super.acorusInit();
 
         samplePointMaterial = MyAsset.createWireframeMaterial(assetManager,
                 sampleColor, samplePointSize);
@@ -220,9 +220,9 @@ public class TestGenerator extends AbstractDemo {
      * @param newHeight the new height of the framebuffer (in pixels, &gt;0)
      */
     @Override
-    public void resize(int newWidth, int newHeight) {
+    public void onViewPortResize(int newWidth, int newHeight) {
         statusLine.setLocalTranslation(0f, newHeight, 0f);
-        super.resize(newWidth, newHeight);
+        super.onViewPortResize(newWidth, newHeight);
     }
     // *************************************************************************
     // private methods

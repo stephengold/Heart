@@ -49,7 +49,7 @@ import jme3utilities.debug.Dumper;
 import jme3utilities.debug.SphereMeshes;
 import jme3utilities.math.MyVector3f;
 import jme3utilities.mesh.Cone;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
@@ -58,7 +58,7 @@ import jme3utilities.ui.InputMode;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestBoundsVisualizer extends AbstractDemo {
+public class TestBoundsVisualizer extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -112,13 +112,13 @@ public class TestBoundsVisualizer extends AbstractDemo {
         application.start();
     }
     // *************************************************************************
-    // AbstractDemo methods
+    // AcorusDemo methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void actionInitializeApplication() {
+    public void acorusInit() {
         ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
         viewPort.setBackgroundColor(gray);
 
@@ -153,7 +153,7 @@ public class TestBoundsVisualizer extends AbstractDemo {
         statusText = new BitmapText(guiFont);
         guiNode.attachChild(statusText);
 
-        super.actionInitializeApplication();
+        super.acorusInit();
     }
 
     /**
@@ -244,9 +244,9 @@ public class TestBoundsVisualizer extends AbstractDemo {
      * @param newHeight the new height of the framebuffer (in pixels, &gt;0)
      */
     @Override
-    public void resize(int newWidth, int newHeight) {
+    public void onViewPortResize(int newWidth, int newHeight) {
         statusText.setLocalTranslation(0f, newHeight, 0f);
-        super.resize(newWidth, newHeight);
+        super.onViewPortResize(newWidth, newHeight);
     }
 
     /**

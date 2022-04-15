@@ -33,14 +33,14 @@ import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.MyString;
 import jme3utilities.debug.PerformanceAppState;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 
 /**
  * Test the PerformanceAppState class.
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestPas extends AbstractDemo {
+public class TestPas extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -58,7 +58,7 @@ public class TestPas extends AbstractDemo {
     // constructors
 
     /**
-     * Instantiate an AbstractDemo without any initial appstates.
+     * Instantiate an application without any initial appstates.
      */
     private TestPas() {
         super((AppState[]) null);
@@ -87,19 +87,19 @@ public class TestPas extends AbstractDemo {
         application.start();
     }
     // *************************************************************************
-    // AbstractDemo methods
+    // AcorusDemo methods
 
     /**
      * Initialization code: create and attach the app state for testing.
      */
     @Override
-    public void actionInitializeApplication() {
+    public void acorusInit() {
         ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
         viewPort.setBackgroundColor(gray);
 
         PerformanceAppState pas = new PerformanceAppState();
         stateManager.attach(pas);
-        
-        super.actionInitializeApplication();
+
+        super.acorusInit();
     }
 }

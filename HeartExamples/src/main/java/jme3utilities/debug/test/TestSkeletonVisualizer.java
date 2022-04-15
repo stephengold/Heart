@@ -55,7 +55,7 @@ import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 import jme3utilities.debug.SkeletonVisualizer;
 import jme3utilities.mesh.RectangleMesh;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
@@ -64,7 +64,7 @@ import jme3utilities.ui.InputMode;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestSkeletonVisualizer extends AbstractDemo {
+public class TestSkeletonVisualizer extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -118,13 +118,13 @@ public class TestSkeletonVisualizer extends AbstractDemo {
         application.start();
     }
     // *************************************************************************
-    // AbstractDemo methods
+    // AcorusDemo methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void actionInitializeApplication() {
+    public void acorusInit() {
         configureCamera();
         configureDumper();
 
@@ -142,7 +142,7 @@ public class TestSkeletonVisualizer extends AbstractDemo {
         statusLine.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusLine);
 
-        super.actionInitializeApplication();
+        super.acorusInit();
 
         Spatial jaime = assetManager.loadModel("Models/Jaime/Jaime.j3o");
         rootNode.attachChild(jaime);

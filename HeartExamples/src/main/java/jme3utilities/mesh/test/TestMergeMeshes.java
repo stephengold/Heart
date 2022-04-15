@@ -50,7 +50,7 @@ import jme3utilities.MySpatial;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 import jme3utilities.math.MyBuffer;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
@@ -59,7 +59,7 @@ import jme3utilities.ui.InputMode;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestMergeMeshes extends AbstractDemo {
+public class TestMergeMeshes extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -97,14 +97,14 @@ public class TestMergeMeshes extends AbstractDemo {
         application.start();
     }
     // *************************************************************************
-    // AbstractDemo methods
+    // AcorusDemo methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void actionInitializeApplication() {
-        super.actionInitializeApplication();
+    public void acorusInit() {
+        super.acorusInit();
 
         ColorRGBA bgColor = new ColorRGBA(0.2f, 0.2f, 0.2f, 1f);
         viewPort.setBackgroundColor(bgColor);

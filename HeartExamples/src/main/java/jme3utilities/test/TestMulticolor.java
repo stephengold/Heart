@@ -40,7 +40,7 @@ import jme3utilities.Heart;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.RectangleMesh;
-import jme3utilities.ui.AbstractDemo;
+import jme3utilities.ui.AcorusDemo;
 
 /**
  * Test the "multicolor.j3md" material definitions. If successful, a colorful
@@ -48,7 +48,7 @@ import jme3utilities.ui.AbstractDemo;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestMulticolor extends AbstractDemo {
+public class TestMulticolor extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 
@@ -86,14 +86,14 @@ public class TestMulticolor extends AbstractDemo {
         application.start();
     }
     // *************************************************************************
-    // AbstractDemo methods
+    // AcorusDemo methods
 
     /**
      * Initialize this application.
      */
     @Override
-    public void actionInitializeApplication() {
-        super.actionInitializeApplication();
+    public void acorusInit() {
+        super.acorusInit();
 
         ColorRGBA gray = new ColorRGBA(0.1f, 0.1f, 0.1f, 1f);
         viewPort.setBackgroundColor(gray);
