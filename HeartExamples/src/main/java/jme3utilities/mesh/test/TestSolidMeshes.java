@@ -97,6 +97,10 @@ public class TestSolidMeshes extends AcorusDemo {
     // fields
 
     /**
+     * status displayed in the upper-left corner of the GUI node
+     */
+    private BitmapText statusText;
+    /**
      * true if the normals are inward-facing
      */
     private boolean inwardNormals;
@@ -104,11 +108,6 @@ public class TestSolidMeshes extends AcorusDemo {
      * true if the triangles are wound to be inward-facing
      */
     private boolean inwardWinding;
-    /**
-     * status displayed in the upper-left corner of the GUI node TODO re-order
-     * fields
-     */
-    private BitmapText statusText;
     /**
      * dump debugging information to System.out
      */
