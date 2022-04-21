@@ -4,7 +4,7 @@ apply plugin: 'java'
 
 ext { // current versions of libraries:
     heartVersion = '7.5.1-SNAPSHOT'
-    jme3Version = '3.5.1-stable'
+    jme3Version = '3.5.2-stable'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
