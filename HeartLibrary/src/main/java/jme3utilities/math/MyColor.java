@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 package jme3utilities.math;
 
 import com.jme3.math.ColorRGBA;
+import com.jme3.texture.image.ColorSpace;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -177,6 +178,26 @@ final public class MyColor {
             String aText = matcher.group(4);
             float a = Float.parseFloat(aText);
             result = new ColorRGBA(r, g, b, a);
+        }
+
+        return result;
+    }
+
+    /**
+     * Convert a gamma-encoded color to the specified ColorSpace.
+     *
+     * @param colorSpace the target ColorSpace (not null)
+     * @param encodedColor the input color (not null, unaffected, gamma-encoded)
+     * @return a new instance, suitable for use as the color of a viewport
+     * background or an unshaded material
+     */
+    public static ColorRGBA renderColor(ColorSpace colorSpace,
+            ColorRGBA encodedColor) {
+        ColorRGBA result;
+        if (colorSpace == ColorSpace.sRGB) {
+            result = encodedColor.clone(); // clone the encoded color
+        } else {
+            result = encodedColor.getAsSrgb(); // decode to linear ColorSpace
         }
 
         return result;
