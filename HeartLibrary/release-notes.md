@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 7.6.0 released on TBD
+## Version 7.6.0 released on 29 April 2022
 
 + Added the `deleteStoredSettings()` method to the `Heart` class.
 + Added the `renderColor()` method to the `MyColor` class.
