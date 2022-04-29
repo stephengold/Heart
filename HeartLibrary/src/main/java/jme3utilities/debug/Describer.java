@@ -62,8 +62,11 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.VertexBuffer;
 import com.jme3.scene.control.Control;
+import com.jme3.shadow.AbstractShadowRenderer;
+import com.jme3.shadow.CompareMode;
 import com.jme3.shadow.DirectionalLightShadowFilter;
 import com.jme3.shadow.DirectionalLightShadowRenderer;
+import com.jme3.shadow.EdgeFilteringMode;
 import com.jme3.shadow.PointLightShadowFilter;
 import com.jme3.shadow.PointLightShadowRenderer;
 import com.jme3.shadow.SpotLightShadowFilter;
@@ -1086,17 +1089,17 @@ public class Describer implements Cloneable {
     protected String describe(SceneProcessor processor) {
         String result;
         if (processor instanceof DirectionalLightShadowRenderer) {
-            result = "DShadow";
+            result = "DirShadow" + describeShadowRenderer(processor);
         } else if (processor instanceof FilterPostProcessor) {
             FilterPostProcessor fpp = (FilterPostProcessor) processor;
             String desc = describeFilters(fpp);
             result = String.format("filters[%s]", desc);
         } else if (processor instanceof PointLightShadowRenderer) {
-            result = "PShadow";
+            result = "PointShadow" + describeShadowRenderer(processor);
         } else if (processor instanceof ScreenshotAppState) {
             result = "Screenshot";
         } else if (processor instanceof SpotLightShadowRenderer) {
-            result = "SShadow";
+            result = "SpotShadow" + describeShadowRenderer(processor);
         } else if (processor == null) {
             result = "null";
         } else {
@@ -1224,5 +1227,56 @@ public class Describer implements Cloneable {
     public Describer clone() throws CloneNotSupportedException {
         Describer clone = (Describer) super.clone();
         return clone;
+    }
+    // *************************************************************************
+    // private methods
+
+    /**
+     * Generate a compact textual description of a shadow renderer, enclosed in
+     * square brackets.
+     *
+     * @param processor the renderer to describe (not null, unaffected)
+     * @return a description (not null, not empty)
+     */
+    private String describeShadowRenderer(SceneProcessor processor) {
+        StringBuilder result = new StringBuilder(20);
+        AbstractShadowRenderer renderer = (AbstractShadowRenderer) processor;
+
+        result.append("[inten=");
+        float inten = renderer.getShadowIntensity();
+        result.append(MyString.describeFraction(inten));
+
+        result.append(" size=");
+        int size = renderer.getShadowMapSize();
+        result.append(size);
+
+        result.append(" maps=");
+        int maps = renderer.getNumShadowMaps();
+        result.append(maps);
+
+        result.append(" edge[");
+        EdgeFilteringMode mode = renderer.getEdgeFilteringMode();
+        result.append(mode);
+
+        result.append(" thk=");
+        int thk = renderer.getEdgesThickness();
+        result.append(thk);
+
+        result.append("] cmp=");
+        CompareMode cmp = renderer.getShadowCompareMode();
+        result.append(cmp);
+
+        result.append(" zExt=");
+        float zExt = renderer.getShadowZExtend();
+        result.append(MyString.describe(zExt));
+
+        result.append(" zFade=");
+        float zFade = renderer.getShadowZFadeLength();
+        result.append(MyString.describe(zFade));
+
+        boolean backFaces = renderer.isRenderBackFacesShadows();
+        result.append(backFaces ? " backFaces]" : "noBackFaces]");
+
+        return result.toString();
     }
 }
