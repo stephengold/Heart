@@ -60,7 +60,7 @@ Many other libraries depend on the Heart Library, including
   + expand a `Mesh` to ensure no vertex data are re-used
   + generate normals for an outward-facing sphere, a faceted mesh,
     or a smooth mesh
-  + translate all vertices of a `Mesh`
+  + translate and uniformly scale all vertices of a `Mesh`
   + merge 2 meshes into one
   + flip mesh normals and/or triangle windings
   + enumerate all vertices in a scene-graph subtree
