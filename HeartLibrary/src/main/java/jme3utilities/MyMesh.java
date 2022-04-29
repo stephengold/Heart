@@ -999,6 +999,33 @@ public class MyMesh {
     }
 
     /**
+     * Scale all vertex positions uniformly by the specified factor.
+     *
+     * @param mesh the Mesh to scale (not null, modified)
+     * @param factor the scale factor to apply
+     */
+    public static void scale(Mesh mesh, float factor) {
+        int numVertices = mesh.getVertexCount();
+        int numFloats = numAxes * numVertices;
+        Vector3f scale = new Vector3f(factor, factor, factor);
+
+        VertexBuffer posBuffer = mesh.getBuffer(VertexBuffer.Type.Position);
+        FloatBuffer posFloats = (FloatBuffer) posBuffer.getData();
+        MyBuffer.scale(posFloats, 0, numFloats, scale);
+        posBuffer.setUpdateNeeded();
+
+        VertexBuffer bindPosBuffer
+                = mesh.getBuffer(VertexBuffer.Type.BindPosePosition);
+        if (bindPosBuffer != null) {
+            FloatBuffer bpFloats = (FloatBuffer) bindPosBuffer.getData();
+            MyBuffer.scale(bpFloats, 0, numFloats, scale);
+            bindPosBuffer.setUpdateNeeded();
+        }
+
+        mesh.updateBound();
+    }
+
+    /**
      * Replace the BoneIndexBuffer of a Mesh.
      *
      * @param mesh the Mesh to modify (not null)
