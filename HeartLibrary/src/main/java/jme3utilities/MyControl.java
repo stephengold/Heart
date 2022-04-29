@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package jme3utilities;
 
 import com.jme3.anim.AnimComposer;
 import com.jme3.anim.AnimLayer;
+import com.jme3.anim.MorphControl;
 import com.jme3.anim.SkinningControl;
 import com.jme3.anim.tween.action.Action;
 import com.jme3.animation.AnimControl;
@@ -89,8 +90,7 @@ public class MyControl {
     }
 
     /**
-     * Generate a textual description of the specified scene-graph control. TODO
-     * MorphControl
+     * Generate a textual description of the specified scene-graph control.
      *
      * @param control the instance to describe (not null, unaffected)
      * @return a description (not null, not empty)
@@ -157,6 +157,14 @@ public class MyControl {
                     result.append(desc);
                 }
             }
+            result.append(']');
+
+        } else if (control instanceof MorphControl) {
+            MorphControl morph = (MorphControl) control;
+
+            result.append('[');
+            boolean approx = morph.isApproximateTangents();
+            result.append(approx ? " approx" : " vbuf");
             result.append(']');
 
         } else if (control instanceof SkeletonControl) {
