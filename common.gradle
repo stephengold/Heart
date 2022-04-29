@@ -3,7 +3,7 @@
 apply plugin: 'java'
 
 ext { // current versions of libraries:
-    heartVersion = '7.5.1-SNAPSHOT'
+    heartVersion = '7.6.0'
     jme3Version = '3.5.2-stable'
 }
 

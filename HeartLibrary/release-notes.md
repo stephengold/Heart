@@ -1,13 +1,24 @@
 # release log for the Heart Library and related tests
 
+## Version 7.6.0 released on TBD
+
++ Added the `deleteStoredSettings()` method to the `Heart` class.
++ Added the `renderColor()` method to the `MyColor` class.
++ Enhanced `Heart.deepCopy()` to handle a null argument.
++ Improved dumpers to describe shadow renderers
+  and morph controls in greater detail.
++ Converted examples to extend `AbstractDemo` and made them resizable.
++ Targeted jMonkeyEngine version 3.5.2-stable.
++ Updated Gradle to v7.4.2
+
 ## Version 7.5.0 released on 31 March 2022
 
 + Added 3 classes:  `ClothGrid`, `DividedLine`, and `RectSizeLimits`.
-+ Added a `Validate.nonEmpty()` method for arrays of `int`s.
++ Added a `Validate.nonEmpty()` method for `int` arrays.
 
 ## Version 7.4.1 released on 6 March 2022
 
-Bugfix:  binaries built using JDK 11 aren't Java 8 compatible
+Bugfix:  binaries built using JDK 11 aren't compatible with Java 8
 
 ## Version 7.4.0 released on 5 March 2022
 
