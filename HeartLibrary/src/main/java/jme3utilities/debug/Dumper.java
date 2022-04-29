@@ -37,6 +37,7 @@ import com.jme3.light.LightList;
 import com.jme3.material.MatParam;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.post.SceneProcessor;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.Renderer;
@@ -340,17 +341,19 @@ public class Dumper implements Cloneable {
                 numPres, (numPres == 1) ? "" : "s",
                 numMains, (numMains == 1) ? "" : "s");
         stream.printf("%d postView%s%n", numPosts, (numPosts == 1) ? "" : "s");
-
+        /*
+         * Dump all the viewports in order.
+         */
         for (int index = 0; index < numPres; ++index) {
-            stream.printf("preView[%d]:%n", index);
+            stream.printf("preView %d:%n", index);
             dump(pres.get(index), indentIncrement);
         }
         for (int index = 0; index < numMains; ++index) {
-            stream.printf("mainView[%d]:%n", index);
+            stream.printf("mainView %d:%n", index);
             dump(mains.get(index), indentIncrement);
         }
         for (int index = 0; index < numPosts; ++index) {
-            stream.printf("postView[%d]:%n", index);
+            stream.printf("postView %d:%n", index);
             dump(posts.get(index), indentIncrement);
         }
     }
@@ -515,16 +518,14 @@ public class Dumper implements Cloneable {
                 ColorRGBA backColor = viewPort.getBackgroundColor();
                 stream.printf(" bg(%s)", MyColor.describe(backColor));
             }
-            String descP = describer.describeProcessors(viewPort);
-            stream.print(" procs[");
-            stream.print(descP);
-            stream.println(']');
+            stream.println();
 
             Camera camera = viewPort.getCamera();
             dump(camera, indent + "  ");
 
-            addLine(indent);
-            stream.print(" with ");
+            List<SceneProcessor> processors = viewPort.getProcessors();
+            dumpProcs(processors, indent);
+            stream.print(" and ");
             List<Spatial> scenes = viewPort.getScenes();
             dump(scenes, indent);
 
@@ -890,6 +891,29 @@ public class Dumper implements Cloneable {
                 String description = describer.describe(matParam);
                 stream.print(description);
             }
+        }
+    }
+
+    private void dumpProcs(List<SceneProcessor> processors, String indent) {
+        addLine(indent);
+        stream.print(" with ");
+        int numProcessors = processors.size();
+        if (numProcessors == 0) {
+            stream.print("no scene processors");
+
+        } else {
+            if (numProcessors == 1) {
+                stream.print("one SceneProcessor:");
+            } else {
+                stream.printf("%d scene processors:", numProcessors);
+            }
+
+            for (SceneProcessor processor : processors) {
+                addLine(indent + "  ");
+                String desc = describer.describe(processor);
+                stream.print(desc);
+            }
+            addLine(indent);
         }
     }
 
