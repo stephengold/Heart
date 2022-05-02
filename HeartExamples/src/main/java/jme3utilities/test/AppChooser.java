@@ -80,7 +80,7 @@ public class AppChooser extends AcorusDemo {
     /**
      * message logger for this class
      */
-    final public static Logger logger
+    final private static Logger logger
             = Logger.getLogger(AppChooser.class.getName());
     /**
      * application name (for the title bar of the app's window)
@@ -88,19 +88,19 @@ public class AppChooser extends AcorusDemo {
     final private static String applicationName
             = AppChooser.class.getSimpleName();
     /**
-     * action string to delete any persistent settings of the selected app
+     * action string to delete any persistent settings of the chosen app
      */
     final private static String asDeleteSettings = "delete settings";
     /**
-     * action string to execute the selected app
+     * action string to execute the chosen app
      */
     final private static String asExecute = "execute";
     /**
-     * action string to select the next app
+     * action string to choose the next app
      */
     final private static String asNext = "down";
     /**
-     * action string to select the previous app
+     * action string to choose the previous app
      */
     final private static String asPrevious = "up";
     // *************************************************************************
@@ -111,9 +111,9 @@ public class AppChooser extends AcorusDemo {
      */
     private File script;
     /**
-     * index of the selected app in the {@code appNames} array
+     * index of the chosen app in the {@code mainClasses} array
      */
-    private int selectedAppIndex = 0;
+    private int chosenAppIndex = 0;
     /**
      * menu overlay, displayed in the upper-left corner of the GUI node
      */
@@ -203,7 +203,7 @@ public class AppChooser extends AcorusDemo {
         if (ongoing) {
             switch (actionString) {
                 case asDeleteSettings:
-                    Class<?> mainClass = mainClasses[selectedAppIndex];
+                    Class<?> mainClass = mainClasses[chosenAppIndex];
                     String appName = mainClass.getSimpleName();
                     Heart.deleteStoredSettings(appName);
                     return;
@@ -212,31 +212,31 @@ public class AppChooser extends AcorusDemo {
                     Thread executor = new Thread("Executor") {
                         @Override
                         public void run() {
-                            executeSelectedApp();
+                            executeChosenApp();
                         }
                     };
                     executor.start();
                     return;
 
                 case asNext:
-                    // Select the next app.
-                    if (selectedAppIndex < mainClasses.length - 1) {
-                        ++selectedAppIndex;
+                    // Choose the next app.
+                    if (chosenAppIndex < mainClasses.length - 1) {
+                        ++chosenAppIndex;
                         updateMenuOverlay();
                     }
                     return;
 
                 case asPrevious:
-                    // Select the previous app.
-                    if (selectedAppIndex > 0) {
-                        --selectedAppIndex;
+                    // Choose the previous app.
+                    if (chosenAppIndex > 0) {
+                        --chosenAppIndex;
                         updateMenuOverlay();
                     }
                     return;
             }
         }
         /*
-         * The action was not handled here: forward it to the superclass.
+         * The action has not been handled: forward it to the superclass.
          */
         super.onAction(actionString, ongoing, tpf);
     }
@@ -272,12 +272,12 @@ public class AppChooser extends AcorusDemo {
     }
 
     /**
-     * Execute the selected app.
+     * Execute the chosen app.
      */
-    private void executeSelectedApp() {
+    private void executeChosenApp() {
         CommandLine commandLine = new CommandLine(script);
 
-        Class<?> mainClass = mainClasses[selectedAppIndex];
+        Class<?> mainClass = mainClasses[chosenAppIndex];
         String mainClassName = mainClass.getName();
         commandLine.addArgument(mainClassName);
 
@@ -291,7 +291,7 @@ public class AppChooser extends AcorusDemo {
     }
 
     /**
-     * Look for the shell script (or batchfile) to execute in
+     * Look for the shell script (or batch file) to execute in
      * "./build/install/HeartExamples/bin".
      */
     private File findScriptToExecute() {
@@ -317,12 +317,12 @@ public class AppChooser extends AcorusDemo {
     }
 
     /**
-     * Update the menu overlay for the current selectedAppIndex.
+     * Update the menu overlay for the current chosenAppIndex.
      */
     private void updateMenuOverlay() {
         int numLines = menuOverlay.countLines();
-        int selectedLineIndex = numLines / 2;
-        int topLineAppIndex = selectedAppIndex - selectedLineIndex;
+        int chosenLineIndex = numLines / 2;
+        int topLineAppIndex = chosenAppIndex - chosenLineIndex;
 
         for (int lineIndex = 0; lineIndex < numLines; ++lineIndex) {
             int appIndex = topLineAppIndex + lineIndex;
@@ -331,7 +331,7 @@ public class AppChooser extends AcorusDemo {
                 Class<?> mainClass = mainClasses[appIndex];
                 appName = mainClass.getSimpleName();
             }
-            if (lineIndex == selectedLineIndex) {
+            if (lineIndex == chosenLineIndex) {
                 String text = "--> " + appName;
                 menuOverlay.setText(lineIndex, text, ColorRGBA.Yellow);
             } else {
