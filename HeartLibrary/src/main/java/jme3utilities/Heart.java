@@ -393,6 +393,23 @@ public class Heart {
     }
 
     /**
+     * Test whether the named application has stored settings.
+     *
+     * @param applicationName the name of the application
+     * @return true if it has stored settings, otherwise false
+     */
+    public static boolean hasStoredSettings(String applicationName) {
+        try {
+            if (Preferences.userRoot().nodeExists(applicationName)) {
+                return true;
+            }
+        } catch (BackingStoreException exception) {
+        }
+
+        return false;
+    }
+
+    /**
      * Generate a canonical filesystem path to the named file in the user's home
      * directory.
      *
