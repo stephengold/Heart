@@ -122,7 +122,7 @@ public class AppChooser extends AcorusDemo {
     // constructors
 
     /**
-     * Instantiate an AcorusDemo without any initial appstates.
+     * Instantiate an AcorusDemo without the usual initial appstates.
      */
     private AppChooser() {
         super((AppState[]) null);
