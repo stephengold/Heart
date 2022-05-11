@@ -532,8 +532,7 @@ public class MyQuaternion {
      * @param axisIndex which axis (&ge;0, &lt;3)
      */
     public static void snapLocal(Quaternion input, int axisIndex) {
-        assert Validate.inRange(axisIndex, "axis index", MyVector3f.firstAxis,
-                MyVector3f.lastAxis);
+        assert Validate.axisIndex(axisIndex, "axis index");
 
         float[] angles = new float[MyVector3f.numAxes];
         input.toAngles(angles);

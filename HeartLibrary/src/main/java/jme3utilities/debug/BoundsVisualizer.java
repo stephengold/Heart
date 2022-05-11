@@ -209,8 +209,7 @@ public class BoundsVisualizer extends SubtreeControl {
      */
     public void enableBillboarding(Camera camera, int axisIndex) {
         Validate.nonNull(camera, "camera");
-        Validate.inRange(axisIndex, "axis index", MyVector3f.firstAxis,
-                MyVector3f.lastAxis);
+        Validate.axisIndex(axisIndex, "axis index");
 
         this.camera = camera;
         billboardAxis = axisIndex;

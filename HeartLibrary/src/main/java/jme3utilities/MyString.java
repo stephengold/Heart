@@ -126,9 +126,7 @@ public class MyString {
      * @see #axisIndex(String)
      */
     public static String axisName(int axisIndex) {
-        Validate.inRange(axisIndex, "axis index", MyVector3f.xAxis,
-                MyVector3f.zAxis);
-
+        Validate.axisIndex(axisIndex, "axis index");
         String axisName = axisNames[axisIndex];
         return axisName;
     }

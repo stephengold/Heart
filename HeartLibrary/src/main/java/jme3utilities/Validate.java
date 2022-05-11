@@ -73,6 +73,19 @@ final public class Validate {
     // new methods exposed
 
     /**
+     * Validate an axis index as a method argument.
+     *
+     * @param iValue the value to validate
+     * @param description a description of the argument
+     * @return true
+     * @throws IllegalArgumentException if the value is outside the range [0, 2]
+     */
+    public static boolean axisIndex(int iValue, String description) {
+        inRange(iValue, description, MyVector3f.firstAxis, MyVector3f.lastAxis);
+        return true;
+    }
+
+    /**
      * Validate a finite single-precision value as a method argument.
      *
      * @param fValue the value to validate

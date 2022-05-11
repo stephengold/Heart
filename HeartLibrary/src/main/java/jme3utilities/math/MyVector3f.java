@@ -236,7 +236,7 @@ public class MyVector3f {
      */
     public static Vector3f axisVector(int axisIndex, float length,
             Vector3f storeResult) {
-        assert Validate.inRange(axisIndex, "axis index", firstAxis, lastAxis);
+        assert Validate.axisIndex(axisIndex, "axis index");
         assert Validate.nonNegative(length, "length");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
