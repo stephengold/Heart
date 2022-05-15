@@ -200,16 +200,17 @@ public class MyString {
     }
 
     /**
-     * Escape all tab, quote, newline, and backslash characters in a
-     * CharSequence.
+     * Replace all tab, quote, newline, and backslash characters in the
+     * specified text with escape sequences.
      *
-     * @param unescaped the input sequence (not null)
-     * @return an escaped String (not null)
+     * @param unescaped the input text to escape (not null)
+     * @return the escaped text (not null)
      * @see #unEscape(CharSequence)
      */
     public static String escape(CharSequence unescaped) {
         int length = unescaped.length();
         StringBuilder result = new StringBuilder(length + 10);
+
         for (int i = 0; i < length; ++i) {
             char ch = unescaped.charAt(i);
             switch (ch) {
@@ -290,10 +291,10 @@ public class MyString {
     }
 
     /**
-     * Convert the first character of the specified String to lower case.
+     * Convert the first character of the specified text to lower case.
      *
-     * @param input the input string (not null)
-     * @return the converted String (not null)
+     * @param input the input text to convert (not null)
+     * @return the converted text (not null)
      */
     public static String firstToLower(String input) {
         String result = input;
@@ -473,7 +474,7 @@ public class MyString {
      * newline, and backslash characters.
      *
      * @param text the input text to quote
-     * @return a quoted string, or "null" if the input was null
+     * @return the quoted text, or "null" if the input was null
      */
     public static String quote(CharSequence text) {
         String result;
