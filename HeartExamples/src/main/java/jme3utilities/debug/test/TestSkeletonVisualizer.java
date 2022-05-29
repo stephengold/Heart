@@ -26,7 +26,6 @@
  */
 package jme3utilities.debug.test;
 
-import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.animation.SkeletonControl;
 import com.jme3.font.BitmapText;
@@ -146,11 +145,13 @@ public class TestSkeletonVisualizer extends AcorusDemo {
         Spatial jaime = assetManager.loadModel("Models/Jaime/Jaime.j3o");
         rootNode.attachChild(jaime);
 
+        AnimControl animControl = jaime.getControl(AnimControl.class);
+        animControl.createChannel().setAnim("Punches");
         SkeletonControl sc = jaime.getControl(SkeletonControl.class);
-        AnimControl animControl
-                = jaime.getControl(AnimControl.class);
-        AnimChannel animChannel = animControl.createChannel();
-        animChannel.setAnim("Punches");
+// or, to test the new animation system:
+//        AnimMigrationUtils.migrate(jaime);
+//        jaime.getControl(AnimComposer.class).setCurrentAction("Punches");
+//        SkinningControl sc = jaime.getControl(SkinningControl.class);
 
         sv = new SkeletonVisualizer(assetManager, sc);
         sv.setLineColor(ColorRGBA.Yellow);
