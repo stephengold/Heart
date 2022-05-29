@@ -124,11 +124,13 @@ public class MyControl {
                 double animTime = layer.getTime();
                 result.append(MyString.describeFraction((float) animTime));
 
+                result.append(" action=");
                 Action action = layer.getCurrentAction();
-                if (action != null) {
-                    result.append(" action[");
-                    result.append(action);
-                    result.append(']');
+                if (action == null) {
+                    result.append("null");
+                } else {
+                    result.append(action.getClass().getSimpleName());
+                    result.append(MyString.quote(action.toString()));
                 }
                 result.append(']');
             } else {
