@@ -191,7 +191,7 @@ public class Octasphere extends Mesh {
         addVertex(octaLocations[4], 0.5f); // [4]
         addVertex(octaLocations[5], 0.5f); // [5]
         /*
-         * Add a duplicate vertices with U=1.
+         * Add duplicate vertices with U=1.
          */
         addVertex(octaLocations[0], 1f); // [6]
         addVertex(octaLocations[4], 1f); // [7]
@@ -252,6 +252,7 @@ public class Octasphere extends Mesh {
 //        System.out.println();
 //
         midpointCache.clear();
+        assert faces.size() == 3 << (3 + 2 * numRefineSteps);
 
         int numVertices = locations.size();
         int numFloats = numAxes * numVertices;
