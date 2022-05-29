@@ -141,11 +141,11 @@ public class Octasphere extends Mesh {
      * map vertex indices to location vectors in mesh coordinates, all with
      * length=radius
      */
-    final private List<Vector3f> locations = new ArrayList<>(74);
+    final private List<Vector3f> locations = new ArrayList<>(305);
     /**
      * cache to avoid duplicate vertices: map index pairs to midpoint indices
      */
-    final private Map<Long, Integer> midpointCache = new HashMap<>(67);
+    final private Map<Long, Integer> midpointCache = new HashMap<>(294);
     // *************************************************************************
     // constructors
 
