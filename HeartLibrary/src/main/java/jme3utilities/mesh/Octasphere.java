@@ -77,30 +77,6 @@ public class Octasphere extends Mesh {
      */
     final private static int numAxes = 3;
     /**
-     * number of vertices per triangle
-     */
-    final private static int vpt = 3;
-    /**
-     * message logger for this class
-     */
-    final public static Logger logger
-            = Logger.getLogger(Octasphere.class.getName());
-    // *************************************************************************
-    // fields
-
-    /**
-     * map vertex indices to U=1 flags
-     */
-    final private List<Boolean> u1Flags = new ArrayList<>(74);
-    /**
-     * distance of each vertex from the center (&gt;0)
-     */
-    final private float radius;
-    /**
-     * next vertex index to be assigned
-     */
-    private int nextVertexIndex = 0;
-    /**
      * vertex indices of the 8 faces in a regular octahedron (outward-facing
      * triangles with right-handed winding)
      * <p>
@@ -118,14 +94,14 @@ public class Octasphere extends Mesh {
         1, 2, 4 //   +X -Y -Z face
     };
     /**
-     * map vertex indices to location vectors in mesh coordinates, all with
-     * length=radius
+     * number of vertices per triangle
      */
-    final private List<Vector3f> locations = new ArrayList<>(74);
+    final private static int vpt = 3;
     /**
-     * cache to avoid duplicate vertices: map index pairs to midpoint indices
+     * message logger for this class
      */
-    final private Map<Long, Integer> midpointCache = new HashMap<>(67);
+    final public static Logger logger
+            = Logger.getLogger(Octasphere.class.getName());
     /**
      * vertex locations in a regular octahedron with radius=1
      */
@@ -137,6 +113,30 @@ public class Octasphere extends Mesh {
         new Vector3f(0f, 0f, -1f), // [4]
         new Vector3f(0f, 0f, +1f) //  [5]
     };
+    // *************************************************************************
+    // fields
+
+    /**
+     * map vertex indices to U=1 flags
+     */
+    final private List<Boolean> u1Flags = new ArrayList<>(74);
+    /**
+     * distance of each vertex from the center (&gt;0)
+     */
+    final private float radius;
+    /**
+     * next vertex index to be assigned
+     */
+    private int nextVertexIndex = 0;
+    /**
+     * map vertex indices to location vectors in mesh coordinates, all with
+     * length=radius
+     */
+    final private List<Vector3f> locations = new ArrayList<>(74);
+    /**
+     * cache to avoid duplicate vertices: map index pairs to midpoint indices
+     */
+    final private Map<Long, Integer> midpointCache = new HashMap<>(67);
     // *************************************************************************
     // constructors
 
