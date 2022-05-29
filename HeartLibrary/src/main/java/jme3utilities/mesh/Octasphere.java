@@ -162,11 +162,11 @@ public class Octasphere extends Mesh {
      * etcetera
      * </ul>
      *
-     * @param numRefineSteps number of refinement steps (&ge;0)
+     * @param numRefineSteps number of refinement steps (&ge;0, &le;13)
      * @param radius radius (in mesh units, &gt;0)
      */
     public Octasphere(int numRefineSteps, float radius) {
-        Validate.nonNegative(numRefineSteps, "number of refinement steps");
+        Validate.inRange(numRefineSteps, "number of refinement steps", 0, 13);
         Validate.positive(radius, "radius");
 
         this.radius = radius;
