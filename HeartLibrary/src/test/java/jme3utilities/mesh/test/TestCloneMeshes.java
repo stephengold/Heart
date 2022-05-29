@@ -139,7 +139,7 @@ public class TestCloneMeshes {
 
         Octasphere oSphere = new Octasphere(numRefineSteps, radius);
         Assert.assertEquals(32, oSphere.getTriangleCount());
-        Assert.assertEquals(21, oSphere.getVertexCount());
+        Assert.assertEquals(29, oSphere.getVertexCount());
         Octasphere oSphereClone = Heart.deepCopy(oSphere);
         cloneTest(oSphere, oSphereClone);
 
