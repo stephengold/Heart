@@ -573,8 +573,7 @@ public class MyVector3f {
      * @return a new unit vector
      */
     public static Vector3f fromAltAz(float altitude, float azimuth) {
-        Quaternion elevate = new Quaternion();
-        elevate.fromAngles(0f, 0f, altitude);
+        Quaternion elevate = new Quaternion().fromAngles(0f, 0f, altitude);
         Vector3f elevation = elevate.mult(unitX);
         Vector3f direction = yRotate(elevation, azimuth);
 
