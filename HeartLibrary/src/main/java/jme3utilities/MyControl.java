@@ -35,13 +35,11 @@ import com.jme3.animation.AnimControl;
 import com.jme3.animation.Animation;
 import com.jme3.animation.Skeleton;
 import com.jme3.animation.SkeletonControl;
-import com.jme3.app.StatsView;
-import com.jme3.cinematic.events.MotionEvent;
-import com.jme3.effect.ParticleEmitter;
-import com.jme3.input.ChaseCamera;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.logging.Logger;
 
@@ -74,17 +72,27 @@ public class MyControl {
 
     /**
      * Check whether a scene-graph control implements isEnabled() and
-     * setEnabled(). TODO use reflection
+     * setEnabled().
      *
      * @param sgc control to test (may be null, unaffected)
      * @return true if it's implemented, otherwise false
      */
     public static boolean canDisable(Control sgc) {
-        boolean result = sgc instanceof AbstractControl
-                || sgc instanceof ChaseCamera
-                || sgc instanceof MotionEvent
-                || sgc instanceof ParticleEmitter.ParticleEmitterControl
-                || sgc instanceof StatsView;
+        boolean result = sgc instanceof AbstractControl;
+        if (!result) {
+            /*
+             * Handle ChaseCamera, MotionEvent, ParticleEmitterControl,
+             * StatsView, and custom controls.
+             */
+            Class<? extends Control> sgcClass = sgc.getClass();
+            try {
+                Method isEnabled = sgcClass.getMethod("isEnabled");
+                result = true;
+            } catch (NoSuchMethodException exception) {
+                String message = sgcClass.getName();
+                throw new IllegalArgumentException(message);
+            }
+        }
 
         return result;
     }
@@ -248,8 +256,7 @@ public class MyControl {
     }
 
     /**
-     * Test whether the specified scene-graph control is enabled. TODO use
-     * reflection
+     * Test whether the specified scene-graph control is enabled.
      *
      * @param sgc the control to test (not null, unaffected)
      * @return true if the control is enabled, otherwise false
@@ -262,33 +269,28 @@ public class MyControl {
             AbstractControl abstractControl = (AbstractControl) sgc;
             result = abstractControl.isEnabled();
 
-        } else if (sgc instanceof ChaseCamera) {
-            ChaseCamera chaseCamera = (ChaseCamera) sgc;
-            result = chaseCamera.isEnabled();
-
-        } else if (sgc instanceof MotionEvent) {
-            MotionEvent motionEvent = (MotionEvent) sgc;
-            result = motionEvent.isEnabled();
-
-        } else if (sgc instanceof ParticleEmitter.ParticleEmitterControl) {
-            ParticleEmitter.ParticleEmitterControl pec
-                    = (ParticleEmitter.ParticleEmitterControl) sgc;
-            result = pec.isEnabled();
-
-        } else if (sgc instanceof StatsView) {
-            StatsView statsView = (StatsView) sgc;
-            result = statsView.isEnabled();
-
         } else {
-            String message = sgc.getClass().getName();
-            throw new IllegalArgumentException(message);
+            /*
+             * Handle ChaseCamera, MotionEvent, ParticleEmitterControl,
+             * StatsView, and custom controls.
+             */
+            Class<? extends Control> sgcClass = sgc.getClass();
+            try {
+                Method isEnabled = sgcClass.getMethod("isEnabled");
+                result = (boolean) isEnabled.invoke(sgc);
+            } catch (IllegalAccessException
+                    | InvocationTargetException
+                    | NoSuchMethodException exception) {
+                String message = sgcClass.getName();
+                throw new IllegalArgumentException(message);
+            }
         }
 
         return result;
     }
 
     /**
-     * Alter the enabled state of a scene-graph control. TODO use reflection
+     * Alter the enabled state of a scene-graph control.
      *
      * @param sgc control to alter (not null)
      * @param newState true means enable the control, false means disable it
@@ -298,26 +300,21 @@ public class MyControl {
             AbstractControl abstractControl = (AbstractControl) sgc;
             abstractControl.setEnabled(newState);
 
-        } else if (sgc instanceof ChaseCamera) {
-            ChaseCamera chaseCamera = (ChaseCamera) sgc;
-            chaseCamera.setEnabled(newState);
-
-        } else if (sgc instanceof MotionEvent) {
-            MotionEvent motionEvent = (MotionEvent) sgc;
-            motionEvent.setEnabled(newState);
-
-        } else if (sgc instanceof ParticleEmitter.ParticleEmitterControl) {
-            ParticleEmitter.ParticleEmitterControl pec
-                    = (ParticleEmitter.ParticleEmitterControl) sgc;
-            pec.setEnabled(newState);
-
-        } else if (sgc instanceof StatsView) {
-            StatsView statsView = (StatsView) sgc;
-            statsView.setEnabled(newState);
-
         } else {
-            String message = sgc.getClass().getName();
-            throw new IllegalArgumentException(message);
+            /*
+             * Handle ChaseCamera, MotionEvent, ParticleEmitterControl,
+             * StatsView, and custom controls.
+             */
+            Class<? extends Control> sgcClass = sgc.getClass();
+            try {
+                Method setEnabled = sgcClass.getMethod("setEnabled");
+                setEnabled.invoke(sgc, newState);
+            } catch (IllegalAccessException
+                    | InvocationTargetException
+                    | NoSuchMethodException exception) {
+                String message = sgcClass.getName();
+                throw new IllegalArgumentException(message);
+            }
         }
     }
 }
