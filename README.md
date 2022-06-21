@@ -10,7 +10,7 @@ It contains 3 sub-projects:
 3. J3oDump: a command-line utility to dump J3O assets
 
 Complete source code (in Java) is provided under
-[a 3-clause BSD license][license].
+[a BSD 3-Clause license][license].
 
 Many other libraries depend on the Heart Library, including
 [Acorus], [jme3-wireframe], [JmePower], [Minie], [SkyControl], and [Wes].
