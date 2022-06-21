@@ -338,7 +338,6 @@ final public class MyBuffer {
 
     /**
      * Test whether all values in the specified FloatBuffer range are finite.
-     * TODO make static
      *
      * @param buffer the buffer that contains the data (not null, unaffected)
      * @param startPosition the position at which the data start (&ge;0,
@@ -347,7 +346,7 @@ final public class MyBuffer {
      * &le;capacity)
      * @return false if any value is NaN or infinite, otherwise true
      */
-    public boolean isAllFinite(FloatBuffer buffer, int startPosition,
+    public static boolean isAllFinite(FloatBuffer buffer, int startPosition,
             int endPosition) {
         Validate.nonNull(buffer, "buffer");
         Validate.inRange(startPosition, "start position", 0, endPosition);
