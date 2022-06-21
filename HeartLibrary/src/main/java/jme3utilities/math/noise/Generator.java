@@ -253,21 +253,22 @@ public class Generator extends Random {
     }
 
     /**
-     * Pick a pseudo-random element from the specified array. TODO use generics
+     * Pick a pseudo-random element from the specified array.
      *
+     * @param <E> the type of list elements
      * @param array the array to select from (not null, may be empty)
      * @return a pre-existing element of array, or null if it's empty
      */
-    public Object pick(Object[] array) {
+    public <E> E pick(E[] array) {
         Validate.nonNull(array, "array");
 
         int count = array.length;
-        assert count >= 0 : count;
         if (count == 0) {
             return null;
         }
+        assert count > 0 : count;
         int index = nextInt(count);
-        Object result = array[index];
+        E result = array[index];
 
         return result;
     }
@@ -316,22 +317,22 @@ public class Generator extends Random {
     }
 
     /**
-     * Pick a pseudo-random element from the specified list. TODO use generics
+     * Pick a pseudo-random element from the specified list.
      *
+     * @param <E> the type of list elements
      * @param list the list to select from (not null, may be empty)
-     * @return a pre-existing element of list, or null if it's empty
+     * @return a pre-existing element of {@code list}, or null if it's empty
      */
-    @SuppressWarnings("rawtypes")
-    public Object pick(List list) {
+    public <E> E pick(List<E> list) {
         Validate.nonNull(list, "list");
 
         int count = list.size();
-        assert count >= 0 : count;
         if (count == 0) {
             return null;
         }
+        assert count > 0 : count;
         int index = nextInt(count);
-        Object result = list.get(index);
+        E result = list.get(index);
 
         return result;
     }
