@@ -511,12 +511,11 @@ public class MyVector3f {
      *
      * @param point1 coordinates of the first location (not null, unaffected)
      * @param point2 coordinates of the 2nd location (not null, unaffected)
-     * @param tolerance2 for coincidence (in squared units, &ge;0) TODO should
-     * be double-precision
+     * @param tolerance2 for coincidence (in squared units, &ge;0)
      * @return true if they coincide, otherwise false
      */
     public static boolean doCoincide(Vector3f point1, Vector3f point2,
-            float tolerance2) {
+            double tolerance2) {
         assert Validate.nonNull(point1, "first point");
         assert Validate.nonNull(point2, "second point");
         assert Validate.nonNegative(tolerance2, "tolerance");
