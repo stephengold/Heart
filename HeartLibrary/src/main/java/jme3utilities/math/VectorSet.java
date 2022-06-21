@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2020 Stephen Gold
+ Copyright (c) 2019-2022 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,14 @@ public interface VectorSet {
      * @param vector the value to add (not null, unaffected)
      */
     void add(Vector3f vector);
-    // TODO addAll()
+
+    /**
+     * Add the specified values to this set, to the extent that they're not
+     * already present.
+     *
+     * @param vectors the values to add (not null, unaffected)
+     */
+    void addAll(Iterable<? extends Vector3f> vectors);
 
     /**
      * Reset this set to its initial (empty) state without altering its

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2021 Stephen Gold
+ Copyright (c) 2019-2022 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -172,6 +172,19 @@ public class VectorSetUsingBuffer implements VectorSet {
         }
 
         add(vector.x, vector.y, vector.z);
+    }
+
+    /**
+     * Add the specified values to this set, to the extent that they're not
+     * already present.
+     *
+     * @param vectors the values to add (not null, unaffected)
+     */
+    @Override
+    public void addAll(Iterable<? extends Vector3f> vectors) {
+        for (Vector3f vector : vectors) {
+            add(vector.x, vector.y, vector.z);
+        }
     }
 
     /**

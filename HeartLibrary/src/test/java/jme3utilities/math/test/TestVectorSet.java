@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2021, Stephen Gold
+ Copyright (c) 2019-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -29,11 +29,13 @@ package jme3utilities.math.test;
 import com.jme3.math.FastMath;
 import com.jme3.math.Vector3f;
 import java.nio.FloatBuffer;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 import jme3utilities.math.MyVector3f;
 import jme3utilities.math.VectorSet;
 import jme3utilities.math.VectorSetUsingBuffer;
 import jme3utilities.math.VectorSetUsingCollection;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -80,6 +82,26 @@ public class TestVectorSet {
         test(vectorSet3, false);
         vectorSet3.clear();
         test(vectorSet3, true);
+    }
+
+    /**
+     * Test the addAll() method.
+     */
+    @Test
+    public void testVectorSetAddAll() {
+        ArrayList<Vector3f> list = new ArrayList<>(4);
+        list.add(new Vector3f(1f, 2f, 3f));
+        list.add(new Vector3f(0f, 2f, 3f));
+        list.add(new Vector3f(1f, 2f, 3f));
+        list.add(new Vector3f(1f, 2f, 3f));
+
+        VectorSet useBuffer = new VectorSetUsingBuffer(list.size(), true);
+        useBuffer.addAll(list);
+        Assert.assertEquals(2, useBuffer.numVectors());
+
+        VectorSet useCollection = new VectorSetUsingCollection(list.size());
+        useCollection.addAll(list);
+        Assert.assertEquals(2, useCollection.numVectors());
     }
     // *************************************************************************
     // private methods
@@ -183,8 +205,8 @@ public class TestVectorSet {
         float[] fa = vectorSet.toFloatArray();
         assert fa != null;
         assert fa.length == 2 * MyVector3f.numAxes;
-        Vector3f[] va = vectorSet.toVectorArray();
-        assert va != null;
+        Vector3f[] va  = vectorSet.toVectorArray();
+        assert va  != null;
         assert va.length == 2;
         /*
          * Add the 4th vector.
