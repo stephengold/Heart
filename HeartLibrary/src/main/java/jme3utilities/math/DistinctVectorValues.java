@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021, Stephen Gold
+ Copyright (c) 2021-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -101,9 +101,8 @@ public class DistinctVectorValues {
 
         vectorIndex2Vvid = new int[numVectors];
         Arrays.fill(vectorIndex2Vvid, -1);
-        /*
-         * Assign an ID to each distinct vector value in the buffer range.
-         */
+
+        // Assign an ID to each distinct vector value in the buffer range.
         int nextVvid = 0;
         for (int vectorIndex = 0; vectorIndex < numVectors; ++vectorIndex) {
             int position = startPosition + MyVector3f.numAxes * vectorIndex;
@@ -150,9 +149,8 @@ public class DistinctVectorValues {
 
         vectorIndex2Vvid = new int[numVectors];
         Arrays.fill(vectorIndex2Vvid, -1);
-        /*
-         * Assign an ID to each distinct vector value in the buffer range.
-         */
+
+        // Assign an ID to each distinct vector value in the buffer range.
         double tt = tolerance;
         double toleranceSquared = tt * tt;
         int nextVvid = 0;
@@ -164,9 +162,8 @@ public class DistinctVectorValues {
             int vvid = -1;
             for (Map.Entry<Vector3f, Integer> entry : value2Vvid.entrySet()) {
                 Vector3f v = entry.getKey();
-                // TODO use MyVector3f.doCoincide()
-                double d2 = MyVector3f.distanceSquared(v, vector);
-                if (d2 < toleranceSquared) { // not distinct
+                if (MyVector3f.doCoincide(v, vector, toleranceSquared)) {
+                    // not distinct
                     vvid = entry.getValue();
                     assert vvid >= 0 : vvid;
                     break;
