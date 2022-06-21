@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -67,7 +67,7 @@ abstract public class SubtreeControl extends SimpleControl {
     /**
      * Instantiate a disabled Control.
      */
-    public SubtreeControl() { // TODO protect this constructor
+    protected SubtreeControl() {
         super.setEnabled(false);
     }
     // *************************************************************************
