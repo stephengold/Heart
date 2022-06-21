@@ -224,7 +224,7 @@ final public class MyBuffer {
                     break;
                 default:
                     String message = Integer.toString(axisIndex);
-                    throw new IllegalArgumentException(message);
+                    throw new RuntimeException(message);
             }
 
             if (radiusSquared > maxRadiusSquared) {
