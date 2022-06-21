@@ -865,20 +865,6 @@ public class MyMesh {
     }
 
     /**
-     * Read an index from a Buffer and advance the buffer's position.
-     *
-     * @param buffer a Buffer of bytes or shorts (not null)
-     * @return index (&ge;0)
-     * @deprecated use MyBuffer.readIndex()
-     */
-    @Deprecated
-    public static int readIndex(Buffer buffer) {
-        Validate.nonNull(buffer, "buffer");
-        int result = MyBuffer.readIndex(buffer);
-        return result;
-    }
-
-    /**
      * Reverse the normals of a Mesh. Apply this method (for instance) after
      * reversing the winding order of a triangle mesh.
      *

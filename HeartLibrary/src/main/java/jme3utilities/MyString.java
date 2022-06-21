@@ -36,7 +36,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import jme3utilities.math.MyVector3f;
 
 /**
  * Utility methods for char sequences, strings, and collections of strings.
@@ -410,39 +409,6 @@ public class MyString {
                      */
                     result.append(' ');
                 }
-                result.append(element);
-            }
-        }
-
-        return result.toString();
-    }
-
-    /**
-     * Join an array of text strings using the specified separator. For any
-     * element of the array that is null, "null" is added. Note that Java 8
-     * provides
-     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.CharSequence[])}.
-     *
-     * @param separator text string (not null)
-     * @param array strings to join (not null, unaffected, may contain nulls)
-     * @return the joined string (not null)
-     * @deprecated use
-     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.CharSequence[])}
-     */
-    @Deprecated
-    public static String join8(CharSequence separator, CharSequence... array) {
-        Validate.nonNull(array, "array");
-        Validate.nonNull(separator, "separator");
-
-        StringBuilder result = new StringBuilder(80);
-        for (int index = 0; index < array.length; ++index) {
-            if (index > 0) {
-                result.append(separator);
-            }
-            CharSequence element = array[index];
-            if (element == null) {
-                result.append("null");
-            } else {
                 result.append(element);
             }
         }

@@ -30,11 +30,6 @@ import com.jme3.math.Matrix3f;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
-import com.jme3.scene.VertexBuffer;
-import com.jme3.scene.mesh.IndexBuffer;
-import com.jme3.scene.mesh.IndexByteBuffer;
-import com.jme3.scene.mesh.IndexIntBuffer;
-import com.jme3.scene.mesh.IndexShortBuffer;
 import com.jme3.util.BufferUtils;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
@@ -342,31 +337,6 @@ final public class MyBuffer {
     }
 
     /**
-     * Returns the format of the data stored in the specified IndexBuffer.
-     * Intended for source-code compatibility with JME 3.2 and earlier.
-     *
-     * @param indexBuffer (not null, unaffected)
-     * @return an enum value (not null)
-     * @deprecated use {@link com.jme3.scene.mesh.IndexBuffer#getFormat()}
-     */
-    @Deprecated
-    public static VertexBuffer.Format getFormat(IndexBuffer indexBuffer) {
-        if (indexBuffer instanceof IndexByteBuffer) {
-            return VertexBuffer.Format.UnsignedByte;
-
-        } else if (indexBuffer instanceof IndexShortBuffer) {
-            return VertexBuffer.Format.UnsignedShort;
-
-        } else if (indexBuffer instanceof IndexIntBuffer) {
-            return VertexBuffer.Format.UnsignedInt;
-
-        } else {
-            String message = "class=" + indexBuffer.getClass().getSimpleName();
-            throw new IllegalArgumentException(message);
-        }
-    }
-
-    /**
      * Test whether all values in the specified FloatBuffer range are finite.
      * TODO make static
      *
@@ -600,32 +570,6 @@ final public class MyBuffer {
         buffer.put(startPosition + MyVector3f.xAxis, vector.x);
         buffer.put(startPosition + MyVector3f.yAxis, vector.y);
         buffer.put(startPosition + MyVector3f.zAxis, vector.z);
-    }
-
-    /**
-     * Perform a relative put to the specified IndexBuffer. Intended for
-     * source-code compatibility with JME 3.2 and earlier.
-     *
-     * @param indexBuffer (not null, modified)
-     * @param value the value to write
-     *
-     * @deprecated use {@link com.jme3.scene.mesh.IndexBuffer#put(int)}
-     */
-    @Deprecated
-    public static void putRelative(IndexBuffer indexBuffer, int value) {
-        if (indexBuffer instanceof IndexByteBuffer) {
-            ((ByteBuffer) indexBuffer.getBuffer()).put((byte) value);
-
-        } else if (indexBuffer instanceof IndexShortBuffer) {
-            ((ShortBuffer) indexBuffer.getBuffer()).put((short) value);
-
-        } else if (indexBuffer instanceof IndexIntBuffer) {
-            ((IntBuffer) indexBuffer.getBuffer()).put(value);
-
-        } else {
-            String message = "class=" + indexBuffer.getClass().getSimpleName();
-            throw new IllegalArgumentException(message);
-        }
     }
 
     /**
