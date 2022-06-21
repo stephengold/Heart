@@ -52,9 +52,9 @@ public class Generator extends Random {
     final private static Logger logger
             = Logger.getLogger(Generator.class.getName());
     /**
-     * version number for serialization TODO privatize
+     * version number for serialization
      */
-    static final long serialVersionUID = 37_705_297_950_129_619L;
+    final private static long serialVersionUID = 37_705_297_950_129_619L;
     // *************************************************************************
     // constructors
 
