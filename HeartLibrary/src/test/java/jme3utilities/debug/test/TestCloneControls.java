@@ -35,8 +35,6 @@ import com.jme3.material.plugins.J3MLoader;
 import com.jme3.math.ColorRGBA;
 import com.jme3.scene.Node;
 import com.jme3.scene.control.AbstractControl;
-import com.jme3.system.JmeSystem;
-import com.jme3.system.MockJmeSystemDelegate;
 import com.jme3.texture.plugins.AWTLoader;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
@@ -75,7 +73,6 @@ public class TestCloneControls {
      */
     @Test
     public void testClone() {
-        JmeSystem.setSystemDelegate(new MockJmeSystemDelegate());
         assetManager.registerLoader(AWTLoader.class, "jpg", "png");
         assetManager.registerLoader(J3MLoader.class, "j3m", "j3md");
         assetManager.registerLocator(null, ClasspathLocator.class);
