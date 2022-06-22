@@ -1,5 +1,27 @@
 # release log for the Heart Library and related tests
 
+## Version 8.0.0 released on TBD
+
++ Deleted 5 deprecated methods: (API changes)
+  + `MyBuffer.getFormat()`
+  + `MyBuffer.putRelative()`
+  + `MyMath.isFinite()`
+  + `MyMesh.readIndex()`
+  + `MyString.join8()`
++ Made `MyBuffer.isAllFinite()` a static method. (API change)
++ Redefined 2 `Generator.pick()` methods using generics. (API changes)
++ Tweaked the signature of the `MyVector3f.doCoincide()` method. (API change)
++ Protected the `SubtreeControl` constructor. (API change)
++ Privatized the `Generator.serialVersionUID` field. (API change)
+
++ Added the `addAll()` method to the `VectorSet` class.
++ Added the `axisIndex()` method to the `Validate` class.
++ Added the `hasStoredSettings()` method to the `Heart` class.
++ Add 4 vertices to `Octasphere`, in order to better cover the U-V space.
++ Began indicating `Action` subclasses in dumps.
++ Added the `AppChooser` application.
++ Added the "checkstyle" plugin to the build.
+
 ## Version 7.6.0 released on 29 April 2022
 
 + Added the `deleteStoredSettings()` method to the `Heart` class.
