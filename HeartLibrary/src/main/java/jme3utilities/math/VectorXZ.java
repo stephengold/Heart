@@ -269,7 +269,8 @@ public class VectorXZ
         }
         final float absX = FastMath.abs(x);
         final float absZ = FastMath.abs(z);
-        float newX, newZ;
+        float newX;
+        float newZ;
         if (absX > absZ) {
             newX = FastMath.sign(x);
             newZ = 0f;

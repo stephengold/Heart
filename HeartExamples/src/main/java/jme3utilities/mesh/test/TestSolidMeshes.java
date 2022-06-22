@@ -283,10 +283,14 @@ public class TestSolidMeshes extends AcorusDemo {
      * Add geometries to the scene, without materials.
      */
     private void addGeometries() {
-        boolean generateNormals, generatePyramid;
-        float height, radius;
+        boolean generateNormals;
+        boolean generatePyramid;
+        float height;
+        float radius;
         Geometry geometry;
-        int numSides, radialSamples, zSamples;
+        int numSides;
+        int radialSamples;
+        int zSamples;
         Mesh mesh;
 
         inwardNormals = false;

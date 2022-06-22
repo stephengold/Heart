@@ -164,7 +164,9 @@ public class Dumper implements Cloneable {
      * @param manager (not null, unaffected)
      */
     public void dump(AppStateManager manager) {
-        Method getInitializing, getStates, getTerminating;
+        Method getInitializing;
+        Method getStates;
+        Method getTerminating;
         try {
             getInitializing = AppStateManager.class
                     .getDeclaredMethod("getInitializing");
@@ -178,7 +180,9 @@ public class Dumper implements Cloneable {
         getStates.setAccessible(true);
         getTerminating.setAccessible(true);
 
-        AppState[] initializing, active, terminating;
+        AppState[] initializing;
+        AppState[] active;
+        AppState[] terminating;
         try {
             initializing = (AppState[]) getInitializing.invoke(manager);
             active = (AppState[]) getStates.invoke(manager);

@@ -1363,7 +1363,8 @@ public class MyVector3f {
         /*
          * Test the partner of ext against both ends of the other segment.
          */
-        Vector3f otherStart, otherEnd;
+        Vector3f otherStart;
+        Vector3f otherEnd;
         if (ext == start1 || ext == end1) {
             otherStart = start2;
             otherEnd = end2;

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2019, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -107,7 +107,8 @@ public class RoundedRectangle extends Mesh {
         positions[0] = (x1 + x2) / 2;
         positions[1] = (y1 + y2) / 2;
 
-        float centerX, centerY;
+        float centerX;
+        float centerY;
         int vIndex = 1;
 
         centerX = x1 + cornerRadius;

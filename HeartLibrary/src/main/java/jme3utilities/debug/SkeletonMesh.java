@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2021, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -84,7 +84,8 @@ class SkeletonMesh extends Mesh {
     SkeletonMesh(Armature armature, Skeleton skeleton, Mode mode) {
         assert armature == null || skeleton == null;
 
-        int boneCount = 0, numRoots = 0;
+        int boneCount = 0;
+        int numRoots = 0;
         if (armature != null) {
             boneCount = armature.getJointCount();
             numRoots = MySkeleton.countRootJoints(armature);
