@@ -246,6 +246,8 @@ public class TestSolidMeshes extends AcorusDemo {
                 case "reverse winding":
                     reverseWinding();
                     return;
+
+                default:
             }
         }
 

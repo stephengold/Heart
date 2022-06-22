@@ -1349,6 +1349,8 @@ public class MySpatial {
                 if (texture != null && !containsInstance(collection, texture)) {
                     collection.add(texture);
                 }
+                break;
+            default:
         }
     }
 

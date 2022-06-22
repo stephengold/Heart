@@ -220,6 +220,7 @@ public class TestSkeletonVisualizer extends AcorusDemo {
                 case "toggle skeleton":
                     toggleSkeleton();
                     return;
+                default:
             }
         }
         /*

@@ -194,6 +194,7 @@ public class TestContrast extends AcorusDemo {
                 case "toggle help":
                     toggleHelp();
                     return;
+                default:
             }
         }
 

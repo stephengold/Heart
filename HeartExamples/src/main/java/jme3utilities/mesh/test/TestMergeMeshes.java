@@ -247,6 +247,7 @@ public class TestMergeMeshes extends AcorusDemo {
                 case "dump render":
                     new Dumper().dump(renderManager);
                     return;
+                default:
             }
         }
 

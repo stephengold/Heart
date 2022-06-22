@@ -219,6 +219,8 @@ public class TestBoundsVisualizer extends AcorusDemo {
                 case "toggle depthTest":
                     toggleDepthTest();
                     return;
+
+                default:
             }
             if (actionString.startsWith("sphere ")) {
                 String name = actionString.split(" ")[1];
