@@ -224,8 +224,8 @@ final public class MyAsset {
      *
      * @param assetManager (not null)
      * @param pointShape shape texture (alias created) or null for default shape
-     * @return a new instance
      * @param pointSize in pixels (&ge;0, whole numbers recommended)
+     * @return a new instance
      */
     public static Material createMulticolor2Material(AssetManager assetManager,
             Texture pointShape, float pointSize) {

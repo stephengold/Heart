@@ -132,6 +132,7 @@ public class Heart {
                 Desktop.getDesktop().browse(startUri);
                 success = true;
             } catch (IOException | URISyntaxException exception) {
+                // do nothing
             }
         }
 
@@ -404,6 +405,7 @@ public class Heart {
                 return true;
             }
         } catch (BackingStoreException exception) {
+            // do nothing
         }
 
         return false;

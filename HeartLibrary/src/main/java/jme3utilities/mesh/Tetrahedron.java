@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2020, Stephen Gold
+ Copyright (c) 2019-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -66,7 +66,7 @@ public class Tetrahedron extends Mesh {
 
     /**
      * Instantiate a regular tetrahedron with the specified radius.
-     *
+     * <p>
      * The center is at (0,0,0). The Y axis bisects 2 edges. All triangles face
      * outward.
      *

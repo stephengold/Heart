@@ -105,7 +105,7 @@ class SkeletonMesh extends Mesh {
              */
             for (int boneIndex = 0; boneIndex < boneCount; ++boneIndex) {
                 if (armature == null) {
-                    Bone child = skeleton.getBone(boneIndex);// skeleton != null
+                    Bone child = skeleton.getBone(boneIndex);
                     Bone parent = child.getParent();
                     if (parent != null) {
                         int parentIndex = skeleton.getBoneIndex(parent);
