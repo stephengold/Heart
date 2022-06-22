@@ -127,10 +127,10 @@ final public class MyArray {
             aboveMean[1] = input[3 * vectorIndex + 1] - sampleMean.y;
             aboveMean[2] = input[3 * vectorIndex + 2] - sampleMean.z;
             for (int rowIndex = 0; rowIndex < 3; ++rowIndex) {
-                for (int columnIndex = rowIndex; columnIndex < 3; ++columnIndex) {
-                    float sum = result.get(rowIndex, columnIndex);
-                    sum += aboveMean[rowIndex] * aboveMean[columnIndex];
-                    result.set(rowIndex, columnIndex, sum);
+                for (int colIndex = rowIndex; colIndex < 3; ++colIndex) {
+                    float sum = result.get(rowIndex, colIndex);
+                    sum += aboveMean[rowIndex] * aboveMean[colIndex];
+                    result.set(rowIndex, colIndex, sum);
                 }
             }
         }
