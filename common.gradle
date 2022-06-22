@@ -1,5 +1,6 @@
 // Gradle settings and tasks common to all Heart subprojects
 
+apply plugin: 'checkstyle'
 apply plugin: 'java'
 
 ext { // current versions of libraries:
