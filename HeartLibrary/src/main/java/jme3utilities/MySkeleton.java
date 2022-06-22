@@ -325,8 +325,8 @@ public class MySkeleton {
     /**
      * Access the attachments node of the specified Bone.
      * <p>
-     * Unlike
-     * {@link com.jme3.animation.SkeletonControl#getAttachmentsNode(java.lang.String)}
+     * Unlike {@link
+     * com.jme3.animation.SkeletonControl#getAttachmentsNode(java.lang.String)}
      * this won't add a node to the scene graph.
      *
      * @param bone the Bone to read (not null, unaffected)

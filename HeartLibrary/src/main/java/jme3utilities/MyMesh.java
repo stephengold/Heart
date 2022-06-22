@@ -1296,7 +1296,8 @@ public class MyMesh {
             ColorRGBA storeResult) {
         Validate.nonNull(mesh, "mesh");
         Validate.nonNegative(vertexIndex, "vertex index");
-        ColorRGBA result = (storeResult == null) ? new ColorRGBA() : storeResult;
+        ColorRGBA result
+                = (storeResult == null) ? new ColorRGBA() : storeResult;
 
         VertexBuffer vertexBuffer = mesh.getBuffer(VertexBuffer.Type.Color);
         int numComponents = vertexBuffer.getNumComponents();

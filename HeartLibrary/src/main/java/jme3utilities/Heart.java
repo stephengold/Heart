@@ -597,7 +597,8 @@ public class Heart {
                 boolean success = parentDirectory.mkdirs();
                 if (!success) {
                     String path = parentDirectory.toString();
-                    throw new IOException("Unable to create " + MyString.quote(path));
+                    throw new IOException(
+                            "Unable to create " + MyString.quote(path));
                 }
             }
 

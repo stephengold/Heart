@@ -240,9 +240,9 @@ public class MyString {
 
     /**
      * Find the specified string value in an array, using a linear search.
-     * Unlike
-     * {@link java.util.Arrays#binarySearch(java.lang.Object[], java.lang.Object)},
-     * the array need not be sorted.
+     * Unlike {@link
+     * java.util.Arrays#binarySearch(java.lang.Object[], java.lang.Object)}, the
+     * array need not be sorted.
      *
      * @param array the array to search (not null, unaffected)
      * @param value the value to find (not null)
@@ -347,9 +347,9 @@ public class MyString {
 
     /**
      * Join a collection of objects into a text string using the specified
-     * separator, ignoring any empties/nulls. Note that Java 8 provides
-     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)},
-     * which doesn't ignore nulls.
+     * separator, ignoring any empties/nulls. Note that Java 8 provides {@link
+     * java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)}, which
+     * doesn't ignore nulls.
      *
      * @param separator text string (not null)
      * @param objects objects to join (not null, unaffected, may contain nulls)
@@ -377,9 +377,11 @@ public class MyString {
 
     /**
      * Join a collection of objects into a text string using spaces for
-     * separators and ignoring any empties/nulls. Note that Java 8 provides
-     * {@link java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)},
-     * which doesn't ignore nulls.
+     * separators and ignoring any empties/nulls.
+     * <p>
+     * Note that Java 8 provides {@link
+     * java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)}, which
+     * doesn't ignore nulls.
      *
      * @param objects objects to join (not null, unaffected, may contain nulls)
      * @return joined string (not null)

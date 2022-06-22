@@ -255,7 +255,8 @@ public class RectangularSolid implements Savable {
      * @param orientation the orientation of the local axes (not null,
      * unaffected)
      */
-    public RectangularSolid(Vector3f min, Vector3f max, Quaternion orientation) {
+    public RectangularSolid(
+            Vector3f min, Vector3f max, Quaternion orientation) {
         assert min.x <= max.x;
         assert min.y <= max.y;
         assert min.z <= max.z;
@@ -272,7 +273,8 @@ public class RectangularSolid implements Savable {
      * @param otherSolid (not null, unaffected)
      * @param scaleFactors (not null, all components non-negative, unaffected)
      */
-    public RectangularSolid(RectangularSolid otherSolid, Vector3f scaleFactors) {
+    public RectangularSolid(
+            RectangularSolid otherSolid, Vector3f scaleFactors) {
         Validate.nonNegative(scaleFactors, "scale factors");
 
         Vector3f center = MyVector3f.midpoint(otherSolid.minima,

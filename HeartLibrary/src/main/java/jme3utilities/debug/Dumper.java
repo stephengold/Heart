@@ -166,11 +166,11 @@ public class Dumper implements Cloneable {
     public void dump(AppStateManager manager) {
         Method getInitializing, getStates, getTerminating;
         try {
-            getInitializing
-                    = AppStateManager.class.getDeclaredMethod("getInitializing");
+            getInitializing = AppStateManager.class
+                    .getDeclaredMethod("getInitializing");
             getStates = AppStateManager.class.getDeclaredMethod("getStates");
-            getTerminating
-                    = AppStateManager.class.getDeclaredMethod("getTerminating");
+            getTerminating = AppStateManager.class
+                    .getDeclaredMethod("getTerminating");
         } catch (NoSuchMethodException exception) {
             throw new RuntimeException(exception);
         }

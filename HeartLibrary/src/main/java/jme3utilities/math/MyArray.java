@@ -107,7 +107,8 @@ final public class MyArray {
      * @return the unbiased sample covariance (either storeResult or a new
      * matrix, not null)
      */
-    public static Matrix3f covarianceVector3f(float[] input, Matrix3f storeResult) {
+    public static Matrix3f covarianceVector3f(
+            float[] input, Matrix3f storeResult) {
         Validate.nonEmpty(input, "input");
         int length = input.length;
         assert (length % 3 == 0) : length;

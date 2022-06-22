@@ -68,7 +68,8 @@ public class TestMyString {
         assert MyString.quote(stringCases[0]).equals("\"\\\"he\\\"\"");
         assert MyString.quote(stringCases[1]).equals("\"\"");
         assert MyString.quote(stringCases[2]).equals("\"-0\"");
-        assert MyString.quote(stringCases[8]).equals("\"he\\\\\\\\no\\tgoodbye\\n\"");
+        assert MyString.quote(stringCases[8])
+                .equals("\"he\\\\\\\\no\\tgoodbye\\n\"");
 
         assert MyString.trimFloat(stringCases[0]).equals(stringCases[0]);
         assert MyString.trimFloat(stringCases[1]).equals(stringCases[1]);

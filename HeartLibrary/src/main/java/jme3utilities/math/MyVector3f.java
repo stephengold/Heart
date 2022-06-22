@@ -839,8 +839,8 @@ public class MyVector3f {
 
     /**
      * Interpolate between (or extrapolate from) 2 vectors using linear (Lerp)
-     * *polation. Unlike
-     * {@link com.jme3.math.FastMath#interpolateLinear(float, com.jme3.math.Vector3f, com.jme3.math.Vector3f, com.jme3.math.Vector3f)},
+     * *polation. Unlike {@link com.jme3.math.FastMath#interpolateLinear(float,
+     * com.jme3.math.Vector3f, com.jme3.math.Vector3f, com.jme3.math.Vector3f)},
      * no rounding error is introduced when v1==v2.
      *
      * @param t descaled parameter value (0&rarr;v0, 1&rarr;v1)

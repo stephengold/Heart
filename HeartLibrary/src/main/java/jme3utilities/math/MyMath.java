@@ -719,10 +719,11 @@ public class MyMath {
 
     /**
      * Interpolate between 2 transforms using spherical linear (Slerp)
-     * interpolation. This method is slower (but more accurate) than
-     * {@link com.jme3.math.Transform#interpolateTransforms(com.jme3.math.Transform, com.jme3.math.Transform, float)}
-     * and doesn't trash t1. The caller is responsible for flipping quaternion
-     * signs when it's appropriate to do so.
+     * interpolation. This method is slower (but more accurate) than {@link
+     * com.jme3.math.Transform#interpolateTransforms(
+     * com.jme3.math.Transform, com.jme3.math.Transform, float)} and doesn't
+     * trash t1. The caller is responsible for flipping quaternion signs when
+     * it's appropriate to do so.
      *
      * @param t descaled parameter value (&ge;0, &le;1)
      * @param t0 function value at t=0 (not null, unaffected unless it's also
