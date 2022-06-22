@@ -86,7 +86,7 @@ public class MyControl {
              */
             Class<? extends Control> sgcClass = sgc.getClass();
             try {
-                Method isEnabled = sgcClass.getMethod("isEnabled");
+                sgcClass.getMethod("isEnabled");
                 result = true;
             } catch (NoSuchMethodException exception) {
                 String message = sgcClass.getName();
