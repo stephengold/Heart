@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 8.0.0 released on TBD
+## Version 8.0.0 released on 22 June 2022
 
 + Deleted 5 deprecated methods: (API changes)
   + `MyBuffer.getFormat()`
