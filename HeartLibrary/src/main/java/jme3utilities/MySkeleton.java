@@ -641,7 +641,7 @@ public class MySkeleton {
              * Rename the bone.
              */
             nameField.set(bone, newName);
-        } catch (IllegalAccessException e) {
+        } catch (IllegalAccessException exception) {
             return false;
         }
         /*
