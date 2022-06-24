@@ -8,7 +8,7 @@ plugins {
 
 dependencies {
     implementation 'org.apache.commons:commons-exec:1.3'
-    implementation ('com.github.stephengold:Acorus:0.9.15') {
+    implementation ('com.github.stephengold:Acorus:0.9.16') {
         exclude group: 'com.github.stephengold', module: 'Heart'
     }
     runtimeOnly 'org.jmonkeyengine:jme3-desktop:' + jme3Version
