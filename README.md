@@ -296,9 +296,11 @@ software developers:
  + "rvandoosselaer", for reporting and fixing issue #2.
  + plus the creators of (and contributors to) the following software:
     + the [Blender] 3-D animation suite
+    + the [Checkstyle] tool
     + the [FindBugs] source-code analyzer
     + the [Firefox] and [Chrome] web browsers
     + the [Git] revision-control system and GitK commit viewer
+    + the [GitKraken] client
     + the [Gradle] build tool
     + the [IntelliJ IDEA][idea] and [NetBeans] integrated development environments
     + the [Java] compiler, standard doclet, and runtime environment
@@ -327,11 +329,13 @@ correct the situation: sgold@sonic.net
 [adoptium]: https://adoptium.net/releases.html "Adoptium Project"
 [ant]: https://ant.apache.org "Apache Ant Project"
 [blender]: https://docs.blender.org "Blender Project"
+[checkstyle]: https://checkstyle.org "Checkstyle"
 [chrome]: https://www.google.com/chrome "Chrome"
 [findbugs]: http://findbugs.sourceforge.net "FindBugs Project"
 [firefox]: https://www.mozilla.org/en-US/firefox "Firefox"
 [git]: https://git-scm.com "Git"
 [github]: https://github.com "GitHub"
+[gitkraken]: https://www.gitkraken.com "GitKraken client"
 [gradle]: https://gradle.org "Gradle Project"
 [heart]: https://github.com/stephengold/Heart "Heart Project"
 [idea]: https://www.jetbrains.com/idea/ "IntelliJ IDEA"
