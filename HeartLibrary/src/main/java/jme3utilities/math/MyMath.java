@@ -95,6 +95,35 @@ public class MyMath {
     }
 
     /**
+     * Test whether 2 float values are within the specified relative tolerance
+     * of one another.
+     *
+     * @param a the first input value
+     * @param b the 2nd input value
+     * @param relativeTolerance the relative tolerance (&ge;0, 0.02 &rarr; 2
+     * percent)
+     * @return true if {@code a} and {@code b} differ by less than
+     * {@code relativeTolerance * max(abs(a), abs(b))}, otherwise false
+     */
+    public static boolean areWithinTolerance(
+            float a, float b, float relativeTolerance) {
+        Validate.nonNegative(relativeTolerance, "relative tolerance");
+
+        if (a == b) {
+            return true;
+        }
+
+        float maxAbsoluteValue = Math.max(FastMath.abs(a), FastMath.abs(b));
+        float tolerance = relativeTolerance * maxAbsoluteValue;
+        float absDiff = FastMath.abs(a - b);
+        if (absDiff < tolerance) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Compute the circle function sqrt(1 - x^2) for a double-precision value.
      *
      * @param abscissa input (&le;1, &ge;-1)
