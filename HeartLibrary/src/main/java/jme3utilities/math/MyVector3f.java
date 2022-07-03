@@ -227,6 +227,28 @@ public class MyVector3f {
     }
 
     /**
+     * Test whether 2 vector values are within the specified relative tolerance
+     * of one another.
+     *
+     * @param a the first input value (not null, unaffected)
+     * @param b the 2nd input value (not null, unaffected)
+     * @param relativeTolerance the relative tolerance (&ge;0, 0.02 &rarr; 2
+     * percent)
+     * @return true each component differs by less than
+     * {@code relativeTolerance} times the max of the absolute values, otherwise
+     * false
+     */
+    public static boolean areWithinTolerance(
+            Vector3f a, Vector3f b, float relativeTolerance) {
+        float ax = a.x;
+        float bx = b.x;
+        boolean result = MyMath.areWithinTolerance(ax, bx, relativeTolerance)
+                && MyMath.areWithinTolerance(a.y, b.y, relativeTolerance)
+                && MyMath.areWithinTolerance(a.z, b.z, relativeTolerance);
+        return result;
+    }
+
+    /**
      * Generate an axis-aligned vector with the specified length.
      *
      * @param axisIndex 0&rarr;X, 1&rarr;Y, 2&rarr;Z
