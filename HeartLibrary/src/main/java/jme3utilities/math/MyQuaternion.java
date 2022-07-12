@@ -92,6 +92,30 @@ public class MyQuaternion {
     }
 
     /**
+     * Returns the angle (in radians) between the specified quaternions,
+     * provided both are normalized.
+     *
+     * @param q1 the first quaternion (not null, norm=1)
+     * @param q2 the other quaternions (not null, norm=1)
+     * @return the angle (in radians, not negative)
+     */
+    public static float angleBetween(Quaternion q1, Quaternion q2) {
+        assert validateUnit(q1, "q1", 0.0001f);
+        assert validateUnit(q2, "q2", 0.0001f);
+
+        double dotProduct = dot(q1, q2);
+        double absDot = Math.abs(dotProduct);
+        float result;
+        if (absDot > 1.0) {
+            result = 0f;
+        } else {
+            result = 2f * (float) Math.acos(absDot);
+        }
+
+        return result;
+    }
+
+    /**
      * Find the cardinal rotation most similar to the specified input. A
      * cardinal rotation is one for which the rotation angles on all 3 axes are
      * integer multiples of Pi/2 radians.
