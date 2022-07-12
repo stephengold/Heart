@@ -1169,7 +1169,7 @@ public class Describer implements Cloneable {
      * @param he the half extent for each axis (not null, unaffected)
      * @return a bracketed description (not null, not empty)
      */
-    private String describeHalfExtents(Vector3f he) {
+    protected String describeHalfExtents(Vector3f he) {
         String desc = MyVector3f.describe(he);
         String result = String.format(" he[%s]", desc);
 
