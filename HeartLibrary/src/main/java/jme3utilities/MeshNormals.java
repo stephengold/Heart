@@ -40,11 +40,11 @@ public enum MeshNormals {
      */
     Facet,
     /**
-     * no normals (delete if present)
+     * no normals (delete if present, best for unshaded materials)
      */
     None,
     /**
-     * smoothed normals
+     * smoothed normals (for shaded materials)
      */
     Smooth,
     /**
