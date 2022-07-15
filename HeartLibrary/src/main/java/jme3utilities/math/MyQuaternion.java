@@ -190,7 +190,7 @@ public class MyQuaternion {
 
         Set<Quaternion> distinct = new HashSet<>(quaternions.length);
         for (Quaternion rot : quaternions) {
-            Quaternion standard = standardize(rot, null);
+            Quaternion standard = standardize(rot, null); // TODO garbage
             distinct.add(standard);
         }
         int result = distinct.size();
@@ -540,7 +540,7 @@ public class MyQuaternion {
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
 
-        Quaternion q0inverse = conjugate(q0, null);
+        Quaternion q0inverse = conjugate(q0, null); // TODO garbage
         Quaternion ratio = q0inverse.multLocal(q1);
         Quaternion power = pow(ratio, t, ratio);
         result.set(q0);
