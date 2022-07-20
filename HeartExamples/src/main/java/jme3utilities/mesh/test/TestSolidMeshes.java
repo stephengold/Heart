@@ -296,6 +296,7 @@ public class TestSolidMeshes extends AcorusDemo {
         inwardNormals = false;
         inwardWinding = false;
 
+        // the leftmost column (x = -2)
         radius = 1f;
         zSamples = 32;
         radialSamples = 32;
@@ -330,6 +331,7 @@ public class TestSolidMeshes extends AcorusDemo {
         rootNode.attachChild(geometry);
         geometry.move(-2f, 4f, 0f);
 
+        // the 2nd column (x = 0)
         mesh = new Sphere(zSamples, radialSamples, radius);
         ((Sphere) mesh).setTextureMode(Sphere.TextureMode.Projected);
         geometry = new Geometry("sphere-projected", mesh);
@@ -353,6 +355,7 @@ public class TestSolidMeshes extends AcorusDemo {
         rootNode.attachChild(geometry);
         geometry.move(0f, 4f, 0f);
 
+        // the 3rd column (x = 2)
         mesh = new Sphere(zSamples, radialSamples, radius);
         ((Sphere) mesh).setTextureMode(Sphere.TextureMode.Polar);
         geometry = new Geometry("sphere-polar", mesh);
@@ -378,9 +381,18 @@ public class TestSolidMeshes extends AcorusDemo {
         rootNode.attachChild(geometry);
         geometry.move(2f, 4f, 0f);
 
+        // the rightmost column (x = 4)
         refineSteps = 3;
         mesh = new Octasphere(refineSteps, radius);
         geometry = new Geometry("octaSphere", mesh);
+        rootNode.attachChild(geometry);
+        geometry.move(4f, -2f, 0f);
+
+        float x = 0.7f;
+        float z = 1.2f;
+        mesh = new Prism(x, height, z);
+        MyMesh.generateNormals(mesh);
+        geometry = new Geometry("rightTrianglePrism", mesh);
         rootNode.attachChild(geometry);
         geometry.move(4f, 0f, 0f);
 

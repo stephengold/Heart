@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2020, Stephen Gold
+ Copyright (c) 2019-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -133,6 +133,75 @@ public class Prism extends Mesh {
             MyMesh.generateNormals(this);
         }
 
+        updateBound();
+        setStatic();
+    }
+
+    /**
+     * Instantiate a right prism, closed at both ends with right triangles.
+     * <p>
+     * The midpoint of the edge joining the right angles of the triangles is at
+     * (0,0,0). The end triangles lie parallel with the X-Z plane. All triangles
+     * face outward.
+     * <p>
+     * Normals are no generated. If normals are needed, add them using
+     * {@link jme3utilities.MyMesh#generateNormals(com.jme3.scene.Mesh)}.
+     *
+     * @param x the desired length of the legs parallel to the X axis (in mesh
+     * units, &gt;0)
+     * @param yHeight the desired total height of the prism on the Y axis (in
+     * mesh units, &gt;0)
+     * @param z the desired length of the legs parallel to the Z axis (in mesh
+     * units, &gt;0)
+     */
+    public Prism(float x, float yHeight, float z) {
+        Validate.positive(x, "x length");
+        Validate.positive(yHeight, "height");
+        Validate.positive(z, "z length");
+
+        int numTriangles = 8;
+        int numFloats = numTriangles * MyMesh.vpt * numAxes;
+        FloatBuffer positionBuffer = BufferUtils.createFloatBuffer(numFloats);
+        setBuffer(VertexBuffer.Type.Position, numAxes, positionBuffer);
+
+        float y = yHeight / 2f;
+
+        // top (right triangle)
+        positionBuffer.put(0f).put(+y).put(0f);
+        positionBuffer.put(0f).put(+y).put(z);
+        positionBuffer.put(x).put(+y).put(0f);
+
+        // base (right triangle)
+        positionBuffer.put(0f).put(-y).put(0f);
+        positionBuffer.put(x).put(-y).put(0f);
+        positionBuffer.put(0f).put(-y).put(z);
+
+        // rectangle containing the hypotenuses
+        positionBuffer.put(x).put(+y).put(0f);
+        positionBuffer.put(0f).put(+y).put(z);
+        positionBuffer.put(0f).put(-y).put(z);
+        positionBuffer.put(0f).put(-y).put(z);
+        positionBuffer.put(x).put(-y).put(0f);
+        positionBuffer.put(x).put(+y).put(0f);
+
+        // rectangle containing the legs parallel to the X axis
+        positionBuffer.put(0f).put(+y).put(0f);
+        positionBuffer.put(x).put(+y).put(0f);
+        positionBuffer.put(x).put(-y).put(0f);
+        positionBuffer.put(x).put(-y).put(0f);
+        positionBuffer.put(0f).put(-y).put(0f);
+        positionBuffer.put(0f).put(+y).put(0f);
+
+        // rectangle containing the legs parallel to the Z axis
+        positionBuffer.put(0f).put(+y).put(z);
+        positionBuffer.put(0f).put(+y).put(0f);
+        positionBuffer.put(0f).put(-y).put(0f);
+        positionBuffer.put(0f).put(-y).put(0f);
+        positionBuffer.put(0f).put(-y).put(z);
+        positionBuffer.put(0f).put(+y).put(z);
+
+        positionBuffer.flip();
+        assert positionBuffer.limit() == positionBuffer.capacity();
         updateBound();
         setStatic();
     }

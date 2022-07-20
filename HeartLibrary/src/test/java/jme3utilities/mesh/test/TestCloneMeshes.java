@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2021, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -154,6 +154,12 @@ public class TestCloneMeshes {
         Assert.assertEquals(372, prism.getVertexCount());
         Prism prismClone = Heart.deepCopy(prism);
         cloneTest(prism, prismClone);
+
+        Prism prismR = new Prism(1f, yHeight, 2f);
+        Assert.assertEquals(8, prismR.getTriangleCount());
+        Assert.assertEquals(24, prismR.getVertexCount());
+        Prism prismRClone = Heart.deepCopy(prismR);
+        cloneTest(prismR, prismRClone);
 
         RectangleMesh rect = new RectangleMesh();
         Assert.assertEquals(2, rect.getTriangleCount());
