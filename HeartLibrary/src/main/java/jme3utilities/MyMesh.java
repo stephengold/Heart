@@ -1107,6 +1107,78 @@ public class MyMesh {
     }
 
     /**
+     * Subdivide the specified Lines-mode mesh by the specified ratio.
+     *
+     * @param in the input mesh (not null, mode=Lines, unaffected)
+     * @param ratio the input edge lengths divided by result edge lengths
+     * (&gt;1)
+     * @return a new Mesh (mode=Lines, not indexed)
+     */
+    public static Mesh subdivideLines(Mesh in, int ratio) {
+        Validate.nonNull(in, "in");
+        Validate.require(in.getMode() == Mesh.Mode.Lines, "be in Lines mode");
+        Validate.inRange(ratio, "ratio", 2, Integer.MAX_VALUE);
+
+        IndexBuffer indexList = in.getIndicesAsList();
+        int inEdgeCount = in.getTriangleCount();
+        assert inEdgeCount * vpe == indexList.size();
+        int outVertexCount = indexList.size() * ratio;
+
+        // Create a shallow clone of the input mesh.
+        Mesh out = in.clone();
+
+        for (VertexBuffer inVertexBuffer : in.getBufferList()) {
+            VertexBuffer.Type type = inVertexBuffer.getBufferType();
+            out.clearBuffer(type);
+
+            if (type != VertexBuffer.Type.Index) {
+                VertexBuffer.Format format = VertexBuffer.Format.Float;
+                int numCperE = inVertexBuffer.getNumComponents();
+                numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
+                Buffer data = VertexBuffer.createBuffer(
+                        format, numCperE, outVertexCount);
+                out.setBuffer(type, numCperE, format, data);
+            }
+        }
+
+        // Interpolate all vertex data to the new Mesh.
+        int outVI = 0;
+        for (int inEI = 0; inEI < inEdgeCount; ++inEI) {
+            int inVI0 = indexList.get(vpe * inEI);
+            int inVI1 = indexList.get(vpe * inEI + 1);
+            for (int subI = 0; subI < ratio; ++subI) {
+                float t0 = subI / (float) ratio;
+                float t1 = (subI + 1) / (float) ratio;
+                for (VertexBuffer outVB : out.getBufferList()) {
+                    VertexBuffer.Type type = outVB.getBufferType();
+                    VertexBuffer inVB = in.getBuffer(type);
+                    assert inVB != outVB;
+                    if (inVB.getNumElements() > 0) {
+                        Element.lerp(t0, inVB, inVI0, inVI1, outVB, outVI);
+                        ++outVI;
+                        Element.lerp(t1, inVB, inVI0, inVI1, outVB, outVI);
+                        ++outVI;
+                    }
+                }
+            }
+        }
+
+        // Flip each buffer.
+        for (VertexBuffer outVB : out.getBufferList()) {
+            Buffer data = outVB.getData();
+            int endPosition = data.capacity();
+            data.position(endPosition);
+            data.flip();
+        }
+
+        out.updateCounts();
+
+        assert out.getMode() == Mesh.Mode.Lines;
+        assert !hasIndices(out);
+        return out;
+    }
+
+    /**
      * Apply the specified coordinate transform to all data in the specified
      * VertexBuffer.
      *
