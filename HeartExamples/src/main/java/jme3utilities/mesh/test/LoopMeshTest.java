@@ -35,6 +35,7 @@ import com.jme3.system.AppSettings;
 import java.util.logging.Logger;
 import jme3utilities.Heart;
 import jme3utilities.MyAsset;
+import jme3utilities.MyMesh;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 import jme3utilities.mesh.LoopMesh;
@@ -106,7 +107,10 @@ public class LoopMeshTest extends AcorusDemo {
         loopGeometry.setMaterial(material);
         rootNode.attachChild(loopGeometry);
 
-        LoopMesh pointsMesh = new LoopMesh(4);
+        Mesh pointsMesh = new LoopMesh(4);
+        pointsMesh = MyMesh.expand(pointsMesh);
+        pointsMesh = MyMesh.subdivideLines(pointsMesh, 3);
+        pointsMesh = MyMesh.addIndices(pointsMesh);
         pointsMesh.setMode(Mesh.Mode.Points);
         Geometry pointsGeometry = new Geometry("points", pointsMesh);
         pointsGeometry.setMaterial(material);
