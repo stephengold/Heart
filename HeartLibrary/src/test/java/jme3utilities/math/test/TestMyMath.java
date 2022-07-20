@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2021, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -79,6 +79,20 @@ public class TestMyMath {
         Assert.assertEquals(1.0, MyMath.modulo(1.0, 3.0), 0.0);
         Assert.assertEquals(3.0, MyMath.modulo(-1.0, 4.0), 0.0);
         Assert.assertEquals(1.5, MyMath.modulo(11.5, 5.0), 0.0);
+    }
+
+    /**
+     * Test lerp() and lerp3().
+     */
+    @Test
+    public void testMy2() {
+        Assert.assertEquals(1f, MyMath.lerp(0f, 1f, 2f), 0f);
+        Assert.assertEquals(2f, MyMath.lerp(1f, 1f, 2f), 0f);
+        Assert.assertEquals(1.5f, MyMath.lerp(0.5f, 0.2f, 2.8f), 0f);
+        Assert.assertEquals(-3f, MyMath.lerp(2f, 1f, -1f), 0f);
+
+        Assert.assertEquals(3f, MyMath.lerp3(0f, 0f, 3f, 4f, 2f), 0f);
+        Assert.assertEquals(3.5f, MyMath.lerp3(1f, 0.5f, 3f, 4f, 2f), 0f);
     }
 
     /**

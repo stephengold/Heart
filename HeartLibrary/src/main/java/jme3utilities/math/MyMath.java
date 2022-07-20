@@ -527,6 +527,25 @@ public class MyMath {
     }
 
     /**
+     * Interpolate between (or extrapolate from) 3 single-precision values using
+     * linear (Lerp) *polation.
+     *
+     * @param t1 the descaled parameter value from y0 to y1
+     * @param t2 the descaled parameter value from y0 to y2
+     * @param y0 function value at t1=0, t2=0
+     * @param y1 function value at t1=1, t2=0
+     * @param y2 function value at t1=0, t2=1
+     * @return an interpolated function value
+     */
+    public static float lerp3(
+            float t1, float t2, float y0, float y1, float y2) {
+        float u = 1f - t1 - t2;
+        float result = u * y0 + t1 * y1 + t2 * y2;
+
+        return result;
+    }
+
+    /**
      * Find the maximum of some single-precision values.
      *
      * @param fValues the input values
