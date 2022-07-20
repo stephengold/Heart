@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -33,6 +33,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 import java.util.logging.Logger;
+import jme3utilities.math.MyMath;
 
 /**
  * Utility methods that operate on individual elements of vertex buffers.
@@ -241,6 +242,137 @@ public class Element {
         }
 
         return true;
+    }
+
+    /**
+     * Linearly interpolate all data between 2 vertex-buffer elements and store
+     * the result in a 3rd vertex-buffer element. The vertex buffers must have
+     * the same type and number of components per element.
+     *
+     * @param t (&ge;0, &le;1)
+     * @param source the VertexBuffer containing the source elements (not null,
+     * unaffected)
+     * @param sourceIndex0 the index of the source element for t=0 (&ge;0)
+     * @param sourceIndex1 the index of the source element for t=1 (&ge;0)
+     * @param target the VertexBuffer containing the target element (not null,
+     * Float format, modified)
+     * @param targetIndex the index of the target element (&ge;0)
+     */
+    public static void lerp(float t, VertexBuffer source, int sourceIndex0,
+            int sourceIndex1, VertexBuffer target, int targetIndex) {
+        int sourceCount = source.getNumElements();
+        Validate.inRange(sourceIndex0, "source index(t=0)", 0, sourceCount - 1);
+        Validate.inRange(sourceIndex1, "source index(t=1)", 0, sourceCount - 1);
+        int targetCount = target.getNumElements();
+        Validate.inRange(targetIndex, "target index", 0, targetCount - 1);
+        Validate.require(source.getBufferType() == target.getBufferType(),
+                "same buffer type");
+        Validate.require(source.getNumComponents() == target.getNumComponents(),
+                "same number of components");
+        Validate.require(target.getFormat() == VertexBuffer.Format.Float,
+                "Float format");
+
+        int numComponents = target.getNumComponents();
+        VertexBuffer.Format format = target.getFormat();
+        if (format == VertexBuffer.Format.Half) {
+            numComponents *= 2;
+        }
+        int sourceStart0 = numComponents * sourceIndex0;
+        int sourceStart1 = numComponents * sourceIndex1;
+        int targetStart = numComponents * targetIndex;
+        FloatBuffer tfBuf = (FloatBuffer) target.getData();
+
+        switch (format) {
+            case Byte:
+                ByteBuffer sbBuf = (ByteBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    byte b0 = sbBuf.get(sourceStart0 + cIndex);
+                    byte b1 = sbBuf.get(sourceStart1 + cIndex);
+                    float f = MyMath.lerp(t, b0, b1);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case UnsignedByte:
+                sbBuf = (ByteBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    byte b0 = sbBuf.get(sourceStart0 + cIndex);
+                    byte b1 = sbBuf.get(sourceStart1 + cIndex);
+                    int i0 = 0xFF & (int) b0;
+                    int i1 = 0xFF & (int) b1;
+                    float f = MyMath.lerp(t, i0, i1);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case Double:
+                DoubleBuffer sdBuf = (DoubleBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    double d0 = sdBuf.get(sourceStart0 + cIndex);
+                    double d1 = sdBuf.get(sourceStart1 + cIndex);
+                    float f = MyMath.lerp(t, (float) d0, (float) d1);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case Float:
+                FloatBuffer sfBuf = (FloatBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    float f0 = sfBuf.get(sourceStart0 + cIndex);
+                    float f1 = sfBuf.get(sourceStart1 + cIndex);
+                    float f = MyMath.lerp(t, (float) f0, (float) f1);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case Int:
+                IntBuffer siBuf = (IntBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    int i0 = siBuf.get(sourceStart0 + cIndex);
+                    int i1 = siBuf.get(sourceStart1 + cIndex);
+                    float f = MyMath.lerp(t, (float) i0, (float) i1);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case UnsignedInt:
+                siBuf = (IntBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    int i0 = siBuf.get(sourceStart0 + cIndex);
+                    int i1 = siBuf.get(sourceStart1 + cIndex);
+                    long l0 = 0xFFFFFFFF & (long) i0;
+                    long l1 = 0xFFFFFFFF & (long) i1;
+                    float f = MyMath.lerp(t, (float) l0, (float) l1);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case Short:
+                ShortBuffer ssBuf = (ShortBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    short s0 = ssBuf.get(sourceStart0 + cIndex);
+                    short s1 = ssBuf.get(sourceStart1 + cIndex);
+                    float f = MyMath.lerp(t, (float) s0, (float) s1);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case UnsignedShort:
+                ssBuf = (ShortBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    short s0 = ssBuf.get(sourceStart0 + cIndex);
+                    short s1 = ssBuf.get(sourceStart1 + cIndex);
+                    int i0 = 0xFFFF & (int) s0;
+                    int i1 = 0xFFFF & (int) s1;
+                    float f = MyMath.lerp(t, (float) i0, (float) i1);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            default:
+                String message = "Unrecognized buffer format: " + format;
+                throw new UnsupportedOperationException(message);
+        }
     }
 
     /**
