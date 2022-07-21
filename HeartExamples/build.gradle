@@ -74,6 +74,9 @@ tasks.register(' TestMergeMeshes', JavaExec) {
 tasks.register('TestSolidMeshes', JavaExec) {
     mainClass = 'jme3utilities.mesh.test.TestSolidMeshes'
 }
+tasks.register('TestSubdivide', JavaExec) {
+    mainClass = 'jme3utilities.mesh.test.TestSubdivide'
+}
 
 tasks.register('TestContrast', JavaExec) {
     mainClass = 'jme3utilities.test.TestContrast'

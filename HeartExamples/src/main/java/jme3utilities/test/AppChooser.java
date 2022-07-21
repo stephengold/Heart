@@ -44,6 +44,7 @@ import jme3utilities.math.test.TestGenerator;
 import jme3utilities.mesh.test.LoopMeshTest;
 import jme3utilities.mesh.test.TestMergeMeshes;
 import jme3utilities.mesh.test.TestSolidMeshes;
+import jme3utilities.mesh.test.TestSubdivide;
 import jme3utilities.ui.AcorusDemo;
 import jme3utilities.ui.Combo;
 import jme3utilities.ui.InputMode;
@@ -75,6 +76,7 @@ public class AppChooser extends AcorusDemo {
         TestPas.class,
         TestSkeletonVisualizer.class,
         TestSolidMeshes.class,
+        TestSubdivide.class,
         TestWireframe.class
     };
     /**
