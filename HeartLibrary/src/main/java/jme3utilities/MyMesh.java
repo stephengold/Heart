@@ -1180,6 +1180,125 @@ public class MyMesh {
     }
 
     /**
+     * Uniformly subdivide the specified Triangles-mode mesh by the specified
+     * ratio.
+     *
+     * @param in the input mesh (not null, mode=Triangles, unaffected)
+     * @param ratio the input edge lengths divided by output edge lengths
+     * (&gt;1)
+     * @return a new Mesh (mode=Triangles, not indexed)
+     */
+    public static Mesh subdivideTriangles(Mesh in, int ratio) {
+        Validate.nonNull(in, "input mesh");
+        Validate.require(
+                in.getMode() == Mesh.Mode.Triangles, "be in Triangles mode");
+        Validate.inRange(ratio, "ratio", 2, Integer.MAX_VALUE);
+
+        IndexBuffer indexList = in.getIndicesAsList();
+        int inTriangleCount = in.getTriangleCount();
+        assert inTriangleCount * vpt == indexList.size() : inTriangleCount;
+        int outVertexCount = indexList.size() * ratio * ratio;
+
+        // Create a shallow clone of the input mesh.
+        Mesh out = in.clone();
+
+        // Create output buffers.
+        for (VertexBuffer inVertexBuffer : in.getBufferList()) {
+            VertexBuffer.Type type = inVertexBuffer.getBufferType();
+            out.clearBuffer(type);
+
+            if (type != VertexBuffer.Type.Index) {
+                VertexBuffer.Format format = VertexBuffer.Format.Float;
+                int numCperE = inVertexBuffer.getNumComponents();
+                numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
+                Buffer data = VertexBuffer.createBuffer(
+                        format, numCperE, outVertexCount);
+                out.setBuffer(type, numCperE, format, data);
+            }
+        }
+
+        // Interpolate all vertex data to the output Mesh.
+        int outVI = 0;
+        for (int inTI = 0; inTI < inTriangleCount; ++inTI) {
+            int inVI0 = indexList.get(vpt * inTI);
+            int inVI1 = indexList.get(vpt * inTI + 1);
+            int inVI2 = indexList.get(vpt * inTI + 2);
+            /*
+             * First, output the triangles that point
+             * in the same direction as the input triangle ...
+             */
+            for (int subI = 0; subI < ratio; ++subI) {
+                for (int subJ = 0; subJ < ratio - subI; ++subJ) {
+                    int subK = ratio - subI - subJ - 1;
+
+                    float t1a = subJ / (float) ratio;
+                    float t1b = (subJ + 1) / (float) ratio;
+                    float t2a = subK / (float) ratio;
+                    float t2b = (subK + 1) / (float) ratio;
+
+                    for (VertexBuffer outVB : out.getBufferList()) {
+                        VertexBuffer.Type type = outVB.getBufferType();
+                        VertexBuffer inVB = in.getBuffer(type);
+                        assert inVB != outVB;
+                        if (inVB.getNumElements() > 0) {
+                            Element.lerp3(t1a, t2a, inVB, inVI0, inVI1, inVI2,
+                                    outVB, outVI);
+                            Element.lerp3(t1b, t2a, inVB, inVI0, inVI1, inVI2,
+                                    outVB, outVI + 1);
+                            Element.lerp3(t1a, t2b, inVB, inVI0, inVI1, inVI2,
+                                    outVB, outVI + 2);
+                        }
+                    }
+                    outVI += vpt;
+                }
+            }
+            /*
+             * Now, output the (smaller number of) triangles that point
+             * in the opposite direction from the input triangle ...
+             */
+            for (int subI = 0; subI < ratio - 1; ++subI) {
+                for (int subJ = 0; subJ < ratio - subI - 1; ++subJ) {
+                    int subK = ratio - subI - subJ - 2;
+
+                    float t1a = subJ / (float) ratio;
+                    float t1b = (subJ + 1) / (float) ratio;
+                    float t2a = subK / (float) ratio;
+                    float t2b = (subK + 1) / (float) ratio;
+
+                    for (VertexBuffer outVB : out.getBufferList()) {
+                        VertexBuffer.Type type = outVB.getBufferType();
+                        VertexBuffer inVB = in.getBuffer(type);
+                        assert inVB != outVB;
+                        if (inVB.getNumElements() > 0) {
+                            Element.lerp3(t1b, t2a, inVB, inVI0, inVI1, inVI2,
+                                    outVB, outVI);
+                            Element.lerp3(t1b, t2b, inVB, inVI0, inVI1, inVI2,
+                                    outVB, outVI + 1);
+                            Element.lerp3(t1a, t2b, inVB, inVI0, inVI1, inVI2,
+                                    outVB, outVI + 2);
+                        }
+                    }
+                    outVI += vpt;
+                }
+            }
+        }
+
+        // Flip each buffer.
+        for (VertexBuffer outVB : out.getBufferList()) {
+            Buffer data = outVB.getData();
+            int endPosition = data.capacity();
+            data.position(endPosition);
+            data.flip();
+        }
+
+        out.updateCounts();
+
+        assert out.getMode() == Mesh.Mode.Triangles : out.getMode();
+        assert !hasIndices(out);
+        return out;
+    }
+
+    /**
      * Apply the specified coordinate transform to all data in the specified
      * VertexBuffer.
      *
