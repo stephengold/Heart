@@ -249,7 +249,7 @@ public class Element {
      * the result in a 3rd vertex-buffer element. The vertex buffers must have
      * the same type and number of components per element.
      *
-     * @param t (&ge;0, &le;1)
+     * @param t the descaled parameter value from y0 to y1
      * @param source the VertexBuffer containing the source elements (not null,
      * unaffected)
      * @param sourceIndex0 the index of the source element for t=0 (&ge;0)

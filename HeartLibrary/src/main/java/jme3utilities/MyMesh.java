@@ -122,7 +122,7 @@ public class MyMesh {
      * @return a new Mesh (with an index buffer)
      */
     public static Mesh addIndices(Mesh input) {
-        Validate.nonNull(input, "input");
+        Validate.nonNull(input, "input mesh");
         Validate.require(!hasIndices(input), "not have an index buffer");
         /*
          * Assign new indices and create mappings between
@@ -1115,18 +1115,19 @@ public class MyMesh {
      * @return a new Mesh (mode=Lines, not indexed)
      */
     public static Mesh subdivideLines(Mesh in, int ratio) {
-        Validate.nonNull(in, "in");
+        Validate.nonNull(in, "input mesh");
         Validate.require(in.getMode() == Mesh.Mode.Lines, "be in Lines mode");
         Validate.inRange(ratio, "ratio", 2, Integer.MAX_VALUE);
 
         IndexBuffer indexList = in.getIndicesAsList();
         int inEdgeCount = in.getTriangleCount();
-        assert inEdgeCount * vpe == indexList.size();
+        assert inEdgeCount * vpe == indexList.size() : inEdgeCount;
         int outVertexCount = indexList.size() * ratio;
 
         // Create a shallow clone of the input mesh.
         Mesh out = in.clone();
 
+        // Create output buffers.
         for (VertexBuffer inVertexBuffer : in.getBufferList()) {
             VertexBuffer.Type type = inVertexBuffer.getBufferType();
             out.clearBuffer(type);
@@ -1141,7 +1142,7 @@ public class MyMesh {
             }
         }
 
-        // Interpolate all vertex data to the new Mesh.
+        // Interpolate all vertex data to the output Mesh.
         int outVI = 0;
         for (int inEI = 0; inEI < inEdgeCount; ++inEI) {
             int inVI0 = indexList.get(vpe * inEI);
@@ -1173,7 +1174,7 @@ public class MyMesh {
 
         out.updateCounts();
 
-        assert out.getMode() == Mesh.Mode.Lines;
+        assert out.getMode() == Mesh.Mode.Lines : out.getMode();
         assert !hasIndices(out);
         return out;
     }
