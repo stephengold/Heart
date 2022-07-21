@@ -376,6 +376,159 @@ public class Element {
     }
 
     /**
+     * Linearly interpolate all data between 3 vertex-buffer elements and store
+     * the result in a 4th vertex-buffer element. The vertex buffers must have
+     * the same type and number of components per element.
+     *
+     * @param t1 the descaled parameter value from y0 to y1
+     * @param t2 the descaled parameter value from y0 to y2
+     * @param source the VertexBuffer containing the source elements (not null,
+     * unaffected)
+     * @param sourceIndex0 index of the source element for t1=0, t2=0 (&ge;0)
+     * @param sourceIndex1 index of the source element for t1=1, t2=0 (&ge;0)
+     * @param sourceIndex2 index of the source element for t1=0, t2=1 (&ge;0)
+     * @param target the VertexBuffer containing the target element (not null,
+     * Float format, modified)
+     * @param targetIndex the index of the target element (&ge;0)
+     */
+    public static void lerp3(float t1, float t2, VertexBuffer source,
+            int sourceIndex0, int sourceIndex1, int sourceIndex2,
+            VertexBuffer target, int targetIndex) {
+        int sourceCount = source.getNumElements();
+        Validate.inRange(sourceIndex0, "source index(0,0)", 0, sourceCount - 1);
+        Validate.inRange(sourceIndex1, "source index(1,0)", 0, sourceCount - 1);
+        Validate.inRange(sourceIndex2, "source index(0,1)", 0, sourceCount - 1);
+        int targetCount = target.getNumElements();
+        Validate.inRange(targetIndex, "target index", 0, targetCount - 1);
+        Validate.require(source.getBufferType() == target.getBufferType(),
+                "same buffer type");
+        Validate.require(source.getNumComponents() == target.getNumComponents(),
+                "same number of components");
+        Validate.require(target.getFormat() == VertexBuffer.Format.Float,
+                "Float format");
+        
+        int numComponents = target.getNumComponents();
+        VertexBuffer.Format format = target.getFormat();
+        if (format == VertexBuffer.Format.Half) {
+            numComponents *= 2;
+        }
+        int sourceStart0 = numComponents * sourceIndex0;
+        int sourceStart1 = numComponents * sourceIndex1;
+        int sourceStart2 = numComponents * sourceIndex2;
+        int targetStart = numComponents * targetIndex;
+        FloatBuffer tfBuf = (FloatBuffer) target.getData();
+
+        switch (format) {
+            case Byte:
+                ByteBuffer sbBuf = (ByteBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    byte b0 = sbBuf.get(sourceStart0 + cIndex);
+                    byte b1 = sbBuf.get(sourceStart1 + cIndex);
+                    byte b2 = sbBuf.get(sourceStart2 + cIndex);
+                    float f = MyMath.lerp3(t1, t2, b0, b1, b2);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case UnsignedByte:
+                sbBuf = (ByteBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    byte b0 = sbBuf.get(sourceStart0 + cIndex);
+                    byte b1 = sbBuf.get(sourceStart1 + cIndex);
+                    byte b2 = sbBuf.get(sourceStart2 + cIndex);
+                    int i0 = 0xFF & (int) b0;
+                    int i1 = 0xFF & (int) b1;
+                    int i2 = 0xFF & (int) b2;
+                    float f = MyMath.lerp3(t1, t2, i0, i1, i2);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case Double:
+                DoubleBuffer sdBuf = (DoubleBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    double d0 = sdBuf.get(sourceStart0 + cIndex);
+                    double d1 = sdBuf.get(sourceStart1 + cIndex);
+                    double d2 = sdBuf.get(sourceStart2 + cIndex);
+                    float f = MyMath.lerp3(
+                            t1, t2, (float) d0, (float) d1, (float) d2);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case Float:
+                FloatBuffer sfBuf = (FloatBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    float f0 = sfBuf.get(sourceStart0 + cIndex);
+                    float f1 = sfBuf.get(sourceStart1 + cIndex);
+                    float f2 = sfBuf.get(sourceStart2 + cIndex);
+                    float f = MyMath.lerp3(
+                            t1, t2, (float) f0, (float) f1, (float) f2);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case Int:
+                IntBuffer siBuf = (IntBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    int i0 = siBuf.get(sourceStart0 + cIndex);
+                    int i1 = siBuf.get(sourceStart1 + cIndex);
+                    int i2 = siBuf.get(sourceStart2 + cIndex);
+                    float f = MyMath.lerp3(
+                            t1, t2, (float) i0, (float) i1, (float) i2);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case UnsignedInt:
+                siBuf = (IntBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    int i0 = siBuf.get(sourceStart0 + cIndex);
+                    int i1 = siBuf.get(sourceStart1 + cIndex);
+                    int i2 = siBuf.get(sourceStart2 + cIndex);
+                    long l0 = 0xFFFFFFFF & (long) i0;
+                    long l1 = 0xFFFFFFFF & (long) i1;
+                    long l2 = 0xFFFFFFFF & (long) i2;
+                    float f = MyMath.lerp3(
+                            t1, t2, (float) l0, (float) l1, (float) l2);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case Short:
+                ShortBuffer ssBuf = (ShortBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    short s0 = ssBuf.get(sourceStart0 + cIndex);
+                    short s1 = ssBuf.get(sourceStart1 + cIndex);
+                    short s2 = ssBuf.get(sourceStart2 + cIndex);
+                    float f = MyMath.lerp3(
+                            t1, t2, (float) s0, (float) s1, (float) s2);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            case UnsignedShort:
+                ssBuf = (ShortBuffer) source.getData();
+                for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
+                    short s0 = ssBuf.get(sourceStart0 + cIndex);
+                    short s1 = ssBuf.get(sourceStart1 + cIndex);
+                    short s2 = ssBuf.get(sourceStart2 + cIndex);
+                    int i0 = 0xFFFF & (int) s0;
+                    int i1 = 0xFFFF & (int) s1;
+                    int i2 = 0xFFFF & (int) s2;
+                    float f = MyMath.lerp3(
+                            t1, t2, (float) i0, (float) i1, (float) i2);
+                    tfBuf.put(targetStart + cIndex, f);
+                }
+                break;
+
+            default:
+                String message = "Unrecognized buffer format: " + format;
+                throw new UnsupportedOperationException(message);
+        }
+    }
+
+    /**
      * Swap all data between 2 elements of a VertexBuffer.
      *
      * @param vertexBuffer the VertexBuffer to modify (not null)
