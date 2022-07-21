@@ -26,6 +26,7 @@
  */
 package jme3utilities.mesh.test;
 
+import com.jme3.app.StatsAppState;
 import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
 import com.jme3.light.AmbientLight;
@@ -154,6 +155,9 @@ public class TestSolidMeshes extends AcorusDemo {
         configureCamera();
         configureDumper();
         generateMaterials();
+
+        // Hide the render-statistics overlay.
+        stateManager.getState(StatsAppState.class).toggleStats();
 
         addGeometries();
         addLighting();
