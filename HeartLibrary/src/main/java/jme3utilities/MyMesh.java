@@ -213,14 +213,17 @@ public class MyMesh {
      */
     public static void addSphereNormals(Mesh mesh) {
         Validate.nonNull(mesh, "mesh");
-        Validate.require(!hasNormals(mesh), "not have normals");
+        Validate.require(!hasAnyNormals(mesh), "not have normals");
 
-        FloatBuffer positions = mesh.getFloatBuffer(VertexBuffer.Type.Position);
-        FloatBuffer normals = BufferUtils.clone(positions);
-        int numFloats = positions.limit();
-        MyBuffer.normalize(normals, 0, numFloats);
-        normals.flip();
-        mesh.setBuffer(VertexBuffer.Type.Normal, numAxes, normals);
+        generateSphereNormals(
+                mesh, VertexBuffer.Type.Normal, VertexBuffer.Type.Position);
+
+        VertexBuffer bpPosition
+                = mesh.getBuffer(VertexBuffer.Type.BindPosePosition);
+        if (bpPosition != null) {
+            generateSphereNormals(mesh, VertexBuffer.Type.BindPoseNormal,
+                    VertexBuffer.Type.BindPosePosition);
+        }
     }
 
     /**
@@ -471,23 +474,27 @@ public class MyMesh {
     }
 
     /**
-     * Generate normals on a triangle-by-triangle basis for a Triangles-mode
-     * Mesh without an index buffer. Any pre-existing normal buffer is
-     * discarded.
+     * Generate facet normals for a Triangles-mode Mesh without an index buffer.
+     * Any pre-existing target buffer is discarded.
      *
      * @param mesh the Mesh to modify (not null, mode=Triangles, not indexed)
+     * @param normalBufferType the target buffer type (Normal or BindPoseNormal)
+     * @param positionBufferType the source buffer type (Position or
+     * BindPosePosition)
      */
-    public static void generateNormals(Mesh mesh) {
+    public static void generateFacetNormals(Mesh mesh,
+            VertexBuffer.Type normalBufferType,
+            VertexBuffer.Type positionBufferType) {
+        Validate.nonNull(mesh, "mesh");
         Validate.require(mesh.getMode() == Mesh.Mode.Triangles,
                 "be in Triangles mode");
         Validate.require(!hasIndices(mesh), "not have an index buffer");
 
-        FloatBuffer positionBuffer
-                = mesh.getFloatBuffer(VertexBuffer.Type.Position);
+        FloatBuffer positionBuffer = mesh.getFloatBuffer(positionBufferType);
         int numFloats = positionBuffer.limit();
 
         FloatBuffer normalBuffer = BufferUtils.createFloatBuffer(numFloats);
-        mesh.setBuffer(VertexBuffer.Type.Normal, numAxes, normalBuffer);
+        mesh.setBuffer(normalBufferType, numAxes, normalBuffer);
 
         Triangle triangle = new Triangle();
         Vector3f pos1 = new Vector3f();
@@ -510,6 +517,53 @@ public class MyMesh {
             }
         }
         normalBuffer.flip();
+    }
+
+    /**
+     * Generate normals on a triangle-by-triangle basis for a Triangles-mode
+     * Mesh without an index buffer. Any pre-existing normal buffer is
+     * discarded.
+     *
+     * @param mesh the Mesh to modify (not null, mode=Triangles, not indexed)
+     */
+    public static void generateNormals(Mesh mesh) {
+        Validate.require(mesh.getMode() == Mesh.Mode.Triangles,
+                "be in Triangles mode");
+        Validate.require(!hasIndices(mesh), "not have an index buffer");
+
+        generateFacetNormals(
+                mesh, VertexBuffer.Type.Normal, VertexBuffer.Type.Position);
+
+        VertexBuffer bpPosition
+                = mesh.getBuffer(VertexBuffer.Type.BindPosePosition);
+        if (bpPosition != null) {
+            generateFacetNormals(mesh, VertexBuffer.Type.BindPoseNormal,
+                    VertexBuffer.Type.BindPosePosition);
+        }
+    }
+
+    /**
+     * Generate sphere normals for a Mesh. Any pre-existing target buffer is
+     * discarded.
+     *
+     * @param mesh the Mesh to modify (not null)
+     * @param normalBufferType the target buffer type (Normal or BindPoseNormal)
+     * @param positionBufferType the source buffer type (Position or
+     * BindPosePosition)
+     */
+    public static void generateSphereNormals(Mesh mesh,
+            VertexBuffer.Type normalBufferType,
+            VertexBuffer.Type positionBufferType) {
+        Validate.nonNull(mesh, "mesh");
+
+        FloatBuffer positionBuffer = mesh.getFloatBuffer(positionBufferType);
+        int numFloats = positionBuffer.limit();
+
+        FloatBuffer normalBuffer = BufferUtils.clone(positionBuffer);
+        mesh.setBuffer(normalBufferType, numAxes, normalBuffer);
+
+        MyBuffer.normalize(normalBuffer, 0, numFloats);
+        normalBuffer.limit(numFloats);
     }
 
     /**
@@ -538,6 +592,22 @@ public class MyMesh {
     }
 
     /**
+     * Test whether the specified Mesh has vertex normals, including bind-pose
+     * normals.
+     *
+     * @param mesh the Mesh to test (not null, unaffected)
+     * @return true if the Mesh has vertex normals, otherwise false
+     */
+    public static boolean hasAnyNormals(Mesh mesh) {
+        VertexBuffer buffer = mesh.getBuffer(VertexBuffer.Type.BindPoseNormal);
+        if (buffer == null && !hasNormals(mesh)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Test whether the specified Mesh has an index buffer.
      *
      * @param mesh the Mesh to test (not null, unaffected)
@@ -553,7 +623,8 @@ public class MyMesh {
     }
 
     /**
-     * Test whether the specified Mesh has vertex normals.
+     * Test whether the specified Mesh has vertex normals, not including
+     * bind-pose normals.
      *
      * @param mesh the Mesh to test (not null, unaffected)
      * @return true if the Mesh has vertex normals, otherwise false
@@ -1045,10 +1116,32 @@ public class MyMesh {
      */
     public static void smoothNormals(Mesh mesh) {
         Validate.nonNull(mesh, "mesh");
-        Validate.require(hasNormals(mesh), "have normals");
+        Validate.require(hasAnyNormals(mesh), "have normals");
 
-        FloatBuffer positionBuffer
-                = mesh.getFloatBuffer(VertexBuffer.Type.Position);
+        smoothNormals(
+                mesh, VertexBuffer.Type.Normal, VertexBuffer.Type.Position);
+
+        VertexBuffer bpNormal
+                = mesh.getBuffer(VertexBuffer.Type.BindPoseNormal);
+        if (bpNormal != null) {
+            smoothNormals(mesh, VertexBuffer.Type.BindPoseNormal,
+                    VertexBuffer.Type.BindPosePosition);
+        }
+    }
+
+    /**
+     * Smooth the normals of a Mesh by averaging them across all uses of each
+     * distinct vertex position.
+     *
+     * @param mesh the Mesh to modify (not null, with normals)
+     * @param normalBufferType the normal-buffer type (Normal or BindPoseNormal)
+     * @param positionBufferType the position-buffer type (Position or
+     */
+    public static void smoothNormals(Mesh mesh,
+            VertexBuffer.Type normalBufferType,
+            VertexBuffer.Type positionBufferType) {
+        Validate.nonNull(mesh, "mesh");
+        FloatBuffer positionBuffer = mesh.getFloatBuffer(positionBufferType);
         int numVertices = positionBuffer.limit() / numAxes;
 
         Map<Vector3f, Integer> mapPosToDpid = new HashMap<>(numVertices);
@@ -1074,8 +1167,7 @@ public class MyMesh {
         IndexBuffer indexList = mesh.getIndicesAsList();
         int numIndices = indexList.size();
 
-        FloatBuffer normalBuffer
-                = mesh.getFloatBuffer(VertexBuffer.Type.Normal);
+        FloatBuffer normalBuffer = mesh.getFloatBuffer(normalBufferType);
         Vector3f tmpPosition = new Vector3f();
         Vector3f tmpNormal = new Vector3f();
         for (int ibPosition = 0; ibPosition < numIndices; ++ibPosition) {
