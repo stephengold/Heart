@@ -489,7 +489,6 @@ public class TestSolidMeshes extends AcorusDemo {
      * Update the status text in the GUI.
      */
     private void updateStatusText() {
-        String materialName = allGeometries.get(0).getMaterial().getName();
         String message = String.format(
                 "material=%s  normals=%s  winding=%s",
                 MyString.quote(materialName),
