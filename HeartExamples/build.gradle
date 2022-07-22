@@ -71,6 +71,9 @@ tasks.register('LoopMeshTest', JavaExec) {
 tasks.register(' TestMergeMeshes', JavaExec) {
     mainClass = 'jme3utilities.mesh.test.TestMergeMeshes'
 }
+tasks.register(' TestRotate', JavaExec) {
+    mainClass = 'jme3utilities.mesh.test.TestRotate'
+}
 tasks.register('TestSolidMeshes', JavaExec) {
     mainClass = 'jme3utilities.mesh.test.TestSolidMeshes'
 }

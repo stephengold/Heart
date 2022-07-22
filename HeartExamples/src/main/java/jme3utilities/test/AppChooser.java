@@ -43,6 +43,7 @@ import jme3utilities.debug.test.TestSkeletonVisualizer;
 import jme3utilities.math.test.TestGenerator;
 import jme3utilities.mesh.test.LoopMeshTest;
 import jme3utilities.mesh.test.TestMergeMeshes;
+import jme3utilities.mesh.test.TestRotate;
 import jme3utilities.mesh.test.TestSolidMeshes;
 import jme3utilities.mesh.test.TestSubdivide;
 import jme3utilities.ui.AcorusDemo;
@@ -74,6 +75,7 @@ public class AppChooser extends AcorusDemo {
         TestMergeMeshes.class,
         TestMulticolor.class,
         TestPas.class,
+        TestRotate.class,
         TestSkeletonVisualizer.class,
         TestSolidMeshes.class,
         TestSubdivide.class,
