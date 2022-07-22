@@ -202,7 +202,7 @@ public class SimpleAppState extends NamedAppState {
      * <p>
      * Without knowing which thread invoked detach(), it is unsafe to modify the
      * scene graph in this method. Instead, scene-graph modifications should
-     * occur in {@link #cleanup()}.
+     * occur in {@code cleanup()}.
      *
      * @param sm the application's state manager (not null)
      */
