@@ -96,6 +96,19 @@ public class HeartTest {
     }
 
     /**
+     * Verify that 2 quaternions are equal to within some tolerance.
+     *
+     * @param expected the expected value (not null, unaffected)
+     * @param actual the vector to test (not null, unaffected)
+     * @param tolerance the allowable difference for each component
+     */
+    public static void assertEquals(Quaternion expected, Quaternion actual,
+            float tolerance) {
+        assertEquals(expected.getX(), expected.getY(), expected.getZ(),
+                expected.getW(), actual, tolerance);
+    }
+
+    /**
      * Verify that 2 X-Z vectors are equal to within some tolerance.
      *
      * @param expected the expected value (not null)
