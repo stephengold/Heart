@@ -340,8 +340,8 @@ public class Element {
                 for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
                     int i0 = siBuf.get(sourceStart0 + cIndex);
                     int i1 = siBuf.get(sourceStart1 + cIndex);
-                    long l0 = 0xFFFFFFFF & (long) i0;
-                    long l1 = 0xFFFFFFFF & (long) i1;
+                    long l0 = 0xFFFFFFFFL & (long) i0;
+                    long l1 = 0xFFFFFFFFL & (long) i1;
                     float f = MyMath.lerp(t, (float) l0, (float) l1);
                     tfBuf.put(targetStart + cIndex, f);
                 }
@@ -406,7 +406,7 @@ public class Element {
                 "same number of components");
         Validate.require(target.getFormat() == VertexBuffer.Format.Float,
                 "Float format");
-        
+
         int numComponents = target.getNumComponents();
         VertexBuffer.Format format = target.getFormat();
         if (format == VertexBuffer.Format.Half) {
