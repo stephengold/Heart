@@ -26,6 +26,7 @@
  */
 package jme3utilities.test;
 
+import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import jme3utilities.math.ReadXZ;
 import org.junit.Assert;
@@ -47,6 +48,24 @@ public class HeartTest {
     }
     // *************************************************************************
     // new methods exposed
+
+    /**
+     * Verify that 2 quaternions are equal to within some tolerance.
+     *
+     * @param x the expected X component
+     * @param y the expected Y component
+     * @param z the expected Z component
+     * @param w the expected W component
+     * @param actual the Quaternion to test (not null, unaffected)
+     * @param tolerance the allowable difference for each component
+     */
+    public static void assertEquals(float x, float y, float z, float w,
+            Quaternion actual, float tolerance) {
+        Assert.assertEquals(x, actual.getX(), tolerance);
+        Assert.assertEquals(y, actual.getY(), tolerance);
+        Assert.assertEquals(z, actual.getZ(), tolerance);
+        Assert.assertEquals(w, actual.getW(), tolerance);
+    }
 
     /**
      * Verify that 2 vectors are equal to within some tolerance.
