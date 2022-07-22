@@ -486,9 +486,9 @@ public class Element {
                     int i0 = siBuf.get(sourceStart0 + cIndex);
                     int i1 = siBuf.get(sourceStart1 + cIndex);
                     int i2 = siBuf.get(sourceStart2 + cIndex);
-                    long l0 = 0xFFFFFFFF & (long) i0;
-                    long l1 = 0xFFFFFFFF & (long) i1;
-                    long l2 = 0xFFFFFFFF & (long) i2;
+                    long l0 = 0xFFFFFFFFL & (long) i0;
+                    long l1 = 0xFFFFFFFFL & (long) i1;
+                    long l2 = 0xFFFFFFFFL & (long) i2;
                     float f = MyMath.lerp3(
                             t1, t2, (float) l0, (float) l1, (float) l2);
                     tfBuf.put(targetStart + cIndex, f);
