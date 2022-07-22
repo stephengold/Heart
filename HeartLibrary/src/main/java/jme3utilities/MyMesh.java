@@ -522,7 +522,7 @@ public class MyMesh {
     /**
      * Generate normals on a triangle-by-triangle basis for a Triangles-mode
      * Mesh without an index buffer. Any pre-existing normal buffer is
-     * discarded.
+     * discarded. TODO rename generatFacetNormals
      *
      * @param mesh the Mesh to modify (not null, mode=Triangles, not indexed)
      */
@@ -990,6 +990,22 @@ public class MyMesh {
                 }
             }
         }
+    }
+
+    /**
+     * Apply the specified rotation to the specified Mesh. This is not
+     * recommended for animated meshes.
+     *
+     * @param mesh the Mesh to rotate (not null, modified)
+     * @param rotation the rotation to apply (not null, unaffected)
+     */
+    public static void rotate(Mesh mesh, Quaternion rotation) {
+        rotateBuffer(mesh, VertexBuffer.Type.Position, rotation);
+        rotateBuffer(mesh, VertexBuffer.Type.BindPosePosition, rotation);
+        rotateBuffer(mesh, VertexBuffer.Type.Normal, rotation);
+        rotateBuffer(mesh, VertexBuffer.Type.BindPoseNormal, rotation);
+        // TODO binormals?
+        mesh.updateBound();
     }
 
     /**
