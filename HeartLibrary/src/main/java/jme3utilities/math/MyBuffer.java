@@ -36,6 +36,8 @@ import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.Validate;
@@ -359,6 +361,50 @@ final public class MyBuffer {
             if (!Float.isFinite(fValue)) {
                 result = false;
                 break;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Enumerate all pairs of 3-D vectors in the specified FloatBuffer range
+     * whose Euclidean distance is less that the specified limit.
+     *
+     * @param buffer the buffer that contains the vectors (not null, unaffected)
+     * @param startPosition the position at which the vectors start (&ge;0,
+     * &le;endPosition)
+     * @param endPosition the position at which the vectors end
+     * (&ge;startPosition, &le;capacity)
+     * @param maxDistance the desired limit (&ge;0)
+     * @return a new list of zero-origin index pairs
+     */
+    public static Set<IntPair> listNeighbors(FloatBuffer buffer,
+            int startPosition, int endPosition, float maxDistance) {
+        Validate.nonNull(buffer, "buffer");
+        Validate.nonNegative(maxDistance, "max distance");
+        Validate.inRange(startPosition, "start position", 0, endPosition);
+        Validate.inRange(endPosition, "end position", startPosition,
+                buffer.capacity());
+        int numFloats = endPosition - startPosition;
+        assert (numFloats % numAxes == 0) : numFloats;
+
+        double maxDistanceSquared = MyMath.sqr((double) maxDistance);
+        int numVectors = numFloats / numAxes;
+        Vector3f v0 = new Vector3f();
+        Vector3f v1 = new Vector3f();
+        Set<IntPair> result = new TreeSet<>();
+        for (int vi0 = 0; vi0 < numVectors; ++vi0) {
+            int position = startPosition + vi0 * numAxes;
+            get(buffer, position, v0);
+            for (int vi1 = vi0 + 1; vi1 < numVectors; ++vi1) {
+                position = startPosition + vi1 * numAxes;
+                get(buffer, position, v1);
+                double distanceSquared = MyVector3f.distanceSquared(v0, v1);
+                if (distanceSquared <= maxDistanceSquared) {
+                    IntPair pair = new IntPair(vi0, vi1);
+                    result.add(pair);
+                }
             }
         }
 
