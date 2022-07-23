@@ -1,5 +1,26 @@
 # release log for the Heart Library and related tests
 
+## Version 8.1.0 released on 22 July 2022
+
++ Bugfix:  `MyMesh` ignores bind-pose normals
++ Added methods:
+  + constructor for `Prism` to produce prisms closed with right triangles
+  + `Element.lerp()`
+  + `Element.lerp3()`
+  + `MyBuffer.listNeighbors()`
+  + `MyMath.areWithinTolerance()`
+  + `MyMath.lerp3()`
+  + `MyMesh.rotate()`
+  + `MyMesh.subdivideLines()`
+  + `MyMesh.subdivideTriangles()`
+  + `MyQuaternion.angleBetween()`
+  + `MyVector3f.areWithinTolerance()`
++ De-privatized the `Describer.describeHalfExtents()` method.
++ Added the `TestRotate` and `TestSubdivide` applications.
++ Converted the `TestNameGenerator` and `TestMySpatial` applications
+   into JUnit tests.
++ Updated Gradle to v7.5
+
 ## Version 8.0.0 released on 22 June 2022
 
 + Deleted 5 deprecated methods: (API changes)
