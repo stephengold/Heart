@@ -207,7 +207,7 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
                     it.next();
                     if (numElements > targetSize) {
                         it.remove();
-                        numElements--;
+                        --numElements;
                     }
                 }
             }
