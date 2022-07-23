@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2021, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -115,7 +115,7 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
 
         if (!list.contains(element)) {
             list.add(element);
-            numElements++;
+            ++numElements;
             cull(capacity);
         }
 
@@ -155,7 +155,7 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
         for (Element element : addList) {
             if (!list.contains(element)) {
                 list.add(element);
-                numElements++;
+                ++numElements;
             }
         }
         if (list.isEmpty()) {
@@ -285,7 +285,7 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
                 while (numMerged < maxCount) {
                     Element element = it.next();
                     destination.add(element, score);
-                    numMerged++;
+                    ++numMerged;
                 }
                 return numMerged;
             }
@@ -324,13 +324,13 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
                 for (Element element : list) {
                     if (currentIndex == nextIndex) {
                         destination.add(element, score);
-                        numMerged++;
+                        ++numMerged;
                         nextIndex = subset.nextSetBit(nextIndex + 1);
                         if (nextIndex == -1) {
                             return numMerged;
                         }
                     }
-                    currentIndex++;
+                    ++currentIndex;
                 }
             }
         }
@@ -377,7 +377,7 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
         }
         BitSet selected = new BitSet(numElements);
         int lastIndex = numElements - 1;
-        for (int i = 0; i < maxCount; i++) {
+        for (int i = 0; i < maxCount; ++i) {
             int bitIndex = generator.pick(selected, lastIndex, false);
             assert bitIndex != -1;
             selected.set(bitIndex);
