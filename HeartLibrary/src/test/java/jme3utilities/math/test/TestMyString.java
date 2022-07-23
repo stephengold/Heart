@@ -45,7 +45,7 @@ public class TestMyString {
     final private static Logger logger = Logger.getLogger(
             TestMyString.class.getName());
     /**
-     *
+     * test cases
      */
     final private static String[] stringCases = {
         "\"he\"",
