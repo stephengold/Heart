@@ -60,16 +60,17 @@ Many other libraries depend on the Heart Library, including
   + expand a `Mesh` to ensure no vertex data are re-used
   + generate normals for an outward-facing sphere, a faceted mesh,
     or a smooth mesh
-  + translate and uniformly scale all vertices of a `Mesh`
+  + translate, rotate, or uniformly scale a `Mesh`
   + merge 2 meshes into one
   + flip mesh normals and/or triangle windings
+  + subdivide all elements of a mesh
   + enumerate all vertices in a scene-graph subtree
   + convert mesh triangles to lines
 + JME-oriented math:
   + generate pseudo-random quaternions and vectors
   + interpolate and cardinalize quaternions and vectors
   + other useful operations on scalars, quaternions, vectors,
-    arrays, and buffers
+    arrays, buffers, and sets of vectors
   + generate 2-D Perlin noise
 + loaders for `Properties` and `String` assets
 + `ContrastAdjustmentFilter`
