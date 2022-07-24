@@ -37,7 +37,7 @@ Many other libraries depend on the Heart Library, including
 
 + debugging aids:
   + `Dumper` to concisely dump a scene graph or a subtree thereof, or to
-     dump appstates or viewports
+    dump appstates or viewports
   + `Validate` to validate arguments passed to a library method
   + `AxesVisualizer` to visualize the coordinate axes of a `Node`
   + `BoundsVisualizer` to visualize the world bounds of a `Spatial`
@@ -45,7 +45,7 @@ Many other libraries depend on the Heart Library, including
   + `SkeletonVisualizer` to visualize the bones/joints of an animated model
   + `VectorVisualizer` to visualize a vector
   + `MyAsset.createDebugMaterial()` to visualize mesh normals
-     with or without gamma correction
+    with or without gamma correction
   + `MyMesh.boneWeightMaterial()` to visualize bone weights in a `Mesh`
 + `Mesh` subclasses:
   + `Dodecahedron`, `Icosahedron`, `Octahedron`, and `Tetrahedron`
