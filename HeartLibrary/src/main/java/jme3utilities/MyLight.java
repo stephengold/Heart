@@ -60,6 +60,26 @@ public class MyLight {
     // new methods exposed
 
     /**
+     * Remove all local lights from the specified Spatial.
+     *
+     * @param spatial (not null, modified)
+     */
+    public static void clearLocalLights(Spatial spatial) {
+        LightList list = spatial.getLocalLightList();
+        int numLights = list.size();
+        if (numLights > 0) {
+            Light[] tmpArray = new Light[numLights];
+            for (int i = 0; i < numLights; ++i) {
+                tmpArray[i] = list.get(i);
+            }
+            for (Light light : tmpArray) {
+                spatial.removeLight(light);
+            }
+        }
+        assert list.size() == 0 : list.size();
+    }
+
+    /**
      * Count all lights of the specified type in the specified subtree of a
      * scene graph. Note: recursive!
      *
