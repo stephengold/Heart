@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -67,6 +67,15 @@ public class NameGenerator implements Savable {
      * so far.
      */
     final private Map<String, Integer> nextSequenceNumbers = new TreeMap<>();
+    // *************************************************************************
+    // constructors
+
+    /**
+     * A no-arg constructor to avoid javadoc warnings from JDK 18.
+     */
+    public NameGenerator() {
+        // do nothing
+    }
     // *************************************************************************
     // new methods exposed
 

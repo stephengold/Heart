@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2019, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -42,6 +42,15 @@ import com.jme3.scene.control.AbstractControl;
  * @author Stephen Gold sgold@sonic.net
  */
 abstract public class SimpleControl extends AbstractControl {
+    // *************************************************************************
+    // constructors
+
+    /**
+     * A no-arg constructor to avoid javadoc warnings from JDK 18.
+     */
+    public SimpleControl() {
+        // do nothing
+    }
     // *************************************************************************
     // new methods exposed
 

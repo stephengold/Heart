@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2021, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -56,6 +56,15 @@ public class SignalTracker {
      * map signal names to statuses
      */
     final private Map<String, Set<Integer>> statusMap = new TreeMap<>();
+    // *************************************************************************
+    // constructors
+
+    /**
+     * A no-arg constructor to avoid javadoc warnings from JDK 18.
+     */
+    public SignalTracker() {
+        // do nothing
+    }
     // *************************************************************************
     // new methods exposed
 

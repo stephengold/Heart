@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2019, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -49,6 +49,15 @@ public class StringLoader implements AssetLoader {
     final private static Logger logger
             = Logger.getLogger(StringLoader.class.getName());
     // *************************************************************************
+    // constructors
+
+    /**
+     * A no-arg constructor to avoid javadoc warnings from JDK 18.
+     */
+    public StringLoader() {
+        // do nothing
+    }
+    // *************************************************************************
     // AssetLoader methods
 
     /**
@@ -69,7 +78,7 @@ public class StringLoader implements AssetLoader {
         Charset charset = StandardCharsets.ISO_8859_1; // LATIN-1
         String name = charset.name();
         String text;
-        try (Scanner scanner = new Scanner(stream, name)
+        try ( Scanner scanner = new Scanner(stream, name)
                 .useDelimiter("\\Z")) {
             text = scanner.next();
         }

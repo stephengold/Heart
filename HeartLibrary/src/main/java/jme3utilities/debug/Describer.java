@@ -109,6 +109,15 @@ public class Describer implements Cloneable {
      */
     private String listSeparator = " ";
     // *************************************************************************
+    // constructors
+
+    /**
+     * A no-arg constructor to avoid javadoc warnings from JDK 18.
+     */
+    public Describer() {
+        // do nothing
+    }
+    // *************************************************************************
     // new methods exposed
 
     /**
