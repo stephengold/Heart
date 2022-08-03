@@ -414,7 +414,7 @@ public class MySpatial {
 
     /**
      * Find the index of the specified scene-graph control in the specified
-     * Spatial.
+     * Spatial. TODO redundant with MyControl.findIndex()
      *
      * @param spatial the Spatial to search (not null, unaffected)
      * @param sgc the Control to search for (not null, unaffected)
