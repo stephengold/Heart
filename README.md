@@ -260,6 +260,8 @@ The following apps are found in the HeartExamples sub-project:
 
 ## External links
 
++ [the Heart page](https://library.jmonkeyengine.org/#!entry=11511%2Fe534fc1e-5b78-46b7-a831-d5d40cbd9dcd)
+  in [the JmonkeyEngine library][library]
 + [the Heart page](https://store.jmonkeyengine.org/e534fc1e-5b78-46b7-a831-d5d40cbd9dcd)
   at [the JmonkeyStore][store]
 
@@ -347,6 +349,7 @@ correct the situation: sgold@sonic.net
 [jme3-wireframe]: https://github.com/joliver82/jme3-wireframe "jME3 Wireframe render library"
 [jmepower]: https://github.com/stephengold/JmePower "JmePower Project"
 [latest]: https://github.com/stephengold/Heart/releases/latest "latest release"
+[library]: https://library.jmonkeyengine.org "jMonkeyEngine Library"
 [license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
 [log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
