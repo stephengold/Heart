@@ -524,8 +524,8 @@ public class MyString {
      * Extract the remainder of the specified string after removing the
      * specified suffix.
      *
-     * @param input input string (not null)
-     * @param suffix prefix string (not null)
+     * @param input the input string (not null)
+     * @param suffix the suffix string (not null)
      * @return the remainder of the input (not null)
      */
     public static String removeSuffix(String input, String suffix) {
