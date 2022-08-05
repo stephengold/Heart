@@ -261,7 +261,7 @@ The following apps are found in the HeartExamples sub-project:
 ## External links
 
 + [the Heart page](https://store.jmonkeyengine.org/e534fc1e-5b78-46b7-a831-d5d40cbd9dcd)
-  at [JmonkeyStore](https://store.jmonkeyengine.org)
+  at [the JmonkeyStore][store]
 
 [Jump to table of contents](#toc)
 
@@ -357,6 +357,7 @@ correct the situation: sgold@sonic.net
 [netbeans]: https://netbeans.org "NetBeans Project"
 [skycontrol]: https://github.com/stephengold/SkyControl "SkyControl Project"
 [sonatype]: https://www.sonatype.com "Sonatype"
+[store]: https://store.jmonkeyengine.org "JmonkeyStore"
 [utilities]: https://github.com/stephengold/jme3-utilities "Jme3-utilities Project"
 [wes]: https://github.com/stephengold/Wes "Wes Project"
 [winmerge]: https://winmerge.org "WinMerge Project"
