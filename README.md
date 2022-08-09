@@ -130,10 +130,10 @@ For projects built using [Ant], download the library from GitHub:
 
 + https://github.com/stephengold/Heart/releases/latest
 
-You'll want the class jar
-and probably the `-sources` and `-javadoc` jars as well.
+You'll definitely want the class JAR
+and probably the "-sources" and "-javadoc" JARs as well.
 
-Open the project's properties in the IDE (JME 3.2 SDK or NetBeans 8.2):
+Open the project's properties in the IDE (JME SDK or NetBeans):
 
 1. Right-click on the project (not its assets) in the "Projects" window.
 2. Select "Properties" to open the "Project Properties" dialog.
