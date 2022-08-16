@@ -52,7 +52,7 @@ import java.util.logging.Logger;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class MyControl {
+public class MyControl { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 

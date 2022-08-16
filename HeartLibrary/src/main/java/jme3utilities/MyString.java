@@ -42,7 +42,7 @@ import java.util.regex.Pattern;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class MyString {
+public class MyString { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 

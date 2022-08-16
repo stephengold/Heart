@@ -76,7 +76,7 @@ import jme3utilities.math.VectorXZ;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class Heart {
+public class Heart { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 

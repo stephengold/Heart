@@ -41,7 +41,7 @@ import jme3utilities.math.MyMath;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class Element {
+public class Element { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 

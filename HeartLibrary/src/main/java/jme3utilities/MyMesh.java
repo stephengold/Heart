@@ -70,7 +70,7 @@ import jme3utilities.math.VectorSetUsingBuffer;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class MyMesh {
+public class MyMesh { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 

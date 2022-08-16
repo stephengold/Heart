@@ -57,7 +57,7 @@ import jme3utilities.math.MyArray;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class MyAnimation {
+public class MyAnimation { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 

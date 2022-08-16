@@ -39,7 +39,7 @@ import java.util.logging.Logger;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class MyLight {
+public class MyLight { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 

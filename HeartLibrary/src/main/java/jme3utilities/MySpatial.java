@@ -71,7 +71,7 @@ import jme3utilities.math.MyVector3f;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class MySpatial {
+public class MySpatial { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 

@@ -54,7 +54,7 @@ import java.util.logging.Logger;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class MySkeleton {
+public class MySkeleton { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 

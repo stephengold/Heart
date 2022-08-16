@@ -52,7 +52,7 @@ import jme3utilities.math.MyBuffer;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class InfluenceUtil {
+public class InfluenceUtil { // TODO finalize the class
     // *************************************************************************
     // constants and loggers
 
