@@ -923,6 +923,9 @@ public class Dumper implements Cloneable {
 
     /**
      * Dump children of a scene-graph Node.
+     *
+     * @param node the Node to dump (not null, unaffected)
+     * @param childIndent the indent text for children (not null, may be empty)
      */
     private void dumpChildren(Node node, String childIndent) {
         List<Spatial> children = node.getChildren();

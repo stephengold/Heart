@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -172,6 +172,7 @@ public class Perlin2 implements Noise2 {
      * @param gridY the 2nd coordinate of the grid point
      * @param sampleX the first coordinate of the sample point
      * @param sampleY the 2nd coordinate of the sample point
+     * @return the weight of the grid point
      */
     private float gradient(int gridX, int gridY, double sampleX,
             double sampleY) {

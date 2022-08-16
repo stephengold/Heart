@@ -51,6 +51,9 @@ public class TestVectorXZ {
     // *************************************************************************
     // new methods exposed
 
+    /**
+     * Test the VectorXZ class.
+     */
     @Test
     public void test1() {
         VectorXZ[] cases = new VectorXZ[4];

@@ -59,6 +59,9 @@ public class TestMyArray {
     // *************************************************************************
     // new methods exposed
 
+    /**
+     * Test getMax() and getMin().
+     */
     @Test
     public void testMyArray() {
         BoundingBox box1 = MyArray.aabb(testData, null);
@@ -80,6 +83,9 @@ public class TestMyArray {
         assert box2.getMax(null).z == 0f;
     }
 
+    /**
+     * Test the countNeSorted() method.
+     */
     @Test
     public void testCountNeSorted() {
         int count = MyArray.countNeSorted();

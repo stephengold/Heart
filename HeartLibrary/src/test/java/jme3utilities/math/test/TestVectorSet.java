@@ -64,6 +64,9 @@ public class TestVectorSet {
     // *************************************************************************
     // new methods exposed
 
+    /**
+     * Test each constructor.
+     */
     @Test
     public void testVectorSet() {
         VectorSetUsingCollection vectorSet1 = new VectorSetUsingCollection(1);
@@ -108,6 +111,9 @@ public class TestVectorSet {
 
     /**
      * Test the specified VectorSet instance.
+     *
+     * @param vectorSet the set being tested (not null)
+     * @param toBuffer true to enable toBuffer() testing
      */
     private static void test(VectorSet vectorSet, boolean toBuffer) {
         float maxLength;

@@ -222,7 +222,9 @@ class SkeletonMesh extends Mesh {
     /**
      * Create and add an IndexBuffer for a Lines-mode mesh.
      *
-     * @param numLines (&ge;0)
+     * @param numBones the capacity for bones (&ge;0)
+     * @param numLines the capacity for edges (&ge;0)
+     * @return a new buffer
      */
     private IndexBuffer createLineIndices(int numBones, int numLines) {
         assert numLines >= 0 : numLines;

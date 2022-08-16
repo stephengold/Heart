@@ -69,7 +69,7 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
      */
     private int numElements = 0;
     /**
-     * map fitness scores to elements (not null)
+     * map fitness scores to elements (not null) TODO privatize
      */
     final protected TreeMap<Fitness, List<Element>> elementsByFitness
             = new TreeMap<>();

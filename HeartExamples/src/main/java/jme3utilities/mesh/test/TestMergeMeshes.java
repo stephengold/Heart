@@ -284,6 +284,8 @@ public class TestMergeMeshes extends AcorusDemo {
 
     /**
      * Configure the camera during startup.
+     *
+     * @param cameraX the desired X location (in world coordinates)
      */
     private void configureCamera(float cameraX) {
         float near = 0.002f * cameraX;

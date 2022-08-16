@@ -63,6 +63,9 @@ public class TestMyString {
     // *************************************************************************
     // new methods exposed
 
+    /**
+     * Test the MyString class.
+     */
     @Test
     public void testMyString() {
         assert MyString.quote(stringCases[0]).equals("\"\\\"he\\\"\"");
