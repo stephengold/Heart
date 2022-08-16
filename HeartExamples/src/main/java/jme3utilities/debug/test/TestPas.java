@@ -40,7 +40,7 @@ import jme3utilities.ui.AcorusDemo;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestPas extends AcorusDemo {
+final public class TestPas extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 

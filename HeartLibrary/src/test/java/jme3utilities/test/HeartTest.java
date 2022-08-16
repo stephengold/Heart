@@ -36,7 +36,7 @@ import org.junit.Assert;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class HeartTest {
+final public class HeartTest {
     // *************************************************************************
     // constructors
 

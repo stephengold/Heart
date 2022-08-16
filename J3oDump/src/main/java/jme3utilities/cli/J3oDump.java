@@ -52,7 +52,7 @@ import jme3utilities.debug.Dumper;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class J3oDump {
+final public class J3oDump {
     // *************************************************************************
     // constants and loggers
 
