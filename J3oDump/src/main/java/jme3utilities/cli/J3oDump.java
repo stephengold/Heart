@@ -81,6 +81,15 @@ final public class J3oDump {
      */
     final private static Dumper dumper = new Dumper();
     // *************************************************************************
+    // constructors
+
+    /**
+     * A private constructor to inhibit instantiation of this class.
+     */
+    private J3oDump() {
+        // do nothing
+    }
+    // *************************************************************************
     // new methods exposed
 
     /**
