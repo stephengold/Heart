@@ -138,7 +138,7 @@ final public class MyCamera {
             result = "null";
         } else {
             String name = camera.getName();
-            Vector3f location = camera.getLocation();
+            Vector3f location = camera.getLocation(); // alias
             String locString = MyVector3f.describe(location);
             Vector3f direction = camera.getDirection();
             String dirString = MyVector3f.describeDirection(direction);
