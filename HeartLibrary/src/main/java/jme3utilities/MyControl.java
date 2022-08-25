@@ -259,7 +259,7 @@ public class MyControl { // TODO finalize the class
 
     /**
      * Add the specified Control at the specified position in the
-     * {@code controls} list of the specified Spatial. TODO move to MyControl
+     * {@code controls} list of the specified Spatial.
      *
      * @param spatial the Spatial to add to (not null, modified)
      * @param index the index at which to add the Control (&ge;0)
