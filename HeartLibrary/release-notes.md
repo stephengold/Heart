@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 8.2.0 released on TBD
+## Version 8.2.0 released on 5 September 2022
 
 + Bugfix:  `AppChooser` executes itself instead of the selected app
 + Deprecated the `findIndex()` method in the `MySpatial` class.
