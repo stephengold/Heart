@@ -71,7 +71,7 @@ public class VectorSetUsingCollection implements VectorSet {
      */
     public VectorSetUsingCollection(int numVectors) {
         Validate.positive(numVectors, "number of vectors");
-        set = new HashSet<>(numVectors);
+        this.set = new HashSet<>(numVectors);
     }
     // *************************************************************************
     // VectorSet methods
@@ -352,5 +352,33 @@ public class VectorSetUsingCollection implements VectorSet {
         }
 
         return result;
+    }
+    // *************************************************************************
+    // Object methods
+
+    /**
+     * Represent this set as a String.
+     *
+     * @return a descriptive string of text (not null, not empty)
+     */
+    @Override
+    public String toString() {
+        int numVectors = numVectors();
+        StringBuilder builder = new StringBuilder(numVectors * 32);
+
+        builder.append("VectorSet[ n=");
+        builder.append(numVectors);
+        String separator = System.lineSeparator();
+        builder.append(separator);
+
+        for (Vector3f tmpVector : set) {
+            builder.append("  ");
+            builder.append(tmpVector);
+            builder.append(separator);
+        }
+        builder.append("]");
+        builder.append(separator);
+
+        return builder.toString();
     }
 }
