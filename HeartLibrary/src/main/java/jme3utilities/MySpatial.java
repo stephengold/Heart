@@ -414,12 +414,16 @@ public class MySpatial { // TODO finalize the class
 
     /**
      * Find the index of the specified scene-graph control in the specified
-     * Spatial. TODO redundant with MyControl.findIndex()
+     * Spatial.
      *
      * @param spatial the Spatial to search (not null, unaffected)
      * @param sgc the Control to search for (not null, unaffected)
      * @return the index (&ge;0) or -1 if not found
+     *
+     * @deprecated use {@link MyControl#findIndex(
+     * com.jme3.scene.control.Control, com.jme3.scene.Spatial)}
      */
+    @Deprecated
     public static int findIndex(Spatial spatial, Control sgc) {
         Validate.nonNull(spatial, "spatial");
         Validate.nonNull(sgc, "control");
