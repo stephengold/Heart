@@ -1,5 +1,18 @@
 # release log for the Heart Library and related tests
 
+## Version 8.2.0 released on TBD
+
++ Bugfix:  `AppChooser` executes itself instead of the selected app
++ Deprecated the `findIndex()` method in the `MySpatial` class.
++ Added methods:
+  + `MyControl.insertAt()`
+  + `MyLight.clearLocalLights()`
+  + `MyMath.transformInverse()` for triangles
++ Added the `root2` constant to the `MyMath` class.
++ Overrode the `toString()` methods of the `VectorSetUsingBuffers`
+  and `VectorSetUsingCollection` classes.
++ Updated Gradle to v7.5.1
+
 ## Version 8.1.0 released on 22 July 2022
 
 + Bugfix:  `MyMesh` ignores bind-pose normals
