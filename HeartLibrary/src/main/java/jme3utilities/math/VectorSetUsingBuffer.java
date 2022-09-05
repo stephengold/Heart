@@ -357,7 +357,7 @@ public class VectorSetUsingBuffer implements VectorSet {
     /**
      * Create an array of vectors containing all values in this set.
      *
-     * @return a new array
+     * @return a new array of new vectors
      */
     @Override
     public Vector3f[] toVectorArray() {
@@ -371,6 +371,36 @@ public class VectorSetUsingBuffer implements VectorSet {
         }
 
         return result;
+    }
+    // *************************************************************************
+    // Object methods
+
+    /**
+     * Represent this set as a String.
+     *
+     * @return a descriptive string of text (not null, not empty)
+     */
+    @Override
+    public String toString() {
+        int numVectors = numVectors();
+        StringBuilder builder = new StringBuilder(numVectors * 32);
+
+        builder.append("VectorSet[ n=");
+        builder.append(numVectors);
+        String separator = System.lineSeparator();
+        builder.append(separator);
+
+        Vector3f tmpVector = new Vector3f();
+        for (int iVector = 0; iVector < numVectors; ++iVector) {
+            MyBuffer.get(buffer, numAxes * iVector, tmpVector);
+            builder.append("  ");
+            builder.append(tmpVector);
+            builder.append(separator);
+        }
+        builder.append("]");
+        builder.append(separator);
+
+        return builder.toString();
     }
     // *************************************************************************
     // private methods
