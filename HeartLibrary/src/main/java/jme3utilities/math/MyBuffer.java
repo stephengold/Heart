@@ -74,7 +74,7 @@ final public class MyBuffer {
     // new methods exposed
 
     /**
-     * Determine the sample covariance of 3-D vectors in the specified
+     * Return the sample covariance of the 3-D vectors in the specified
      * FloatBuffer range.
      *
      * @param buffer the buffer that contains the vectors (not null, unaffected)
@@ -99,9 +99,8 @@ final public class MyBuffer {
 
         int numVectors = numFloats / numAxes;
         Vector3f sampleMean = mean(buffer, startPosition, endPosition, null);
-        /*
-         * Accumulate sums in the upper triangle of the matrix.
-         */
+
+        // Accumulate sums in the upper triangle of the matrix.
         result.zero();
         float[] aboveMean = new float[numAxes];
         for (int vectorIndex = 0; vectorIndex < numVectors; ++vectorIndex) {
@@ -121,9 +120,8 @@ final public class MyBuffer {
                 }
             }
         }
-        /*
-         * Multiply sums by 1/(N-1) and fill in the lower triangle.
-         */
+
+        // Multiply sums by 1/(N-1) and fill in the lower triangle.
         float nMinus1 = numVectors - 1;
         for (int rowIndex = 0; rowIndex < numAxes; ++rowIndex) {
             for (int colIndex = rowIndex; colIndex < numAxes; ++colIndex) {
@@ -138,7 +136,7 @@ final public class MyBuffer {
     }
 
     /**
-     * Find the radius of a bounding cylinder for the specified FloatBuffer
+     * Return the radius of a bounding cylinder for the specified FloatBuffer
      * range.
      *
      * @param buffer the buffer that contains the vectors (not null, unaffected)

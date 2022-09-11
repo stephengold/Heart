@@ -46,8 +46,8 @@ import java.util.logging.Logger;
 import jme3utilities.Validate;
 
 /**
- * A rectangular solid whose axes might not be axis-aligned. Immutable except
- * for {@link #read(com.jme3.export.JmeImporter)}.
+ * A rectangular solid whose axes might not be aligned with the world axes.
+ * Immutable except for {@link #read(com.jme3.export.JmeImporter)}.
  *
  * @author Stephen Gold sgold@sonic.net
  */
