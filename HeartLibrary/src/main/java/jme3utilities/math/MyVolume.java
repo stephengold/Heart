@@ -96,6 +96,7 @@ public class MyVolume { // TODO finalize the class
         float crossSection = FastMath.PI * radius * radius;
         float volume = crossSection * (height + FOUR_THIRDS * radius);
 
+        assert volume >= 0f : volume;
         return volume;
     }
 
@@ -111,6 +112,8 @@ public class MyVolume { // TODO finalize the class
         Validate.nonNegative(height, "height");
 
         float volume = ONE_THIRD_PI * radius * radius * height;
+
+        assert volume >= 0f : volume;
         return volume;
     }
 
@@ -125,6 +128,8 @@ public class MyVolume { // TODO finalize the class
         Validate.nonNegative(halfExtents, "half extents");
         float volume = FastMath.TWO_PI
                 * halfExtents.x * halfExtents.y * halfExtents.z;
+
+        assert volume >= 0f : volume;
         return volume;
     }
 
@@ -137,6 +142,8 @@ public class MyVolume { // TODO finalize the class
     public static float sphereVolume(float radius) {
         Validate.nonNegative(radius, "radius");
         float volume = FOUR_THIRDS_PI * MyMath.cube(radius);
+
+        assert volume >= 0f : volume;
         return volume;
     }
 
