@@ -49,6 +49,9 @@ public class TestMyVolume {
     // *************************************************************************
     // new methods exposed
 
+    /**
+     * Test each method in the MyVolume class on valid data.
+     */
     @Test
     public void test1() {
         Vector3f halfHeight1 = new Vector3f(1f, 5f, 3f);
