@@ -42,6 +42,18 @@ public class MyVolume { // TODO finalize the class
     // constants and loggers
 
     /**
+     * The value 4/3, as a float.
+     */
+    final private static float FOUR_THIRDS = 1.3333333f;
+    /**
+     * The value 4*Pi/3, as a float. (240 degrees)
+     */
+    final private static float FOUR_THIRDS_PI = 4.1887902f;
+    /**
+     * The value Pi/3, as a float. (60 degrees)
+     */
+    final private static float ONE_THIRD_PI = 1.0471976f;
+    /**
      * message logger for this class
      */
     final public static Logger logger
@@ -82,7 +94,7 @@ public class MyVolume { // TODO finalize the class
         Validate.nonNegative(height, "height");
 
         float crossSection = FastMath.PI * radius * radius;
-        float volume = crossSection * (height + 4f / 3f * radius);
+        float volume = crossSection * (height + FOUR_THIRDS * radius);
 
         return volume;
     }
@@ -98,8 +110,7 @@ public class MyVolume { // TODO finalize the class
         Validate.nonNegative(radius, "radius");
         Validate.nonNegative(height, "height");
 
-        float volume
-                = FastMath.PI * FastMath.ONE_THIRD * radius * radius * height;
+        float volume = ONE_THIRD_PI * radius * radius * height;
         return volume;
     }
 
@@ -120,13 +131,12 @@ public class MyVolume { // TODO finalize the class
     /**
      * Compute the volume of a sphere with the specified radius.
      *
-     * @param radius (&ge;0)
+     * @param radius the radius of the sphere (&ge;0)
      * @return the volume (&ge;0)
      */
     public static float sphereVolume(float radius) {
         Validate.nonNegative(radius, "radius");
-        float volume
-                = 4f * FastMath.ONE_THIRD * FastMath.PI * MyMath.cube(radius);
+        float volume = FOUR_THIRDS_PI * MyMath.cube(radius);
         return volume;
     }
 
