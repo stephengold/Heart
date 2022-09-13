@@ -27,7 +27,6 @@
 package jme3utilities.math;
 
 import com.jme3.math.FastMath;
-import com.jme3.math.Triangle;
 import com.jme3.math.Vector3f;
 import java.util.logging.Logger;
 import jme3utilities.Validate;
@@ -148,16 +147,26 @@ public class MyVolume { // TODO finalize the class
         Validate.finite(v3, "3rd vertex");
         Validate.finite(v4, "4th vertex");
 
-        Triangle baseTriangle = new Triangle(v1, v2, v3);
-        Vector3f offset = v4.subtract(v1);
-        Vector3f normal = baseTriangle.getNormal();
-        double altitude = MyVector3f.dot(offset, normal);
-        altitude = Math.abs(altitude);
+        // Set up a 3x3 matrix of offset components relative to v4.
+        double m00 = v1.x - v4.x;
+        double m01 = v1.y - v4.y;
+        double m02 = v1.z - v4.z;
+        double m10 = v2.x - v4.x;
+        double m11 = v2.y - v4.y;
+        double m12 = v2.z - v4.z;
+        double m20 = v3.x - v4.x;
+        double m21 = v3.y - v4.y;
+        double m22 = v3.z - v4.z;
 
-        double baseArea = MyMath.area(baseTriangle);
-        assert baseArea >= 0.0 : baseArea;
-        double volume = baseArea * altitude / 3.0;
+        // Compute the determinant.
+        double co00 = m11 * m22 - m12 * m21;
+        double co10 = m12 * m20 - m10 * m22;
+        double co20 = m10 * m21 - m11 * m20;
+        double determinant = m00 * co00 + m01 * co10 + m02 * co20;
 
-        return volume;
+        // The volume is 1/6 the absolute value of the determinant.
+        double result = Math.abs(determinant) / 6.0;
+
+        return result;
     }
 }
