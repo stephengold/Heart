@@ -81,10 +81,8 @@ public class MyVolume { // TODO finalize the class
         Validate.nonNegative(radius, "radius");
         Validate.nonNegative(height, "height");
 
-        float halfHeight = 0.5f * height;
-        Vector3f cylinderHalfExtents = new Vector3f(halfHeight, radius, radius);
-        float cylinderVolume = cylinderVolume(cylinderHalfExtents);
-        float volume = cylinderVolume + sphereVolume(radius);
+        float crossSection = FastMath.PI * radius * radius;
+        float volume = crossSection * (height + 4f / 3f * radius);
 
         return volume;
     }
