@@ -32,8 +32,8 @@ import java.util.logging.Logger;
 import jme3utilities.Validate;
 
 /**
- * Utility methods for computing volumes of shapes. Aside from test cases, all
- * methods should be public and static.
+ * Utility methods for computing volumes of shapes. All methods should be public
+ * and static.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -58,9 +58,10 @@ public class MyVolume { // TODO finalize the class
     // new methods exposed
 
     /**
-     * Compute the volume of an axis-aligned box with specified half-extents.
+     * Compute the volume of a box with the specified half extents.
      *
-     * @param halfExtents (not null, all components &ge;0, unaffected)
+     * @param halfExtents the half extents on each local axis (not null, all
+     * components &ge;0, unaffected)
      * @return volume (ge;0)
      */
     public static float boxVolume(Vector3f halfExtents) {
@@ -72,7 +73,7 @@ public class MyVolume { // TODO finalize the class
     /**
      * Compute the volume of a capsule with the specified radius and height.
      *
-     * @param radius (&ge;0)
+     * @param radius the radius of the capsule (&ge;0)
      * @param height the height of the cylindrical portion (&ge;0)
      * @return the volume (&ge;0)
      */
@@ -91,8 +92,8 @@ public class MyVolume { // TODO finalize the class
     /**
      * Compute the volume of a cone with the specified radius and height.
      *
-     * @param radius (&ge;0)
-     * @param height (&ge;0)
+     * @param radius the radius of the cone (&ge;0)
+     * @param height the height of the cone (&ge;0)
      * @return the volume (&ge;0)
      */
     public static float coneVolume(float radius, float height) {
@@ -105,10 +106,10 @@ public class MyVolume { // TODO finalize the class
     }
 
     /**
-     * Compute the volume of an axis-aligned cylinder with specified
-     * half-extents.
+     * Compute the volume of a cylinder with specified half extents.
      *
-     * @param halfExtents (not null, all components &ge;0, unaffected)
+     * @param halfExtents the half extents on each local axis (not null, all
+     * components &ge;0, unaffected)
      * @return the volume (&ge;0)
      */
     public static float cylinderVolume(Vector3f halfExtents) {
@@ -134,10 +135,10 @@ public class MyVolume { // TODO finalize the class
     /**
      * Determine the volume of the specified tetrahedron.
      *
-     * @param v1 location of the first vertex (not null, unaffected)
-     * @param v2 location of the 2nd vertex (not null, unaffected)
-     * @param v3 location of the 3rd vertex (not null, unaffected)
-     * @param v4 location of the 4th vertex (not null, unaffected)
+     * @param v1 the location of the first vertex (not null, unaffected)
+     * @param v2 the location of the 2nd vertex (not null, unaffected)
+     * @param v3 the location of the 3rd vertex (not null, unaffected)
+     * @param v4 the location of the 4th vertex (not null, unaffected)
      * @return the volume (&ge;0)
      */
     public static double tetrahedronVolume(Vector3f v1, Vector3f v2,
