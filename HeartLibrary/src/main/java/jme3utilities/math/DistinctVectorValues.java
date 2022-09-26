@@ -86,15 +86,15 @@ public class DistinctVectorValues {
      * @param endPosition the buffer position at which the vectors end
      * (&ge;startPosition, &le;capacity)
      */
-    public DistinctVectorValues(FloatBuffer buffer, int startPosition,
-            int endPosition) {
+    public DistinctVectorValues(
+            FloatBuffer buffer, int startPosition, int endPosition) {
         Validate.nonNull(buffer, "buffer");
         Validate.inRange(startPosition, "start position", 0, endPosition);
-        Validate.inRange(endPosition, "end position", startPosition,
-                buffer.capacity());
+        Validate.inRange(
+                endPosition, "end position", startPosition, buffer.capacity());
         int numFloats = endPosition - startPosition;
-        Validate.require(numFloats % MyVector3f.numAxes == 0,
-                "whole number of vectors");
+        Validate.require(
+                numFloats % MyVector3f.numAxes == 0, "whole number of vectors");
 
         numVectors = numFloats / MyVector3f.numAxes;
         value2Vvid = new HashMap<>(numVectors);
@@ -137,11 +137,11 @@ public class DistinctVectorValues {
             int endPosition, float tolerance) {
         Validate.nonNull(buffer, "buffer");
         Validate.inRange(startPosition, "start position", 0, endPosition);
-        Validate.inRange(endPosition, "end position", startPosition,
-                buffer.capacity());
+        Validate.inRange(
+                endPosition, "end position", startPosition, buffer.capacity());
         int numFloats = endPosition - startPosition;
-        Validate.require(numFloats % MyVector3f.numAxes == 0,
-                "whole number of vectors");
+        Validate.require(
+                numFloats % MyVector3f.numAxes == 0, "whole number of vectors");
         Validate.positive(tolerance, "tolerance");
 
         numVectors = numFloats / MyVector3f.numAxes;
