@@ -96,10 +96,10 @@ public class DistinctVectorValues {
         Validate.require(
                 numFloats % MyVector3f.numAxes == 0, "whole number of vectors");
 
-        numVectors = numFloats / MyVector3f.numAxes;
-        value2Vvid = new HashMap<>(numVectors);
+        this.numVectors = numFloats / MyVector3f.numAxes;
+        this.value2Vvid = new HashMap<>(numVectors);
 
-        vectorIndex2Vvid = new int[numVectors];
+        this.vectorIndex2Vvid = new int[numVectors];
         Arrays.fill(vectorIndex2Vvid, -1);
 
         // Assign an ID to each distinct vector value in the buffer range.
@@ -118,7 +118,7 @@ public class DistinctVectorValues {
             }
             vectorIndex2Vvid[vectorIndex] = vvid;
         }
-        numDistinctValues = nextVvid;
+        this.numDistinctValues = nextVvid;
     }
 
     /**
@@ -144,10 +144,10 @@ public class DistinctVectorValues {
                 numFloats % MyVector3f.numAxes == 0, "whole number of vectors");
         Validate.positive(tolerance, "tolerance");
 
-        numVectors = numFloats / MyVector3f.numAxes;
-        value2Vvid = new HashMap<>(numVectors);
+        this.numVectors = numFloats / MyVector3f.numAxes;
+        this.value2Vvid = new HashMap<>(numVectors);
 
-        vectorIndex2Vvid = new int[numVectors];
+        this.vectorIndex2Vvid = new int[numVectors];
         Arrays.fill(vectorIndex2Vvid, -1);
 
         // Assign an ID to each distinct vector value in the buffer range.
@@ -176,7 +176,7 @@ public class DistinctVectorValues {
             }
             vectorIndex2Vvid[vectorIndex] = vvid;
         }
-        numDistinctValues = nextVvid;
+        this.numDistinctValues = nextVvid;
     }
     // *************************************************************************
     // new methods exposed
