@@ -26,6 +26,8 @@
  */
 package jme3utilities.math.test;
 
+import com.jme3.math.Matrix3f;
+import com.jme3.math.Vector3f;
 import java.util.logging.Logger;
 import jme3utilities.math.MyMath;
 import org.junit.Assert;
@@ -157,5 +159,67 @@ public class TestMyMath {
 
         double six = MyMath.sumOfSquares(1f, -1f, -2f);
         Assert.assertEquals(6.0, six, 0.0);
+    }
+
+    /**
+     * Test fromAngles().
+     */
+    @Test
+    public void testFromAngles() {
+        Vector3f in = new Vector3f(4f, 6f, 9f); // test vector, never modified
+        Vector3f saveIn = in.clone();
+
+        // Three arbitrary rotation angles between -PI/2 and +PI/2
+        final float xAngle = 1.23f;
+        final float yAngle = 0.765f;
+        final float zAngle = -0.456f;
+        /*
+         * Part 1: verify that the extrinsic rotation order is x-z-y
+         *
+         * Apply extrinsic rotations to the "in" vector in x-z-y order.
+         */
+        Matrix3f rx = new Matrix3f();
+        rx.fromAngleAxis(xAngle, Vector3f.UNIT_X);
+        Matrix3f ry = new Matrix3f();
+        ry.fromAngleAxis(yAngle, Vector3f.UNIT_Y);
+        Matrix3f rz = new Matrix3f();
+        rz.fromAngleAxis(zAngle, Vector3f.UNIT_Z);
+        Vector3f outXZY = rx.mult(in);
+        rz.mult(outXZY, outXZY);
+        ry.mult(outXZY, outXZY);
+        /*
+         * Construct a Matrix3f using fromAngles(float, float, float),
+         * use it to rotate the "in" vector, and compare.
+         */
+        Matrix3f r1 = MyMath.fromAngles(xAngle, yAngle, zAngle, null);
+        Vector3f out1 = r1.mult(in);
+        assertEquals(outXZY, out1, 1e-5f);
+        /*
+         * Part 2: verify intrinsic rotation order
+         *
+         * Apply intrinsic rotations to the "in" vector in y-z'-x" order.
+         */
+        Matrix3f r4 = ry.mult(rz).mult(rx);
+        Vector3f out7 = r4.mult(in);
+        assertEquals(outXZY, out7, 1e-5f);
+
+        // Verify that the value of "in" hasn't changed.
+        assertEquals(saveIn, in, 0f);
+    }
+    // *************************************************************************
+    // private methods
+
+    /**
+     * Verify that 2 vectors are equal to within some tolerance.
+     *
+     * @param expected the expected value (not null, unaffected)
+     * @param actual the vector to test (not null, unaffected)
+     * @param tolerance the allowable difference for each component
+     */
+    private static void assertEquals(
+            Vector3f expected, Vector3f actual, float tolerance) {
+        Assert.assertEquals("x component", expected.x, actual.x, tolerance);
+        Assert.assertEquals("y component", expected.y, actual.y, tolerance);
+        Assert.assertEquals("z component", expected.z, actual.z, tolerance);
     }
 }
