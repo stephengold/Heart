@@ -121,8 +121,9 @@ public class IntPair implements Comparable<IntPair> {
     /**
      * Test for exact equivalence with another Object.
      *
-     * @param otherObject the object to compare to (may be null, unaffected)
-     * @return true if the objects are equivalent, otherwise false
+     * @param otherObject the object to compare (may be null, unaffected)
+     * @return true if {@code this} and {@code otherObject} have identical
+     *     values, otherwise false
      */
     @Override
     public boolean equals(Object otherObject) {
@@ -144,7 +145,7 @@ public class IntPair implements Comparable<IntPair> {
     /**
      * Generate the hash code for this pair.
      *
-     * @return the value to use for hashing
+     * @return a 32-bit value for use in hashing
      */
     @Override
     public int hashCode() {
