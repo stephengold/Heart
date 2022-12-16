@@ -318,13 +318,13 @@ public class VectorVisualizer extends SubtreeControl {
     @Override
     public void read(JmeImporter importer) throws IOException {
         super.read(importer);
-        assetManager = importer.getAssetManager();
+        this.assetManager = importer.getAssetManager();
         InputCapsule capsule = importer.getCapsule(this);
 
-        color = (ColorRGBA) capsule.readSavable(tagColor, null);
-        depthTest = capsule.readBoolean(tagDepthTest, defaultDepthTest);
-        lineWidth = capsule.readFloat(tagLineWidth, 0f);
-        tipOffset = (Vector3f) capsule.readSavable(tagTipOffset, null);
+        this.color = (ColorRGBA) capsule.readSavable(tagColor, null);
+        this.depthTest = capsule.readBoolean(tagDepthTest, defaultDepthTest);
+        this.lineWidth = capsule.readFloat(tagLineWidth, 0f);
+        this.tipOffset = (Vector3f) capsule.readSavable(tagTipOffset, null);
     }
 
     /**

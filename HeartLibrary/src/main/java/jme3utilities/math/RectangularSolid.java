@@ -436,9 +436,10 @@ public class RectangularSolid implements Savable {
     public void read(JmeImporter importer) throws IOException {
         InputCapsule capsule = importer.getCapsule(this);
 
-        localToWorld = (Quaternion) capsule.readSavable("localToWorld", null);
-        maxima = (Vector3f) capsule.readSavable("maxima", null);
-        minima = (Vector3f) capsule.readSavable("minima", null);
+        this.localToWorld
+                = (Quaternion) capsule.readSavable("localToWorld", null);
+        this.maxima = (Vector3f) capsule.readSavable("maxima", null);
+        this.minima = (Vector3f) capsule.readSavable("minima", null);
     }
 
     /**

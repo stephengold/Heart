@@ -346,13 +346,13 @@ public class AxesVisualizer extends SubtreeControl {
     @Override
     public void read(JmeImporter importer) throws IOException {
         super.read(importer);
-        assetManager = importer.getAssetManager();
+        this.assetManager = importer.getAssetManager();
         InputCapsule capsule = importer.getCapsule(this);
 
-        axisLength = capsule.readFloat(tagAxisLength, 1f);
-        depthTest = capsule.readBoolean(tagDepthTest, defaultDepthTest);
-        lineWidth = capsule.readFloat(tagLineWidth, 0f);
-        numAxes = capsule.readInt(tagNumAxes, MyVector3f.numAxes);
+        this.axisLength = capsule.readFloat(tagAxisLength, 1f);
+        this.depthTest = capsule.readBoolean(tagDepthTest, defaultDepthTest);
+        this.lineWidth = capsule.readFloat(tagLineWidth, 0f);
+        this.numAxes = capsule.readInt(tagNumAxes, MyVector3f.numAxes);
     }
 
     /**

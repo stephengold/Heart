@@ -489,7 +489,7 @@ public class SkeletonVisualizer extends SubtreeControl {
         super.read(importer);
         InputCapsule capsule = importer.getCapsule(this);
 
-        armature = (Armature) capsule.readSavable(tagArmature, null);
+        this.armature = (Armature) capsule.readSavable(tagArmature, null);
 
         int[] indices = capsule.readIntArray(tagCustomColorIndices, null);
         Savable[] savables = capsule.readSavableArray(tagCustomColors, null);
@@ -500,14 +500,17 @@ public class SkeletonVisualizer extends SubtreeControl {
             customColors.put(index, color);
         }
 
-        headColor = (ColorRGBA) capsule.readSavable(tagHeadColor,
-                defaultHeadColor);
-        headMaterial = (Material) capsule.readSavable(tagHeadMaterial, null);
-        lineMaterial = (Material) capsule.readSavable(tagLineMaterial, null);
-        effectiveLineWidth = capsule.readFloat(tagLineWidth, defaultLineWidth);
-        skeleton = (Skeleton) capsule.readSavable(tagSkeleton, null);
-        transformSpatial = (Spatial) capsule.readSavable(tagTransformSpatial,
-                null);
+        this.headColor =
+                (ColorRGBA) capsule.readSavable(tagHeadColor, defaultHeadColor);
+        this.headMaterial
+                = (Material) capsule.readSavable(tagHeadMaterial, null);
+        this.lineMaterial
+                = (Material) capsule.readSavable(tagLineMaterial, null);
+        this.effectiveLineWidth
+                = capsule.readFloat(tagLineWidth, defaultLineWidth);
+        this.skeleton = (Skeleton) capsule.readSavable(tagSkeleton, null);
+        this.transformSpatial
+                = (Spatial) capsule.readSavable(tagTransformSpatial, null);
     }
 
     /**

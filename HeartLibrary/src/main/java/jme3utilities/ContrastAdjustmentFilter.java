@@ -112,7 +112,7 @@ public class ContrastAdjustmentFilter extends Filter {
         if (material != null) {
             material.setFloat("Exponent", newExponent);
         }
-        exponent = newExponent;
+        this.exponent = newExponent;
     }
     // *************************************************************************
     // Filter methods
@@ -149,7 +149,7 @@ public class ContrastAdjustmentFilter extends Filter {
         Validate.positive(width, "width");
         Validate.positive(height, "height");
 
-        material = new Material(assetManager, assetPath);
+        this.material = new Material(assetManager, assetPath);
         material.setFloat("Exponent", exponent);
     }
 
@@ -163,7 +163,7 @@ public class ContrastAdjustmentFilter extends Filter {
     public void read(JmeImporter importer) throws IOException {
         super.read(importer);
         InputCapsule capsule = importer.getCapsule(this);
-        exponent = capsule.readFloat("exponent", 1f);
+        this.exponent = capsule.readFloat("exponent", 1f);
     }
 
     /**

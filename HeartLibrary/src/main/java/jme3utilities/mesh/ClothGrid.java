@@ -210,8 +210,8 @@ public class ClothGrid extends Mesh {
         super.read(importer);
         InputCapsule capsule = importer.getCapsule(this);
 
-        numXLines = capsule.readInt("xLines", 12);
-        numZLines = capsule.readInt("zLines", 12);
+        this.numXLines = capsule.readInt("xLines", 12);
+        this.numZLines = capsule.readInt("zLines", 12);
     }
 
     /**

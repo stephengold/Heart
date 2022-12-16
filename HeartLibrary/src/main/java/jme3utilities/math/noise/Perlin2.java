@@ -149,14 +149,14 @@ public class Perlin2 implements Noise2 {
         Validate.inRange(numGradients, "number of gradients",
                 2, Integer.MAX_VALUE);
 
-        gradients = new Vector2f[numGradients];
+        this.gradients = new Vector2f[numGradients];
         Random thetaGenerator = new Random(seed);
 
         for (int index = 0; index < numGradients; ++index) {
             float theta = thetaGenerator.nextFloat() * FastMath.TWO_PI;
             float x = FastMath.cos(theta);
             float y = FastMath.sin(theta);
-            gradients[index] = new Vector2f(x, y);
+            this.gradients[index] = new Vector2f(x, y);
         }
     }
 

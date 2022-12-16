@@ -94,7 +94,7 @@ abstract public class SubtreeControl extends SimpleControl {
         assert MySpatial.isOrphan(desiredSubtree);
         assert subtree == null;
 
-        subtree = desiredSubtree;
+        this.subtree = desiredSubtree;
     }
     // *************************************************************************
     // SimpleControl methods
@@ -123,7 +123,7 @@ abstract public class SubtreeControl extends SimpleControl {
     @Override
     public void cloneFields(Cloner cloner, Object original) {
         super.cloneFields(cloner, original);
-        subtree = cloner.clone(subtree);
+        this.subtree = cloner.clone(subtree);
     }
 
     /**
@@ -149,7 +149,7 @@ abstract public class SubtreeControl extends SimpleControl {
     public void read(JmeImporter importer) throws IOException {
         super.read(importer);
         InputCapsule ic = importer.getCapsule(this);
-        subtree = (Spatial) ic.readSavable("subtree", null);
+        this.subtree = (Spatial) ic.readSavable("subtree", null);
     }
 
     /**

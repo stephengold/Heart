@@ -231,6 +231,6 @@ public class PointVisualizer extends Geometry {
     @Override
     public void read(JmeImporter im) throws IOException {
         super.read(im);
-        assetManager = im.getAssetManager();
+        this.assetManager = im.getAssetManager();
     }
 }

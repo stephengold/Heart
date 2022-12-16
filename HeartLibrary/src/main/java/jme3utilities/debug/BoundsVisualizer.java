@@ -394,12 +394,15 @@ public class BoundsVisualizer extends SubtreeControl {
         super.read(importer);
         InputCapsule capsule = importer.getCapsule(this);
 
-        billboardAxis = capsule.readInt(tagBillboardAxis, MyVector3f.xAxis);
-        camera = (Camera) capsule.readSavable(tagCamera, null);
-        lineMaterial = (Material) capsule.readSavable(tagLineMaterial, null);
-        effectiveLineWidth = capsule.readFloat(tagLineWidth, 0f);
-        sphereType = capsule.readEnum(tagSphereType, SphereMeshes.class, null);
-        subject = (Spatial) capsule.readSavable(tagSubject, null);
+        this.billboardAxis
+                = capsule.readInt(tagBillboardAxis, MyVector3f.xAxis);
+        this.camera = (Camera) capsule.readSavable(tagCamera, null);
+        this.lineMaterial
+                = (Material) capsule.readSavable(tagLineMaterial, null);
+        this.effectiveLineWidth = capsule.readFloat(tagLineWidth, 0f);
+        this.sphereType
+                = capsule.readEnum(tagSphereType, SphereMeshes.class, null);
+        this.subject = (Spatial) capsule.readSavable(tagSubject, null);
     }
 
     /**

@@ -128,8 +128,8 @@ public class VectorXZ
      * @see #zero
      */
     public VectorXZ() {
-        x = 0f;
-        z = 0f;
+        this.x = 0f;
+        this.z = 0f;
     }
 
     /**
@@ -138,8 +138,8 @@ public class VectorXZ
      * @param azimuth radians east of north
      */
     public VectorXZ(float azimuth) {
-        x = FastMath.cos(azimuth);
-        z = FastMath.sin(azimuth);
+        this.x = FastMath.cos(azimuth);
+        this.z = FastMath.sin(azimuth);
     }
 
     /**
@@ -148,8 +148,8 @@ public class VectorXZ
      * @param vector3D the 3-D vector (not null, unaffected)
      */
     public VectorXZ(Vector3f vector3D) {
-        x = vector3D.x;
-        z = vector3D.z;
+        this.x = vector3D.x;
+        this.z = vector3D.z;
     }
 
     /**
@@ -1013,8 +1013,8 @@ public class VectorXZ
             throws IOException {
         InputCapsule capsule = importer.getCapsule(this);
 
-        x = capsule.readFloat("x", 0f);
-        z = capsule.readFloat("z", 0f);
+        this.x = capsule.readFloat("x", 0f);
+        this.z = capsule.readFloat("z", 0f);
     }
 
     /**

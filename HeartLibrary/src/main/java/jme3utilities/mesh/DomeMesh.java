@@ -336,17 +336,17 @@ public class DomeMesh extends Mesh {
 
         InputCapsule capsule = importer.getCapsule(this);
 
-        inwardFacing = capsule.readBoolean("inwardFacing", true);
-        quadrantSamples = capsule.readInt("quadrantSamples", 2);
-        rimSamples = capsule.readInt("rimSamples", 3);
-        segmentAngle = capsule.readFloat("segmentAngle", FastMath.TWO_PI);
-        topU = capsule.readFloat("topU", defaultTopU);
-        topV = capsule.readFloat("topV", defaultTopV);
-        uvScale = capsule.readFloat("uvScale", defaultUvScale);
-        verticalAngle = capsule.readFloat("verticalAngle", FastMath.HALF_PI);
-        /*
-         * Recompute the derived properties.
-         */
+        this.inwardFacing = capsule.readBoolean("inwardFacing", true);
+        this.quadrantSamples = capsule.readInt("quadrantSamples", 2);
+        this.rimSamples = capsule.readInt("rimSamples", 3);
+        this.segmentAngle = capsule.readFloat("segmentAngle", FastMath.TWO_PI);
+        this.topU = capsule.readFloat("topU", defaultTopU);
+        this.topV = capsule.readFloat("topV", defaultTopV);
+        this.uvScale = capsule.readFloat("uvScale", defaultUvScale);
+        this.verticalAngle
+                = capsule.readFloat("verticalAngle", FastMath.HALF_PI);
+
+        // Recompute the derived properties.
         updateDerivedProperties();
     }
 

@@ -244,9 +244,9 @@ public class Vector3i implements Savable {
     public void read(JmeImporter importer) throws IOException {
         InputCapsule capsule = importer.getCapsule(this);
 
-        x = capsule.readInt("x", 0);
-        y = capsule.readInt("y", 0);
-        z = capsule.readInt("z", 0);
+        this.x = capsule.readInt("x", 0);
+        this.y = capsule.readInt("y", 0);
+        this.z = capsule.readInt("z", 0);
     }
 
     /**
