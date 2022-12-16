@@ -338,8 +338,8 @@ public class MyVector3f { // TODO finalize the class
      * @return the unbiased sample covariance (either storeResult or a new
      * matrix, not null)
      */
-    public static Matrix3f covariance(Collection<Vector3f> collection,
-            Matrix3f storeResult) {
+    public static Matrix3f covariance(
+            Collection<Vector3f> collection, Matrix3f storeResult) {
         assert Validate.nonEmpty(collection, "collection");
         int numSamples = collection.size();
         assert numSamples > 1 : numSamples;
@@ -530,8 +530,8 @@ public class MyVector3f { // TODO finalize the class
      * @param tolerance2 for coincidence (in squared units, &ge;0)
      * @return true if they coincide, otherwise false
      */
-    public static boolean doCoincide(Vector3f point1, Vector3f point2,
-            double tolerance2) {
+    public static boolean doCoincide(
+            Vector3f point1, Vector3f point2, double tolerance2) {
         assert Validate.nonNull(point1, "first point");
         assert Validate.nonNull(point2, "second point");
         assert Validate.nonNegative(tolerance2, "tolerance");
@@ -868,8 +868,8 @@ public class MyVector3f { // TODO finalize the class
      * v0 or v1)
      * @return an interpolated vector (either storeResult or a new instance)
      */
-    public static Vector3f lerp(float t, Vector3f v0, Vector3f v1,
-            Vector3f storeResult) {
+    public static Vector3f lerp(
+            float t, Vector3f v0, Vector3f v1, Vector3f storeResult) {
         assert Validate.nonNull(v0, "v0");
         assert Validate.nonNull(v1, "v1");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
@@ -919,8 +919,8 @@ public class MyVector3f { // TODO finalize the class
      * false&rarr;near side
      * @return a new coordinate vector
      */
-    public static Vector3f lineMeetsSphere(Line line, Vector3f center,
-            float radius, boolean farSide) {
+    public static Vector3f lineMeetsSphere(
+            Line line, Vector3f center, float radius, boolean farSide) {
         assert Validate.nonNull(center, "center");
         assert Validate.nonNegative(radius, "radius");
 
@@ -974,8 +974,8 @@ public class MyVector3f { // TODO finalize the class
      * @param storeResult storage for the result (modified if not null)
      * @return a unit vector (either storeResult or a new instance)
      */
-    public static Vector3f localizeDirection(Vector3f worldDirection,
-            Spatial spatial, Vector3f storeResult) {
+    public static Vector3f localizeDirection(
+            Vector3f worldDirection, Spatial spatial, Vector3f storeResult) {
         assert Validate.nonZero(worldDirection, "direction");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
@@ -1005,8 +1005,8 @@ public class MyVector3f { // TODO finalize the class
      * @return the max magnitude for each axis (either storeResult or a new
      * vector)
      */
-    public static Vector3f maxAbs(Vector3f vector1, Vector3f vector2,
-            Vector3f storeResult) {
+    public static Vector3f maxAbs(
+            Vector3f vector1, Vector3f vector2, Vector3f storeResult) {
         assert Validate.nonNull(vector1, "vector1");
         assert Validate.nonNull(vector2, "vector2");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
@@ -1026,8 +1026,8 @@ public class MyVector3f { // TODO finalize the class
      * @param storeResult storage for the result (modified if not null)
      * @return the mean (either storeResult or a new instance, not null)
      */
-    public static Vector3f mean(Collection<Vector3f> collection,
-            Vector3f storeResult) {
+    public static Vector3f mean(
+            Collection<Vector3f> collection, Vector3f storeResult) {
         assert Validate.nonEmpty(collection, "collection");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
@@ -1052,8 +1052,8 @@ public class MyVector3f { // TODO finalize the class
      * vector1 or vector2)
      * @return a coordinate vector (either storeResult or a new instance)
      */
-    public static Vector3f midpoint(Vector3f vector1, Vector3f vector2,
-            Vector3f storeResult) {
+    public static Vector3f midpoint(
+            Vector3f vector1, Vector3f vector2, Vector3f storeResult) {
         assert Validate.finite(vector1, "first location");
         assert Validate.finite(vector2, "2nd location");
 
@@ -1173,8 +1173,8 @@ public class MyVector3f { // TODO finalize the class
      * @return a vector with the same direction as vector2 (either storeResult
      * or a new instance)
      */
-    public static Vector3f projection(Vector3f vector1, Vector3f vector2,
-            Vector3f storeResult) {
+    public static Vector3f projection(
+            Vector3f vector1, Vector3f vector2, Vector3f storeResult) {
         assert Validate.nonNull(vector1, "vector1");
         assert Validate.nonZero(vector2, "vector2");
 
@@ -1217,8 +1217,8 @@ public class MyVector3f { // TODO finalize the class
      * @return a vector perpendicular to vector2 (either storeResult or a new
      * instance)
      */
-    public static Vector3f rejection(Vector3f vector1, Vector3f vector2,
-            Vector3f storeResult) {
+    public static Vector3f rejection(
+            Vector3f vector1, Vector3f vector2, Vector3f storeResult) {
         assert Validate.nonNull(vector1, "vector1");
         assert Validate.nonZero(vector2, "vector2");
 

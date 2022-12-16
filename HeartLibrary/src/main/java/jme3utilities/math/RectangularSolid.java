@@ -195,8 +195,8 @@ public class RectangularSolid implements Savable {
     public RectangularSolid(FloatBuffer buffer, int startPosition,
             int endPosition) {
         Validate.nonNull(buffer, "buffer");
-        Validate.inRange(startPosition, "start position", 0,
-                endPosition - 2 * numAxes);
+        Validate.inRange(
+                startPosition, "start position", 0, endPosition - 2 * numAxes);
         Validate.inRange(endPosition, "end position",
                 startPosition + 2 * numAxes, buffer.capacity());
 

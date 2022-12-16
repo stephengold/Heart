@@ -397,8 +397,8 @@ final public class MyAsset {
      * @param radius size of the sphere (&gt;0)
      * @return a new instance
      */
-    public static Geometry createStarMapSphere(AssetManager assetManager,
-            String name, float radius) {
+    public static Geometry createStarMapSphere(
+            AssetManager assetManager, String name, float radius) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonEmpty(name, "star map name");
         Validate.positive(radius, "radius");
@@ -438,8 +438,8 @@ final public class MyAsset {
      * @param color (not null, unaffected)
      * @return a new instance
      */
-    public static Material createUnshadedMaterial(AssetManager assetManager,
-            ColorRGBA color) {
+    public static Material createUnshadedMaterial(
+            AssetManager assetManager, ColorRGBA color) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNull(color, "color");
 
@@ -457,8 +457,8 @@ final public class MyAsset {
      * @param assetPath to the texture asset (not null, not empty)
      * @return a new instance
      */
-    public static Material createUnshadedMaterial(AssetManager assetManager,
-            String assetPath) {
+    public static Material createUnshadedMaterial(
+            AssetManager assetManager, String assetPath) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonEmpty(assetPath, "path");
 
@@ -475,8 +475,8 @@ final public class MyAsset {
      * @param texture (not null, alias created)
      * @return a new instance
      */
-    public static Material createUnshadedMaterial(AssetManager assetManager,
-            Texture texture) {
+    public static Material createUnshadedMaterial(
+            AssetManager assetManager, Texture texture) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNull(texture, "texture");
 
@@ -494,8 +494,8 @@ final public class MyAsset {
      * @param color (not null, unaffected)
      * @return a new instance
      */
-    public static Material createWireframeMaterial(AssetManager assetManager,
-            ColorRGBA color) {
+    public static Material createWireframeMaterial(
+            AssetManager assetManager, ColorRGBA color) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNull(color, "color");
 
@@ -515,8 +515,8 @@ final public class MyAsset {
      * @param pointSize in pixels (&ge;0, whole numbers recommended)
      * @return a new instance
      */
-    public static Material createWireframeMaterial(AssetManager assetManager,
-            ColorRGBA color, float pointSize) {
+    public static Material createWireframeMaterial(
+            AssetManager assetManager, ColorRGBA color, float pointSize) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNull(color, "color");
         Validate.nonNegative(pointSize, "point size");
@@ -562,8 +562,8 @@ final public class MyAsset {
      * them
      * @return the texture that was loaded (not null)
      */
-    public static Texture loadTexture(AssetManager assetManager,
-            String assetPath, boolean generateMips) {
+    public static Texture loadTexture(
+            AssetManager assetManager, String assetPath, boolean generateMips) {
         Validate.nonEmpty(assetPath, "path");
 
         boolean flipY = false;

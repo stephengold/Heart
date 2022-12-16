@@ -165,8 +165,7 @@ public class NameGenerator implements Savable {
      * @throws IOException from importer
      */
     @Override
-    public void read(JmeImporter importer)
-            throws IOException {
+    public void read(JmeImporter importer) throws IOException {
         InputCapsule capsule = importer.getCapsule(this);
         String[] keys = capsule.readStringArray("keys", null);
         int[] values = capsule.readIntArray("values", null);
@@ -188,8 +187,7 @@ public class NameGenerator implements Savable {
      * @throws IOException from exporter
      */
     @Override
-    public void write(JmeExporter exporter)
-            throws IOException {
+    public void write(JmeExporter exporter) throws IOException {
         int size = nextSequenceNumbers.size();
         String[] keys = new String[size];
         int[] values = new int[size];
@@ -220,8 +218,8 @@ public class NameGenerator implements Savable {
         builder.append("{ ");
         for (Map.Entry<String, Integer> entry
                 : nextSequenceNumbers.entrySet()) {
-            String piece = String.format("%s:%s ",
-                    entry.getKey(), entry.getValue());
+            String piece = String.format(
+                    "%s:%s ", entry.getKey(), entry.getValue());
             builder.append(piece);
         }
         builder.append("}");

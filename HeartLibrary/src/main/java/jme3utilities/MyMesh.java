@@ -520,8 +520,8 @@ public class MyMesh { // TODO finalize the class
      * @param mesh the Mesh to modify (not null, mode=Triangles, not indexed)
      */
     public static void generateNormals(Mesh mesh) {
-        Validate.require(mesh.getMode() == Mesh.Mode.Triangles,
-                "be in Triangles mode");
+        Validate.require(
+                mesh.getMode() == Mesh.Mode.Triangles, "be in Triangles mode");
         Validate.require(!hasIndices(mesh), "not have an index buffer");
 
         generateFacetNormals(
@@ -544,8 +544,8 @@ public class MyMesh { // TODO finalize the class
      * @param positionBufferType the source buffer type (Position or
      * BindPosePosition)
      */
-    public static void generateSphereNormals(Mesh mesh,
-            VertexBuffer.Type normalBufferType,
+    public static void generateSphereNormals(
+            Mesh mesh, VertexBuffer.Type normalBufferType,
             VertexBuffer.Type positionBufferType) {
         Validate.nonNull(mesh, "mesh");
 
@@ -1402,8 +1402,8 @@ public class MyMesh { // TODO finalize the class
      * @param bufferType which buffer to read (not null)
      * @param transform the Transform to apply (not null, unaffected)
      */
-    public static void transformBuffer(Mesh mesh, VertexBuffer.Type bufferType,
-            Transform transform) {
+    public static void transformBuffer(
+            Mesh mesh, VertexBuffer.Type bufferType, Transform transform) {
         Validate.nonNull(bufferType, "buffer type");
         Validate.nonNull(transform, "transform");
 
@@ -1816,8 +1816,8 @@ public class MyMesh { // TODO finalize the class
      * @param storeResult storage for the result (modified if not null)
      * @return the texture coordinates (either storeResult or a new instance)
      */
-    public static Vector2f vertexVector2f(Mesh mesh,
-            VertexBuffer.Type bufferType, int vertexIndex,
+    public static Vector2f vertexVector2f(
+            Mesh mesh, VertexBuffer.Type bufferType, int vertexIndex,
             Vector2f storeResult) {
         assert Validate.require(bufferType == VertexBuffer.Type.TexCoord
                 || bufferType == VertexBuffer.Type.TexCoord2
@@ -1852,8 +1852,8 @@ public class MyMesh { // TODO finalize the class
      * @param storeResult storage for the result (modified if not null)
      * @return the data vector (either storeResult or a new instance)
      */
-    public static Vector3f vertexVector3f(Mesh mesh,
-            VertexBuffer.Type bufferType, int vertexIndex,
+    public static Vector3f vertexVector3f(
+            Mesh mesh, VertexBuffer.Type bufferType, int vertexIndex,
             Vector3f storeResult) {
         assert Validate.require(bufferType == VertexBuffer.Type.BindPoseNormal
                 || bufferType == VertexBuffer.Type.BindPosePosition
@@ -1884,8 +1884,8 @@ public class MyMesh { // TODO finalize the class
      * @param storeResult storage for the result (modified if not null)
      * @return the data vector (either storeResult or a new instance)
      */
-    public static Vector4f vertexVector4f(Mesh mesh,
-            VertexBuffer.Type bufferType, int vertexIndex,
+    public static Vector4f vertexVector4f(
+            Mesh mesh, VertexBuffer.Type bufferType, int vertexIndex,
             Vector4f storeResult) {
         assert Validate.require(bufferType == VertexBuffer.Type.BindPoseTangent
                 || bufferType == VertexBuffer.Type.BoneWeight
@@ -1917,8 +1917,8 @@ public class MyMesh { // TODO finalize the class
      * @return the location in world coordinates (either storeResult or a new
      * instance)
      */
-    public static Vector3f vertexWorldLocation(Geometry geometry,
-            int vertexIndex, Matrix4f[] skinningMatrices,
+    public static Vector3f vertexWorldLocation(
+            Geometry geometry, int vertexIndex, Matrix4f[] skinningMatrices,
             Vector3f storeResult) {
         Validate.nonNegative(vertexIndex, "vertex index");
         Validate.nonNull(skinningMatrices, "skinning matrices");

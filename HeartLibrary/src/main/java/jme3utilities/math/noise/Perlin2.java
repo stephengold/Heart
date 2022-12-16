@@ -78,8 +78,8 @@ public class Perlin2 implements Noise2 {
             String message = "period shouldn't be less than numGradients";
             throw new IllegalArgumentException(message);
         }
-        Validate.inRange(numGradients, "number of gradients",
-                2, Integer.MAX_VALUE);
+        Validate.inRange(
+                numGradients, "number of gradients", 2, Integer.MAX_VALUE);
 
         generateGradients(numGradients, gSeed);
         permutation = new Permutation(period, pSeed);
@@ -169,8 +169,8 @@ public class Perlin2 implements Noise2 {
      * @param sampleY the 2nd coordinate of the sample point
      * @return the weight of the grid point
      */
-    private float gradient(int gridX, int gridY, double sampleX,
-            double sampleY) {
+    private float gradient(
+            int gridX, int gridY, double sampleX, double sampleY) {
         /*
          * Compute a hashed index into the array of gradients.
          */
