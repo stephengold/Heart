@@ -87,10 +87,7 @@ public class NameGenerator implements Savable {
      */
     public static String getPrefix(String name) {
         int separatorIndex = name.indexOf(separator);
-        if (separatorIndex < 0) {
-            /*
-             * The name was not generated here.
-             */
+        if (separatorIndex < 0) { // The name was not generated here.
             return null;
         }
         String prefix = name.substring(0, separatorIndex);

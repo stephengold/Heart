@@ -138,9 +138,8 @@ public class TestVectorSet {
         string = vectorSet.toString();
         assert string != null;
         assert !string.isEmpty();
-        /*
-         * Add the first vector.
-         */
+
+        // Add the first vector.
         vectorSet.add(testData[0]);
         for (Vector3f v : testData) {
             if (v.equals(testData[0])) {
@@ -160,9 +159,8 @@ public class TestVectorSet {
         string = vectorSet.toString();
         assert string != null;
         assert !string.isEmpty();
-        /*
-         * Add the 2nd vector.
-         */
+
+        // Add the 2nd vector.
         vectorSet.add(testData[1]);
         for (Vector3f v : testData) {
             if (v.equals(testData[0]) || v.equals(testData[1])) {
@@ -182,9 +180,8 @@ public class TestVectorSet {
         string = vectorSet.toString();
         assert string != null;
         assert !string.isEmpty();
-        /*
-         * Add the 3rd vector.
-         */
+
+        // Add the 3rd vector.
         vectorSet.add(testData[2]);
         for (Vector3f v : testData) {
             if (v.equals(testData[0]) || v.equals(testData[1])) {
@@ -205,18 +202,16 @@ public class TestVectorSet {
         string = vectorSet.toString();
         assert string != null;
         assert !string.isEmpty();
-        /*
-         * Convert to arrays.
-         */
+
+        // Convert to arrays.
         float[] fa = vectorSet.toFloatArray();
         assert fa != null;
         assert fa.length == 2 * MyVector3f.numAxes;
         Vector3f[] va  = vectorSet.toVectorArray();
         assert va  != null;
         assert va.length == 2;
-        /*
-         * Add the 4th vector.
-         */
+
+        // Add the 4th vector.
         vectorSet.add(testData[3]);
         for (Vector3f v : testData) {
             if (v.equals(testData[0]) || v.equals(testData[1])) {
@@ -240,10 +235,7 @@ public class TestVectorSet {
         vectorSet.toFloatArray();
         vectorSet.toVectorArray();
 
-        if (toBuffer) {
-            /*
-             * Convert to a FloatBuffer.
-             */
+        if (toBuffer) { // Convert to a FloatBuffer.
             FloatBuffer buffer = vectorSet.toBuffer();
             assert buffer != null;
             assert buffer.limit() == 3 * MyVector3f.numAxes;

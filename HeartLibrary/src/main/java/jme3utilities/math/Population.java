@@ -334,9 +334,8 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
                 }
             }
         }
-        /*
-         * more bits than elements
-         */
+
+        // more bits than elements
         return numMerged;
     }
 

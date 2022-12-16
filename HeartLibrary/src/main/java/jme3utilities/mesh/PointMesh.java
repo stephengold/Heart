@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2019, Stephen Gold
+ Copyright (c) 2017-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -81,9 +81,8 @@ public class PointMesh extends Mesh {
         setBuffer(vPositions);
 
         setMode(Mode.Points);
-        /*
-         * Update the bounding volume.
-         */
+
+        // Update the bounding volume.
         updateBound();
     }
     // *************************************************************************
@@ -105,9 +104,8 @@ public class PointMesh extends Mesh {
 
         VertexBuffer positions = getBuffer(Type.Position);
         positions.updateData(fPositions);
-        /*
-         * Update the bounding volume.
-         */
+
+        // Update the bounding volume.
         updateBound();
     }
 }

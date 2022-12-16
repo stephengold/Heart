@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2020, Stephen Gold
+ Copyright (c) 2013-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -227,9 +227,7 @@ public class DomeMesh extends Mesh {
         float z = norm.z;
         float xzDistance = MyMath.hypotenuse(x, z);
         if (xzDistance == 0f) {
-            /*
-             * Avoid division by zero at the Y-axis.
-             */
+            // Avoid division by zero at the Y-axis.
             if (norm.y < 0f) {
                 return null;
             } else { // top
@@ -380,19 +378,15 @@ public class DomeMesh extends Mesh {
      * Rebuild this dome after a parameter change.
      */
     private void updateAll() {
-        /*
-         * Recompute the derived properties.
-         */
+        // Recompute the derived properties.
         updateDerivedProperties();
-        /*
-         * Update each buffer.
-         */
+
+        // Update each buffer.
         updateCoordinates();
         updateIndices();
         updateNormals();
-        /*
-         * Update the bounds of the mesh.
-         */
+
+        // Update the bounds of the mesh.
         updateBound();
     }
 
@@ -401,13 +395,10 @@ public class DomeMesh extends Mesh {
      * this dome.
      */
     private void updateCoordinates() {
-        /*
-         * Allocate an array to hold the mesh (XYZ) coordinates.
-         */
+        // Allocate an array to hold the mesh (XYZ) coordinates.
         Vector3f[] locationArray = new Vector3f[vertexCount];
-        /*
-         * Allocate an array to hold the texture (UV) coordinates.
-         */
+
+        // Allocate an array to hold the texture (UV) coordinates.
         Vector2f[] texCoordArray = new Vector2f[vertexCount];
         /*
          * Compute the non-polar vertices first. Vertices are arranged first
@@ -446,16 +437,14 @@ public class DomeMesh extends Mesh {
                 texCoordArray[vertexIndex] = uv;
             }
         }
-        /*
-         * The final vertex is at the top.
-         */
+
+        // The final vertex is at the top.
         int topIndex = vertexCount - 1;
         logger.log(Level.INFO, "coords {0}", topIndex);
         locationArray[topIndex] = new Vector3f(0f, 1f, 0f);
         texCoordArray[topIndex] = new Vector2f(topU, topV);
-        /*
-         * Allocate and assign buffers for locations and texture coordinates.
-         */
+
+        // Allocate and assign buffers for locations and texture coordinates.
         FloatBuffer locBuffer = BufferUtils.createFloatBuffer(locationArray);
         setBuffer(VertexBuffer.Type.Position, numAxes, locBuffer);
         FloatBuffer tcBuffer = BufferUtils.createFloatBuffer(texCoordArray);
@@ -494,9 +483,7 @@ public class DomeMesh extends Mesh {
      * Update the buffered indices of each triangle in this dome.
      */
     private void updateIndices() {
-        /*
-         * Allocate an array to hold the 3 vertex indices of each triangle.
-         */
+        // Allocate an array to hold the 3 vertex indices of each triangle.
         short[] indexArray = new short[vpt * triangleCount];
         /*
          * If the dome is incomplete, leave a gap between the last rim sample
@@ -526,9 +513,8 @@ public class DomeMesh extends Mesh {
                 int v1Index = parallel * rimSamples + nextMeridian;
                 int v2Index = nextParallel * rimSamples + meridian;
                 int v3Index = nextParallel * rimSamples + nextMeridian;
-                /*
-                 * Each quad consists of 2 triangles.
-                 */
+
+                // Each quad consists of 2 triangles.
                 int triIndex = 2 * v0Index;
                 int baseIndex = vpt * triIndex;
                 logger.log(Level.FINE, "index {0}", triIndex);
@@ -578,9 +564,8 @@ public class DomeMesh extends Mesh {
                 indexArray[baseIndex + 2] = (short) v1Index;
             }
         }
-        /*
-         * Allocate and assign a buffer for indices.
-         */
+
+        // Allocate and assign a buffer for indices.
         ShortBuffer indexBuffer = BufferUtils.createShortBuffer(indexArray);
         setBuffer(VertexBuffer.Type.Index, vpt, indexBuffer);
     }
@@ -591,9 +576,7 @@ public class DomeMesh extends Mesh {
      * Assumes that the coordinates have already been updated.
      */
     private void updateNormals() {
-        /*
-         * Allocate an array to hold the normal of each vertex.
-         */
+        // Allocate an array to hold the normal of each vertex.
         Vector3f[] normalArray = new Vector3f[vertexCount];
         /*
          * Compute the normal at each vertex, which is simply its local
@@ -614,9 +597,8 @@ public class DomeMesh extends Mesh {
             logger.log(Level.FINE, "normal {0}", vertexIndex);
             normalArray[vertexIndex] = normal;
         }
-        /*
-         * Allocate and assign a buffer for normals.
-         */
+
+        // Allocate and assign a buffer for normals.
         FloatBuffer normalBuffer = BufferUtils.createFloatBuffer(normalArray);
         setBuffer(VertexBuffer.Type.Normal, numAxes, normalBuffer);
     }

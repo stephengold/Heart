@@ -165,9 +165,8 @@ public class VectorSetUsingCollection implements VectorSet {
         assert numSamples > 1 : numSamples;
 
         Vector3f sampleMean = mean(null);
-        /*
-         * Accumulate sums in the upper triangle of the matrix.
-         */
+
+        // Accumulate sums in the upper triangle of the matrix.
         result.zero();
         float[] aboveMean = new float[numAxes];
         for (Vector3f v : set) {

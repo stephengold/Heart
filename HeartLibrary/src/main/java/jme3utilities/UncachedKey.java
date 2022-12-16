@@ -72,9 +72,7 @@ public class UncachedKey extends AssetKey<Object> {
      */
     @Override
     public Class<? extends AssetCache> getCacheType() {
-        /*
-         * Do not cache these assets.
-         */
+        // Do not cache these assets.
         return null;
     }
 }

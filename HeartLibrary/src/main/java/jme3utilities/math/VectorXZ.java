@@ -352,9 +352,8 @@ public class VectorXZ
         if (lengthSquared <= rSquared) {
             return this;
         }
-        /*
-         * Scale so that length <= r.
-         */
+
+        // Scale so that length <= r.
         float scale = (float) Math.sqrt(rSquared / lengthSquared);
         float clampedX = x * scale;
         float clampedZ = z * scale;
@@ -482,9 +481,8 @@ public class VectorXZ
             float sine = cross / lengthProduct;
             return sine;
         }
-        /*
-         * The goal and actual direction are more than 90 degrees apart.
-         */
+
+        // The goal and actual direction are more than 90 degrees apart.
         if (cross > 0f) {
             return 1f; // turn hard right
         } else {

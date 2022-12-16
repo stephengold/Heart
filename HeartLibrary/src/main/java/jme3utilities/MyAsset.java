@@ -342,9 +342,8 @@ final public class MyAsset {
             String name) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonEmpty(name, "star map name");
-        /*
-         * Load the cube map textures.
-         */
+
+        // Load the cube map textures.
         Texture[] faceTexture = new Texture[6];
         faceTexture[0] = loadFace(assetManager, name, "right1", false);
         faceTexture[1] = loadFace(assetManager, name, "left2", false);
@@ -352,29 +351,25 @@ final public class MyAsset {
         faceTexture[3] = loadFace(assetManager, name, "bottom4", false);
         faceTexture[4] = loadFace(assetManager, name, "front5", false);
         faceTexture[5] = loadFace(assetManager, name, "back6", false);
-        /*
-         * Create square faces.
-         */
+
+        // Create square faces.
         Node result = new Node("star map");
         result.setQueueBucket(RenderQueue.Bucket.Sky);
         for (int faceIndex = 0; faceIndex < 6; ++faceIndex) {
             String faceName = String.format("%s_face%d", name, faceIndex + 1);
             Geometry geometry = new Geometry(faceName, squareMesh);
             result.attachChild(geometry);
-            /*
-             * Create a material for the face and apply it.
-             */
+
+            // Create a material for the face and apply it.
             Texture texture = faceTexture[faceIndex];
             Material material = createUnshadedMaterial(assetManager, texture);
             geometry.setMaterial(material);
-            /*
-             * Set the location of the face.
-             */
+
+            // Set the location of the face.
             Vector3f offset = faceDirection[faceIndex].clone();
             geometry.setLocalTranslation(offset);
-            /*
-             * Orient the face.
-             */
+
+            // Orient the face.
             Vector3f u = uDirection[faceIndex];
             Vector3f v = vDirection[faceIndex];
             Vector3f w = faceDirection[faceIndex].negate();
@@ -407,18 +402,16 @@ final public class MyAsset {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonEmpty(name, "star map name");
         Validate.positive(radius, "radius");
-        /*
-         * Load the cube map textures for a viewer facing the south horizon.
-         */
+
+        // Load the cube map textures for a viewer facing the south horizon.
         Texture right = loadFace(assetManager, name, "right1", true); // west
         Texture left = loadFace(assetManager, name, "left2", true); // east
         Texture top = loadFace(assetManager, name, "top3", true); // up
         Texture bottom = loadFace(assetManager, name, "bottom4", true); // down
         Texture front = loadFace(assetManager, name, "front5", true); // south
         Texture back = loadFace(assetManager, name, "back6", true); // north
-        /*
-         * Create the sky sphere.
-         */
+
+        // Create the sky sphere.
         Spatial starMap = SkyFactory.createSky(assetManager, right, left, back,
                 front, top, bottom, scaleIdentity, radius);
 

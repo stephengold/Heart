@@ -1135,9 +1135,8 @@ public class MySpatial { // TODO finalize the class
                     || parentScale.z == 0f) {
                 throw new IllegalArgumentException("zero in scale");
             }
-            /*
-             * Undo the operations of Transform.combineWithParent()
-             */
+
+            // Undo the operations of Transform.combineWithParent()
             Quaternion parentInvRotation = parentRotation.inverse();
             if (parentInvRotation == null) {
                 throw new IllegalArgumentException("rotation not invertible");

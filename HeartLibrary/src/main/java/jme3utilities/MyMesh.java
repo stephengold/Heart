@@ -148,9 +148,8 @@ public class MyMesh { // TODO finalize the class
                 ++newN;
             }
         }
-        /*
-         * Create a clone of the input mesh with smaller vertex buffers.
-         */
+
+        // Create a clone of the input mesh with smaller vertex buffers.
         Mesh result = input.clone();
         for (VertexBuffer oldVertexBuffer : input.getBufferList()) {
             VertexBuffer.Type type = oldVertexBuffer.getBufferType();
@@ -165,9 +164,8 @@ public class MyMesh { // TODO finalize the class
             Buffer data = VertexBuffer.createBuffer(format, numCperE, newN);
             result.setBuffer(type, numCperE, format, data);
         }
-        /*
-         * Copy vertex data from the input mesh to the new mesh.
-         */
+
+        // Copy vertex data from the input mesh to the new mesh.
         for (int newI = 0; newI < newN; ++newI) {
             int oldI = new2old[newI];
             for (VertexBuffer newVB : result.getBufferList()) {
@@ -179,9 +177,8 @@ public class MyMesh { // TODO finalize the class
                 }
             }
         }
-        /*
-         * Create the index buffer and fill it with indices.
-         */
+
+        // Create the index buffer and fill it with indices.
         IndexBuffer ib = IndexBuffer.createIndexBuffer(newN, oldN);
         for (int oldI = 0; oldI < oldN; ++oldI) {
             int newI = old2new[oldI];
@@ -190,9 +187,8 @@ public class MyMesh { // TODO finalize the class
         VertexBuffer.Format ibFormat = ib.getFormat();
         Buffer ibData = ib.getBuffer();
         result.setBuffer(VertexBuffer.Type.Index, 1, ibFormat, ibData);
-        /*
-         * Flip each buffer.
-         */
+
+        // Flip each buffer.
         for (VertexBuffer outVB : result.getBufferList()) {
             Buffer data = outVB.getData();
             int endPosition = data.capacity();
@@ -384,9 +380,8 @@ public class MyMesh { // TODO finalize the class
         IndexBuffer indexList = in.getIndicesAsList();
         int outVertexCount = indexList.size();
         Mesh.Mode outMode = expandedMode(in);
-        /*
-         * Create a shallow clone of the input mesh.
-         */
+
+        // Create a shallow clone of the input mesh.
         Mesh out = in.clone();
         out.setMode(outMode);
 
@@ -406,9 +401,8 @@ public class MyMesh { // TODO finalize the class
                 out.setBuffer(type, numCperE, format, data);
             }
         }
-        /*
-         * Copy all vertex data to the new Mesh.
-         */
+
+        // Copy all vertex data to the new Mesh.
         for (int outVI = 0; outVI < outVertexCount; ++outVI) {
             int inVI = indexList.get(outVI);
             for (VertexBuffer outVB : out.getBufferList()) {
@@ -420,9 +414,8 @@ public class MyMesh { // TODO finalize the class
                 }
             }
         }
-        /*
-         * Flip each buffer.
-         */
+
+        // Flip each buffer.
         for (VertexBuffer outVB : out.getBufferList()) {
             Buffer data = outVB.getData();
             int endPosition = data.capacity();
@@ -832,9 +825,8 @@ public class MyMesh { // TODO finalize the class
             int numCperE = vb1.getNumComponents();
             int numCperE2 = vb2.getNumComponents();
             assert numCperE2 == numCperE : "numComponents differ in " + type;
-            /*
-             * If the buffer formats differ, use the larger one for output.
-             */
+
+            // If the buffer formats differ, use the larger one for output.
             VertexBuffer.Format format1 = vb1.getFormat();
             if (format1 == null) {
                 format1 = VertexBuffer.Format.Float; // to avoid an NPE
@@ -849,9 +841,8 @@ public class MyMesh { // TODO finalize the class
             } else {
                 outFormat = format2;
             }
-            /*
-             * Create the vertex buffer for output.
-             */
+
+            // Create the vertex buffer for output.
             numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
             Buffer outBuffer = VertexBuffer.createBuffer(outFormat, numCperE,
                     outNumVertices);
@@ -1172,9 +1163,8 @@ public class MyMesh { // TODO finalize the class
                 ++numDistinctPositions;
             }
         }
-        /*
-         * Initialize the normal sum for each distinct position.
-         */
+
+        // Initialize the normal sum for each distinct position.
         Vector3f[] normalSum = new Vector3f[numDistinctPositions];
         for (int dpid = 0; dpid < numDistinctPositions; ++dpid) {
             normalSum[dpid] = new Vector3f(0f, 0f, 0f);
@@ -1196,15 +1186,13 @@ public class MyMesh { // TODO finalize the class
             MyBuffer.get(normalBuffer, start, tmpNormal);
             normalSum[dpid].addLocal(tmpNormal);
         }
-        /*
-         * Re-normalize the normal sum for each distinct position.
-         */
+
+        // Re-normalize the normal sum for each distinct position.
         for (Vector3f vector3f : normalSum) {
             MyVector3f.normalizeLocal(vector3f);
         }
-        /*
-         * Write new normals to the buffer.
-         */
+
+        // Write new normals to the buffer.
         for (int vertexIndex = 0; vertexIndex < numVertices; ++vertexIndex) {
             int start = vertexIndex * numAxes;
             MyBuffer.get(positionBuffer, start, tmpPosition);
@@ -1530,9 +1518,8 @@ public class MyMesh { // TODO finalize the class
             int boneIndex = MyBuffer.readIndex(boneIndexBuffer);
             result[wIndex] = boneIndex;
         }
-        /*
-         * Fill with -1s.
-         */
+
+        // Fill with -1s.
         int length = result.length;
         for (int wIndex = maxWeightsPerVert; wIndex < length; ++wIndex) {
             result[wIndex] = -1;
@@ -1572,9 +1559,8 @@ public class MyMesh { // TODO finalize the class
         for (int wIndex = 0; wIndex < maxWeightsPerVert; ++wIndex) {
             result[wIndex] = weightBuffer.get(startIndex + wIndex);
         }
-        /*
-         * Fill with 0s.
-         */
+
+        // Fill with 0s.
         int length = result.length;
         for (int wIndex = maxWeightsPerVert; wIndex < length; ++wIndex) {
             result[wIndex] = 0f;

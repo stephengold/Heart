@@ -484,9 +484,8 @@ public class BoundsVisualizer extends SubtreeControl {
         Node subtreeNode = (Node) getSubtree();
         Geometry lines = (Geometry) subtreeNode.getChild(linesChildPosition);
         WireBox boxMesh = (WireBox) lines.getMesh();
-        /*
-         * Update the mesh extents.
-         */
+
+        // Update the mesh extents.
         float xExtent = boundingBox.getXExtent();
         float yExtent = boundingBox.getYExtent();
         float zExtent = boundingBox.getZExtent();
@@ -494,9 +493,8 @@ public class BoundsVisualizer extends SubtreeControl {
         assert yExtent >= 0f : yExtent;
         assert zExtent >= 0f : zExtent;
         boxMesh.updatePositions(xExtent, yExtent, zExtent);
-        /*
-         * Update the transform.
-         */
+
+        // Update the transform.
         Transform transform = new Transform();
         Vector3f center = boundingBox.getCenter();
         transform.setTranslation(center);
@@ -525,9 +523,8 @@ public class BoundsVisualizer extends SubtreeControl {
         BoundingSphere boundingSphere = (BoundingSphere) bound;
         Node subtreeNode = (Node) getSubtree();
         Geometry lines = (Geometry) subtreeNode.getChild(linesChildPosition);
-        /*
-         * Update the transform.
-         */
+
+        // Update the transform.
         Transform transform = new Transform();
         Vector3f center = boundingSphere.getCenter();
         transform.setTranslation(center);

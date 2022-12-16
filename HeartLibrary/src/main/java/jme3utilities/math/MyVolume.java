@@ -65,6 +65,7 @@ public class MyVolume { // TODO finalize the class
      * A private constructor to inhibit instantiation of this class.
      */
     private MyVolume() {
+        // do nothing
     }
     // *************************************************************************
     // new methods exposed

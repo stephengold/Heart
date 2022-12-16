@@ -166,9 +166,7 @@ abstract public class SubtreeControl extends SimpleControl {
         Node node = (Node) spatial;
         if (enabled && !newState) {
             if (node != null && subtree != null) {
-                /*
-                 * Detach the subtree from the controlled node.
-                 */
+                // Detach the subtree from the controlled node.
                 int position = node.detachChild(subtree);
                 assert position != -1 : position;
             }
@@ -182,9 +180,8 @@ abstract public class SubtreeControl extends SimpleControl {
                 throw new IllegalStateException(
                         "subtree should be initialized");
             }
-            /*
-             * Attach the subtree to the controlled Node.
-             */
+
+            // Attach the subtree to the controlled Node.
             node.attachChild(subtree);
         }
 

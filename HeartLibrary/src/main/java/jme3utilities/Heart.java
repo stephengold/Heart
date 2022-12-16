@@ -318,9 +318,8 @@ public class Heart { // TODO finalize the class
             } catch (IOException exception) {
                 throw new RuntimeException(exception);
             }
-            /*
-             * New file handlers default to XML format.
-             */
+
+            // New file handlers default to XML format.
             SimpleFormatter formatter = new SimpleFormatter();
             fileHandler.setFormatter(formatter);
 
@@ -353,9 +352,8 @@ public class Heart { // TODO finalize the class
                 return (FilterPostProcessor) processor;
             }
         }
-        /*
-         * Add a new filter post-processor.
-         */
+
+        // Add a new filter post-processor.
         FilterPostProcessor fpp = new FilterPostProcessor(assetManager);
         if (numSamples > 0) {
             fpp.setNumSamples(numSamples);
@@ -372,9 +370,7 @@ public class Heart { // TODO finalize the class
      * @return the pre-existing instance
      */
     public static KeyInput getKeyInput(InputManager inputManager) {
-        /*
-         * Use reflection to access the "keys" field of the input manager.
-         */
+        // Use reflection to access the "keys" field of the input manager.
         Field keyInputField;
         try {
             keyInputField = InputManager.class.getDeclaredField("keys");
@@ -470,9 +466,8 @@ public class Heart { // TODO finalize the class
             String... arguments) {
         boolean showSettingsDialog = false;
         Level loggingLevel = Level.WARNING;
-        /*
-         * Process any command-line arguments.
-         */
+
+        // Process any command-line arguments.
         for (String arg : arguments) {
             switch (arg) {
                 case "-s":
@@ -591,9 +586,7 @@ public class Heart { // TODO finalize the class
 
         File textureFile = new File(filePath);
         try {
-            /*
-             * If a parent directory/folder is needed, create it.
-             */
+            // If a parent directory/folder is needed, create it.
             File parentDirectory = textureFile.getParentFile();
             if (parentDirectory != null && !parentDirectory.exists()) {
                 boolean success = parentDirectory.mkdirs();

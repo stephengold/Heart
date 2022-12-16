@@ -255,9 +255,8 @@ public class NamedAppState extends AbstractAppState {
                 }
             }
             super.setEnabled(newSetting);
-            /*
-             * Exert influence over other AppStates.
-             */
+
+            // Exert influence over other AppStates.
             for (AppState as : influenceList) {
                 as.setEnabled(newSetting);
             }

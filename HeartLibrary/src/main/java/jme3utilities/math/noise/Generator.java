@@ -294,16 +294,10 @@ public class Generator extends Random {
             firstIndex = bitset.nextClearBit(0);
             lastIndex = bitset.previousClearBit(maxIndex);
         }
-        if (firstIndex == -1) {
-            /*
-             * No possibilities.
-             */
+        if (firstIndex == -1) { // No possibilities.
             assert lastIndex == -1 : lastIndex;
             return -1;
-        } else if (firstIndex == lastIndex) {
-            /*
-             * Single possibility.
-             */
+        } else if (firstIndex == lastIndex) { // Single possibility.
             return firstIndex;
         }
 

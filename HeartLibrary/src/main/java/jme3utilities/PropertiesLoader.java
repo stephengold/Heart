@@ -68,13 +68,10 @@ public class PropertiesLoader implements AssetLoader {
      */
     @Override
     public Object load(AssetInfo assetInfo) throws IOException {
-        /*
-         * Open the asset stream.
-         */
+        // Open the asset stream.
         InputStream stream = assetInfo.openStream();
-        /*
-         * Parse the stream's data.
-         */
+
+        // Parse the stream's data.
         Properties props = new Properties();
         props.loadFromXML(stream);
 

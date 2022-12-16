@@ -68,13 +68,10 @@ public class StringLoader implements AssetLoader {
      */
     @Override
     public Object load(AssetInfo assetInfo) {
-        /*
-         * Open the asset as a stream.
-         */
+        // Open the asset as a stream.
         InputStream stream = assetInfo.openStream();
-        /*
-         * Parse the stream's data into one long text string.
-         */
+
+        // Parse the stream's data into one long text string.
         Charset charset = StandardCharsets.ISO_8859_1; // LATIN-1
         String name = charset.name();
         String text;

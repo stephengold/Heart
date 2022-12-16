@@ -148,9 +148,7 @@ public class MyString { // TODO finalize the class
                 }
             }
             if (numInstances > 1) {
-                /*
-                 * Append a distinguishing suffix to each duplicate.
-                 */
+                // Append a distinguishing suffix to each duplicate.
                 int numElements = list.size();
                 int nextSuffix = 1;
                 for (int index = 0; index < numElements; ++index) {
@@ -405,10 +403,7 @@ public class MyString { // TODO finalize the class
         StringBuilder result = new StringBuilder(80);
         for (Object element : array) {
             if (element != null) {
-                if (result.length() > 0) {
-                    /*
-                     * Append a space as a separator.
-                     */
+                if (result.length() > 0) { // Append a space as a separator.
                     result.append(' ');
                 }
                 result.append(element);

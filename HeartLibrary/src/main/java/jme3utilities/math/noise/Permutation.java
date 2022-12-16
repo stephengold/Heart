@@ -64,9 +64,8 @@ public class Permutation {
      */
     public Permutation(int length, long seed) {
         Validate.inRange(length, "length", 2, Integer.MAX_VALUE);
-        /*
-         * Initialize the permutation to identity.
-         */
+
+        // Initialize the permutation (to identity).
         indices = new int[length];
         for (int i = 0; i < length; ++i) {
             indices[i] = i;

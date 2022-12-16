@@ -181,29 +181,25 @@ public class Octasphere extends Mesh {
         Validate.positive(radius, "radius");
 
         this.radius = radius;
-        /*
-         * Add the 6 vertices of a regular octahedron with radius=1.
-         */
+
+        // Add the 6 vertices of a regular octahedron with radius=1.
         addVertex(octaLocations[0], 0f); //   [0]
         addVertex(octaLocations[1], 0.5f); // [1]
         addVertex(octaLocations[2], null); // [2]
         addVertex(octaLocations[3], null); // [3]
         addVertex(octaLocations[4], 0.5f); // [4]
         addVertex(octaLocations[5], 0.5f); // [5]
-        /*
-         * Add duplicate vertices with U=1.
-         */
+
+        // Add duplicate vertices with U=1.
         addVertex(octaLocations[0], 1f); // [6]
         addVertex(octaLocations[4], 1f); // [7]
         addVertex(octaLocations[5], 1f); // [8]
-        /*
-         * Add triplicate polar vertices with U=0.
-         */
+
+        // Add triplicate polar vertices with U=0.
         addVertex(octaLocations[4], 0f); // [9]
         addVertex(octaLocations[5], 0f); // [10]
-        /*
-         * Add the 8 triangular faces of a regular octahedron.
-         */
+
+        // Add the 8 triangular faces of a regular octahedron.
         List<Integer> faces = new ArrayList<>(24);
         for (int octaIndex : octaIndices) {
             faces.add(octaIndex);
@@ -357,9 +353,7 @@ public class Octasphere extends Mesh {
      * @return the midpoint index (&ge;0)
      */
     private int midpointIndex(int p1, int p2) {
-        /*
-         * Check whether the midpoint has already been assigned an index.
-         */
+        // Check whether the midpoint has already been assigned an index.
         boolean firstIsSmaller = p1 < p2;
         long smallerIndex = firstIsSmaller ? p1 : p2;
         long greaterIndex = firstIsSmaller ? p2 : p1;
@@ -368,9 +362,8 @@ public class Octasphere extends Mesh {
         if (cachedIndex != null) {
             return cachedIndex;
         }
-        /*
-         * The midpoint vertex is not in the cache: calculate its location.
-         */
+
+        // The midpoint vertex is not in the cache: calculate its location.
         Vector3f loc1 = locations.get(p1);
         Vector3f loc2 = locations.get(p2);
         Vector3f middleLocation = MyVector3f.midpoint(loc1, loc2, null);
@@ -382,13 +375,11 @@ public class Octasphere extends Mesh {
         } else {
             assert uOverrides.get(p1) == null || uOverrides.get(p2) == null;
         }
-        /*
-         * addVertex() scales the midpoint location to the sphere's surface.
-         */
+
+        // addVertex() scales the midpoint location to the sphere's surface.
         int newIndex = addVertex(middleLocation, middleUOverride);
-        /*
-         * Add the new vertex to the midpoint cache.
-         */
+
+        // Add the new vertex to the midpoint cache.
         midpointCache.put(key, newIndex);
 
         return newIndex;

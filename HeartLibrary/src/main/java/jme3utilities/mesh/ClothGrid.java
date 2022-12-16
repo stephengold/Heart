@@ -104,9 +104,8 @@ public class ClothGrid extends Mesh {
         FloatBuffer posBuffer
                 = BufferUtils.createFloatBuffer(numAxes * numVertices);
         setBuffer(VertexBuffer.Type.Position, numAxes, posBuffer);
-        /*
-         * Write the vertex locations:
-         */
+
+        // Write the vertex locations:
         for (int xIndex = 0; xIndex < zLines; ++xIndex) {
             float x = (2 * xIndex - zLines + 1) * lineSpacing / 2f;
             for (int zIndex = 0; zIndex < xLines; ++zIndex) {
@@ -120,9 +119,8 @@ public class ClothGrid extends Mesh {
         FloatBuffer normBuffer
                 = BufferUtils.createFloatBuffer(numAxes * numVertices);
         setBuffer(VertexBuffer.Type.Normal, numAxes, normBuffer);
-        /*
-         * Write the normals:
-         */
+
+        // Write the normals:
         for (int vertexIndex = 0; vertexIndex < numVertices; ++vertexIndex) {
             normBuffer.put(0f).put(1f).put(0f);
         }
@@ -136,9 +134,8 @@ public class ClothGrid extends Mesh {
         VertexBuffer.Format ibFormat = indexBuffer.getFormat();
         Buffer ibData = indexBuffer.getBuffer();
         setBuffer(VertexBuffer.Type.Index, 1, ibFormat, ibData);
-        /*
-         * Write vertex indices for triangles:
-         */
+
+        // Write vertex indices for triangles:
         for (int zIndex = 0; zIndex < xLines - 1; ++zIndex) {
             for (int xIndex = 0; xIndex < zLines - 1; ++xIndex) {
                 // 4 vertices and 2 triangles forming a square

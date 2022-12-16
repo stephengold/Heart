@@ -96,21 +96,17 @@ public class Perlin2 implements Noise2 {
      */
     @Override
     public float sample(float sampleX, float sampleY) {
-        /*
-         * Determine which square contains the point.
-         */
+        // Determine which square contains the point.
         int squareX = (int) Math.floor(sampleX);
         int squareY = (int) Math.floor(sampleY);
-        /*
-         * Compute the noise contribution of each corner.
-         */
+
+        // Calculate the noise contribution of each corner.
         float n00 = gradient(squareX, squareY, sampleX, sampleY);
         float n01 = gradient(squareX, squareY + 1, sampleX, sampleY);
         float n10 = gradient(squareX + 1, squareY, sampleX, sampleY);
         float n11 = gradient(squareX + 1, squareY + 1, sampleX, sampleY);
-        /*
-         * 2-D interpolation between the 4 corners of the square.
-         */
+
+        // 2-D interpolation between the 4 corners of the square.
         float fadeX = MyMath.fade(sampleX - squareX);
         float nx0 = MyMath.lerp(fadeX, n00, n10);
         float nx1 = MyMath.lerp(fadeX, n01, n11);
@@ -132,9 +128,8 @@ public class Perlin2 implements Noise2 {
     @Override
     public float sampleNormalized(float sampleX, float sampleY) {
         float noise = sample(sampleX, sampleY);
-        /*
-         * Scale to fill the range [-1, 1].
-         */
+
+        // Scale to fill the range [-1, 1].
         noise /= MyMath.rootHalf;
 
         assert noise >= -1f : noise;
@@ -181,9 +176,8 @@ public class Perlin2 implements Noise2 {
          */
         int index = permutation.permute(gridX + permutation.permute(gridY));
         index = MyMath.modulo(index, gradients.length);
-        /*
-         * Dot the gradient at the grid point with the sample's offset.
-         */
+
+        // Dot the gradient at the grid point with the sample's offset.
         Vector2f gradient = gradients[index];
         float offsetX = (float) (sampleX - gridX);
         float offsetY = (float) (sampleY - gridY);

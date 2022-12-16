@@ -152,15 +152,13 @@ public class Icosphere extends Mesh {
         Validate.positive(radius, "radius");
 
         this.radius = radius;
-        /*
-         *  Add the 12 vertices of a regular icosahedron of radius=1.
-         */
+
+        //  Add the 12 vertices of a regular icosahedron of radius=1.
         for (Vector3f icoLocation : icoLocations) {
             addVertex(icoLocation);
         }
-        /*
-         *  Add the 20 triangular faces of a regular icosahedron.
-         */
+
+        // Add the 20 triangular faces of a regular icosahedron.
         List<Integer> faces = new ArrayList<>(60);
         for (int icoIndex : icoIndices) {
             faces.add(icoIndex);
@@ -292,9 +290,7 @@ public class Icosphere extends Mesh {
      * @return the midpoint index (&ge;0)
      */
     private int midpointIndex(int p1, int p2) {
-        /*
-         * Check whether the midpoint has already been assigned an index.
-         */
+        // Check whether the midpoint has already been assigned an index.
         boolean firstIsSmaller = p1 < p2;
         long smallerIndex = firstIsSmaller ? p1 : p2;
         long greaterIndex = firstIsSmaller ? p2 : p1;
@@ -303,19 +299,16 @@ public class Icosphere extends Mesh {
         if (cachedIndex != null) {
             return cachedIndex;
         }
-        /*
-         * The midpoint vertex is not in the cache: calculate its location.
-         */
+
+        // The midpoint vertex is not in the cache: calculate its location.
         Vector3f loc1 = locations.get(p1);
         Vector3f loc2 = locations.get(p2);
         Vector3f middleLocation = MyVector3f.midpoint(loc1, loc2, null);
-        /*
-         * addVertex() adjusts the location to the sphere.
-         */
+
+        // addVertex() adjusts the location to the sphere.
         int newIndex = addVertex(middleLocation);
-        /*
-         * Add the new vertex to the midpoint cache.
-         */
+
+        // Add the new vertex to the midpoint cache.
         midpointCache.put(key, newIndex);
 
         return newIndex;

@@ -287,9 +287,8 @@ public class MyVector3f { // TODO finalize the class
      */
     public static void cardinalizeLocal(Vector3f input) {
         normalizeLocal(input);
-        /*
-         * Generate each of the 6 cardinal directions.
-         */
+
+        // Generate each of the 6 cardinal directions.
         Vector3f bestCardinalDirection = new Vector3f();
         float bestDot = -2f;
         for (Vector3f x : cardinalAxes) {
@@ -347,9 +346,8 @@ public class MyVector3f { // TODO finalize the class
         Matrix3f result = (storeResult == null) ? new Matrix3f() : storeResult;
 
         Vector3f sampleMean = mean(collection, null);
-        /*
-         * Accumulate sums in the upper triangle of the matrix.
-         */
+
+        // Accumulate sums in the upper triangle of the matrix.
         result.zero();
         float[] aboveMean = new float[3];
         for (Vector3f location : collection) {
@@ -364,9 +362,8 @@ public class MyVector3f { // TODO finalize the class
                 }
             }
         }
-        /*
-         * Multiply sums by 1/(N-1) and fill in the lower triangle.
-         */
+
+        // Multiply sums by 1/(N-1) and fill in the lower triangle.
         float nMinus1 = numSamples - 1;
         for (int rowIndex = 0; rowIndex < 3; ++rowIndex) {
             for (int columnIndex = rowIndex; columnIndex < 3; ++columnIndex) {
@@ -490,9 +487,7 @@ public class MyVector3f { // TODO finalize the class
      */
     public static double distanceSquaredToSegment(Vector3f location,
             Vector3f segStart, Vector3f segEnd, Vector3f storeClosest) {
-        /*
-         * Calculate direction of the segment.
-         */
+        // Calculate direction of the segment.
         Vector3f segOffset = segEnd.subtract(segStart);
         /*
          * If the segment has zero length, return the squared distance
@@ -513,9 +508,8 @@ public class MyVector3f { // TODO finalize the class
         Vector3f locOffset = location.subtract(segStart);
         double dot = dot(locOffset, segOffset);
         double t = dot / segLengthSquared;
-        /*
-         * Calculate offset of the closest point on the segment.
-         */
+
+        // Calculate offset of the closest point on the segment.
         float tPrime = FastMath.saturate((float) t);
         Vector3f closestOffset = segOffset.mult(tPrime);
         if (storeClosest != null) {
@@ -956,14 +950,11 @@ public class MyVector3f { // TODO finalize the class
             result.addLocal(lineOrigin);
 
         } else {
-            /*
-             * Calculate the line's closest approach to the center.
-             */
+            // Calculate the line's closest approach to the center.
             Vector3f projection = direction.mult(dDotV);
             result = offset.subtract(projection);
-            /*
-             * Scale and translate to the surface of the sphere.
-             */
+
+            // Scale and translate to the surface of the sphere.
             float factor = radius / result.length();
             assert factor <= 1f : factor;
             result.multLocal(factor);
@@ -1324,10 +1315,7 @@ public class MyVector3f { // TODO finalize the class
 
         Vector3f fl = last.subtract(first);
         double normSquaredFL = lengthSquared(fl);
-        if (normSquaredFL <= tolerance2) {
-            /*
-             * The line is ill-defined.
-             */
+        if (normSquaredFL <= tolerance2) { // The line is ill-defined.
             return true;
         }
         /*
@@ -1335,9 +1323,8 @@ public class MyVector3f { // TODO finalize the class
          */
         for (Vector3f middle : testLocations) {
             assert middle != null;
-            /*
-             * Calculate the offset of the middle location from the first.
-             */
+
+            // Calculate the offset of the middle location from the first.
             Vector3f fm = middle.subtract(first);
             /*
              * Project FM onto FL.
@@ -1382,9 +1369,8 @@ public class MyVector3f { // TODO finalize the class
         assert end1 != null;
         assert start2 != null;
         assert end2 != null;
-        /*
-         * Test the partner of ext against both ends of the other segment.
-         */
+
+        // Test the partner of ext against both ends of the other segment.
         Vector3f otherStart;
         Vector3f otherEnd;
         if (ext == start1 || ext == end1) {
@@ -1416,9 +1402,8 @@ public class MyVector3f { // TODO finalize the class
         if (sdPartner >= sdOtherEnd) {
             return otherEnd.clone();
         }
-        /*
-         * Segments are disjoint.
-         */
+
+        // Segments are disjoint.
         return null;
     }
 
@@ -1453,9 +1438,8 @@ public class MyVector3f { // TODO finalize the class
         if (doCoincide(first, last, tolerance2)) {
             return start2.clone();
         }
-        /*
-         * Test the middle 2 locations.
-         */
+
+        // Test the middle 2 locations.
         boolean success = locations.remove(first);
         assert success;
         success = locations.remove(last);
@@ -1468,9 +1452,8 @@ public class MyVector3f { // TODO finalize the class
              */
             return null;
         }
-        /*
-         * All 4 locations are collinear.
-         */
+
+        // All 4 locations are collinear.
         Vector3f result
                 = intersectCollinearSegments(first, start2, end2, start1, end1);
 

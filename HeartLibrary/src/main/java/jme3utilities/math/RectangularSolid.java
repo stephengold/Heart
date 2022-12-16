@@ -122,16 +122,14 @@ public class RectangularSolid implements Savable {
         Validate.nonEmpty(sampleLocations, "sample locations");
         int numSamples = sampleLocations.size();
         assert numSamples > 1 : numSamples;
-        /*
-         * Orient local axes based on the eigenvectors of the covariance matrix.
-         */
+
+        // Orient local axes based on the eigenvectors of the covariance matrix.
         Matrix3f covariance = MyVector3f.covariance(sampleLocations, null);
         Eigen3f eigen = new Eigen3f(covariance);
         Vector3f[] basis = eigen.getEigenVectors();
         localToWorld.fromAxes(basis);
-        /*
-         * Calculate the min and max for each local axis.
-         */
+
+        // Calculate the min and max for each local axis.
         maxima.set(Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY,
                 Float.NEGATIVE_INFINITY);
         minima.set(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY,
@@ -158,16 +156,14 @@ public class RectangularSolid implements Savable {
         assert (numFloats % numAxes == 0) : numFloats;
         int numVectors = numFloats / numAxes;
         assert numVectors >= 2 : numVectors;
-        /*
-         * Orient local axes based on the eigenvectors of the covariance matrix.
-         */
+
+        // Orient local axes based on the eigenvectors of the covariance matrix.
         Matrix3f covariance = MyArray.covarianceVector3f(inputArray, null);
         Eigen3f eigen = new Eigen3f(covariance);
         Vector3f[] basis = eigen.getEigenVectors();
         localToWorld.fromAxes(basis);
-        /*
-         * Calculate the min and max for each local axis.
-         */
+
+        // Calculate the min and max for each local axis.
         maxima.set(Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY,
                 Float.NEGATIVE_INFINITY);
         minima.set(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY,
@@ -208,16 +204,14 @@ public class RectangularSolid implements Savable {
         assert (numFloats % numAxes == 0) : numFloats;
         int numVectors = numFloats / numAxes;
         assert numVectors >= 2 : numVectors;
-        /*
-         * Orient local axes based on the eigenvectors of the covariance matrix.
-         */
+
+        // Orient local axes based on the eigenvectors of the covariance matrix.
         Matrix3f covariance = MyBuffer.covariance(buffer, 0, numFloats, null);
         Eigen3f eigen = new Eigen3f(covariance);
         Vector3f[] basis = eigen.getEigenVectors();
         localToWorld.fromAxes(basis);
-        /*
-         * Calculate the min and max for each local axis.
-         */
+
+        // Calculate the min and max for each local axis.
         maxima.set(Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY,
                 Float.NEGATIVE_INFINITY);
         minima.set(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY,
@@ -317,9 +311,7 @@ public class RectangularSolid implements Savable {
      * @return a new list of new vectors
      */
     public List<Vector3f> listCorners() {
-        /*
-         * Enumerate the local coordinates of the 8 corners of the box.
-         */
+        // Enumerate the local coordinates of the 8 corners of the box.
         List<Vector3f> cornerLocations = new ArrayList<>(8);
         cornerLocations.add(new Vector3f(maxima.x, maxima.y, maxima.z));
         cornerLocations.add(new Vector3f(maxima.x, maxima.y, minima.z));
@@ -329,9 +321,8 @@ public class RectangularSolid implements Savable {
         cornerLocations.add(new Vector3f(minima.x, maxima.y, minima.z));
         cornerLocations.add(new Vector3f(minima.x, minima.y, maxima.z));
         cornerLocations.add(new Vector3f(minima.x, minima.y, minima.z));
-        /*
-         * Transform local coordinates to world coordinates.
-         */
+
+        // Transform local coordinates to world coordinates.
         for (Vector3f location : cornerLocations) {
             localToWorld.mult(location, location);
         }

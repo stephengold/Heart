@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2020, Stephen Gold
+ Copyright (c) 2014-2022, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -106,9 +106,8 @@ public class LoopMesh extends Mesh {
                 3, Integer.MAX_VALUE);
 
         setMode(Mode.LineLoop);
-        /*
-         * Allocate, fill, and flip the position buffer.
-         */
+
+        // Allocate, fill, and flip the position buffer.
         FloatBuffer positionBuffer = BufferUtils.createFloatBuffer(cornerArray);
 
         setBuffer(VertexBuffer.Type.Position, numAxes, positionBuffer);

@@ -636,17 +636,13 @@ public class MySkeleton { // TODO finalize the class
         }
         nameField.setAccessible(true);
 
-        try {
-            /*
-             * Rename the bone.
-             */
+        try { // Rename the bone.
             nameField.set(bone, newName);
         } catch (IllegalAccessException exception) {
             return false;
         }
-        /*
-         * Find the attachments node, if any.
-         */
+
+        // Find the attachments node, if any.
         Node attachmentsNode = getAttachments(bone);
         if (attachmentsNode != null) {
             // Also rename the attachments node.

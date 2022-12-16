@@ -371,9 +371,7 @@ final public class MyCamera {
         Validate.nonZero(direction, "new direction");
 
         if (direction.x == 0f && direction.z == 0f) {
-            /*
-             * When looking straight up or down, use +X as the up direction.
-             */
+            // When looking straight up or down, use +X as the up direction.
             camera.lookAtDirection(direction, unitX);
         } else {
             camera.lookAtDirection(direction, unitY);
@@ -390,9 +388,8 @@ final public class MyCamera {
      */
     public static Line mouseLine(Camera camera, InputManager inputManager) {
         Vector2f screenXY = inputManager.getCursorPosition();
-        /*
-         * Convert screen coordinates to world coordinates.
-         */
+
+        // Convert screen coordinates to world coordinates.
         Vector3f vertex
                 = camera.getWorldCoordinates(screenXY, nearZ); // TODO garbage
         Vector3f far = camera.getWorldCoordinates(screenXY, farZ);
@@ -413,9 +410,8 @@ final public class MyCamera {
      */
     public static Ray mouseRay(Camera camera, InputManager inputManager) {
         Vector2f screenXY = inputManager.getCursorPosition();
-        /*
-         * Convert screen coordinates to world coordinates.
-         */
+
+        // Convert screen coordinates to world coordinates.
         Vector3f vertex
                 = camera.getWorldCoordinates(screenXY, nearZ); // TODO garbage
         Vector3f far = camera.getWorldCoordinates(screenXY, farZ);

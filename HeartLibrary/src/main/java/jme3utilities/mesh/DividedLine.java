@@ -86,9 +86,8 @@ public class DividedLine extends Mesh {
         int numFloats = numAxes * numVertices;
         FloatBuffer posBuffer = BufferUtils.createFloatBuffer(numFloats);
         setBuffer(VertexBuffer.Type.Position, numAxes, posBuffer);
-        /*
-         * Write the locations of all vertices:
-         */
+
+        // Write the locations of all vertices:
         Vector3f temp = new Vector3f();
         for (int vIndex = 0; vIndex < numVertices; ++vIndex) {
             float t = vIndex / (float) numSegments;
@@ -104,9 +103,8 @@ public class DividedLine extends Mesh {
         VertexBuffer.Format ibFormat = indexBuffer.getFormat();
         Buffer ibData = indexBuffer.getBuffer();
         setBuffer(VertexBuffer.Type.Index, 1, ibFormat, ibData);
-        /*
-         * Write the vertex indices of all edges:
-         */
+
+        // Write the vertex indices of all edges:
         for (int edgeIndex = 0; edgeIndex < numSegments; ++edgeIndex) {
             indexBuffer.put(edgeIndex);
             indexBuffer.put(edgeIndex + 1);
