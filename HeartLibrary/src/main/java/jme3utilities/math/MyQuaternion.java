@@ -322,7 +322,7 @@ public class MyQuaternion { // TODO finalize the class
         float qz = q.getZ();
         float qw = q.getW();
 
-        if (qx == 0f && qy == 0f && qz == 0f && qw != 0f) {
+        if (qx == 0f && qy == 0f && qz == 0f && qw != 0f && !Float.isNaN(qw)) {
             return true;
         } else {
             return false;
