@@ -487,22 +487,22 @@ public class Describer implements Cloneable {
     public String describeControls(Spatial spatial) {
         Validate.nonNull(spatial, "spatial");
         StringBuilder result = new StringBuilder(50);
-        /*
-         * List enabled controls first.
-         */
-        String enabled = describeControls(spatial, true);
-        result.append(enabled);
-        /*
-         * List disabled controls last, in parentheses.
-         */
-        String disabled = describeControls(spatial, false);
-        if (enabled.length() > 0 && disabled.length() > 0) {
-            result.append(' ');
-        }
-        if (disabled.length() > 0) {
-            result.append('(');
-            result.append(disabled);
-            result.append(')');
+
+        int count = spatial.getNumControls();
+        boolean addSeparators = false;
+        for (int controlI = 0; controlI < count; ++controlI) {
+            if (addSeparators) {
+                result.append(listSeparator);
+            } else {
+                addSeparators = true;
+            }
+
+            Control control = spatial.getControl(controlI);
+            String description = describe(control);
+            boolean isEnabled = isControlEnabled(control);
+            if (isEnabled) {
+                result.append(description);
+            }
         }
 
         return result.toString();
@@ -1143,7 +1143,7 @@ public class Describer implements Cloneable {
 
     /**
      * Generate a textual description for a subset of the controls added to the
-     * specified Spatial.
+     * specified Spatial. TODO delete
      *
      * @param spatial the Spatial to describe (not null, unaffected)
      * @param enabled if true, describe only the enabled controls; if false,
