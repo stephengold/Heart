@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2022, Stephen Gold
+ Copyright (c) 2018-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -288,6 +288,35 @@ public class RectangularSolid implements Savable {
     // new methods exposed
 
     /**
+     * Return the center location in local coordinates.
+     *
+     * @param storeResult storage for the result (modified if not null)
+     * @return a location vector in local coordinates (either storeResult or a
+     * new vector, not null)
+     */
+    public Vector3f centerLocal(Vector3f storeResult) {
+        Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
+        maxima.add(minima, result);
+        result.divideLocal(2f);
+
+        return result;
+    }
+
+    /**
+     * Return the center location in world coordinates.
+     *
+     * @param storeResult storage for the result (modified if not null)
+     * @return a location vector in world coordinates (either storeResult or a
+     * new vector, not null)
+     */
+    public Vector3f centerWorld(Vector3f storeResult) {
+        Vector3f result = centerLocal(storeResult);
+        localToWorld.mult(result, result);
+
+        return result;
+    }
+
+    /**
      * Determine the half extents of the solid.
      *
      * @param storeResult storage for the result (modified if not null)
@@ -349,6 +378,9 @@ public class RectangularSolid implements Savable {
 
     /**
      * Rotate from local coordinates to world coordinates.
+     * <p>
+     * It is safe for {@code local} and {@code storeResult} to be the same
+     * object.
      *
      * @param local the input coordinates (not null, unaffected)
      * @param storeResult storage for the result (modified if not null)
