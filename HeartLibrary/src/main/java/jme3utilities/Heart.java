@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -341,8 +341,8 @@ public class Heart { // TODO finalize the class
      * 0 for the FPP default
      * @return not null
      */
-    public static FilterPostProcessor getFpp(ViewPort viewPort,
-            AssetManager assetManager, int numSamples) {
+    public static FilterPostProcessor getFpp(
+            ViewPort viewPort, AssetManager assetManager, int numSamples) {
         Validate.nonNull(viewPort, "viewport");
         Validate.nonNull(assetManager, "asset manager");
         Validate.inRange(numSamples, "number of samples", 0, 16);
@@ -432,8 +432,8 @@ public class Heart { // TODO finalize the class
      * @param namePrefix (not null)
      * @return a new list of entry names
      */
-    public static List<String> listZipEntries(String zipPath,
-            String namePrefix) {
+    public static List<String> listZipEntries(
+            String zipPath, String namePrefix) {
         Validate.nonEmpty(zipPath, "zip path");
         Validate.nonNull(namePrefix, "name prefix");
 
@@ -462,8 +462,8 @@ public class Heart { // TODO finalize the class
      * @param application the application to modify (not null)
      * @param arguments array of command-line arguments (not null)
      */
-    public static void parseAppArgs(SimpleApplication application,
-            String... arguments) {
+    public static void parseAppArgs(
+            SimpleApplication application, String... arguments) {
         boolean showSettingsDialog = false;
         Level loggingLevel = Level.WARNING;
 

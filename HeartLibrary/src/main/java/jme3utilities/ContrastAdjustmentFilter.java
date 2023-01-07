@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2022, Stephen Gold
+ Copyright (c) 2017-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -140,9 +140,9 @@ public class ContrastAdjustmentFilter extends Filter {
      * @param height the height of the filter (in pixels, &gt;0)
      */
     @Override
-    protected void initFilter(AssetManager assetManager,
-            RenderManager renderManager, ViewPort viewPort, int width,
-            int height) {
+    protected void initFilter(
+            AssetManager assetManager, RenderManager renderManager,
+            ViewPort viewPort, int width, int height) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNull(renderManager, "render manager");
         Validate.nonNull(viewPort, "view port");

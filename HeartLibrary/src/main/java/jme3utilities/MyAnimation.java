@@ -85,8 +85,8 @@ public class MyAnimation { // TODO finalize the class
      * @param trackType the subclass of Track to search for
      * @return the number of tracks found (&ge;0)
      */
-    public static <T extends Track> int countTracks(Animation animation,
-            Class<T> trackType) {
+    public static <T extends Track> int countTracks(
+            Animation animation, Class<T> trackType) {
         int result = 0;
 
         if (animation != null) {
@@ -110,8 +110,8 @@ public class MyAnimation { // TODO finalize the class
      * unaffected)
      * @return textual description (not null, not empty)
      */
-    public static String describe(Animation animation,
-            AnimControl animControl) {
+    public static String describe(
+            Animation animation, AnimControl animControl) {
         Validate.nonNull(animControl, "anim control");
 
         String name = animation.getName();
@@ -299,8 +299,8 @@ public class MyAnimation { // TODO finalize the class
      * @param jointIndex which Joint (&ge;0)
      * @return the pre-existing instance, or null if none found
      */
-    public static TransformTrack findJointTrack(AnimClip clip,
-            int jointIndex) {
+    public static TransformTrack findJointTrack(
+            AnimClip clip, int jointIndex) {
         Validate.nonNegative(jointIndex, "joint index");
 
         AnimTrack<?>[] tracks = clip.getTracks();
@@ -409,8 +409,8 @@ public class MyAnimation { // TODO finalize the class
      * @param time the track time (in seconds, &ge;0)
      * @return the keyframe's index (&ge;0)
      */
-    public static int findPreviousKeyframeIndex(TransformTrack track,
-            float time) {
+    public static int findPreviousKeyframeIndex(
+            TransformTrack track, float time) {
         Validate.nonNegative(time, "time");
 
         float[] times = track.getTimes();
@@ -429,8 +429,8 @@ public class MyAnimation { // TODO finalize the class
      * @param spatial which Spatial to find (unaffected)
      * @return the pre-existing instance, or null if not found
      */
-    public static SpatialTrack findSpatialTrack(AnimControl animControl,
-            Animation animation, Spatial spatial) {
+    public static SpatialTrack findSpatialTrack(
+            AnimControl animControl, Animation animation, Spatial spatial) {
         Track[] tracks = animation.getTracks();
         for (Track track : tracks) {
             if (track instanceof SpatialTrack) {
@@ -477,8 +477,8 @@ public class MyAnimation { // TODO finalize the class
      * @param jointIndex which Joint (&ge;0)
      * @return the pre-existing instance, or null if not found
      */
-    public static TransformTrack findTransformTrack(AnimClip clip,
-            int jointIndex) {
+    public static TransformTrack findTransformTrack(
+            AnimClip clip, int jointIndex) {
         TransformTrack result = null;
 
         AnimTrack<?>[] animTracks = clip.getTracks();
@@ -749,8 +749,8 @@ public class MyAnimation { // TODO finalize the class
         if (scales == null) {
             result = new BoneTrack(boneIndex, times, translations, rotations);
         } else {
-            result = new BoneTrack(boneIndex, times, translations, rotations,
-                    scales);
+            result = new BoneTrack(
+                    boneIndex, times, translations, rotations, scales);
         }
 
         return result;
@@ -764,8 +764,8 @@ public class MyAnimation { // TODO finalize the class
      * @param transform the desired Transform (not null, unaffected)
      * @return a new BoneTrack
      */
-    public static BoneTrack newBoneTrack(int boneIndex, float[] frameTimes,
-            Transform transform) {
+    public static BoneTrack newBoneTrack(
+            int boneIndex, float[] frameTimes, Transform transform) {
         Validate.nonNegative(boneIndex, "bone index");
 
         int numFrames = frameTimes.length;
@@ -781,8 +781,8 @@ public class MyAnimation { // TODO finalize the class
             rotations[frameIndex] = clonedTransform.getRotation(); // alias
             scales[frameIndex] = clonedTransform.getScale(); // alias
         }
-        BoneTrack result = newBoneTrack(boneIndex, times, translations,
-                rotations, scales);
+        BoneTrack result = newBoneTrack(
+                boneIndex, times, translations, rotations, scales);
 
         return result;
     }

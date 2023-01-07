@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2022, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -185,8 +185,8 @@ final public class MyAsset {
      * correction (&gt;0)
      * @return a new instance
      */
-    public static Material createDebugMaterial(AssetManager assetManager,
-            float gamma) {
+    public static Material createDebugMaterial(
+            AssetManager assetManager, float gamma) {
         Validate.positive(gamma, "gamma");
         Validate.nonNull(assetManager, "asset manager");
 

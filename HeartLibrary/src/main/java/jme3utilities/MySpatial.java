@@ -100,8 +100,8 @@ public class MySpatial { // TODO finalize the class
      * @param controlType the subclass of Control to search for
      * @return the count (&ge;0)
      */
-    public static <T extends Control> int countControls(Spatial subtree,
-            Class<T> controlType) {
+    public static <T extends Control> int countControls(
+            Spatial subtree, Class<T> controlType) {
         int result = 0;
 
         if (subtree != null) {
@@ -163,8 +163,8 @@ public class MySpatial { // TODO finalize the class
      * @param spatialType the subclass of Spatial to search for
      * @return the count (&ge;0)
      */
-    public static <T extends Spatial> int countSpatials(Spatial subtree,
-            Class<T> spatialType) {
+    public static <T extends Spatial> int countSpatials(
+            Spatial subtree, Class<T> spatialType) {
         int result = 0;
 
         if (subtree != null
@@ -341,8 +341,8 @@ public class MySpatial { // TODO finalize the class
      * @return a pre-existing instance, or null if none found
      */
     @SuppressWarnings("unchecked")
-    public static <T extends Spatial> T findChild(Node node,
-            Class<T> spatialType) {
+    public static <T extends Spatial> T findChild(
+            Node node, Class<T> spatialType) {
         for (Spatial child : node.getChildren()) {
             if (spatialType.isAssignableFrom(child.getClass())) {
                 return (T) child;
@@ -451,8 +451,8 @@ public class MySpatial { // TODO finalize the class
      * @return a pre-existing instance, or null if none found
      */
     @SuppressWarnings("unchecked")
-    public static <T extends Light> T findLight(Spatial spatial,
-            Class<T> lightClass) {
+    public static <T extends Light> T findLight(
+            Spatial spatial, Class<T> lightClass) {
         Validate.nonNull(lightClass, "light class");
 
         for (Light light : spatial.getLocalLightList()) {
@@ -494,8 +494,8 @@ public class MySpatial { // TODO finalize the class
      * @return a new array consisting of array[0]: the lowest coordinate for
      * each axis and array[1]: the highest coordinate for each axis
      */
-    public static Vector3f[] findMinMaxCoords(Geometry geometry,
-            boolean useWorld) {
+    public static Vector3f[] findMinMaxCoords(
+            Geometry geometry, boolean useWorld) {
         Vector3f max = new Vector3f(Float.NEGATIVE_INFINITY,
                 Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY);
         Vector3f min = new Vector3f(Float.POSITIVE_INFINITY,
@@ -594,8 +594,8 @@ public class MySpatial { // TODO finalize the class
      * @param parameterName the name of the M-P override (not null, not empty)
      * @return a pre-existing instance, or null if not found
      */
-    public static MatParamOverride findOverride(Spatial spatial,
-            String parameterName) {
+    public static MatParamOverride findOverride(
+            Spatial spatial, String parameterName) {
         Validate.nonNull(spatial, "spatial");
         Validate.nonEmpty(parameterName, "parameterName");
 
@@ -689,8 +689,8 @@ public class MySpatial { // TODO finalize the class
      * @param storeResult storage for results (added to if not null)
      * @return an expanded List (either storeResult or a new List)
      */
-    public static List<Mesh> listAnimatedMeshes(Spatial subtree,
-            List<Mesh> storeResult) {
+    public static List<Mesh> listAnimatedMeshes(
+            Spatial subtree, List<Mesh> storeResult) {
         List<Mesh> result = (storeResult == null)
                 ? new ArrayList<>(10) : storeResult;
 
@@ -721,8 +721,8 @@ public class MySpatial { // TODO finalize the class
      * @param addResults storage for results (added to if not null)
      * @return an expanded List (either addResults or a new List)
      */
-    public static List<Spatial> listAnimationSpatials(Spatial subtree,
-            List<Spatial> addResults) {
+    public static List<Spatial> listAnimationSpatials(
+            Spatial subtree, List<Spatial> addResults) {
         List<Spatial> results;
         if (addResults == null) {
             results = new ArrayList<>(4);
@@ -763,8 +763,8 @@ public class MySpatial { // TODO finalize the class
      * @return an expanded List (either storeResult or a new List)
      */
     @SuppressWarnings("unchecked")
-    public static <T extends Control> List<T> listControls(Spatial subtree,
-            Class<T> controlType, List<T> storeResult) {
+    public static <T extends Control> List<T> listControls(
+            Spatial subtree, Class<T> controlType, List<T> storeResult) {
         List<T> result = (storeResult == null)
                 ? new ArrayList<>(4) : storeResult;
 
@@ -811,8 +811,8 @@ public class MySpatial { // TODO finalize the class
      * @return an expanded List (either storeResult or a new List)
      * @see MyMesh#listMeshes(com.jme3.scene.Spatial, java.util.List)
      */
-    public static List<Material> listMaterials(Spatial subtree,
-            List<Material> storeResult) {
+    public static List<Material> listMaterials(
+            Spatial subtree, List<Material> storeResult) {
         List<Material> result = (storeResult == null)
                 ? new ArrayList<>(10) : storeResult;
 
@@ -843,8 +843,8 @@ public class MySpatial { // TODO finalize the class
      * @param addResult storage for results (added to if not null)
      * @return an expanded List (either storeResult or a new List)
      */
-    public static List<Geometry> listMaterialUsers(Spatial subtree,
-            Material material, List<Geometry> addResult) {
+    public static List<Geometry> listMaterialUsers(
+            Spatial subtree, Material material, List<Geometry> addResult) {
         List<Geometry> result
                 = (addResult == null) ? new ArrayList<>(50) : addResult;
 
@@ -874,8 +874,8 @@ public class MySpatial { // TODO finalize the class
      * @param addResult storage for results (added to if not null)
      * @return an expanded List (either storeResult or a new List)
      */
-    public static List<Geometry> listMeshUsers(Spatial subtree, Mesh mesh,
-            List<Geometry> addResult) {
+    public static List<Geometry> listMeshUsers(
+            Spatial subtree, Mesh mesh, List<Geometry> addResult) {
         List<Geometry> result
                 = (addResult == null) ? new ArrayList<>(50) : addResult;
 
@@ -923,8 +923,8 @@ public class MySpatial { // TODO finalize the class
      * @return an expanded List (either storeResult or a new List)
      */
     @SuppressWarnings("unchecked")
-    public static <T extends Spatial> List<T> listSpatials(Spatial subtree,
-            Class<T> spatialType, List<T> addResult) {
+    public static <T extends Spatial> List<T> listSpatials(
+            Spatial subtree, Class<T> spatialType, List<T> addResult) {
         Validate.nonNull(subtree, "subtree");
         List<T> result = (addResult == null) ? new ArrayList<>(50) : addResult;
 
@@ -1244,8 +1244,8 @@ public class MySpatial { // TODO finalize the class
      * @return the location vector (in world coordinates, either storeResult or
      * a new instance)
      */
-    public static Vector3f worldLocation(Spatial spatial,
-            Vector3f storeResult) {
+    public static Vector3f worldLocation(
+            Spatial spatial, Vector3f storeResult) {
         Validate.nonNull(spatial, "spatial");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
@@ -1267,8 +1267,8 @@ public class MySpatial { // TODO finalize the class
      * @return the orientation (in world coordinates, either storeResult or a
      * new instance)
      */
-    public static Quaternion worldOrientation(Spatial spatial,
-            Quaternion storeResult) {
+    public static Quaternion worldOrientation(
+            Spatial spatial, Quaternion storeResult) {
         Validate.nonNull(spatial, "spatial");
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
@@ -1313,8 +1313,8 @@ public class MySpatial { // TODO finalize the class
      * @return the Transform (in world coordinates, either storeResult or a new
      * instance)
      */
-    public static Transform worldTransform(Spatial spatial,
-            Transform storeResult) {
+    public static Transform worldTransform(
+            Spatial spatial, Transform storeResult) {
         Validate.nonNull(spatial, "spatial");
         Transform result
                 = (storeResult == null) ? new Transform() : storeResult;
@@ -1338,8 +1338,8 @@ public class MySpatial { // TODO finalize the class
      * @param collection (not null, modified)
      * @param parameter (not null, unaffected)
      */
-    private static void addTexture(Collection<Texture> collection,
-            MatParam parameter) {
+    private static void addTexture(
+            Collection<Texture> collection, MatParam parameter) {
         VarType varType = parameter.getVarType();
         switch (varType) {
             case Texture2D:
@@ -1367,8 +1367,8 @@ public class MySpatial { // TODO finalize the class
      * @param testInstance the instance to search for (not null, unaffected)
      * @return true if found, otherwise false
      */
-    private static boolean containsInstance(Iterable<Texture> iterable,
-            Texture testInstance) {
+    private static boolean containsInstance(
+            Iterable<Texture> iterable, Texture testInstance) {
         for (Texture item : iterable) {
             if (item == testInstance) {
                 return true;

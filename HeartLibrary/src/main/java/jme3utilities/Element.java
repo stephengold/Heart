@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2022, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -81,8 +81,8 @@ public class Element { // TODO finalize the class
         Validate.inRange(targetIndex, "target index", 0, targetCount - 1);
         Validate.require(source.getBufferType() == target.getBufferType(),
                 "same buffer type");
-        Validate.require(source.getFormat() == target.getFormat(),
-                "same format");
+        Validate.require(
+                source.getFormat() == target.getFormat(), "same format");
         Validate.require(source.getNumComponents() == target.getNumComponents(),
                 "same number of components");
 
@@ -158,8 +158,8 @@ public class Element { // TODO finalize the class
      * @param index2 the index of the 2nd element (&ge;0)
      * @return true if all data are equal, otherwise false
      */
-    public static boolean equals(VertexBuffer vertexBuffer, int index1,
-            int index2) {
+    public static boolean equals(
+            VertexBuffer vertexBuffer, int index1, int index2) {
         int numElements = vertexBuffer.getNumElements();
         Validate.inRange(index1, "index1", 0, numElements - 1);
         Validate.inRange(index2, "index2", 0, numElements - 1);
