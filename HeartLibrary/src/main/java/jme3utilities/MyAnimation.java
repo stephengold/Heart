@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2022, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -778,8 +778,8 @@ public class MyAnimation { // TODO finalize the class
         for (int frameIndex = 0; frameIndex < numFrames; ++frameIndex) {
             times[frameIndex] = frameTimes[frameIndex];
             translations[frameIndex] = clonedTransform.getTranslation();
-            rotations[frameIndex] = clonedTransform.getRotation();
-            scales[frameIndex] = clonedTransform.getScale();
+            rotations[frameIndex] = clonedTransform.getRotation(); // alias
+            scales[frameIndex] = clonedTransform.getScale(); // alias
         }
         BoneTrack result = newBoneTrack(boneIndex, times, translations,
                 rotations, scales);

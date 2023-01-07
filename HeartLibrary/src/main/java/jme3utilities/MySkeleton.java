@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -667,13 +667,13 @@ public class MySkeleton { // TODO finalize the class
             bone.setUserControl(true);
         }
 
-        Vector3f translation = transform.getTranslation();
+        Vector3f translation = transform.getTranslation(); // alias
         bone.setLocalTranslation(translation);
 
-        Quaternion rotation = transform.getRotation();
+        Quaternion rotation = transform.getRotation(); // alias
         bone.setLocalRotation(rotation);
 
-        Vector3f scale = transform.getScale();
+        Vector3f scale = transform.getScale(); // alias
         bone.setLocalScale(scale);
 
         if (!hadControl) {

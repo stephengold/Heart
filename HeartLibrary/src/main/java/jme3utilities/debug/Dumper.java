@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -423,7 +423,7 @@ public class Dumper implements Cloneable {
         String description = describer.describeControls(spatial);
         addDescription(description);
 
-        LightList lights = spatial.getLocalLightList();
+        LightList lights = spatial.getLocalLightList(); // alias
         description = describer.describe(lights);
         addDescription(description);
 

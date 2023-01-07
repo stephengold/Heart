@@ -165,7 +165,7 @@ public class Describer implements Cloneable {
         StringBuilder builder = new StringBuilder(80);
 
         builder.append("loc[");
-        Vector3f location = aabb.getCenter();
+        Vector3f location = aabb.getCenter(); // alias
         String desc = MyVector3f.describe(location);
         builder.append(desc);
         builder.append(']');
@@ -191,7 +191,7 @@ public class Describer implements Cloneable {
         String desc = MyString.describe(radius);
         builder.append(desc);
         builder.append(' ');
-        Vector3f location = sphere.getCenter();
+        Vector3f location = sphere.getCenter(); // alias
         desc = MyVector3f.describe(location);
         builder.append(desc);
 
@@ -646,7 +646,8 @@ public class Describer implements Cloneable {
         result.append("mpo[");
         boolean addSeparators = false;
 
-        List<MatParamOverride> list = spatial.getLocalMatParamOverrides();
+        List<MatParamOverride> list
+                = spatial.getLocalMatParamOverrides(); // alias
         for (MatParamOverride override : list) {
             if (addSeparators) {
                 result.append(listSeparator);

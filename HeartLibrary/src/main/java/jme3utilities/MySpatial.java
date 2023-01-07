@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -600,7 +600,8 @@ public class MySpatial { // TODO finalize the class
         Validate.nonEmpty(parameterName, "parameterName");
 
         MatParamOverride result = null;
-        Collection<MatParamOverride> list = spatial.getLocalMatParamOverrides();
+        Collection<MatParamOverride> list
+                = spatial.getLocalMatParamOverrides(); // alias
         for (MatParamOverride override : list) {
             String name = override.getName();
             if (parameterName.equals(name)) {
@@ -970,7 +971,7 @@ public class MySpatial { // TODO finalize the class
         Iterable<Spatial> spatials = listSpatials(subtree);
         for (Spatial spatial : spatials) {
             Iterable<MatParamOverride> mpos
-                    = spatial.getLocalMatParamOverrides();
+                    = spatial.getLocalMatParamOverrides(); // alias
             for (MatParamOverride mpo : mpos) {
                 addTexture(result, mpo);
             }
@@ -1089,7 +1090,7 @@ public class MySpatial { // TODO finalize the class
         if (parent == null) {
             spatial.setLocalScale(worldScale);
         } else {
-            Vector3f parentScale = parent.getWorldScale();
+            Vector3f parentScale = parent.getWorldScale(); // alias
             if (parentScale.x == 0f
                     || parentScale.y == 0f
                     || parentScale.z == 0f) {
@@ -1123,14 +1124,15 @@ public class MySpatial { // TODO finalize the class
             spatial.setLocalTransform(worldTransform);
         } else {
             Transform transform = worldTransform.clone();
-            Vector3f translation = transform.getTranslation();
-            Quaternion rotation = transform.getRotation();
-            Vector3f scale = transform.getScale();
+            Vector3f translation = transform.getTranslation(); // alias
+            Quaternion rotation = transform.getRotation(); // alias
+            Vector3f scale = transform.getScale(); // alias
 
-            Transform parentTransform = parent.getWorldTransform();
-            Vector3f parentTranslation = parentTransform.getTranslation();
-            Quaternion parentRotation = parentTransform.getRotation();
-            Vector3f parentScale = parentTransform.getScale();
+            Transform parentTransform = parent.getWorldTransform(); // alias
+            Vector3f parentTranslation
+                    = parentTransform.getTranslation(); // alias
+            Quaternion parentRotation = parentTransform.getRotation(); // alias
+            Vector3f parentScale = parentTransform.getScale(); // alias
             if (parentScale.x == 0f || parentScale.y == 0f
                     || parentScale.z == 0f) {
                 throw new IllegalArgumentException("zero in scale");
@@ -1198,7 +1200,7 @@ public class MySpatial { // TODO finalize the class
         if (isIgnoringTransforms(spatial)) {
             result = 1f;
         } else {
-            Vector3f worldScale = spatial.getWorldScale();
+            Vector3f worldScale = spatial.getWorldScale(); // alias
             if (!MyVector3f.isScaleUniform(worldScale)) {
                 throw new IllegalArgumentException("non-uniform scaling");
             }
@@ -1250,7 +1252,7 @@ public class MySpatial { // TODO finalize the class
         if (isIgnoringTransforms(spatial)) {
             result.zero();
         } else {
-            Vector3f location = spatial.getWorldTranslation();
+            Vector3f location = spatial.getWorldTranslation(); // alias
             result.set(location);
         }
 
@@ -1296,7 +1298,7 @@ public class MySpatial { // TODO finalize the class
         if (isIgnoringTransforms(spatial)) {
             result.set(1f, 1f, 1f);
         } else {
-            Vector3f scale = spatial.getWorldScale();
+            Vector3f scale = spatial.getWorldScale(); // alias
             result.set(scale);
         }
 
@@ -1320,7 +1322,7 @@ public class MySpatial { // TODO finalize the class
         if (isIgnoringTransforms(spatial)) {
             result.loadIdentity();
         } else {
-            Transform transform = spatial.getWorldTransform();
+            Transform transform = spatial.getWorldTransform(); // alias
             result.set(transform);
         }
 

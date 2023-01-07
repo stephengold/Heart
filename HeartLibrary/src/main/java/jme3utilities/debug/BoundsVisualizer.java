@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2022, Stephen Gold
+ Copyright (c) 2017-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -499,7 +499,7 @@ public class BoundsVisualizer extends SubtreeControl {
 
         // Update the transform.
         Transform transform = new Transform();
-        Vector3f center = boundingBox.getCenter();
+        Vector3f center = boundingBox.getCenter(); // alias
         transform.setTranslation(center);
         MySpatial.setWorldTransform(lines, transform);
 
@@ -529,7 +529,7 @@ public class BoundsVisualizer extends SubtreeControl {
 
         // Update the transform.
         Transform transform = new Transform();
-        Vector3f center = boundingSphere.getCenter();
+        Vector3f center = boundingSphere.getCenter(); // alias
         transform.setTranslation(center);
         if (camera != null) {
             Vector3f offset = camera.getLocation().subtract(center);
@@ -537,7 +537,7 @@ public class BoundsVisualizer extends SubtreeControl {
             Vector3f axis2 = new Vector3f();
             MyVector3f.generateBasis(offset, axis1, axis2);
 
-            Quaternion orientation = transform.getRotation();
+            Quaternion orientation = transform.getRotation(); // alias
             if (billboardAxis == MyVector3f.xAxis) {
                 orientation.fromAxes(offset, axis1, axis2);
             } else if (billboardAxis == MyVector3f.yAxis) {

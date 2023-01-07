@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2022, Stephen Gold
+ Copyright (c) 2018-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -65,7 +65,7 @@ public class MyLight { // TODO finalize the class
      * @param spatial (not null, modified)
      */
     public static void clearLocalLights(Spatial spatial) {
-        LightList list = spatial.getLocalLightList();
+        LightList list = spatial.getLocalLightList(); // alias
         int numLights = list.size();
         if (numLights > 0) {
             Light[] tmpArray = new Light[numLights];
@@ -93,7 +93,7 @@ public class MyLight { // TODO finalize the class
         int result = 0;
 
         if (subtree != null) {
-            LightList lights = subtree.getLocalLightList();
+            LightList lights = subtree.getLocalLightList(); // alias
             int numLights = lights.size();
             for (int lightI = 0; lightI < numLights; ++lightI) {
                 Light light = lights.get(lightI);
@@ -141,7 +141,7 @@ public class MyLight { // TODO finalize the class
         Validate.nonNull(light, "light");
 
         int result = -1;
-        LightList lights = owner.getLocalLightList();
+        LightList lights = owner.getLocalLightList(); // alias
         int numLights = lights.size();
         for (int index = 0; index < numLights; ++index) {
             Light indexedLight = lights.get(index);
@@ -229,7 +229,7 @@ public class MyLight { // TODO finalize the class
         List<T> result = (storeResult == null)
                 ? new ArrayList<>(4) : storeResult;
 
-        LightList lights = subtree.getLocalLightList();
+        LightList lights = subtree.getLocalLightList(); // alias
         int numLights = lights.size();
         for (int lightIndex = 0; lightIndex < numLights; ++lightIndex) {
             T light = (T) lights.get(lightIndex);

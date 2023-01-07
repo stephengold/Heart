@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2022, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -619,7 +619,7 @@ public class SkeletonVisualizer extends SubtreeControl {
                 || MySpatial.isIgnoringTransforms(transformSpatial)) {
             worldTransform = transformIdentity;
         } else {
-            worldTransform = transformSpatial.getWorldTransform();
+            worldTransform = transformSpatial.getWorldTransform(); // alias
         }
         Node subtreeNode = (Node) getSubtree();
         MySpatial.setWorldTransform(subtreeNode, worldTransform);
