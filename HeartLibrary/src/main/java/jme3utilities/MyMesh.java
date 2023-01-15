@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2022, Stephen Gold
+ Copyright (c) 2017-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -336,8 +336,8 @@ public class MyMesh { // TODO finalize the class
      */
     public static int countBones(Mesh mesh) {
         int maxWeightsPerVert = mesh.getMaxNumWeights();
-        Validate.inRange(maxWeightsPerVert, "mesh max num weights",
-                1, maxWeights);
+        Validate.inRange(
+                maxWeightsPerVert, "mesh max num weights", 1, maxWeights);
 
         VertexBuffer biBuf = mesh.getBuffer(VertexBuffer.Type.BoneIndex);
         Buffer boneIndexBuffer = biBuf.getDataReadOnly();
@@ -396,8 +396,8 @@ public class MyMesh { // TODO finalize the class
                 }
                 int numCperE = inVertexBuffer.getNumComponents();
                 numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
-                Buffer data = VertexBuffer.createBuffer(format, numCperE,
-                        outVertexCount);
+                Buffer data = VertexBuffer
+                        .createBuffer(format, numCperE, outVertexCount);
                 out.setBuffer(type, numCperE, format, data);
             }
         }
@@ -703,8 +703,8 @@ public class MyMesh { // TODO finalize the class
      * @param storeResult storage for results (added to if not null)
      * @return an expanded list (either storeResult or a new instance)
      */
-    public static List<Mesh> listMeshes(Spatial subtree,
-            List<Mesh> storeResult) {
+    public static List<Mesh> listMeshes(
+            Spatial subtree, List<Mesh> storeResult) {
         List<Mesh> result = (storeResult == null)
                 ? new ArrayList<Mesh>(10) : storeResult;
 
@@ -734,8 +734,8 @@ public class MyMesh { // TODO finalize the class
      * @param storeResult storage for results (added to if not null)
      * @return the resulting set (either storeResult or a new instance)
      */
-    public static VectorSet listVertexLocations(Spatial subtree,
-            VectorSet storeResult) {
+    public static VectorSet listVertexLocations(
+            Spatial subtree, VectorSet storeResult) {
         VectorSet result;
         if (storeResult == null) {
             int numVectors = 64;
@@ -844,8 +844,8 @@ public class MyMesh { // TODO finalize the class
 
             // Create the vertex buffer for output.
             numCperE = MyMath.clamp(numCperE, 1, 4); // to avoid an IAE
-            Buffer outBuffer = VertexBuffer.createBuffer(outFormat, numCperE,
-                    outNumVertices);
+            Buffer outBuffer = VertexBuffer
+                    .createBuffer(outFormat, numCperE, outNumVertices);
             result.setBuffer(type, numCperE, outFormat, outBuffer);
             VertexBuffer outVb = result.getBuffer(type);
             /*
@@ -951,8 +951,8 @@ public class MyMesh { // TODO finalize the class
      * @param mesh the Mesh to modify (not null, mode=Triangles)
      */
     public static void reverseWinding(Mesh mesh) {
-        Validate.require(mesh.getMode() == Mesh.Mode.Triangles,
-                "be in Triangles mode");
+        Validate.require(
+                mesh.getMode() == Mesh.Mode.Triangles, "be in Triangles mode");
 
         mesh.updateCounts();
         int numTriangles = mesh.getTriangleCount();
@@ -1006,8 +1006,8 @@ public class MyMesh { // TODO finalize the class
      * @param bufferType which buffer to modify (not null)
      * @param rotation the rotation to apply (not null, unaffected)
      */
-    public static void rotateBuffer(Mesh mesh, VertexBuffer.Type bufferType,
-            Quaternion rotation) {
+    public static void rotateBuffer(
+            Mesh mesh, VertexBuffer.Type bufferType, Quaternion rotation) {
         Validate.nonNull(bufferType, "buffer type");
         Validate.nonNull(rotation, "rotation");
 
@@ -1029,8 +1029,8 @@ public class MyMesh { // TODO finalize the class
      * @param bufferType which buffer to modify (not null)
      * @param rotation the rotation to apply (not null, unaffected)
      */
-    public static void rotateTangentBuffer(Mesh mesh,
-            VertexBuffer.Type bufferType, Quaternion rotation) {
+    public static void rotateTangentBuffer(
+            Mesh mesh, VertexBuffer.Type bufferType, Quaternion rotation) {
         Validate.nonNull(bufferType, "buffer type");
         Validate.nonNull(rotation, "rotation");
 
@@ -1096,8 +1096,8 @@ public class MyMesh { // TODO finalize the class
      * @param wpv the number of bone weights per vertex (&ge;1, &le;4)
      * @param indexBuffer the desired IndexBuffer (not null, alias created)
      */
-    public static void setBoneIndexBuffer(Mesh mesh, int wpv,
-            IndexBuffer indexBuffer) {
+    public static void setBoneIndexBuffer(
+            Mesh mesh, int wpv, IndexBuffer indexBuffer) {
         Validate.nonNull(mesh, "mesh");
         Validate.inRange(wpv, "weights per vertex", 1, maxWeights);
 
@@ -1144,8 +1144,8 @@ public class MyMesh { // TODO finalize the class
      * @param normalBufferType the normal-buffer type (Normal or BindPoseNormal)
      * @param positionBufferType the position-buffer type (Position or
      */
-    public static void smoothNormals(Mesh mesh,
-            VertexBuffer.Type normalBufferType,
+    public static void smoothNormals(
+            Mesh mesh, VertexBuffer.Type normalBufferType,
             VertexBuffer.Type positionBufferType) {
         Validate.nonNull(mesh, "mesh");
         FloatBuffer positionBuffer = mesh.getFloatBuffer(positionBufferType);
@@ -1494,8 +1494,8 @@ public class MyMesh { // TODO finalize the class
      * @param storeResult storage for the result (modified if not null)
      * @return the data vector (either storeResult or a new instance)
      */
-    public static int[] vertexBoneIndices(Mesh mesh, int vertexIndex,
-            int[] storeResult) {
+    public static int[] vertexBoneIndices(
+            Mesh mesh, int vertexIndex, int[] storeResult) {
         Validate.nonNull(mesh, "mesh");
         Validate.nonNegative(vertexIndex, "vertex index");
         int[] result;
@@ -1536,8 +1536,8 @@ public class MyMesh { // TODO finalize the class
      * @param storeResult storage for the result (modified if not null)
      * @return the data vector (either storeResult or a new instance)
      */
-    public static float[] vertexBoneWeights(Mesh mesh, int vertexIndex,
-            float[] storeResult) {
+    public static float[] vertexBoneWeights(
+            Mesh mesh, int vertexIndex, float[] storeResult) {
         Validate.nonNull(mesh, "mesh");
         Validate.nonNegative(vertexIndex, "vertex index");
         float[] result;
@@ -1578,8 +1578,8 @@ public class MyMesh { // TODO finalize the class
      * @param storeResult storage for the result (modified if not null)
      * @return the color (either storeResult or a new instance)
      */
-    public static ColorRGBA vertexColor(Mesh mesh, int vertexIndex,
-            ColorRGBA storeResult) {
+    public static ColorRGBA vertexColor(
+            Mesh mesh, int vertexIndex, ColorRGBA storeResult) {
         Validate.nonNull(mesh, "mesh");
         Validate.nonNegative(vertexIndex, "vertex index");
         ColorRGBA result
@@ -1663,8 +1663,8 @@ public class MyMesh { // TODO finalize the class
             }
 
         } else { // not an animated mesh
-            vertexVector3f(mesh, VertexBuffer.Type.Position, vertexIndex,
-                    result);
+            vertexVector3f(
+                    mesh, VertexBuffer.Type.Position, vertexIndex, result);
         }
 
         return result;
@@ -1689,8 +1689,8 @@ public class MyMesh { // TODO finalize the class
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         if (isAnimated(mesh)) {
-            Vector3f b = vertexVector3f(mesh, VertexBuffer.Type.BindPoseNormal,
-                    vertexIndex, null);
+            Vector3f b = vertexVector3f(
+                    mesh, VertexBuffer.Type.BindPoseNormal, vertexIndex, null);
 
             FloatBuffer weightBuffer
                     = mesh.getFloatBuffer(VertexBuffer.Type.BoneWeight);
@@ -1764,8 +1764,8 @@ public class MyMesh { // TODO finalize the class
         Vector4f result = (storeResult == null) ? new Vector4f() : storeResult;
 
         if (isAnimated(mesh)) {
-            Vector4f b = vertexVector4f(mesh, VertexBuffer.Type.BindPoseTangent,
-                    vertexIndex, null);
+            Vector4f b = vertexVector4f(
+                    mesh, VertexBuffer.Type.BindPoseTangent, vertexIndex, null);
 
             FloatBuffer weightBuffer
                     = mesh.getFloatBuffer(VertexBuffer.Type.BoneWeight);
@@ -1799,8 +1799,8 @@ public class MyMesh { // TODO finalize the class
             result.w = b.w; // copy the binormal parity
 
         } else { // not an animated mesh
-            vertexVector4f(mesh, VertexBuffer.Type.Tangent, vertexIndex,
-                    result);
+            vertexVector4f(
+                    mesh, VertexBuffer.Type.Tangent, vertexIndex, result);
         }
 
         return result;

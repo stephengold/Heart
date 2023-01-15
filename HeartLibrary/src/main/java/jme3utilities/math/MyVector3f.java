@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -156,8 +156,8 @@ public class MyVector3f { // TODO finalize the class
      * @param input the vector to scale and add (not null, unaffected)
      * @param scale scale factor to apply to the input
      */
-    public static void accumulateScaled(Vector3f total, Vector3f input,
-            float scale) {
+    public static void accumulateScaled(
+            Vector3f total, Vector3f input, float scale) {
         assert Validate.nonNull(total, "total");
         assert Validate.nonNull(input, "input");
 
@@ -256,8 +256,8 @@ public class MyVector3f { // TODO finalize the class
      * @param storeResult storage for the result (modified if not null)
      * @return an axis-aligned vector (either storeResult or a new instance)
      */
-    public static Vector3f axisVector(int axisIndex, float length,
-            Vector3f storeResult) {
+    public static Vector3f axisVector(
+            int axisIndex, float length, Vector3f storeResult) {
         assert Validate.axisIndex(axisIndex, "axis index");
         assert Validate.nonNegative(length, "length");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
@@ -604,8 +604,8 @@ public class MyVector3f { // TODO finalize the class
      * @param store2 storage for the 2nd basis vector (not null, modified)
      * @param store3 storage for the 3rd basis vector (not null, modified)
      */
-    public static void generateBasis(Vector3f in1, Vector3f store2,
-            Vector3f store3) {
+    public static void generateBasis(
+            Vector3f in1, Vector3f store2, Vector3f store3) {
         assert Validate.nonZero(in1, "starting direction");
         assert Validate.nonNull(store2, "2nd basis vector");
         assert Validate.nonNull(store3, "3nd basis vector");
