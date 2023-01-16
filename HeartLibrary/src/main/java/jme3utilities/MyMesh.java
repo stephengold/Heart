@@ -482,6 +482,13 @@ public class MyMesh { // TODO finalize the class
         Validate.require(mesh.getMode() == Mesh.Mode.Triangles,
                 "be in Triangles mode");
         Validate.require(!hasIndices(mesh), "not have an index buffer");
+        Validate.require(normalBufferType == VertexBuffer.Type.BindPoseNormal
+                || normalBufferType == VertexBuffer.Type.Normal,
+                "normal target-buffer type");
+        Validate.require(
+                positionBufferType == VertexBuffer.Type.BindPosePosition
+                || positionBufferType == VertexBuffer.Type.Position,
+                "position source-buffer type");
 
         FloatBuffer positionBuffer = mesh.getFloatBuffer(positionBufferType);
         int numFloats = positionBuffer.limit();
