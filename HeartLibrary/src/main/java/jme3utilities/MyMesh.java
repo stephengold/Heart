@@ -601,6 +601,22 @@ public class MyMesh { // TODO finalize the class
     }
 
     /**
+     * Test whether the specified Mesh has vertex tangents, including bind-pose
+     * tangents.
+     *
+     * @param mesh the Mesh to test (not null, unaffected)
+     * @return true if the Mesh has vertex tangents, otherwise false
+     */
+    public static boolean hasAnyTangents(Mesh mesh) {
+        VertexBuffer buffer = mesh.getBuffer(VertexBuffer.Type.BindPoseTangent);
+        if (buffer == null && !hasTangents(mesh)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * Test whether the specified Mesh has an index buffer.
      *
      * @param mesh the Mesh to test (not null, unaffected)
@@ -624,6 +640,22 @@ public class MyMesh { // TODO finalize the class
      */
     public static boolean hasNormals(Mesh mesh) {
         VertexBuffer buffer = mesh.getBuffer(VertexBuffer.Type.Normal);
+        if (buffer == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Test whether the specified Mesh has vertex tangents, not including
+     * bind-pose tangents.
+     *
+     * @param mesh the Mesh to test (not null, unaffected)
+     * @return true if the Mesh has vertex tangents, otherwise false
+     */
+    public static boolean hasTangents(Mesh mesh) {
+        VertexBuffer buffer = mesh.getBuffer(VertexBuffer.Type.Tangent);
         if (buffer == null) {
             return false;
         } else {
