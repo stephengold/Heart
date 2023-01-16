@@ -75,7 +75,7 @@ public class MyMesh { // TODO finalize the class
     // constants and loggers
 
     /**
-     * maximum number of bones that can influence any one vertex
+     * maximum number of bones/joints that can influence any one vertex
      */
     final private static int maxWeights = 4;
     /**
