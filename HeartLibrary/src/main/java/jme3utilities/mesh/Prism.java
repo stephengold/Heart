@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2022, Stephen Gold
+ Copyright (c) 2019-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -130,7 +130,7 @@ public class Prism extends Mesh {
         assert positionBuffer.limit() == positionBuffer.capacity();
 
         if (generateNormals) {
-            MyMesh.generateNormals(this);
+            MyMesh.generateFacetNormals(this);
         }
 
         updateBound();

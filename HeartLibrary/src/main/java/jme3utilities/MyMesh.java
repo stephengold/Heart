@@ -467,6 +467,28 @@ public class MyMesh { // TODO finalize the class
     }
 
     /**
+     * Generate normals on a triangle-by-triangle basis for a Triangles-mode
+     * Mesh without an index buffer. Pre-existing normal buffers are discarded.
+     *
+     * @param mesh the Mesh to modify (not null, mode=Triangles, not indexed)
+     */
+    public static void generateFacetNormals(Mesh mesh) {
+        Validate.require(
+                mesh.getMode() == Mesh.Mode.Triangles, "be in Triangles mode");
+        Validate.require(!hasIndices(mesh), "not have an index buffer");
+
+        generateFacetNormals(
+                mesh, VertexBuffer.Type.Normal, VertexBuffer.Type.Position);
+
+        VertexBuffer bpPosition
+                = mesh.getBuffer(VertexBuffer.Type.BindPosePosition);
+        if (bpPosition != null) {
+            generateFacetNormals(mesh, VertexBuffer.Type.BindPoseNormal,
+                    VertexBuffer.Type.BindPosePosition);
+        }
+    }
+
+    /**
      * Generate facet normals for a Triangles-mode Mesh without an index buffer.
      * Any pre-existing target buffer is discarded.
      *
@@ -522,24 +544,16 @@ public class MyMesh { // TODO finalize the class
     /**
      * Generate normals on a triangle-by-triangle basis for a Triangles-mode
      * Mesh without an index buffer. Pre-existing normal buffers are discarded.
-     * TODO rename generateFacetNormals
      *
      * @param mesh the Mesh to modify (not null, mode=Triangles, not indexed)
+     * @deprecated use {@link #generateFacetNormals(com.jme3.scene.Mesh)}
      */
+    @Deprecated
     public static void generateNormals(Mesh mesh) {
         Validate.require(
                 mesh.getMode() == Mesh.Mode.Triangles, "be in Triangles mode");
         Validate.require(!hasIndices(mesh), "not have an index buffer");
-
-        generateFacetNormals(
-                mesh, VertexBuffer.Type.Normal, VertexBuffer.Type.Position);
-
-        VertexBuffer bpPosition
-                = mesh.getBuffer(VertexBuffer.Type.BindPosePosition);
-        if (bpPosition != null) {
-            generateFacetNormals(mesh, VertexBuffer.Type.BindPoseNormal,
-                    VertexBuffer.Type.BindPosePosition);
-        }
+        generateFacetNormals(mesh);
     }
 
     /**

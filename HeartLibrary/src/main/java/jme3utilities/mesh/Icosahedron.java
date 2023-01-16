@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2020, Stephen Gold
+ Copyright (c) 2019-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -168,7 +168,7 @@ public class Icosahedron extends Mesh {
         positionBuffer.clear();
 
         if (generateNormals) {
-            MyMesh.generateNormals(this);
+            MyMesh.generateFacetNormals(this);
         }
 
         updateBound();
