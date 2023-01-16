@@ -514,8 +514,8 @@ public class MyMesh { // TODO finalize the class
 
     /**
      * Generate normals on a triangle-by-triangle basis for a Triangles-mode
-     * Mesh without an index buffer. Any pre-existing normal buffer is
-     * discarded. TODO rename generatFacetNormals
+     * Mesh without an index buffer. Pre-existing normal buffers are discarded.
+     * TODO rename generateFacetNormals
      *
      * @param mesh the Mesh to modify (not null, mode=Triangles, not indexed)
      */
@@ -678,8 +678,9 @@ public class MyMesh { // TODO finalize the class
     }
 
     /**
-     * Test whether the specified Mesh is animated. Unlike Mesh.isAnimated()
-     * this method checks for bone weights and ignores HW buffers.
+     * Test whether the specified Mesh is bone animated. Unlike
+     * {@code Mesh.isAnimated()}, this method checks for bone weights and
+     * ignores hardware buffers.
      *
      * @param mesh which Mesh to test (not null, unaffected)
      * @return true if animated, otherwise false
