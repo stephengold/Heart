@@ -113,15 +113,15 @@ final public class AppChooser extends AcorusDemo {
     /**
      * script to execute
      */
-    private File script;
+    private static File script;
     /**
      * index of the selected app in the {@code mainClasses} array
      */
-    private int selectedAppIndex = 0;
+    private static int selectedAppIndex = 0;
     /**
      * menu overlay, displayed in the upper-left corner of the GUI node
      */
-    private Overlay menuOverlay;
+    private static Overlay menuOverlay;
     // *************************************************************************
     // constructors
 
@@ -171,7 +171,7 @@ final public class AppChooser extends AcorusDemo {
      */
     @Override
     public void acorusInit() {
-        this.script = findScriptToExecute();
+        script = findScriptToExecute();
         getHelpBuilder().setBackgroundColor(new ColorRGBA(0f, 0.05f, 0f, 1f));
         addMenuOverlay();
         super.acorusInit();
