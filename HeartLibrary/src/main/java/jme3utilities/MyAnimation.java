@@ -777,7 +777,8 @@ public class MyAnimation { // TODO finalize the class
 
         for (int frameIndex = 0; frameIndex < numFrames; ++frameIndex) {
             times[frameIndex] = frameTimes[frameIndex];
-            translations[frameIndex] = clonedTransform.getTranslation();
+            translations[frameIndex]
+                    = clonedTransform.getTranslation(); // alias
             rotations[frameIndex] = clonedTransform.getRotation(); // alias
             scales[frameIndex] = clonedTransform.getScale(); // alias
         }
