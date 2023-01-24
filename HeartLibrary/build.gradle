@@ -12,7 +12,7 @@ ext {
     group = 'com.github.stephengold'
     artifact = 'Heart'
     version = heartVersion
-    baseName = "${artifact}-${version}"
+    baseName = "${artifact}-${version}" // for artifacts
     websiteUrl = 'https://github.com/stephengold/Heart'
 }
 
@@ -38,6 +38,9 @@ tasks.register('release') {
 jar {
     archiveBaseName = project.ext.baseName
     exclude('**/arrow.blend')
+    manifest {
+        attributes 'Created-By': "${JavaVersion.current()} (${System.getProperty("java.vendor")})"
+    }
 }
 tasks.register('javadocJar', Jar) {
     archiveBaseName = project.ext.baseName
