@@ -24,7 +24,7 @@ dependencies {
     testRuntimeOnly 'org.jmonkeyengine:jme3-testdata:' + jme3Version
 }
 
-// publishing tasks
+// publishing tasks:
 
 tasks.register('install') {
     dependsOn 'publishMavenPublicationToMavenLocal'
