@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2022, Stephen Gold
+ Copyright (c) 2019-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,6 @@
  */
 package jme3utilities.mesh;
 
-import com.jme3.math.FastMath;
 import com.jme3.math.Triangle;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Mesh;
@@ -99,8 +98,7 @@ public class Cone extends Mesh {
 
         float yApex = yHeight / 2f;
         float yBase = -yHeight / 2f;
-        float interiorAngle = FastMath.TWO_PI / numSides; // in radians
-        // TODO use double precision for angles
+        double interiorAngle = 2. * Math.PI / numSides; // in radians
 
         Triangle triangle = new Triangle();
         Vector3f p1 = new Vector3f();
@@ -108,14 +106,14 @@ public class Cone extends Mesh {
         Vector3f p3 = new Vector3f();
 
         for (int sideIndex = 0; sideIndex < numSides; ++sideIndex) {
-            float theta1 = sideIndex * interiorAngle; // in radians
-            float x1 = radius * FastMath.sin(theta1);
-            float z1 = radius * FastMath.cos(theta1);
+            double theta1 = sideIndex * interiorAngle; // in radians
+            float x1 = radius * (float) Math.sin(theta1);
+            float z1 = radius * (float) Math.cos(theta1);
 
             int nextSideIndex = sideIndex + 1;
-            float theta2 = nextSideIndex * interiorAngle; // in radians
-            float x2 = radius * FastMath.sin(theta2);
-            float z2 = radius * FastMath.cos(theta2);
+            double theta2 = nextSideIndex * interiorAngle; // in radians
+            float x2 = radius * (float) Math.sin(theta2);
+            float z2 = radius * (float) Math.cos(theta2);
 
             p1.set(x1, yBase, z1);
             p2.set(x2, yBase, z2);
@@ -145,16 +143,16 @@ public class Cone extends Mesh {
                 nz = cosine * z2 / radius;
                 normalBuffer.put(nx).put(ny).put(nz);
 
-                float theta3 = (theta1 + theta2) / 2f;
-                nx = cosine * FastMath.sin(theta3);
-                nz = cosine * FastMath.cos(theta3);
+                double theta3 = (theta1 + theta2) / 2f;
+                nx = cosine * (float) Math.sin(theta3);
+                nz = cosine * (float) Math.cos(theta3);
                 normalBuffer.put(nx).put(ny).put(nz);
             }
 
             if (sideIndex < numBaseTriangles) {
-                float theta3 = (numSides - 1) * interiorAngle; // in radians
-                float x3 = radius * FastMath.sin(theta3);
-                float z3 = radius * FastMath.cos(theta3);
+                double theta3 = (numSides - 1) * interiorAngle; // in radians
+                float x3 = radius * (float) Math.sin(theta3);
+                float z3 = radius * (float) Math.cos(theta3);
 
                 positionBuffer.put(x3).put(yBase).put(z3);
                 positionBuffer.put(x2).put(yBase).put(z2);
