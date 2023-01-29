@@ -4,7 +4,8 @@ apply plugin: 'checkstyle'
 apply plugin: 'java'
 
 ext { // current versions of libraries:
-    heartVersion = '8.2.1-SNAPSHOT'
+    jmeTarget = '+for36' // distinguish non-JME libraries built for specific JME releases
+    heartVersion = '8.3.0' + jmeTarget
     jme3Version = '3.6.0-beta1'
 }
 

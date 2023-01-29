@@ -1,5 +1,22 @@
 # release log for the Heart Library and related tests
 
+## Version 8.3.0+for36 released on TBD
+
++ Bugfix:  `MyQuaternion.isRotationIdentity()` accepts `NaN`s
++ Changed `Describer` to describe scene-graph controls in order
+  and omit any disabled ones.
++ In `MyMesh`, renamed `generateNormals()` to `generateFacetNormals()`
+  and deprecated the old method name.
++ Added 5 new methods:
+  + `MyMath.fromAngles()`
+  + `MyMesh.hasAnyTangents()`
+  + `MyMesh.hasTangents()`
+  + `RectangularSolid.centerLocal()`
+  + `RectangularSolid.centerWorld()`
++ Added `TestMyVolume` to the automated tests.
++ Targeted jMonkeyEngine version 3.6.0-beta1.
++ Updated Gradle to v7.6
+
 ## Version 8.2.0 released on 5 September 2022
 
 + Bugfix:  `AppChooser` executes itself instead of the selected app

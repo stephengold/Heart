@@ -517,7 +517,8 @@ public class Heart { // TODO finalize the class
     /**
      * Alter the logging levels of all known loggers.
      *
-     * @param newLevel (not null)
+     * @param newLevel the desired level (not null)
+     * @see java.util.logging.Level
      */
     public static void setLoggingLevels(Level newLevel) {
         Validate.nonNull(newLevel, "level");
@@ -530,7 +531,7 @@ public class Heart { // TODO finalize the class
      * @return project name, library name, branch, and revision
      */
     public static String version() {
-        return "Heart Heart master $Rev: 8.2.1-SNAPSHOT $";
+        return "Heart Heart master $Rev: 8.3.0+for36 $";
     }
 
     /**
