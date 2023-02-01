@@ -3,7 +3,8 @@
 apply plugin: 'checkstyle'
 apply plugin: 'java'
 
-ext { // current versions of libraries:
+ext {
+    // current versions of libraries:
     jmeTarget = '+for36' // distinguish non-JME libraries built for specific JME releases
     heartVersion = '8.3.0' + jmeTarget
     jme3Version = '3.6.0-beta1'
@@ -45,4 +46,5 @@ tasks.withType(JavaExec) { // Java runtime options:
 repositories {
     //mavenLocal() // to find local SNAPSHOTs of libraries
     mavenCentral()
+    //maven { url 'https://s01.oss.sonatype.org/content/groups/staging' } // to find libraries staged but not yet released
 }
