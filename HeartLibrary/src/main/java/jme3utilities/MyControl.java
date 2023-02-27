@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -264,7 +264,10 @@ public class MyControl { // TODO finalize the class
      * @param spatial the Spatial to add to (not null, modified)
      * @param index the index at which to add the Control (&ge;0)
      * @param sgc the Control to add (not null)
+     * @deprecated use {@link com.jme3.scene.Spatial#addControlAt(int,
+     * com.jme3.scene.control.Control)}
      */
+    @Deprecated
     @SuppressWarnings("unchecked")
     public static void insertAt(Spatial spatial, int index, Control sgc) {
         int numSgcs = spatial.getNumControls();
