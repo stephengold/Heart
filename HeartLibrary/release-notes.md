@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 8.3.1+for36 released on TBD
+## Version 8.3.1+for36 released on 2 March 2023
 
 + Deprecated the `insertAt()` method in the `MyControl` class.
 + Updated 8 textures from the Georg project.

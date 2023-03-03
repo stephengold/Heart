@@ -531,7 +531,7 @@ public class Heart { // TODO finalize the class
      * @return project name, library name, branch, and revision
      */
     public static String version() {
-        return "Heart Heart master $Rev: 8.3.1+for36 $";
+        return "Heart Heart master $Rev: 8.3.2+for36-SNAPSHOT $";
     }
 
     /**
