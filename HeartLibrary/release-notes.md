@@ -1,6 +1,13 @@
 # release log for the Heart Library and related tests
 
-## Version 8.3.0+for36 released on TBD
+## Version 8.3.1+for36 released on TBD
+
++ Deprecated the `insertAt()` method in the `MyControl` class.
++ Updated 8 textures from the Georg project.
++ Targeted jMonkeyEngine version 3.6.0-beta3.
++ Updated Gradle to v8.0.1
+
+## Version 8.3.0+for36 released on 29 January 2023
 
 + Bugfix:  `MyQuaternion.isRotationIdentity()` accepts `NaN`s
 + Changed `Describer` to describe scene-graph controls in order
