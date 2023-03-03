@@ -8,6 +8,11 @@ subprojects {
     apply from: rootProject.file('common.gradle')
 }
 
+tasks.register('checkstyle') {
+    dependsOn ':HeartExamples:checkstyleMain', ':HeartLibrary:checkstyleMain', \
+        ':HeartLibrary:checkstyleTest', ':J3oDump:checkstyleMain'
+}
+
 tasks.register('run') {
     dependsOn ':HeartExamples:AppChooser'
     description = 'Runs the examples.'
