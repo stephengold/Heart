@@ -144,7 +144,7 @@ public class Prism extends Mesh {
      * (0,0,0). The end triangles lie parallel with the X-Z plane. All triangles
      * face outward.
      * <p>
-     * Normals are no generated. If normals are needed, add them using
+     * Normals are not generated. If normals are needed, add them using
      * {@link jme3utilities.MyMesh#generateNormals(com.jme3.scene.Mesh)}.
      *
      * @param x the desired length of the legs parallel to the X axis (in mesh
