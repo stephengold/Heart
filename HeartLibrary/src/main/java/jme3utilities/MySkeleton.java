@@ -135,13 +135,13 @@ public class MySkeleton { // TODO finalize the class
         Transform result
                 = (storeResult == null) ? new Transform() : storeResult;
 
-        Vector3f translation = bone.getBindPosition();
+        Vector3f translation = bone.getBindPosition(); // alias
         result.setTranslation(translation);
 
         Quaternion rotation = bone.getBindRotation(); // alias
         result.setRotation(rotation);
 
-        Vector3f scale = bone.getBindScale();
+        Vector3f scale = bone.getBindScale(); // alias
         if (scale == null) {
             scale = scaleIdentity;
         }
@@ -163,13 +163,13 @@ public class MySkeleton { // TODO finalize the class
         Transform result
                 = (storeResult == null) ? new Transform() : storeResult;
 
-        Vector3f translation = bone.getLocalPosition();
+        Vector3f translation = bone.getLocalPosition(); // alias
         result.setTranslation(translation);
 
-        Quaternion rotation = bone.getLocalRotation();
+        Quaternion rotation = bone.getLocalRotation(); // alias
         result.setRotation(rotation);
 
-        Vector3f scale = bone.getLocalScale();
+        Vector3f scale = bone.getLocalScale(); // alias
         result.setScale(scale);
 
         return result;
@@ -188,13 +188,13 @@ public class MySkeleton { // TODO finalize the class
         Transform result
                 = (storeResult == null) ? new Transform() : storeResult;
 
-        Vector3f translation = bone.getModelSpacePosition();
+        Vector3f translation = bone.getModelSpacePosition(); // alias
         result.setTranslation(translation);
 
-        Quaternion rotation = bone.getModelSpaceRotation();
+        Quaternion rotation = bone.getModelSpaceRotation(); // alias
         result.setRotation(rotation);
 
-        Vector3f scale = bone.getModelSpaceScale();
+        Vector3f scale = bone.getModelSpaceScale(); // alias
         result.setScale(scale);
 
         return result;
