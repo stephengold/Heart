@@ -955,8 +955,8 @@ public class MySpatial { // TODO finalize the class
      * @param addResult storage for results (added to if not null)
      * @return an expanded List (either storeResult or a new List)
      */
-    public static List<Texture> listTextures(Spatial subtree,
-            List<Texture> addResult) {
+    public static List<Texture> listTextures(
+            Spatial subtree, List<Texture> addResult) {
         List<Texture> result
                 = (addResult == null) ? new ArrayList<>(32) : addResult;
 
@@ -1054,8 +1054,8 @@ public class MySpatial { // TODO finalize the class
      * @throws IllegalArgumentException if the Spatial is a Geometry with
      * ignoreTransform=true OR the parent's world orientation is not invertible
      */
-    public static void setWorldOrientation(Spatial spatial,
-            Quaternion worldOrientation) {
+    public static void setWorldOrientation(
+            Spatial spatial, Quaternion worldOrientation) {
         Validate.nonNull(worldOrientation, "world orientation");
         if (isIgnoringTransforms(spatial)) {
             throw new IllegalArgumentException("transform ignored");
@@ -1112,8 +1112,8 @@ public class MySpatial { // TODO finalize the class
      * ignoreTransform=true OR the spatial's parent has a zero in its world
      * scale OR the parent's world orientation is not invertible
      */
-    public static void setWorldTransform(Spatial spatial,
-            Transform worldTransform) {
+    public static void setWorldTransform(
+            Spatial spatial, Transform worldTransform) {
         Validate.nonNull(worldTransform, "world transform");
         if (isIgnoringTransforms(spatial)) {
             throw new IllegalArgumentException("transform ignored");
@@ -1161,8 +1161,8 @@ public class MySpatial { // TODO finalize the class
      * @param collection spatials to find (not null, unaffected)
      * @return true if one of the collected spatials was found, otherwise false
      */
-    public static boolean subtreeContainsAny(Spatial subtree,
-            Collection<Spatial> collection) {
+    public static boolean subtreeContainsAny(
+            Spatial subtree, Collection<Spatial> collection) {
         boolean result;
         if (subtree == null) {
             result = false;

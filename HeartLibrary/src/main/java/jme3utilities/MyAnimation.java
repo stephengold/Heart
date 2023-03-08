@@ -718,8 +718,8 @@ public class MyAnimation { // TODO finalize the class
         Vector3f[] translations = {copyTranslation};
         Quaternion[] rotations = {copyRotation};
         Vector3f[] scales = {copyScale};
-        BoneTrack result = newBoneTrack(boneIndex, times, translations,
-                rotations, scales);
+        BoneTrack result = newBoneTrack(
+                boneIndex, times, translations, rotations, scales);
 
         return result;
     }

@@ -130,8 +130,8 @@ public class MySkeleton { // TODO finalize the class
      * @return the bone's bind transform (in its parent's coordinates, either
      * storeResult or a new instance)
      */
-    public static Transform copyBindTransform(Bone bone,
-            Transform storeResult) {
+    public static Transform copyBindTransform(
+            Bone bone, Transform storeResult) {
         Transform result
                 = (storeResult == null) ? new Transform() : storeResult;
 
@@ -158,8 +158,8 @@ public class MySkeleton { // TODO finalize the class
      * @return the bone's Transform (in its parent's coordinates, either
      * storeResult or a new instance)
      */
-    public static Transform copyLocalTransform(Bone bone,
-            Transform storeResult) {
+    public static Transform copyLocalTransform(
+            Bone bone, Transform storeResult) {
         Transform result
                 = (storeResult == null) ? new Transform() : storeResult;
 
@@ -183,8 +183,8 @@ public class MySkeleton { // TODO finalize the class
      * @return the bone's Transform (in mesh coordinates, either storeResult or
      * a new instance)
      */
-    public static Transform copyMeshTransform(Bone bone,
-            Transform storeResult) {
+    public static Transform copyMeshTransform(
+            Bone bone, Transform storeResult) {
         Transform result
                 = (storeResult == null) ? new Transform() : storeResult;
 
@@ -255,8 +255,8 @@ public class MySkeleton { // TODO finalize the class
      * @param skeleton the Skeleton to read (not null, unaffected)
      * @return true if descends from the ancestor, otherwise false
      */
-    public static boolean descendsFrom(int boneIndex, int ancestorIndex,
-            Skeleton skeleton) {
+    public static boolean descendsFrom(
+            int boneIndex, int ancestorIndex, Skeleton skeleton) {
         Validate.nonNegative(boneIndex, "bone index");
         Validate.nonNegative(ancestorIndex, "ancestor index");
 
@@ -412,8 +412,8 @@ public class MySkeleton { // TODO finalize the class
      * @param addResult storage for results (added to if not null)
      * @return an expanded list (either storeResult or a new instance)
      */
-    public static List<Armature> listArmatures(Spatial subtree,
-            List<Armature> addResult) {
+    public static List<Armature> listArmatures(
+            Spatial subtree, List<Armature> addResult) {
         Validate.nonNull(subtree, "subtree");
         List<Armature> result = (addResult == null)
                 ? new ArrayList<>(4) : addResult;
@@ -448,8 +448,8 @@ public class MySkeleton { // TODO finalize the class
      * @return a list of names in arbitrary order, without any duplicates
      * (either addResult or a new list)
      */
-    public static List<String> listBones(Skeleton skeleton,
-            List<String> addResult) {
+    public static List<String> listBones(
+            Skeleton skeleton, List<String> addResult) {
         int boneCount = skeleton.getBoneCount();
         List<String> result = (addResult == null)
                 ? new ArrayList<>(boneCount) : addResult;
@@ -499,8 +499,8 @@ public class MySkeleton { // TODO finalize the class
      * @param addResult storage for results (added to if not null)
      * @return an expanded list (either storeResult or a new instance)
      */
-    public static List<Skeleton> listSkeletons(Spatial subtree,
-            List<Skeleton> addResult) {
+    public static List<Skeleton> listSkeletons(
+            Spatial subtree, List<Skeleton> addResult) {
         Validate.nonNull(subtree, "subtree");
         List<Skeleton> result = (addResult == null)
                 ? new ArrayList<>(4) : addResult;
@@ -532,8 +532,8 @@ public class MySkeleton { // TODO finalize the class
      * @param storeResult storage for results (added to if not null)
      * @return an expanded map (either storeResult or a new instance)
      */
-    public static Map<Bone, Spatial> mapAttachments(Skeleton skeleton,
-            Map<Bone, Spatial> storeResult) {
+    public static Map<Bone, Spatial> mapAttachments(
+            Skeleton skeleton, Map<Bone, Spatial> storeResult) {
         Validate.nonNull(skeleton, "skeleton");
         Map<Bone, Spatial> result = (storeResult == null)
                 ? new HashMap<>(4) : storeResult;
@@ -565,8 +565,8 @@ public class MySkeleton { // TODO finalize the class
      * @param storeResult storage for results (added to if not null)
      * @return an expanded map (either storeResult or a new instance)
      */
-    public static Map<Bone, Spatial> mapAttachments(Spatial subtree,
-            Map<Bone, Spatial> storeResult) {
+    public static Map<Bone, Spatial> mapAttachments(
+            Spatial subtree, Map<Bone, Spatial> storeResult) {
         Validate.nonNull(subtree, "subtree");
         Map<Bone, Spatial> result = (storeResult == null)
                 ? new HashMap<>(4) : storeResult;

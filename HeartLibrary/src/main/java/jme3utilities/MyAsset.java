@@ -227,8 +227,8 @@ final public class MyAsset {
      * @param pointSize in pixels (&ge;0, whole numbers recommended)
      * @return a new instance
      */
-    public static Material createMulticolor2Material(AssetManager assetManager,
-            Texture pointShape, float pointSize) {
+    public static Material createMulticolor2Material(
+            AssetManager assetManager, Texture pointShape, float pointSize) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNegative(pointSize, "point size");
 
@@ -247,8 +247,8 @@ final public class MyAsset {
      * @param texture (not null, alias created)
      * @return a new instance
      */
-    public static Material createParticleMaterial(AssetManager assetManager,
-            Texture texture) {
+    public static Material createParticleMaterial(
+            AssetManager assetManager, Texture texture) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNull(texture, "texture");
 
@@ -267,8 +267,8 @@ final public class MyAsset {
      * @param color ambient/diffuse color (not null, unaffected)
      * @return a new instance (not null)
      */
-    public static Material createShadedMaterial(AssetManager assetManager,
-            ColorRGBA color) {
+    public static Material createShadedMaterial(
+            AssetManager assetManager, ColorRGBA color) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNull(color, "color");
 
@@ -288,8 +288,8 @@ final public class MyAsset {
      * @param texture (not null, alias created)
      * @return a new instance
      */
-    public static Material createShadedMaterial(AssetManager assetManager,
-            Texture texture) {
+    public static Material createShadedMaterial(
+            AssetManager assetManager, Texture texture) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNull(texture, "texture");
 
@@ -306,8 +306,8 @@ final public class MyAsset {
      * @param color ambient/diffuse color (not null, unaffected)
      * @return a new instance
      */
-    public static Material createShinyMaterial(AssetManager assetManager,
-            ColorRGBA color) {
+    public static Material createShinyMaterial(
+            AssetManager assetManager, ColorRGBA color) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonNull(color, "color");
 
@@ -338,8 +338,8 @@ final public class MyAsset {
      * folder (not null, not empty)
      * @return a new instance
      */
-    public static Node createStarMapQuads(AssetManager assetManager,
-            String name) {
+    public static Node createStarMapQuads(
+            AssetManager assetManager, String name) {
         Validate.nonNull(assetManager, "asset manager");
         Validate.nonEmpty(name, "star map name");
 

@@ -88,8 +88,8 @@ public class MyLight { // TODO finalize the class
      * @param lightType the subclass of Light to search for
      * @return number of lights controls found (&ge;0)
      */
-    public static <T extends Light> int countLights(Spatial subtree,
-            Class<T> lightType) {
+    public static <T extends Light> int countLights(
+            Spatial subtree, Class<T> lightType) {
         int result = 0;
 
         if (subtree != null) {
@@ -223,8 +223,8 @@ public class MyLight { // TODO finalize the class
      * @return an expanded list (either storeResult or a new instance)
      */
     @SuppressWarnings("unchecked")
-    public static <T extends Light> List<T> listLights(Spatial subtree,
-            Class<T> lightType, List<T> storeResult) {
+    public static <T extends Light> List<T> listLights(
+            Spatial subtree, Class<T> lightType, List<T> storeResult) {
         Validate.nonNull(subtree, "subtree");
         List<T> result = (storeResult == null)
                 ? new ArrayList<>(4) : storeResult;
