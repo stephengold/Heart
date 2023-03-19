@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2022, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -241,12 +241,12 @@ public class Octasphere extends Mesh {
             faces = newFaces;
         }
 
-//        System.out.println("numRefineSteps  = " + numRefineSteps);
-//        System.out.println("numVertices     = " + locations.size());
-//        System.out.println("numFaces        = " + faces.size() / vpt);
-//        System.out.println("numCacheEntries = " + midpointCache.size());
-//        System.out.println();
-//
+        // System.out.println("numRefineSteps  = " + numRefineSteps);
+        // System.out.println("numVertices     = " + locations.size());
+        // System.out.println("numFaces        = " + faces.size() / vpt);
+        // System.out.println("numCacheEntries = " + midpointCache.size());
+        // System.out.println();
+        //
         midpointCache.clear();
         assert faces.size() == 3 << (3 + 2 * numRefineSteps);
 

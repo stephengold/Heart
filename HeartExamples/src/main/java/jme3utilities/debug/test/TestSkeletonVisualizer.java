@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2022, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -148,10 +148,10 @@ public class TestSkeletonVisualizer extends AcorusDemo {
         AnimControl animControl = jaime.getControl(AnimControl.class);
         animControl.createChannel().setAnim("Punches");
         SkeletonControl sc = jaime.getControl(SkeletonControl.class);
-// or, to test the new animation system:
-//        AnimMigrationUtils.migrate(jaime);
-//        jaime.getControl(AnimComposer.class).setCurrentAction("Punches");
-//        SkinningControl sc = jaime.getControl(SkinningControl.class);
+        // or, to test the new animation system:
+        // AnimMigrationUtils.migrate(jaime);
+        // jaime.getControl(AnimComposer.class).setCurrentAction("Punches");
+        // SkinningControl sc = jaime.getControl(SkinningControl.class);
 
         sv = new SkeletonVisualizer(assetManager, sc);
         sv.setLineColor(ColorRGBA.Yellow);
