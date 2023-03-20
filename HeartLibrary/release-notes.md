@@ -1,5 +1,10 @@
 # release log for the Heart Library and related tests
 
+## Version 8.3.2 released on TBD
+
++ Targeted jMonkeyEngine version 3.6.0-stable.
++ Updated Gradle to v8.0.2
+
 ## Version 8.3.1+for36 released on 2 March 2023
 
 + Deprecated the `insertAt()` method in the `MyControl` class.
