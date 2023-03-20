@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 8.3.2 released on TBD
+## Version 8.3.2 released on 20 March 2023
 
 + Targeted jMonkeyEngine version 3.6.0-stable.
 + Updated Gradle to v8.0.2
