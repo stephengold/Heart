@@ -11,6 +11,7 @@ subprojects {
 tasks.register('checkstyle') {
     dependsOn ':HeartExamples:checkstyleMain', ':HeartLibrary:checkstyleMain', \
         ':HeartLibrary:checkstyleTest', ':J3oDump:checkstyleMain'
+    description = 'Runs the checkstyle tool on all sourcecode.'
 }
 
 tasks.register('run') {
