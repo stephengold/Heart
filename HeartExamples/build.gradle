@@ -27,7 +27,7 @@ dependencies {
     runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jme3Version
 
     //implementation 'com.github.stephengold:Heart:' + heartVersion // for published library
-    implementation project(':HeartLibrary') // for latest sourcecode
+    implementation project(':HeartLibrary') // for latest library build
 }
 
 // cleanup tasks:
@@ -50,7 +50,7 @@ tasks.register('cleanSOs', Delete) { // extracted Linux and Android native libra
     delete fileTree(dir: '.', include: '*.so')
 }
 
-// tasks to run the example apps:
+// tasks to run specific apps:
 
 tasks.register('AppChooser', JavaExec) {
     mainClass = 'jme3utilities.test.AppChooser'
