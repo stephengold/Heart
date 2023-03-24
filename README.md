@@ -355,7 +355,7 @@ correct the situation: sgold@sonic.net
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
 [maven]: https://maven.apache.org "Maven Project"
 [meld]: https://meldmerge.org "Meld merge tool"
-[minie]: https://github.com/stephengold/Minie "Minie Project"
+[minie]: https://stephengold.github.io/Minie/minie/overview.html "Minie Project"
 [mint]: https://linuxmint.com "Linux Mint Project"
 [netbeans]: https://netbeans.org "NetBeans Project"
 [skycontrol]: https://github.com/stephengold/SkyControl "SkyControl Project"
