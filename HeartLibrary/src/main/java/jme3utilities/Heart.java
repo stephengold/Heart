@@ -193,7 +193,7 @@ public class Heart { // TODO finalize the class
                         applicationName);
             } else {
                 logger.log(Level.WARNING,
-                        "No stored settings for \"{0}\" were found.",
+                        "No stored settings were found for \"{0}\".",
                         applicationName);
             }
 
@@ -614,7 +614,7 @@ public class Heart { // TODO finalize the class
                             MyString.quote(filePath));
                 }
             } else {
-                logger.log(Level.SEVERE, "delete of {0} failed",
+                logger.log(Level.SEVERE, "deletion of {0} failed",
                         MyString.quote(filePath));
             }
             throw exception;
