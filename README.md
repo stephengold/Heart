@@ -130,8 +130,8 @@ For projects built using [Ant], download the library from GitHub:
 
 + https://github.com/stephengold/Heart/releases/latest
 
-You'll definitely want the class JAR
-and probably the "-sources" and "-javadoc" JARs as well.
+You'll definitely want the class jar
+and probably the "-sources" and "-javadoc" jars as well.
 
 Open the project's properties in the IDE (JME SDK or NetBeans):
 
