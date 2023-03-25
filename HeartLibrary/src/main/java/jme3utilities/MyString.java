@@ -26,6 +26,7 @@
  */
 package jme3utilities;
 
+import com.jme3.math.Matrix3f;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -210,6 +211,36 @@ public class MyString { // TODO finalize the class
         assert result != null;
         assert !result.isEmpty();
         return result;
+    }
+
+    /**
+     * Generate a textual description of a Matrix3f value.
+     *
+     * @param matrix the value to describe (may be null, unaffected)
+     * @return a description (not null, not empty)
+     */
+    public static String describeMatrix(Matrix3f matrix) {
+        if (matrix == null) {
+            return "null";
+        }
+
+        StringBuilder result = new StringBuilder(80);
+        for (int row = 0; row < 3; ++row) {
+            for (int column = 0; column < 3; ++column) {
+                float element = matrix.get(row, column);
+                String desc = describe(element);
+                result.append(desc);
+
+                if (row < 2 || column < 2) {
+                    result.append(' ');
+                }
+            }
+            if (row < 2) { // Add an extra space between rows.
+                result.append(' ');
+            }
+        }
+
+        return result.toString();
     }
 
     /**
