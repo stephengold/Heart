@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -173,6 +173,22 @@ public class MyString { // TODO finalize the class
      */
     public static String describe(float fValue) {
         String raw = String.format(Locale.US, "%g", fValue);
+        String result = trimFloat(raw);
+
+        assert result != null;
+        assert !result.isEmpty();
+        return result;
+    }
+
+    /**
+     * Generate a textual description of a single-precision floating-point value
+     * using at most 2 decimal places.
+     *
+     * @param fValue the value to describe
+     * @return a description (not null, not empty)
+     */
+    public static String describeAngle(float fValue) {
+        String raw = String.format(Locale.US, "%.2f", fValue);
         String result = trimFloat(raw);
 
         assert result != null;
