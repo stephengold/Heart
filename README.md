@@ -328,7 +328,7 @@ correct the situation: sgold@sonic.net
 [Jump to table of contents](#toc)
 
 
-[acorus]: https://github.com/stephengold/Acorus "Acorus Project"
+[acorus]: https://stephengold.github.io/Acorus "Acorus Project"
 [adoptium]: https://adoptium.net/releases.html "Adoptium Project"
 [ant]: https://ant.apache.org "Apache Ant Project"
 [blender]: https://docs.blender.org "Blender Project"
