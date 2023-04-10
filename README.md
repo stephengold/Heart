@@ -262,8 +262,6 @@ The following apps are found in the HeartExamples sub-project:
 
 + [the Heart page](https://library.jmonkeyengine.org/#!entry=11511%2Fe534fc1e-5b78-46b7-a831-d5d40cbd9dcd)
   in [the JmonkeyEngine library][library]
-+ [the Heart page](https://store.jmonkeyengine.org/e534fc1e-5b78-46b7-a831-d5d40cbd9dcd)
-  at [the JmonkeyStore][store]
 
 [Jump to table of contents](#toc)
 
