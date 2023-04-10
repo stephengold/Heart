@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2022, Stephen Gold
+ Copyright (c) 2017-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -108,7 +108,7 @@ public class ViewPortAppState extends SimpleAppState {
     @Override
     public void update(float elapsedTime) {
         super.update(elapsedTime);
-        tpf = elapsedTime;
+        this.tpf = elapsedTime;
     }
     // *************************************************************************
     // private methods

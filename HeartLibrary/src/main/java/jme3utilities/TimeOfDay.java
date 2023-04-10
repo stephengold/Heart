@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -97,7 +97,7 @@ public class TimeOfDay extends NamedAppState {
                     "hour should be between 0 and 24");
         }
 
-        timeOfDay = startHour * secondsPerHour;
+        this.timeOfDay = startHour * secondsPerHour;
     }
     // *************************************************************************
     // new methods exposed
@@ -150,7 +150,7 @@ public class TimeOfDay extends NamedAppState {
      */
     public void setHour(float newHour) {
         Validate.inRange(newHour, "new hour", 0f, 24f);
-        timeOfDay = secondsPerHour * (double) newHour;
+        this.timeOfDay = secondsPerHour * (double) newHour;
     }
 
     /**
@@ -159,7 +159,7 @@ public class TimeOfDay extends NamedAppState {
      * @param newRate simulation rate relative to real time (may be negative)
      */
     public void setRate(float newRate) {
-        rate = newRate;
+        this.rate = newRate;
     }
     // *************************************************************************
     // Object methods
@@ -194,7 +194,7 @@ public class TimeOfDay extends NamedAppState {
         super.update(interval);
 
         double simulatedSeconds = rate * interval;
-        timeOfDay += simulatedSeconds;
-        timeOfDay = MyMath.modulo(timeOfDay, secondsPerDay);
+        this.timeOfDay += simulatedSeconds;
+        this.timeOfDay = MyMath.modulo(timeOfDay, secondsPerDay);
     }
 }

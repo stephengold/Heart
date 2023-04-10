@@ -119,7 +119,7 @@ public class PerformanceAppState extends SimpleAppState {
      */
     public void setUpdateInterval(float newInterval) {
         Validate.positive(newInterval, "new interval");
-        measurementInterval = newInterval;
+        this.measurementInterval = newInterval;
     }
 
     /**
@@ -160,7 +160,7 @@ public class PerformanceAppState extends SimpleAppState {
 
         // Create and attach a GUI text object to display statistics.
         BitmapFont font = assetManager.loadFont(fontPath);
-        text = new BitmapText(font);
+        this.text = new BitmapText(font);
         float lineHeight = text.getLineHeight();
         text.setColor(textColor);
         text.setCullHint(Spatial.CullHint.Never);
@@ -174,7 +174,7 @@ public class PerformanceAppState extends SimpleAppState {
         RenderState renderState = backgroundMaterial.getAdditionalRenderState();
         renderState.setBlendMode(RenderState.BlendMode.Alpha);
         Quad quad = new Quad(backgroundWidth, lineHeight);
-        background = new Geometry("perf stats background", quad);
+        this.background = new Geometry("perf stats background", quad);
         background.setCullHint(Spatial.CullHint.Never);
         background.setLocalTranslation(0f, 0f, -1f);
         background.setMaterial(backgroundMaterial);
@@ -217,11 +217,11 @@ public class PerformanceAppState extends SimpleAppState {
 
         this.maxTpf = Math.max(maxTpf, timePerFrame);
 
-        secondsRemaining -= timePerFrame;
+        this.secondsRemaining -= timePerFrame;
         if (secondsRemaining < 0.0) {
             updateText();
             this.maxTpf = 0f;
-            secondsRemaining = measurementInterval;
+            this.secondsRemaining = measurementInterval;
         }
     }
     // *************************************************************************
@@ -233,7 +233,7 @@ public class PerformanceAppState extends SimpleAppState {
      */
     private void reset() {
         this.maxTpf = 0f;
-        secondsRemaining = measurementInterval;
+        this.secondsRemaining = measurementInterval;
         text.setText("(awaiting update)");
     }
 
