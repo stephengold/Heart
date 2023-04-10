@@ -10,7 +10,7 @@ It contains 3 sub-projects:
 3. J3oDump: a command-line utility to dump J3O assets
 
 Complete source code (in Java) is provided under
-[a BSD 3-Clause license][license].
+[a 3-clause BSD license][license].
 
 Many other libraries depend on the Heart Library, including
 [Acorus], [jme3-wireframe], [JmePower], [Minie], [SkyControl], and [Wes].
@@ -261,7 +261,7 @@ The following apps are found in the HeartExamples sub-project:
 ## External links
 
 + [the Heart page](https://library.jmonkeyengine.org/#!entry=11511%2Fe534fc1e-5b78-46b7-a831-d5d40cbd9dcd)
-  in [the JmonkeyEngine library][library]
+  in [the JmonkeyEngine Library][library]
 
 [Jump to table of contents](#toc)
 
