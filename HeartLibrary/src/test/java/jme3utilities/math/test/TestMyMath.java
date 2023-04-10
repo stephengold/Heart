@@ -184,16 +184,16 @@ public class TestMyMath {
         ry.fromAngleAxis(yAngle, Vector3f.UNIT_Y);
         Matrix3f rz = new Matrix3f();
         rz.fromAngleAxis(zAngle, Vector3f.UNIT_Z);
-        Vector3f outXZY = rx.mult(in);
-        rz.mult(outXZY, outXZY);
-        ry.mult(outXZY, outXZY);
+        Vector3f outXzy = rx.mult(in);
+        rz.mult(outXzy, outXzy);
+        ry.mult(outXzy, outXzy);
         /*
          * Construct a Matrix3f using fromAngles(float, float, float),
          * use it to rotate the "in" vector, and compare.
          */
         Matrix3f r1 = MyMath.fromAngles(xAngle, yAngle, zAngle, null);
         Vector3f out1 = r1.mult(in);
-        assertEquals(outXZY, out1, 1e-5f);
+        assertEquals(outXzy, out1, 1e-5f);
         /*
          * Part 2: verify intrinsic rotation order
          *
@@ -201,7 +201,7 @@ public class TestMyMath {
          */
         Matrix3f r4 = ry.mult(rz).mult(rx);
         Vector3f out7 = r4.mult(in);
-        assertEquals(outXZY, out7, 1e-5f);
+        assertEquals(outXzy, out7, 1e-5f);
 
         // Verify that the value of "in" hasn't changed.
         assertEquals(saveIn, in, 0f);

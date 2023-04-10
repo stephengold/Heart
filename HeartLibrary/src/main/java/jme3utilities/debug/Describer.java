@@ -1077,14 +1077,14 @@ public class Describer implements Cloneable {
             RenderState.BlendFunc dAlpha = state.getCustomDfactorAlpha();
             result.append(",dAlpha=").append(dAlpha);
 
-            RenderState.BlendFunc dRGB = state.getCustomDfactorRGB();
-            result.append(",dRGB=").append(dRGB);
+            RenderState.BlendFunc dRgb = state.getCustomDfactorRGB();
+            result.append(",dRGB=").append(dRgb);
 
             RenderState.BlendFunc sAlpha = state.getCustomSfactorAlpha();
             result.append(",sAlpha=").append(sAlpha);
 
-            RenderState.BlendFunc sRGB = state.getCustomSfactorRGB();
-            result.append(",sRGB=").append(sRGB).append(']');
+            RenderState.BlendFunc sRgb = state.getCustomSfactorRGB();
+            result.append(",sRGB=").append(sRgb).append(']');
         }
 
         return result.toString();
