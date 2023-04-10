@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2022 Stephen Gold
+ Copyright (c) 2019-2023 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -181,9 +181,8 @@ public class VectorSetUsingCollection implements VectorSet {
                 }
             }
         }
-        /*
-         * Multiply sums by 1/(N-1) and fill in the lower triangle.
-         */
+
+        // Multiply sums by 1/(N-1) and fill in the lower triangle.
         float nMinus1 = numSamples - 1;
         for (int rowI = 0; rowI < numAxes; ++rowI) {
             for (int columnI = rowI; columnI < numAxes; ++columnI) {

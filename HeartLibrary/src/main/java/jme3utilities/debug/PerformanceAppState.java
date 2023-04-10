@@ -157,9 +157,8 @@ public class PerformanceAppState extends SimpleAppState {
     public void initialize(AppStateManager stateManager,
             Application application) {
         super.initialize(stateManager, application);
-        /*
-         * Create and attach a GUI text object to display statistics.
-         */
+
+        // Create and attach a GUI text object to display statistics.
         BitmapFont font = assetManager.loadFont(fontPath);
         text = new BitmapText(font);
         float lineHeight = text.getLineHeight();
@@ -167,9 +166,8 @@ public class PerformanceAppState extends SimpleAppState {
         text.setCullHint(Spatial.CullHint.Never);
         text.setLocalTranslation(0f, lineHeight, 0f);
         guiNode.attachChild(text);
-        /*
-         * Create and attach a colored background for the display.
-         */
+
+        // Create and attach a colored background for the display.
         Material backgroundMaterial
                 = MyAsset.createUnshadedMaterial(assetManager);
         backgroundMaterial.setColor("Color", backgroundColor.clone());

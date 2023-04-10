@@ -684,9 +684,8 @@ public class MyVector3f { // TODO finalize the class
                 return closest;
             }
         }
-        /*
-         * Calculate direction of the 2nd segment.
-         */
+
+        // Calculate direction of the 2nd segment.
         Vector3f offset2 = end2.subtract(start2);
         /*
          * If the 2nd segment has zero length, test its start for coincidence

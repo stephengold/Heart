@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -382,9 +382,8 @@ public class VectorXZ
         if (lengthSquared <= rSquared) {
             return this;
         }
-        /*
-         * Scale so that length <= radius.
-         */
+
+        // Scale so that length <= radius.
         float scale = (float) Math.sqrt(rSquared / lengthSquared);
         float clampedX = x * scale;
         float clampedZ = z * scale;

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2022, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -171,9 +171,8 @@ public class Perlin2 implements Noise2 {
      */
     private float gradient(
             int gridX, int gridY, double sampleX, double sampleY) {
-        /*
-         * Compute a hashed index into the array of gradients.
-         */
+
+        // Compute a hashed index into the array of gradients.
         int index = permutation.permute(gridX + permutation.permute(gridY));
         index = MyMath.modulo(index, gradients.length);
 
