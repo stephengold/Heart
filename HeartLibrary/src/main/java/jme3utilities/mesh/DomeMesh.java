@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -269,8 +269,21 @@ public class DomeMesh extends Mesh {
      * Read the U-V scale of this dome.
      *
      * @return UV distance from top to equator (&lt;0.5, &gt;0)
+     * @deprecated use {@link #getUvScale()}
      */
+    @Deprecated
     public float getUVScale() {
+        assert uvScale > 0f : uvScale;
+        assert uvScale < 0.5f : uvScale;
+        return uvScale;
+    }
+
+    /**
+     * Read the U-V scale of this dome.
+     *
+     * @return UV distance from top to equator (&lt;0.5, &gt;0)
+     */
+    public float getUvScale() {
         assert uvScale > 0f : uvScale;
         assert uvScale < 0.5f : uvScale;
         return uvScale;
