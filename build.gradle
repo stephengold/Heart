@@ -14,7 +14,7 @@ tasks.register('checkstyle') {
     description 'Checks the style of all Java sourcecode.'
 }
 
-tasks.register('run') {
+tasks.register('AppChooser') {
     dependsOn ':HeartExamples:AppChooser'
     description 'Runs the examples.'
 }
