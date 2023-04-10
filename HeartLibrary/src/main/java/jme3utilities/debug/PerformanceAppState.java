@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2022, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -91,7 +91,7 @@ public class PerformanceAppState extends SimpleAppState {
      * largest time per frame observed during the current measurement interval
      * (in seconds)
      */
-    private float maxTPF = 0f;
+    private float maxTpf = 0f;
     /**
      * minimum duration of a measurement interval (in seconds)
      */
@@ -217,12 +217,12 @@ public class PerformanceAppState extends SimpleAppState {
     public void update(float timePerFrame) {
         super.update(timePerFrame);
 
-        maxTPF = Math.max(maxTPF, timePerFrame);
+        this.maxTpf = Math.max(maxTpf, timePerFrame);
 
         secondsRemaining -= timePerFrame;
         if (secondsRemaining < 0.0) {
             updateText();
-            maxTPF = 0f;
+            this.maxTpf = 0f;
             secondsRemaining = measurementInterval;
         }
     }
@@ -234,7 +234,7 @@ public class PerformanceAppState extends SimpleAppState {
      * monitor.
      */
     private void reset() {
-        maxTPF = 0f;
+        this.maxTpf = 0f;
         secondsRemaining = measurementInterval;
         text.setText("(awaiting update)");
     }
@@ -243,7 +243,7 @@ public class PerformanceAppState extends SimpleAppState {
      * Update the text at the end of a measurement interval.
      */
     private void updateText() {
-        float milliseconds = 1000f * maxTPF;
+        float milliseconds = 1000f * maxTpf;
         String message = String.format("Max time per frame = %.1f msec",
                 milliseconds);
         text.setText(message);
