@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 8.4.0 released on TBD
+## Version 8.4.0 released on 29 April 2023
 
 + Added the `DecalManager` class.
 + Added new methods:
@@ -33,7 +33,7 @@
   + `MyMesh.hasAnyTangents()`
   + `MyMesh.hasTangents()`
   + `RectangularSolid.centerLocal()`
-  + `RectangularSolid.centerWorld()`A
+  + `RectangularSolid.centerWorld()`
 + Added `TestMyVolume` to the automated tests.
 + Targeted jMonkeyEngine version 3.6.0-beta1.
 + Updated Gradle to v7.6
