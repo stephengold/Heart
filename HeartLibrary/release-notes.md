@@ -1,5 +1,14 @@
 # release log for the Heart Library and related tests
 
+## Version 8.4.0 released on TBD
+
++ Added the `DecalManager` class.
++ Added new methods:
+  + `MyString.describeAngle()`
+  + `MyString.describeMatrix()`
++ Renamed `DomeMesh.getUVScale()` and deprecated the old method.
++ Updated Gradle to v8.1.1
+
 ## Version 8.3.2 released on 20 March 2023
 
 + Targeted jMonkeyEngine version 3.6.0-stable.
@@ -24,7 +33,7 @@
   + `MyMesh.hasAnyTangents()`
   + `MyMesh.hasTangents()`
   + `RectangularSolid.centerLocal()`
-  + `RectangularSolid.centerWorld()`
+  + `RectangularSolid.centerWorld()`A
 + Added `TestMyVolume` to the automated tests.
 + Targeted jMonkeyEngine version 3.6.0-beta1.
 + Updated Gradle to v7.6
