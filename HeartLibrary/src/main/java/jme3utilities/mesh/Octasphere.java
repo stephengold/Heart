@@ -153,7 +153,7 @@ public class Octasphere extends Mesh {
      * No-argument constructor needed by SavableClassUtil.
      */
     protected Octasphere() {
-        radius = 1f;
+        this.radius = 1f;
     }
 
     /**

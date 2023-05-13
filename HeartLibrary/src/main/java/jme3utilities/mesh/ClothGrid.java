@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2022, Stephen Gold
+ Copyright (c) 2019-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -97,8 +97,8 @@ public class ClothGrid extends Mesh {
         Validate.inRange(zLines, "Z lines", 2, Integer.MAX_VALUE);
         Validate.positive(lineSpacing, "line spacing");
 
-        numXLines = xLines;
-        numZLines = zLines;
+        this.numXLines = xLines;
+        this.numZLines = zLines;
 
         int numVertices = xLines * zLines;
         FloatBuffer posBuffer

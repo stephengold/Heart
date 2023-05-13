@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2022, Stephen Gold
+ Copyright (c) 2017-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -69,7 +69,7 @@ public class PointMesh extends Mesh {
      * Instantiate a mesh with the point at (0,0,0).
      */
     public PointMesh() {
-        fPositions = BufferUtils.createFloatBuffer(numAxes);
+        this.fPositions = BufferUtils.createFloatBuffer(numAxes);
         fPositions.clear();
         fPositions.put(0f);
         fPositions.put(0f);

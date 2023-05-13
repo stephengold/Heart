@@ -200,8 +200,8 @@ public class DomeMesh extends Mesh {
 
         this.inwardFacing = inwardFacing;
 
-        segmentAngle = FastMath.TWO_PI;
-        verticalAngle = FastMath.HALF_PI;
+        this.segmentAngle = FastMath.TWO_PI;
+        this.verticalAngle = FastMath.HALF_PI;
 
         updateAll();
         setStatic();
@@ -313,7 +313,7 @@ public class DomeMesh extends Mesh {
             throw new IllegalArgumentException(
                     "angle should be between 0 and 2*Pi");
         }
-        segmentAngle = newAngle;
+        this.segmentAngle = newAngle;
 
         updateAll();
     }
@@ -330,7 +330,7 @@ public class DomeMesh extends Mesh {
             throw new IllegalArgumentException(
                     "angle should be between 0 and Pi");
         }
-        verticalAngle = newAngle;
+        this.verticalAngle = newAngle;
 
         updateAll();
     }
@@ -480,14 +480,14 @@ public class DomeMesh extends Mesh {
                     + "2 samples per longitudinal quadrant");
         }
 
-        complete = (segmentAngle > 1.999f * FastMath.PI);
+        this.complete = (segmentAngle > 1.999f * FastMath.PI);
 
         int quadsPerGore = quadrantSamples - 2;
         int trianglesPerGore = 2 * quadsPerGore + 1;
-        triangleCount = trianglesPerGore * rimSamples;
+        this.triangleCount = trianglesPerGore * rimSamples;
         logger.log(Level.INFO, "{0} triangles", triangleCount);
 
-        vertexCount = (quadrantSamples - 1) * rimSamples + 1;
+        this.vertexCount = (quadrantSamples - 1) * rimSamples + 1;
         logger.log(Level.INFO, "{0} vertices", vertexCount);
         assert vertexCount <= Short.MAX_VALUE : vertexCount;
     }

@@ -126,7 +126,7 @@ public class Icosphere extends Mesh {
      * No-argument constructor needed by SavableClassUtil.
      */
     protected Icosphere() {
-        radius = 1f;
+        this.radius = 1f;
     }
 
     /**
