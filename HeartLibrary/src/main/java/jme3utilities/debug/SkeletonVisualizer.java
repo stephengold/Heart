@@ -191,7 +191,7 @@ public class SkeletonVisualizer extends SubtreeControl {
             AbstractControl subject) {
         Validate.nonNull(assetManager, "asset manager");
 
-        lineMaterial = MyAsset.createMulticolor2Material(assetManager,
+        this.lineMaterial = MyAsset.createMulticolor2Material(assetManager,
                 null, 0f);
         lineMaterial.setBoolean("UseVertexColor", true);
         lineMaterial.setColor("Color", defaultLineColor.clone());
@@ -204,7 +204,7 @@ public class SkeletonVisualizer extends SubtreeControl {
         Texture headShape = MyAsset.loadTexture(assetManager,
                 defaultShapeAssetPath, mipmaps);
 
-        headMaterial = MyAsset.createMulticolor2Material(assetManager,
+        this.headMaterial = MyAsset.createMulticolor2Material(assetManager,
                 headShape, defaultHeadSize);
         headMaterial.setBoolean("UseVertexColor", true);
         headMaterial.setFloat("AlphaDiscardThreshold", 0.0001f);
@@ -360,7 +360,7 @@ public class SkeletonVisualizer extends SubtreeControl {
      */
     public void setLineColor(ColorRGBA newColor) {
         Validate.nonNull(newColor, "new color");
-        lineMaterial.setColor("Color", newColor.clone());
+        this.lineMaterial.setColor("Color", newColor.clone());
     }
 
     /**
@@ -370,7 +370,7 @@ public class SkeletonVisualizer extends SubtreeControl {
      */
     public void setLineWidth(float width) {
         Validate.nonNegative(width, "width");
-        effectiveLineWidth = width;
+        this.effectiveLineWidth = width;
     }
 
     /**
@@ -383,7 +383,7 @@ public class SkeletonVisualizer extends SubtreeControl {
     final public void setSubject(AbstractControl subject) {
         if (subject == null) {
             setSkeleton(null, null);
-            transformSpatial = null;
+            this.transformSpatial = null;
         } else {
             if (subject instanceof SkeletonControl) {
                 SkeletonControl sc = (SkeletonControl) subject;
@@ -398,9 +398,9 @@ public class SkeletonVisualizer extends SubtreeControl {
             Spatial animatedGeometry
                     = MySpatial.findAnimatedGeometry(controlledSpatial);
             if (animatedGeometry == null) {
-                transformSpatial = controlledSpatial;
+                this.transformSpatial = controlledSpatial;
             } else {
-                transformSpatial = animatedGeometry;
+                this.transformSpatial = animatedGeometry;
             }
         }
     }
@@ -411,7 +411,7 @@ public class SkeletonVisualizer extends SubtreeControl {
      * @param spatial which spatial to use (may be null, alias created)
      */
     public void setTransformSpatial(Spatial spatial) {
-        transformSpatial = spatial;
+        this.transformSpatial = spatial;
     }
     // *************************************************************************
     // SubtreeControl methods
@@ -440,7 +440,7 @@ public class SkeletonVisualizer extends SubtreeControl {
         super.cloneFields(cloner, original);
 
         SkeletonVisualizer originalVisualizer = (SkeletonVisualizer) original;
-        customColors = new TreeMap<>();
+        this.customColors = new TreeMap<>();
         for (Map.Entry<Integer, ColorRGBA> entry
                 : originalVisualizer.customColors.entrySet()) {
             int boneIndex = entry.getKey();
@@ -449,12 +449,12 @@ public class SkeletonVisualizer extends SubtreeControl {
             customColors.put(boneIndex, copyColor);
         }
 
-        armature = cloner.clone(armature);
-        headColor = cloner.clone(headColor);
-        headMaterial = cloner.clone(headMaterial);
-        lineMaterial = cloner.clone(lineMaterial);
-        skeleton = cloner.clone(skeleton);
-        transformSpatial = cloner.clone(transformSpatial);
+        this.armature = cloner.clone(armature);
+        this.headColor = cloner.clone(headColor);
+        this.headMaterial = cloner.clone(headMaterial);
+        this.lineMaterial = cloner.clone(lineMaterial);
+        this.skeleton = cloner.clone(skeleton);
+        this.transformSpatial = cloner.clone(transformSpatial);
     }
 
     /**
@@ -604,8 +604,8 @@ public class SkeletonVisualizer extends SubtreeControl {
             if (getSubtree() != null) {
                 ((Node) getSubtree()).detachAllChildren();
             }
-            armature = newArmature;
-            skeleton = newSkeleton;
+            this.armature = newArmature;
+            this.skeleton = newSkeleton;
         }
     }
 

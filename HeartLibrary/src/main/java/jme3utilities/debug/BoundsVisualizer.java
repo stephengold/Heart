@@ -154,7 +154,7 @@ public class BoundsVisualizer extends SubtreeControl {
     public BoundsVisualizer(AssetManager assetManager) {
         Validate.nonNull(assetManager, "asset manager");
 
-        lineMaterial = MyAsset.createWireframeMaterial(assetManager,
+        this.lineMaterial = MyAsset.createWireframeMaterial(assetManager,
                 defaultLineColor);
         RenderState rs = lineMaterial.getAdditionalRenderState();
         rs.setDepthTest(defaultDepthTest);
@@ -195,7 +195,7 @@ public class BoundsVisualizer extends SubtreeControl {
      * Disable billboarding.
      */
     public void disableBillboarding() {
-        camera = null;
+        this.camera = null;
     }
 
     /**
@@ -212,7 +212,7 @@ public class BoundsVisualizer extends SubtreeControl {
         Validate.axisIndex(axisIndex, "axis index");
 
         this.camera = camera;
-        billboardAxis = axisIndex;
+        this.billboardAxis = axisIndex;
     }
 
     /**
@@ -286,7 +286,7 @@ public class BoundsVisualizer extends SubtreeControl {
      */
     public void setLineWidth(float newWidth) {
         Validate.nonNegative(newWidth, "new width");
-        effectiveLineWidth = newWidth;
+        this.effectiveLineWidth = newWidth;
     }
 
     /**
@@ -296,7 +296,7 @@ public class BoundsVisualizer extends SubtreeControl {
      */
     public void setSphereType(SphereMeshes type) {
         Validate.nonNull(type, "type");
-        sphereType = type;
+        this.sphereType = type;
     }
 
     /**
@@ -305,7 +305,7 @@ public class BoundsVisualizer extends SubtreeControl {
      * @param newSubject which spatial (may be null, alias created)
      */
     public void setSubject(Spatial newSubject) {
-        subject = newSubject;
+        this.subject = newSubject;
     }
 
     /**
@@ -343,9 +343,9 @@ public class BoundsVisualizer extends SubtreeControl {
     public void cloneFields(Cloner cloner, Object original) {
         super.cloneFields(cloner, original);
 
-        camera = cloner.clone(camera);
-        lineMaterial = cloner.clone(lineMaterial);
-        subject = cloner.clone(subject);
+        this.camera = cloner.clone(camera);
+        this.lineMaterial = cloner.clone(lineMaterial);
+        this.subject = cloner.clone(subject);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2022, Stephen Gold
+ Copyright (c) 2018-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -164,9 +164,9 @@ public class PointVisualizer extends Geometry {
      */
     public void setEnabled(boolean enable) {
         if (enable) {
-            cullHint = CullHint.Never;
+            this.cullHint = CullHint.Never;
         } else {
-            cullHint = CullHint.Always;
+            this.cullHint = CullHint.Always;
         }
     }
 
