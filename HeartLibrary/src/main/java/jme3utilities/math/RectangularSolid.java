@@ -192,8 +192,8 @@ public class RectangularSolid implements Savable {
      * @param endPosition the position at which the sample locations end
      * (&ge;startPosition+6, &le;capacity)
      */
-    public RectangularSolid(FloatBuffer buffer, int startPosition,
-            int endPosition) {
+    public RectangularSolid(
+            FloatBuffer buffer, int startPosition, int endPosition) {
         Validate.nonNull(buffer, "buffer");
         Validate.inRange(
                 startPosition, "start position", 0, endPosition - 2 * numAxes);
@@ -271,8 +271,8 @@ public class RectangularSolid implements Savable {
             RectangularSolid otherSolid, Vector3f scaleFactors) {
         Validate.nonNegative(scaleFactors, "scale factors");
 
-        Vector3f center = MyVector3f.midpoint(otherSolid.minima,
-                otherSolid.maxima, null);
+        Vector3f center = MyVector3f.midpoint(
+                otherSolid.minima, otherSolid.maxima, null);
 
         otherSolid.maxima.subtract(center, maxima);
         maxima.multLocal(scaleFactors);

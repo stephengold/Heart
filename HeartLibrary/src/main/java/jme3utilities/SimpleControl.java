@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -75,8 +75,8 @@ abstract public class SimpleControl extends AbstractControl {
      * rendered (not null)
      */
     @Override
-    protected void controlRender(RenderManager renderManager,
-            ViewPort viewPort) {
+    protected void controlRender(
+            RenderManager renderManager, ViewPort viewPort) {
         Validate.nonNull(renderManager, "render manager");
         Validate.nonNull(viewPort, "viewport");
 

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2022, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -431,8 +431,8 @@ public class AxesVisualizer extends SubtreeControl {
      * @param direction for the arrow to point (in local coordinates, length=1,
      * unaffected)
      */
-    private void addSolidArrow(ColorRGBA color, String name,
-            Vector3f direction) {
+    private void addSolidArrow(
+            ColorRGBA color, String name, Vector3f direction) {
         assert assetManager != null;
         assert color != null;
         assert name != null;
@@ -468,8 +468,8 @@ public class AxesVisualizer extends SubtreeControl {
      * @param direction for the arrow to point (in local coordinates, length=1,
      * unaffected)
      */
-    private void addWireArrow(ColorRGBA color, String name,
-            Vector3f direction) {
+    private void addWireArrow(
+            ColorRGBA color, String name, Vector3f direction) {
         assert assetManager != null;
         assert color != null;
         assert name != null;

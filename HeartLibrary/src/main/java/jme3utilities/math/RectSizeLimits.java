@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2022, Stephen Gold
+ Copyright (c) 2019-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -73,14 +73,14 @@ public class RectSizeLimits {
      * @param maxWidth the desired maximum width (&ge;minWidth)
      * @param maxHeight the desired maximum height (&ge;minHeight)
      */
-    public RectSizeLimits(int minWidth, int minHeight, int maxWidth,
-            int maxHeight) {
+    public RectSizeLimits(
+            int minWidth, int minHeight, int maxWidth, int maxHeight) {
         Validate.inRange(minWidth, "minimum width", 1, maxWidth);
         Validate.inRange(minHeight, "minimum height", 1, maxHeight);
-        Validate.inRange(maxWidth, "maximum width", minWidth,
-                Integer.MAX_VALUE);
-        Validate.inRange(maxHeight, "maximum height", minHeight,
-                Integer.MAX_VALUE);
+        Validate.inRange(
+                maxWidth, "maximum width", minWidth, Integer.MAX_VALUE);
+        Validate.inRange(
+                maxHeight, "maximum height", minHeight, Integer.MAX_VALUE);
 
         this.minWidth = minWidth;
         this.minHeight = minHeight;
@@ -209,8 +209,8 @@ public class RectSizeLimits {
      */
     @Override
     public String toString() {
-        String result = String.format("(%d,%d)-(%d,%d)",
-                minWidth, minHeight, maxWidth, maxHeight);
+        String result = String.format(
+                "(%d,%d)-(%d,%d)", minWidth, minHeight, maxWidth, maxHeight);
         return result;
     }
 }

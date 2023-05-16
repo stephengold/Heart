@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022, Stephen Gold
+ Copyright (c) 2022-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -97,8 +97,8 @@ public class TestMyVector3f {
 
         {
             Vector3f p21 = MyVector3f.projection(v2, v1, null);
-            HeartTest.assertEquals(-0.357143f, -0.714286f, -1.071429f,
-                    p21, 1e-6f);
+            HeartTest.assertEquals(
+                    -0.357143f, -0.714286f, -1.071429f, p21, 1e-6f);
             HeartTest.assertEquals(saveV1, v1, 0f);
             HeartTest.assertEquals(saveV2, v2, 0f);
         }

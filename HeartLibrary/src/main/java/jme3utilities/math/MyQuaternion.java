@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2022, Stephen Gold
+ Copyright (c) 2017-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -81,8 +81,8 @@ public class MyQuaternion { // TODO finalize the class
      * it's {@code total})
      * @param scale scale factor to apply to the input
      */
-    public static void accumulateScaled(Quaternion total, Quaternion input,
-            float scale) {
+    public static void accumulateScaled(
+            Quaternion total, Quaternion input, float scale) {
         assert Validate.nonNull(total, "total");
         assert Validate.nonNull(input, "input");
 
@@ -414,8 +414,8 @@ public class MyQuaternion { // TODO finalize the class
      * {@code input})
      * @return a mirrored Quaternion (either storeResult or a new instance)
      */
-    public static Quaternion mirrorAxis(Quaternion input, int axisIndex,
-            Quaternion storeResult) {
+    public static Quaternion mirrorAxis(
+            Quaternion input, int axisIndex, Quaternion storeResult) {
         Quaternion result = (storeResult == null) ? new Quaternion()
                 : storeResult;
 
@@ -493,8 +493,8 @@ public class MyQuaternion { // TODO finalize the class
      * {@code base})
      * @return a unit quaternion (either storeResult or a new instance)
      */
-    public static Quaternion pow(Quaternion base, float exponent,
-            Quaternion storeResult) {
+    public static Quaternion pow(
+            Quaternion base, float exponent, Quaternion storeResult) {
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
 
@@ -540,8 +540,8 @@ public class MyQuaternion { // TODO finalize the class
      * @return an interpolated unit quaternion (either storeResult or a new
      * instance)
      */
-    public static Quaternion slerp(float t, Quaternion q0, Quaternion q1,
-            Quaternion storeResult) {
+    public static Quaternion slerp(
+            float t, Quaternion q0, Quaternion q1, Quaternion storeResult) {
         assert Validate.inRange(t, "t", 0f, 1f);
         assert validateUnit(q0, "q0", 0.0001f);
         assert validateUnit(q1, "q1", 0.0001f);
@@ -646,8 +646,8 @@ public class MyQuaternion { // TODO finalize the class
      * @return an equivalent Quaternion without negative zeros (either
      * storeResult or a new instance)
      */
-    public static Quaternion standardize(Quaternion input,
-            Quaternion storeResult) {
+    public static Quaternion standardize(
+            Quaternion input, Quaternion storeResult) {
         assert Validate.nonNull(input, "input quaternion");
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
@@ -675,8 +675,8 @@ public class MyQuaternion { // TODO finalize the class
      * @throws IllegalArgumentException if the norm is out of tolerance
      * @throws NullPointerException if the Quaternion is null
      */
-    public static boolean validateUnit(Quaternion q, String description,
-            float tolerance) {
+    public static boolean validateUnit(
+            Quaternion q, String description, float tolerance) {
         assert Validate.nonNull(q, description);
 
         double norm = lengthSquared(q);

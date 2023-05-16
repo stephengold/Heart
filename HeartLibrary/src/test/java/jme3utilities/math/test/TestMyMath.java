@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2022, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -58,14 +58,14 @@ public class TestMyMath {
         Assert.assertEquals(0f, MyMath.cube(0f), 0f);
         Assert.assertEquals(-27f, MyMath.cube(-3f), 0f);
         Assert.assertEquals(512f, MyMath.cube(8f), 0f);
-        Assert.assertEquals(Float.POSITIVE_INFINITY,
-                MyMath.cube(Float.MAX_VALUE / 2f), 0f);
+        Assert.assertEquals(
+                Float.POSITIVE_INFINITY, MyMath.cube(Float.MAX_VALUE / 2f), 0f);
 
         Assert.assertEquals(0f, MyMath.cubeRoot(0f), 0f);
         Assert.assertEquals(-1.44225f, MyMath.cubeRoot(-3f), 1e-6f);
         Assert.assertEquals(2f, MyMath.cubeRoot(8f), 0f);
-        Assert.assertEquals(5.5411915e12f,
-                MyMath.cubeRoot(Float.MAX_VALUE / 2f), 1e6f);
+        Assert.assertEquals(
+                5.5411915e12f, MyMath.cubeRoot(Float.MAX_VALUE / 2f), 1e6f);
 
         Assert.assertEquals(0, MyMath.modulo(0, 2));
         Assert.assertEquals(1, MyMath.modulo(1, 3));

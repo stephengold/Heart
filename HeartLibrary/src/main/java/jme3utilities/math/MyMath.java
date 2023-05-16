@@ -309,8 +309,8 @@ public class MyMath { // TODO finalize the class
      * @param duration the duration of the animation (&gt;0)
      * @return the current value
      */
-    public static float easeInQuartic(float time, float start, float end,
-            float duration) {
+    public static float easeInQuartic(
+            float time, float start, float end, float duration) {
         assert Validate.positive(duration, "duration");
 
         float t = time / duration; // goes from 0 -> 1
@@ -332,8 +332,8 @@ public class MyMath { // TODO finalize the class
      * @param duration the duration of the animation (&gt;0)
      * @return the current value
      */
-    public static float easeOutQuartic(float time, float start, float end,
-            float duration) {
+    public static float easeOutQuartic(
+            float time, float start, float end, float duration) {
         assert Validate.positive(duration, "duration");
 
         float t = time / duration - 1f; // goes from -1 -> 0
@@ -824,8 +824,8 @@ public class MyMath { // TODO finalize the class
      * t0 or t1)
      * @return an interpolated transform (either storeResult or a new instance)
      */
-    public static Transform slerp(float t, Transform t0, Transform t1,
-            Transform storeResult) {
+    public static Transform slerp(
+            float t, Transform t0, Transform t1, Transform storeResult) {
         assert Validate.inRange(t, "t", 0f, 1f);
         assert Validate.nonNull(t0, "t0");
         assert Validate.nonNull(t1, "t1");
@@ -835,11 +835,11 @@ public class MyMath { // TODO finalize the class
         MyVector3f.lerp(t, t0.getTranslation(), t1.getTranslation(),
                 result.getTranslation());
 
-        MyQuaternion.slerp(t, t0.getRotation(), t1.getRotation(),
-                result.getRotation());
+        MyQuaternion.slerp(
+                t, t0.getRotation(), t1.getRotation(), result.getRotation());
 
-        MyVector3f.lerp(t, t0.getScale(), t1.getScale(),
-                result.getScale());
+        MyVector3f.lerp(
+                t, t0.getScale(), t1.getScale(), result.getScale());
 
         return result;
     }

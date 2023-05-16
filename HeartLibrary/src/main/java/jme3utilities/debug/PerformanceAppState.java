@@ -154,8 +154,8 @@ public class PerformanceAppState extends SimpleAppState {
      * @param application (not null)
      */
     @Override
-    public void initialize(AppStateManager stateManager,
-            Application application) {
+    public void initialize(
+            AppStateManager stateManager, Application application) {
         super.initialize(stateManager, application);
 
         // Create and attach a GUI text object to display statistics.
@@ -242,8 +242,8 @@ public class PerformanceAppState extends SimpleAppState {
      */
     private void updateText() {
         float milliseconds = 1000f * maxTpf;
-        String message = String.format("Max time per frame = %.1f msec",
-                milliseconds);
+        String message = String.format(
+                "Max time per frame = %.1f msec", milliseconds);
         text.setText(message);
     }
 }

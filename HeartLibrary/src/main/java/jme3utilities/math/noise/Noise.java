@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2021, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -72,9 +72,9 @@ final public class Noise {
      * @param lacunarity frequency ratio between octaves (&gt;1)
      * @return noise value (range depends on parameters)
      */
-    public static float fbmNoise(Noise2 noise2, float sampleX,
-            float sampleY, int numOctaves, float fundamental, float gain,
-            float lacunarity) {
+    public static float fbmNoise(
+            Noise2 noise2, float sampleX, float sampleY, int numOctaves,
+            float fundamental, float gain, float lacunarity) {
         Validate.nonNull(noise2, "noise2");
         Validate.positive(numOctaves, "octaves");
         Validate.positive(fundamental, "fundamental");
@@ -93,8 +93,8 @@ final public class Noise {
         float frequency = fundamental;
         float total = 0f;
         for (int octave = 0; octave < numOctaves; ++octave) {
-            float sample = noise2.sampleNormalized(sampleX * frequency,
-                    sampleY * frequency);
+            float sample = noise2.sampleNormalized(
+                    sampleX * frequency, sampleY * frequency);
             total += amplitude * sample;
             frequency *= lacunarity;
             amplitude *= gain;

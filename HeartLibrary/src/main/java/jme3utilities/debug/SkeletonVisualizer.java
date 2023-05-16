@@ -187,12 +187,12 @@ public class SkeletonVisualizer extends SubtreeControl {
      * @param subject the SkeletonControl or SkinningControl to visualize (may
      * be null)
      */
-    public SkeletonVisualizer(AssetManager assetManager,
-            AbstractControl subject) {
+    public SkeletonVisualizer(
+            AssetManager assetManager, AbstractControl subject) {
         Validate.nonNull(assetManager, "asset manager");
 
-        this.lineMaterial = MyAsset.createMulticolor2Material(assetManager,
-                null, 0f);
+        this.lineMaterial = MyAsset.createMulticolor2Material(
+                assetManager, null, 0f);
         lineMaterial.setBoolean("UseVertexColor", true);
         lineMaterial.setColor("Color", defaultLineColor.clone());
         lineMaterial.setFloat("AlphaDiscardThreshold", 0.9999f);
@@ -201,11 +201,11 @@ public class SkeletonVisualizer extends SubtreeControl {
         lineState.setDepthTest(false);
 
         boolean mipmaps = false;
-        Texture headShape = MyAsset.loadTexture(assetManager,
-                defaultShapeAssetPath, mipmaps);
+        Texture headShape = MyAsset.loadTexture(
+                assetManager, defaultShapeAssetPath, mipmaps);
 
-        this.headMaterial = MyAsset.createMulticolor2Material(assetManager,
-                headShape, defaultHeadSize);
+        this.headMaterial = MyAsset.createMulticolor2Material(
+                assetManager, headShape, defaultHeadSize);
         headMaterial.setBoolean("UseVertexColor", true);
         headMaterial.setFloat("AlphaDiscardThreshold", 0.0001f);
         RenderState headState = headMaterial.getAdditionalRenderState();
@@ -500,8 +500,8 @@ public class SkeletonVisualizer extends SubtreeControl {
             customColors.put(index, color);
         }
 
-        this.headColor =
-                (ColorRGBA) capsule.readSavable(tagHeadColor, defaultHeadColor);
+        this.headColor = (ColorRGBA) capsule.readSavable(
+                tagHeadColor, defaultHeadColor);
         this.headMaterial
                 = (Material) capsule.readSavable(tagHeadMaterial, null);
         this.lineMaterial

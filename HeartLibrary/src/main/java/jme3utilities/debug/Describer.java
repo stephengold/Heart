@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -246,8 +246,8 @@ public class Describer implements Cloneable {
 
         Collection<MatParam> params = material.getParams();
         int numParams = params.size();
-        String count = String.format(" with %d parm%s", numParams,
-                (numParams == 1) ? "" : "s");
+        String count = String.format(
+                " with %d parm%s", numParams, (numParams == 1) ? "" : "s");
         result.append(count);
 
         return result.toString();
@@ -337,8 +337,8 @@ public class Describer implements Cloneable {
         builder.append("Skeleton");
         Bone[] rootBones = skeleton.getRoots();
         int numRoots = rootBones.length;
-        String rootsText = String.format(" with %d root bone%s", numRoots,
-                (numRoots == 1) ? "" : "s");
+        String rootsText = String.format(
+                " with %d root bone%s", numRoots, (numRoots == 1) ? "" : "s");
         builder.append(rootsText);
 
         return builder.toString();
@@ -805,14 +805,14 @@ public class Describer implements Cloneable {
         }
         builder.append(desc);
 
-        Vector3f pos = MyMesh.vertexVector3f(mesh, VertexBuffer.Type.Position,
-                vertexIndex, null);
+        Vector3f pos = MyMesh.vertexVector3f(
+                mesh, VertexBuffer.Type.Position, vertexIndex, null);
         desc = MyVector3f.describe(pos);
         builder.append(desc);
 
         if (MyMesh.hasUV(mesh)) {
-            Vector2f norm = MyMesh.vertexVector2f(mesh,
-                    VertexBuffer.Type.TexCoord, vertexIndex, null);
+            Vector2f norm = MyMesh.vertexVector2f(
+                    mesh, VertexBuffer.Type.TexCoord, vertexIndex, null);
             builder.append(" u=");
             builder.append(norm.x);
             builder.append(" v=");
@@ -825,8 +825,8 @@ public class Describer implements Cloneable {
                 builder.append(MyString.repeat(" ", 20 - length));
             }
             builder.append(" N[");
-            Vector3f norm = MyMesh.vertexVector3f(mesh,
-                    VertexBuffer.Type.Normal, vertexIndex, null);
+            Vector3f norm = MyMesh.vertexVector3f(
+                    mesh, VertexBuffer.Type.Normal, vertexIndex, null);
             desc = MyVector3f.describeDirection(norm);
             builder.append(desc);
             builder.append(']');
@@ -949,8 +949,8 @@ public class Describer implements Cloneable {
                     String r = MyString.describe(radius);
                     Vector3f location = probe.getPosition(); // alias
                     String loc = MyVector3f.describe(location);
-                    result = String.format("LP%s(%s r=%s %s)",
-                            name, areaType, r, loc);
+                    result = String.format(
+                            "LP%s(%s r=%s %s)", name, areaType, r, loc);
                 } else {
                     result = String.format("LP%s(unready)", name);
                 }

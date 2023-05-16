@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2022, Stephen Gold
+ Copyright (c) 2017-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -266,8 +266,8 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
      * @param destination population to merge into (not null, modified)
      * @return the number of elements merged (&ge;0, &le;maxCount)
      */
-    public int mergeFittestTo(int maxCount,
-            Population<Fitness, Element> destination) {
+    public int mergeFittestTo(
+            int maxCount, Population<Fitness, Element> destination) {
         Validate.nonNegative(maxCount, "maxCount");
         Validate.nonNull(destination, "destination");
 
@@ -301,8 +301,8 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
      * @param destination population to merge into (not null, modified)
      * @return count of elements merged (&ge;0, &le;maxCount)
      */
-    public int mergeSubsetTo(BitSet subset,
-            Population<Fitness, Element> destination) {
+    public int mergeSubsetTo(
+            BitSet subset, Population<Fitness, Element> destination) {
         Validate.nonNull(subset, "subset");
         Validate.nonNull(destination, "destination");
 

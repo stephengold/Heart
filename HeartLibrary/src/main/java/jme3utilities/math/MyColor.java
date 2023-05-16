@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2022, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -119,8 +119,8 @@ final public class MyColor {
      * @param end the 2nd input color (not null, unaffected)
      * @return new color, start*(1-fraction) + end*fraction
      */
-    public static ColorRGBA interpolateLinear(float fraction, ColorRGBA start,
-            ColorRGBA end) {
+    public static ColorRGBA interpolateLinear(
+            float fraction, ColorRGBA start, ColorRGBA end) {
         Validate.fraction(fraction, "fraction");
         Validate.nonNull(start, "start");
         Validate.nonNull(end, "end");
@@ -141,8 +141,8 @@ final public class MyColor {
      * c0 or c1)
      * @return an interpolated color (either storeResult or a new instance)
      */
-    public static ColorRGBA lerp(float t, ColorRGBA c0, ColorRGBA c1,
-            ColorRGBA storeResult) {
+    public static ColorRGBA lerp(
+            float t, ColorRGBA c0, ColorRGBA c1, ColorRGBA storeResult) {
         Validate.nonNull(c0, "c0");
         Validate.nonNull(c1, "c1");
         ColorRGBA result
@@ -191,8 +191,8 @@ final public class MyColor {
      * @return a new instance, suitable for use as the color of a viewport
      * background or an unshaded material
      */
-    public static ColorRGBA renderColor(ColorSpace colorSpace,
-            ColorRGBA encodedColor) {
+    public static ColorRGBA renderColor(
+            ColorSpace colorSpace, ColorRGBA encodedColor) {
         ColorRGBA result;
         if (colorSpace == ColorSpace.sRGB) {
             result = encodedColor.clone(); // clone the encoded color

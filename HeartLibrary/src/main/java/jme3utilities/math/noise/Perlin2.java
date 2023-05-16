@@ -146,8 +146,8 @@ public class Perlin2 implements Noise2 {
      * @param seed seed for generating gradients
      */
     private void generateGradients(int numGradients, long seed) {
-        Validate.inRange(numGradients, "number of gradients",
-                2, Integer.MAX_VALUE);
+        Validate.inRange(
+                numGradients, "number of gradients", 2, Integer.MAX_VALUE);
 
         this.gradients = new Vector2f[numGradients];
         Random thetaGenerator = new Random(seed);

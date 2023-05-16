@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -72,8 +72,8 @@ public class DiscMesh extends Mesh {
      */
     public DiscMesh(float radius, int numVertices) {
         Validate.nonNegative(radius, "radius");
-        Validate.inRange(numVertices, "number of vertices", 3,
-                Integer.MAX_VALUE);
+        Validate.inRange(
+                numVertices, "number of vertices", 3, Integer.MAX_VALUE);
 
         setMode(Mode.TriangleFan);
 

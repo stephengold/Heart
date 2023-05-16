@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2022, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -102,8 +102,8 @@ public class LoopMesh extends Mesh {
     public LoopMesh(Vector3f[] cornerArray) {
         Validate.nonNullArray(cornerArray, "corner array");
         int vertexCount = cornerArray.length;
-        Validate.inRange(vertexCount, "length of corner array",
-                3, Integer.MAX_VALUE);
+        Validate.inRange(
+                vertexCount, "length of corner array", 3, Integer.MAX_VALUE);
 
         setMode(Mode.LineLoop);
 

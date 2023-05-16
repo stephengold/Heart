@@ -1229,8 +1229,8 @@ public class MySpatial { // TODO finalize the class
             Geometry geometry = (Geometry) subtree;
             Mesh mesh = geometry.getMesh();
             if (MyMesh.isAnimated(mesh)) {
-                Material material = MyMesh.boneWeightMaterial(mesh,
-                        boneIndexToColor, assetManager);
+                Material material = MyMesh.boneWeightMaterial(
+                        mesh, boneIndexToColor, assetManager);
                 geometry.setMaterial(material);
             }
         }

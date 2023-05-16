@@ -181,8 +181,8 @@ public class DomeMesh extends Mesh {
         Validate.inRange(rimSamples, "rim samples", 3, Integer.MAX_VALUE);
         this.rimSamples = rimSamples;
 
-        Validate.inRange(quadrantSamples, "quadrant samples",
-                2, Integer.MAX_VALUE);
+        Validate.inRange(
+                quadrantSamples, "quadrant samples", 2, Integer.MAX_VALUE);
         this.quadrantSamples = quadrantSamples;
 
         Validate.fraction(topU, "topU");

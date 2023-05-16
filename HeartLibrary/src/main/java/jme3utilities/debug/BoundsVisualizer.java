@@ -154,8 +154,8 @@ public class BoundsVisualizer extends SubtreeControl {
     public BoundsVisualizer(AssetManager assetManager) {
         Validate.nonNull(assetManager, "asset manager");
 
-        this.lineMaterial = MyAsset.createWireframeMaterial(assetManager,
-                defaultLineColor);
+        this.lineMaterial = MyAsset.createWireframeMaterial(
+                assetManager, defaultLineColor);
         RenderState rs = lineMaterial.getAdditionalRenderState();
         rs.setDepthTest(defaultDepthTest);
         lineMaterial.setName("bound mat");
