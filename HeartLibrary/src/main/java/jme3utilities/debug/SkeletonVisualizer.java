@@ -581,6 +581,7 @@ public class SkeletonVisualizer extends SubtreeControl {
         SkeletonMesh headsMesh
                 = new SkeletonMesh(armature, skeleton, Mesh.Mode.Points);
         Geometry headsGeometry = new Geometry(headsName, headsMesh);
+        assert headMaterial != null;
         headsGeometry.setMaterial(headMaterial);
         subtreeNode.attachChildAt(headsGeometry, headsChildPosition);
 
