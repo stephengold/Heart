@@ -172,7 +172,7 @@ Open the project's properties in the IDE (JME SDK or NetBeans):
   + using Windows Command Prompt: `set JAVA_HOME="` *path to installation* `"`
   + using PowerShell: `$env:JAVA_HOME = '` *path to installation* `'`
 3. Download and extract the Heart source code from GitHub:
-  + using Git:
+  + using [Git]:
     + `git clone https://github.com/stephengold/Heart.git`
     + `cd Heart`
     + `git checkout -b latest 8.4.0`
