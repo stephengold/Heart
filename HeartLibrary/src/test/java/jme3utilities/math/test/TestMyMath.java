@@ -30,6 +30,7 @@ import com.jme3.math.Matrix3f;
 import com.jme3.math.Vector3f;
 import java.util.logging.Logger;
 import jme3utilities.math.MyMath;
+import jme3utilities.test.HeartTest;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -193,7 +194,7 @@ public class TestMyMath {
          */
         Matrix3f r1 = MyMath.fromAngles(xAngle, yAngle, zAngle, null);
         Vector3f out1 = r1.mult(in);
-        assertEquals(outXzy, out1, 1e-5f);
+        HeartTest.assertEquals(outXzy, out1, 1e-5f);
         /*
          * Part 2: verify intrinsic rotation order
          *
@@ -201,25 +202,9 @@ public class TestMyMath {
          */
         Matrix3f r4 = ry.mult(rz).mult(rx);
         Vector3f out7 = r4.mult(in);
-        assertEquals(outXzy, out7, 1e-5f);
+        HeartTest.assertEquals(outXzy, out7, 1e-5f);
 
         // Verify that the value of "in" hasn't changed.
-        assertEquals(saveIn, in, 0f);
-    }
-    // *************************************************************************
-    // private methods
-
-    /**
-     * Verify that 2 vectors are equal to within some tolerance.
-     *
-     * @param expected the expected value (not null, unaffected)
-     * @param actual the vector to test (not null, unaffected)
-     * @param tolerance the allowable difference for each component
-     */
-    private static void assertEquals(
-            Vector3f expected, Vector3f actual, float tolerance) {
-        Assert.assertEquals("x component", expected.x, actual.x, tolerance);
-        Assert.assertEquals("y component", expected.y, actual.y, tolerance);
-        Assert.assertEquals("z component", expected.z, actual.z, tolerance);
+        HeartTest.assertEquals(saveIn, in, 0f);
     }
 }
