@@ -115,8 +115,8 @@ final public class HeartTest {
      * @param actual the vector to test (not null)
      * @param tolerance the allowable difference for each component
      */
-    public static void assertEquals(ReadXZ expected, ReadXZ actual,
-            float tolerance) {
+    public static void assertEquals(
+            ReadXZ expected, ReadXZ actual, float tolerance) {
         Assert.assertEquals(expected.getX(), actual.getX(), tolerance);
         Assert.assertEquals(expected.getZ(), actual.getZ(), tolerance);
     }
