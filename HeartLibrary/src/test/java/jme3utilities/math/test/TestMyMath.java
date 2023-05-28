@@ -27,9 +27,12 @@
 package jme3utilities.math.test;
 
 import com.jme3.math.Matrix3f;
+import com.jme3.math.Quaternion;
+import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
 import java.util.logging.Logger;
 import jme3utilities.math.MyMath;
+import jme3utilities.math.MyQuaternion;
 import jme3utilities.test.HeartTest;
 import org.junit.Assert;
 import org.junit.Test;
@@ -50,6 +53,73 @@ public class TestMyMath {
             = Logger.getLogger(TestMyMath.class.getName());
     // *************************************************************************
     // new methods exposed
+
+    /**
+     * Test combine().
+     */
+    @Test
+    public void testCombine() {
+        Vector3f[] testVectors = {
+            new Vector3f(1f, 2f, 3f),
+            new Vector3f(0f, -1f, -2f),
+            new Vector3f(7f, 0.7f, 0f)
+        };
+        Quaternion[] testQuaternions = {
+            new Quaternion(1f, 7f, 1f, -7f),
+            new Quaternion(3f, -4f, 0f, 0f),
+            new Quaternion(0f, 0f, 0f, 1f),
+            new Quaternion(0f, 0f, -1f, 1f),
+            new Quaternion(-0.5f, 0.5f, 0.5f, 0.5f)
+        };
+
+        float tol = 4e-6f;
+
+        for (Vector3f pt : testVectors) {
+            for (Quaternion pr : testQuaternions) {
+                for (Vector3f ps : testVectors) {
+                    for (Vector3f ct : testVectors) {
+                        for (Quaternion cr : testQuaternions) {
+                            for (Vector3f cs : testVectors) {
+                                Quaternion prn = pr.clone();
+                                MyQuaternion.normalizeLocal(prn);
+                                Quaternion crn = cr.clone();
+                                MyQuaternion.normalizeLocal(crn);
+
+                                Transform nChild = new Transform(ct, crn, cs);
+                                Transform nParent = new Transform(pt, prn, ps);
+                                Transform expect
+                                        = nChild.combineWithParent(nParent);
+
+                                Transform child = new Transform(ct, cr, cs);
+                                Transform parent = new Transform(pt, pr, ps);
+                                Transform saveChild = child.clone();
+                                Transform saveParent = parent.clone();
+
+                                Transform actual1
+                                        = MyMath.combine(child, parent, null);
+                                HeartTest.assertEquals(expect, actual1, tol);
+                                HeartTest.assertEquals(saveChild, child, 0f);
+                                HeartTest.assertEquals(saveParent, parent, 0f);
+
+                                Transform actual2
+                                        = MyMath.combine(child, parent, child);
+                                HeartTest.assertEquals(expect, actual2, tol);
+                                HeartTest.assertEquals(expect, child, tol);
+                                HeartTest.assertEquals(saveParent, parent, 0f);
+
+                                child = saveChild.clone();
+                                Transform actual3
+                                        = MyMath.combine(child, parent, parent);
+                                HeartTest.assertEquals(expect, actual3, tol);
+                                HeartTest.assertEquals(saveChild, child, 0f);
+                                HeartTest.assertEquals(expect, parent, tol);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * Test cube(), cubeRoot(), and modulo().
