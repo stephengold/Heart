@@ -27,6 +27,7 @@
 package jme3utilities.test;
 
 import com.jme3.math.Quaternion;
+import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
 import jme3utilities.math.ReadXZ;
 import org.junit.Assert;
@@ -121,5 +122,34 @@ final public class HeartTest {
                 "x component", expected.getX(), actual.getX(), tolerance);
         Assert.assertEquals(
                 "z component", expected.getZ(), actual.getZ(), tolerance);
+    }
+
+    /**
+     * Verify that 2 X-Z transforms are equal to within some tolerance.
+     *
+     * @param expected the expected value (not null, unaffected)
+     * @param actual the Transform to test (not null, unaffected)
+     * @param tolerance the allowable difference for each component
+     */
+    public static void assertEquals(
+            Transform expected, Transform actual, float tolerance) {
+        Vector3f at = actual.getTranslation(); // alias
+        Vector3f et = expected.getTranslation(); // alias
+        Assert.assertEquals("translation x component", et.x, at.x, tolerance);
+        Assert.assertEquals("translation y component", et.y, at.y, tolerance);
+        Assert.assertEquals("translation z component", et.z, at.z, tolerance);
+
+        Quaternion ar = actual.getRotation(); // alias
+        Quaternion er = expected.getRotation(); // alias
+        Assert.assertEquals("rot x component", er.getX(), ar.getX(), tolerance);
+        Assert.assertEquals("rot y component", er.getY(), ar.getY(), tolerance);
+        Assert.assertEquals("rot z component", er.getZ(), ar.getZ(), tolerance);
+        Assert.assertEquals("rot w component", er.getW(), ar.getW(), tolerance);
+
+        Vector3f as = actual.getScale(); // alias
+        Vector3f es = expected.getScale(); // alias
+        Assert.assertEquals("scale x component", es.x, as.x, tolerance);
+        Assert.assertEquals("scale y component", es.y, as.y, tolerance);
+        Assert.assertEquals("scale z component", es.z, as.z, tolerance);
     }
 }
