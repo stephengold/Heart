@@ -112,8 +112,8 @@ final public class HeartTest {
     /**
      * Verify that 2 X-Z vectors are equal to within some tolerance.
      *
-     * @param expected the expected value (not null)
-     * @param actual the vector to test (not null)
+     * @param expected the expected value (not null, unaffected)
+     * @param actual the vector to test (not null, unaffected)
      * @param tolerance the allowable difference for each component
      */
     public static void assertEquals(

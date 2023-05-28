@@ -83,7 +83,7 @@ public class RectangularSolid implements Savable {
     // constructors
 
     /**
-     * Instantiate a zero-size rectangular solid at the origin.
+     * Instantiate a zero-extent rectangular solid at the origin.
      */
     public RectangularSolid() {
     }

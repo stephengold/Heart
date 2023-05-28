@@ -164,7 +164,8 @@ public class MyQuaternion { // TODO finalize the class
      * {@code storeResult})
      * @param storeResult storage for the result (modified if not null, may be
      * {@code q})
-     * @return a conjugate quaternion (either storeResult or a new instance)
+     * @return a conjugate quaternion (either {@code storeResult} or a new
+     * instance)
      */
     public static Quaternion conjugate(Quaternion q, Quaternion storeResult) {
         Quaternion result
@@ -240,8 +241,7 @@ public class MyQuaternion { // TODO finalize the class
     /**
      * Determine the dot (scalar) product of 2 quaternions. Unlike
      * {@link com.jme3.math.Quaternion#dot(com.jme3.math.Quaternion)}, this
-     * method returns a double-precision value for precise calculation of
-     * angles.
+     * method returns a double-precision value for precise comparison of angles.
      *
      * @param q1 the first Quaternion (not null, unaffected)
      * @param q2 the 2nd Quaternion (not null, unaffected)
@@ -266,7 +266,7 @@ public class MyQuaternion { // TODO finalize the class
      *
      * @param q input value (not null, unaffected, w=0)
      * @param storeResult storage for the result (modified if not null)
-     * @return a unit quaternion (either storeResult or a new instance)
+     * @return a unit quaternion (either {@code storeResult} or a new instance)
      */
     public static Quaternion exp(Quaternion q, Quaternion storeResult) {
         assert Validate.require(isPure(q), "a pure quaternion");
@@ -374,7 +374,7 @@ public class MyQuaternion { // TODO finalize the class
      * {@code storeResult}, norm=1)
      * @param storeResult storage for the result (modified if not null, may be
      * {@code q})
-     * @return a pure Quaternion (either storeResult or a new instance)
+     * @return a pure Quaternion (either {@code storeResult} or a new instance)
      */
     public static Quaternion log(Quaternion q, Quaternion storeResult) {
         Quaternion result
@@ -412,7 +412,8 @@ public class MyQuaternion { // TODO finalize the class
      * @param axisIndex which axis to mirror: 0&rarr;X, 1&rarr;Y, 2&rarr;Z
      * @param storeResult storage for the result (modified if not null, may be
      * {@code input})
-     * @return a mirrored Quaternion (either storeResult or a new instance)
+     * @return a mirrored Quaternion (either {@code storeResult} or a new
+     * instance)
      */
     public static Quaternion mirrorAxis(
             Quaternion input, int axisIndex, Quaternion storeResult) {
@@ -491,7 +492,7 @@ public class MyQuaternion { // TODO finalize the class
      * @param exponent the exponent
      * @param storeResult storage for the result (modified if not null, may be
      * {@code base})
-     * @return a unit quaternion (either storeResult or a new instance)
+     * @return a unit quaternion (either {@code storeResult} or a new instance)
      */
     public static Quaternion pow(
             Quaternion base, float exponent, Quaternion storeResult) {
@@ -589,8 +590,8 @@ public class MyQuaternion { // TODO finalize the class
      * storeResult}, norm=1)
      * @param storeResult storage for the result (modified if not null, may be
      * {@code q0} or {@code q1})
-     * @return an interpolated unit quaternion (either storeResult or a new
-     * instance)
+     * @return an interpolated unit quaternion (either {@code storeResult} or a
+     * new instance)
      */
     public static Quaternion slerp(
             float t, Quaternion q0, Quaternion q1, Quaternion storeResult) {
@@ -636,7 +637,7 @@ public class MyQuaternion { // TODO finalize the class
      * @param b the 2nd control point (not null, unaffected, norm=1)
      * @param q function value at t=1 (not null, unaffected, norm=1)
      * @param storeResult storage for the result (modified if not null)
-     * @return interpolated unit quaternion (either storeResult or a new
+     * @return interpolated unit quaternion (either {@code storeResult} or a new
      * instance)
      */
     public static Quaternion squad(float t, Quaternion p, Quaternion a,

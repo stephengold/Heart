@@ -444,7 +444,7 @@ public class MyMath { // TODO finalize the class
      * @param yAngle the Y angle (in radians)
      * @param zAngle the Z angle (in radians)
      * @param storeResult storage for the result (modified if not null)
-     * @return a rotation matrix (either storeResult or a new instance)
+     * @return a rotation matrix (either {@code storeResult} or a new instance)
      */
     public static Matrix3f fromAngles(
             float xAngle, float yAngle, float zAngle, Matrix3f storeResult) {
@@ -871,13 +871,14 @@ public class MyMath { // TODO finalize the class
      * it's appropriate to do so.
      *
      * @param t descaled parameter value (&ge;0, &le;1)
-     * @param t0 function value at t=0 (not null, unaffected unless it's also
-     * storeResult)
-     * @param t1 function value at t=1 (not null, unaffected unless it's also
-     * storeResult)
+     * @param t0 function value at t=0 (not null, unaffected unless it's {@code
+     * storeResult})
+     * @param t1 function value at t=1 (not null, unaffected unless it's {@code
+     * storeResult})
      * @param storeResult storage for the result (modified if not null, may be
      * t0 or t1)
-     * @return an interpolated transform (either storeResult or a new instance)
+     * @return an interpolated transform (either {@code storeResult} or a new
+     * instance)
      */
     public static Transform slerp(
             float t, Transform t0, Transform t1, Transform storeResult) {
@@ -999,12 +1000,16 @@ public class MyMath { // TODO finalize the class
     /**
      * Apply the inverse of the specified transform to each vertex of a
      * Triangle.
+     * <p>
+     * It is safe for {@code input} and {@code storeResult} to be the same
+     * object.
      *
-     * @param transform the transform to use (not null, unaffected)
+     * @param transform the transform to apply (not null, unaffected)
      * @param input the input triangle (not null, unaffected unless it's
-     * {@code storeResult}
+     * {@code storeResult})
      * @param storeResult storage for the result (modified if not null)
-     * @return the transformed triangle (either storeResult or a new instance)
+     * @return the transformed triangle (either {@code storeResult} or a new
+     * instance)
      */
     public static Triangle transformInverse(
             Transform transform, Triangle input, Triangle storeResult) {
