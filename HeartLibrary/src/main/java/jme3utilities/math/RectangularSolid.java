@@ -119,9 +119,8 @@ public class RectangularSolid implements Savable {
      * unaffected)
      */
     public RectangularSolid(Collection<Vector3f> sampleLocations) {
-        Validate.nonEmpty(sampleLocations, "sample locations");
         int numSamples = sampleLocations.size();
-        assert numSamples > 1 : numSamples;
+        Validate.require(numSamples >= 2, "at least 2 samples");
 
         // Orient local axes based on the eigenvectors of the covariance matrix.
         Matrix3f covariance = MyVector3f.covariance(sampleLocations, null);
@@ -151,11 +150,10 @@ public class RectangularSolid implements Savable {
      * length a multiple of 3, unaffected)
      */
     public RectangularSolid(float[] inputArray) {
-        Validate.nonEmpty(inputArray, "input array");
         int numFloats = inputArray.length;
-        assert (numFloats % numAxes == 0) : numFloats;
+        Validate.require(numFloats % numAxes == 0, "length a multiple of 3");
         int numVectors = numFloats / numAxes;
-        assert numVectors >= 2 : numVectors;
+        Validate.require(numVectors >= 2, "at least 2 samples");
 
         // Orient local axes based on the eigenvectors of the covariance matrix.
         Matrix3f covariance = MyArray.covarianceVector3f(inputArray, null);
@@ -201,9 +199,9 @@ public class RectangularSolid implements Savable {
                 startPosition + 2 * numAxes, buffer.capacity());
 
         int numFloats = endPosition - startPosition;
-        assert (numFloats % numAxes == 0) : numFloats;
+        Validate.require(numFloats % numAxes == 0, "numFloats a multiple of 3");
         int numVectors = numFloats / numAxes;
-        assert numVectors >= 2 : numVectors;
+        Validate.require(numVectors >= 2, "at least 2 samples");
 
         // Orient local axes based on the eigenvectors of the covariance matrix.
         Matrix3f covariance = MyBuffer.covariance(buffer, 0, numFloats, null);
@@ -251,9 +249,9 @@ public class RectangularSolid implements Savable {
      */
     public RectangularSolid(
             Vector3f min, Vector3f max, Quaternion orientation) {
-        assert min.x <= max.x;
-        assert min.y <= max.y;
-        assert min.z <= max.z;
+        Validate.require(min.x <= max.x, "min.x less than or equal to max.x");
+        Validate.require(min.y <= max.y, "min.y less than or equal to max.y");
+        Validate.require(min.z <= max.z, "min.z less than or equal to max.z");
 
         maxima.set(max);
         minima.set(min);
