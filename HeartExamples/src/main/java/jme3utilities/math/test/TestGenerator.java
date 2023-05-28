@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2022, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -44,6 +44,7 @@ import jme3utilities.Heart;
 import jme3utilities.MyAsset;
 import jme3utilities.MyCamera;
 import jme3utilities.MyString;
+import jme3utilities.math.MyQuaternion;
 import jme3utilities.math.noise.Generator;
 import jme3utilities.mesh.Icosphere;
 import jme3utilities.mesh.PointMesh;
@@ -283,7 +284,8 @@ public class TestGenerator extends AcorusDemo {
             switch (testName) {
                 case "nextQuaternion":
                     location = new Vector3f(radius, 0f, 0f);
-                    random.nextQuaternion().mult(location, location);
+                    MyQuaternion.rotate(
+                            random.nextQuaternion(), location, location);
                     break;
 
                 case "nextUnitVector3f":

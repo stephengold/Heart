@@ -137,7 +137,7 @@ public class RectangularSolid implements Savable {
         Quaternion worldToLocal = localToWorld.inverse();
         Vector3f tempVector = new Vector3f();
         for (Vector3f world : sampleLocations) {
-            worldToLocal.mult(world, tempVector);
+            MyQuaternion.rotate(worldToLocal, world, tempVector);
             MyVector3f.accumulateMaxima(maxima, tempVector);
             MyVector3f.accumulateMinima(minima, tempVector);
         }
@@ -175,7 +175,7 @@ public class RectangularSolid implements Savable {
             tempVector.y = inputArray[vectorIndex * numAxes + MyVector3f.yAxis];
             tempVector.z = inputArray[vectorIndex * numAxes + MyVector3f.zAxis];
 
-            worldToLocal.mult(tempVector, tempVector);
+            MyQuaternion.rotate(worldToLocal, tempVector, tempVector);
             MyVector3f.accumulateMaxima(maxima, tempVector);
             MyVector3f.accumulateMinima(minima, tempVector);
         }
@@ -222,7 +222,7 @@ public class RectangularSolid implements Savable {
         for (int vectorIndex = 0; vectorIndex < numVectors; ++vectorIndex) {
             int position = vectorIndex * numAxes;
             MyBuffer.get(buffer, position, tmpVector);
-            worldToLocal.mult(tmpVector, tmpVector);
+            MyQuaternion.rotate(worldToLocal, tmpVector, tmpVector);
             MyVector3f.accumulateMaxima(maxima, tmpVector);
             MyVector3f.accumulateMinima(minima, tmpVector);
         }
@@ -311,7 +311,7 @@ public class RectangularSolid implements Savable {
      */
     public Vector3f centerWorld(Vector3f storeResult) {
         Vector3f result = centerLocal(storeResult);
-        localToWorld.mult(result, result);
+        MyQuaternion.rotate(localToWorld, result, result);
 
         return result;
     }
@@ -353,7 +353,7 @@ public class RectangularSolid implements Savable {
 
         // Transform local coordinates to world coordinates.
         for (Vector3f location : cornerLocations) {
-            localToWorld.mult(location, location);
+            MyQuaternion.rotate(localToWorld, location, location);
         }
 
         return cornerLocations;
@@ -391,7 +391,7 @@ public class RectangularSolid implements Savable {
         Validate.finite(local, "local");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
-        localToWorld.mult(local, result);
+        MyQuaternion.rotate(localToWorld, local, result);
         return result;
     }
 

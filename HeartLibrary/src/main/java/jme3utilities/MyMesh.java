@@ -61,6 +61,7 @@ import java.util.logging.Logger;
 import jme3utilities.math.IntPair;
 import jme3utilities.math.MyBuffer;
 import jme3utilities.math.MyMath;
+import jme3utilities.math.MyQuaternion;
 import jme3utilities.math.MyVector3f;
 import jme3utilities.math.VectorSet;
 import jme3utilities.math.VectorSetUsingBuffer;
@@ -1097,10 +1098,8 @@ public class MyMesh { // TODO finalize the class
             for (int vertexI = 0; vertexI < numVertices; ++vertexI) {
                 vertexVector4f(mesh, bufferType, vertexI, tmpV4);
 
-                tmpV3.x = tmpV4.x;
-                tmpV3.y = tmpV4.y;
-                tmpV3.z = tmpV4.z;
-                rotation.mult(tmpV3, tmpV3);
+                tmpV3.set(tmpV4.x, tmpV4.y, tmpV4.z);
+                MyQuaternion.rotate(rotation, tmpV3, tmpV3);
                 tmpV4.x = tmpV3.x;
                 tmpV4.y = tmpV3.y;
                 tmpV4.z = tmpV3.z;

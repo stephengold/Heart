@@ -64,6 +64,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
+import jme3utilities.math.MyQuaternion;
 import jme3utilities.math.MyVector3f;
 
 /**
@@ -1146,7 +1147,7 @@ public class MySpatial { // TODO finalize the class
             scale.divideLocal(parentScale);
             parentInvRotation.mult(rotation, rotation);
             translation.subtractLocal(parentTranslation);
-            parentInvRotation.multLocal(translation);
+            MyQuaternion.rotate(parentInvRotation, translation, translation);
             translation.divideLocal(parentScale);
 
             spatial.setLocalTransform(transform);
