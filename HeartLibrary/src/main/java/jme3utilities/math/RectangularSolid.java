@@ -91,9 +91,15 @@ public class RectangularSolid implements Savable {
     /**
      * Instantiate a solid that exactly matches the specified mesh.
      *
-     * @param mesh the input mesh (not null, unaffected)
+     * @param mesh the input mesh (not null, finite, non-negative extents,
+     * unaffected)
      */
     public RectangularSolid(AbstractBox mesh) {
+        Validate.finite(mesh.center, "center location");
+        Validate.nonNegative(mesh.xExtent, "X extent");
+        Validate.nonNegative(mesh.yExtent, "Y extent");
+        Validate.nonNegative(mesh.zExtent, "Z extent");
+
         maxima.set(mesh.center);
         maxima.addLocal(mesh.xExtent, mesh.yExtent, mesh.zExtent);
 
@@ -104,11 +110,18 @@ public class RectangularSolid implements Savable {
     /**
      * Instantiate a solid that matches the specified axis-aligned bounding box.
      *
-     * @param aabb the axis-aligned bounding box (not null, unaffected)
+     * @param aabb the axis-aligned bounding box (not null, finite, non-negative
+     * extents, unaffected)
      */
     public RectangularSolid(BoundingBox aabb) {
         aabb.getMax(maxima);
         aabb.getMin(minima);
+
+        Validate.finite(maxima, "max");
+        Validate.finite(minima, "min");
+        Validate.require(maxima.x >= minima.x, "non-negative X extent");
+        Validate.require(maxima.y >= minima.y, "non-negative Y extent");
+        Validate.require(maxima.z >= minima.z, "non-negative Z extent");
     }
 
     /**
@@ -241,14 +254,17 @@ public class RectangularSolid implements Savable {
      * Instantiate a solid with the specified minima, maxima, and rotation.
      *
      * @param min the minimum coordinate value for each local axis (not null,
-     * unaffected)
+     * finite, unaffected)
      * @param max the maximum coordinate value for each local axis (not null,
-     * unaffected)
-     * @param orientation the orientation of the local axes (not null,
+     * finite, unaffected)
+     * @param orientation the orientation of the local axes (not null, not zero,
      * unaffected)
      */
     public RectangularSolid(
             Vector3f min, Vector3f max, Quaternion orientation) {
+        Validate.nonZero(orientation, "orientation");
+        Validate.finite(max, "max");
+        Validate.finite(min, "min");
         Validate.require(min.x <= max.x, "min.x less than or equal to max.x");
         Validate.require(min.y <= max.y, "min.y less than or equal to max.y");
         Validate.require(min.z <= max.z, "min.z less than or equal to max.z");
