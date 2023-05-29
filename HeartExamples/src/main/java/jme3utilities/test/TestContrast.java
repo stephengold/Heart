@@ -60,7 +60,7 @@ import jme3utilities.ui.InputMode;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestContrast extends AcorusDemo {
+class TestContrast extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 

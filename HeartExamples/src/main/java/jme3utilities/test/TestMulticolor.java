@@ -48,7 +48,7 @@ import jme3utilities.ui.AcorusDemo;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class TestMulticolor extends AcorusDemo {
+class TestMulticolor extends AcorusDemo {
     // *************************************************************************
     // constants and loggers
 
