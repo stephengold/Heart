@@ -29,6 +29,7 @@ package jme3utilities.test;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
+import java.util.logging.Logger;
 import jme3utilities.math.ReadXZ;
 import org.junit.Assert;
 
@@ -38,6 +39,14 @@ import org.junit.Assert;
  * @author Stephen Gold sgold@sonic.net
  */
 final public class HeartTest {
+    // *************************************************************************
+    // constants and loggers
+
+    /**
+     * message logger for this class
+     */
+    final public static Logger logger
+            = Logger.getLogger(HeartTest.class.getName());
     // *************************************************************************
     // constructors
 
