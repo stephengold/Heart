@@ -267,8 +267,8 @@ public class VectorXZ
         if (isZero()) {
             return zero;
         }
-        final float absX = FastMath.abs(x);
-        final float absZ = FastMath.abs(z);
+        float absX = FastMath.abs(x);
+        float absZ = FastMath.abs(z);
         float newX;
         float newZ;
         if (absX > absZ) {
@@ -347,7 +347,7 @@ public class VectorXZ
         float bCos = maxZ * cosineTheta;
         double denominator = MyMath.sumOfSquares(aSin, bCos);
         double product = maxX * maxZ;
-        final double rSquared = product * product / denominator;
+        double rSquared = product * product / denominator;
         double lengthSquared = lengthSquared();
         if (lengthSquared <= rSquared) {
             return this;
