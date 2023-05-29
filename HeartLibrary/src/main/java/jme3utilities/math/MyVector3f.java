@@ -290,13 +290,13 @@ public class MyVector3f { // TODO finalize the class
 
         // Generate each of the 6 cardinal directions.
         Vector3f bestDirection = new Vector3f();
-        float bestDot = -2f;
+        double bestDot = -2.0;
         for (Vector3f x : cardinalAxes) {
             /*
              * Measure the similarity of the 2 directions
              * using their dot product.
              */
-            float dot = x.dot(input);
+            double dot = dot(x, input);
             if (dot > bestDot) {
                 bestDot = dot;
                 bestDirection.set(x);
