@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2022, Stephen Gold
+ Copyright (c) 2019-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import com.jme3.math.FastMath;
 import com.jme3.math.Vector3f;
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import jme3utilities.math.MyVector3f;
 import jme3utilities.math.VectorSet;
@@ -92,7 +93,7 @@ public class TestVectorSet {
      */
     @Test
     public void testVectorSetAddAll() {
-        ArrayList<Vector3f> list = new ArrayList<>(4);
+        List<Vector3f> list = new ArrayList<>(4);
         list.add(new Vector3f(1f, 2f, 3f));
         list.add(new Vector3f(0f, 2f, 3f));
         list.add(new Vector3f(1f, 2f, 3f));
