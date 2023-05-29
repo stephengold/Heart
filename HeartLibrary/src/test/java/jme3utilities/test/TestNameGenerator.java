@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2022, Stephen Gold
+ Copyright (c) 2017-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -67,22 +67,22 @@ public class TestNameGenerator {
 
         String apple1 = example.unique("apple");
         Assert.assertTrue(NameGenerator.isFrom(apple1, "apple"));
-        Assert.assertTrue(NameGenerator.getPrefix(apple1).equals("apple"));
+        Assert.assertEquals("apple", NameGenerator.getPrefix(apple1));
 
         String apple2 = example.unique("apple");
         Assert.assertTrue(NameGenerator.isFrom(apple2, "apple"));
-        Assert.assertTrue(NameGenerator.getPrefix(apple2).equals("apple"));
+        Assert.assertEquals("apple", NameGenerator.getPrefix(apple2));
         Assert.assertNotEquals(apple1, apple2);
 
         String pear1 = example.unique("pear");
         Assert.assertTrue(NameGenerator.isFrom(pear1, "pear"));
-        Assert.assertTrue(NameGenerator.getPrefix(pear1).equals("pear"));
+        Assert.assertEquals("pear", NameGenerator.getPrefix(pear1));
         Assert.assertNotEquals(apple1, pear1);
         Assert.assertNotEquals(apple2, pear1);
 
         String apple3 = example.unique("apple");
         Assert.assertTrue(NameGenerator.isFrom(apple3, "apple"));
-        Assert.assertTrue(NameGenerator.getPrefix(apple3).equals("apple"));
+        Assert.assertEquals("apple", NameGenerator.getPrefix(apple3));
         Assert.assertNotEquals(apple1, apple3);
         Assert.assertNotEquals(apple2, apple3);
         Assert.assertNotEquals(pear1, apple3);
