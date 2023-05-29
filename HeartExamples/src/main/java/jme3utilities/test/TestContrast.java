@@ -278,7 +278,7 @@ class TestContrast extends AcorusDemo {
     /**
      * Configure the PhysicsDumper during startup.
      */
-    private void configureDumper() {
+    private static void configureDumper() {
         dumper.setDumpTransform(true);
     }
 
@@ -287,7 +287,7 @@ class TestContrast extends AcorusDemo {
      *
      * @param numSteps the number of steps to increase (negative to decrease)
      */
-    private void increaseExponent(int numSteps) {
+    private static void increaseExponent(int numSteps) {
         exponent *= FastMath.exp(0.1f * numSteps);
         filter.setExponent(exponent);
     }
@@ -295,7 +295,7 @@ class TestContrast extends AcorusDemo {
     /**
      * Update the status line.
      */
-    private void updateStatusLine() {
+    private static void updateStatusLine() {
         String message = String.format("exponent = %6.3f", exponent);
         statusLine.setText(message);
     }

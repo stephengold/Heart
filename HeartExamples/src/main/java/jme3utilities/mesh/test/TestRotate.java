@@ -263,7 +263,7 @@ public class TestRotate extends AcorusDemo {
     /**
      * Configure the Dumper during startup.
      */
-    private void configureDumper() {
+    private static void configureDumper() {
         dumper.setDumpTransform(true);
         //dumper.setDumpVertex(true);
     }

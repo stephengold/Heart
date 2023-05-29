@@ -447,7 +447,7 @@ public class TestSolidMeshes extends AcorusDemo {
     /**
      * Configure the Dumper during startup.
      */
-    private void configureDumper() {
+    private static void configureDumper() {
         dumper.setDumpTransform(true);
         //dumper.setDumpVertex(true);
     }
@@ -455,7 +455,7 @@ public class TestSolidMeshes extends AcorusDemo {
     /**
      * Reverse the normals of all meshes in the scene.
      */
-    private void flipNormals() {
+    private static void flipNormals() {
         for (Geometry geometry : allGeometries) {
             Mesh mesh = geometry.getMesh();
             MyMesh.reverseNormals(mesh);
@@ -475,7 +475,7 @@ public class TestSolidMeshes extends AcorusDemo {
     /**
      * Reverse the triangle winding of all meshes in the scene.
      */
-    private void reverseWinding() {
+    private static void reverseWinding() {
         for (Geometry geometry : allGeometries) {
             Mesh mesh = geometry.getMesh();
             MyMesh.reverseWinding(mesh);
@@ -487,7 +487,7 @@ public class TestSolidMeshes extends AcorusDemo {
     /**
      * Update the status text in the GUI.
      */
-    private void updateStatusText() {
+    private static void updateStatusText() {
         String message = String.format("material=%s  normals=%s  winding=%s",
                 MyString.quote(materialName),
                 inwardNormals ? "in" : "out",

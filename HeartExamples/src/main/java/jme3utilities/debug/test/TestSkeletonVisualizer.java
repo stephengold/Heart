@@ -303,14 +303,14 @@ public class TestSkeletonVisualizer extends AcorusDemo {
     /**
      * Configure the Dumper during startup.
      */
-    private void configureDumper() {
+    private static void configureDumper() {
         dumper.setDumpTransform(true);
     }
 
     /**
      * Toggle the SkeletonVisualizer on/off.
      */
-    private void toggleSkeleton() {
+    private static void toggleSkeleton() {
         boolean enabled = sv.isEnabled();
         sv.setEnabled(!enabled);
     }

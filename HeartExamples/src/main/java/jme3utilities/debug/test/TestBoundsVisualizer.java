@@ -278,7 +278,7 @@ public class TestBoundsVisualizer extends AcorusDemo {
     /**
      * Configure the Dumper during startup.
      */
-    private void configureDumper() {
+    private static void configureDumper() {
         dumper.setDumpTransform(true);
         //dumper.setDumpVertex(true);
     }
@@ -286,7 +286,7 @@ public class TestBoundsVisualizer extends AcorusDemo {
     /**
      * Toggle the subject's bounds between AABB and sphere.
      */
-    private void toggleBounds() {
+    private static void toggleBounds() {
         Geometry subject = (Geometry) visualizer.getSubject();
         Mesh mesh = subject.getMesh();
         if (mesh.getBound() instanceof BoundingBox) {
@@ -300,7 +300,7 @@ public class TestBoundsVisualizer extends AcorusDemo {
     /**
      * Toggle the depth-test setting.
      */
-    private void toggleDepthTest() {
+    private static void toggleDepthTest() {
         boolean state = visualizer.isDepthTest();
         visualizer.setDepthTest(!state);
     }
@@ -308,7 +308,7 @@ public class TestBoundsVisualizer extends AcorusDemo {
     /**
      * Update the status text in the GUI.
      */
-    private void updateStatusText() {
+    private static void updateStatusText() {
         BoundingVolume bound = visualizer.getSubject().getWorldBound();
         BoundingVolume.Type boundsType = bound.getType();
         String message = "bounds=" + boundsType;

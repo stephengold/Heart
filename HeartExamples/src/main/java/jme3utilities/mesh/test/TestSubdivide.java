@@ -295,7 +295,7 @@ public class TestSubdivide extends AcorusDemo {
     /**
      * Configure the Dumper during startup.
      */
-    private void configureDumper() {
+    private static void configureDumper() {
         dumper.setDumpTransform(true);
         //dumper.setDumpVertex(true);
     }
@@ -319,7 +319,7 @@ public class TestSubdivide extends AcorusDemo {
     /**
      * Update the status text in the GUI.
      */
-    private void updateStatusText() {
+    private static void updateStatusText() {
         String message
                 = String.format("ratio = %d   wire = %s", ratio, wireframe);
         statusText.setText(message);
