@@ -2,7 +2,7 @@
 
 ## Version 8.5.0 released on 29 May 2023
 
-Added new methods:
+Added 2 new methods:
 + `MyMath.combine()`
 + `MyQuatenrion.rotate()`
 
