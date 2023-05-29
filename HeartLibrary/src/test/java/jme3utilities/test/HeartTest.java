@@ -60,14 +60,15 @@ final public class HeartTest {
     // new methods exposed
 
     /**
-     * Verify that 2 quaternions are equal to within some tolerance.
+     * Verify that 2 single-precision quaternions are equal to within some
+     * tolerance.
      *
      * @param x the expected X component
      * @param y the expected Y component
      * @param z the expected Z component
      * @param w the expected W component
      * @param actual the Quaternion to test (not null, unaffected)
-     * @param tolerance the allowable difference for each component
+     * @param tolerance the allowable difference for each component (&ge;0)
      */
     public static void assertEquals(float x, float y, float z, float w,
             Quaternion actual, float tolerance) {
@@ -78,13 +79,14 @@ final public class HeartTest {
     }
 
     /**
-     * Verify that 2 vectors are equal to within some tolerance.
+     * Verify that 2 single-precision vectors are equal to within some
+     * tolerance.
      *
      * @param x the expected X component
      * @param y the expected Y component
      * @param z the expected Z component
      * @param actual the vector to test (not null, unaffected)
-     * @param tolerance the allowable difference for each component
+     * @param tolerance the allowable difference for each component (&ge;0)
      */
     public static void assertEquals(
             float x, float y, float z, Vector3f actual, float tolerance) {
@@ -110,7 +112,7 @@ final public class HeartTest {
      *
      * @param expected the expected value (not null, unaffected)
      * @param actual the vector to test (not null, unaffected)
-     * @param tolerance the allowable difference for each component
+     * @param tolerance the allowable difference for each component (&ge;0)
      */
     public static void assertEquals(
             Quaternion expected, Quaternion actual, float tolerance) {
