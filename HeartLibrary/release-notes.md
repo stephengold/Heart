@@ -1,5 +1,11 @@
 # release log for the Heart Library and related tests
 
+## Version 8.5.0 released on TBD
+
+Added new methods:
++ `MyMath.combine()`
++ `MyQuatenrion.rotate()`
+
 ## Version 8.4.0 released on 29 April 2023
 
 + Added the `DecalManager` class.
