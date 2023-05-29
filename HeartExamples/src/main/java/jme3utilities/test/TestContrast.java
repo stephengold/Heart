@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2022, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -80,19 +80,19 @@ public class TestContrast extends AcorusDemo {
     /**
      * status displayed in the upper-left corner of the GUI node
      */
-    private BitmapText statusLine;
+    private static BitmapText statusLine;
     /**
      * filter under test
      */
-    private ContrastAdjustmentFilter filter;
+    private static ContrastAdjustmentFilter filter;
     /**
      * dump debugging information to System.out
      */
-    final private Dumper dumper = new Dumper();
+    final private static Dumper dumper = new Dumper();
     /**
      * exponent passed to the filter
      */
-    private float exponent = 1f;
+    private static float exponent = 1f;
     // *************************************************************************
     // new methods exposed
 

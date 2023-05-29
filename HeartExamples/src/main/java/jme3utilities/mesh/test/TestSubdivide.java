@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022, Stephen Gold
+ Copyright (c) 2022-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -100,23 +100,23 @@ public class TestSubdivide extends AcorusDemo {
     /**
      * status displayed in the upper-left corner of the GUI node
      */
-    private BitmapText statusText;
+    private static BitmapText statusText;
     /**
      * enable for wireframe material
      */
-    private boolean wireframe = false;
+    private static boolean wireframe = false;
     /**
      * dump debugging information to System.out
      */
-    final private Dumper dumper = new Dumper();
+    final private static Dumper dumper = new Dumper();
     /**
      * visualize a subdivided quad
      */
-    private Geometry quadGeometry;
+    private static Geometry quadGeometry;
     /**
      * original edge lengths divided by displayed edge lengths (&ge;1)
      */
-    private int ratio = 2;
+    private static int ratio = 2;
     // *************************************************************************
     // new methods exposed
 
@@ -158,7 +158,7 @@ public class TestSubdivide extends AcorusDemo {
         stateManager.getState(StatsAppState.class).toggleStats();
 
         // Add the status text to the GUI.
-        this.statusText = new BitmapText(guiFont);
+        statusText = new BitmapText(guiFont);
         guiNode.attachChild(statusText);
 
         super.acorusInit();
@@ -222,12 +222,12 @@ public class TestSubdivide extends AcorusDemo {
                     return;
 
                 case asPreviousRatio:
-                    this.ratio = Math.max(1, ratio - 1);
+                    ratio = Math.max(1, ratio - 1);
                     updateMeshes();
                     return;
 
                 case asToggleWireframe:
-                    this.wireframe = !wireframe;
+                    wireframe = !wireframe;
                     updateMeshes();
                     return;
 
@@ -311,7 +311,7 @@ public class TestSubdivide extends AcorusDemo {
         if (ratio > 1) {
             mesh = MyMesh.subdivideTriangles(mesh, ratio);
         }
-        this.quadGeometry = new Geometry("quad", mesh);
+        quadGeometry = new Geometry("quad", mesh);
         quadGeometry.setMaterial(material);
         rootNode.attachChild(quadGeometry);
     }

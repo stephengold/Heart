@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2022, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -100,27 +100,27 @@ public class TestSolidMeshes extends AcorusDemo {
     /**
      * status displayed in the upper-left corner of the GUI node
      */
-    private BitmapText statusText;
+    private static BitmapText statusText;
     /**
      * true if the normals are inward-facing
      */
-    private boolean inwardNormals;
+    private static boolean inwardNormals;
     /**
      * true if the triangles are wound to be inward-facing
      */
-    private boolean inwardWinding;
+    private static boolean inwardWinding;
     /**
      * dump debugging information to System.out
      */
-    final private Dumper dumper = new Dumper();
+    final private static Dumper dumper = new Dumper();
     /**
      * all geometries in the scene
      */
-    private List<Geometry> allGeometries;
+    private static List<Geometry> allGeometries;
     /**
      * name of the material that's currently applied (or about to be applied)
      */
-    private String materialName = materialNames[1];
+    private static String materialName = materialNames[1];
     // *************************************************************************
     // new methods exposed
 

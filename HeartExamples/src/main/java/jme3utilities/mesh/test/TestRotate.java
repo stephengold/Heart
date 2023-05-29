@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022, Stephen Gold
+ Copyright (c) 2022-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -93,27 +93,27 @@ public class TestRotate extends AcorusDemo {
     /**
      * dump debugging information to System.out
      */
-    final private Dumper dumper = new Dumper();
+    final private static Dumper dumper = new Dumper();
     /**
      * pseudo-random number generator
      */
-    final private Generator generator = new Generator();
+    final private static Generator generator = new Generator();
     /**
      * visualize a dodecahedron
      */
-    private Geometry dodecaGeometry;
+    private static Geometry dodecaGeometry;
     /**
      * visualize a monkey
      */
-    private Geometry jaimeGeometry;
+    private static Geometry jaimeGeometry;
     /**
      * current mesh rotation
      */
-    final private Quaternion currentRotation = new Quaternion();
+    final private static Quaternion currentRotation = new Quaternion();
     /**
      * final mesh rotation
      */
-    final private Quaternion finalRotation = new Quaternion();
+    final private static Quaternion finalRotation = new Quaternion();
     // *************************************************************************
     // new methods exposed
 
@@ -277,7 +277,7 @@ public class TestRotate extends AcorusDemo {
         mesh = MyMesh.expand(mesh);
         MyMesh.generateNormals(mesh);
 
-        this.dodecaGeometry = new Geometry("dodeca", mesh);
+        dodecaGeometry = new Geometry("dodeca", mesh);
         dodecaGeometry.move(1f, 0f, 0f);
 
         ColorRGBA green = new ColorRGBA(0f, 0.2f, 0f, 1f);
@@ -292,7 +292,7 @@ public class TestRotate extends AcorusDemo {
      */
     private void loadJaime() {
         Node cgModel = (Node) assetManager.loadModel("Models/Jaime/Jaime.j3o");
-        this.jaimeGeometry = (Geometry) cgModel.getChild(0);
+        jaimeGeometry = (Geometry) cgModel.getChild(0);
         RenderState rs = jaimeGeometry.getMaterial().getAdditionalRenderState();
         rs.setFaceCullMode(RenderState.FaceCullMode.Off);
         MyMesh.translate(jaimeGeometry.getMesh(), new Vector3f(0f, -0.6f, 0f));

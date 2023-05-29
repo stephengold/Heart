@@ -89,23 +89,23 @@ public class TestGenerator extends AcorusDemo {
     /**
      * status displayed in the upper-left corner of the GUI node
      */
-    private BitmapText statusLine;
+    private static BitmapText statusLine;
     /**
      * enhanced pseudo-random generator
      */
-    final private Generator random = new Generator();
+    final private static Generator random = new Generator();
     /**
      * material for visualizing sample points
      */
-    private Material samplePointMaterial;
+    private static Material samplePointMaterial;
     /**
      * scene-graph node for the current trial
      */
-    private Node trialNode = null;
+    private static Node trialNode = null;
     /**
      * name of the test being run
      */
-    private String testName = "nextQuaternion";
+    private static String testName = "nextQuaternion";
     // *************************************************************************
     // new methods exposed
 

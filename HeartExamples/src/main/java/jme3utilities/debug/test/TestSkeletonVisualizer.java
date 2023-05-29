@@ -83,15 +83,15 @@ public class TestSkeletonVisualizer extends AcorusDemo {
     /**
      * status displayed in the upper-left corner of the GUI node
      */
-    private BitmapText statusLine;
+    private static BitmapText statusLine;
     /**
      * dump debugging information to System.out
      */
-    final private Dumper dumper = new Dumper();
+    final private static Dumper dumper = new Dumper();
     /**
      * visualizer for the skeleton of the C-G model
      */
-    private SkeletonVisualizer sv;
+    private static SkeletonVisualizer sv;
     // *************************************************************************
     // new methods exposed
 

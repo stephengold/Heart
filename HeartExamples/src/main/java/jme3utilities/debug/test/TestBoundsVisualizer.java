@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2022, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -78,15 +78,15 @@ public class TestBoundsVisualizer extends AcorusDemo {
     /**
      * status displayed in the upper-left corner of the GUI node
      */
-    private BitmapText statusText;
+    private static BitmapText statusText;
     /**
      * control under test
      */
-    private BoundsVisualizer visualizer;
+    private static BoundsVisualizer visualizer;
     /**
      * dump debugging information to System.out
      */
-    final private Dumper dumper = new Dumper();
+    final private static Dumper dumper = new Dumper();
     // *************************************************************************
     // new methods exposed
 
