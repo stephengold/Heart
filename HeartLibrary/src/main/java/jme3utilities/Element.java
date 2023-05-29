@@ -320,7 +320,7 @@ public class Element { // TODO finalize the class
                 for (int cIndex = 0; cIndex < numComponents; ++cIndex) {
                     float f0 = sfBuf.get(sourceStart0 + cIndex);
                     float f1 = sfBuf.get(sourceStart1 + cIndex);
-                    float f = MyMath.lerp(t, (float) f0, (float) f1);
+                    float f = MyMath.lerp(t, f0, f1);
                     tfBuf.put(targetStart + cIndex, f);
                 }
                 break;
@@ -462,8 +462,7 @@ public class Element { // TODO finalize the class
                     float f0 = sfBuf.get(sourceStart0 + cIndex);
                     float f1 = sfBuf.get(sourceStart1 + cIndex);
                     float f2 = sfBuf.get(sourceStart2 + cIndex);
-                    float f = MyMath.lerp3(
-                            t1, t2, (float) f0, (float) f1, (float) f2);
+                    float f = MyMath.lerp3(t1, t2, f0, f1, f2);
                     tfBuf.put(targetStart + cIndex, f);
                 }
                 break;
