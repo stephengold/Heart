@@ -244,9 +244,8 @@ final class AppChooser extends AcorusDemo {
                 default:
             }
         }
-        /*
-         * The action has not been handled: forward it to the superclass.
-         */
+
+        // The action has not been handled: forward it to the superclass.
         super.onAction(actionString, ongoing, tpf);
     }
 
