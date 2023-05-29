@@ -379,7 +379,7 @@ public class TestSolidMeshes extends AcorusDemo {
 
         mesh = new Dodecahedron(radius, Mesh.Mode.Triangles);
         mesh = MyMesh.expand(mesh);
-        MyMesh.generateNormals(mesh);
+        MyMesh.generateFacetNormals(mesh);
         geometry = new Geometry("dodecahedron", mesh);
         rootNode.attachChild(geometry);
         geometry.move(2f, 4f, 0f);
@@ -394,7 +394,7 @@ public class TestSolidMeshes extends AcorusDemo {
         float x = 0.7f;
         float z = 1.2f;
         mesh = new Prism(x, height, z);
-        MyMesh.generateNormals(mesh);
+        MyMesh.generateFacetNormals(mesh);
         geometry = new Geometry("rightTrianglePrism", mesh);
         rootNode.attachChild(geometry);
         geometry.move(4f, 0f, 0f);

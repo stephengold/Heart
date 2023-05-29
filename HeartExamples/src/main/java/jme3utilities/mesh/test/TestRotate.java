@@ -275,7 +275,7 @@ public class TestRotate extends AcorusDemo {
         float radius = 0.6f;
         Mesh mesh = new Dodecahedron(radius, Mesh.Mode.Triangles);
         mesh = MyMesh.expand(mesh);
-        MyMesh.generateNormals(mesh);
+        MyMesh.generateFacetNormals(mesh);
 
         dodecaGeometry = new Geometry("dodeca", mesh);
         dodecaGeometry.move(1f, 0f, 0f);
