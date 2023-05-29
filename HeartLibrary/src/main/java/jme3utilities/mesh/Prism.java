@@ -145,7 +145,7 @@ public class Prism extends Mesh {
      * face outward.
      * <p>
      * Normals are not generated. If normals are needed, add them using
-     * {@link jme3utilities.MyMesh#generateNormals(com.jme3.scene.Mesh)}.
+     * {@link jme3utilities.MyMesh#generateFacetNormals(com.jme3.scene.Mesh)}.
      *
      * @param x the desired length of the legs parallel to the X axis (in mesh
      * units, &gt;0)
