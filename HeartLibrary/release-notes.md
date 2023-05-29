@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 8.5.0 released on TBD
+## Version 8.5.0 released on 29 May 2023
 
 Added new methods:
 + `MyMath.combine()`
