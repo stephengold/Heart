@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022, Stephen Gold
+ Copyright (c) 2022-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -166,25 +166,21 @@ public class TestMergeMeshes extends AcorusDemo {
         mesh2 = MyMesh.addIndices(mesh2);
 
         Geometry board2 = new Geometry("board2", mesh2);
-        /*
-         * Move board2 so that board1 and board2 can be compared visually.
-         */
+
+        // Move board2 so that board1 and board2 can be compared visually.
         board2.move(2f * cameraX, 0f, 0f);
-        /*
-         * Create an unshaded material and apply it to both checkerboards.
-         */
+
+        // Create an unshaded material and apply it to both checkerboards.
         Material material = new Material(assetManager, Materials.UNSHADED);
         material.setBoolean("VertexColor", true);
         board1.setMaterial(material);
         board2.setMaterial(material);
-        /*
-         * Attach both checkerboards to the scene graph.
-         */
+
+        // Attach both checkerboards to the scene graph.
         rootNode.attachChild(board1);
         rootNode.attachChild(board2);
-        /*
-         * Compare their complexity.
-         */
+
+        // Compare their complexity.
         int numGeometries1 = MySpatial.countSpatials(board1, Geometry.class);
         int numVertices1 = MySpatial.countVertices(board1);
         System.out.printf(
@@ -206,9 +202,7 @@ public class TestMergeMeshes extends AcorusDemo {
      * @return a new instance
      */
     public Rectangle detailedHelpBounds(int viewPortWidth, int viewPortHeight) {
-        /*
-         * Position help nodes along the top of the viewport.
-         */
+        // Position help nodes along the top of the viewport.
         float margin = 10f; // in pixels
         float height = viewPortHeight - (2f * margin);
         float width = viewPortWidth - (2f * margin);
@@ -269,9 +263,8 @@ public class TestMergeMeshes extends AcorusDemo {
         Mesh result = new CenterQuad(width, height);
         result.clearBuffer(VertexBuffer.Type.Normal);
         result.clearBuffer(VertexBuffer.Type.TexCoord);
-        /*
-         * Add a color buffer.
-         */
+
+        // Add a color buffer.
         int numVertices = result.getVertexCount();
         int floatsPerColor = 4;
         FloatBuffer colorBuffer

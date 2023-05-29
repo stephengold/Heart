@@ -48,7 +48,7 @@ abstract public class SimpleControl extends AbstractControl {
     /**
      * A no-arg constructor to avoid javadoc warnings from JDK 18.
      */
-    public SimpleControl() {
+    public SimpleControl() { // TODO protect
         // do nothing
     }
     // *************************************************************************

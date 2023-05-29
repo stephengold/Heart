@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2022, Stephen Gold
+ Copyright (c) 2020-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -102,9 +102,8 @@ public class TestMulticolor extends AcorusDemo {
         cam.setName("cam");
 
         Mesh mesh = new RectangleMesh();
-        /*
-         * Add a Color buffer to the Mesh.
-         */
+
+        // Add a Color buffer to the Mesh.
         ColorRGBA[] colorArray = {
             ColorRGBA.Red,
             ColorRGBA.Green,

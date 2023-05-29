@@ -139,9 +139,8 @@ public class TestContrast extends AcorusDemo {
                 = Heart.getFpp(viewPort, assetManager, numSamples);
         filter = new ContrastAdjustmentFilter(exponent);
         fpp.addFilter(filter);
-        /*
-         * Add the status text to the GUI.
-         */
+
+        // Add the status text to the GUI.
         statusLine = new BitmapText(guiFont);
         statusLine.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusLine);

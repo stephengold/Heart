@@ -133,9 +133,8 @@ public class TestSkeletonVisualizer extends AcorusDemo {
         addFloor();
         addLighting();
         rootNode.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        /*
-         * Add the status text to the GUI.
-         */
+
+        // Add the status text to the GUI.
         statusLine = new BitmapText(guiFont);
         statusLine.setLocalTranslation(0f, cam.getHeight(), 0f);
         guiNode.attachChild(statusLine);
@@ -172,9 +171,7 @@ public class TestSkeletonVisualizer extends AcorusDemo {
      * @return a new instance
      */
     public Rectangle detailedHelpBounds(int viewPortWidth, int viewPortHeight) {
-        /*
-         * Position help nodes along the top of the viewport.
-         */
+        // Position help nodes along the top of the viewport.
         float margin = 10f; // in pixels
         float height = viewPortHeight - (2f * margin);
         float width = viewPortWidth - (2f * margin);
@@ -223,9 +220,8 @@ public class TestSkeletonVisualizer extends AcorusDemo {
                 default:
             }
         }
-        /*
-         * The action is not handled: forward it to the superclass.
-         */
+
+        // The action is not handled: forward it to the superclass.
         super.onAction(actionString, ongoing, tpf);
     }
 

@@ -138,9 +138,8 @@ public class TestGenerator extends AcorusDemo {
     @Override
     public void acorusInit() {
         configureCamera();
-        /*
-         * Add the status text to the GUI.
-         */
+
+        // Add the status text to the GUI.
         statusLine = new BitmapText(guiFont);
         guiNode.attachChild(statusLine);
 
@@ -160,9 +159,7 @@ public class TestGenerator extends AcorusDemo {
      * @return a new instance
      */
     public Rectangle detailedHelpBounds(int viewPortWidth, int viewPortHeight) {
-        /*
-         * Position help nodes along the top of the viewport.
-         */
+        // Position help nodes along the top of the viewport.
         float margin = 10f; // in pixels
         float height = viewPortHeight - (2f * margin)
                 - 20f; // 20px so as not to cover the status line
@@ -264,9 +261,8 @@ public class TestGenerator extends AcorusDemo {
 
         trialNode = new Node("trialNode");
         rootNode.attachChild(trialNode);
-        /*
-         * Visualize a unit sphere.
-         */
+
+        // Visualize a unit sphere.
         int numRefinementSteps = 1;
         float radius = 1f;
         Mesh sphereMesh = new Icosphere(numRefinementSteps, radius);
@@ -275,9 +271,8 @@ public class TestGenerator extends AcorusDemo {
                 = MyAsset.createWireframeMaterial(assetManager, ColorRGBA.Red);
         sphereGeometry.setMaterial(wireMaterial);
         trialNode.attachChild(sphereGeometry);
-        /*
-         * Generate sample points.
-         */
+
+        // Generate sample points.
         Collection<Vector3f> sampleLocations = new ArrayList<>(samplesPerTrial);
         for (int sampleI = 0; sampleI < samplesPerTrial; ++sampleI) {
             Vector3f location;
@@ -303,9 +298,8 @@ public class TestGenerator extends AcorusDemo {
 
             sampleLocations.add(location);
         }
-        /*
-         * Visualize the sample points.
-         */
+
+        // Visualize the sample points.
         for (Vector3f location : sampleLocations) {
             PointMesh pointMesh = new PointMesh();
             pointMesh.setLocation(location);

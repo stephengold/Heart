@@ -123,9 +123,8 @@ public class TestBoundsVisualizer extends AcorusDemo {
 
         configureCamera();
         configureDumper();
-        /*
-         * Create a wireframe pyramid and attach it to the scene.
-         */
+
+        // Create a wireframe pyramid and attach it to the scene.
         int numSides = 4;
         float radius = 2f;
         float height = 1f;
@@ -138,17 +137,15 @@ public class TestBoundsVisualizer extends AcorusDemo {
         Material material = MyAsset.createWireframeMaterial(assetManager,
                 ColorRGBA.Green);
         pyramid.setMaterial(material);
-        /*
-         * Add a bounds visualizer for the pyramid.
-         */
+
+        // Add a BoundsVisualizer for the pyramid.
         visualizer = new BoundsVisualizer(assetManager);
         rootNode.addControl(visualizer);
         visualizer.enableBillboarding(cam, MyVector3f.yAxis);
         visualizer.setSubject(pyramid);
         visualizer.setEnabled(true);
-        /*
-         * Create status text and attach it to the GUI.
-         */
+
+        // Create status text and attach it to the GUI.
         statusText = new BitmapText(guiFont);
         guiNode.attachChild(statusText);
 
