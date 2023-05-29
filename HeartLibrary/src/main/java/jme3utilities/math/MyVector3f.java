@@ -289,7 +289,7 @@ public class MyVector3f { // TODO finalize the class
         normalizeLocal(input);
 
         // Generate each of the 6 cardinal directions.
-        Vector3f bestCardinalDirection = new Vector3f();
+        Vector3f bestDirection = new Vector3f();
         float bestDot = -2f;
         for (Vector3f x : cardinalAxes) {
             /*
@@ -299,11 +299,11 @@ public class MyVector3f { // TODO finalize the class
             float dot = x.dot(input);
             if (dot > bestDot) {
                 bestDot = dot;
-                bestCardinalDirection.set(x);
+                bestDirection.set(x);
             }
         }
 
-        input.set(bestCardinalDirection);
+        input.set(bestDirection);
     }
 
     /**
