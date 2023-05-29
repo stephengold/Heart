@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2022, Stephen Gold
+ Copyright (c) 2018-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -99,8 +99,8 @@ public class LoopMeshTest extends AcorusDemo {
         cam.setLocation(Vector3f.UNIT_Y.mult(10f));
         cam.lookAt(Vector3f.ZERO, Vector3f.UNIT_Z.clone());
 
-        Material material = MyAsset.createWireframeMaterial(assetManager,
-                ColorRGBA.Yellow, 8f);
+        Material material = MyAsset.createWireframeMaterial(
+                assetManager, ColorRGBA.Yellow, 8f);
 
         LoopMesh loopMesh = new LoopMesh(4);
         Geometry loopGeometry = new Geometry("loop", loopMesh);

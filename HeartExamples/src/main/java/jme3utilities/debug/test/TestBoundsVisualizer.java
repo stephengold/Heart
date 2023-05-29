@@ -134,8 +134,8 @@ public class TestBoundsVisualizer extends AcorusDemo {
         Spatial pyramid = new Geometry("pyramid", mesh);
         rootNode.attachChild(pyramid);
 
-        Material material = MyAsset.createWireframeMaterial(assetManager,
-                ColorRGBA.Green);
+        Material material = MyAsset.createWireframeMaterial(
+                assetManager, ColorRGBA.Green);
         pyramid.setMaterial(material);
 
         // Add a BoundsVisualizer for the pyramid.

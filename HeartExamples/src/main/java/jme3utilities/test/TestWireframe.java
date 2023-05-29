@@ -95,8 +95,8 @@ class TestWireframe extends AcorusDemo {
 
         flyCam.setEnabled(false);
 
-        Material material = MyAsset.createWireframeMaterial(assetManager,
-                ColorRGBA.Green);
+        Material material = MyAsset.createWireframeMaterial(
+                assetManager, ColorRGBA.Green);
         Geometry quadGeometry = new Geometry("quad", new RectangleMesh());
         quadGeometry.setMaterial(material);
         rootNode.attachChild(quadGeometry);

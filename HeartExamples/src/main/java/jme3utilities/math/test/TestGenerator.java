@@ -145,8 +145,8 @@ public class TestGenerator extends AcorusDemo {
 
         super.acorusInit();
 
-        samplePointMaterial = MyAsset.createWireframeMaterial(assetManager,
-                sampleColor, samplePointSize);
+        samplePointMaterial = MyAsset.createWireframeMaterial(
+                assetManager, sampleColor, samplePointSize);
 
         trial();
     }
