@@ -1299,8 +1299,10 @@ public class MyVector3f { // TODO finalize the class
      * Test whether all locations in the specified iterable lie on the line
      * connecting 2 specified locations.
      *
-     * @param first coordinates of first location on line (not null, unaffected)
-     * @param last coordinates of last location on line (not null, unaffected)
+     * @param first coordinates of first location on the line (not null,
+     * unaffected)
+     * @param last coordinates of last location on the line (not null,
+     * unaffected)
      * @param testLocations coordinates of test locations (not null, all
      * elements non-null, unaffected)
      * @param tolerance2 for coincidence (in squared units, &ge;0)

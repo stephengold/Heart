@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021-2022, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -95,7 +95,7 @@ public class Vector3i implements Savable {
     // new methods exposed
 
     /**
-     * Add to (translate) this vector.
+     * Add to (translate) the current instance.
      *
      * @param deltaX the number of units in the +X direction
      * @param deltaY the number of units in the +Y direction
@@ -108,7 +108,7 @@ public class Vector3i implements Savable {
     }
 
     /**
-     * Subtract from (inverse translate) this vector.
+     * Subtract from (inverse translate) the current instance.
      *
      * @param deltaX the number of units in the -X direction
      * @param deltaY the number of units in the -Y direction
@@ -133,7 +133,7 @@ public class Vector3i implements Savable {
      * Compare the X component to that of another vector.
      *
      * @param other (not null)
-     * @return the difference (this minus other)
+     * @return the difference ({@code this} minus {@code other})
      */
     public int xDiff(Vector3i other) {
         int result = x - other.x();
@@ -153,7 +153,7 @@ public class Vector3i implements Savable {
      * Compare the Y component to that of another chunk.
      *
      * @param other (not null)
-     * @return the difference (this minus other)
+     * @return the difference ({@code this} minus {@code other})
      */
     public int yDiff(Vector3i other) {
         int result = y - other.y();
@@ -173,7 +173,7 @@ public class Vector3i implements Savable {
      * Compare the Z component to that of another chunk.
      *
      * @param other (not null)
-     * @return the difference (this minus other)
+     * @return the difference ({@code this} minus {@code other})
      */
     public int zDiff(Vector3i other) {
         int result = z - other.z();
