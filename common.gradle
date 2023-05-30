@@ -3,13 +3,6 @@
 apply plugin: 'checkstyle'
 apply plugin: 'java'
 
-ext {
-    // current versions of libraries:
-    jmeTarget = '' // distinguish non-JME libraries built for specific JME releases
-    heartVersion = '8.5.1' + jmeTarget + '-SNAPSHOT'
-    jme3Version = '3.6.0-stable'
-}
-
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
@@ -48,8 +41,3 @@ tasks.withType(JavaExec) { // Java runtime options:
     //jvmArgs '-Xms512m', '-Xmx512m' // to enlarge the Java heap
     //jvmArgs '-XX:+UseG1GC', '-XX:MaxGCPauseMillis=10'
 }
-
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds' // to disable caching of SNAPSHOTs
-}
-
