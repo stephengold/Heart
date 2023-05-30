@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022, Stephen Gold
+ Copyright (c) 2022-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package jme3utilities.math.test;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector3f;
 import java.util.logging.Logger;
+import jme3utilities.math.MyQuaternion;
 import jme3utilities.math.ReadXZ;
 import jme3utilities.math.VectorXZ;
 import jme3utilities.test.HeartTest;
@@ -76,11 +77,13 @@ public class TestVectorXZ {
                 ReadXZ r1 = vIn.normalize().mult(vxz);
 
                 Quaternion q1 = vIn.toQuaternion();
-                VectorXZ r2 = new VectorXZ(q1.mult(v3));
+                Vector3f v31 = MyQuaternion.rotate(q1, v3, null);
+                VectorXZ r2 = new VectorXZ(v31);
 
                 Quaternion q2 = new Quaternion();
                 q2.fromAngleNormalAxis(-a, new Vector3f(0f, 1f, 0f));
-                VectorXZ r3 = new VectorXZ(q2.mult(v3));
+                Vector3f v32 = MyQuaternion.rotate(q2, v3, null);
+                VectorXZ r3 = new VectorXZ(v32);
 
                 HeartTest.assertEquals(r1, r2, 1e-5f);
                 HeartTest.assertEquals(r2, r3, 1e-5f);

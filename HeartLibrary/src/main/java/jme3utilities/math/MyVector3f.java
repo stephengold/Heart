@@ -589,7 +589,7 @@ public class MyVector3f { // TODO finalize the class
      */
     public static Vector3f fromAltAz(float altitude, float azimuth) {
         Quaternion elevate = new Quaternion().fromAngles(0f, 0f, altitude);
-        Vector3f elevation = elevate.mult(unitX);
+        Vector3f elevation = MyQuaternion.rotate(elevate, unitX, null);
         Vector3f direction = yRotate(elevation, azimuth);
 
         assert direction.isUnitVector() : direction;
