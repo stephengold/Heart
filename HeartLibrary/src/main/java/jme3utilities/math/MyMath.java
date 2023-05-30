@@ -882,7 +882,7 @@ public class MyMath { // TODO finalize the class
      */
     public static Transform slerp(
             float t, Transform t0, Transform t1, Transform storeResult) {
-        assert Validate.inRange(t, "t", 0f, 1f);
+        assert Validate.fraction(t, "weight");
         assert Validate.nonNull(t0, "t0");
         assert Validate.nonNull(t1, "t1");
         Transform result

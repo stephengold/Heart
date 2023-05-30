@@ -596,7 +596,7 @@ public class MyQuaternion { // TODO finalize the class
      */
     public static Quaternion slerp(
             float t, Quaternion q0, Quaternion q1, Quaternion storeResult) {
-        assert Validate.inRange(t, "t", 0f, 1f);
+        assert Validate.fraction(t, "weight");
         assert validateUnit(q0, "q0", 0.0001f);
         assert validateUnit(q1, "q1", 0.0001f);
         Quaternion result
@@ -643,7 +643,7 @@ public class MyQuaternion { // TODO finalize the class
      */
     public static Quaternion squad(float t, Quaternion p, Quaternion a,
             Quaternion b, Quaternion q, Quaternion storeResult) {
-        assert Validate.inRange(t, "t", 0f, 1f);
+        assert Validate.fraction(t, "weight");
         assert validateUnit(p, "p", 0.0001f);
         assert validateUnit(a, "a", 0.0001f);
         assert validateUnit(b, "b", 0.0001f);
