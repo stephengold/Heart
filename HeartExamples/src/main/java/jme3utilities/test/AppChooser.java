@@ -56,7 +56,7 @@ import org.apache.commons.exec.DefaultExecutor;
 import org.lwjgl.system.Configuration;
 
 /**
- * Choose an application from a list, then execute it.
+ * Choose a Heart example application from a list, then execute it.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -327,7 +327,7 @@ final class AppChooser extends AcorusDemo {
     }
 
     /**
-     * Update the menu overlay for the current chosenAppIndex.
+     * Update the menu overlay for the current selectedAppIndex.
      */
     private static void updateMenuOverlay() {
         int numLines = menuOverlay.countLines();
