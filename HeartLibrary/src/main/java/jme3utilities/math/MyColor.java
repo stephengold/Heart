@@ -130,16 +130,17 @@ final public class MyColor {
     }
 
     /**
-     * Interpolate linearly between 2 colors.
+     * Interpolate linearly between (or extrapolate linearly from) 2 colors.
      *
-     * @param t descaled parameter value (0&rarr;v0, 1&rarr;v1)
-     * @param c0 function value at t=0 (not null, unaffected unless it's also
-     * storeResult)
-     * @param c1 function value at t=1 (not null, unaffected unless it's also
-     * storeResult)
+     * @param t the weight given to {@code c1}
+     * @param c0 the function value at t=0 (not null, unaffected unless it's
+     * {@code storeResult})
+     * @param c1 the function value at t=1 (not null, unaffected unless it's
+     * {@code storeResult})
      * @param storeResult storage for the result (modified if not null, may be
-     * c0 or c1)
-     * @return an interpolated color (either storeResult or a new instance)
+     * {@code c0} or {@code c1})
+     * @return the interpolated color (either {@code storeResult} or a new
+     * instance)
      */
     public static ColorRGBA lerp(
             float t, ColorRGBA c0, ColorRGBA c1, ColorRGBA storeResult) {

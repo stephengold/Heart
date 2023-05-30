@@ -601,15 +601,16 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Interpolate between (or extrapolate from) 2 single-precision values using
-     * linear (Lerp) *polation. Unlike
-     * {@link com.jme3.math.FastMath#interpolateLinear(float, float, float)}, no
-     * rounding error is introduced when y0==y1.
+     * Interpolate linearly between (or extrapolate linearly from) 2
+     * single-precision values.
+     * <p>
+     * Unlike {@link com.jme3.math.FastMath#interpolateLinear(float, float,
+     * float)}, no rounding error is introduced when y0==y1.
      *
-     * @param t descaled parameter value (0&rarr;y0, 1&rarr;y1)
-     * @param y0 function value at t=0
-     * @param y1 function value at t=1
-     * @return an interpolated function value
+     * @param t the weight given to {@code y1}
+     * @param y0 the function value at t=0
+     * @param y1 the function value at t=1
+     * @return the interpolated function value
      */
     public static float lerp(float t, float y0, float y1) {
         float result;
@@ -624,15 +625,15 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Interpolate between (or extrapolate from) 3 single-precision values using
-     * linear (Lerp) *polation.
+     * Interpolate linearly between (or extrapolate linearly from) 3
+     * single-precision values.
      *
-     * @param t1 the descaled parameter value from y0 to y1
-     * @param t2 the descaled parameter value from y0 to y2
-     * @param y0 function value at t1=0, t2=0
-     * @param y1 function value at t1=1, t2=0
-     * @param y2 function value at t1=0, t2=1
-     * @return an interpolated function value
+     * @param t1 the weight given to {@code y1}
+     * @param t2 the weight given to {@code y2}
+     * @param y0 the function value at t1=0, t2=0
+     * @param y1 the function value at t1=1, t2=0
+     * @param y2 the function value at t1=0, t2=1
+     * @return the interpolated function value
      */
     public static float lerp3(
             float t1, float t2, float y0, float y1, float y2) {
@@ -864,20 +865,22 @@ public class MyMath { // TODO finalize the class
 
     /**
      * Interpolate between 2 transforms using spherical linear (Slerp)
-     * interpolation. This method is slower (but more accurate) than {@link
+     * interpolation.
+     * <p>
+     * This method is slower (but more accurate) than {@link
      * com.jme3.math.Transform#interpolateTransforms(
      * com.jme3.math.Transform, com.jme3.math.Transform, float)} and doesn't
-     * trash t1. The caller is responsible for flipping quaternion signs when
-     * it's appropriate to do so.
+     * trash {@code t1}. The caller is responsible for flipping quaternion signs
+     * when it's appropriate to do so.
      *
-     * @param t descaled parameter value (&ge;0, &le;1)
-     * @param t0 function value at t=0 (not null, unaffected unless it's {@code
-     * storeResult})
-     * @param t1 function value at t=1 (not null, unaffected unless it's {@code
-     * storeResult})
+     * @param t the weight given to {@code t1} (&ge;0, &le;1)
+     * @param t0 the function value at t=0 (not null, unaffected unless it's
+     * {@code storeResult})
+     * @param t1 the function value at t=1 (not null, unaffected unless it's
+     * {@code storeResult})
      * @param storeResult storage for the result (modified if not null, may be
-     * t0 or t1)
-     * @return an interpolated transform (either {@code storeResult} or a new
+     * {@code t0} or {@code t1})
+     * @return the interpolated transform (either {@code storeResult} or a new
      * instance)
      */
     public static Transform slerp(

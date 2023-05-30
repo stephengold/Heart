@@ -578,21 +578,25 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Interpolate between 2 unit quaternions using spherical linear (Slerp)
-     * interpolation. This method is slower (but more accurate) than
+     * Interpolate between 2 normalized quaternions using spherical linear
+     * (Slerp) interpolation.
+     * <p>
+     * This method is slower (but more accurate) than
      * {@link com.jme3.math.Quaternion#slerp(com.jme3.math.Quaternion, float)},
-     * always produces a unit, and doesn't trash q1. The caller is responsible
-     * for flipping the sign of q0 or q1 when it's appropriate to do so.
+     * always produces a normalized quaternion, and never trashes {@code q1}.
+     * <p>
+     * The caller is responsible for flipping the sign of q0 or q1 when it's
+     * appropriate to do so.
      *
-     * @param t descaled parameter value (&ge;0, &le;1)
-     * @param q0 function value at t=0 (not null, unaffected unless it's {@code
-     * storeResult}, norm=1)
-     * @param q1 function value at t=1 (not null, unaffected unless it's {@code
-     * storeResult}, norm=1)
+     * @param t the weight given to {@code q1} (&ge;0, &le;1)
+     * @param q0 function value at t=0 (not null, norm approximately equal to 1,
+     * unaffected unless it's {@code storeResult})
+     * @param q1 function value at t=1 (not null, norm approximately equal to 1,
+     * unaffected unless it's {@code storeResult})
      * @param storeResult storage for the result (modified if not null, may be
      * {@code q0} or {@code q1})
-     * @return an interpolated unit quaternion (either {@code storeResult} or a
-     * new instance)
+     * @return an interpolated value (either {@code storeResult} or a new
+     * instance)
      */
     public static Quaternion slerp(
             float t, Quaternion q0, Quaternion q1, Quaternion storeResult) {
@@ -629,16 +633,21 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Interpolate between 4 unit quaternions using the Squad function. The
-     * caller is responsible for flipping signs when it's appropriate to do so.
+     * Interpolate between 4 normalized quaternions using the Squad function.
+     * The caller is responsible for flipping signs when it's appropriate to do
+     * so.
      *
-     * @param t descaled parameter value (&ge;0, &le;1)
-     * @param p function value at t=0 (not null, unaffected, norm=1)
-     * @param a the first control point (not null, unaffected, norm=1)
-     * @param b the 2nd control point (not null, unaffected, norm=1)
-     * @param q function value at t=1 (not null, unaffected, norm=1)
+     * @param t the weight given to {@code q} (&ge;0, &le;1)
+     * @param p function value at t=0 (not null, norm approximately equal to 1,
+     * unaffected unless it's {@code storeResult})
+     * @param a the first control point (not null, norm approximately equal to
+     * 1, unaffected unless it's {@code storeResult})
+     * @param b the 2nd control point (not null, norm approximately equal to 1,
+     * unaffected unless it's {@code storeResult})
+     * @param q function value at t=1 (not null, norm approximately equal to 1,
+     * unaffected unless it's {@code storeResult})
      * @param storeResult storage for the result (modified if not null)
-     * @return interpolated unit quaternion (either {@code storeResult} or a new
+     * @return the interpolated value (either {@code storeResult} or a new
      * instance)
      */
     public static Quaternion squad(float t, Quaternion p, Quaternion a,

@@ -249,7 +249,7 @@ public class Element { // TODO finalize the class
      * the result in a 3rd vertex-buffer element. The vertex buffers must have
      * the same type and number of components per element.
      *
-     * @param t the descaled parameter value from y0 to y1
+     * @param t the weight given to the {@code sourceIndex1} element
      * @param source the VertexBuffer containing the source elements (not null,
      * unaffected)
      * @param sourceIndex0 the index of the source element for t=0 (&ge;0)
@@ -380,13 +380,16 @@ public class Element { // TODO finalize the class
      * the result in a 4th vertex-buffer element. The vertex buffers must have
      * the same type and number of components per element.
      *
-     * @param t1 the descaled parameter value from y0 to y1
-     * @param t2 the descaled parameter value from y0 to y2
+     * @param t1 the weight given to the {@code sourceIndex1} element
+     * @param t2 the weight given to the {@code sourceIndex2} element
      * @param source the VertexBuffer containing the source elements (not null,
      * unaffected)
-     * @param sourceIndex0 index of the source element for t1=0, t2=0 (&ge;0)
-     * @param sourceIndex1 index of the source element for t1=1, t2=0 (&ge;0)
-     * @param sourceIndex2 index of the source element for t1=0, t2=1 (&ge;0)
+     * @param sourceIndex0 the index of the source element for t1=0, t2=0
+     * (&ge;0)
+     * @param sourceIndex1 the index of the source element for t1=1, t2=0
+     * (&ge;0)
+     * @param sourceIndex2 the index of the source element for t1=0, t2=1
+     * (&ge;0)
      * @param target the VertexBuffer containing the target element (not null,
      * Float format, modified)
      * @param targetIndex the index of the target element (&ge;0)
