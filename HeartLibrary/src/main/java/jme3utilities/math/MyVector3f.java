@@ -869,8 +869,6 @@ public class MyVector3f { // TODO finalize the class
      */
     public static Vector3f lerp(
             float t, Vector3f v0, Vector3f v1, Vector3f storeResult) {
-        assert Validate.nonNull(v0, "v0");
-        assert Validate.nonNull(v1, "v1");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
         result.x = MyMath.lerp(t, v0.x, v1.x);
