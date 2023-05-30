@@ -1127,7 +1127,8 @@ public class MyVector3f { // TODO finalize the class
         double lengthSquared = lengthSquared(input);
         double dScale = Math.sqrt(lengthSquared);
         float fScale = (float) dScale;
-        if (fScale != 0f && fScale != 1f) {
+        if (lengthSquared < 0.9999998 && fScale != 0f
+                || lengthSquared > 1.0000002) {
             input.divideLocal(fScale);
         }
     }

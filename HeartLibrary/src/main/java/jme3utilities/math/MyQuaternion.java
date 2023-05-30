@@ -479,7 +479,8 @@ public class MyQuaternion { // TODO finalize the class
         double lengthSquared = lengthSquared(input);
         double dScale = Math.sqrt(lengthSquared);
         float fScale = (float) dScale;
-        if (fScale != 0f && fScale != 1f) {
+        if (lengthSquared < 0.9999998 && fScale != 0f
+                || lengthSquared > 1.0000002) {
             input.multLocal(1f / fScale);
         }
     }
@@ -549,7 +550,7 @@ public class MyQuaternion { // TODO finalize the class
         float z = rotation.getZ();
         float w = rotation.getW();
         double lengthSquared = lengthSquared(rotation);
-        if (lengthSquared != 1.0) {
+        if (lengthSquared < 0.9999998 || lengthSquared > 1.0000002) {
             double dScale = Math.sqrt(lengthSquared);
             x /= dScale;
             y /= dScale;
