@@ -588,7 +588,7 @@ public class MyQuaternion { // TODO finalize the class
      * <p>
      * This method is slower (but more accurate) than
      * {@link com.jme3.math.Quaternion#slerp(com.jme3.math.Quaternion, float)},
-     * always produces a normalized quaternion, and never trashes {@code q1}.
+     * always produces a normalized result, and never trashes {@code q1}.
      * <p>
      * The caller is responsible for flipping the sign of {@code q0} or
      * {@code q1} when it's appropriate to do so.
