@@ -863,7 +863,7 @@ public class Describer implements Cloneable {
      */
     public void setListSeparator(String newSeparator) {
         Validate.nonNull(newSeparator, "new separator");
-        listSeparator = newSeparator;
+        this.listSeparator = newSeparator;
     }
     // *************************************************************************
     // new protected methods
