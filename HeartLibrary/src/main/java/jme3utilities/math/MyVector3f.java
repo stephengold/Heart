@@ -867,7 +867,7 @@ public class MyVector3f { // TODO finalize the class
      * also {@code storeResult})
      * @param storeResult storage for the result (modified if not null, may be
      * {@code v0} or {@code v1})
-     * @return the interpolated vector (either {@code storeResult} or a new
+     * @return the interpolated value (either {@code storeResult} or a new
      * instance)
      */
     public static Vector3f lerp(
@@ -1120,8 +1120,10 @@ public class MyVector3f { // TODO finalize the class
     }
 
     /**
-     * Normalize the specified vector in place. This method is less vulnerable
-     * to overflow than {@link com.jme3.math.Vector3f#normalizeLocal()}.
+     * Normalize the specified vector in place.
+     * <p>
+     * This method is less vulnerable to overflow than
+     * {@link com.jme3.math.Vector3f#normalizeLocal()}.
      *
      * @param input (not null, modified)
      */

@@ -119,11 +119,11 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Find the cardinal rotation most similar to the specified input. A
+     * Find the cardinal rotation most similar to the specified Quaternion. A
      * cardinal rotation is one for which the rotation angles on all 3 axes are
      * integer multiples of Pi/2 radians.
      *
-     * @param input (not null, modified)
+     * @param input the input value (not null, modified)
      */
     public static void cardinalizeLocal(Quaternion input) {
         assert Validate.nonNull(input, "input");
@@ -158,8 +158,10 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Return the conjugate of a Quaternion. For a normalized quaternion, the
-     * conjugate is a fast way to calculate the inverse.
+     * Return the conjugate of a Quaternion.
+     * <p>
+     * For normalized quaternions, the conjugate is a fast way to calculate the
+     * inverse.
      *
      * @param q the input value (not null, unaffected unless it's
      * {@code storeResult})
@@ -269,7 +271,8 @@ public class MyQuaternion { // TODO finalize the class
      *
      * @param q the input value (not null, w=0, unaffected)
      * @param storeResult storage for the result (modified if not null)
-     * @return the output value (either {@code storeResult} or a new instance)
+     * @return the exponential value (either {@code storeResult} or a new
+     * instance)
      */
     public static Quaternion exp(Quaternion q, Quaternion storeResult) {
         assert Validate.require(isPure(q), "a pure quaternion");
@@ -312,9 +315,10 @@ public class MyQuaternion { // TODO finalize the class
 
     /**
      * Test whether the specified Quaternion represents an identity rotation.
+     * <p>
      * This test is weaker than that implemented by
      * {@link com.jme3.math.Quaternion#isIdentity()} because it accepts any
-     * non-zero value for w.
+     * finite, non-zero value for w.
      *
      * @param q the value to test (not null, unaffected)
      * @return true for a rotation identity, otherwise false
@@ -347,7 +351,7 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Return the squared length of a Quaternion.
+     * Return the squared length of the argument.
      * <p>
      * Unlike {@link com.jme3.math.Quaternion#norm()}, this method returns a
      * double-precision value for precise comparison of lengths.
@@ -471,7 +475,7 @@ public class MyQuaternion { // TODO finalize the class
      * This method is less vulnerable to overflow than
      * {@link com.jme3.math.Quaternion#normalizeLocal()}.
      *
-     * @param input the value to normalize (not null, modified)
+     * @param input the instance to normalize (not null, modified)
      */
     public static void normalizeLocal(Quaternion input) {
         assert Validate.nonNull(input, "input");
@@ -586,14 +590,14 @@ public class MyQuaternion { // TODO finalize the class
      * {@link com.jme3.math.Quaternion#slerp(com.jme3.math.Quaternion, float)},
      * always produces a normalized quaternion, and never trashes {@code q1}.
      * <p>
-     * The caller is responsible for flipping the sign of q0 or q1 when it's
-     * appropriate to do so.
+     * The caller is responsible for flipping the sign of {@code q0} or
+     * {@code q1} when it's appropriate to do so.
      *
      * @param t the weight given to {@code q1} (&ge;0, &le;1)
-     * @param q0 function value at t=0 (not null, norm approximately equal to 1,
-     * unaffected unless it's {@code storeResult})
-     * @param q1 function value at t=1 (not null, norm approximately equal to 1,
-     * unaffected unless it's {@code storeResult})
+     * @param q0 the function value at t=0 (not null, norm approximately equal
+     * to 1, unaffected unless it's {@code storeResult})
+     * @param q1 the function value at t=1 (not null, norm approximately equal
+     * to 1, unaffected unless it's {@code storeResult})
      * @param storeResult storage for the result (modified if not null, may be
      * {@code q0} or {@code q1})
      * @return an interpolated value (either {@code storeResult} or a new
@@ -679,8 +683,8 @@ public class MyQuaternion { // TODO finalize the class
      * @param q2 the following control point (not null, norm approximately equal
      * to 1, unaffected unless it's {@code storeResult})
      * @param storeResult storage for the result (modified if not null)
-     * @return the value of Squad parameter "a" (either {@code storeResult} or a
-     * new instance)
+     * @return the Squad parameter (either {@code storeResult} or a new
+     * instance)
      */
     public static Quaternion squadA(Quaternion q0, Quaternion q1,
             Quaternion q2, Quaternion storeResult) {
@@ -707,7 +711,8 @@ public class MyQuaternion { // TODO finalize the class
     /**
      * Standardize a Quaternion in preparation for hashing.
      *
-     * @param input (not null, unaffected unless it's {@code storeResult})
+     * @param input the input value (not null, unaffected unless it's
+     * {@code storeResult})
      * @param storeResult storage for the result (modified if not null, may be
      * {@code input})
      * @return an equivalent Quaternion without negative zeros (either
