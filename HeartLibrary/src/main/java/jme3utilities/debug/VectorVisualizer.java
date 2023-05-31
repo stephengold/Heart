@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2022, Stephen Gold
+ Copyright (c) 2014-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -204,7 +204,7 @@ public class VectorVisualizer extends SubtreeControl {
      * @param width (in pixels, &ge;1) or 0 for a solid arrow
      */
     public void setLineWidth(float width) {
-        Validate.inRange(width, "width", 0f, Float.MAX_VALUE);
+        Validate.nonNegative(width, "width");
         this.lineWidth = width;
     }
 

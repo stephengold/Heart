@@ -266,7 +266,7 @@ public class AxesVisualizer extends SubtreeControl {
      * @param width (in pixels, &ge;1) or 0 for solid arrows
      */
     public void setLineWidth(float width) {
-        Validate.inRange(width, "width", 0f, Float.MAX_VALUE);
+        Validate.nonNegative(width, "width");
         this.lineWidth = width;
     }
 

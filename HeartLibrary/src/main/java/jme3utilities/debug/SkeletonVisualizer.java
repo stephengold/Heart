@@ -349,7 +349,7 @@ public class SkeletonVisualizer extends SubtreeControl {
      * @param size (in pixels, &ge;0, 0 &rarr; hide the heads)
      */
     public void setHeadSize(float size) {
-        Validate.inRange(size, "size", 0f, Float.MAX_VALUE);
+        Validate.nonNegative(size, "size");
         headMaterial.setFloat("PointSize", size);
     }
 
