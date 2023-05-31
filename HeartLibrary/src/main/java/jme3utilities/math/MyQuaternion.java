@@ -94,11 +94,13 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Returns the angle (in radians) between the specified quaternions,
-     * provided both are normalized.
+     * Return the angle (in radians) between the specified quaternions, provided
+     * both are normalized.
      *
-     * @param q1 the first quaternion (not null, norm=1)
-     * @param q2 the other quaternions (not null, norm=1)
+     * @param q1 the first quaternion (not null, norm approximately equal to 1,
+     * unaffected)
+     * @param q2 the other quaternions (not null, norm approximately equal to 1,
+     * unaffected)
      * @return the angle (in radians, not negative)
      */
     public static float angleBetween(Quaternion q1, Quaternion q2) {
@@ -157,10 +159,10 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Determine the conjugate of a Quaternion. For unit quaternions, the
-     * conjugate is a faster way to calculate the inverse.
+     * Return the conjugate of a Quaternion. For a normalized quaternion, the
+     * conjugate is a fast way to calculate the inverse.
      *
-     * @param q input value (not null, unaffected unless it's
+     * @param q the input value (not null, unaffected unless it's
      * {@code storeResult})
      * @param storeResult storage for the result (modified if not null, may be
      * {@code q})
@@ -239,12 +241,14 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Determine the dot (scalar) product of 2 quaternions. Unlike
-     * {@link com.jme3.math.Quaternion#dot(com.jme3.math.Quaternion)}, this
-     * method returns a double-precision value for precise comparison of angles.
+     * Return the dot (scalar) product of 2 quaternions.
+     * <p>
+     * Unlike {@link com.jme3.math.Quaternion#dot(com.jme3.math.Quaternion)},
+     * this method returns a double-precision value for precise comparison of
+     * angles.
      *
-     * @param q1 the first Quaternion (not null, unaffected)
-     * @param q2 the 2nd Quaternion (not null, unaffected)
+     * @param q1 the first input value (not null, unaffected)
+     * @param q2 the 2nd input value (not null, unaffected)
      * @return the dot product
      */
     public static double dot(Quaternion q1, Quaternion q2) {
@@ -262,11 +266,11 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Determine the exponential of a pure Quaternion.
+     * Return the exponential of a pure Quaternion.
      *
-     * @param q input value (not null, unaffected, w=0)
+     * @param q the input value (not null, w=0, unaffected)
      * @param storeResult storage for the result (modified if not null)
-     * @return a unit quaternion (either {@code storeResult} or a new instance)
+     * @return the output value (either {@code storeResult} or a new instance)
      */
     public static Quaternion exp(Quaternion q, Quaternion storeResult) {
         assert Validate.require(isPure(q), "a pure quaternion");
@@ -294,7 +298,7 @@ public class MyQuaternion { // TODO finalize the class
     /**
      * Test for a pure Quaternion.
      *
-     * @param q the input (not null, unaffected)
+     * @param q the value to test (not null, unaffected)
      * @return true if w=0, false otherwise
      */
     public static boolean isPure(Quaternion q) {
@@ -313,7 +317,7 @@ public class MyQuaternion { // TODO finalize the class
      * {@link com.jme3.math.Quaternion#isIdentity()} because it accepts any
      * non-zero value for w.
      *
-     * @param q input value (not null, unaffected)
+     * @param q the value to test (not null, unaffected)
      * @return true for a rotation identity, otherwise false
      */
     public static boolean isRotationIdentity(Quaternion q) {
@@ -330,8 +334,8 @@ public class MyQuaternion { // TODO finalize the class
     /**
      * Test for a zero Quaternion.
      *
-     * @param q the input (not null, unaffected)
-     * @return true if the Quaternion equals (0,0,0,0), false otherwise
+     * @param q the value to test (not null, unaffected)
+     * @return true if the argument equals (0,0,0,0), false otherwise
      */
     public static boolean isZero(Quaternion q) {
         float qw = q.getW();
@@ -344,11 +348,12 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Determine the squared length of a Quaternion. Unlike
-     * {@link com.jme3.math.Quaternion#norm()}, this method returns a
+     * Return the squared length of a Quaternion.
+     * <p>
+     * Unlike {@link com.jme3.math.Quaternion#norm()}, this method returns a
      * double-precision value for precise comparison of lengths.
      *
-     * @param q input (not null, unaffected)
+     * @param q the input value (not null, unaffected)
      * @return the squared length (&ge;0)
      */
     public static double lengthSquared(Quaternion q) {
@@ -362,14 +367,15 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Determine the natural logarithm of a unit quaternion. Generally the
-     * logarithm isn't itself a unit.
+     * Return the natural logarithm of a normalized quaternion.
+     * <p>
+     * In general, the result isn't itself normalized.
      *
-     * @param q input value (not null, unaffected unless it's
-     * {@code storeResult}, norm=1)
+     * @param q the input value (not null, norm approximately equal to 1,
+     * unaffected unless it's {@code storeResult})
      * @param storeResult storage for the result (modified if not null, may be
      * {@code q})
-     * @return a pure Quaternion (either {@code storeResult} or a new instance)
+     * @return a pure quaternion (either {@code storeResult} or a new instance)
      */
     public static Quaternion log(Quaternion q, Quaternion storeResult) {
         Quaternion result
@@ -446,8 +452,8 @@ public class MyQuaternion { // TODO finalize the class
      * Test whether 2 quaternions are distinct, without distinguishing 0 from
      * -0.
      *
-     * @param a the first input quaternion (not null, unaffected)
-     * @param b the 2nd input quaternion (not null, unaffected)
+     * @param a the first input value (not null, unaffected)
+     * @param b the 2nd input value (not null, unaffected)
      * @return true if distinct, otherwise false
      */
     public static boolean ne(Quaternion a, Quaternion b) {
@@ -462,11 +468,12 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Normalize the specified Quaternion in place. This method is less
-     * vulnerable to overflow than
+     * Normalize the specified Quaternion in place.
+     * <p>
+     * This method is less vulnerable to overflow than
      * {@link com.jme3.math.Quaternion#normalizeLocal()}.
      *
-     * @param input (not null, modified)
+     * @param input the value to normalize (not null, modified)
      */
     public static void normalizeLocal(Quaternion input) {
         assert Validate.nonNull(input, "input");
@@ -481,14 +488,14 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Raise a unit quaternion to the specified real power.
+     * Raise a normalized quaternion to the specified real power.
      *
-     * @param base input value (not null, unaffected unless it's
-     * {@code storeResult}, norm=1)
+     * @param base the input value (not null, norm approximately equal to 1,
+     * unaffected unless it's {@code storeResult})
      * @param exponent the exponent
      * @param storeResult storage for the result (modified if not null, may be
      * {@code base})
-     * @return a unit quaternion (either {@code storeResult} or a new instance)
+     * @return the power (either {@code storeResult} or a new instance)
      */
     public static Quaternion pow(
             Quaternion base, float exponent, Quaternion storeResult) {
@@ -522,10 +529,11 @@ public class MyQuaternion { // TODO finalize the class
 
     /**
      * Rotate the input vector using the specified quaternion.
-     *
+     * <p>
      * Unlike {@link com.jme3.math.Quaternion#mult(com.jme3.math.Vector3f,
-     * com.jme3.math.Vector3f)}, this method doesn't assume the quaternion has
-     * norm=1.
+     * com.jme3.math.Vector3f)}, this method doesn't assume the quaternion is
+     * normalized. Instead, rotation is performed using a normalized version of
+     * the quaternion.
      *
      * @param rotation the desired rotation (not null, not zero, unaffected)
      * @param input the vector to rotate (not null, finite, unaffected unless
@@ -663,15 +671,18 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Determine Squad parameter "a" for a continuous first derivative at the
+     * Return Squad parameter "a" for a continuous first derivative at the
      * middle point of 3 specified control points.
      *
-     * @param q0 previous control point (not null, unaffected, norm=1)
-     * @param q1 current control point (not null, unaffected, norm=1)
-     * @param q2 following control point (not null, unaffected, norm=1)
+     * @param q0 the previous control point (not null, norm approximately equal
+     * to 1, unaffected unless it's {@code storeResult})
+     * @param q1 the current control point (not null, norm approximately equal
+     * to 1, unaffected unless it's {@code storeResult})
+     * @param q2 the following control point (not null, norm approximately equal
+     * to 1, unaffected unless it's {@code storeResult})
      * @param storeResult storage for the result (modified if not null)
-     * @return a unit quaternion for use as a Squad parameter (either
-     * storeResult or a new instance)
+     * @return the value of Squad parameter "a" (either {@code storeResult} or a
+     * new instance)
      */
     public static Quaternion squadA(Quaternion q0, Quaternion q1,
             Quaternion q2, Quaternion storeResult) {
@@ -724,9 +735,9 @@ public class MyQuaternion { // TODO finalize the class
     }
 
     /**
-     * Validate a unit quaternion as a method argument.
+     * Validate a normalized quaternion as a method argument.
      *
-     * @param q Quaternion to validate (not null, unaffected)
+     * @param q the Quaternion to validate (not null, unaffected)
      * @param description description of the Quaternion
      * @param tolerance for the norm (&ge;0)
      * @return true

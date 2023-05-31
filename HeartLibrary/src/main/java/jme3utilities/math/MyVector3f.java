@@ -254,7 +254,8 @@ public class MyVector3f { // TODO finalize the class
      * @param axisIndex 0&rarr;X, 1&rarr;Y, 2&rarr;Z
      * @param length how long (ge;0)
      * @param storeResult storage for the result (modified if not null)
-     * @return an axis-aligned vector (either storeResult or a new instance)
+     * @return an axis-aligned vector (either {@code storeResult} or a new
+     * instance)
      */
     public static Vector3f axisVector(
             int axisIndex, float length, Vector3f storeResult) {
@@ -335,8 +336,8 @@ public class MyVector3f { // TODO finalize the class
      *
      * @param collection the sample vectors (not null, at least 2, unaffected)
      * @param storeResult storage for the result (modified if not null)
-     * @return the unbiased sample covariance (either storeResult or a new
-     * matrix, not null)
+     * @return the unbiased sample covariance (either {@code storeResult} or a
+     * new matrix, not null)
      */
     public static Matrix3f covariance(
             Collection<Vector3f> collection, Matrix3f storeResult) {
@@ -971,7 +972,7 @@ public class MyVector3f { // TODO finalize the class
      * length&gt;0)
      * @param spatial which spatial (not null)
      * @param storeResult storage for the result (modified if not null)
-     * @return a unit vector (either storeResult or a new instance)
+     * @return a unit vector (either {@code storeResult} or a new instance)
      */
     public static Vector3f localizeDirection(
             Vector3f worldDirection, Spatial spatial, Vector3f storeResult) {
@@ -1001,8 +1002,8 @@ public class MyVector3f { // TODO finalize the class
      * also storeResult)
      * @param storeResult storage for the result (modified if not null, may be
      * vector1 or vector2)
-     * @return the max magnitude for each axis (either storeResult or a new
-     * vector)
+     * @return the max magnitude for each axis (either {@code storeResult} or a
+     * new vector)
      */
     public static Vector3f maxAbs(
             Vector3f vector1, Vector3f vector2, Vector3f storeResult) {
@@ -1023,7 +1024,7 @@ public class MyVector3f { // TODO finalize the class
      * @param collection the vectors to average (not null, not empty,
      * unaffected)
      * @param storeResult storage for the result (modified if not null)
-     * @return the mean (either storeResult or a new instance, not null)
+     * @return the mean (either {@code storeResult} or a new instance, not null)
      */
     public static Vector3f mean(
             Collection<Vector3f> collection, Vector3f storeResult) {
@@ -1049,7 +1050,8 @@ public class MyVector3f { // TODO finalize the class
      * unless it's storeResult)
      * @param storeResult storage for the result (modified if not null, may be
      * vector1 or vector2)
-     * @return a coordinate vector (either storeResult or a new instance)
+     * @return a coordinate vector (either {@code storeResult} or a new
+     * instance)
      */
     public static Vector3f midpoint(
             Vector3f vector1, Vector3f vector2, Vector3f storeResult) {
@@ -1170,8 +1172,8 @@ public class MyVector3f { // TODO finalize the class
      * storeResult)
      * @param storeResult storage for the result (modified if not null, may be
      * vector1 or vector2)
-     * @return a vector with the same direction as vector2 (either storeResult
-     * or a new instance)
+     * @return a vector with the same direction as vector2 (either
+     * {@code storeResult} or a new instance)
      */
     public static Vector3f projection(
             Vector3f vector1, Vector3f vector2, Vector3f storeResult) {
@@ -1214,8 +1216,8 @@ public class MyVector3f { // TODO finalize the class
      * storeResult)
      * @param storeResult storage for the result (modified if not null, may be
      * vector1 or vector2)
-     * @return a vector perpendicular to vector2 (either storeResult or a new
-     * instance)
+     * @return a vector perpendicular to vector2 (either {@code storeResult} or
+     * a new instance)
      */
     public static Vector3f rejection(
             Vector3f vector1, Vector3f vector2, Vector3f storeResult) {
@@ -1263,7 +1265,8 @@ public class MyVector3f { // TODO finalize the class
      * @param startValue the value at the start time (not null, unaffected)
      * @param endValue the value at the end time (not null, unaffected)
      * @param storeResult storage for the result (modified if not null)
-     * @return a derivative vector (either storeResult or a new instance)
+     * @return a derivative vector (either {@code storeResult} or a new
+     * instance)
      */
     public static Vector3f velocity(float timeInterval, Vector3f startValue,
             Vector3f endValue, Vector3f storeResult) {

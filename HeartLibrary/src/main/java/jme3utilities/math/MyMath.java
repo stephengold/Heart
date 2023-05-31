@@ -81,7 +81,7 @@ public class MyMath { // TODO finalize the class
     // new methods exposed
 
     /**
-     * Determine the area of the specified triangle.
+     * Return the area of the specified triangle.
      *
      * @param triangle (not null, unaffected)
      * @return the area (&ge;0)
@@ -131,7 +131,8 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Compute the circle function sqrt(1 - x^2) for a double-precision value.
+     * Return the circle function {@code sqrt(1 - x^2)} for a double-precision
+     * value.
      *
      * @param abscissa input (&le;1, &ge;-1)
      * @return positive ordinate of the unit circle at the abscissa (&le;1,
@@ -148,8 +149,9 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Compute the circle function sqrt(1 - x^2) for a single-precision value.
-     * Double-precision arithmetic is used to reduce the risk of overflow.
+     * Return the circle function {@code sqrt(1 - x^2)} for a single-precision
+     * value. Double-precision arithmetic is used to reduce the risk of
+     * overflow.
      *
      * @param abscissa input (&le;1, &ge;-1)
      * @return positive ordinate of the unit circle at the abscissa (&le;1,
@@ -340,13 +342,13 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Compute the discriminant (b^2 - 4*a*c) of a quadratic equation in
-     * standard form (a*x^2 + b*x + c).
+     * Return the discriminant {@code (b^2 - 4*a*c)} of a quadratic equation in
+     * standard form {@code (a*x^2 + b*x + c) == 0}.
      *
-     * @param a coefficient of the square term
-     * @param b coefficient of the linear term
-     * @param c constant term
-     * @return discriminant
+     * @param a the coefficient of the square term
+     * @param b the coefficient of the linear term
+     * @param c the constant term
+     * @return the discriminant
      */
     public static double discriminant(double a, double b, double c) {
         double result = b * b - 4.0 * a * c;
@@ -473,7 +475,7 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Determine the root sum of squares of some single-precision values.
+     * Return the root sum of squares of some single-precision values.
      * Double-precision arithmetic is used to reduce the risk of overflow.
      *
      * @param fValues the input values
@@ -492,7 +494,7 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Determine the root sum of squares of some double-precision values.
+     * Return the root sum of squares of some double-precision values.
      *
      * @param dValues the input values
      * @return the positive square root of the sum of squares (&ge;0)
@@ -592,7 +594,7 @@ public class MyMath { // TODO finalize the class
     /**
      * Test whether an integer value is odd.
      *
-     * @param iValue input value to be tested
+     * @param iValue the value to be tested
      * @return true if x is odd, false if it's even
      */
     public static boolean isOdd(int iValue) {
@@ -786,12 +788,13 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Compute the least non-negative value congruent with an integer value with
-     * respect to the specified modulus. modulo() differs from remainder for
-     * negative values of the first argument. For instance, modulo(-1, 4) == 3,
-     * while -1 % 4 == -1.
+     * Return the least non-negative value congruent with the input value with
+     * respect to the specified modulus.
+     * <p>
+     * This differs from remainder for negative input values. For instance,
+     * modulo(-1, 4) == 3, while -1 % 4 == -1.
      *
-     * @param iValue input value
+     * @param iValue the input value
      * @param modulus (&gt;0)
      * @return iValue MOD modulus (&lt;modulus, &ge;0)
      */
@@ -812,12 +815,13 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Compute the least non-negative value congruent with a single-precision
-     * value with respect to the specified modulus. modulo() differs from
-     * remainder for negative values of the first argument. For instance,
+     * Return the least non-negative value congruent with the input value with
+     * respect to the specified modulus.
+     * <p>
+     * This differs from remainder for negative input values. For instance,
      * modulo(-1f, 4f) == 3f, while -1f % 4f == -1f.
      *
-     * @param fValue input value
+     * @param fValue the input value
      * @param modulus (&gt;0)
      * @return fValue MOD modulus (&lt;modulus, &ge;0)
      */
@@ -838,12 +842,13 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Compute the least non-negative value congruent with a double-precision
-     * value with respect to the specified modulus. modulo() differs from
-     * remainder for negative values of the first argument. For instance,
+     * Return the least non-negative value congruent with the input value with
+     * respect to the specified modulus.
+     * <p>
+     * This differs from remainder for negative input values. For instance,
      * modulo(-1, 4) == 3, while -1 % 4 == -1.
      *
-     * @param dValue input value
+     * @param dValue the input value
      * @param modulus (&gt;0)
      * @return dValue MOD modulus (&lt;modulus, &ge;0)
      */
@@ -942,8 +947,8 @@ public class MyMath { // TODO finalize the class
     /**
      * Standardize a rotation angle to the range [-Pi, Pi).
      *
-     * @param angle input (in radians)
-     * @return standardized angle (in radians, &lt;Pi, &ge;-Pi)
+     * @param angle the input angle (in radians)
+     * @return the standardized angle (in radians, &lt;Pi, &ge;-Pi)
      */
     public static float standardizeAngle(float angle) {
         Validate.finite(angle, "angle");
@@ -959,7 +964,7 @@ public class MyMath { // TODO finalize the class
     }
 
     /**
-     * Compute the sum of squares of some single-precision values.
+     * Return the sum of squares of some single-precision values.
      * Double-precision arithmetic is used to reduce the risk of overflow.
      *
      * @param fValues the input values
