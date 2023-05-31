@@ -317,12 +317,10 @@ public class MyQuaternion { // TODO finalize the class
      * @return true for a rotation identity, otherwise false
      */
     public static boolean isRotationIdentity(Quaternion q) {
-        float qx = q.getX();
-        float qy = q.getY();
-        float qz = q.getZ();
         float qw = q.getW();
 
-        if (qx == 0f && qy == 0f && qz == 0f && qw != 0f && !Float.isNaN(qw)) {
+        if (qw != 0f && !Float.isNaN(qw)
+                && q.getX() == 0f && q.getY() == 0f && q.getZ() == 0f) {
             return true;
         } else {
             return false;
@@ -336,12 +334,9 @@ public class MyQuaternion { // TODO finalize the class
      * @return true if the Quaternion equals (0,0,0,0), false otherwise
      */
     public static boolean isZero(Quaternion q) {
-        float qx = q.getX();
-        float qy = q.getY();
-        float qz = q.getZ();
         float qw = q.getW();
 
-        if (qx == 0f && qy == 0f && qz == 0f && qw == 0f) {
+        if (qw == 0f && q.getX() == 0f && q.getY() == 0f && q.getZ() == 0f) {
             return true;
         } else {
             return false;
