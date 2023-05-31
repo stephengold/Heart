@@ -83,10 +83,9 @@ public class MyQuaternion { // TODO finalize the class
      */
     public static void accumulateScaled(
             Quaternion total, Quaternion input, float scale) {
-        assert Validate.nonNull(total, "total");
-        assert Validate.nonNull(input, "input");
-
-        float x = total.getX() + input.getX() * scale;
+        float tx = total.getX();
+        float ix = input.getX();
+        float x = tx + ix * scale;
         float y = total.getY() + input.getY() * scale;
         float z = total.getZ() + input.getZ() * scale;
         float w = total.getW() + input.getW() * scale;
@@ -457,10 +456,9 @@ public class MyQuaternion { // TODO finalize the class
      * @return true if distinct, otherwise false
      */
     public static boolean ne(Quaternion a, Quaternion b) {
-        assert Validate.nonNull(a, "first input quaternion");
-        assert Validate.nonNull(b, "2nd input quaternion");
-
-        boolean result = a.getW() != b.getW()
+        float aw = a.getW();
+        float bw = b.getW();
+        boolean result = aw != bw
                 || a.getX() != b.getX()
                 || a.getY() != b.getY()
                 || a.getZ() != b.getZ();
@@ -717,7 +715,6 @@ public class MyQuaternion { // TODO finalize the class
      */
     public static Quaternion standardize(
             Quaternion input, Quaternion storeResult) {
-        assert Validate.nonNull(input, "input quaternion");
         Quaternion result
                 = (storeResult == null) ? new Quaternion() : storeResult;
 
