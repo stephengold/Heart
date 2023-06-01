@@ -277,4 +277,107 @@ public class TestMyMath {
         // Verify that the value of "in" hasn't changed.
         HeartTest.assertEquals(saveIn, in, 0f);
     }
+
+    /**
+     * Test transform().
+     */
+    @Test
+    public void testTransform() {
+        Vector3f[] testVectors = {
+            new Vector3f(1f, 2f, 3f),
+            new Vector3f(0f, -1f, -2f),
+            new Vector3f(1.7f, 0.7f, 0f)
+        };
+        Quaternion[] testQuaternions = {
+            new Quaternion(1f, 7f, 1f, -7f),
+            new Quaternion(3f, -4f, 0f, 0f),
+            new Quaternion(0f, 0f, 0f, 1f),
+            new Quaternion(0f, 0f, -1f, 1f),
+            new Quaternion(-0.5f, 0.5f, 0.5f, 0.5f)
+        };
+
+        float tol = 1e-6f;
+
+        for (Vector3f t : testVectors) {
+            for (Quaternion r : testQuaternions) {
+                for (Vector3f s : testVectors) {
+                    for (Vector3f v : testVectors) {
+                        Quaternion rn = r.clone();
+                        MyQuaternion.normalizeLocal(rn);
+                        Transform nTransform = new Transform(t, rn, s);
+                        Vector3f expect = nTransform.transformVector(v, null);
+
+                        Transform transform = new Transform(t, r, s);
+                        Transform saveTransform = transform.clone();
+                        Vector3f saveV = v.clone();
+
+                        Vector3f actual1 = MyMath.transform(transform, v, null);
+                        HeartTest.assertEquals(expect, actual1, tol);
+                        HeartTest.assertEquals(saveV, v, 0f); // unaffected
+                        HeartTest.assertEquals(saveTransform, transform, 0f);
+
+                        Vector3f w = v.clone();
+                        Vector3f actual2 = MyMath.transform(transform, v, w);
+                        HeartTest.assertEquals(expect, actual2, tol);
+                        HeartTest.assertEquals(saveTransform, transform, 0f);
+                        HeartTest.assertEquals(saveV, v, 0f); // unaffected
+                        HeartTest.assertEquals(expect, w, tol);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Test transformInverse(Vector3f).
+     */
+    @Test
+    public void testTransformInverse() {
+        Vector3f[] testVectors = {
+            new Vector3f(1f, 2f, 3f),
+            new Vector3f(0f, -1f, -2f),
+            new Vector3f(1.7f, 0.7f, 0f)
+        };
+        Quaternion[] testQuaternions = {
+            new Quaternion(1f, 7f, 1f, -7f),
+            new Quaternion(3f, -4f, 0f, 0f),
+            new Quaternion(0f, 0f, 0f, 1f),
+            new Quaternion(0f, 0f, -1f, 1f),
+            new Quaternion(-0.5f, 0.5f, 0.5f, 0.5f)
+        };
+
+        float tol = 1e-6f;
+
+        for (Vector3f t : testVectors) {
+            for (Quaternion r : testQuaternions) {
+                for (Vector3f s : testVectors) {
+                    for (Vector3f v : testVectors) {
+                        Quaternion rn = r.clone();
+                        MyQuaternion.normalizeLocal(rn);
+                        Transform nTransform = new Transform(t, rn, s);
+                        Vector3f expect
+                                = nTransform.transformInverseVector(v, null);
+
+                        Transform transform = new Transform(t, r, s);
+                        Transform saveTransform = transform.clone();
+                        Vector3f saveV = v.clone();
+
+                        Vector3f actual1
+                                = MyMath.transformInverse(transform, v, null);
+                        HeartTest.assertEquals(expect, actual1, tol);
+                        HeartTest.assertEquals(saveV, v, 0f); // unaffected
+                        HeartTest.assertEquals(saveTransform, transform, 0f);
+
+                        Vector3f w = v.clone();
+                        Vector3f actual2
+                                = MyMath.transformInverse(transform, v, w);
+                        HeartTest.assertEquals(expect, actual2, tol);
+                        HeartTest.assertEquals(saveTransform, transform, 0f);
+                        HeartTest.assertEquals(saveV, v, 0f); // unaffected
+                        HeartTest.assertEquals(expect, w, tol);
+                    }
+                }
+            }
+        }
+    }
 }
