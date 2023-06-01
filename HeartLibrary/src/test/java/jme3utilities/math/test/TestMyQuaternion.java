@@ -91,4 +91,46 @@ public class TestMyQuaternion {
             }
         }
     }
+
+    /**
+     * Test rotateInverse().
+     */
+    @Test
+    public void testRotateInverse() {
+        Vector3f[] testVectors = {
+            new Vector3f(1f, 2f, 3f),
+            new Vector3f(0f, -1f, -2f),
+            new Vector3f(7f, 0.7f, 0f)
+        };
+        Quaternion[] testQuaternions = {
+            new Quaternion(1f, 7f, 1f, -7f),
+            new Quaternion(3f, -4f, 0f, 0f),
+            new Quaternion(0f, 0f, 0f, 1f),
+            new Quaternion(0f, 0f, -1f, 1f),
+            new Quaternion(-0.5f, 0.5f, 0.5f, 0.5f)
+        };
+
+        float tol = 2e-6f;
+
+        for (Vector3f v : testVectors) {
+            for (Quaternion q : testQuaternions) {
+                Quaternion qn = q.clone();
+                MyQuaternion.normalizeLocal(qn);
+                Vector3f expected = qn.inverse().mult(v);
+
+                Quaternion q1 = q.clone();
+                Vector3f v1 = v.clone();
+
+                Vector3f actual1 = MyQuaternion.rotateInverse(q1, v1, null);
+                HeartTest.assertEquals(expected, actual1, tol);
+                HeartTest.assertEquals(q, q1, 0f); // unaffected
+                HeartTest.assertEquals(v, v1, 0f); // unaffected
+
+                Vector3f actual2 = MyQuaternion.rotateInverse(q1, v1, v1);
+                HeartTest.assertEquals(expected, actual2, tol);
+                HeartTest.assertEquals(q, q1, 0f); // unaffected
+                HeartTest.assertEquals(expected, v1, tol);
+            }
+        }
+    }
 }
