@@ -146,10 +146,9 @@ public class RectangularSolid implements Savable {
                 Float.NEGATIVE_INFINITY);
         minima.set(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY,
                 Float.POSITIVE_INFINITY);
-        Quaternion worldToLocal = localToWorld.inverse();
         Vector3f tempVector = new Vector3f();
         for (Vector3f world : sampleLocations) {
-            MyQuaternion.rotate(worldToLocal, world, tempVector);
+            MyQuaternion.rotateInverse(localToWorld, world, tempVector);
             MyVector3f.accumulateMaxima(maxima, tempVector);
             MyVector3f.accumulateMinima(minima, tempVector);
         }
@@ -179,14 +178,13 @@ public class RectangularSolid implements Savable {
                 Float.NEGATIVE_INFINITY);
         minima.set(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY,
                 Float.POSITIVE_INFINITY);
-        Quaternion worldToLocal = localToWorld.inverse();
         Vector3f tempVector = new Vector3f();
         for (int vectorIndex = 0; vectorIndex < numVectors; ++vectorIndex) {
             tempVector.x = inputArray[vectorIndex * numAxes + MyVector3f.xAxis];
             tempVector.y = inputArray[vectorIndex * numAxes + MyVector3f.yAxis];
             tempVector.z = inputArray[vectorIndex * numAxes + MyVector3f.zAxis];
 
-            MyQuaternion.rotate(worldToLocal, tempVector, tempVector);
+            MyQuaternion.rotateInverse(localToWorld, tempVector, tempVector);
             MyVector3f.accumulateMaxima(maxima, tempVector);
             MyVector3f.accumulateMinima(minima, tempVector);
         }
@@ -227,13 +225,12 @@ public class RectangularSolid implements Savable {
                 Float.NEGATIVE_INFINITY);
         minima.set(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY,
                 Float.POSITIVE_INFINITY);
-        Quaternion worldToLocal = localToWorld.inverse();
         Vector3f tmpVector = new Vector3f();
 
         for (int vectorIndex = 0; vectorIndex < numVectors; ++vectorIndex) {
             int position = vectorIndex * numAxes;
             MyBuffer.get(buffer, position, tmpVector);
-            MyQuaternion.rotate(worldToLocal, tmpVector, tmpVector);
+            MyQuaternion.rotateInverse(localToWorld, tmpVector, tmpVector);
             MyVector3f.accumulateMaxima(maxima, tmpVector);
             MyVector3f.accumulateMinima(minima, tmpVector);
         }

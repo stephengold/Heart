@@ -1147,7 +1147,8 @@ public class MySpatial { // TODO finalize the class
             scale.divideLocal(parentScale);
             parentInvRotation.mult(rotation, rotation);
             translation.subtractLocal(parentTranslation);
-            MyQuaternion.rotate(parentInvRotation, translation, translation);
+            MyQuaternion.rotateInverse(
+                    parentRotation, translation, translation);
             translation.divideLocal(parentScale);
 
             spatial.setLocalTransform(transform);
