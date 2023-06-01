@@ -140,8 +140,8 @@ public class Dumper implements Cloneable {
      * Instantiate a dumper that will use System.out for output.
      */
     public Dumper() {
-        describer = new Describer();
-        stream = System.out;
+        this.describer = new Describer();
+        this.stream = System.out;
     }
 
     /**
@@ -152,8 +152,8 @@ public class Dumper implements Cloneable {
     public Dumper(PrintStream printStream) {
         Validate.nonNull(printStream, "print stream");
 
-        describer = new Describer();
-        stream = printStream;
+        this.describer = new Describer();
+        this.stream = printStream;
     }
     // *************************************************************************
     // new methods exposed
@@ -656,7 +656,7 @@ public class Dumper implements Cloneable {
      */
     public Dumper setDescriber(Describer newDescriber) {
         Validate.nonNull(newDescriber, "new describer");
-        describer = newDescriber;
+        this.describer = newDescriber;
         return this;
     }
 
@@ -667,7 +667,7 @@ public class Dumper implements Cloneable {
      * @return this instance for chaining
      */
     public Dumper setDumpBounds(boolean newValue) {
-        dumpBoundsFlag = newValue;
+        this.dumpBoundsFlag = newValue;
         return this;
     }
 
@@ -678,7 +678,7 @@ public class Dumper implements Cloneable {
      * @return this instance for chaining
      */
     public Dumper setDumpBucket(boolean newValue) {
-        dumpBucketFlag = newValue;
+        this.dumpBucketFlag = newValue;
         return this;
     }
 
@@ -689,7 +689,7 @@ public class Dumper implements Cloneable {
      * @return this instance for chaining
      */
     public Dumper setDumpCull(boolean newValue) {
-        dumpCullFlag = newValue;
+        this.dumpCullFlag = newValue;
         return this;
     }
 
@@ -700,7 +700,7 @@ public class Dumper implements Cloneable {
      * @return this instance for chaining
      */
     public Dumper setDumpMatParam(boolean newValue) {
-        dumpMatParamFlag = newValue;
+        this.dumpMatParamFlag = newValue;
         return this;
     }
 
@@ -711,7 +711,7 @@ public class Dumper implements Cloneable {
      * @return this instance for chaining
      */
     public Dumper setDumpOverride(boolean newValue) {
-        dumpOverrideFlag = newValue;
+        this.dumpOverrideFlag = newValue;
         return this;
     }
 
@@ -722,7 +722,7 @@ public class Dumper implements Cloneable {
      * @return this instance for chaining
      */
     public Dumper setDumpShadow(boolean newValue) {
-        dumpShadowFlag = newValue;
+        this.dumpShadowFlag = newValue;
         return this;
     }
 
@@ -733,7 +733,7 @@ public class Dumper implements Cloneable {
      * @return this instance for chaining
      */
     public Dumper setDumpTransform(boolean newValue) {
-        dumpTransformFlag = newValue;
+        this.dumpTransformFlag = newValue;
         return this;
     }
 
@@ -744,7 +744,7 @@ public class Dumper implements Cloneable {
      * @return this instance for chaining
      */
     public Dumper setDumpUser(boolean newValue) {
-        dumpUserFlag = newValue;
+        this.dumpUserFlag = newValue;
         return this;
     }
 
@@ -755,7 +755,7 @@ public class Dumper implements Cloneable {
      * @return this instance for chaining
      */
     public Dumper setDumpVertex(boolean newValue) {
-        dumpVertexFlag = newValue;
+        this.dumpVertexFlag = newValue;
         return this;
     }
 
@@ -767,7 +767,7 @@ public class Dumper implements Cloneable {
      */
     public Dumper setIndentIncrement(String newValue) {
         Validate.nonNull(newValue, "increment");
-        indentIncrement = newValue;
+        this.indentIncrement = newValue;
         return this;
     }
 
@@ -779,7 +779,7 @@ public class Dumper implements Cloneable {
      */
     public Dumper setMaxChildren(int newLimit) {
         Validate.nonNegative(newLimit, "newLimit");
-        maxChildren = newLimit;
+        this.maxChildren = newLimit;
         return this;
     }
     // *************************************************************************
@@ -867,7 +867,7 @@ public class Dumper implements Cloneable {
     @Override
     public Dumper clone() throws CloneNotSupportedException {
         Dumper clone = (Dumper) super.clone();
-        describer = describer.clone();
+        this.describer = describer.clone();
         // stream not cloned
 
         return clone;
