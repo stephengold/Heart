@@ -649,7 +649,7 @@ public class MyString { // TODO finalize the class
 
     /**
      * Trim any trailing zeros and one trailing decimal point from a string
-     * representation of a float. Also remove sign from zero. TODO localize
+     * representation of a float. Also remove any leading minus sign from zero.
      *
      * @param input the String to trim (not null)
      * @return a trimmed String (not null)

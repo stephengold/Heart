@@ -1051,7 +1051,7 @@ public class MyVector3f { // TODO finalize the class
      * @param vector2 coordinates of the 2nd location (not null, unaffected
      * unless it's storeResult)
      * @param storeResult storage for the result (modified if not null, may be
-     * vector1 or vector2)
+     * {@code vector1} or {@code vector2})
      * @return a coordinate vector (either {@code storeResult} or a new
      * instance)
      */
@@ -1247,7 +1247,7 @@ public class MyVector3f { // TODO finalize the class
      *
      * @param input (not null, unaffected unless it's also storeResult)
      * @param storeResult storage for the result (modified if not null, may be
-     * input)
+     * {@code input})
      * @return an equivalent vector without any negative zero components (either
      * storeResult or a new instance)
      */

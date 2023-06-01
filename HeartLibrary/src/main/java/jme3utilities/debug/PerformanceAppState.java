@@ -96,7 +96,7 @@ public class PerformanceAppState extends SimpleAppState {
      * minimum duration of a measurement interval (in seconds)
      */
     private float measurementInterval = 1f;
-    /*
+    /**
      * background for statistics text: set by initialize()
      */
     private Geometry background;
