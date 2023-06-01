@@ -459,16 +459,13 @@ public class Describer implements Cloneable {
      */
     public String describeBucket(Spatial spatial) {
         StringBuilder result = new StringBuilder(20);
-        /*
-         * Describe its local assignment.
-         */
+
+        // Describe its local assignment.
         result.append("bucket=");
         RenderQueue.Bucket bucket = spatial.getLocalQueueBucket();
         result.append(bucket);
         if (bucket == RenderQueue.Bucket.Inherit) {
-            /*
-             * Describe its effective assignment.
-             */
+            // Describe its effective assignment.
             result.append('/');
             bucket = spatial.getQueueBucket();
             result.append(bucket);
@@ -517,16 +514,13 @@ public class Describer implements Cloneable {
      */
     public String describeCull(Spatial spatial) {
         StringBuilder result = new StringBuilder(20);
-        /*
-         * Describe its local cull hint.
-         */
+
+        // Describe its local cull hint.
         result.append("cull=");
         Spatial.CullHint mode = spatial.getLocalCullHint();
         result.append(mode);
         if (mode == Spatial.CullHint.Inherit) {
-            /*
-             * Describe its effective cull hint.
-             */
+            // Describe its effective cull hint.
             result.append('/');
             mode = spatial.getCullHint();
             result.append(mode);
@@ -732,16 +726,13 @@ public class Describer implements Cloneable {
      */
     public String describeShadow(Spatial spatial) {
         StringBuilder result = new StringBuilder(20);
-        /*
-         * Describe its local shadow mode.
-         */
+
+        // Describe its local shadow mode.
         result.append("shadow=");
         RenderQueue.ShadowMode mode = spatial.getLocalShadowMode();
         result.append(mode);
         if (mode == RenderQueue.ShadowMode.Inherit) {
-            /*
-             * Describe its effective shadow mode.
-             */
+            // Describe its effective shadow mode.
             result.append('/');
             mode = spatial.getShadowMode();
             result.append(mode);

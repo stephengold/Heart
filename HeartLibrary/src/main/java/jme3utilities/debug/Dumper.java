@@ -345,9 +345,8 @@ public class Dumper implements Cloneable {
                 numPres, (numPres == 1) ? "" : "s",
                 numMains, (numMains == 1) ? "" : "s");
         stream.printf("%d postView%s%n", numPosts, (numPosts == 1) ? "" : "s");
-        /*
-         * Dump all the viewports in order.
-         */
+
+        // Dump all the viewports in order.
         for (int index = 0; index < numPres; ++index) {
             stream.printf("preView %d:%n", index);
             dump(pres.get(index), indentIncrement);
@@ -885,9 +884,8 @@ public class Dumper implements Cloneable {
     private void dump(Map<String, MatParam> map, String indent) {
         if (!map.isEmpty()) {
             stream.print(':');
-            /*
-             * Loop through the parameter names in order.
-             */
+
+            // Loop through the parameter names in order.
             Set<String> names = new TreeSet<>(map.keySet());
             for (String name : names) {
                 addLine(indent);
@@ -931,16 +929,12 @@ public class Dumper implements Cloneable {
         List<Spatial> children = node.getChildren();
         int numChildren = children.size();
         if (numChildren <= maxChildren) {
-            /*
-             * Dump all children.
-             */
+            // Dump all children.
             for (Spatial child : children) {
                 dump(child, childIndent);
             }
         } else {
-            /*
-             * Dump the head and tail of the list, just the specified number.
-             */
+            // Dump the head and tail of the list, just the specified number.
             int numTail = maxChildren / 3;
             int numHead = maxChildren - numTail;
             for (int childI = 0; childI < numHead; ++childI) {

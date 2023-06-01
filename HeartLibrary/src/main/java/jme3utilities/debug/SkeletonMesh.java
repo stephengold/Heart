@@ -100,9 +100,8 @@ class SkeletonMesh extends Mesh {
 
         if (mode == Mode.Lines) {
             IndexBuffer ib = createLineIndices(boneCount, numConnections);
-            /*
-             * Populate the index buffer.
-             */
+
+            // Populate the index buffer.
             for (int boneIndex = 0; boneIndex < boneCount; ++boneIndex) {
                 if (armature == null) {
                     Bone child = skeleton.getBone(boneIndex);
@@ -184,9 +183,8 @@ class SkeletonMesh extends Mesh {
 
         VertexBuffer positions = getBuffer(Type.Position);
         positions.updateData(floats);
-        /*
-         * Update the bounding volume.
-         */
+
+        // Update the bounding volume.
         updateBound();
     }
     // *************************************************************************
