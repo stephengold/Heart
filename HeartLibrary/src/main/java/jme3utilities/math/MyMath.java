@@ -1063,7 +1063,7 @@ public class MyMath { // TODO finalize the class
         Vector3f tmpVector = new Vector3f();
         for (int vertexIndex = 0; vertexIndex < MyMesh.vpt; ++vertexIndex) {
             Vector3f inputVector = input.get(vertexIndex); // alias
-            transform.transformInverseVector(inputVector, tmpVector);
+            MyMath.transformInverse(transform, inputVector, tmpVector);
             result.set(vertexIndex, tmpVector);
         }
 
