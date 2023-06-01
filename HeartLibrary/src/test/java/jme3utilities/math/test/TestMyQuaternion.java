@@ -68,7 +68,7 @@ public class TestMyQuaternion {
             new Quaternion(-0.5f, 0.5f, 0.5f, 0.5f)
         };
 
-        float tol = 1e-6f;
+        float tol = 5e-7f;
 
         for (Vector3f v : testVectors) {
             for (Quaternion q : testQuaternions) {
