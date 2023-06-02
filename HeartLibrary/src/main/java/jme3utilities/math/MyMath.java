@@ -1016,7 +1016,8 @@ public class MyMath { // TODO finalize the class
      * com.jme3.math.Vector3f)}, this method works on transforms containing
      * non-normalized quaternions.
      *
-     * @param transform the transform to apply (not null, unaffected)
+     * @param transform the transform to apply (not null, unaffected unless
+     * {@code storeResult} is its translation or scaling component)
      * @param input the input vector (not null, unaffected unless it's
      * {@code storeResult})
      * @param storeResult storage for the result (modified if not null)
@@ -1026,6 +1027,10 @@ public class MyMath { // TODO finalize the class
     public static Vector3f transform(
             Transform transform, Vector3f input, Vector3f storeResult) {
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
+        Vector3f translation = transform.getTranslation(); // alias
+        if (translation == result) {
+            translation = translation.clone();
+        }
 
         // scale
         Vector3f scale = transform.getScale(); // alias
@@ -1036,7 +1041,6 @@ public class MyMath { // TODO finalize the class
         MyQuaternion.rotate(rotation, result, result);
 
         // translate
-        Vector3f translation = transform.getTranslation(); // alias
         result.addLocal(translation);
 
         return result;
@@ -1081,7 +1085,8 @@ public class MyMath { // TODO finalize the class
      * com.jme3.math.Vector3f)}, this method works on transforms containing
      * non-normalized quaternions.
      *
-     * @param transform the transform to un-apply (not null, unaffected)
+     * @param transform the transform to un-apply (not null, unaffected unless
+     * {@code storeResult} is its translation or scaling component)
      * @param input the input vector (not null, unaffected unless it's
      * {@code storeResult})
      * @param storeResult storage for the result (modified if not null)
@@ -1091,6 +1096,10 @@ public class MyMath { // TODO finalize the class
     public static Vector3f transformInverse(
             Transform transform, Vector3f input, Vector3f storeResult) {
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
+        Vector3f scale = transform.getScale(); // alias
+        if (scale == result) {
+            scale = scale.clone();
+        }
 
         // un-translate
         Vector3f translation = transform.getTranslation(); // alias
@@ -1101,7 +1110,6 @@ public class MyMath { // TODO finalize the class
         MyQuaternion.rotateInverse(rotation, result, result);
 
         // de-scale
-        Vector3f scale = transform.getScale(); // alias
         result.divideLocal(scale);
 
         return result;
