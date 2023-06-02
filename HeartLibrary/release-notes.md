@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 8.6.0 released on TBD
+## Version 8.6.0 released on 2 June 2023
 
 + Added 4 new methods:
   + `MyMath.transform()`
