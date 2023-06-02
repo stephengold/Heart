@@ -7,7 +7,7 @@ plugins {
 ext {
     // current versions of libraries:
     jmeTarget = '' // distinguish non-JME libraries built for specific JME releases
-    heartVersion = '8.5.1' + jmeTarget + '-SNAPSHOT'
+    heartVersion = '8.6.0' + jmeTarget
     jme3Version = '3.6.0-stable'
 }
 

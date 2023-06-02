@@ -1,5 +1,15 @@
 # release log for the Heart Library and related tests
 
+## Version 8.6.0 released on TBD
+
++ Added 4 new methods:
+  + `MyMath.transform()`
+  + `MyMath.transformInverse()` for a `Vector3f`
+  + `MyQuaternion.rotateInverse()`
+  + `Validate.standardAngle()`
++ When normalizing a `Quaternion` or `Vector3f`, bypass division if the norm is
+  approximately equal to 1.
+
 ## Version 8.5.0 released on 29 May 2023
 
 Added 2 new methods:
