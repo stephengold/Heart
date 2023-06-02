@@ -31,6 +31,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import java.util.logging.Logger;
 import jme3utilities.MySpatial;
+import jme3utilities.math.MyQuaternion;
 import org.junit.Test;
 
 /**
@@ -72,7 +73,7 @@ public class TestMySpatial {
         Quaternion rot = new Quaternion(3f, 1f, 4f, 15f).normalizeLocal();
         MySpatial.setWorldOrientation(child, rot);
         Quaternion rot2 = MySpatial.worldOrientation(child, null);
-        rot2.normalizeLocal();
+        MyQuaternion.normalizeLocal(rot2);
         HeartTest.assertEquals(rot2, rot, 0.00001f);
     }
 }
