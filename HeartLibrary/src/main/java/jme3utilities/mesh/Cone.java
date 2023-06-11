@@ -100,6 +100,16 @@ public class Cone extends Mesh {
         float yBase = -yHeight / 2f;
         double interiorAngle = 2. * Math.PI / numSides; // in radians
 
+        // The final vertex, where all the base triangles meet:
+        double theta0 = (numSides - 1) * interiorAngle; // in radians
+        float x0 = radius * (float) Math.sin(theta0);
+        float z0 = radius * (float) Math.cos(theta0);
+
+        // The slope of the sides:
+        float tangent = radius / yHeight;
+        float cosine = 1f / MyMath.hypotenuse(1f, tangent);
+        float ny = cosine * tangent;
+
         Triangle triangle = new Triangle();
         Vector3f p1 = new Vector3f();
         Vector3f p2 = new Vector3f();
@@ -131,10 +141,6 @@ public class Cone extends Mesh {
                 }
 
             } else { // curved triangle for a cone
-                float tangent = radius / yHeight;
-                float cosine = 1f / MyMath.hypotenuse(1f, tangent);
-                float ny = cosine * tangent;
-
                 float nx = cosine * x1 / radius;
                 float nz = cosine * z1 / radius;
                 normalBuffer.put(nx).put(ny).put(nz);
@@ -143,18 +149,15 @@ public class Cone extends Mesh {
                 nz = cosine * z2 / radius;
                 normalBuffer.put(nx).put(ny).put(nz);
 
-                double theta3 = (theta1 + theta2) / 2f;
-                nx = cosine * (float) Math.sin(theta3);
-                nz = cosine * (float) Math.cos(theta3);
+                double thetaMid = (theta1 + theta2) / 2f;
+                nx = cosine * (float) Math.sin(thetaMid);
+                nz = cosine * (float) Math.cos(thetaMid);
                 normalBuffer.put(nx).put(ny).put(nz);
             }
 
             if (sideIndex < numBaseTriangles) {
-                double theta3 = (numSides - 1) * interiorAngle; // in radians
-                float x3 = radius * (float) Math.sin(theta3);
-                float z3 = radius * (float) Math.cos(theta3);
-
-                positionBuffer.put(x3).put(yBase).put(z3);
+                // base triangle
+                positionBuffer.put(x0).put(yBase).put(z0);
                 positionBuffer.put(x2).put(yBase).put(z2);
                 positionBuffer.put(x1).put(yBase).put(z1);
 
