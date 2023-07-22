@@ -15,6 +15,7 @@ tasks.withType(JavaCompile) { // Java compile-time options:
 application {
     mainClass = 'jme3utilities.cli.J3oDump'
 }
+jar.manifest.attributes('Main-Class': application.mainClass)
 
 dependencies {
     implementation 'org.jmonkeyengine:jme3-desktop:' + jme3Version
