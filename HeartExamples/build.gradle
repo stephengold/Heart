@@ -21,7 +21,7 @@ dependencies {
     runtimeOnly 'org.jmonkeyengine:jme3-desktop:' + jme3Version
     runtimeOnly 'org.jmonkeyengine:jme3-effects:' + jme3Version
     implementation 'org.jmonkeyengine:jme3-lwjgl3:' + jme3Version
-    runtimeOnly 'org.jmonkeyengine:jme3-testdata:' + jme3Version
+    runtimeOnly 'org.jmonkeyengine:jme3-testdata:' + jme3Version // for Jaime
 
     // HeartExamples doesn't use jme3-jogg nor jme3-plugins
     //  -- they are included solely to avoid warnings from AssetConfig.
