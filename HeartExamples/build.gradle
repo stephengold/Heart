@@ -6,6 +6,8 @@ plugins {
     id 'application'
 }
 
+java.toolchain.languageVersion = null // to build using any version of Java
+
 if (!hasProperty('mainClass')) {
     ext.mainClass = 'jme3utilities.test.AppChooser'
 }

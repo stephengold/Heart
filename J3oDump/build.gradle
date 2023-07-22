@@ -6,6 +6,8 @@ plugins {
     id 'application'
 }
 
+java.toolchain.languageVersion = null // to build using any version of Java
+
 tasks.withType(JavaCompile) { // Java compile-time options:
     options.deprecation = true
 }

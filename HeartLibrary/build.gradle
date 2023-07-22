@@ -8,6 +8,8 @@ plugins {
     id 'signing'
 }
 
+java.toolchain.languageVersion = null // to build using any version of Java
+
 ext {
     group = 'com.github.stephengold'
     artifact = 'Heart'
