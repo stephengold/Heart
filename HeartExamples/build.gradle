@@ -8,13 +8,10 @@ plugins {
 
 java.toolchain.languageVersion = null // to build using any version of Java
 
-application {
-    mainClass = 'jme3utilities.test.AppChooser'
-}
 if (!hasProperty('mainClass')) {
-    ext.mainClass = application.mainClass
+    ext.mainClass = 'jme3utilities.test.AppChooser'
 }
-jar.manifest.attributes('Main-Class': application.mainClass)
+jar.manifest.attributes('Main-Class': 'jme3utilities.test.AppChooser')
 
 dependencies {
     implementation 'org.apache.commons:commons-exec:1.3'
