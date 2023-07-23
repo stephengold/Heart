@@ -842,7 +842,7 @@ public class MySpatial { // TODO finalize the class
      * @param subtree the subtree to analyze (may be null, aliases created)
      * @param material the Material to search for (may be null, unaffected)
      * @param addResult storage for results (added to if not null)
-     * @return an expanded List (either storeResult or a new List)
+     * @return an expanded List (either {@code addResult} or a new List)
      */
     public static List<Geometry> listMaterialUsers(
             Spatial subtree, Material material, List<Geometry> addResult) {
@@ -873,7 +873,7 @@ public class MySpatial { // TODO finalize the class
      * @param subtree (may be null, aliases created)
      * @param mesh the Mesh to search for (may be null, unaffected)
      * @param addResult storage for results (added to if not null)
-     * @return an expanded List (either storeResult or a new List)
+     * @return an expanded List (either {@code addResult} or a new List)
      */
     public static List<Geometry> listMeshUsers(
             Spatial subtree, Mesh mesh, List<Geometry> addResult) {
@@ -921,7 +921,7 @@ public class MySpatial { // TODO finalize the class
      * @param subtree (not null, aliases created)
      * @param spatialType the subclass of Spatial to search for
      * @param addResult storage for results (added to if not null)
-     * @return an expanded List (either storeResult or a new List)
+     * @return an expanded List (either {@code addResult} or a new List)
      */
     @SuppressWarnings("unchecked")
     public static <T extends Spatial> List<T> listSpatials(
@@ -954,7 +954,7 @@ public class MySpatial { // TODO finalize the class
      *
      * @param subtree the subtree to analyze (may be null)
      * @param addResult storage for results (added to if not null)
-     * @return an expanded List (either storeResult or a new List)
+     * @return an expanded List (either {@code addResult} or a new List)
      */
     public static List<Texture> listTextures(
             Spatial subtree, List<Texture> addResult) {
