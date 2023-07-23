@@ -687,13 +687,13 @@ public class MySpatial { // TODO finalize the class
      * Note: recursive!
      *
      * @param subtree the subtree to analyze (may be null, aliases created)
-     * @param storeResult storage for results (added to if not null)
-     * @return an expanded List (either storeResult or a new List)
+     * @param addResults storage for results (added to if not null)
+     * @return an expanded List (either {@code addResults} or a new List)
      */
     public static List<Mesh> listAnimatedMeshes(
-            Spatial subtree, List<Mesh> storeResult) {
-        List<Mesh> result = (storeResult == null)
-                ? new ArrayList<>(10) : storeResult;
+            Spatial subtree, List<Mesh> addResults) {
+        List<Mesh> result = (addResults == null)
+                ? new ArrayList<>(10) : addResults;
 
         if (subtree instanceof Geometry) {
             Geometry geometry = (Geometry) subtree;
@@ -760,14 +760,14 @@ public class MySpatial { // TODO finalize the class
      * @param <T> subclass of Control
      * @param subtree the subtree to analyze (not null, aliases created)
      * @param controlType the subclass of Control to search for
-     * @param storeResult storage for results (added to if not null)
-     * @return an expanded List (either storeResult or a new List)
+     * @param addResults storage for results (added to if not null)
+     * @return an expanded List (either {@code addResults} or a new List)
      */
     @SuppressWarnings("unchecked")
     public static <T extends Control> List<T> listControls(
-            Spatial subtree, Class<T> controlType, List<T> storeResult) {
-        List<T> result = (storeResult == null)
-                ? new ArrayList<>(4) : storeResult;
+            Spatial subtree, Class<T> controlType, List<T> addResults) {
+        List<T> result = (addResults == null)
+                ? new ArrayList<>(4) : addResults;
 
         int numControls = subtree.getNumControls();
         for (int controlIndex = 0; controlIndex < numControls; ++controlIndex) {
@@ -808,14 +808,14 @@ public class MySpatial { // TODO finalize the class
      * recursive!
      *
      * @param subtree the subtree to analyze (may be null, aliases created)
-     * @param storeResult storage for results (added to if not null)
-     * @return an expanded List (either storeResult or a new List)
+     * @param addResults storage for results (added to if not null)
+     * @return an expanded List (either {@code addResults} or a new List)
      * @see MyMesh#listMeshes(com.jme3.scene.Spatial, java.util.List)
      */
     public static List<Material> listMaterials(
-            Spatial subtree, List<Material> storeResult) {
-        List<Material> result = (storeResult == null)
-                ? new ArrayList<>(10) : storeResult;
+            Spatial subtree, List<Material> addResults) {
+        List<Material> result = (addResults == null)
+                ? new ArrayList<>(10) : addResults;
 
         if (subtree instanceof Geometry) {
             Geometry geometry = (Geometry) subtree;
