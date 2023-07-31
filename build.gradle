@@ -19,15 +19,15 @@ configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds' // to disable caching of SNAPSHOTs
 }
 
+tasks.register('AppChooser') {
+    dependsOn ':HeartExamples:AppChooser'
+    description 'Runs the example apps.'
+}
+
 tasks.register('checkstyle') {
     dependsOn ':HeartExamples:checkstyleMain', ':HeartLibrary:checkstyleMain', \
         ':HeartLibrary:checkstyleTest', ':J3oDump:checkstyleMain'
     description 'Checks the style of all Java sourcecode.'
-}
-
-tasks.register('AppChooser') {
-    dependsOn ':HeartExamples:AppChooser'
-    description 'Runs the example apps.'
 }
 
 // publishing tasks:
