@@ -271,7 +271,7 @@ public class Octasphere extends Mesh {
 
         FloatBuffer uvBuffer = BufferUtils.createFloatBuffer(2 * numVertices);
         for (int i = 0; i < numVertices; ++i) {
-            Vector3f pos = locations.get(i);
+            Vector3f pos = locations.get(i); // alias
             Vector2f longLat = cartesianToSpherical(pos);
             float u;
             if (pos.y == 0f) {
