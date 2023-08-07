@@ -53,8 +53,9 @@ import jme3utilities.math.MyVector3f;
  * The center is at (0,0,0). All triangles face outward with right-handed
  * winding.
  * <p>
- * The texture coordinates are similar to Sphere.TextureMode.Projected, only
- * with the U values mirrored and offset:
+ * The texture coordinates are generated for an equirectangular projection
+ * similar to Sphere.TextureMode.Projected, only with the U values mirrored and
+ * offset:
  * <ul>
  * <li>U is the azimuthal angle in revs. It ranges from 0 to 1.
  * <li>V is the polar angle, measured (in half revs) from the -Z axis. It ranges
@@ -299,7 +300,7 @@ public class Octasphere extends Mesh {
     // private methods
 
     /**
-     * Add a vertex to the lists of locations and normals.
+     * Add a vertex to the lists of locations.
      *
      * @param location the approximate vertex location (in mesh coordinates, not
      * null, unaffected)
