@@ -699,6 +699,7 @@ public class MyMath { // TODO finalize the class
      *
      * @param iValues the input values
      * @return the most positive value
+     * @see Collections#max()
      * @see java.lang.Math#max(int, int)
      */
     public static int maxInt(int... iValues) {
