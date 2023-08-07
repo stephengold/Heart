@@ -27,7 +27,6 @@
 package jme3utilities.mesh;
 
 import com.jme3.math.FastMath;
-import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.VertexBuffer;
@@ -248,6 +247,7 @@ public class Octasphere extends Mesh {
         // System.out.println("numCacheEntries = " + midpointCache.size());
         // System.out.println();
         //
+        assert locations.size() == uOverrides.size();
         midpointCache.clear();
         assert faces.size() == 3 << (3 + 2 * numRefineSteps);
 
@@ -273,15 +273,18 @@ public class Octasphere extends Mesh {
         FloatBuffer uvBuffer = BufferUtils.createFloatBuffer(2 * numVertices);
         for (int i = 0; i < numVertices; ++i) {
             Vector3f pos = locations.get(i); // alias
-            Vector2f longLat = cartesianToSpherical(pos);
+
+            float longitude = longitude(pos);
             float u;
             if (pos.y == 0f) {
                 u = uOverrides.get(i);
             } else {
                 assert uOverrides.get(i) == null;
-                u = 0.5f + longLat.x / FastMath.TWO_PI;
+                u = 0.5f + longitude / FastMath.TWO_PI;
             }
-            float v = 0.5f + longLat.y / FastMath.PI;
+
+            float latitude = latitude(pos);
+            float v = 0.5f + latitude / FastMath.PI;
             uvBuffer.put(u).put(v);
         }
 
@@ -320,27 +323,39 @@ public class Octasphere extends Mesh {
     }
 
     /**
-     * Transform 3-D Cartesian coordinates to longitude and latitude.
+     * Convert 3-D Cartesian coordinates to latitude.
      *
-     * @param input the location to transform (z=distance north of the
-     * equatorial plane, not null, unaffected)
-     * @return a new vector (x=west longitude in radians, y=north latitude in
-     * radians)
+     * @param input the location to transform (y = distance east of the plane of
+     * the zero meridian, z=distance north of the equatorial plane, not null,
+     * unaffected)
+     * @return the north latitude in (in radians)
      */
-    private static Vector2f cartesianToSpherical(Vector3f input) {
-        Vector2f result = new Vector2f();
+    private static float latitude(Vector3f input) {
+        float result;
         float length = input.length();
-
-        if (input.x != 0f || input.y != 0f) {
-            result.x = -FastMath.atan2(input.y, input.x);
+        if (length > 0f) {
+            result = (float) Math.asin(input.z / length);
         } else {
-            result.x = 0f;
+            result = 0f;
         }
 
-        if (length > 0f) {
-            result.y = FastMath.asin(input.z / length);
+        return result;
+    }
+
+    /**
+     * Convert 3-D Cartesian coordinates to longitude.
+     *
+     * @param input the location to transform (y = distance east of the plane of
+     * the zero meridian, z=distance north of the equatorial plane, not null,
+     * unaffected)
+     * @return the west longitude (in radians)
+     */
+    private static float longitude(Vector3f input) {
+        float result;
+        if (input.x != 0f || input.y != 0f) {
+            result = -FastMath.atan2(input.y, input.x);
         } else {
-            result.y = 0f;
+            result = 0f;
         }
 
         return result;
