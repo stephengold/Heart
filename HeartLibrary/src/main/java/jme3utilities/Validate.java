@@ -199,6 +199,8 @@ final public class Validate {
      * @return true
      * @throws IllegalArgumentException if the value is outside the range [min,
      * max]
+     * <p>
+     * Compare with {@code Objects.checkIndex()} in Java 9.
      */
     public static boolean inRange(
             int iValue, String description, int min, int max) {
@@ -588,7 +590,7 @@ final public class Validate {
      * illegal uses of the null object." To throw an IllegalArgumentException
      * instead, set {@link #throwNpe} to false.
      * <p>
-     * Compare with {@code java.util.Objects.requireNonNull()}.
+     * Compare with {@code Objects.requireNonNull()}.
      *
      * @param object the reference to validate
      * @param description a description of the argument
