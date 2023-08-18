@@ -122,6 +122,24 @@ public class TestMyMath {
     }
 
     /**
+     * Test log2().
+     */
+    @Test
+    public void testLog2() {
+        Assert.assertEquals(0, MyMath.log2(1));
+        Assert.assertEquals(1, MyMath.log2(2));
+        Assert.assertEquals(1, MyMath.log2(3));
+        Assert.assertEquals(2, MyMath.log2(4));
+        Assert.assertEquals(2, MyMath.log2(7));
+        Assert.assertEquals(3, MyMath.log2(8));
+        Assert.assertEquals(7, MyMath.log2(0xFF));
+        Assert.assertEquals(8, MyMath.log2(0x100));
+        Assert.assertEquals(29, MyMath.log2(0x3FFFFFFF));
+        Assert.assertEquals(30, MyMath.log2(0x40000000));
+        Assert.assertEquals(30, MyMath.log2(0x7FFFFFFF));
+    }
+
+    /**
      * Test cube(), cubeRoot(), and modulo().
      */
     @Test
