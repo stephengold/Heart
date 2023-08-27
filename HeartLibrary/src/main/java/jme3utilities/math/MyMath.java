@@ -518,14 +518,16 @@ public class MyMath { // TODO finalize the class
      * @param c the 3rd input value
      * @return true if b is between a and c (inclusive), otherwise false
      */
-    public static boolean isBetween(int a, int b, int c) {
+    public static boolean isBetween(float a, float b, float c) {
         if (a > c) {
             return a >= b && b >= c;
         } else if (a < c) {
             return a <= b && b <= c;
-        } else {
-            assert a == c;
+        } else if (a == c) {
             return a == b;
+        } else {
+            String message = "a = " + a + " c = " + c;
+            throw new IllegalArgumentException(message);
         }
     }
 
@@ -537,16 +539,14 @@ public class MyMath { // TODO finalize the class
      * @param c the 3rd input value
      * @return true if b is between a and c (inclusive), otherwise false
      */
-    public static boolean isBetween(float a, float b, float c) {
+    public static boolean isBetween(int a, int b, int c) {
         if (a > c) {
             return a >= b && b >= c;
         } else if (a < c) {
             return a <= b && b <= c;
-        } else if (a == c) {
-            return a == b;
         } else {
-            String message = "a = " + a + " c = " + c;
-            throw new IllegalArgumentException(message);
+            assert a == c;
+            return a == b;
         }
     }
 
