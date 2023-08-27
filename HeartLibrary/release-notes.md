@@ -1,5 +1,11 @@
 # release log for the Heart Library and related tests
 
+## Version 8.7.0 released on TBD
+
++ Added new method `MyMath.log2()`
++ Targeted jMonkeyEngine version 3.6.1-stable.
++ Updated Gradle to v8.3
+
 ## Version 8.6.0 released on 2 June 2023
 
 + Added 4 new methods:
