@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 8.7.0 released on TBD
+## Version 8.7.0 released on 28 August 2023
 
 + Added new method `MyMath.log2()`
 + Targeted jMonkeyEngine version 3.6.1-stable.
