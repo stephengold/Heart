@@ -106,6 +106,8 @@ final public class J3oDump {
         Logger materialLogger = Logger.getLogger(Material.class.getName());
         materialLogger.setLevel(Level.SEVERE);
 
+        dumper.setDumpUser(false);
+
         // Process the command-line arguments.
         int numArguments = arguments.length;
         int lastIndex = numArguments - 1;
@@ -134,6 +136,7 @@ final public class J3oDump {
                         .setDumpOverride(true)
                         .setDumpShadow(true)
                         .setDumpTransform(true)
+                        .setDumpUser(true)
                         .setDumpVertex(true);
 
             } else if (argument.equals("--xml") || argument.equals("-x")) {
