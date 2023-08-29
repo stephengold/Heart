@@ -184,22 +184,31 @@ final public class J3oDump {
     private static void dumpAsset(String assetPath) {
         newAssetManager();
 
-        System.out.print(assetPath + " contains a ");
+        System.out.print(MyString.quote(assetPath));
         System.out.flush();
 
         ModelKey modelKey = new ModelKey(assetPath);
         Spatial loadedAsset = assetManager.loadModel(modelKey);
 
-        System.out.println("model:");
+        System.out.print(" contains a model or scene");
         if (listTextures) {
+            System.out.print(" with ");
             List<Texture> textures = MySpatial.listTextures(loadedAsset, null);
+            int numTextures = textures.size();
+            if (numTextures == 0) {
+                System.out.println("no textures.");
+            } else if (numTextures == 1) {
+                System.out.println("one texture:");
+            } else {
+                System.out.printf("%d textures:", numTextures);
+            }
             for (Texture texture : textures) {
-                System.out.println(texture.toString());
+                System.out.println("  " + texture);
             }
         } else {
-            dumper.dump(loadedAsset, "  ");
-            System.out.println();
+            System.out.println(":");
         }
+        dumper.dump(loadedAsset, "  ");
         System.out.println();
 
         if (generateXml) {
