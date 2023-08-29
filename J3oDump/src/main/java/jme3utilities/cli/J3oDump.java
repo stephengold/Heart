@@ -45,6 +45,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jme3utilities.MySpatial;
+import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
 
 /**
@@ -76,6 +77,10 @@ final public class J3oDump {
      * option to list textures
      */
     private static boolean listTextures = false;
+    /**
+     * option to print the help/usage hints
+     */
+    private static boolean printHelp = false;
     /**
      * dump asset descriptions to System.out
      */
@@ -110,14 +115,22 @@ final public class J3oDump {
 
         // Process the command-line arguments.
         int numArguments = arguments.length;
+        if (numArguments == 0) {
+            printHelp = true;
+        }
         int lastIndex = numArguments - 1;
         int i = 0;
         while (i < numArguments) {
             String argument = arguments[i];
-            if (argument.equals("--root") || argument.equals("-r")) {
+            if (argument.equals("--help") || argument.equals("-h")
+                    || argument.equals("--usage") || argument.equals("-u")) {
+                printHelp = true;
+
+            } else if (argument.equals("--root") || argument.equals("-r")) {
                 if (i == lastIndex) {
                     System.err.println("Missing argument for " + argument);
                     System.err.flush();
+                    printHelp();
                     System.exit(1);
 
                 } else {
@@ -144,8 +157,20 @@ final public class J3oDump {
 
             } else if (argument.endsWith(".j3o")) {
                 dumpAsset(argument);
+
+            } else {
+                String quotedArg = MyString.quote(argument);
+                System.err.println("Unrecognized argument:  " + quotedArg);
+                System.err.flush();
+                printHelp();
+                System.exit(1);
             }
+
             ++i;
+        }
+
+        if (printHelp) {
+            printHelp();
         }
     }
     // *************************************************************************
@@ -187,6 +212,25 @@ final public class J3oDump {
                 logger.log(Level.SEVERE, exception.getMessage(), exception);
             }
         }
+    }
+
+    /**
+     * Print the help/usage hints.
+     */
+    private static void printHelp() {
+        String workingDirectory = System.getProperty("user.dir");
+        System.out.printf("NAME:%n"
+                + "  j3odump - dump J3O files to standard output.%n%n"
+                + "USAGE:%n"
+                + "  j3odump [ARGUMENTS...]%n%n"
+                + "ARGUMENTS:%n%n"
+                + "  --help, --usage, -h, -u  print this help message%n"
+                + "  --root path, -r path     set path to asset root (%s)%n"
+                + "  --textures, -t           also list textures%n"
+                + "  --verbose, -v            set verbose mode%n"
+                + "  --xml, -x                also generate an XML file%n"
+                + "  asset/path.j3o           an asset to dump%n%n",
+                "default = " + MyString.quote(workingDirectory));
     }
 
     /**
