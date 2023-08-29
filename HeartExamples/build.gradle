@@ -32,6 +32,18 @@ dependencies {
     implementation project(':HeartLibrary') // for latest library build
 }
 
+import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
+Boolean isMacOS = DefaultNativePlatform.currentOperatingSystem.isMacOsX()
+
+tasks.withType(JavaExec) { // Java runtime options:
+    if (isMacOS) {
+        jvmArgs '-XstartOnFirstThread'
+    } else {
+        args '--showSettingsDialog'
+    }
+    dependsOn 'installDist'
+}
+
 // cleanup tasks:
 
 clean.dependsOn('cleanDLLs', 'cleanDyLibs', 'cleanLogs', 'cleanSandbox', 'cleanSOs')

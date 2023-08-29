@@ -26,18 +26,9 @@ tasks.withType(JavaCompile) { // Java compile-time options:
     }
 }
 
-import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
-Boolean isMacOS = DefaultNativePlatform.currentOperatingSystem.isMacOsX()
-
 tasks.withType(JavaExec) { // Java runtime options:
-    if (isMacOS) {
-        jvmArgs '-XstartOnFirstThread'
-    } else {
-        args '--showSettingsDialog'
-    }
     //args '--verbose' // to enable additional log output
     classpath sourceSets.main.runtimeClasspath
-    dependsOn 'installDist'
     enableAssertions true
     //jvmArgs '-verbose:gc'
     //jvmArgs '-Xms512m', '-Xmx512m' // to enlarge the Java heap
