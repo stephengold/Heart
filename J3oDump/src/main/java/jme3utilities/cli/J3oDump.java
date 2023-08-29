@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021-2022, Stephen Gold
+ Copyright (c) 2021-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -99,14 +99,12 @@ final public class J3oDump {
      */
     public static void main(String[] arguments) {
         setupAssetManager();
-        /*
-         * Mute a disruptive logger.
-         */
+
+        // Mute a disruptive logger.
         Logger materialLogger = Logger.getLogger(Material.class.getName());
         materialLogger.setLevel(Level.SEVERE);
-        /*
-         * Process the command-line arguments.
-         */
+
+        // Process the command-line arguments.
         for (String argument : arguments) {
             if (argument.equals("--textures") || argument.equals("-t")) {
                 listTextures = true;
@@ -172,15 +170,12 @@ final public class J3oDump {
      * Configure the AssetManager.
      */
     private static void setupAssetManager() {
-        /*
-         * Register loaders.
-         */
+        // Register loaders.
         assetManager.registerLoader(AWTLoader.class, "jpg", "png");
         assetManager.registerLoader(BinaryLoader.class, "j3o");
         assetManager.registerLoader(J3MLoader.class, "j3m", "j3md");
-        /*
-         * Register locators.
-         */
+
+        // Register locators.
         assetManager.registerLocator(".", FileLocator.class);
         assetManager.registerLocator(null, ClasspathLocator.class);
     }
