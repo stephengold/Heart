@@ -67,7 +67,7 @@ final public class J3oDump {
     /**
      * load assets
      */
-    final private static AssetManager assetManager = new DesktopAssetManager();
+    private static AssetManager assetManager;
     /**
      * option to generate XML
      */
@@ -80,6 +80,10 @@ final public class J3oDump {
      * dump asset descriptions to System.out
      */
     final private static Dumper dumper = new Dumper();
+    /**
+     * filesystem path to the asset root
+     */
+    private static String assetRoot = ".";
     // *************************************************************************
     // constructors
 
@@ -98,15 +102,28 @@ final public class J3oDump {
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
-        setupAssetManager();
-
         // Mute a disruptive logger.
         Logger materialLogger = Logger.getLogger(Material.class.getName());
         materialLogger.setLevel(Level.SEVERE);
 
         // Process the command-line arguments.
-        for (String argument : arguments) {
-            if (argument.equals("--textures") || argument.equals("-t")) {
+        int numArguments = arguments.length;
+        int lastIndex = numArguments - 1;
+        int i = 0;
+        while (i < numArguments) {
+            String argument = arguments[i];
+            if (argument.equals("--root") || argument.equals("-r")) {
+                if (i == lastIndex) {
+                    System.err.println("Missing argument for " + argument);
+                    System.err.flush();
+                    System.exit(1);
+
+                } else {
+                    assetRoot = arguments[i + 1];
+                }
+                ++i;
+
+            } else if (argument.equals("--textures") || argument.equals("-t")) {
                 listTextures = true;
 
             } else if (argument.equals("--verbose") || argument.equals("-v")) {
@@ -125,6 +142,7 @@ final public class J3oDump {
             } else if (argument.endsWith(".j3o")) {
                 dumpAsset(argument);
             }
+            ++i;
         }
     }
     // *************************************************************************
@@ -136,6 +154,8 @@ final public class J3oDump {
      * @param assetPath a path to the asset (not null, not empty)
      */
     private static void dumpAsset(String assetPath) {
+        newAssetManager();
+
         System.out.print(assetPath + " contains a ");
         System.out.flush();
 
@@ -167,16 +187,18 @@ final public class J3oDump {
     }
 
     /**
-     * Configure the AssetManager.
+     * Create an AssetManager for the current asset root.
      */
-    private static void setupAssetManager() {
+    private static void newAssetManager() {
+        assetManager = new DesktopAssetManager();
+
         // Register loaders.
         assetManager.registerLoader(AWTLoader.class, "jpg", "png");
         assetManager.registerLoader(BinaryLoader.class, "j3o");
         assetManager.registerLoader(J3MLoader.class, "j3m", "j3md");
 
         // Register locators.
-        assetManager.registerLocator(".", FileLocator.class);
+        assetManager.registerLocator(assetRoot, FileLocator.class);
         assetManager.registerLocator(null, ClasspathLocator.class);
     }
 }
