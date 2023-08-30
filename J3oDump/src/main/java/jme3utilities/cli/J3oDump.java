@@ -259,6 +259,12 @@ final public class J3oDump {
      * Create an AssetManager for the current asset root.
      */
     private static void newAssetManager() {
+        File dir = new File(assetRoot);
+        if (!dir.exists()) {
+            logger.log(Level.SEVERE, "No such file:  {0}",
+                    MyString.quote(assetRoot));
+            System.exit(1);
+        }
         assetManager = new DesktopAssetManager();
 
         // Register loaders.
