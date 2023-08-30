@@ -225,7 +225,7 @@ final public class J3oDump {
 
         if (generateXml) {
             String xmlPath = assetPath.replace(".j3o", ".xml");
-            File xmlFile = new File(xmlPath);
+            File xmlFile = new File(assetRoot, xmlPath);
             JmeExporter exporter = XMLExporter.getInstance();
             try {
                 exporter.save(loadedAsset, xmlFile);
