@@ -142,6 +142,18 @@ final public class J3oDump {
                 listTextures = true;
 
             } else if (argument.equals("--verbose") || argument.equals("-v")) {
+                dumper.setDumpBounds(false)
+                        .setDumpBucket(false)
+                        .setDumpCull(false)
+                        .setDumpMatParam(true)
+                        .setDumpOverride(true)
+                        .setDumpShadow(false)
+                        .setDumpTransform(true)
+                        .setDumpUser(false)
+                        .setDumpVertex(false);
+
+            } else if (argument.equals("--veryverbose")
+                    || argument.equals("-V")) {
                 dumper.setDumpBounds(true)
                         .setDumpBucket(true)
                         .setDumpCull(true)
@@ -237,6 +249,7 @@ final public class J3oDump {
                 + "  --root path, -r path     set path to asset root (%s)%n"
                 + "  --textures, -t           also list textures%n"
                 + "  --verbose, -v            set verbose mode%n"
+                + "  --veryverbose, -V        set very verbose mode%n"
                 + "  --xml, -x                also generate an XML file%n"
                 + "  asset/path.j3o           an asset to dump%n%n",
                 "default = " + MyString.quote(workingDirectory));
