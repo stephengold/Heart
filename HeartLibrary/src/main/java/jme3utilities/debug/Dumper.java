@@ -33,6 +33,7 @@ import com.jme3.app.state.AppStateManager;
 import com.jme3.audio.AudioNode;
 import com.jme3.bounding.BoundingVolume;
 import com.jme3.font.BitmapText;
+import com.jme3.light.Light;
 import com.jme3.light.LightList;
 import com.jme3.material.MatParam;
 import com.jme3.material.Material;
@@ -288,6 +289,20 @@ public class Dumper implements Cloneable {
             stream.print(' ');
             stream.print(desc2);
         }
+    }
+
+    /**
+     * Dump the specified Light, with indentation.
+     *
+     * @param light (not null, unaffected)
+     * @param indent the indent text (not null, may be empty)
+     */
+    public void dump(Light light, String indent) {
+        Validate.nonNull(light, "light");
+
+        stream.print(indent);
+        String description = describer.describe(light);
+        stream.print(description);
     }
 
     /**
