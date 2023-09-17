@@ -282,13 +282,10 @@ public class Dumper implements Cloneable {
         stream.print(indent);
         String description = describer.describe(camera);
         stream.print(description);
-
-        if (camera != null) {
-            addLine(indent);
-            String desc2 = describer.describeMore(camera);
-            stream.print(' ');
-            stream.print(desc2);
-        }
+        addLine(indent);
+        String desc2 = describer.describeMore(camera);
+        stream.print(' ');
+        stream.print(desc2);
     }
 
     /**
