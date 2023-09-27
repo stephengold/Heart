@@ -925,12 +925,12 @@ public class Describer implements Cloneable {
             ColorRGBA color = light.getColor();
             String rgb = MyColor.describe(color);
             if (light instanceof AmbientLight) {
-                result = String.format("AL%s(%s)", name, rgb);
+                result = String.format("Amb%s(%s)", name, rgb);
 
             } else if (light instanceof DirectionalLight) {
                 Vector3f direction = ((DirectionalLight) light).getDirection();
                 String dir = MyVector3f.describeDirection(direction);
-                result = String.format("DL%s(%s; %s)", name, rgb, dir);
+                result = String.format("Dir%s(%s; %s)", name, rgb, dir);
 
             } else if (light instanceof LightProbe) {
                 LightProbe probe = (LightProbe) light;
@@ -941,15 +941,15 @@ public class Describer implements Cloneable {
                     Vector3f location = probe.getPosition(); // alias
                     String loc = MyVector3f.describe(location);
                     result = String.format(
-                            "LP%s(%s r=%s %s)", name, areaType, r, loc);
+                            "Probe%s(%s r=%s %s)", name, areaType, r, loc);
                 } else {
-                    result = String.format("LP%s(unready)", name);
+                    result = String.format("Probe%s(unready)", name);
                 }
 
             } else if (light instanceof PointLight) {
                 Vector3f location = ((PointLight) light).getPosition();
                 String loc = MyVector3f.describe(location);
-                result = String.format("PL%s(%s; %s)", name, rgb, loc);
+                result = String.format("Point%s(%s; %s)", name, rgb, loc);
 
             } else if (light instanceof SpotLight) {
                 SpotLight spotLight = (SpotLight) light;
@@ -957,7 +957,8 @@ public class Describer implements Cloneable {
                 String loc = MyVector3f.describe(location);
                 Vector3f direction = spotLight.getDirection();
                 String dir = MyVector3f.describeDirection(direction);
-                result = String.format("SL%s(%s; %s; %s)", name, rgb, loc, dir);
+                result = String.format(
+                        "Spot%s(%s; %s; %s)", name, rgb, loc, dir);
 
             } else {
                 result = light.getClass().getSimpleName();
