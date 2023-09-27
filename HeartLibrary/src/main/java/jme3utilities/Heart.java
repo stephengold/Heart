@@ -72,7 +72,8 @@ import jme3utilities.math.Vector3i;
 import jme3utilities.math.VectorXZ;
 
 /**
- * Miscellaneous utility methods in the Heart Library.
+ * Miscellaneous utility methods in the Heart Library. All methods should be
+ * static.
  *
  * @author Stephen Gold sgold@sonic.net
  */
@@ -535,9 +536,9 @@ public class Heart { // TODO finalize the class
     }
 
     /**
-     * Read the terse version string for this library.
+     * Return the terse version string for this library.
      *
-     * @return branch and revision (not null, not empty)
+     * @return the branch name and revision string (not null, not empty)
      */
     public static String versionShort() {
         String verbose = version();
