@@ -173,11 +173,8 @@ public class MyControl { // TODO finalize the class
 
         } else if (control instanceof MorphControl) {
             MorphControl morph = (MorphControl) control;
-
-            result.append('[');
             boolean approx = morph.isApproximateTangents();
-            result.append(approx ? " approx" : " vbuf");
-            result.append(']');
+            result.append(approx ? "[approx]" : "[vbuf]");
 
         } else if (control instanceof SkeletonControl) {
             SkeletonControl skeletonControl = (SkeletonControl) control;
