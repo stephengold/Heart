@@ -495,9 +495,9 @@ public class Describer implements Cloneable {
             }
 
             Control control = spatial.getControl(controlI);
-            String description = describe(control);
             boolean isEnabled = isControlEnabled(control);
             if (isEnabled) {
+                String description = describe(control);
                 result.append(description);
             }
         }
