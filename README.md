@@ -9,7 +9,7 @@ It contains 3 sub-projects:
 2. HeartExamples: demos, examples, and non-automated test software
 3. J3oDump: a command-line utility to dump J3O assets
 
-Complete source code (in Java) is provided under
+Complete source code (in [Java]) is provided under
 [a 3-clause BSD license][license].
 
 Many other libraries depend on the Heart Library, including
@@ -342,7 +342,7 @@ correct the situation: sgold@sonic.net
 [heart]: https://github.com/stephengold/Heart "Heart Project"
 [idea]: https://www.jetbrains.com/idea/ "IntelliJ IDEA"
 [imgur]: https://imgur.com/ "Imgur"
-[java]: https://java.com "Java"
+[java]: https://en.wikipedia.org/wiki/Java_(programming_language) "Java programming language"
 [jfrog]: https://www.jfrog.com "JFrog"
 [jme]: https://jmonkeyengine.org "jMonkeyEngine Project"
 [jme3-wireframe]: https://github.com/joliver82/jme3-wireframe "jME3 Wireframe render library"
