@@ -250,7 +250,9 @@ public class MySpatial { // TODO finalize the class
         int result = 0;
         List<Mesh> meshes = MyMesh.listMeshes(subtree, null);
         for (Mesh mesh : meshes) {
-            result += mesh.getVertexCount();
+            int count = mesh.getVertexCount();
+            assert count >= 0 : count; // no position buffer or hasn't invoked updateCounts() yet?
+            result += count;
         }
 
         assert result >= 0 : result;
