@@ -13,7 +13,8 @@ Complete source code (in Java) is provided under
 [a 3-clause BSD license][license].
 
 Many other libraries depend on the Heart Library, including
-[Acorus], [jme3-wireframe], [JmePower], [Minie], [SkyControl], and [Wes].
+[Acorus], [jme3-wireframe], [JmePower], [Minie],
+[MonkeyWrench], [SkyControl], and [Wes].
 
 
 <a name="toc"></a>
@@ -355,6 +356,7 @@ correct the situation: sgold@sonic.net
 [meld]: https://meldmerge.org "Meld merge tool"
 [minie]: https://stephengold.github.io/Minie/minie/overview.html "Minie Project"
 [mint]: https://linuxmint.com "Linux Mint Project"
+[monkeywrench]: https://github.com/stephengold/MonkeyWrench "MonkeyWrench Project"
 [netbeans]: https://netbeans.org "NetBeans Project"
 [skycontrol]: https://github.com/stephengold/SkyControl "SkyControl Project"
 [sonatype]: https://www.sonatype.com "Sonatype"
