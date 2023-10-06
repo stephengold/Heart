@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2022, Stephen Gold
+ Copyright (c) 2013-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -163,12 +163,12 @@ final public class MyCamera {
         builder.append(projection);
 
         builder.append(" F");
-        float fAspect = frustumAspectRatio(camera);
-        builder.append(MyString.describeFraction(fAspect));
+        float frustrumAspectRatio = frustumAspectRatio(camera);
+        builder.append(MyString.describeFraction(frustrumAspectRatio));
 
         builder.append(":1 V");
-        float vAspect = viewAspectRatio(camera);
-        builder.append(MyString.describeFraction(vAspect));
+        float viewAspectRatio = viewAspectRatio(camera);
+        builder.append(MyString.describeFraction(viewAspectRatio));
         builder.append(":1");
 
         if (camera.isParallelProjection()) {
