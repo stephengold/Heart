@@ -47,8 +47,8 @@ import java.util.logging.Logger;
 
 /**
  * Utility methods that operate on jME3 scene-graph controls in general. If
- * physics controls might be present, use the corresponding methods in the
- * MyControlP class instead.
+ * physics controls might be present, use the corresponding methods in Minie's
+ * {@code MyControlP} class instead.
  *
  * @author Stephen Gold sgold@sonic.net
  */
