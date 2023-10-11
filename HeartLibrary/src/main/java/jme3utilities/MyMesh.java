@@ -1624,7 +1624,7 @@ public class MyMesh { // TODO finalize the class
 
     /**
      * Copy the color of the indexed vertex from the color buffer of the
-     * specified Mesh. The buffer must have 4 components per element.
+     * specified Mesh. The buffer must have 3 or 4 components per element.
      *
      * @param mesh the subject mesh (not null, unaffected)
      * @param vertexIndex index into the mesh's vertices (&ge;0)
@@ -1640,7 +1640,8 @@ public class MyMesh { // TODO finalize the class
 
         VertexBuffer vertexBuffer = mesh.getBuffer(VertexBuffer.Type.Color);
         int numComponents = vertexBuffer.getNumComponents();
-        Validate.require(numComponents == 4, "4 components per element");
+        Validate.require(numComponents == 3 || numComponents == 4,
+                "3 or 4 components per element");
 
         int bufferPosition = numComponents * vertexIndex;
         Buffer data = vertexBuffer.getDataReadOnly();
@@ -1650,7 +1651,12 @@ public class MyMesh { // TODO finalize the class
             int r = byteBuffer.get(bufferPosition) & 0xFF;
             int g = byteBuffer.get(bufferPosition + 1) & 0xFF;
             int b = byteBuffer.get(bufferPosition + 2) & 0xFF;
-            int a = byteBuffer.get(bufferPosition + 3) & 0xFF;
+            int a;
+            if (numComponents == 4) {
+                a = byteBuffer.get(bufferPosition + 3) & 0xFF;
+            } else {
+                a = 255;
+            }
             result.set(r, g, b, a);
             result.multLocal(1f / 255);
 
@@ -1659,7 +1665,11 @@ public class MyMesh { // TODO finalize the class
             result.r = floatBuffer.get(bufferPosition);
             result.g = floatBuffer.get(bufferPosition + 1);
             result.b = floatBuffer.get(bufferPosition + 2);
-            result.a = floatBuffer.get(bufferPosition + 3);
+            if (numComponents == 4) {
+                result.a = floatBuffer.get(bufferPosition + 3);
+            } else {
+                result.a = 1f;
+            }
         }
 
         return result;

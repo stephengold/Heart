@@ -27,7 +27,9 @@
 
     <!-- Checks for size violations              -->
     <!-- See https://checkstyle.org/checks/sizes -->
-    <module name="FileLength"/>
+    <module name="FileLength">
+        <property name="max" value="2200"/>
+    </module>
     <module name="LineLength">
         <property name="fileExtensions" value="java"/>
         <property name="max" value="80"/>
