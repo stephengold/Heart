@@ -793,7 +793,7 @@ public class Describer implements Cloneable {
         } else if (numVertices <= 1000) {
             desc = String.format("v%03d: ", vertexIndex);
         } else {
-            desc = String.format("v%d: ", vertexIndex);
+            desc = String.format("v%04d: ", vertexIndex);
         }
         builder.append(desc);
 
