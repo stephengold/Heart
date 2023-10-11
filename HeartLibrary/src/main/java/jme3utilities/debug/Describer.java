@@ -834,6 +834,7 @@ public class Describer implements Cloneable {
             ColorRGBA color = MyMesh.vertexColor(mesh, vertexIndex, null);
             desc = MyColor.describe(color);
             builder.append(desc);
+        }
 
         if (mesh.getBuffer(VertexBuffer.Type.Tangent) != null) {
             builder.append(" T");
