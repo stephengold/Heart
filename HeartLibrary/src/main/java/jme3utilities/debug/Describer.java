@@ -798,45 +798,62 @@ public class Describer implements Cloneable {
         }
         builder.append(desc);
 
+        int length = builder.length();
         Vector3f pos = MyMesh.vertexVector3f(
                 mesh, VertexBuffer.Type.Position, vertexIndex, null);
         desc = MyVector3f.describe(pos);
         builder.append(desc);
+        int alignLength = length + 37;
 
         if (MyMesh.hasUV(mesh)) {
+            length = builder.length();
+            if (length < alignLength) {
+                builder.append(MyString.repeat(" ", alignLength - length));
+            }
+
             Vector2f norm = MyMesh.vertexVector2f(
                     mesh, VertexBuffer.Type.TexCoord, vertexIndex, null);
             builder.append(" u=");
             builder.append(norm.x);
             builder.append(" v=");
             builder.append(norm.y);
+            alignLength += 26;
         }
 
         if (MyMesh.hasNormals(mesh)) {
-            int length = builder.length();
-            if (length < 20) {
-                builder.append(MyString.repeat(" ", 20 - length));
+            length = builder.length();
+            if (length < alignLength) {
+                builder.append(MyString.repeat(" ", alignLength - length));
             }
+
             builder.append(" N[");
             Vector3f norm = MyMesh.vertexVector3f(
                     mesh, VertexBuffer.Type.Normal, vertexIndex, null);
             desc = MyVector3f.describeDirection(norm);
             builder.append(desc);
             builder.append(']');
+            alignLength += 32;
         }
 
         if (mesh.getBuffer(VertexBuffer.Type.Color) != null) {
-            int length = builder.length();
-            if (length < 43) {
-                builder.append(MyString.repeat(" ", 43 - length));
+            length = builder.length();
+            if (length < alignLength) {
+                builder.append(MyString.repeat(" ", alignLength - length));
             }
+
             builder.append(' ');
             ColorRGBA color = MyMesh.vertexColor(mesh, vertexIndex, null);
             desc = MyColor.describe(color);
             builder.append(desc);
+            alignLength += 24;
         }
 
         if (mesh.getBuffer(VertexBuffer.Type.Tangent) != null) {
+            length = builder.length();
+            if (length < alignLength) {
+                builder.append(MyString.repeat(" ", alignLength - length));
+            }
+
             builder.append(" T");
             Vector4f tangent = MyMesh.vertexVector4f(
                     mesh, VertexBuffer.Type.Tangent, vertexIndex, null);
