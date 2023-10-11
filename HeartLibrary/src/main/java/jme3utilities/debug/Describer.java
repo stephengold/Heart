@@ -52,6 +52,7 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
+import com.jme3.math.Vector4f;
 import com.jme3.post.Filter;
 import com.jme3.post.FilterPostProcessor;
 import com.jme3.post.SceneProcessor;
@@ -782,7 +783,7 @@ public class Describer implements Cloneable {
      * @return a description (not null, not empty)
      */
     public String describeVertexData(Mesh mesh, int vertexIndex) {
-        StringBuilder builder = new StringBuilder(50);
+        StringBuilder builder = new StringBuilder(80);
         String desc;
 
         int numVertices = mesh.getVertexCount();
@@ -833,6 +834,12 @@ public class Describer implements Cloneable {
             ColorRGBA color = MyMesh.vertexColor(mesh, vertexIndex, null);
             desc = MyColor.describe(color);
             builder.append(desc);
+
+        if (mesh.getBuffer(VertexBuffer.Type.Tangent) != null) {
+            builder.append(" T");
+            Vector4f tangent = MyMesh.vertexVector4f(
+                    mesh, VertexBuffer.Type.Tangent, vertexIndex, null);
+            builder.append(tangent);
         }
 
         return builder.toString();
