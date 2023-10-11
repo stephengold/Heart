@@ -784,18 +784,18 @@ public class Describer implements Cloneable {
      */
     public String describeVertexData(Mesh mesh, int vertexIndex) {
         StringBuilder builder = new StringBuilder(80);
-        String desc;
-
+        String format;
         int numVertices = mesh.getVertexCount();
         if (numVertices <= 10) {
-            desc = String.format("v%1d: ", vertexIndex);
+            format = "v%1d: ";
         } else if (numVertices <= 100) {
-            desc = String.format("v%02d: ", vertexIndex);
+            format = "v%02d: ";
         } else if (numVertices <= 1000) {
-            desc = String.format("v%03d: ", vertexIndex);
+            format = "v%03d: ";
         } else {
-            desc = String.format("v%04d: ", vertexIndex);
+            format = "v%04d: ";
         }
+        String desc = String.format(Locale.ROOT, format, vertexIndex);
         builder.append(desc);
 
         int length = builder.length();
