@@ -400,8 +400,9 @@ public class Describer implements Cloneable {
             formatString = formatString.replace("float", "f");
             formatString = formatString.replace("unsigned", "u");
         }
+        int numComponents = buffer.getNumComponents();
         VertexBuffer.Type type = buffer.getBufferType();
-        String result = type + "%" + formatString;
+        String result = type + "%" + numComponents + formatString;
 
         return result;
     }
