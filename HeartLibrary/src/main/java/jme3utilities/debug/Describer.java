@@ -820,6 +820,21 @@ public class Describer implements Cloneable {
             alignLength += 26;
         }
 
+        if (mesh.getBuffer(VertexBuffer.Type.TexCoord2) != null) {
+            length = builder.length();
+            if (length < alignLength) {
+                builder.append(MyString.repeat(" ", alignLength - length));
+            }
+
+            Vector2f norm = MyMesh.vertexVector2f(
+                    mesh, VertexBuffer.Type.TexCoord2, vertexIndex, null);
+            builder.append(" u2=");
+            builder.append(norm.x);
+            builder.append(" v2=");
+            builder.append(norm.y);
+            alignLength += 28;
+        }
+
         if (MyMesh.hasNormals(mesh)) {
             length = builder.length();
             if (length < alignLength) {
