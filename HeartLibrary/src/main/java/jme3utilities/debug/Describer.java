@@ -63,6 +63,7 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.VertexBuffer;
 import com.jme3.scene.control.Control;
+import com.jme3.scene.mesh.MorphTarget;
 import com.jme3.shadow.AbstractShadowRenderer;
 import com.jme3.shadow.CompareMode;
 import com.jme3.shadow.DirectionalLightShadowFilter;
@@ -321,6 +322,17 @@ public class Describer implements Cloneable {
             result.append(desc);
         }
         result.append(']');
+
+        MorphTarget[] targets = mesh.getMorphTargets();
+        int numTargets = targets.length;
+        if (numTargets > 0) {
+            result.append(" +");
+            result.append(numTargets);
+            result.append(" target");
+            if (numTargets > 1) {
+                result.append('s');
+            }
+        }
 
         return result.toString();
     }
