@@ -78,7 +78,7 @@ Many other libraries depend on the Heart Library, including
 + an `AppState` to manage `ViewPort` updating
 + and much, much more!
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="add"></a>
@@ -156,7 +156,7 @@ Open the project's properties in the IDE (JME SDK or NetBeans):
   + Click on the "OK" button to close the "Edit Jar Reference" dialog.
 7. Click on the "OK" button to exit the "Project Properties" dialog.
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="build"></a>
@@ -198,7 +198,7 @@ You can restore the project to a pristine state:
 + using Bash or PowerShell or Zsh: `./gradlew clean`
 + using Windows Command Prompt: `.\gradlew clean`
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="downloads"></a>
@@ -216,7 +216,7 @@ Newer Maven artifacts (since v6.3.0) are available from
 
 Old Maven artifacts (v5.0.0 through v6.4.0) are available from JCenter.
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="conventions"></a>
@@ -254,7 +254,7 @@ The following apps are found in the HeartExamples sub-project:
 
 ### TestWireframe
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="links"></a>
@@ -264,7 +264,7 @@ The following apps are found in the HeartExamples sub-project:
 + [the Heart page](https://library.jmonkeyengine.org/#!entry=11511%2Fe534fc1e-5b78-46b7-a831-d5d40cbd9dcd)
   in [the JmonkeyEngine Library][library]
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="history"></a>
@@ -324,7 +324,7 @@ I'm also grateful to my dear Holly, for keeping me sane.
 If I've misattributed anything or left anyone out, please let me know, so I can
 correct the situation: sgold@sonic.net
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 [acorus]: https://stephengold.github.io/Acorus "Acorus Project"
