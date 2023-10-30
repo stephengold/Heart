@@ -1891,6 +1891,9 @@ public class MyMesh { // TODO finalize the class
                 || bufferType == VertexBuffer.Type.TexCoord7
                 || bufferType == VertexBuffer.Type.TexCoord8,
                 "legal VertexBuffer type");
+        assert Validate.require(
+                mesh.getBuffer(bufferType).getNumComponents() == 2,
+                "2 components per element");
         Validate.nonNegative(vertexIndex, "vertex index");
         Vector2f result = (storeResult == null) ? new Vector2f() : storeResult;
 
@@ -1924,6 +1927,9 @@ public class MyMesh { // TODO finalize the class
                 || bufferType == VertexBuffer.Type.Normal
                 || bufferType == VertexBuffer.Type.Position,
                 "legal VertexBuffer type");
+        assert Validate.require(
+                mesh.getBuffer(bufferType).getNumComponents() == 3,
+                "3 components per element");
         Validate.nonNegative(vertexIndex, "vertex index");
         Vector3f result = (storeResult == null) ? new Vector3f() : storeResult;
 
@@ -1956,6 +1962,9 @@ public class MyMesh { // TODO finalize the class
                 || bufferType == VertexBuffer.Type.HWBoneWeight
                 || bufferType == VertexBuffer.Type.Tangent,
                 "legal VertexBuffer type");
+        assert Validate.require(
+                mesh.getBuffer(bufferType).getNumComponents() == 4,
+                "4 components per element");
         Validate.nonNegative(vertexIndex, "vertex index");
         Vector4f result = (storeResult == null) ? new Vector4f() : storeResult;
 
