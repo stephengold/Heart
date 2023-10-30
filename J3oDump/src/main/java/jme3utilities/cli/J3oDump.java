@@ -82,7 +82,7 @@ final public class J3oDump {
      */
     private static boolean printHelp = false;
     /**
-     * dump asset descriptions to System.out
+     * dump asset descriptions to {@code System.out}
      */
     final private static Dumper dumper = new Dumper();
     /**
@@ -132,7 +132,6 @@ final public class J3oDump {
                     System.err.flush();
                     printHelp();
                     System.exit(1);
-
                 } else {
                     assetRoot = arguments[i + 1];
                 }

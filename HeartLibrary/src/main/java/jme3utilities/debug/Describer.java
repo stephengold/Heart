@@ -1059,8 +1059,10 @@ public class Describer implements Cloneable {
      */
     protected String describe(MatParamOverride override) {
         StringBuilder result = new StringBuilder(50);
+
         String name = override.getName();
         result.append(name);
+
         Object value = override.getValue();
         if (value == null) {
             result.append("=null");

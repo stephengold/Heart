@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2022, Stephen Gold
+ Copyright (c) 2017-2023, Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ import java.util.logging.Logger;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class StringLoader implements AssetLoader {
+public class StringLoader implements AssetLoader { // TODO finalize
     // *************************************************************************
     // constants and loggers
 
@@ -52,7 +52,9 @@ public class StringLoader implements AssetLoader {
     // constructors
 
     /**
-     * A no-arg constructor to avoid javadoc warnings from JDK 18.
+     * The publicly accessible no-arg constructor required by
+     * {@code DesktopAssetManager}, made explicit to avoid javadoc warnings from
+     * JDK 18.
      */
     public StringLoader() {
         // do nothing
@@ -63,7 +65,7 @@ public class StringLoader implements AssetLoader {
     /**
      * Load a text asset.
      *
-     * @param assetInfo (not null)
+     * @param assetInfo the located asset (unused)
      * @return the text, or null in case of an error
      */
     @Override
@@ -75,8 +77,7 @@ public class StringLoader implements AssetLoader {
         Charset charset = StandardCharsets.ISO_8859_1; // LATIN-1
         String name = charset.name();
         String text;
-        try (Scanner scanner = new Scanner(stream, name)
-                .useDelimiter("\\Z")) {
+        try (Scanner scanner = new Scanner(stream, name).useDelimiter("\\Z")) {
             text = scanner.next();
         }
 
