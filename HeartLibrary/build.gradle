@@ -40,7 +40,7 @@ tasks.register('release') {
 jar {
     archiveBaseName = project.ext.baseName
     doLast {
-        println "Using Java ${JavaVersion.current()} (${System.getProperty("java.vendor")})"
+        println "using Java ${JavaVersion.current()} (${System.getProperty("java.vendor")})"
     }
     exclude('**/arrow.blend')
     manifest {
