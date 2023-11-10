@@ -48,14 +48,17 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -451,6 +454,31 @@ public class Heart { // TODO finalize the class
             }
         } catch (IOException exception) {
             // quit reading entries
+        }
+
+        return result;
+    }
+
+    /**
+     * Load UTF-8 text from the named resource.
+     *
+     * @param resourceName the name of the classpath resource to load (not null)
+     * @return the text (possibly multiple lines)
+     */
+    public static String loadResourceAsString(String resourceName) {
+        // Open the resource as a stream.
+        InputStream stream = Heart.class.getResourceAsStream(resourceName);
+        if (stream == null) {
+            String quotedName = MyString.quote(resourceName);
+            throw new RuntimeException("resource not found:  " + quotedName);
+        }
+
+        // Parse the stream's data into one long text string.
+        String charsetName = StandardCharsets.UTF_8.name();
+        String result;
+        try (Scanner scanner = new Scanner(stream, charsetName)) {
+            scanner.useDelimiter("\\Z");
+            result = scanner.next();
         }
 
         return result;
