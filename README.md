@@ -5,7 +5,7 @@
 
 It contains 3 sub-projects:
 
-1. HeartLibrary: the Heart runtime library and its automated tests
+1. HeartLibrary: the Heart [JVM] runtime library and its automated tests
 2. HeartExamples: demos, examples, and non-automated test software
 3. J3oDump: a command-line utility to dump J3O assets
 
@@ -91,8 +91,8 @@ Adding Heart to an existing [jMonkeyEngine][jme] project should be
 a simple matter of adding this library to the classpath.
 
 For projects built using [Maven] or [Gradle], it is sufficient to add a
-dependency on the Heart Library.  The build tools should automatically
-resolve the remaining dependencies.
+dependency on the Heart Library.
+The build tool should automatically resolve the remaining dependencies.
 
 ### Gradle-built projects
 
@@ -227,7 +227,7 @@ Package names begin with `jme3utilities`.
 
 The source code and pre-built libraries are compatible with JDK 8.
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="examples"></a>
@@ -282,7 +282,7 @@ From May 2017 to February 2020, Heart was a sub-project of
 Since February 2020, Heart has been a separate project, hosted at
 [GitHub][heart].
 
-[Jump to table of contents](#toc)
+[Jump to the table of contents](#toc)
 
 
 <a name="acks"></a>
@@ -308,7 +308,7 @@ software developers:
     + the [Java] compiler, standard doclet, and runtime environment
     + [jMonkeyEngine][jme] and the jME3 Software Development Kit
     + the [Linux Mint][mint] operating system
-    + LWJGL, the Lightweight Java Game Library
+    + [LWJGL], the Lightweight Java Game Library
     + the [Markdown] document-conversion tool
     + the [Meld] visual merge tool
     + Microsoft Windows
@@ -347,10 +347,12 @@ correct the situation: sgold@sonic.net
 [jme]: https://jmonkeyengine.org "jMonkeyEngine Project"
 [jme3-wireframe]: https://github.com/joliver82/jme3-wireframe "jME3 Wireframe render library"
 [jmepower]: https://github.com/stephengold/JmePower "JmePower Project"
+[jvm]: https://en.wikipedia.org/wiki/Java_virtual_machine "Java virtual machine"
 [latest]: https://github.com/stephengold/Heart/releases/latest "latest release"
 [library]: https://library.jmonkeyengine.org "jMonkeyEngine Library"
 [license]: https://github.com/stephengold/Heart/blob/master/license.txt "Heart license"
 [log]: https://github.com/stephengold/Heart/blob/master/HeartLibrary/release-notes.md "release log"
+[lwjgl]: https://www.lwjgl.org "Lightweight Java Game Library"
 [markdown]: https://daringfireball.net/projects/markdown "Markdown Project"
 [maven]: https://maven.apache.org "Maven Project"
 [meld]: https://meldmerge.org "Meld merge tool"
