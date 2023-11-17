@@ -5,7 +5,7 @@
 //   of the root project.
 
 plugins {
-    id 'application' // to build a Java application
+    id 'application' // to build Java applications
 }
 
 if (!hasProperty('mainClass')) {
@@ -29,7 +29,7 @@ dependencies {
     runtimeOnly 'org.jmonkeyengine:jme3-plugins:' + jme3Version
 
     //implementation 'com.github.stephengold:Heart:' + heartVersion // for published library
-    implementation project(':HeartLibrary') // for latest library build
+    implementation project(':HeartLibrary') // for local library build
 }
 
 import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
@@ -44,7 +44,7 @@ tasks.withType(JavaExec).configureEach { // Java runtime options:
     dependsOn 'installDist'
 }
 
-// cleanup tasks:
+// Register cleanup tasks:
 
 clean.dependsOn('cleanDLLs', 'cleanDyLibs', 'cleanLogs', 'cleanSandbox', 'cleanSOs')
 
@@ -64,7 +64,7 @@ tasks.register('cleanSOs', Delete) { // extracted Linux and Android native libra
     delete fileTree(dir: '.', include: '*.so')
 }
 
-// tasks to run specific apps:
+// Register tasks to run specific apps:
 
 tasks.register('AppChooser', JavaExec) {
     mainClass = 'jme3utilities.test.AppChooser'
