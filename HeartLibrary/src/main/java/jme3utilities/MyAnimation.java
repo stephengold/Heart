@@ -78,6 +78,78 @@ public class MyAnimation { // TODO finalize the class
     // new methods exposed
 
     /**
+     * Copy the keyframe rotations for the specified bone/spatial track.
+     *
+     * @param track which Track (not null, unaffected)
+     * @return a new array or null
+     */
+    public static Quaternion[] copyRotations(Track track) {
+        Quaternion[] result;
+        if (track instanceof BoneTrack) {
+            BoneTrack boneTrack = (BoneTrack) track;
+            result = boneTrack.getRotations();
+
+        } else if (track instanceof SpatialTrack) {
+            SpatialTrack spatialTrack = (SpatialTrack) track;
+            result = spatialTrack.getRotations();
+
+        } else {
+            String className = track.getClass().getSimpleName();
+            throw new IllegalArgumentException(className);
+        }
+
+        return result;
+    }
+
+    /**
+     * Copy the keyframe scales for the specified bone/spatial track.
+     *
+     * @param track which Track (not null, unaffected)
+     * @return a new array or null
+     */
+    public static Vector3f[] copyScales(Track track) {
+        Vector3f[] result;
+        if (track instanceof BoneTrack) {
+            BoneTrack boneTrack = (BoneTrack) track;
+            result = boneTrack.getScales();
+
+        } else if (track instanceof SpatialTrack) {
+            SpatialTrack spatialTrack = (SpatialTrack) track;
+            result = spatialTrack.getScales();
+
+        } else {
+            String className = track.getClass().getSimpleName();
+            throw new IllegalArgumentException(className);
+        }
+
+        return result;
+    }
+
+    /**
+     * Copy the translations for the specified bone/spatial track.
+     *
+     * @param track which Track (not null, unaffected)
+     * @return a new array or null
+     */
+    public static Vector3f[] copyTranslations(Track track) {
+        Vector3f[] result;
+        if (track instanceof BoneTrack) {
+            BoneTrack boneTrack = (BoneTrack) track;
+            result = boneTrack.getTranslations();
+
+        } else if (track instanceof SpatialTrack) {
+            SpatialTrack spatialTrack = (SpatialTrack) track;
+            result = spatialTrack.getTranslations();
+
+        } else {
+            String className = track.getClass().getSimpleName();
+            throw new IllegalArgumentException(className);
+        }
+
+        return result;
+    }
+
+    /**
      * Count all tracks of the specified type in the specified Animation.
      *
      * @param <T> subclass of Track
@@ -229,13 +301,13 @@ public class MyAnimation { // TODO finalize the class
             targetName = MyString.quote(targetName);
             builder.append(targetName);
 
-            if (getTranslations(track) != null) {
+            if (copyTranslations(track) != null) {
                 builder.append("T");
             }
-            if (getRotations(track) != null) {
+            if (copyRotations(track) != null) {
                 builder.append("R");
             }
-            if (getScales(track) != null) {
+            if (copyScales(track) != null) {
                 builder.append("S");
             }
         }
@@ -527,50 +599,27 @@ public class MyAnimation { // TODO finalize the class
     }
 
     /**
-     * Access the keyframe rotations for the specified bone/spatial track.
+     * Copy the keyframe rotations for the specified bone/spatial track.
      *
      * @param track which Track (not null, unaffected)
-     * @return the pre-existing instance or null
+     * @return a new array or null
+     * @deprecated use {@link #copyRotations(com.jme3.animation.Track)}
      */
+    @Deprecated
     public static Quaternion[] getRotations(Track track) {
-        Quaternion[] result;
-        if (track instanceof BoneTrack) {
-            BoneTrack boneTrack = (BoneTrack) track;
-            result = boneTrack.getRotations();
-
-        } else if (track instanceof SpatialTrack) {
-            SpatialTrack spatialTrack = (SpatialTrack) track;
-            result = spatialTrack.getRotations();
-
-        } else {
-            String className = track.getClass().getSimpleName();
-            throw new IllegalArgumentException(className);
-        }
-
+        Quaternion[] result = copyRotations(track);
         return result;
     }
 
     /**
-     * Access the keyframe scales for the specified bone/spatial track.
+     * Copy the keyframe scales for the specified bone/spatial track.
      *
      * @param track which Track (not null, unaffected)
-     * @return the pre-existing instance or null
+     * @return a new array or null
+     * @deprecated use {@link #copyScales(com.jme3.animation.Track)}
      */
     public static Vector3f[] getScales(Track track) {
-        Vector3f[] result;
-        if (track instanceof BoneTrack) {
-            BoneTrack boneTrack = (BoneTrack) track;
-            result = boneTrack.getScales();
-
-        } else if (track instanceof SpatialTrack) {
-            SpatialTrack spatialTrack = (SpatialTrack) track;
-            result = spatialTrack.getScales();
-
-        } else {
-            String className = track.getClass().getSimpleName();
-            throw new IllegalArgumentException(className);
-        }
-
+        Vector3f[] result = copyScales(track);
         return result;
     }
 
@@ -635,26 +684,14 @@ public class MyAnimation { // TODO finalize the class
     }
 
     /**
-     * Access the translations for the specified bone/spatial track.
+     * Copy the translations for the specified bone/spatial track.
      *
      * @param track which Track (not null, unaffected)
-     * @return the pre-existing instance or null
+     * @return a new array or null
+     * @deprecated use {@link #copyTranslations(com.jme3.animation.Track)}
      */
     public static Vector3f[] getTranslations(Track track) {
-        Vector3f[] result;
-        if (track instanceof BoneTrack) {
-            BoneTrack boneTrack = (BoneTrack) track;
-            result = boneTrack.getTranslations();
-
-        } else if (track instanceof SpatialTrack) {
-            SpatialTrack spatialTrack = (SpatialTrack) track;
-            result = spatialTrack.getTranslations();
-
-        } else {
-            String className = track.getClass().getSimpleName();
-            throw new IllegalArgumentException(className);
-        }
-
+        Vector3f[] result = copyTranslations(track);
         return result;
     }
 
