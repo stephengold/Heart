@@ -1050,7 +1050,10 @@ public class MyMesh { // TODO finalize the class
         rotateBuffer(mesh, VertexBuffer.Type.BindPosePosition, rotation);
         rotateBuffer(mesh, VertexBuffer.Type.Normal, rotation);
         rotateBuffer(mesh, VertexBuffer.Type.BindPoseNormal, rotation);
-        // TODO binormals?
+        rotateTangentBuffer(mesh, VertexBuffer.Type.Tangent, rotation);
+        rotateTangentBuffer(mesh, VertexBuffer.Type.BindPoseTangent, rotation);
+        rotateBuffer(mesh, VertexBuffer.Type.Binormal, rotation);
+
         mesh.updateBound();
     }
 
