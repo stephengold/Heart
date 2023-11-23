@@ -602,10 +602,10 @@ public class Heart { // TODO finalize the class
         } else if (lowerCase.endsWith(".jpg") || lowerCase.endsWith(".jpeg")) {
             formatName = "jpeg";
         }
-        // TODO write MicroSoft's DDS file format as well
+        // TODO write Microsoft's DDS file format as well
         /*
          * ImageIO fails silently when asked to write alpha to a BMP.
-         * It throws an IIOException when asked to write alpha to a JPEG.
+         * It throws an IOException when asked to write alpha to a JPEG.
          */
         boolean hasAlpha = image.getColorModel().hasAlpha();
         if (hasAlpha

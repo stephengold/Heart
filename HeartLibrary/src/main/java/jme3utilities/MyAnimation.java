@@ -404,7 +404,7 @@ public class MyAnimation { // TODO finalize the class
     public static int findKeyframeIndex(Track track, float time) {
         Validate.nonNegative(time, "time");
 
-        float[] times = track.getKeyFrameTimes();
+        float[] times = track.getKeyFrameTimes(); // alias
         int result = Arrays.binarySearch(times, time);
         if (result < 0) {
             result = -1;
@@ -424,7 +424,7 @@ public class MyAnimation { // TODO finalize the class
     public static int findKeyframeIndex(TransformTrack track, float time) {
         Validate.nonNegative(time, "time");
 
-        float[] times = track.getTimes();
+        float[] times = track.getTimes(); // alias
         int result = Arrays.binarySearch(times, time);
         if (result < 0) {
             result = -1;
@@ -444,7 +444,7 @@ public class MyAnimation { // TODO finalize the class
         float maxTime = 0f;
         Track[] loadedTracks = animation.getTracks();
         for (Track track : loadedTracks) {
-            float[] frameTimes = track.getKeyFrameTimes();
+            float[] frameTimes = track.getKeyFrameTimes(); // alias
             for (float time : frameTimes) {
                 if (time > maxTime) {
                     maxTime = time;
@@ -466,7 +466,7 @@ public class MyAnimation { // TODO finalize the class
     public static int findPreviousKeyframeIndex(Track track, float time) {
         Validate.nonNegative(time, "time");
 
-        float[] times = track.getKeyFrameTimes();
+        float[] times = track.getKeyFrameTimes(); // alias
         int result = MyArray.findPreviousIndex(time, times);
 
         assert result >= 0 : result;
@@ -485,7 +485,7 @@ public class MyAnimation { // TODO finalize the class
             TransformTrack track, float time) {
         Validate.nonNegative(time, "time");
 
-        float[] times = track.getTimes();
+        float[] times = track.getTimes(); // alias
         int result = MyArray.findPreviousIndex(time, times);
 
         assert result >= 0 : result;
@@ -581,13 +581,13 @@ public class MyAnimation { // TODO finalize the class
         float[] result;
         if (object instanceof MorphTrack) {
             MorphTrack morphTrack = (MorphTrack) object;
-            result = morphTrack.getTimes();
+            result = morphTrack.getTimes(); // alias
         } else if (object instanceof Track) {
             Track t = (Track) object;
-            result = t.getKeyFrameTimes();
+            result = t.getKeyFrameTimes(); // alias
         } else if (object instanceof TransformTrack) {
             TransformTrack transformTrack = (TransformTrack) object;
-            result = transformTrack.getTimes();
+            result = transformTrack.getTimes(); // alias
         } else {
             String className = object.getClass().getSimpleName();
             throw new IllegalArgumentException(className);
