@@ -26,6 +26,8 @@
  */
 package jme3utilities.debug;
 
+import com.jme3.anim.Armature;
+import com.jme3.anim.Joint;
 import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
 import com.jme3.app.state.AppState;
@@ -239,6 +241,30 @@ public class Dumper implements Cloneable {
     }
 
     /**
+     * Dump an Armature and all its joints.
+     *
+     * @param armature the armature to dump (not null, unaffected)
+     * @param indent the indent text (not null, may be empty)
+     */
+    public void dump(Armature armature, String indent) {
+        Validate.nonNull(armature, "armature");
+
+        stream.print(indent);
+        String description = describer.describe(armature);
+        stream.print(description);
+        stream.println(':');
+
+        Joint[] rootJoints = armature.getRoots();
+        String moreIndent = indent + indentIncrement;
+        for (Joint rootJoint : rootJoints) {
+            dump(rootJoint, moreIndent);
+        }
+
+        stream.println();
+        stream.flush();
+    }
+
+    /**
      * Dump the specified Bone, including its children.
      *
      * @param bone (not null, unaffected)
@@ -286,6 +312,26 @@ public class Dumper implements Cloneable {
         String desc2 = describer.describeMore(camera);
         stream.print(' ');
         stream.print(desc2);
+    }
+
+    /**
+     * Dump the specified Joint, including its children.
+     *
+     * @param joint (not null, unaffected)
+     * @param indent the indent text (not null, may be empty)
+     */
+    public void dump(Joint joint, String indent) {
+        Validate.nonNull(joint, "joint");
+
+        stream.print(indent);
+        String description = describer.describe(joint);
+        stream.println(description);
+
+        List<Joint> children = joint.getChildren();
+        String moreIndent = indent + indentIncrement;
+        for (Joint childJoint : children) {
+            dump(childJoint, moreIndent);
+        }
     }
 
     /**
