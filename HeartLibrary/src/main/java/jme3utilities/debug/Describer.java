@@ -26,6 +26,8 @@
  */
 package jme3utilities.debug;
 
+import com.jme3.anim.Armature;
+import com.jme3.anim.Joint;
 import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
 import com.jme3.app.state.ScreenshotAppState;
@@ -123,6 +125,25 @@ public class Describer implements Cloneable {
     // new methods exposed
 
     /**
+     * Generate a compact, textual description of the specified Armature, not
+     * including its joints.
+     *
+     * @param armature the Armature to describe (not null, unaffected)
+     * @return a description (not null, not empty)
+     */
+    public String describe(Armature armature) {
+        Validate.nonNull(armature, "armature");
+
+        int numRoots = MySkeleton.countRootJoints(armature);
+        int numJoints = armature.getJointCount();
+        String result = String.format("Armature with %d root%s and %d joint%s:",
+                numRoots, numRoots == 1 ? "" : "s",
+                numJoints, numJoints == 1 ? "" : "s");
+
+        return result;
+    }
+
+    /**
      * Generate a compact, textual description of the specified Bone, not
      * including its children.
      *
@@ -217,6 +238,33 @@ public class Describer implements Cloneable {
             result = describe(aabb);
         }
         return result;
+    }
+
+    /**
+     * Generate a compact, textual description of the specified Joint, not
+     * including its children.
+     *
+     * @param joint the Joint to describe (not null, unaffected)
+     * @return a description (not null, not empty)
+     */
+    public String describe(Joint joint) {
+        StringBuilder builder = new StringBuilder(30);
+        String nameText = MyString.quote(joint.getName());
+        builder.append(nameText);
+
+        if (MySkeleton.getAttachments(joint) != null) {
+            builder.append(" A");
+        }
+
+        List<Joint> children = joint.getChildren();
+        if (!children.isEmpty()) {
+            int numChildren = children.size();
+            String childText = String.format(" with %d child%s:", numChildren,
+                    (numChildren == 1 ? "" : "ren"));
+            builder.append(childText);
+        }
+
+        return builder.toString();
     }
 
     /**
