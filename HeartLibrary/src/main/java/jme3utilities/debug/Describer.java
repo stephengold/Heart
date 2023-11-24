@@ -394,8 +394,10 @@ public class Describer implements Cloneable {
      */
     public String describe(Skeleton skeleton) {
         int numRoots = MySkeleton.countRootBones(skeleton);
-        String result = String.format("Skeleton with %d root bone%s:",
-                numRoots, (numRoots == 1) ? "" : "s");
+        int numBones = skeleton.getBoneCount();
+        String result = String.format("Skeleton with %d root%s and %d bone%s:",
+                numRoots, numRoots == 1 ? "" : "s",
+                numBones, numBones == 1 ? "" : "s");
 
         return result;
     }
