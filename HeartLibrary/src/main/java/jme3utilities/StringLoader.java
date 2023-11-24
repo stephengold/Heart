@@ -74,7 +74,7 @@ public class StringLoader implements AssetLoader { // TODO finalize
         InputStream stream = assetInfo.openStream();
 
         // Parse the stream's data into one long text string.
-        Charset charset = StandardCharsets.ISO_8859_1; // LATIN-1
+        Charset charset = StandardCharsets.UTF_8;
         String charsetName = charset.name();
         String result;
         try (Scanner scanner = new Scanner(stream, charsetName)) {
