@@ -75,12 +75,13 @@ public class StringLoader implements AssetLoader { // TODO finalize
 
         // Parse the stream's data into one long text string.
         Charset charset = StandardCharsets.ISO_8859_1; // LATIN-1
-        String name = charset.name();
-        String text;
-        try (Scanner scanner = new Scanner(stream, name).useDelimiter("\\Z")) {
-            text = scanner.next();
+        String charsetName = charset.name();
+        String result;
+        try (Scanner scanner
+                = new Scanner(stream, charsetName).useDelimiter("\\Z")) {
+            result = scanner.next();
         }
 
-        return text;
+        return result;
     }
 }
