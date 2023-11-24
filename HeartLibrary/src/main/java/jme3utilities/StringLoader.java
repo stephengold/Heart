@@ -77,8 +77,8 @@ public class StringLoader implements AssetLoader { // TODO finalize
         Charset charset = StandardCharsets.ISO_8859_1; // LATIN-1
         String charsetName = charset.name();
         String result;
-        try (Scanner scanner
-                = new Scanner(stream, charsetName).useDelimiter("\\Z")) {
+        try (Scanner scanner = new Scanner(stream, charsetName)) {
+            scanner.useDelimiter("\\Z");
             result = scanner.next();
         }
 
