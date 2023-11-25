@@ -376,7 +376,7 @@ public class Describer implements Cloneable {
         MorphTarget[] targets = mesh.getMorphTargets();
         int numTargets = targets.length;
         if (numTargets > 0) {
-            result.append(" +");
+            result.append(" with ");
             result.append(numTargets);
             result.append(" target");
             if (numTargets > 1) {
