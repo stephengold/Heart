@@ -78,10 +78,6 @@ final public class J3oDump {
      */
     private static boolean listTextures = false;
     /**
-     * option to print the help/usage hints
-     */
-    private static boolean printHelp = false;
-    /**
      * dump asset descriptions to {@code System.out}
      */
     final private static Dumper dumper = new Dumper();
@@ -114,6 +110,7 @@ final public class J3oDump {
         dumper.setDumpUser(false);
 
         // Process the command-line arguments.
+        boolean printHelp = false;
         int numArguments = arguments.length;
         if (numArguments == 0) {
             printHelp = true;
