@@ -1145,6 +1145,30 @@ public class Dumper implements Cloneable {
                 stream.print(description);
             }
         }
+
+        MorphTarget[] targets = mesh.getMorphTargets();
+        for (int targetIndex = 0; targetIndex < targets.length; ++targetIndex) {
+            addLine(moreIndent);
+            MorphTarget target = targets[targetIndex];
+            String name = MyString.quoteName(target.getName());
+            EnumMap<VertexBuffer.Type, FloatBuffer> bufferMap
+                    = target.getBuffers();
+            int numBuffers = bufferMap.size();
+            stream.printf("target%d%s with %d buffer%s", targetIndex, name,
+                    numBuffers, numBuffers == 1 ? "" : "s");
+
+            if (dumpVertexFlag) {
+                if (numVertices > 0) {
+                    stream.print(':');
+                }
+                String mmIndent = moreIndent + indentIncrement;
+                for (int vertexI = 0; vertexI < numVertices; ++vertexI) {
+                    addLine(mmIndent);
+                    description = describer.describeVertexData(mesh, vertexI);
+                    stream.print(description);
+                }
+            }
+        }
     }
 
     /**
