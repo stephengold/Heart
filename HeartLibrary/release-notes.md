@@ -1,5 +1,39 @@
 # release log for the Heart Library and related tests
 
+## Version 8.8.0 released on TBD
+
++ Bugfix: `MyMesh.vertexColor()` doesn't handle color buffers
+  with just 3 components per element
++ Bugfix:  `MyMesh.rotate()` ignores tangent and binormal vertex buffers
++ Bugfix:  `MyLight.describeType()` is inconsistent with `MyControl.describe()`
++ Bugfix:  `StringLoader` doesn't handle non-Latin characters
++ Renamed 3 methods in the `MyAnimation` class and deprecated the old methods:
+  + `getRotations(Track)`
+  + `getScales(Track)`
+  + `getTranslations(Track)`
++ Added the `DummyLoader` class.
++ Added 9 new methods:
+  + `Describer.describe(Armature)`
+  + `Describer.describe(Joint)`
+  + `Describer.describeFloats(float...)`
+  + `Describer.describeTrackTarget(HasLocalTransform)`
+  + `Dumper.dump(AnimClip, String)`
+  + `Dumper.dump(Armature, String)`
+  + `Dumper.dump(Joint, String)`
+  + `Dumper.dump(Light, String)`
+  + `Heart.loadResourceAsString(String)`
++ Improved descriptions and dump output:
+  + when describing meshes, indicate the number of the morph targets if any
+  + when dumping meshes, enumerate the morph targets if any
+  + expand the descriptions of `CameraControl` and `LightControl`
+  + when describing a `Skeleton`, indicate its total number of bones
+  + when describing a `VertexBuffer`,
+    indicate its number of components per element
+  + when describing a vertex, indicate its `Tangent` and `TexCoord2`
+    attributes if any
+  + align vertex data into columns
++ Updated Gradle to v8.4
+
 ## Version 8.7.0 released on 28 August 2023
 
 + Added new method `MyMath.log2()`
