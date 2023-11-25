@@ -35,9 +35,13 @@ import com.jme3.animation.AnimControl;
 import com.jme3.animation.Animation;
 import com.jme3.animation.Skeleton;
 import com.jme3.animation.SkeletonControl;
+import com.jme3.light.Light;
+import com.jme3.renderer.Camera;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.control.AbstractControl;
+import com.jme3.scene.control.CameraControl;
 import com.jme3.scene.control.Control;
+import com.jme3.scene.control.LightControl;
 import com.jme3.util.SafeArrayList;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -169,6 +173,39 @@ public class MyControl { // TODO finalize the class
                     result.append(desc);
                 }
             }
+            result.append(']');
+
+        } else if (control instanceof CameraControl) {
+            CameraControl cameraControl = (CameraControl) control;
+            CameraControl.ControlDirection direction
+                    = cameraControl.getControlDir();
+            Camera camera = cameraControl.getCamera();
+            String quotedName = MyString.quoteName(camera.getName());
+
+            result.append('[');
+            result.append(direction);
+            result.append(" camera");
+            result.append(quotedName);
+            result.append(']');
+
+        } else if (control instanceof LightControl) {
+            LightControl lightControl = (LightControl) control;
+            LightControl.ControlDirection direction
+                    = lightControl.getControlDir();
+
+            Light light = lightControl.getLight();
+            String typeName;
+            if (light == null) {
+                typeName = "null";
+            } else {
+                String quotedName = MyString.quoteName(light.getName());
+                typeName = MyLight.describeType(light) + quotedName;
+            }
+
+            result.append('[');
+            result.append(direction);
+            result.append(' ');
+            result.append(typeName);
             result.append(']');
 
         } else if (control instanceof MorphControl) {
