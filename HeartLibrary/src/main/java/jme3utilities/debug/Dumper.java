@@ -241,7 +241,7 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Dump an Armature and all its joints.
+     * Dump the specified Armature and all its joints.
      *
      * @param armature the armature to dump (not null, unaffected)
      * @param indent the indent text (not null, may be empty)
@@ -420,7 +420,7 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Dump a skeleton and all its bones.
+     * Dump the specified skeleton and all its bones.
      *
      * @param skeleton the skeleton to dump (not null, unaffected)
      * @param indent the indent text (not null, may be empty)
@@ -444,7 +444,7 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Dump a subtree of the scene graph.
+     * Dump the specified subtree of a scene graph.
      *
      * @param spatial root of the subtree (may be null, unaffected)
      */
@@ -454,7 +454,7 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Dump a subtree of the scene graph. Note: recursive!
+     * Dump the specified subtree of a scene graph. Note: recursive!
      *
      * @param spatial root of the subtree (may be null, unaffected)
      * @param indent the indent text (not null, may be empty)
@@ -606,7 +606,7 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Read the indent increment.
+     * Return the indent increment.
      *
      * @return (not null, may be empty)
      */
@@ -697,7 +697,7 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Read the maximum number of children per Node.
+     * Return the maximum number of children per Node.
      *
      * @return the current limit (&ge;0, default=MAX_VALUE)
      */
@@ -707,9 +707,9 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Alter which describer to use.
+     * Replace the current Describer with the specified one.
      *
-     * @param newDescriber (not null, alias created)
+     * @param newDescriber the desired Describer (not null, alias created)
      * @return this instance for chaining
      */
     public Dumper setDescriber(Describer newDescriber) {
@@ -934,7 +934,7 @@ public class Dumper implements Cloneable {
     // private methods
 
     /**
-     * Dump a material-parameter map.
+     * Dump the specified material-parameter map.
      *
      * @param map the map from names to parameters (not null, unaffected)
      * @param indent the indent text (not null, may be empty)
@@ -954,6 +954,12 @@ public class Dumper implements Cloneable {
         }
     }
 
+    /**
+     * Dump the specified list of scene processors.
+     *
+     * @param processors the list to dump (not null, unaffected)
+     * @param indent the indent text (not null, may be empty)
+     */
     private void dumpProcs(List<SceneProcessor> processors, String indent) {
         addLine(indent);
         stream.print(" with ");
@@ -978,7 +984,7 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Dump children of a scene-graph Node.
+     * Dump children of the specified scene-graph Node.
      *
      * @param node the Node to dump (not null, unaffected)
      * @param childIndent the indent text for children (not null, may be empty)
@@ -1011,7 +1017,7 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Dump the material and mesh of a Geometry.
+     * Dump the material and mesh of the specified Geometry.
      *
      * @param geometry (not null, unaffected)
      * @param indent the indent text (not null, may be empty)
