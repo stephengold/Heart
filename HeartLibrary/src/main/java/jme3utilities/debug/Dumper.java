@@ -314,8 +314,7 @@ public class Dumper implements Cloneable {
 
         stream.print(indent);
         String description = describer.describe(armature);
-        stream.print(description);
-        stream.println(':');
+        stream.println(description);
 
         Joint[] rootJoints = armature.getRoots();
         String moreIndent = indent + indentIncrement;
