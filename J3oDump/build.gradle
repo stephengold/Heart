@@ -15,6 +15,12 @@ application {
 }
 jar.manifest.attributes('Main-Class': application.mainClass)
 
+tasks.register('j3odump', JavaExec) {
+    args('-r', '../../jmonkeyengine/jme3-testdata/src/main/resources', '-x', 'Models/Jaime/Jaime.j3o')
+    debug = true
+    mainClass = 'jme3utilities.cli.J3oDump'
+}
+
 dependencies {
     implementation 'org.jmonkeyengine:jme3-desktop:' + jme3Version
     implementation 'org.jmonkeyengine:jme3-plugins:' + jme3Version
