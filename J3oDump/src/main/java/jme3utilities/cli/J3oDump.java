@@ -242,7 +242,7 @@ final public class J3oDump {
                 + "  j3odump [ARGUMENTS...]%n%n"
                 + "ARGUMENTS:%n%n"
                 + "  --help, --usage, -h, -u  print this help message%n"
-                + "  --root path, -r path     set path to asset root (%s)%n"
+                + "  --root path, -r path     set path to the asset root (%s)%n"
                 + "  --textures, -t           also list textures%n"
                 + "  --verbose, -v            set verbose mode%n"
                 + "  --veryverbose, -V        set very verbose mode%n"
