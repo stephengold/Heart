@@ -86,6 +86,7 @@ import java.util.Locale;
 import java.util.logging.Logger;
 import jme3utilities.MyCamera;
 import jme3utilities.MyControl;
+import jme3utilities.MyLight;
 import jme3utilities.MyMesh;
 import jme3utilities.MySkeleton;
 import jme3utilities.MySpatial;
@@ -1074,16 +1075,17 @@ public class Describer implements Cloneable {
         if (light == null) {
             result = "null";
         } else {
-            String name = MyString.quoteName(light.getName());
+            String quotedName = MyString.quoteName(light.getName());
+            String typeName = MyLight.describeType(light) + quotedName;
             ColorRGBA color = light.getColor();
             String rgb = MyColor.describe(color);
             if (light instanceof AmbientLight) {
-                result = String.format("Amb%s(%s)", name, rgb);
+                result = String.format("%s(%s)", typeName, rgb);
 
             } else if (light instanceof DirectionalLight) {
                 Vector3f direction = ((DirectionalLight) light).getDirection();
                 String dir = MyVector3f.describeDirection(direction);
-                result = String.format("Dir%s(%s; %s)", name, rgb, dir);
+                result = String.format("%s(%s; %s)", typeName, rgb, dir);
 
             } else if (light instanceof LightProbe) {
                 LightProbe probe = (LightProbe) light;
@@ -1094,15 +1096,15 @@ public class Describer implements Cloneable {
                     Vector3f location = probe.getPosition(); // alias
                     String loc = MyVector3f.describe(location);
                     result = String.format(
-                            "Probe%s(%s r=%s %s)", name, areaType, r, loc);
+                            "%s(%s r=%s %s)", typeName, areaType, r, loc);
                 } else {
-                    result = String.format("Probe%s(unready)", name);
+                    result = String.format("%s(unready)", typeName);
                 }
 
             } else if (light instanceof PointLight) {
                 Vector3f location = ((PointLight) light).getPosition();
                 String loc = MyVector3f.describe(location);
-                result = String.format("Point%s(%s; %s)", name, rgb, loc);
+                result = String.format("%s(%s; %s)", typeName, rgb, loc);
 
             } else if (light instanceof SpotLight) {
                 SpotLight spotLight = (SpotLight) light;
@@ -1111,13 +1113,10 @@ public class Describer implements Cloneable {
                 Vector3f direction = spotLight.getDirection();
                 String dir = MyVector3f.describeDirection(direction);
                 result = String.format(
-                        "Spot%s(%s; %s; %s)", name, rgb, loc, dir);
+                        "%s(%s; %s; %s)", typeName, rgb, loc, dir);
 
             } else {
-                result = light.getClass().getSimpleName();
-                if (result.isEmpty()) {
-                    result = String.format("?L%s(%s)", name, rgb);
-                }
+                result = String.format("%s(%s)", typeName, rgb);
             }
 
             if (!light.isEnabled()) {
