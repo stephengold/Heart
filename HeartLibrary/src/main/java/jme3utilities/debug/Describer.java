@@ -79,6 +79,7 @@ import com.jme3.texture.Texture;
 import com.jme3.texture.Texture3D;
 import com.jme3.texture.TextureCubeMap;
 import com.jme3.util.IntMap;
+import java.nio.FloatBuffer;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
@@ -637,6 +638,62 @@ public class Describer implements Cloneable {
             result.append("NO");
         }
         result.append("clStencil");
+
+        return result.toString();
+    }
+
+    /**
+     * Generate a compact, textual description of the specified single-precision
+     * floating-point buffer.
+     *
+     * @param buffer the buffer to describe (not null)
+     * @return a description (not null, not empty)
+     */
+    public String describeFloatBuffer(FloatBuffer buffer) {
+        StringBuilder result = new StringBuilder(170);
+
+        int capacity = buffer.capacity();
+        result.append('(');
+        result.append(capacity);
+        result.append(')');
+
+        for (int position = 0; position < capacity; ++position) {
+            if (result.length() > 150) {
+                result.append(" ...");
+                break;
+            }
+            result.append(listSeparator);
+            float value = buffer.get(position);
+            String description = MyString.describe(value);
+            result.append(description);
+        }
+
+        return result.toString();
+    }
+
+    /**
+     * Generate a compact, textual description of the specified single-precision
+     * floating-point values.
+     *
+     * @param data the values to describe (not null)
+     * @return a description (not null, not empty)
+     */
+    public String describeFloats(float... data) {
+        StringBuilder result = new StringBuilder(170);
+
+        result.append('(');
+        result.append(data.length);
+        result.append(')');
+
+        for (float value : data) {
+            if (result.length() > 150) {
+                result.append(" ...");
+                break;
+            }
+            result.append(listSeparator);
+            String description = MyString.describe(value);
+            result.append(description);
+        }
 
         return result.toString();
     }
