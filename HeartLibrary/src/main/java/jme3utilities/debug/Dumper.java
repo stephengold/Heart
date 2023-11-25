@@ -658,50 +658,6 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Dump the morph targets of the specified Mesh.
-     *
-     * @param mesh (not null, unaffected)
-     * @param indent the indent text (not null, may be empty)
-     */
-    public void dumpMorphTargets(Mesh mesh, String indent) {
-        addLine(indent);
-        int numVertices = mesh.getPatchVertexCount();
-        MorphTarget[] targets = mesh.getMorphTargets();
-        int numTargets = targets.length;
-        stream.printf("%d patch vert%s and %d morph target%s",
-                numVertices, numVertices == 1 ? "ex" : "ices",
-                numTargets, numTargets == 1 ? "" : "s");
-        if (numTargets > 0) {
-            stream.print(":");
-        }
-
-        String moreIndent = indent + indentIncrement;
-        String mmIndent = moreIndent + indentIncrement;
-        for (MorphTarget target : targets) {
-            addLine(moreIndent);
-            String name = MyString.quoteName(target.getName());
-            stream.print("target" + name);
-            EnumMap<VertexBuffer.Type, FloatBuffer> bufferMap
-                    = target.getBuffers();
-            int numBuffers = bufferMap.size();
-            if (numTargets > 0) {
-                stream.printf(" with %d buffer%s:", numBuffers,
-                        numBuffers == 1 ? "" : "s");
-            }
-
-            for (VertexBuffer.Type bufferType : bufferMap.keySet()) {
-                addLine(mmIndent);
-                stream.print(bufferType);
-
-                FloatBuffer floatBuffer = bufferMap.get(bufferType);
-                String desc = describer.describeFloatBuffer(floatBuffer);
-                stream.print(desc);
-            }
-        }
-        stream.println();
-    }
-
-    /**
      * Access the Describer used by this dumper.
      *
      * @return the pre-existing instance (not null)
