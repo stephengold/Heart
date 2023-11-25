@@ -1101,17 +1101,19 @@ public class Dumper implements Cloneable {
      */
     private void dumpGeometry(Geometry geometry, String indent) {
         Material material = geometry.getMaterial();
+        String moreIndent = indent + indentIncrement;
         String description = describer.describe(material);
         if (!description.isEmpty()) {
             addLine(indent);
             stream.print(" mat");
             stream.print(description);
             if (dumpMatParamFlag) {
-                dump(material.getParamsMap(), indent + indentIncrement);
+                dump(material.getParamsMap(), moreIndent);
             }
         }
 
         Mesh mesh = geometry.getMesh();
+        int numVertices = mesh.getVertexCount();
         description = describer.describe(mesh);
         addLine(indent);
         addDescription(description);
@@ -1120,8 +1122,7 @@ public class Dumper implements Cloneable {
             IndexBuffer indexBuffer = mesh.getIndexBuffer();
             Mesh.Mode mode = mesh.getMode();
             if (indexBuffer != null) {
-                addLine(indent);
-                stream.print(indentIncrement);
+                addLine(moreIndent);
                 stream.print("index[");
                 for (int ibPos = 0; ibPos < indexBuffer.size(); ++ibPos) {
                     if (ibPos > 0) {
@@ -1138,10 +1139,8 @@ public class Dumper implements Cloneable {
                 stream.print(']');
             }
 
-            int numVertices = mesh.getVertexCount();
             for (int vertexI = 0; vertexI < numVertices; ++vertexI) {
-                addLine(indent);
-                stream.print(indentIncrement);
+                addLine(moreIndent);
                 description = describer.describeVertexData(mesh, vertexI);
                 stream.print(description);
             }
