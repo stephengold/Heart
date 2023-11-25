@@ -26,8 +26,13 @@
  */
 package jme3utilities.debug;
 
+import com.jme3.anim.AnimClip;
+import com.jme3.anim.AnimTrack;
 import com.jme3.anim.Armature;
 import com.jme3.anim.Joint;
+import com.jme3.anim.MorphTrack;
+import com.jme3.anim.TransformTrack;
+import com.jme3.anim.util.HasLocalTransform;
 import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
 import com.jme3.app.state.AppState;
@@ -49,11 +54,15 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
+import com.jme3.scene.VertexBuffer;
 import com.jme3.scene.mesh.IndexBuffer;
+import com.jme3.scene.mesh.MorphTarget;
 import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.FloatBuffer;
 import java.util.Collection;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -160,6 +169,60 @@ public class Dumper implements Cloneable {
     }
     // *************************************************************************
     // new methods exposed
+
+    /**
+     * Dump the specified AnimClip.
+     *
+     * @param clip the clip to dump (not null, unaffected)
+     * @param indent the indent text (not null, may be empty)
+     */
+    public void dump(AnimClip clip, String indent) {
+        addLine(indent);
+        AnimTrack<?>[] tracks = clip.getTracks();
+        int numTracks = tracks.length;
+        stream.printf("AnimClip%s with %d track%s:",
+                MyString.quoteName(clip.getName()), numTracks,
+                (numTracks == 1) ? "" : "s");
+
+        String moreIndent = indent + indentIncrement;
+        String mmIndent = moreIndent + indentIncrement;
+        for (AnimTrack<?> track : tracks) {
+            addLine(moreIndent);
+            stream.print(track.getClass().getSimpleName());
+
+            if (track instanceof MorphTrack) {
+                MorphTrack morphTrack = (MorphTrack) track;
+                Geometry target = morphTrack.getTarget();
+                String desc = describer.describeTrackTarget(target);
+                stream.print(desc);
+
+                addLine(mmIndent);
+                stream.print("times");
+                float[] times = morphTrack.getTimes(); // alias
+                desc = describer.describeFloats(times);
+                stream.print(desc);
+
+                addLine(mmIndent);
+                stream.print("weights");
+                float[] weights = morphTrack.getWeights(); // alias
+                desc = describer.describeFloats(weights);
+                stream.print(desc);
+
+            } else if (track instanceof TransformTrack) {
+                TransformTrack transformTrack = (TransformTrack) track;
+                HasLocalTransform target = transformTrack.getTarget();
+                String desc = describer.describeTrackTarget(target);
+                stream.print(desc);
+
+                addLine(mmIndent);
+                stream.print("times");
+                float[] times = transformTrack.getTimes(); // alias
+                desc = describer.describeFloats(times);
+                stream.print(desc);
+            }
+        }
+        stream.println();
+    }
 
     /**
      * Dump the specified AppStateManager.
@@ -593,6 +656,50 @@ public class Dumper implements Cloneable {
         } else {
             stream.println("disabled");
         }
+    }
+
+    /**
+     * Dump the morph targets of the specified Mesh.
+     *
+     * @param mesh (not null, unaffected)
+     * @param indent the indent text (not null, may be empty)
+     */
+    public void dumpMorphTargets(Mesh mesh, String indent) {
+        addLine(indent);
+        int numVertices = mesh.getPatchVertexCount();
+        MorphTarget[] targets = mesh.getMorphTargets();
+        int numTargets = targets.length;
+        stream.printf("%d patch vert%s and %d morph target%s",
+                numVertices, numVertices == 1 ? "ex" : "ices",
+                numTargets, numTargets == 1 ? "" : "s");
+        if (numTargets > 0) {
+            stream.print(":");
+        }
+
+        String moreIndent = indent + indentIncrement;
+        String mmIndent = moreIndent + indentIncrement;
+        for (MorphTarget target : targets) {
+            addLine(moreIndent);
+            String name = MyString.quoteName(target.getName());
+            stream.print("target" + name);
+            EnumMap<VertexBuffer.Type, FloatBuffer> bufferMap
+                    = target.getBuffers();
+            int numBuffers = bufferMap.size();
+            if (numTargets > 0) {
+                stream.printf(" with %d buffer%s:", numBuffers,
+                        numBuffers == 1 ? "" : "s");
+            }
+
+            for (VertexBuffer.Type bufferType : bufferMap.keySet()) {
+                addLine(mmIndent);
+                stream.print(bufferType);
+
+                FloatBuffer floatBuffer = bufferMap.get(bufferType);
+                String desc = describer.describeFloatBuffer(floatBuffer);
+                stream.print(desc);
+            }
+        }
+        stream.println();
     }
 
     /**
