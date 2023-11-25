@@ -123,8 +123,14 @@ public class MyLight { // TODO finalize the class
      */
     public static String describeType(Light light) {
         String description = light.getClass().getSimpleName();
+        if (description.startsWith("Light")) {
+            description = MyString.remainder(description, "Light");
+        }
         if (description.endsWith("Light")) {
             description = MyString.removeSuffix(description, "Light");
+        }
+        if (description.length() > 5) {
+            description = description.substring(0, 3);
         }
 
         return description;
