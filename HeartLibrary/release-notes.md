@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 8.8.0 released on TBD
+## Version 8.8.0 released on 25 November 2023
 
 + Bugfix: `MyMesh.vertexColor()` doesn't handle color buffers
   with just 3 components per element
