@@ -1062,35 +1062,6 @@ public class Dumper implements Cloneable {
     }
 
     /**
-     * Dump the specified list of scene processors.
-     *
-     * @param processors the list to dump (not null, unaffected)
-     * @param indent the indent text (not null, may be empty)
-     */
-    private void dumpProcs(List<SceneProcessor> processors, String indent) {
-        addLine(indent);
-        stream.print(" with ");
-        int numProcessors = processors.size();
-        if (numProcessors == 0) {
-            stream.print("no scene processors");
-
-        } else {
-            if (numProcessors == 1) {
-                stream.print("one SceneProcessor:");
-            } else {
-                stream.printf("%d scene processors:", numProcessors);
-            }
-
-            for (SceneProcessor processor : processors) {
-                addLine(indent + "  ");
-                String desc = describer.describe(processor);
-                stream.print(desc);
-            }
-            addLine(indent);
-        }
-    }
-
-    /**
      * Dump children of the specified scene-graph Node.
      *
      * @param node the Node to dump (not null, unaffected)
@@ -1175,6 +1146,35 @@ public class Dumper implements Cloneable {
                 description = describer.describeVertexData(mesh, vertexI);
                 stream.print(description);
             }
+        }
+    }
+
+    /**
+     * Dump the specified list of scene processors.
+     *
+     * @param processors the list to dump (not null, unaffected)
+     * @param indent the indent text (not null, may be empty)
+     */
+    private void dumpProcs(List<SceneProcessor> processors, String indent) {
+        addLine(indent);
+        stream.print(" with ");
+        int numProcessors = processors.size();
+        if (numProcessors == 0) {
+            stream.print("no scene processors");
+
+        } else {
+            if (numProcessors == 1) {
+                stream.print("one SceneProcessor:");
+            } else {
+                stream.printf("%d scene processors:", numProcessors);
+            }
+
+            for (SceneProcessor processor : processors) {
+                addLine(indent + "  ");
+                String desc = describer.describe(processor);
+                stream.print(desc);
+            }
+            addLine(indent);
         }
     }
 }
