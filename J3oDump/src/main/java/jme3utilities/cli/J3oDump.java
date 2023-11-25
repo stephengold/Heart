@@ -126,7 +126,6 @@ final public class J3oDump {
             } else if (argument.equals("--root") || argument.equals("-r")) {
                 if (i == lastIndex) {
                     System.err.println("Missing argument for " + argument);
-                    System.err.flush();
                     printHelp();
                     System.exit(1);
                 } else {
@@ -169,7 +168,6 @@ final public class J3oDump {
             } else {
                 String quotedArg = MyString.quote(argument);
                 System.err.println("Unrecognized argument:  " + quotedArg);
-                System.err.flush();
                 printHelp();
                 System.exit(1);
             }
@@ -235,6 +233,7 @@ final public class J3oDump {
      * Print the help/usage hints.
      */
     private static void printHelp() {
+        System.err.flush();
         String workingDirectory = System.getProperty("user.dir");
         System.out.printf("NAME:%n"
                 + "  j3odump - dump J3O files to standard output.%n%n"
