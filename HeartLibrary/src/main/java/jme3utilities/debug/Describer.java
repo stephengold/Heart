@@ -28,6 +28,7 @@ package jme3utilities.debug;
 
 import com.jme3.anim.Armature;
 import com.jme3.anim.Joint;
+import com.jme3.anim.util.HasLocalTransform;
 import com.jme3.animation.Bone;
 import com.jme3.animation.Skeleton;
 import com.jme3.app.state.ScreenshotAppState;
@@ -855,6 +856,33 @@ public class Describer implements Cloneable {
         }
 
         return result.toString();
+    }
+
+    /**
+     * Generate a compact, textual description of the specified animation track
+     * target.
+     *
+     * @param target the target to describe (may be null, unaffected)
+     * @return a string of descriptive text (not null, not empty)
+     */
+    public String describeTrackTarget(HasLocalTransform target) {
+        if (target == null) {
+            return "null";
+        }
+
+        String targetName;
+        if (target instanceof Spatial) {
+            targetName = ((Spatial) target).getName();
+        } else {
+            targetName = ((Joint) target).getName();
+        }
+
+        String className = target.getClass().getSimpleName();
+        String qTargetName = MyString.quoteName(targetName);
+        String result
+                = String.format(" targeting %s%s:", className, qTargetName);
+
+        return result;
     }
 
     /**
