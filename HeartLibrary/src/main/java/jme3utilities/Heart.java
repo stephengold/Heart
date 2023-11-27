@@ -614,6 +614,7 @@ public class Heart { // TODO finalize the class
                     formatName.toUpperCase());
         }
 
+        String quotedPath = MyString.quote(filePath);
         File textureFile = new File(filePath);
         try {
             // If a parent directory/folder is needed, create it.
@@ -622,29 +623,24 @@ public class Heart { // TODO finalize the class
                 boolean success = parentDirectory.mkdirs();
                 if (!success) {
                     String path = parentDirectory.toString();
-                    throw new IOException(
-                            "Unable to create " + MyString.quote(path));
+                    throw new IOException("Unable to create " + quotedPath);
                 }
             }
 
             ImageIO.write(image, formatName, textureFile);
             if (logger.isLoggable(Level.INFO)) {
-                logger.log(Level.INFO, "wrote texture to {0}",
-                        MyString.quote(filePath));
+                logger.log(Level.INFO, "wrote texture to {0}", quotedPath);
             }
 
         } catch (IOException exception) {
-            logger.log(Level.SEVERE, "write to {0} failed",
-                    MyString.quote(filePath));
+            logger.log(Level.SEVERE, "write to {0} failed", quotedPath);
             boolean success = textureFile.delete();
             if (success) {
                 if (logger.isLoggable(Level.INFO)) {
-                    logger.log(Level.INFO, "deleted file {0}",
-                            MyString.quote(filePath));
+                    logger.log(Level.INFO, "deleted file {0}", quotedPath);
                 }
             } else {
-                logger.log(Level.SEVERE, "deletion of {0} failed",
-                        MyString.quote(filePath));
+                logger.log(Level.SEVERE, "deletion of {0} failed", quotedPath);
             }
             throw exception;
         }
