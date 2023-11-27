@@ -30,6 +30,7 @@ import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AppState;
 import com.jme3.app.state.AppStateManager;
 import com.jme3.asset.AssetManager;
+import com.jme3.export.FormatVersion;
 import com.jme3.export.JmeExporter;
 import com.jme3.export.Savable;
 import com.jme3.export.binary.BinaryExporter;
@@ -636,7 +637,10 @@ public class Heart { // TODO finalize the class
                         });
             }
             if (logger.isLoggable(Level.INFO)) {
-                logger.log(Level.INFO, "wrote texture to {0}", quotedPath);
+                int height = image.getHeight();
+                int width = image.getWidth();
+                logger.log(Level.INFO, "wrote {0}-by-{1} texture to {2}",
+                        new Object[]{width, height, quotedPath});
             }
 
         } catch (IOException exception) {
@@ -673,7 +677,9 @@ public class Heart { // TODO finalize the class
             throw new RuntimeException(exception);
         }
         if (logger.isLoggable(Level.INFO)) {
-            logger.log(Level.INFO, "wrote file {0}", MyString.quote(filePath));
+            int version = FormatVersion.VERSION;
+            logger.log(Level.INFO, "wrote version-{0} binary to {1}",
+                    new Object[]{version, MyString.quote(filePath)});
         }
     }
 }
