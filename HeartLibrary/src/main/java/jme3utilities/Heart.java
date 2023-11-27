@@ -627,7 +627,14 @@ public class Heart { // TODO finalize the class
                 }
             }
 
-            ImageIO.write(image, formatName, textureFile);
+            boolean success = ImageIO.write(image, formatName, textureFile);
+            if (!success) {
+                logger.log(Level.SEVERE,
+                        "write to {0} failed; no writer for {1} format",
+                        new Object[]{
+                            quotedPath, MyString.quote(formatName)
+                        });
+            }
             if (logger.isLoggable(Level.INFO)) {
                 logger.log(Level.INFO, "wrote texture to {0}", quotedPath);
             }
