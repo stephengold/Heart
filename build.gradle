@@ -5,13 +5,14 @@ plugins {
 }
 
 ext {
+    heartSnapshot = '-SNAPSHOT' // for development builds
+    //heartSnapshot = '' // for release builds
+
     jmeTarget = '' // distinguish non-JME libraries built for specific JME releases
 
     // current version of the JMonkeyEngine libraries:
     jme3Version = '3.6.1-stable'
 
-    heartSnapshot = '-SNAPSHOT' // for development builds
-    //heartSnapshot = '' // for release builds
     heartVersion = '8.8.1' + jmeTarget + heartSnapshot
 }
 
