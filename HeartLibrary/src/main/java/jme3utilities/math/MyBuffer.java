@@ -30,6 +30,7 @@ import com.jme3.math.Matrix3f;
 import com.jme3.math.Quaternion;
 import com.jme3.math.Transform;
 import com.jme3.math.Vector3f;
+import com.jme3.math.Vector4f;
 import com.jme3.util.BufferUtils;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
@@ -613,6 +614,29 @@ final public class MyBuffer {
         buffer.put(startPosition + MyVector3f.xAxis, vector.x);
         buffer.put(startPosition + MyVector3f.yAxis, vector.y);
         buffer.put(startPosition + MyVector3f.zAxis, vector.z);
+    }
+
+    /**
+     * Write a Vector4f starting at the specified position. Does not alter the
+     * buffer's position.
+     *
+     * @param buffer the buffer to write to (not null, modified)
+     * @param startPosition the position at which to start writing (&ge;0)
+     * @param vector the input vector (not null, unaffected)
+     *
+     * @see com.jme3.util.BufferUtils#setInBuffer(com.jme3.math.Vector4f,
+     * java.nio.FloatBuffer, int)
+     */
+    public static void put(
+            FloatBuffer buffer, int startPosition, Vector4f vector) {
+        Validate.nonNull(buffer, "buffer");
+        Validate.nonNegative(startPosition, "start position");
+        Validate.nonNull(vector, "vector");
+
+        buffer.put(startPosition, vector.x);
+        buffer.put(startPosition + 1, vector.y);
+        buffer.put(startPosition + 2, vector.z);
+        buffer.put(startPosition + 3, vector.w);
     }
 
     /**
