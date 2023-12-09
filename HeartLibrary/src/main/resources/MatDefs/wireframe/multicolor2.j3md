@@ -45,11 +45,11 @@ MaterialDef multicolor2 {
             POINT_SHAPE : PointShape
             VERTEX_COLOR : UseVertexColor
         }
-        FragmentShader GLSL310 GLSL300 GLSL100 GLSL110 GLSL150: Shaders/wireframe/multicolor2.frag
+        FragmentShader GLSL310 GLSL300 GLSL150 GLSL110 GLSL100: Shaders/wireframe/multicolor2.frag
         RenderState {
             Wireframe On
         }
-        VertexShader GLSL310 GLSL300 GLSL100 GLSL110 GLSL150:   Shaders/wireframe/multicolor2.vert
+        VertexShader GLSL310 GLSL300 GLSL150 GLSL110 GLSL100:   Shaders/wireframe/multicolor2.vert
         WorldParameters {
             ViewMatrix
             ViewProjectionMatrix

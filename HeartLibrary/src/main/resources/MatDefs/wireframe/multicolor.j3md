@@ -36,11 +36,11 @@ MaterialDef multicolor {
         Defines {
             NUM_BONES : NumberOfBones
         }
-        FragmentShader GLSL310 GLSL300 GLSL100 GLSL150: Shaders/wireframe/multicolor.frag
+        FragmentShader GLSL310 GLSL300 GLSL150 GLSL100: Shaders/wireframe/multicolor.frag
         RenderState {
             Wireframe On
         }
-        VertexShader GLSL310 GLSL300 GLSL100 GLSL150:   Shaders/wireframe/multicolor.vert
+        VertexShader GLSL310 GLSL300 GLSL150 GLSL100:   Shaders/wireframe/multicolor.vert
         WorldParameters {
             ViewMatrix
             ViewProjectionMatrix
