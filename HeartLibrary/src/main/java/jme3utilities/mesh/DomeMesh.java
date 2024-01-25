@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2023, Stephen Gold
+ Copyright (c) 2013-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ import jme3utilities.math.MyMath;
 
 /**
  * A 3-D, static, Triangles-mode mesh for a dome (or a pie-cut segment thereof)
- * with radius=1, centered at the origin, with its top at (0,1,0) and its
+ * with radius=1, centered at the origin, with its apex at (0,1,0) and its
  * equator in the X-Z plane.
  * <p>
  * The key differences between this class and com.jme3.scene.shape.Dome are:<ol>
@@ -66,15 +66,15 @@ public class DomeMesh extends Mesh {
     // constants and loggers
 
     /**
-     * default for the first (U) texture coordinate at the top of the dome
+     * default for the first (U) texture coordinate at the apex of the dome
      */
     final public static float defaultTopU = 0.5f;
     /**
-     * default for the 2nd (V) texture coordinate at the top of the dome
+     * default for the 2nd (V) texture coordinate at the apex of the dome
      */
     final public static float defaultTopV = 0.5f;
     /**
-     * default UV distance from top to rim
+     * default UV distance from apex to rim
      */
     final public static float defaultUvScale = 0.44f;
     /**
@@ -107,24 +107,25 @@ public class DomeMesh extends Mesh {
      */
     private float segmentAngle;
     /**
-     * U-coordinate of the top (&le;1, &ge;0)
+     * U-coordinate of the apex (&le;1, &ge;0)
      */
     private float topU;
     /**
-     * V-coordinate of the top (&le;1, &ge;0)
+     * V-coordinate of the apex (&le;1, &ge;0)
      */
     private float topV;
     /**
-     * UV distance from top to equator (&lt;0.5, &gt;0)
+     * UV distance from apex to equator (&lt;0.5, &gt;0)
      */
     private float uvScale;
     /**
-     * angle from top to rim (in radians, &lt;Pi, &gt;0, Pi/2 &rarr; hemisphere)
+     * angle from apex to rim (in radians, &lt;Pi, &gt;0, Pi/2 &rarr;
+     * hemisphere)
      */
     private float verticalAngle;
     /**
      * number of samples in each longitudinal quadrant of the dome, including
-     * both the top and the rim (&ge;2)
+     * both the apex and the rim (&ge;2)
      */
     private int quadrantSamples;
     /**
@@ -154,7 +155,7 @@ public class DomeMesh extends Mesh {
      * SkyMaterial.
      *
      * @param rimSamples number of samples around the rim (&ge;3)
-     * @param quadrantSamples number of samples from top to rim, inclusive
+     * @param quadrantSamples number of samples from apex to rim, inclusive
      * (&ge;2)
      */
     public DomeMesh(int rimSamples, int quadrantSamples) {
@@ -168,11 +169,11 @@ public class DomeMesh extends Mesh {
      * general form of the constructor.
      *
      * @param rimSamples number of samples around the rim (&ge;3)
-     * @param quadrantSamples number of samples from top to rim, inclusive
+     * @param quadrantSamples number of samples from apex to rim, inclusive
      * (&ge;2)
-     * @param topU U-coordinate of the top (&le;1, &ge;0)
-     * @param topV V-coordinate of the top (&le;1, &ge;0)
-     * @param uvScale UV distance from top to equator (&lt;0.5, &gt;0)
+     * @param topU U-coordinate of the apex (&le;1, &ge;0)
+     * @param topV V-coordinate of the apex (&le;1, &ge;0)
+     * @param uvScale UV distance from apex to equator (&lt;0.5, &gt;0)
      * @param inwardFacing if true, vertex normals point inward; if false, they
      * point outward
      */
@@ -230,7 +231,7 @@ public class DomeMesh extends Mesh {
             // Avoid division by zero at the Y-axis.
             if (norm.y < 0f) {
                 return null;
-            } else { // top
+            } else { // apex
                 return new Vector2f(topU, topV);
             }
         }
@@ -268,7 +269,7 @@ public class DomeMesh extends Mesh {
     /**
      * Read the U-V scale of this dome.
      *
-     * @return UV distance from top to equator (&lt;0.5, &gt;0)
+     * @return UV distance from apex to equator (&lt;0.5, &gt;0)
      * @deprecated use {@link #getUvScale()}
      */
     @Deprecated
@@ -281,7 +282,7 @@ public class DomeMesh extends Mesh {
     /**
      * Read the U-V scale of this dome.
      *
-     * @return UV distance from top to equator (&lt;0.5, &gt;0)
+     * @return UV distance from apex to equator (&lt;0.5, &gt;0)
      */
     public float getUvScale() {
         assert uvScale > 0f : uvScale;
@@ -451,7 +452,7 @@ public class DomeMesh extends Mesh {
             }
         }
 
-        // The final vertex is at the top.
+        // The final vertex is at the apex.
         int topIndex = vertexCount - 1;
         logger.log(Level.INFO, "coords {0}", topIndex);
         locationArray[topIndex] = new Vector3f(0f, 1f, 0f);
@@ -554,7 +555,7 @@ public class DomeMesh extends Mesh {
             }
         }
         /*
-         * The remaining (non-quad) triangles near the top of the dome
+         * The remaining (non-quad) triangles near the apex of the dome
          * are arranged by longitude, starting from the +X meridian and
          * proceeding counterclockwise as seen from +Y.
          */
