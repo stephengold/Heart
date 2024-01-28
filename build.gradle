@@ -13,7 +13,7 @@ ext {
     // current version of the JMonkeyEngine libraries:
     jme3Version = '3.6.1-stable'
 
-    heartVersion = '8.8.1' + jmeTarget + heartSnapshot
+    heartVersion = '8.8.1' + jmeTarget
 }
 
 subprojects {
