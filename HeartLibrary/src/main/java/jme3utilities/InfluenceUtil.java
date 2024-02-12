@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2021, Stephen Gold
+ Copyright (c) 2017-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ import jme3utilities.math.MyBuffer;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class InfluenceUtil { // TODO finalize the class
+final public class InfluenceUtil {
     // *************************************************************************
     // constants and loggers
 
