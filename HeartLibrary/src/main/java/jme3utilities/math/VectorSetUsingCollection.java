@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2023 Stephen Gold
+ Copyright (c) 2019-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -108,7 +108,7 @@ public class VectorSetUsingCollection implements VectorSet {
      * @param vectors the values to add (not null, unaffected)
      */
     @Override
-    public void addAll(Iterable<? extends Vector3f> vectors) {
+    public void addAll(Iterable<Vector3f> vectors) {
         for (Vector3f vector : vectors) {
             set.add(vector.clone());
         }
