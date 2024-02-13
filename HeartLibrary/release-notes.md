@@ -1,8 +1,38 @@
 # release log for the Heart Library and related tests
 
+## Version 9.0.0 released on TBD
+
++ Simplified the `VectorSet` interface. (API change)
++ Deleted the public `describeControls(Spatial, boolean)` method
+  from the `Describer` class. (API change)
++ Finalized 15 classes (API changes):
+  + `Element`
+  + `Heart`
+  + `InfluenceUtil`
+  + `MyAnimation`
+  + `MyControl`
+  + `MyLight`
+  + `MyMath`
+  + `MyMesh`
+  + `MyQuaternion`
+  + `MySkeleton`
+  + `MySpatial`
+  + `MyString`
+  + `MyVector3f`
+  + `MyVolume`
+  + `StringLoader`
++ Privatized the `elementsByFitness` field
+  in the `Population` class. (API change)
++ Protected the `SimpleControl` constructor. (API change)
++ Bugfix:  `writeImage()` ignores the return code from `ImageIO.write()`
++ Bugfix:  GLSL versions out-of-order in matdefs
++ Added the `DsUtils` class from Acorus.
++ Added a `put(FloatBuffer, int, Vector4f)` method to the `MyBuffer` class.
++ Updated Gradle to v8.6
+
 ## Version 8.8.0 released on 25 November 2023
 
-+ Bugfix: `MyMesh.vertexColor()` doesn't handle color buffers
++ Bugfix:  `MyMesh.vertexColor()` doesn't handle color buffers
   with just 3 components per element
 + Bugfix:  `MyMesh.rotate()` ignores tangent and binormal vertex buffers
 + Bugfix:  `MyLight.describeType()` is inconsistent with `MyControl.describe()`
