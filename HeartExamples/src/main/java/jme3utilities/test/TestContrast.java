@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2023, Stephen Gold
+ Copyright (c) 2020-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -131,9 +131,8 @@ class TestContrast extends AcorusDemo {
         addFloor();
         addLighting();
         rootNode.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
-        /*
-         * Apply a contrast adjustment filter to the viewport.
-         */
+
+        // Apply a contrast adjustment filter to the viewport.
         int numSamples = settings.getSamples();
         FilterPostProcessor fpp
                 = Heart.getFpp(viewPort, assetManager, numSamples);
