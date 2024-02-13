@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2023, Stephen Gold
+ Copyright (c) 2017-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -69,9 +69,9 @@ public class Population<Fitness extends Comparable<Fitness>, Element> {
      */
     private int numElements = 0;
     /**
-     * map fitness scores to elements (not null) TODO privatize
+     * map fitness scores to elements (not null)
      */
-    final protected TreeMap<Fitness, List<Element>> elementsByFitness
+    final private TreeMap<Fitness, List<Element>> elementsByFitness
             = new TreeMap<>();
     // *************************************************************************
     // constructors
