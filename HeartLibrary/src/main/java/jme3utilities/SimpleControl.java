@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2023, Stephen Gold
+ Copyright (c) 2013-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -48,7 +48,7 @@ abstract public class SimpleControl extends AbstractControl {
     /**
      * A no-arg constructor to avoid javadoc warnings from JDK 18.
      */
-    public SimpleControl() { // TODO protect
+    protected SimpleControl() {
         // do nothing
     }
     // *************************************************************************
