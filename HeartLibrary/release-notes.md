@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 9.0.0 released on TBD
+## Version 9.0.0 released on 13 February 2024
 
 + Simplified the `VectorSet` interface. (API change)
 + Deleted the public `describeControls(Spatial, boolean)` method
