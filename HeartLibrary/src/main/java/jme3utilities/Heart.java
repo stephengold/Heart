@@ -623,7 +623,8 @@ final public class Heart {
             if (parentDirectory != null && !parentDirectory.exists()) {
                 boolean success = parentDirectory.mkdirs();
                 if (!success) {
-                    String path = parentDirectory.toString();
+                    String parentPath = parentDirectory.toString();
+                    quotedPath = MyString.quote(parentPath);
                     throw new IOException("Unable to create " + quotedPath);
                 }
             }
