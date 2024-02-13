@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2023, Stephen Gold
+ Copyright (c) 2013-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -1286,37 +1286,6 @@ public class Describer implements Cloneable {
         assert result != null;
         assert !result.isEmpty();
         return result;
-    }
-
-    /**
-     * Generate a textual description for a subset of the controls added to the
-     * specified Spatial. TODO delete
-     *
-     * @param spatial the Spatial to describe (not null, unaffected)
-     * @param enabled if true, describe only the enabled controls; if false,
-     * describe only the disabled controls
-     * @return a description (not null, may be empty)
-     */
-    protected String describeControls(Spatial spatial, boolean enabled) {
-        StringBuilder result = new StringBuilder(20);
-        boolean addSeparators = false;
-
-        int count = spatial.getNumControls();
-        for (int controlI = 0; controlI < count; ++controlI) {
-            Control control = spatial.getControl(controlI);
-            boolean isEnabled = isControlEnabled(control);
-            if (isEnabled == enabled) {
-                if (addSeparators) {
-                    result.append(listSeparator);
-                } else {
-                    addSeparators = true;
-                }
-                String description = describe(control);
-                result.append(description);
-            }
-        }
-
-        return result.toString();
     }
 
     /**
