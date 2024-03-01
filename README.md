@@ -1,8 +1,8 @@
 <img height="150" src="https://i.imgur.com/O7MMp7A.png" alt="Heart Project logo">
 
 [The Heart Project][heart] provides
-a general-purpose add-on library
-for [the jMonkeyEngine (JME) game engine][jme].
+a general-purpose add-on library for
+[the jMonkeyEngine (JME) game engine][jme].
 
 It contains 3 sub-projects:
 
