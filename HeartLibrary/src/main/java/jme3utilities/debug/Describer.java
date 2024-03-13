@@ -118,7 +118,10 @@ public class Describer implements Cloneable {
     // constructors
 
     /**
-     * A no-arg constructor to avoid javadoc warnings from JDK 18.
+     * Instantiate a Describer with the default separator.
+     * <p>
+     * This no-arg constructor was made explicit to avoid javadoc warnings from
+     * JDK 18+.
      */
     public Describer() {
         // do nothing
