@@ -180,7 +180,8 @@ final public class MyControl {
             CameraControl.ControlDirection direction
                     = cameraControl.getControlDir();
             Camera camera = cameraControl.getCamera();
-            String quotedName = MyString.quoteName(camera.getName());
+            String name = (camera == null) ? null : camera.getName();
+            String quotedName = MyString.quoteName(name);
 
             result.append('[');
             result.append(direction);
