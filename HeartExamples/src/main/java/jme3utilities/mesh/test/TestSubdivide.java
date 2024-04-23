@@ -192,7 +192,6 @@ public class TestSubdivide extends AcorusDemo {
         mat.getAdditionalRenderState()
                 .setFaceCullMode(RenderState.FaceCullMode.Off);
         registerMaterial("wireframe", mat);
-
     }
 
     /**
