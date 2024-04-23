@@ -86,6 +86,13 @@ public class TestMergeMeshes extends AcorusDemo {
      */
     final private static String asOrbitRight = "orbit right";
     // *************************************************************************
+    // fields
+
+    /**
+     * dump debugging information to System.out
+     */
+    final private static Dumper dumper = new Dumper();
+    // *************************************************************************
     // constructors
 
     /**
@@ -264,7 +271,7 @@ public class TestMergeMeshes extends AcorusDemo {
         if (ongoing) {
             switch (actionString) {
                 case asDump:
-                    new Dumper().dump(renderManager);
+                    dumper.dump(renderManager);
                     return;
 
                 default:
