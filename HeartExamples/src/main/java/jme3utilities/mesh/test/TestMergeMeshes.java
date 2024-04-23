@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022-2023, Stephen Gold
+ Copyright (c) 2022-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -73,6 +73,18 @@ public class TestMergeMeshes extends AcorusDemo {
      */
     final private static String applicationName
             = TestMergeMeshes.class.getSimpleName();
+    /**
+     * action string to dump the main scene graph
+     */
+    final private static String asDump = "dump scene";
+    /**
+     * action string to orbit to the camera's left
+     */
+    final private static String asOrbitLeft = "orbit left";
+    /**
+     * action string to orbit to the camera's right
+     */
+    final private static String asOrbitRight = "orbit right";
     // *************************************************************************
     // new methods exposed
 
@@ -201,6 +213,7 @@ public class TestMergeMeshes extends AcorusDemo {
      * @param viewPortHeight (in pixels, &gt;0)
      * @return a new instance
      */
+    @Override
     public Rectangle detailedHelpBounds(int viewPortWidth, int viewPortHeight) {
         // Position help nodes along the top of the viewport.
         float margin = 10f; // in pixels
@@ -219,11 +232,12 @@ public class TestMergeMeshes extends AcorusDemo {
     @Override
     public void moreDefaultBindings() {
         InputMode dim = getDefaultInputMode();
-        dim.bind("dump render", KeyInput.KEY_P);
+
+        dim.bind(asDump, KeyInput.KEY_P);
         dim.bindSignal(CameraInput.FLYCAM_LOWER, KeyInput.KEY_DOWN);
         dim.bindSignal(CameraInput.FLYCAM_RISE, KeyInput.KEY_UP);
-        dim.bindSignal("orbitLeft", KeyInput.KEY_LEFT);
-        dim.bindSignal("orbitRight", KeyInput.KEY_RIGHT);
+        dim.bindSignal(asOrbitLeft, KeyInput.KEY_LEFT);
+        dim.bindSignal(asOrbitRight, KeyInput.KEY_RIGHT);
         dim.bind(asToggleHelp, KeyInput.KEY_H);
     }
 
@@ -238,9 +252,10 @@ public class TestMergeMeshes extends AcorusDemo {
     public void onAction(String actionString, boolean ongoing, float tpf) {
         if (ongoing) {
             switch (actionString) {
-                case "dump render":
+                case asDump:
                     new Dumper().dump(renderManager);
                     return;
+
                 default:
             }
         }
@@ -293,7 +308,7 @@ public class TestMergeMeshes extends AcorusDemo {
         cam.setLocation(new Vector3f(cameraX, 0f, cameraZ));
 
         CameraOrbitAppState orbitState
-                = new CameraOrbitAppState(cam, "orbitLeft", "orbitRight");
+                = new CameraOrbitAppState(cam, asOrbitLeft, asOrbitRight);
         stateManager.attach(orbitState);
     }
 }
