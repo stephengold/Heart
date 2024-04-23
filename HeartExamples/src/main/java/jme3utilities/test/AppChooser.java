@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022-2023, Stephen Gold
+ Copyright (c) 2022-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -48,6 +48,7 @@ import jme3utilities.mesh.test.TestMergeMeshes;
 import jme3utilities.mesh.test.TestRotate;
 import jme3utilities.mesh.test.TestSolidMeshes;
 import jme3utilities.mesh.test.TestSubdivide;
+import jme3utilities.mesh.test.TrianglesToLines;
 import jme3utilities.ui.AcorusDemo;
 import jme3utilities.ui.Combo;
 import jme3utilities.ui.InputMode;
@@ -80,7 +81,8 @@ final class AppChooser extends AcorusDemo {
         TestSkeletonVisualizer.class,
         TestSolidMeshes.class,
         TestSubdivide.class,
-        TestWireframe.class
+        TestWireframe.class,
+        TrianglesToLines.class
     };
     /**
      * message logger for this class

@@ -259,6 +259,10 @@ The following apps are found in the HeartExamples sub-project:
 
 ### TestWireframe
 
+### TrianglesToLines
+
+This app demonstrates conversion of a triangle mesh to a line mesh.
+
 [Jump to the table of contents](#toc)
 
 
