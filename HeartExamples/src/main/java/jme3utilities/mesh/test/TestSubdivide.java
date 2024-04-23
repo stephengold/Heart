@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022-2023, Stephen Gold
+ Copyright (c) 2022-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -117,6 +117,17 @@ public class TestSubdivide extends AcorusDemo {
      * original edge lengths divided by displayed edge lengths (&ge;1)
      */
     private static int ratio = 2;
+    // *************************************************************************
+    // constructors
+
+    /**
+     * Instantiate the TestSubdivide application.
+     * <p>
+     * This no-arg constructor was made explicit to avoid javadoc warnings from
+     * JDK 18+.
+     */
+    public TestSubdivide() {
+    }
     // *************************************************************************
     // new methods exposed
 

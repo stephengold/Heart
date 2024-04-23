@@ -87,6 +87,17 @@ public class TrianglesToLines extends AcorusDemo {
      */
     final private static Dumper dumper = new Dumper();
     // *************************************************************************
+    // constructors
+
+    /**
+     * Instantiate the TrianglesToLines application.
+     * <p>
+     * This no-arg constructor was made explicit to avoid javadoc warnings from
+     * JDK 18+.
+     */
+    public TrianglesToLines() {
+    }
+    // *************************************************************************
     // new methods exposed
 
     /**

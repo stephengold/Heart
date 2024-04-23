@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2023, Stephen Gold
+ Copyright (c) 2020-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -121,6 +121,17 @@ public class TestSolidMeshes extends AcorusDemo {
      * name of the material that's currently applied (or about to be applied)
      */
     private static String materialName = materialNames[1];
+    // *************************************************************************
+    // constructors
+
+    /**
+     * Instantiate the TestSolidMeshes application.
+     * <p>
+     * This no-arg constructor was made explicit to avoid javadoc warnings from
+     * JDK 18+.
+     */
+    public TestSolidMeshes() {
+    }
     // *************************************************************************
     // new methods exposed
 

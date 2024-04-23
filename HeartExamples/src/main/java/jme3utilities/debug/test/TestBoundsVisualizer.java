@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2023, Stephen Gold
+ Copyright (c) 2020-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -87,6 +87,17 @@ public class TestBoundsVisualizer extends AcorusDemo {
      * dump debugging information to System.out
      */
     final private static Dumper dumper = new Dumper();
+    // *************************************************************************
+    // constructors
+
+    /**
+     * Instantiate the TestBoundsVisualizer application.
+     * <p>
+     * This no-arg constructor was made explicit to avoid javadoc warnings from
+     * JDK 18+.
+     */
+    public TestBoundsVisualizer() {
+    }
     // *************************************************************************
     // new methods exposed
 

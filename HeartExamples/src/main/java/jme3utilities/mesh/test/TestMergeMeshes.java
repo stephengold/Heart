@@ -86,6 +86,17 @@ public class TestMergeMeshes extends AcorusDemo {
      */
     final private static String asOrbitRight = "orbit right";
     // *************************************************************************
+    // constructors
+
+    /**
+     * Instantiate the TestMergeMeshes application.
+     * <p>
+     * This no-arg constructor was made explicit to avoid javadoc warnings from
+     * JDK 18+.
+     */
+    public TestMergeMeshes() {
+    }
+    // *************************************************************************
     // new methods exposed
 
     /**
