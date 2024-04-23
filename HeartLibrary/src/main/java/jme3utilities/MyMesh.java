@@ -1501,6 +1501,48 @@ final public class MyMesh {
     }
 
     /**
+     * Convert IndexBuffer triangles to lines.
+     *
+     * @param indexList the IndexBuffer to convert (not null, size a multiple of
+     * 3, unaffected)
+     * @param numVertices the number of vertices in the mesh (&gt;0)
+     * @return a new buffer
+     */
+    public static IndexBuffer trianglesToLines(
+            IndexBuffer indexList, int numVertices) {
+        Validate.nonNull(indexList, "index list");
+        Validate.require(
+                (indexList.size() % MyMesh.vpt) == 0, "size a multiple of 3");
+        Validate.positive(numVertices, "number of vertices");
+
+        int numTriangles = indexList.size() / MyMesh.vpt;
+        Set<IntPair> edgeSet = new HashSet<>(MyMesh.vpt * numTriangles);
+        for (int triIndex = 0; triIndex < numTriangles; ++triIndex) {
+            int intOffset = MyMesh.vpt * triIndex;
+            int ti0 = indexList.get(intOffset);
+            int ti1 = indexList.get(intOffset + 1);
+            int ti2 = indexList.get(intOffset + 2);
+
+            edgeSet.add(new IntPair(ti0, ti1));
+            edgeSet.add(new IntPair(ti0, ti2));
+            edgeSet.add(new IntPair(ti1, ti2));
+        }
+        int numEdges = edgeSet.size();
+        int numIndices = MyMesh.vpe * numEdges;
+
+        IndexBuffer result
+                = IndexBuffer.createIndexBuffer(numVertices, numIndices);
+        for (IntPair edge : edgeSet) {
+            result.put(edge.smaller());
+            result.put(edge.larger());
+        }
+        Buffer ibData = result.getBuffer();
+        ibData.flip();
+
+        return result;
+    }
+
+    /**
      * Convert mesh triangles to lines.
      *
      * @param mesh the Mesh to modify (not null,
@@ -1511,32 +1553,13 @@ final public class MyMesh {
         Validate.require(hasTriangles(mesh), "contain triangles");
 
         IndexBuffer indexList = mesh.getIndicesAsList();
-        int numTriangles = indexList.size() / vpt;
-        Set<IntPair> edgeSet = new HashSet<>(vpt * numTriangles);
-        for (int triIndex = 0; triIndex < numTriangles; ++triIndex) {
-            int intOffset = vpt * triIndex;
-            int ti0 = indexList.get(intOffset);
-            int ti1 = indexList.get(intOffset + 1);
-            int ti2 = indexList.get(intOffset + 2);
-
-            edgeSet.add(new IntPair(ti0, ti1));
-            edgeSet.add(new IntPair(ti0, ti2));
-            edgeSet.add(new IntPair(ti1, ti2));
-        }
-        int numEdges = edgeSet.size();
-        int numIndices = vpe * numEdges;
         int numVertices = mesh.getVertexCount();
+        IndexBuffer ib = trianglesToLines(indexList, numVertices);
 
         mesh.clearBuffer(VertexBuffer.Type.Index);
 
-        IndexBuffer ib = IndexBuffer.createIndexBuffer(numVertices, numIndices);
-        for (IntPair edge : edgeSet) {
-            ib.put(edge.smaller());
-            ib.put(edge.larger());
-        }
         VertexBuffer.Format ibFormat = ib.getFormat();
         Buffer ibData = ib.getBuffer();
-        ibData.flip();
         mesh.setBuffer(VertexBuffer.Type.Index, vpe, ibFormat, ibData);
 
         mesh.setMode(Mesh.Mode.Lines);
