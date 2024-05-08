@@ -81,7 +81,7 @@ final public class MyMath {
     // new methods exposed
 
     /**
-     * Return the area of the specified triangle.
+     * Return the (one-sided) area of the specified triangle.
      *
      * @param triangle (not null, unaffected)
      * @return the area (&ge;0)
