@@ -3,7 +3,7 @@
 //   of the root project.
 
 plugins {
-    id 'application'
+    id 'application' // to build JVM applications
 }
 
 tasks.withType(JavaCompile).configureEach { // Java compile-time options:
