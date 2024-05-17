@@ -241,7 +241,14 @@ The source code and pre-built libraries are compatible with JDK 8.
 
 Applications have been created to test and demonstrate
 certain features of Heart.
-The following apps are found in the HeartExamples subproject:
+
+These can be run from the menu-driven AppChooser app:
++ using Bash or Fish or PowerShell or Zsh: `./gradlew AppChooser`
++ using Windows Command Prompt: `.\gradlew AppChooser`
+
+You can also run specific apps from a command prompt:
++ using Bash or Fish or PowerShell or Zsh: `./gradlew :HeartExamples:LoopMeshTest`
++ using Windows Command Prompt: `.\gradlew :HeartExamples:LoopMeshTest`
 
 ### LoopMeshTest
 
