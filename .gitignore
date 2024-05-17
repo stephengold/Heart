@@ -1,10 +1,6 @@
 # Ignore Gradle's project-specific cache directory:
 /.gradle/
 
-# Ignore IDE-specific directories:
-/.idea/
-/.nb-gradle/
-
 # Ignore Gradle's build output directories:
 /HeartAssets/build/
 /HeartExamples/build/
@@ -13,3 +9,7 @@
 
 # Ignore the Acorus sandbox:
 /HeartExamples/Written Assets/
+
+# Ignore IDE-specific directories:
+/.idea/
+/.nb-gradle/
