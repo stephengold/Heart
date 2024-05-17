@@ -63,9 +63,9 @@ import jme3utilities.ui.CameraOrbitAppState;
 import jme3utilities.ui.InputMode;
 
 /**
- * Test the Cone, DomeMesh, Icosahedron, Icosphere, Octahedron, Prism, and
- * Tetrahedron classes. Also test the MyMesh.reverseNormals() and
- * MyMesh.reverseWinding() methods.
+ * Test the Cone, Dodecahedron, DomeMesh, Icosahedron, Icosphere, Octahedron,
+ * Octasphere, Prism, and Tetrahedron classes. Also test the
+ * MyMesh.reverseNormals() and MyMesh.reverseWinding() methods.
  *
  * @author Stephen Gold sgold@sonic.net
  */
