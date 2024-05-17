@@ -4,7 +4,7 @@
 a general-purpose add-on library for
 [the jMonkeyEngine (JME) game engine][jme].
 
-It contains 3 sub-projects:
+It contains 3 subprojects:
 
 1. HeartLibrary: the Heart [JVM] runtime library and its automated tests
 2. HeartExamples: demos, examples, and non-automated test software
@@ -243,7 +243,7 @@ The source code and pre-built libraries are compatible with JDK 8.
 
 Applications have been created to test and demonstrate
 certain features of Heart.
-The following apps are found in the HeartExamples sub-project:
+The following apps are found in the HeartExamples subproject:
 
 ### TestBoundsVisualizer
 
@@ -285,7 +285,7 @@ The evolution of this project is chronicled in
 
 The oldest parts of the Heart Library were originally included in [SkyControl].
 
-From May 2017 to February 2020, Heart was a sub-project of
+From May 2017 to February 2020, Heart was a subproject of
 [the Jme3-utilities Project][utilities].
 
 Since February 2020, Heart has been a separate project, hosted at
