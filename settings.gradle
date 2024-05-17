@@ -1,6 +1,4 @@
-/*
- * settings.gradle: global settings shared by all Heart subprojects
- */
+// settings.gradle: global settings shared by all Heart subprojects
 
 dependencyResolutionManagement {
     repositories {
