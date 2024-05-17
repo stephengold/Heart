@@ -239,29 +239,92 @@ The source code and pre-built libraries are compatible with JDK 8.
 
 ## An overview of the example applications
 
-(This section is under construction.)
-
 Applications have been created to test and demonstrate
 certain features of Heart.
 The following apps are found in the HeartExamples subproject:
 
-### TestBoundsVisualizer
-
-### TestSkeletonVisualizer
-
 ### LoopMeshTest
 
-### TestSolidMeshes
+This app demonstrates constructing a regular polygon
+using the `LoopMesh` class.
 
-### TestMergeMeshes
+### TestBoundsVisualizer
+
+This app demonstrates visualizing the bounding volume of a geometry
+using a `BoundsVisualizer`.
+
+Pressing the "B" key
+toggles the bounding volume between a sphere and an axis-aligned box.
 
 ### TestContrast
 
+This app demonstrates changing the contrast of a rendered scene
+using a `ContrastAdjustmentFilter`.
+
++ Pressing the NUMPAD4 key reduces the exponent of the filter.
++ Pressing the NUMPAD6 key increases the exponent.
+
+### TestGenerator
+
+This app demonstrates generating pseudo-random vectors and rotations
+using a `Generator`.
+
+### TestMergeMeshes
+
+This app demonstrates translating, indexing, and merging meshes
+using the `MyMesh` utility class.
+
+### TestMulticolor
+
+This app demonstrates visualizing a mesh with vertex colors
+using the "multicolor.j3md" material definitions.
+
+### TestPas
+
+This app demonstrates monitoring the maximum time per frame
+using a `PerformanceAppState`.
+
+### TestRotate
+
+This app demonstrates rotation of mesh vertices
+using the `MyMesh.rotate()` utility method.
+
+Pressing the Enter key rotates both meshes
+to a new, pseudo-randomly chosen orientation.
+
+### TestSkeletonVisualizer
+
+This app demonstrates visualizing the skeleton of an animated model
+using `SkeletonVisualizer`.
+
+Pressing the "." key toggles the animation between paused and running.
+
+### TestSolidMeshes
+
+This app demonstrates procedurally generating meshes
+using the `Cone`, `Dodecahedron`, `DomeMesh`, `Icosahedron`, `Icosphere`,
+`Octahedron`, `Octasphere`, `Prism`, and `Tetrahedron` classes.
+
+Pressing the "N" key cycles through 6 different test materials.
+
+### TestSubdivide
+
+This app demonstration subdividing a mesh
+using the `MyMesh.subdivideTriangles()` utility method.
+
++ Pressing the Tab key toggles between textured and wireframe materials.
++ Pressing the NUMPAD4 key reduces the number of subdivisions.
++ Pressing the NUMPAD6 key increases the number of subdivisions.
+
 ### TestWireframe
+
+This app demonstrates visualizing a mesh as a wireframe
+using the `MyAsset.createWireframeMaterial()` utility method.
 
 ### TrianglesToLines
 
-This app demonstrates conversion of a triangle mesh to a line mesh.
+This app demonstrates converting a triangle mesh to a line mesh
+using the `MyMesh.trianglesToLines()` utility method.
 
 [Jump to the table of contents](#toc)
 
