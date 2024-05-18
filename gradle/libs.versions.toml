@@ -1,10 +1,12 @@
 ## TOML version catalog for the Heart project
 
 [versions]
+
 checkstyle = "9.3"
 jme = "3.7.0-beta1"
 
 [libraries]
+
 acorus = { module = "com.github.stephengold:Acorus", version = "2.0.0" }
 commons-exec = { module = "org.apache.commons:commons-exec", version = "1.3" }
 jme3-core = { module = "org.jmonkeyengine:jme3-core", version.ref = "jme" }
@@ -15,5 +17,7 @@ jme3-lwjgl3 = { module = "org.jmonkeyengine:jme3-lwjgl3", version.ref = "jme" }
 jme3-plugins = { module = "org.jmonkeyengine:jme3-plugins", version.ref = "jme" }
 jme3-testdata = { module = "org.jmonkeyengine:jme3-testdata", version.ref = "jme" }
 junit = { module = "junit:junit", version = "4.13.2" }
+
+[bundles]
 
 [plugins]
