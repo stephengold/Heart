@@ -19,11 +19,11 @@ ext {
 }
 
 dependencies {
-    api 'org.jmonkeyengine:jme3-core:' + jme3Version
+    api(libs.jme3.core)
 
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.jmonkeyengine:jme3-desktop:' + jme3Version
-    testRuntimeOnly 'org.jmonkeyengine:jme3-testdata:' + jme3Version
+    testImplementation(libs.junit)
+    testImplementation(libs.jme3.desktop)
+    testImplementation(libs.jme3.testdata)
 }
 
 // Register publishing tasks:

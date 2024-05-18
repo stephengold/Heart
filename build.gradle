@@ -7,9 +7,6 @@ plugins {
 ext {
     jmeTarget = '' // distinguish non-JME libraries built for specific JME releases
 
-    // current version of the JMonkeyEngine libraries:
-    jme3Version = '3.7.0-beta1'
-
     heartSnapshot = '-SNAPSHOT' // for development builds
     //heartSnapshot = '' // for release builds
     heartVersion = '9.0.1' + jmeTarget

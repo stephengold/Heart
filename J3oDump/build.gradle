@@ -24,8 +24,8 @@ tasks.register('j3odump', JavaExec) {
 }
 
 dependencies {
-    implementation 'org.jmonkeyengine:jme3-desktop:' + jme3Version
-    implementation 'org.jmonkeyengine:jme3-plugins:' + jme3Version
+    implementation(libs.jme3.desktop)
+    implementation(libs.jme3.plugins)
 
     //implementation 'com.github.stephengold:Heart:' + heartVersion // for published library
     implementation project(':HeartLibrary') // for latest sourcecode
