@@ -1,4 +1,4 @@
-// settings.gradle: global settings shared by all Heart subprojects
+// global build settings shared by all Heart subprojects
 
 rootProject.name = 'Heart'
 
