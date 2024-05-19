@@ -47,17 +47,11 @@ jar {
         attributes 'Created-By': "${JavaVersion.current()} (${System.getProperty("java.vendor")})"
     }
 }
-tasks.register('javadocJar', Jar) {
-    archiveBaseName = project.ext.baseName
-    archiveClassifier = 'javadoc'
-    dependsOn 'javadoc'
-    description 'Creates a JAR of javadoc.'
-    from javadoc.destinationDir
-}
+java.withJavadocJar()
 tasks.register('sourcesJar', Jar) {
     archiveBaseName = project.ext.baseName
     archiveClassifier = 'sources'
-    description 'Creates a JAR of sourcecode.'
+    description 'Creates a JAR of Java sourcecode.'
     from sourceSets.main.allJava // default is ".allSource", which includes resources
 }
 
@@ -94,7 +88,6 @@ tasks.register('pomAsc', Copy) {
 publishing {
     publications {
         maven(MavenPublication) {
-            artifact javadocJar
             artifact sourcesJar
             artifactId artifact
             from components.java
