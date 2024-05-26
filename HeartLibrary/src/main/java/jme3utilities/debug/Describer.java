@@ -880,9 +880,12 @@ public class Describer implements Cloneable {
             result.append(key);
             result.append('=');
             Object value = spatial.getUserData(key);
-            String valueString = MyString.escape(value.toString());
-            if (value instanceof String) {
-                valueString = MyString.quote(valueString);
+
+            String valueString;
+            if (value == null || value instanceof String) {
+                valueString = MyString.quote((String) value);
+            } else {
+                valueString = value.toString();
             }
             result.append(valueString);
         }
