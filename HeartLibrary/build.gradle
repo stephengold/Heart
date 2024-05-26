@@ -14,7 +14,7 @@ ext {
     group = 'com.github.stephengold'
     artifact = 'Heart'
     version = heartVersion
-    baseName = "${artifact}-${version}${heartSnapshot}" // for artifacts
+    baseName = "${artifact}-${version}" // for artifacts
     websiteUrl = 'https://github.com/stephengold/Heart'
 }
 
@@ -116,7 +116,7 @@ publishing {
                 }
                 url = project.ext.websiteUrl
             }
-            version project.ext.version + rootProject.ext.heartSnapshot
+            version project.ext.version
         }
     }
     // Staging to OSSRH relies on the existence of 2 properties
