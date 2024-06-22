@@ -121,7 +121,7 @@ public class TestSolidMeshes extends AcorusDemo {
     /**
      * name of the material that's currently applied (or about to be applied)
      */
-    private static String materialName = materialNames[1];
+    private static String materialName = materialNames[3];
     // *************************************************************************
     // constructors
 
