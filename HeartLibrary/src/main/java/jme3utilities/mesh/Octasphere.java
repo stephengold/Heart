@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2023, Stephen Gold
+ Copyright (c) 2020-2024 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -249,7 +249,7 @@ public class Octasphere extends Mesh {
         //
         assert locations.size() == uOverrides.size();
         midpointCache.clear();
-        assert faces.size() == 3 << (3 + 2 * numRefineSteps);
+        assert faces.size() == vpt << (3 + 2 * numRefineSteps);
 
         int numVertices = locations.size();
         int numFloats = numAxes * numVertices;
