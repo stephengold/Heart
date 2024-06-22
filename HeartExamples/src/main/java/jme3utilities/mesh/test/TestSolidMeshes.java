@@ -49,6 +49,7 @@ import jme3utilities.MyMesh;
 import jme3utilities.MySpatial;
 import jme3utilities.MyString;
 import jme3utilities.debug.Dumper;
+import jme3utilities.mesh.CapsuleMesh;
 import jme3utilities.mesh.Cone;
 import jme3utilities.mesh.Dodecahedron;
 import jme3utilities.mesh.DomeMesh;
@@ -409,6 +410,11 @@ public class TestSolidMeshes extends AcorusDemo {
         geometry = new Geometry("rightTrianglePrism", mesh);
         rootNode.attachChild(geometry);
         geometry.move(4f, 0f, 0f);
+
+        mesh = new CapsuleMesh(refineSteps, radius, height);
+        geometry = new Geometry("capsule", mesh);
+        rootNode.attachChild(geometry);
+        geometry.move(4f, 3f, 0f);
 
         allGeometries
                 = MySpatial.listSpatials(rootNode, Geometry.class, null);
