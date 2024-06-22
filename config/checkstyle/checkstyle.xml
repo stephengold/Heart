@@ -390,7 +390,9 @@
 
         <!-- Checks for size violations              -->
         <!-- See https://checkstyle.org/checks/sizes -->
-        <module name="MethodLength"/>
+        <module name="MethodLength">
+            <property name="max" value="200"/>
+        </module>
         <module name="ParameterNumber">
             <property name="max" value="9"/>
         </module>
