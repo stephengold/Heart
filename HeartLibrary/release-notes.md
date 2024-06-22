@@ -1,5 +1,14 @@
 # release log for the Heart Library and related tests
 
+## Version 9.1.0 released on TBD
+
++ Bugfix:  `NullPointerException` thrown in `MyControl.describe()`
++ Bugfix:  string userdata is doubly escaped in scene-graph dumps
++ Added the `CapsuleMesh` class to the library.
++ Added the `trianglesToLines(IndexBuffer, int)` method to the `MyMesh` class.
++ Added the `TrianglesToLines` app to the examples.
++ Updated Gradle to v8.8
+
 ## Version 9.0.0 released on 13 February 2024
 
 + Simplified the `VectorSet` interface. (API change)

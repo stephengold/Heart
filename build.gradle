@@ -6,9 +6,9 @@ plugins {
 
 ext {
     jmeTarget = '' // distinguish non-JME libraries built for specific JME releases
-    heartSnapshot = '-SNAPSHOT' // for development builds
-    //heartSnapshot = '' // for release builds
-    heartVersion = '9.0.1' + jmeTarget + heartSnapshot
+    //heartSnapshot = '-SNAPSHOT' // for development builds
+    heartSnapshot = '' // for release builds
+    heartVersion = '9.1.0' + jmeTarget + heartSnapshot
 }
 
 subprojects {
