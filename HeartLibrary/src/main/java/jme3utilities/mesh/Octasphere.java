@@ -251,6 +251,7 @@ public class Octasphere extends Mesh {
         midpointCache.clear();
         assert faces.size() == vpt << (3 + 2 * numRefineSteps);
 
+        // Create and fill a position buffer for the mesh:
         int numVertices = locations.size();
         int numFloats = numAxes * numVertices;
         FloatBuffer posBuffer = BufferUtils.createFloatBuffer(numFloats);
@@ -260,6 +261,7 @@ public class Octasphere extends Mesh {
         posBuffer.flip();
         setBuffer(VertexBuffer.Type.Position, numAxes, posBuffer);
 
+        // Create an index buffer for the mesh:
         int numIndices = faces.size();
         IndexBuffer ib = IndexBuffer.createIndexBuffer(numVertices, numIndices);
         for (int vertexIndex : faces) {
