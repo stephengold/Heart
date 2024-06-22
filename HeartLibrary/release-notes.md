@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 9.1.0 released on TBD
+## Version 9.1.0 released on 22 June 2024
 
 + Bugfix:  `NullPointerException` thrown in `MyControl.describe()`
 + Bugfix:  string userdata is doubly escaped in scene-graph dumps
