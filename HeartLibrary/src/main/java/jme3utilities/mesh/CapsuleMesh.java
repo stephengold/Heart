@@ -274,7 +274,7 @@ public class CapsuleMesh extends Mesh {
         }
 
         // Sort the indices of vertices on the cylinder's +Y rim:
-        Integer northIndices[] = mapN2S.keySet().toArray(new Integer[0]);
+        Integer[] northIndices = mapN2S.keySet().toArray(new Integer[0]);
         Arrays.sort(northIndices, new Comparator<Integer>() {
             @Override
             public int compare(Integer vi1, Integer vi2) {
