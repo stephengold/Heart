@@ -257,8 +257,7 @@ final public class Heart {
     public static <T> T first(Collection<T> collection) {
         T result = null;
         if (!collection.isEmpty()) {
-            int size = collection.size();
-            Object[] members = collection.toArray(new Object[size]);
+            Object[] members = collection.toArray(new Object[0]);
             result = (T) members[0];
         }
 

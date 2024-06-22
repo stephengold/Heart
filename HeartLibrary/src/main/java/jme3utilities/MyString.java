@@ -640,10 +640,7 @@ final public class MyString {
      * @return a new array containing the same strings in the same order
      */
     public static String[] toArray(Collection<String> collection) {
-        int count = collection.size();
-        String[] array = new String[count];
-        collection.toArray(array);
-
+        String[] array = collection.toArray(new String[0]);
         return array;
     }
 
