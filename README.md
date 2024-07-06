@@ -52,7 +52,8 @@ Many other libraries depend on the Heart Library, including
 + `Mesh` subclasses:
   + `Dodecahedron`, `Icosahedron`, `Octahedron`, and `Tetrahedron`
     to generate meshes for Platonic solids
-  + `Cone`, `DomeMesh`, `Icosphere`, `Octasphere`, and `Prism`
+  + `CapsuleMesh`, `Cone`, `DomeMesh`, `Icosphere`, `LoopMesh`, 
+    `Octasphere`, `PointMesh`, `Prism`, and `RectangleOutlineMesh`
     to generate familiar 3-D shapes
   + `RectangleMesh` to generate custom quads
   + `DiscMesh` and `RoundedRectangle` to generate eye-pleasing backgrounds
