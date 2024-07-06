@@ -103,7 +103,7 @@ Add to the project’s "build.gradle" file:
         mavenCentral()
     }
     dependencies {
-        implementation 'com.github.stephengold:Heart:9.1.0'
+        implementation("com.github.stephengold:Heart:9.1.0")
     }
 
 For some older versions of Gradle,
