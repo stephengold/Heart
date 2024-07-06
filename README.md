@@ -92,8 +92,8 @@ the standard "jme3-core" library from jMonkeyEngine.
 Adding Heart to an existing [jMonkeyEngine][jme] project should be
 a simple matter of adding this library to the classpath.
 
-For projects built using [Maven] or [Gradle], it is sufficient to add a
-dependency on the Heart Library.
+For projects built using [Maven] or [Gradle], it is sufficient to add
+a dependency on the Heart Library.
 The build tool should automatically resolve the remaining dependencies.
 
 ### Gradle-built projects
