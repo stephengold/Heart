@@ -407,7 +407,7 @@ correct the situation: sgold@sonic.net
 
 
 [acorus]: https://stephengold.github.io/Acorus "Acorus Project"
-[adoptium]: https://adoptium.net/releases.html "Adoptium Project"
+[adoptium]: https://adoptium.net/temurin/releases/ "Adoptium Project"
 [ant]: https://ant.apache.org "Apache Ant Project"
 [blender]: https://docs.blender.org "Blender Project"
 [checkstyle]: https://checkstyle.org "Checkstyle"
