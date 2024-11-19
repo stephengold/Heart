@@ -735,6 +735,26 @@ final public class MyAnimation {
     }
 
     /**
+     * Test whether the specified AnimTrack targets a Spatial.
+     *
+     * @param track the AnimTrack to test (may be null, unaffected)
+     * @return true if it targets a Spatial, otherwise false
+     */
+    public static boolean isSpatialTrack(AnimTrack<?> track) {
+        boolean result = false;
+
+        if (track instanceof TransformTrack) {
+            TransformTrack transformTrack = (TransformTrack) track;
+            HasLocalTransform target = transformTrack.getTarget();
+            if (target instanceof Spatial) {
+                result = true;
+            }
+        }
+
+        return result;
+    }
+
+    /**
      * Create a BoneTrack consisting of a single keyframe at t=0.
      *
      * @param boneIndex which Bone (&ge;0)
