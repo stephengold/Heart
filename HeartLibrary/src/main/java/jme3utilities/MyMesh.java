@@ -1451,6 +1451,48 @@ final public class MyMesh {
     }
 
     /**
+     * Transform the bind pose in the vertex buffers of the specified mesh.
+     *
+     * @param mesh the mesh to modify (not null)
+     * @param skinningMatrices the transforms to apply to each bone/joint (not
+     * null, unaffected)
+     */
+    public static void transformBindPose(
+            Mesh mesh, Matrix4f[] skinningMatrices) {
+        VertexBuffer bindPositions
+                = mesh.getBuffer(VertexBuffer.Type.BindPosePosition);
+        VertexBuffer bindNormals
+                = mesh.getBuffer(VertexBuffer.Type.BindPoseNormal);
+        VertexBuffer bindTangents
+                = mesh.getBuffer(VertexBuffer.Type.BindPoseTangent);
+
+        FloatBuffer bpFloats = (FloatBuffer) bindPositions.getData();
+        FloatBuffer bnFloats = (bindNormals == null) ? null
+                : (FloatBuffer) bindNormals.getData();
+        FloatBuffer btFloats = (bindTangents == null) ? null
+                : (FloatBuffer) bindTangents.getData();
+
+        Vector3f tmpVector = new Vector3f();
+        Vector4f tmpTangent = (btFloats == null) ? null : new Vector4f();
+
+        int numVertices = mesh.getVertexCount();
+        for (int vi = 0; vi < numVertices; ++vi) {
+            MyMesh.vertexLocation(mesh, vi, skinningMatrices, tmpVector);
+            MyBuffer.put(bpFloats, 3 * vi, tmpVector);
+
+            if (bnFloats != null) {
+                MyMesh.vertexNormal(mesh, vi, skinningMatrices, tmpVector);
+                MyBuffer.put(bnFloats, 3 * vi, tmpVector);
+            }
+
+            if (btFloats != null) {
+                MyMesh.vertexTangent(mesh, vi, skinningMatrices, tmpTangent);
+                MyBuffer.put(btFloats, 4 * vi, tmpTangent);
+            }
+        }
+    }
+
+    /**
      * Apply the specified coordinate transform to all data in the specified
      * VertexBuffer.
      *
