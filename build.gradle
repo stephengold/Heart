@@ -21,22 +21,22 @@ configurations.configureEach {
 
 tasks.register('AppChooser') {
     dependsOn ':HeartExamples:AppChooser'
-    description 'Runs the example apps.'
+    description = 'Runs the example apps.'
 }
 
 tasks.register('checkstyle') {
     dependsOn ':HeartExamples:checkstyleMain', ':HeartLibrary:checkstyleMain', \
         ':HeartLibrary:checkstyleTest', ':J3oDump:checkstyleMain'
-    description 'Checks the style of all Java sourcecode.'
+    description = 'Checks the style of all Java sourcecode.'
 }
 
 // Register publishing tasks:
 
 tasks.register('install') {
     dependsOn ':HeartLibrary:install'
-    description 'Installs Maven artifacts to the local repository.'
+    description = 'Installs Maven artifacts to the local repository.'
 }
 tasks.register('release') {
     dependsOn ':HeartLibrary:release'
-    description 'Stages Maven artifacts to Sonatype OSSRH.'
+    description = 'Stages Maven artifacts to Sonatype OSSRH.'
 }
