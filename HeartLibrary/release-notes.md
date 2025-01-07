@@ -1,5 +1,12 @@
 # release log for the Heart Library and related tests
 
+## Version 9.2.0 released on TBD
+
++ Added the `isSpatialTrack()` method to the `MyAnimation` class.
++ Added the `transformBindPose()` method to the `MyMesh` class.
++ Targeted jMonkeyEngine version 3.7.0-stable.
++ Updated Gradle to v8.12
+
 ## Version 9.1.0 released on 22 June 2024
 
 + Bugfix:  `NullPointerException` thrown in `MyControl.describe()`
