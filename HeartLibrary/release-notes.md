@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 9.2.0 released on TBD
+## Version 9.2.0 released on 7 January 2025
 
 + Added the `isSpatialTrack()` method to the `MyAnimation` class.
 + Added the `transformBindPose()` method to the `MyMesh` class.
