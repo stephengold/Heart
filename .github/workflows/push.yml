@@ -30,12 +30,23 @@ jobs:
 
   Java17-MacOS:
     if: contains(toJson(github.event.commits), '[ci skip] ') == false
-    runs-on: macOS-14
+    runs-on: macOS-13
     steps:
       - uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: 17
+      - uses: actions/checkout@v4
+      - run: ./gradlew build javadoc --console=plain --stacktrace
+
+  Java21-MacOS:
+    if: contains(toJson(github.event.commits), '[ci skip] ') == false
+    runs-on: macOS-14
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 21
       - uses: actions/checkout@v4
       - run: ./gradlew build javadoc --console=plain --stacktrace
 
