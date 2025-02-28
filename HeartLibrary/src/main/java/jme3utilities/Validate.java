@@ -58,8 +58,8 @@ final public class Validate {
     // fields
 
     /**
-     * If true, throw NullPointerException for null arguments. Otherwise, throw
-     * IllegalArgumentException.
+     * If {@code true}, throw {@code NullPointerException} for null arguments.
+     * Otherwise, throw {@code IllegalArgumentException}.
      */
     public static boolean throwNpe = true;
     // *************************************************************************
@@ -78,7 +78,7 @@ final public class Validate {
      *
      * @param iValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is outside the range [0, 2]
      */
     public static boolean axisIndex(int iValue, String description) {
@@ -91,7 +91,7 @@ final public class Validate {
      *
      * @param dValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is NaN or infinite
      */
     public static boolean finite(double dValue, String description) {
@@ -115,7 +115,7 @@ final public class Validate {
      *
      * @param fValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is NaN or infinite
      */
     public static boolean finite(float fValue, String description) {
@@ -139,7 +139,7 @@ final public class Validate {
      *
      * @param vector the vector to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the vector has a NaN or infinite
      * component
      * @throws NullPointerException or IllegalArgumentException if the vector is
@@ -168,7 +168,7 @@ final public class Validate {
      *
      * @param dValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is outside the range [0, 1]
      */
     public static boolean fraction(double dValue, String description) {
@@ -181,7 +181,7 @@ final public class Validate {
      *
      * @param fValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is outside the range [0, 1]
      */
     public static boolean fraction(float fValue, String description) {
@@ -196,7 +196,7 @@ final public class Validate {
      * @param description a description of the argument
      * @param min the smallest valid value (&le;max)
      * @param max the largest valid value (&ge;max)
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is outside the range
      */
     public static boolean inRange(
@@ -237,8 +237,9 @@ final public class Validate {
      * @param description a description of the argument
      * @param min the smallest valid value (&le;max)
      * @param max the largest valid value (&ge;max)
-     * @return true
-     * @throws IllegalArgumentException if the value is outside the range
+     * @return {@code true} (for use in {@code assert} statements)
+     * @throws IllegalArgumentException if the value is outside the range [min,
+     * max]
      */
     public static boolean inRange(
             float fValue, String description, float min, float max) {
@@ -272,13 +273,13 @@ final public class Validate {
     }
 
     /**
-     * Validate a limited integer as a method argument.
+     * Validate a limited integer value as a method argument.
      *
      * @param iValue the value to validate
      * @param description a description of the argument
      * @param min the smallest valid value (&le;max)
      * @param max the largest valid value (&ge;max)
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is outside the range [min,
      * max]
      * <p>
@@ -320,7 +321,7 @@ final public class Validate {
      *
      * @param collection the collection to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws NullPointerException or IllegalArgumentException if the
      * collection is null
      * @throws IllegalArgumentException if the collection is empty
@@ -347,7 +348,7 @@ final public class Validate {
      *
      * @param array the array to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws NullPointerException or IllegalArgumentException if the array is
      * null
      * @throws IllegalArgumentException if the array has zero length
@@ -374,7 +375,7 @@ final public class Validate {
      *
      * @param array the array to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws NullPointerException or IllegalArgumentException if the array is
      * null
      * @throws IllegalArgumentException if the array has zero length
@@ -401,7 +402,7 @@ final public class Validate {
      *
      * @param array the array to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws NullPointerException or IllegalArgumentException if the array is
      * null
      * @throws IllegalArgumentException if the array has zero length
@@ -428,7 +429,7 @@ final public class Validate {
      *
      * @param string the String to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws NullPointerException or IllegalArgumentException if the String is
      * null
      * @throws IllegalArgumentException if the String has zero length
@@ -455,7 +456,7 @@ final public class Validate {
      *
      * @param dValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is negative or NaN
      */
     public static boolean nonNegative(double dValue, String description) {
@@ -479,7 +480,7 @@ final public class Validate {
      *
      * @param fValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is negative or NaN
      */
     public static boolean nonNegative(float fValue, String description) {
@@ -499,11 +500,11 @@ final public class Validate {
     }
 
     /**
-     * Validate a non-negative integer as a method argument.
+     * Validate a non-negative integer value as a method argument.
      *
      * @param iValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is negative
      */
     public static boolean nonNegative(int iValue, String description) {
@@ -527,7 +528,7 @@ final public class Validate {
      *
      * @param vector the vector to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the vector has a negative or NaN
      * component
      * @throws NullPointerException or IllegalArgumentException if the vector is
@@ -556,7 +557,7 @@ final public class Validate {
      *
      * @param vector the vector to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the vector has a negative or NaN
      * component
      * @throws NullPointerException or IllegalArgumentException if the vector is
@@ -594,7 +595,7 @@ final public class Validate {
      *
      * @param object the reference to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws NullPointerException or IllegalArgumentException if the reference
      * is null
      */
@@ -628,7 +629,7 @@ final public class Validate {
      *
      * @param array the array to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws NullPointerException or IllegalArgumentException if the array is
      * null or contains a null element
      */
@@ -661,7 +662,7 @@ final public class Validate {
      *
      * @param fValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is zero
      */
     public static boolean nonZero(float fValue, String description) {
@@ -684,7 +685,7 @@ final public class Validate {
      *
      * @param iValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is zero
      */
     public static boolean nonZero(int iValue, String description) {
@@ -707,7 +708,7 @@ final public class Validate {
      *
      * @param lValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is zero
      */
     public static boolean nonZero(long lValue, String description) {
@@ -730,7 +731,7 @@ final public class Validate {
      *
      * @param quaternion the Quaternion to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the Quaternion equals (0,0,0,0)
      * @throws NullPointerException or IllegalArgumentException if the
      * Quaternion is null
@@ -757,7 +758,7 @@ final public class Validate {
      *
      * @param vector the vector to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the vector equals (0,0)
      * @throws NullPointerException or IllegalArgumentException if the vector is
      * null
@@ -784,7 +785,7 @@ final public class Validate {
      *
      * @param vector the vector to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the vector equals (0,0,0)
      * @throws NullPointerException or IllegalArgumentException if the vector is
      * null
@@ -811,7 +812,7 @@ final public class Validate {
      *
      * @param dValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is NaN
      */
     public static boolean number(double dValue, String description) {
@@ -835,7 +836,7 @@ final public class Validate {
      *
      * @param fValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is NaN
      */
     public static boolean number(float fValue, String description) {
@@ -859,7 +860,7 @@ final public class Validate {
      *
      * @param dValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is not positive
      */
     public static boolean positive(double dValue, String description) {
@@ -883,8 +884,8 @@ final public class Validate {
      *
      * @param fValue the value to validate
      * @param description a description of the argument
-     * @return true
-     * @throws IllegalArgumentException if the value is not positive
+     * @return {@code true} (for use in {@code assert} statements)
+     * @throws IllegalArgumentException if the value is negative or zero or NaN
      */
     public static boolean positive(float fValue, String description) {
         if (!(fValue > 0f)) {
@@ -907,7 +908,7 @@ final public class Validate {
      *
      * @param iValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is negative or zero
      */
     public static boolean positive(int iValue, String description) {
@@ -931,7 +932,7 @@ final public class Validate {
      *
      * @param vector the vector to validate (unaffected)
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if any component is not positive
      * @throws NullPointerException or IllegalArgumentException if the vector is
      * null
@@ -960,7 +961,7 @@ final public class Validate {
      *
      * @param value the value of the expression (required to be true)
      * @param what a description of the requirement
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is false
      */
     public static boolean require(boolean value, String what) {
@@ -982,7 +983,7 @@ final public class Validate {
      *
      * @param fValue the value to validate
      * @param description a description of the argument
-     * @return true
+     * @return {@code true} (for use in {@code assert} statements)
      * @throws IllegalArgumentException if the value is outside the range [-PI,
      * PI]
      */
