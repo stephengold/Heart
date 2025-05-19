@@ -1,4 +1,4 @@
-// Gradle script to build the Heart project
+// Gradle script to build and run the Heart project
 
 plugins {
     id 'base' // to add a "clean" task to the root project
