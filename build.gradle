@@ -34,9 +34,9 @@ tasks.register('checkstyle') {
 
 tasks.register('install') {
     dependsOn ':HeartLibrary:install'
-    description = 'Installs Maven artifacts to the local repository.'
+    description = 'Installs the Maven artifacts to the local repository.'
 }
 tasks.register('release') {
     dependsOn ':HeartLibrary:release'
-    description = 'Stages Maven artifacts to Sonatype OSSRH.'
+    description = 'Stages the Maven artifacts to the Central Publisher Portal.'
 }
