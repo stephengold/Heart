@@ -64,7 +64,7 @@ tasks.register('cleanSOs', Delete) { // extracted Linux and Android native libra
     delete fileTree(dir: '.', include: '*.so')
 }
 
-// Register tasks to run specific applications:
+// Register tasks to run specific test applications:
 
 tasks.register('AppChooser', JavaExec) {
     mainClass = 'jme3utilities.test.AppChooser'
