@@ -8,7 +8,7 @@ jme = "3.8.1-stable"
 [libraries]
 
 acorus = "com.github.stephengold:Acorus:2.0.2"
-commons-exec = "org.apache.commons:commons-exec:1.4.0"
+commons-exec = "org.apache.commons:commons-exec:1.5.0"
 jme3-core = { module = "org.jmonkeyengine:jme3-core", version.ref = "jme" }
 jme3-desktop = { module = "org.jmonkeyengine:jme3-desktop", version.ref = "jme" }
 jme3-effects = { module = "org.jmonkeyengine:jme3-effects", version.ref = "jme" }
