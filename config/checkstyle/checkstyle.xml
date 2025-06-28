@@ -224,15 +224,15 @@
         </module>
         <module name="LocalFinalVariableName"/>
         <module name="LocalVariableName">
-            <property name="format" value="^[a-z][a-zA-Z0-9]{0,19}$"/>
+            <property name="format" value="^[a-z][0-9A-Za-z]{0,19}$"/>
             <message key="name.invalidPattern" value="Local variable name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="MemberName">
-            <property name="format" value="^[a-z][a-zA-Z0-9]{0,19}$"/>
+            <property name="format" value="^[a-z][0-9A-Za-z]{0,19}$"/>
             <message key="name.invalidPattern" value="Member name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="MethodName">
-            <property name="format" value="^[a-z][a-zA-Z0-9]{0,26}$"/>
+            <property name="format" value="^[a-z][0-9A-Za-z]{0,26}$"/>
             <message key="name.invalidPattern" value="Method name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="MethodTypeParameterName">
@@ -244,7 +244,7 @@
             <message key="name.invalidPattern" value="Package name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="ParameterName">
-            <property name="format" value="^[a-z][a-zA-Z0-9]{0,19}$"/>
+            <property name="format" value="^[a-z][0-9A-Za-z]{0,19}$"/>
             <message key="name.invalidPattern" value="Parameter name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="PatternVariableName">
