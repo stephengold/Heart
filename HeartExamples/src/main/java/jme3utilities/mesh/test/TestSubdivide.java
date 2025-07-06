@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022-2024 Stephen Gold
+ Copyright (c) 2022-2025 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -310,6 +310,9 @@ public class TestSubdivide extends AcorusDemo {
         //dumper.setDumpVertex(true);
     }
 
+    /**
+     * Rebuild the mesh after a change to {@code ratio} or {@code wireframe}.
+     */
     private void updateMeshes() {
         String materialName = wireframe ? "wireframe" : "shaded texture";
         Material material = findMaterial(materialName);
