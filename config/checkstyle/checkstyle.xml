@@ -218,7 +218,7 @@
             <message key="name.invalidPattern" value="Interface type name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="LambdaParameterName">
-            <property name="format" value="^[a-z]{0,9}$"/>
+            <property name="format" value="^[a-z]{1,9}$"/>
             <message key="name.invalidPattern" value="Lambda parameter name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="LocalFinalVariableName"/>
@@ -239,7 +239,7 @@
             <message key="name.invalidPattern" value="Method type name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="PackageName">
-            <property name="format" value="^[a-z][a-z3.]*[a-z]$"/>
+            <property name="format" value="^[a-z][.3a-z]*[a-z]$"/>
             <message key="name.invalidPattern" value="Package name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="ParameterName">
