@@ -21,9 +21,9 @@ ext {
 dependencies {
     api(libs.jme3.core)
 
-    testImplementation(libs.junit4)
     testImplementation(libs.jme3.desktop)
     testImplementation(libs.jme3.testdata)
+    testImplementation(libs.junit4)
 }
 
 // Register publishing tasks:
