@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2024 Stephen Gold
+ Copyright (c) 2014-2025 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -618,6 +618,7 @@ final public class MyAnimation {
      * @return a new array or null
      * @deprecated use {@link #copyScales(com.jme3.animation.Track)}
      */
+    @Deprecated
     public static Vector3f[] getScales(Track track) {
         Vector3f[] result = copyScales(track);
         return result;
@@ -690,6 +691,7 @@ final public class MyAnimation {
      * @return a new array or null
      * @deprecated use {@link #copyTranslations(com.jme3.animation.Track)}
      */
+    @Deprecated
     public static Vector3f[] getTranslations(Track track) {
         Vector3f[] result = copyTranslations(track);
         return result;
