@@ -273,6 +273,7 @@ final class AppChooser extends AcorusDemo {
      *
      * @param tpf the time interval between frames (in seconds, &ge;0)
      */
+    @Override
     public void simpleUpdate(float tpf) {
         super.simpleUpdate(tpf);
         updateMenuOverlay();
