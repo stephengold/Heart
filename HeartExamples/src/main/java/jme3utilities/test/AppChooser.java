@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022-2024 Stephen Gold
+ Copyright (c) 2022-2025 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -124,7 +124,7 @@ final class AppChooser extends AcorusDemo {
     /**
      * environment variables passed to the executor
      */
-    private static Map<String, String> env = new TreeMap<>();
+    final private static Map<String, String> env = new TreeMap<>();
     /**
      * menu overlay, displayed in the upper-left corner of the GUI node
      */
