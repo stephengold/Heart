@@ -37,9 +37,7 @@
     <module name="FileLength">
         <property name="max" value="2200"/>
     </module>
-    <module name="LineLength">
-        <property name="fileExtensions" value="java"/>
-    </module>
+    <module name="LineLength"/>
 
     <!-- Checks for whitespace:                       -->
     <!-- See https://checkstyle.org/checks/whitespace -->
@@ -109,13 +107,13 @@
         <module name="EqualsHashCode"/>
         <module name="FallThrough"/>
         <module name="HiddenField">
-            <property name="tokens" value="VARIABLE_DEF"/>
+            <property name="tokens" value="VARIABLE_DEF, PATTERN_VARIABLE_DEF, LAMBDA, RECORD_COMPONENT_DEF"/>
         </module>
         <module name="IllegalCatch"/>
         <module name="IllegalInstantiation"/>
         <module name="IllegalThrows"/>
         <module name="IllegalToken">
-            <property name="tokens" value="LITERAL_NATIVE, POST_DEC, POST_INC, STATIC_IMPORT"/>
+            <property name="tokens" value="LITERAL_NATIVE, POST_DEC, POST_INC, STATIC_IMPORT, LABELED_STAT"/>
         </module>
         <module name="IllegalTokenText">
             <property name="format" value="\\u00(09|0(a|A)|0(c|C)|0(d|D)|22|27|5(C|c))|\\(0(10|11|12|14|15|42|47)|134)"/>
@@ -234,11 +232,11 @@
             <message key="name.invalidPattern" value="Local variable name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="MemberName">
-            <property name="format" value="^[a-z][0-9A-Za-z]{0,19}$"/>
+            <property name="format" value="^[a-z][0-9A-Za-z]{0,18}$"/>
             <message key="name.invalidPattern" value="Member name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="MethodName">
-            <property name="format" value="^[a-z][0-9A-Za-z]{0,26}$"/>
+            <property name="format" value="^[a-z][0-9A-Za-z]{0,25}$"/>
             <message key="name.invalidPattern" value="Method name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="MethodTypeParameterName">
@@ -250,7 +248,7 @@
             <message key="name.invalidPattern" value="Package name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="ParameterName">
-            <property name="format" value="^[a-z][0-9A-Za-z]{0,19}$"/>
+            <property name="format" value="^[a-z][0-9A-Za-z]{0,17}$"/>
             <message key="name.invalidPattern" value="Parameter name ''{0}'' must match pattern ''{1}''."/>
         </module>
         <module name="PatternVariableName">
@@ -306,7 +304,7 @@
             <message key="ws.preceded" value="GenericWhitespace ''{0}'' is preceded with whitespace."/>
         </module>
         <module name="MethodParamPad">
-            <property name="tokens" value="CTOR_DEF, LITERAL_NEW, METHOD_CALL, METHOD_DEF, SUPER_CTOR_CALL, ENUM_CONSTANT_DEF, RECORD_DEF"/>
+            <property name="tokens" value="CTOR_DEF, LITERAL_NEW, METHOD_CALL, METHOD_DEF, CTOR_CALL, SUPER_CTOR_CALL, ENUM_CONSTANT_DEF, RECORD_DEF, RECORD_PATTERN_DEF"/>
         </module>
         <module name="NoLineWrap">
             <property name="tokens" value="PACKAGE_DEF, IMPORT, STATIC_IMPORT"/>
