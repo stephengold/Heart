@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2023, Stephen Gold
+ Copyright (c) 2019-2025 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -652,7 +652,7 @@ final public class MyBuffer {
         if (buffer instanceof ByteBuffer) {
             ByteBuffer byteBuffer = (ByteBuffer) buffer;
             byte b = byteBuffer.get();
-            result = 0xff & b;
+            result = 0xFF & b;
 
         } else if (buffer instanceof IntBuffer) {
             IntBuffer intBuffer = (IntBuffer) buffer;
@@ -661,7 +661,7 @@ final public class MyBuffer {
         } else if (buffer instanceof ShortBuffer) {
             ShortBuffer shortBuffer = (ShortBuffer) buffer;
             short s = shortBuffer.get();
-            result = 0xffff & s;
+            result = 0xFFFF & s;
 
         } else {
             String message = buffer.getClass().getName();
