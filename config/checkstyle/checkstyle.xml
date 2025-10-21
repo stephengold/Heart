@@ -94,7 +94,11 @@
         <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>
         <module name="InterfaceIsType"/>
+        <module name="MutableException"/>
         <module name="OneTopLevelClass"/>
+        <module name="ThrowsCount">
+            <property name="max" value="1"/>
+        </module>
 
         <!-- Checks for common coding problems:       -->
         <!-- See https://checkstyle.org/checks/coding -->
@@ -121,6 +125,7 @@
             <property name="tokens" value="STRING_LITERAL, CHAR_LITERAL"/>
         </module>
         <module name="MissingSwitchDefault"/>
+        <module name="ModifiedControlVariable"/>
         <module name="MultipleVariableDeclarations"/>
         <module name="NoFinalizer"/>
         <module name="OneStatementPerLine"/>
@@ -186,6 +191,7 @@
         <module name="CommentsIndentation">
             <property name="tokens" value="SINGLE_LINE_COMMENT, BLOCK_COMMENT_BEGIN"/>
         </module>
+        <module name="HexLiteralCase"/>
         <module name="Indentation">
             <property name="arrayInitIndent" value="4"/>
             <property name="basicOffset" value="4"/>
