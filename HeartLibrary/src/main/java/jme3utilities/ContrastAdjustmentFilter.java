@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2023, Stephen Gold
+ Copyright (c) 2017-2025 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -106,7 +106,7 @@ public class ContrastAdjustmentFilter extends Filter {
      *
      * @param newExponent new value (&gt;0)
      */
-    public final void setExponent(float newExponent) {
+    final public void setExponent(float newExponent) {
         Validate.positive(newExponent, "exponent");
 
         if (material != null) {
