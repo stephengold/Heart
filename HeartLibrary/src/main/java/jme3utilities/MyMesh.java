@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017-2024 Stephen Gold
+ Copyright (c) 2017-2025 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -52,6 +52,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -220,6 +221,51 @@ final public class MyMesh {
         if (bpPosition != null) {
             generateSphereNormals(mesh, VertexBuffer.Type.BindPoseNormal,
                     VertexBuffer.Type.BindPosePosition);
+        }
+    }
+
+    /**
+     * Append transformed mesh triangles to a merged mesh.
+     *
+     * @param geometry the Geometry from which to read triangles (not null,
+     * unaffected)
+     * @param modelRoot the scene-graph subtree from which to extract triangles
+     * (not null, unaffected)
+     * @param addPositions the position buffer for the merged mesh (not null,
+     * modified)
+     * @param addIndices the index buffer for the merged mesh (not null,
+     * modified)
+     */
+    public static void appendTriangles(Geometry geometry, Spatial modelRoot,
+            FloatBuffer addPositions, IndexBuffer addIndices) {
+        Mesh jmeMesh = geometry.getMesh();
+        if (jmeMesh == null || !hasTriangles(jmeMesh)) {
+            return;
+        }
+        Validate.nonNull(addPositions, "addPositions");
+        Validate.nonNull(addIndices, "addIndices");
+
+        // Append merged-mesh indices to the IndexBuffer:
+        int indexBase = addPositions.position() / numAxes;
+        IndexBuffer indexBuffer = jmeMesh.getIndicesAsList();
+        int numIndices = indexBuffer.size();
+        for (int offset = 0; offset < numIndices; ++offset) {
+            int indexInGeometry = indexBuffer.get(offset);
+            int indexInMergedMesh = indexBase + indexInGeometry;
+            addIndices.put(indexInMergedMesh);
+        }
+
+        // Append transformed vertex locations to the FloatBuffer:
+        Transform transform = MySpatial.relativeTransform(geometry, modelRoot);
+        Vector3f tmpPosition = new Vector3f();
+        int numVertices = jmeMesh.getVertexCount();
+        for (int vertexIndex = 0; vertexIndex < numVertices; ++vertexIndex) {
+            MyMesh.vertexVector3f(jmeMesh, VertexBuffer.Type.Position,
+                    vertexIndex, tmpPosition);
+            MyMath.transform(transform, tmpPosition, tmpPosition);
+            addPositions.put(tmpPosition.x);
+            addPositions.put(tmpPosition.y);
+            addPositions.put(tmpPosition.z);
         }
     }
 
@@ -821,6 +867,76 @@ final public class MyMesh {
                 listVertexLocations(child, result);
             }
         }
+
+        return result;
+    }
+
+    /**
+     * Generate a mesh that merges the triangles of non-empty geometries that
+     * aren't tagged with {@code UserData.JME_PHYSICSIGNORE}.
+     *
+     * @param modelRoot the scene-graph subtree from which to generate the mesh
+     * (not null, unaffected)
+     * @return a new, indexed Mesh in Triangles mode, its bounds not set
+     */
+    public static Mesh makeMergedMesh(Spatial modelRoot) {
+        List<Geometry> untaggedGeometries;
+        if (modelRoot instanceof Geometry) {
+            /*
+             * To be consistent with createDynamicMeshShape() and others,
+             * a nodeless model isn't checked for JME_PHYSICSIGNORE.
+             */
+            untaggedGeometries = new ArrayList<Geometry>(1);
+            untaggedGeometries.add((Geometry) modelRoot);
+
+        } else if (modelRoot instanceof Node) {
+            untaggedGeometries
+                    = MySpatial.listUntaggedGeometries((Node) modelRoot, null);
+
+        } else {
+            throw new IllegalArgumentException(
+                    "The model root must either be a Node or a Geometry!");
+        }
+
+        Collection<Geometry> includedGeometries
+                = new ArrayList<>(untaggedGeometries.size());
+        int totalIndices = 0;
+        int totalVertices = 0;
+        for (Geometry geometry : untaggedGeometries) {
+            // Exclude any Geometry with a null/empty mesh.
+            Mesh jmeMesh = geometry.getMesh();
+            if (jmeMesh == null) {
+                continue;
+            }
+            IndexBuffer indexBuffer = jmeMesh.getIndicesAsList();
+            int numIndices = indexBuffer.size();
+            if (numIndices == 0) {
+                continue;
+            }
+            int numVertices = jmeMesh.getVertexCount();
+            if (numVertices == 0) {
+                continue;
+            }
+
+            includedGeometries.add(geometry);
+            totalIndices += numIndices;
+            totalVertices += numVertices;
+        }
+
+        IndexBuffer indexBuffer
+                = IndexBuffer.createIndexBuffer(totalVertices, totalIndices);
+        int totalFloats = numAxes * totalVertices;
+        FloatBuffer positionBuffer = BufferUtils.createFloatBuffer(totalFloats);
+
+        for (Geometry geometry : includedGeometries) {
+            appendTriangles(geometry, modelRoot, positionBuffer, indexBuffer);
+        }
+
+        VertexBuffer.Format ibFormat = indexBuffer.getFormat();
+        Buffer ibData = indexBuffer.getBuffer();
+        Mesh result = new Mesh();
+        result.setBuffer(VertexBuffer.Type.Index, MyMesh.vpt, ibFormat, ibData);
+        result.setBuffer(VertexBuffer.Type.Position, numAxes, positionBuffer);
 
         return result;
     }
