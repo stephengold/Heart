@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2024 Stephen Gold
+ Copyright (c) 2013-2025 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -51,6 +51,7 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
 import com.jme3.scene.SimpleBatchNode;
 import com.jme3.scene.Spatial;
+import com.jme3.scene.UserData;
 import com.jme3.scene.VertexBuffer;
 import com.jme3.scene.control.AbstractControl;
 import com.jme3.scene.control.Control;
@@ -64,6 +65,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
+import jme3utilities.math.MyMath;
 import jme3utilities.math.MyQuaternion;
 import jme3utilities.math.MyVector3f;
 
@@ -985,6 +987,36 @@ final public class MySpatial {
     }
 
     /**
+     * Enumerate all child geometries in the specified scene-graph subtree that
+     * aren't tagged with {@code UserData.JME_PHYSICSIGNORE}. Note: recursive!
+     *
+     * @param parent the parent of the subtree (not null, aliases created)
+     * @param addResult storage for results (added to if not null)
+     * @return a new List
+     */
+    public static List<Geometry> listUntaggedGeometries(
+            Node parent, List<Geometry> addResult) {
+        Validate.nonNull(parent, "subtree");
+        List<Geometry> result
+                = (addResult == null) ? new ArrayList<Geometry>(50) : addResult;
+
+        for (Spatial child : parent.getChildren()) {
+            Boolean skipChild = child.getUserData(UserData.JME_PHYSICSIGNORE);
+            if (skipChild != null && skipChild) {
+                // continue to the next child spatial
+
+            } else if (child instanceof Node) {
+                listUntaggedGeometries((Node) child, result);
+
+            } else {
+                result.add((Geometry) child);
+            }
+        }
+
+        return result;
+    }
+
+    /**
      * Clear all cached collision data from the specified subtree of the scene
      * graph and force a bound refresh. Note: recursive!
      *
@@ -1004,6 +1036,34 @@ final public class MySpatial {
                 prepareForCollide(child);
             }
         }
+    }
+
+    /**
+     * Calculate the transform for a child shape relative to the ancestor for
+     * which the shape is being generated.
+     *
+     * @param spatial (not null, unaffected)
+     * @param modelRoot the ancestor for which the shape is being generated (not
+     * null, unaffected)
+     * @return a new Transform (not null)
+     */
+    public static Transform relativeTransform(
+            Spatial spatial, Spatial modelRoot) {
+        Validate.nonNull(spatial, "modelRoot");
+        Validate.nonNull(spatial, "spatial");
+
+        Transform result = new Transform();
+        Spatial currentSpatial = spatial;
+        while (currentSpatial != modelRoot) {
+            MyMath.combine(result, currentSpatial.getLocalTransform(), result);
+            currentSpatial = currentSpatial.getParent();
+        }
+        // Include the model root's scale but not its translation or rotation:
+        Transform mrTransform = new Transform(); // TODO garbage
+        mrTransform.setScale(modelRoot.getLocalScale());
+        MyMath.combine(result, mrTransform, result);
+
+        return result;
     }
 
     /**
