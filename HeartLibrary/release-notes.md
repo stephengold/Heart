@@ -7,7 +7,7 @@
   + `MyMesh.appendTriangles()`
   + `MyMesh.makeMergedMesh()`
   + `MySpatial.listUntaggedGeometries()`
-  + `MySpatial.relativeTransform() methods`.
+  + `MySpatial.relativeTransform()`
 + Fully deprecated the `MyAnimation.getScales()`
   and `MyAnimation.getTranslations()` methods.
 + Corrected a diagnostic message in `Validate.nonNegative()` .
