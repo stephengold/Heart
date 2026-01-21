@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2025 Stephen Gold
+ Copyright (c) 2019-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -78,14 +78,15 @@ final public class MyBuffer {
      * Return the sample covariance of the 3-D vectors in the specified
      * FloatBuffer range.
      *
-     * @param buffer the buffer that contains the vectors (not null, unaffected)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * unaffected)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition-6)
      * @param endPosition the position at which the vectors end
      * (&ge;startPosition+6, &le;capacity)
-     * @param storeResult storage for the result (modified if not null)
+     * @param storeResult storage for the result (modified if not {@code null})
      * @return the unbiased sample covariance (either storeResult or a new
-     * matrix, not null)
+     * matrix, not {@code null})
      */
     public static Matrix3f covariance(FloatBuffer buffer, int startPosition,
             int endPosition, Matrix3f storeResult) {
@@ -140,7 +141,8 @@ final public class MyBuffer {
      * Return the radius of a bounding cylinder for the specified FloatBuffer
      * range.
      *
-     * @param buffer the buffer that contains the vectors (not null, unaffected)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * unaffected)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the vectors end
@@ -198,7 +200,8 @@ final public class MyBuffer {
      * Enumerate all distinct 3-D vectors in the specified FloatBuffer range,
      * distinguishing 0 from -0.
      *
-     * @param buffer the buffer that contains the vectors (not null, unaffected)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * unaffected)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the vectors end
@@ -345,7 +348,8 @@ final public class MyBuffer {
      * &le;endPosition)
      * @param endPosition the position at which the data end (&ge;startPosition,
      * &le;capacity)
-     * @return false if any value is NaN or infinite, otherwise true
+     * @return {@code false} if any value is NaN or infinite, otherwise
+     * {@code true}
      */
     public static boolean isAllFinite(
             FloatBuffer buffer, int startPosition, int endPosition) {
@@ -414,12 +418,13 @@ final public class MyBuffer {
      * Find the maximum absolute coordinate for each axis in the specified
      * FloatBuffer range.
      *
-     * @param buffer the buffer that contains the vectors (not null, unaffected)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * unaffected)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the vectors end
      * (&ge;startPosition, &le;capacity)
-     * @param storeResult storage for the result (modified if not null)
+     * @param storeResult storage for the result (modified if not {@code null})
      * @return the half extent for each axis (either storeResult or a new
      * instance)
      */
@@ -452,7 +457,8 @@ final public class MyBuffer {
      * Find the magnitude of the longest 3-D vector in the specified FloatBuffer
      * range.
      *
-     * @param buffer the buffer that contains the vectors (not null, unaffected)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * unaffected)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the vectors end
@@ -495,13 +501,14 @@ final public class MyBuffer {
      *
      * @see com.jme3.bounding.BoundingBox#containAABB(java.nio.FloatBuffer)
      *
-     * @param buffer the buffer that contains the vectors (not null, unaffected)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * unaffected)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the vectors end
      * (&ge;startPosition, &le;capacity)
-     * @param storeMaxima storage for maxima (not null, modified)
-     * @param storeMinima storage for minima (not null, modified)
+     * @param storeMaxima storage for maxima (not {@code null}, modified)
+     * @param storeMinima storage for minima (not {@code null}, modified)
      */
     public static void maxMin(FloatBuffer buffer, int startPosition,
             int endPosition, Vector3f storeMaxima, Vector3f storeMinima) {
@@ -530,13 +537,14 @@ final public class MyBuffer {
      * Determine the arithmetic mean of 3-D vectors in the specified FloatBuffer
      * range.
      *
-     * @param buffer the buffer that contains the vectors (not null, unaffected)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * unaffected)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition-3)
      * @param endPosition the position at which the vectors end
      * (&ge;startPosition+3, &le;capacity)
-     * @param storeResult storage for the result (modified if not null)
-     * @return the mean (either storeResult or a new vector, not null)
+     * @param storeResult storage for the result (modified if not {@code null})
+     * @return the mean (either storeResult or a new vector, not {@code null})
      */
     public static Vector3f mean(FloatBuffer buffer, int startPosition,
             int endPosition, Vector3f storeResult) {
@@ -568,7 +576,8 @@ final public class MyBuffer {
     /**
      * Normalize 3-D vectors in the specified FloatBuffer range.
      *
-     * @param buffer the buffer that contains the vectors (not null, modified)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * modified)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition-3)
      * @param endPosition the position at which the vectors end
@@ -598,9 +607,9 @@ final public class MyBuffer {
      * Write a Vector3f starting at the specified position. Does not alter the
      * buffer's position.
      *
-     * @param buffer the buffer to write to (not null, modified)
+     * @param buffer the buffer to write to (not {@code null}, modified)
      * @param startPosition the position at which to start writing (&ge;0)
-     * @param vector the input vector (not null, unaffected)
+     * @param vector the input vector (not {@code null}, unaffected)
      *
      * @see com.jme3.util.BufferUtils#setInBuffer(com.jme3.math.Vector3f,
      * java.nio.FloatBuffer, int)
@@ -620,9 +629,9 @@ final public class MyBuffer {
      * Write a Vector4f starting at the specified position. Does not alter the
      * buffer's position.
      *
-     * @param buffer the buffer to write to (not null, modified)
+     * @param buffer the buffer to write to (not {@code null}, modified)
      * @param startPosition the position at which to start writing (&ge;0)
-     * @param vector the input vector (not null, unaffected)
+     * @param vector the input vector (not {@code null}, unaffected)
      *
      * @see com.jme3.util.BufferUtils#setInBuffer(com.jme3.math.Vector4f,
      * java.nio.FloatBuffer, int)
@@ -642,7 +651,7 @@ final public class MyBuffer {
     /**
      * Read an index from a Buffer and advance the buffer's position.
      *
-     * @param buffer a Buffer of bytes or ints or shorts (not null)
+     * @param buffer a Buffer of bytes or ints or shorts (not {@code null})
      * @return index (&ge;0)
      */
     public static int readIndex(Buffer buffer) {
@@ -676,12 +685,13 @@ final public class MyBuffer {
      * Apply the specified rotation to 3-D vectors in the specified FloatBuffer
      * range.
      *
-     * @param buffer the buffer that contains the vectors (not null, MODIFIED)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * MODIFIED)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the vectors end
      * (&ge;startPosition, &le;capacity)
-     * @param rotation the rotation to apply (not null, unaffected)
+     * @param rotation the rotation to apply (not {@code null}, unaffected)
      */
     public static void rotate(FloatBuffer buffer, int startPosition,
             int endPosition, Quaternion rotation) {
@@ -707,12 +717,13 @@ final public class MyBuffer {
      * Apply the specified rotation to the binormals in the specified
      * FloatBuffer range. The W components are left untouched.
      *
-     * @param buffer the buffer that contains the binormals (not null, MODIFIED)
+     * @param buffer the buffer that contains the binormals (not {@code null},
+     * MODIFIED)
      * @param startPosition the position at which the binormals start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the binormals end
      * (&ge;startPosition, &le;capacity)
-     * @param rotation the rotation to apply (not null, unaffected)
+     * @param rotation the rotation to apply (not {@code null}, unaffected)
      */
     public static void rotateBinormals(FloatBuffer buffer, int startPosition,
             int endPosition, Quaternion rotation) {
@@ -738,12 +749,13 @@ final public class MyBuffer {
      * Apply the specified scale factors to 3-D vectors in the specified
      * FloatBuffer range.
      *
-     * @param buffer the buffer that contains the vectors (not null, MODIFIED)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * MODIFIED)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the vectors end
      * (&ge;startPosition, &le;capacity)
-     * @param scale the scale factor to apply to each axis (not null,
+     * @param scale the scale factor to apply to each axis (not {@code null},
      * unaffected)
      */
     public static void scale(FloatBuffer buffer, int startPosition,
@@ -769,12 +781,13 @@ final public class MyBuffer {
     /**
      * Copy data in the specified FloatBuffer range to a new array.
      *
-     * @param buffer the buffer that contains the data (not null, unaffected)
+     * @param buffer the buffer that contains the data (not {@code null},
+     * unaffected)
      * @param startPosition the position at which the data start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the data end (&ge;startPosition,
      * &le;capacity)
-     * @return a new array (not null)
+     * @return a new array (not {@code null})
      */
     public static float[] toFloatArray(
             FloatBuffer buffer, int startPosition, int endPosition) {
@@ -797,12 +810,13 @@ final public class MyBuffer {
     /**
      * Copy data in the specified IntBuffer range to a new array.
      *
-     * @param buffer the buffer that contains the data (not null, unaffected)
+     * @param buffer the buffer that contains the data (not {@code null},
+     * unaffected)
      * @param startPosition the position at which the data start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the data end (&ge;startPosition,
      * &le;capacity)
-     * @return a new array (not null)
+     * @return a new array (not {@code null})
      */
     public static int[] toIntArray(
             IntBuffer buffer, int startPosition, int endPosition) {
@@ -826,12 +840,13 @@ final public class MyBuffer {
      * Apply the specified coordinate transform to 3-D vectors in the specified
      * FloatBuffer range.
      *
-     * @param buffer the buffer that contains the vectors (not null, MODIFIED)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * MODIFIED)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the vectors end
      * (&ge;startPosition, &le;capacity)
-     * @param transform the transform to apply (not null, unaffected)
+     * @param transform the transform to apply (not {@code null}, unaffected)
      */
     public static void transform(FloatBuffer buffer, int startPosition,
             int endPosition, Transform transform) {
@@ -857,12 +872,13 @@ final public class MyBuffer {
      * Add the specified offset to 3-D vectors in the specified FloatBuffer
      * range.
      *
-     * @param buffer the buffer that contains the vectors (not null, MODIFIED)
+     * @param buffer the buffer that contains the vectors (not {@code null},
+     * MODIFIED)
      * @param startPosition the position at which the vectors start (&ge;0,
      * &le;endPosition)
      * @param endPosition the position at which the vectors end
      * (&ge;startPosition, &le;capacity)
-     * @param offsetVector the vector to add (not null, unaffected)
+     * @param offsetVector the vector to add (not {@code null}, unaffected)
      */
     public static void translate(FloatBuffer buffer, int startPosition,
             int endPosition, Vector3f offsetVector) {
