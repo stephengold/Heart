@@ -1,5 +1,21 @@
 # release log for the Heart Library and related tests
 
+## Version 9.3.0 released on TBD
+
++ Added 5 public methods:
+  + `MyBuffer.loadFileAsBytes()`
+  + `MyMesh.appendTriangles()`
+  + `MyMesh.makeMergedMesh()`
+  + `MySpatial.listUntaggedGeometries()`
+  + `MySpatial.relativeTransform() methods`.
++ Fully deprecated the `MyAnimation.getScales()`
+  and `MyAnimation.getTranslations()` methods.
++ Corrected a diagnostic message in `Validate.nonNegative()` .
++ Targeted jMonkeyEngine version 3.9.0-stable.
++ Added developer ID and inception year to the POM.
++ Updated the Gradle build tool to v9.3.0. When building this project,
+  JDK 17+ is now assumed, though this can be worked around.
+
 ## Version 9.2.0 released on 7 January 2025
 
 + Added the `isSpatialTrack()` method to the `MyAnimation` class.
