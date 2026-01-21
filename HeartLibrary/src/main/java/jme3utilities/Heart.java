@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2025 Stephen Gold
+ Copyright (c) 2013-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -111,7 +111,7 @@ final public class Heart {
     /**
      * Test whether assertions are enabled.
      *
-     * @return true if enabled, otherwise false
+     * @return {@code true} if enabled, otherwise {@code false}
      */
     public static boolean areAssertionsEnabled() {
         boolean enabled = false;
@@ -123,8 +123,8 @@ final public class Heart {
     /**
      * Open the specified web page in a new browser or browser tab.
      *
-     * @param startUriString URI of the web page (not null)
-     * @return true if successful, otherwise false
+     * @param startUriString URI of the web page (not {@code null})
+     * @return {@code true} if successful, otherwise {@code false}
      */
     public static boolean browseWeb(String startUriString) {
         Validate.nonNull(startUriString, "start uri");
@@ -213,8 +213,8 @@ final public class Heart {
      * Detach all app states which are subclasses of a specified class.
      *
      * @param <T> class to scan for
-     * @param stateManager (not null)
-     * @param whichClass (not null)
+     * @param stateManager (not {@code null})
+     * @param whichClass (not {@code null})
      */
     public static <T extends AppState> void detachAll(
             AppStateManager stateManager, Class<T> whichClass) {
@@ -250,8 +250,8 @@ final public class Heart {
      * Access the first member of a collection.
      *
      * @param <T> the type of the member
-     * @param collection the collection to access (not null)
-     * @return the pre-existing member, or null if none
+     * @param collection the collection to access (not {@code null})
+     * @return the pre-existing member, or {@code null} if none
      */
     @SuppressWarnings("unchecked")
     public static <T> T first(Collection<T> collection) {
@@ -267,8 +267,8 @@ final public class Heart {
     /**
      * Canonicalize a file's path and convert backslashes to slashes.
      *
-     * @param inputFile the input file (not null, not empty)
-     * @return the fixed file path (not null, not empty)
+     * @param inputFile the input file (not {@code null}, not empty)
+     * @return the fixed file path (not {@code null}, not empty)
      */
     public static String fixedPath(File inputFile) {
         Validate.nonNull(inputFile, "input file");
@@ -289,8 +289,8 @@ final public class Heart {
     /**
      * Canonicalize a file path and convert backslashes to slashes.
      *
-     * @param inputPath the file path to fix (not null, not empty)
-     * @return the fixed file path (not null, not empty)
+     * @param inputPath the file path to fix (not {@code null}, not empty)
+     * @return the fixed file path (not {@code null}, not empty)
      */
     public static String fixPath(String inputPath) {
         Validate.nonEmpty(inputPath, "input path");
@@ -305,7 +305,7 @@ final public class Heart {
      * Access the pre-existing FileHandler for logging, or if none is found,
      * create one and use that.
      *
-     * @return not null
+     * @return not {@code null}
      */
     public static FileHandler getFileHandler() {
         if (fileHandler == null) {
@@ -339,11 +339,11 @@ final public class Heart {
      * Access the pre-existing FilterPostProcessor of the specified view port,
      * or if it has none, add a new FPP and use that.
      *
-     * @param viewPort which view port (not null)
-     * @param assetManager (not null)
+     * @param viewPort which view port (not {@code null})
+     * @param assetManager (not {@code null})
      * @param numSamples number of samples for anti-aliasing (&ge;1, &le;16) or
      * 0 for the FPP default
-     * @return not null
+     * @return not {@code null}
      */
     public static FilterPostProcessor getFpp(
             ViewPort viewPort, AssetManager assetManager, int numSamples) {
@@ -370,7 +370,8 @@ final public class Heart {
     /**
      * Access the keyboard interface of the specified InputManager.
      *
-     * @param inputManager the InputManager to access (not null, unaffected)
+     * @param inputManager the InputManager to access (not {@code null},
+     * unaffected)
      * @return the pre-existing instance
      */
     public static KeyInput getKeyInput(InputManager inputManager) {
@@ -397,7 +398,7 @@ final public class Heart {
      * Test whether the named application has stored settings.
      *
      * @param applicationName the name of the application
-     * @return true if it has stored settings, otherwise false
+     * @return {@code true} if it has stored settings, otherwise {@code false}
      */
     public static boolean hasStoredSettings(String applicationName) {
         try {
@@ -415,8 +416,8 @@ final public class Heart {
      * Generate a canonical filesystem path to the named file in the user's home
      * directory.
      *
-     * @param fileName file name to use (not null, not empty)
-     * @return the file-system path (not null, not empty)
+     * @param fileName file name to use (not {@code null}, not empty)
+     * @return the file-system path (not {@code null}, not empty)
      */
     public static String homePath(String fileName) {
         Validate.nonEmpty(fileName, "file name");
@@ -432,8 +433,9 @@ final public class Heart {
      * Enumerate all entries (in the specified JAR or ZIP) whose names begin
      * with the specified prefix.
      *
-     * @param zipPath filesystem path to the JAR or ZIP (not null, not empty)
-     * @param namePrefix (not null)
+     * @param zipPath filesystem path to the JAR or ZIP (not {@code null}, not
+     * empty)
+     * @param namePrefix (not {@code null})
      * @return a new list of entry names
      */
     public static List<String> listZipEntries(
@@ -462,7 +464,8 @@ final public class Heart {
     /**
      * Load UTF-8 text from the named resource.
      *
-     * @param resourceName the name of the classpath resource to load (not null)
+     * @param resourceName the name of the classpath resource to load (not
+     * {@code null})
      * @return the text (possibly multiple lines)
      */
     public static String loadResourceAsString(String resourceName) {
@@ -488,8 +491,8 @@ final public class Heart {
      * Parse some conventional command-line arguments and apply them to the
      * specified SimpleApplication.
      *
-     * @param application the application to modify (not null)
-     * @param arguments array of command-line arguments (not null)
+     * @param application the application to modify (not {@code null})
+     * @param arguments array of command-line arguments (not {@code null})
      */
     public static void parseAppArgs(
             SimpleApplication application, String... arguments) {
@@ -523,7 +526,7 @@ final public class Heart {
     /**
      * Set the specified pixel to the specified brightness and opacity.
      *
-     * @param graphics rendering context of the pixel (not null)
+     * @param graphics rendering context of the pixel (not {@code null})
      * @param x pixel's first coordinate (&lt;width, &ge;0)
      * @param y pixel's 2nd coordinate (&lt;height, &ge;0)
      * @param brightness (&le;1, &ge;0, 0 &rarr; black, 1 &rarr; white)
@@ -546,7 +549,7 @@ final public class Heart {
     /**
      * Alter the logging levels of all known loggers.
      *
-     * @param newLevel the desired level (not null)
+     * @param newLevel the desired level (not {@code null})
      * @see java.util.logging.Level
      */
     public static void setLoggingLevels(Level newLevel) {
@@ -566,7 +569,7 @@ final public class Heart {
     /**
      * Return the terse version string for this library.
      *
-     * @return the branch name and revision string (not null, not empty)
+     * @return the branch name and revision string (not {@code null}, not empty)
      */
     public static String versionShort() {
         String verbose = version();
@@ -579,10 +582,11 @@ final public class Heart {
     }
 
     /**
-     * Write an image to a file, attempting to overwrite any pre-existing file.
+     * Write the specified image to the specified file, attempting to overwrite
+     * any pre-existing file.
      *
-     * @param filePath the path to the output file (not null, not empty)
-     * @param image the image to be written (not null)
+     * @param filePath the path to the output file (not {@code null}, not empty)
+     * @param image the image to be written (not {@code null})
      * @throws IOException if the file cannot be written
      */
     public static void writeImage(String filePath, RenderedImage image)
@@ -658,10 +662,10 @@ final public class Heart {
     }
 
     /**
-     * Write a Savable to a J3O file.
+     * Write the specified Savable to the specified J3O file.
      *
-     * @param filePath (not null, not empty, should end in ".j3o")
-     * @param savable (not null, unaffected)
+     * @param filePath (not {@code null}, not empty, should end in ".j3o")
+     * @param savable (not {@code null}, unaffected)
      */
     public static void writeJ3O(String filePath, Savable savable) {
         Validate.nonEmpty(filePath, "file path");
