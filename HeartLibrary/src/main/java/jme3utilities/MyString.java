@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2024 Stephen Gold
+ Copyright (c) 2013-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -75,9 +75,9 @@ final public class MyString {
      * Find all strings in the input collection that begin with the specified
      * prefix and add them to the result.
      *
-     * @param collection input collection (not null, unaffected)
-     * @param prefix (not null)
-     * @param addResult (added to if not null)
+     * @param collection input collection (not {@code null}, unaffected)
+     * @param prefix (not {@code null})
+     * @param addResult (added to if not {@code null})
      * @return an expanded list (either addResult or a new instance)
      */
     public static List<String> addMatchPrefix(Collection<String> collection,
@@ -104,7 +104,7 @@ final public class MyString {
     /**
      * Determine the index of the named coordinate axis.
      *
-     * @param axisName the name of the axis (not null, not empty)
+     * @param axisName the name of the axis (not {@code null}, not empty)
      * @return the index of the axis: 0&rarr;X, 1&rarr;Y, 2&rarr;Z
      * @see #axisName(int)
      */
@@ -122,7 +122,7 @@ final public class MyString {
      * Describe a coordinate axis.
      *
      * @param axisIndex the index of the axis: 0&rarr;X, 1&rarr;Y, 2&rarr;Z
-     * @return a textual description (not null, not empty)
+     * @return a textual description (not {@code null}, not empty)
      * @see #axisIndex(String)
      */
     public static String axisName(int axisIndex) {
@@ -135,8 +135,9 @@ final public class MyString {
      * De-duplicate a list of strings by appending distinguishing suffixes as
      * needed. The number of strings and their order remains unchanged.
      *
-     * @param list input (not null, modified)
-     * @param separator text to separate original name from suffix (not null)
+     * @param list input (not {@code null}, modified)
+     * @param separator text to separate original name from suffix (not
+     * {@code null})
      */
     public static void dedup(List<String> list, String separator) {
         Validate.nonNull(list, "list");
@@ -170,7 +171,7 @@ final public class MyString {
      * value.
      *
      * @param fValue the value to describe
-     * @return a description (not null, not empty)
+     * @return a description (not {@code null}, not empty)
      */
     public static String describe(float fValue) {
         String raw = String.format(Locale.US, "%g", fValue);
@@ -186,7 +187,7 @@ final public class MyString {
      * using at most 2 decimal places.
      *
      * @param fValue the value to describe
-     * @return a description (not null, not empty)
+     * @return a description (not {@code null}, not empty)
      */
     public static String describeAngle(float fValue) {
         String raw = String.format(Locale.US, "%.2f", fValue);
@@ -202,7 +203,7 @@ final public class MyString {
      * using at most 3 decimal places.
      *
      * @param fValue the value to describe
-     * @return a description (not null, not empty)
+     * @return a description (not {@code null}, not empty)
      */
     public static String describeFraction(float fValue) {
         String raw = String.format(Locale.US, "%.3f", fValue);
@@ -216,8 +217,8 @@ final public class MyString {
     /**
      * Generate a textual description of a Matrix3f value.
      *
-     * @param matrix the value to describe (may be null, unaffected)
-     * @return a description (not null, not empty)
+     * @param matrix the value to describe (may be {@code null}, unaffected)
+     * @return a description (not {@code null}, not empty)
      */
     public static String describeMatrix(Matrix3f matrix) {
         if (matrix == null) {
@@ -247,8 +248,8 @@ final public class MyString {
      * Replace all tab, quote, newline, and backslash characters in the
      * specified text with escape sequences.
      *
-     * @param unescaped the input text to escape (not null)
-     * @return the escaped text (not null)
+     * @param unescaped the input text to escape (not {@code null})
+     * @return the escaped text (not {@code null})
      * @see #unEscape(CharSequence)
      */
     public static String escape(CharSequence unescaped) {
@@ -289,8 +290,8 @@ final public class MyString {
      * java.util.Arrays#binarySearch(java.lang.Object[], java.lang.Object)}, the
      * array need not be sorted.
      *
-     * @param array the array to search (not null, unaffected)
-     * @param value the value to find (not null)
+     * @param array the array to search (not {@code null}, unaffected)
+     * @param value the value to find (not {@code null})
      * @return the index of the first match (&ge;0, &lt;length) or -1 if not
      * found
      */
@@ -310,8 +311,8 @@ final public class MyString {
     /**
      * Find the longest repeated prefix in a collection of strings.
      *
-     * @param collection (not null, unaffected)
-     * @return prefix (not null)
+     * @param collection (not {@code null}, unaffected)
+     * @return prefix (not {@code null})
      */
     public static String findLongestPrefix(Collection<String> collection) {
         CharSequence longest = "";
@@ -337,8 +338,8 @@ final public class MyString {
     /**
      * Convert the first character of the specified text to lower case.
      *
-     * @param input the input text to convert (not null)
-     * @return the converted text (not null)
+     * @param input the input text to convert (not {@code null})
+     * @return the converted text (not {@code null})
      */
     public static String firstToLower(String input) {
         String result = input;
@@ -355,7 +356,7 @@ final public class MyString {
     /**
      * Invert the specified String-to-String map.
      *
-     * @param input (not null, unaffected)
+     * @param input (not {@code null}, unaffected)
      * @return a new String-to-String map
      */
     public static Map<String, String> invert(Map<String, String> input) {
@@ -376,7 +377,7 @@ final public class MyString {
      * Test whether the specified List is lexicographically sorted in ascending
      * order with no duplicates.
      *
-     * @param list the List to analyze (not null, unaffected)
+     * @param list the List to analyze (not {@code null}, unaffected)
      * @return true if sorted, otherwise false
      */
     public static boolean isSorted(List<String> list) {
@@ -396,9 +397,10 @@ final public class MyString {
      * java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)}, which
      * doesn't ignore nulls.
      *
-     * @param separator text string (not null)
-     * @param objects objects to join (not null, unaffected, may contain nulls)
-     * @return joined string (not null)
+     * @param separator text string (not {@code null})
+     * @param objects objects to join (not {@code null}, unaffected, may contain
+     * {@code null}s)
+     * @return joined string (not {@code null})
      */
     public static String join(CharSequence separator, Iterable objects) {
         Validate.nonNull(separator, "separator");
@@ -428,8 +430,9 @@ final public class MyString {
      * java.lang.String#join(java.lang.CharSequence, java.lang.Iterable)}, which
      * doesn't ignore nulls.
      *
-     * @param objects objects to join (not null, unaffected, may contain nulls)
-     * @return joined string (not null)
+     * @param objects objects to join (not {@code null}, unaffected, may contain
+     * {@code null}s)
+     * @return joined string (not {@code null})
      */
     public static String join(Iterable objects) {
         Validate.nonNull(objects, "objects");
@@ -441,8 +444,9 @@ final public class MyString {
      * Join an array of objects into a text string using spaces for separators
      * and ignoring any empties/nulls.
      *
-     * @param array objects to join (not null, unaffected, may contain nulls)
-     * @return joined string (not null)
+     * @param array objects to join (not {@code null}, unaffected, may contain
+     * {@code null}s)
+     * @return joined string (not {@code null})
      */
     public static String join(Object[] array) {
         Validate.nonNull(array, "array");
@@ -464,8 +468,8 @@ final public class MyString {
      * Filter a collection of strings, keeping only those that begin with the
      * specified prefix.
      *
-     * @param collection collection to filter (not null, modified)
-     * @param prefix (not null)
+     * @param collection collection to filter (not {@code null}, modified)
+     * @param prefix (not {@code null})
      */
     public static void matchPrefix(Collection<String> collection,
             String prefix) {
@@ -484,7 +488,7 @@ final public class MyString {
      * newline, and backslash characters.
      *
      * @param text the input text to quote
-     * @return the quoted text, or "null" if the input was null
+     * @return the quoted text, or "null" if the input was {@code null}
      */
     public static String quote(CharSequence text) {
         String result;
@@ -502,7 +506,7 @@ final public class MyString {
      * newline, and backslash characters.
      *
      * @param name the name to quote
-     * @return a quoted string, or "(no name)" if the name was null
+     * @return a quoted string, or "(no name)" if the name was {@code null}
      */
     public static String quoteName(CharSequence name) {
         String result;
@@ -518,7 +522,7 @@ final public class MyString {
     /**
      * Reduce a collection of strings using common prefixes.
      *
-     * @param collection (not null, modified)
+     * @param collection (not {@code null}, modified)
      * @param sizeGoal (&gt;0)
      */
     public static void reduce(Collection<String> collection, int sizeGoal) {
@@ -542,9 +546,9 @@ final public class MyString {
      * Extract the remainder of the specified string after removing the
      * specified prefix.
      *
-     * @param input the input string (not null)
-     * @param prefix the prefix string (not null)
-     * @return the remainder of the input (not null)
+     * @param input the input string (not {@code null})
+     * @param prefix the prefix string (not {@code null})
+     * @return the remainder of the input (not {@code null})
      */
     public static String remainder(String input, String prefix) {
         Validate.nonNull(prefix, "prefix");
@@ -566,9 +570,9 @@ final public class MyString {
      * Extract the remainder of the specified string after removing the
      * specified suffix.
      *
-     * @param input the input string (not null)
-     * @param suffix the suffix string (not null)
-     * @return the remainder of the input (not null)
+     * @param input the input string (not {@code null})
+     * @param suffix the suffix string (not {@code null})
+     * @return the remainder of the input (not {@code null})
      */
     public static String removeSuffix(String input, String suffix) {
         Validate.nonNull(suffix, "suffix");
@@ -590,7 +594,7 @@ final public class MyString {
      * Generate a String consisting of a specified character sequence repeated a
      * specified number of times.
      *
-     * @param sequence the sequence to use (not null)
+     * @param sequence the sequence to use (not {@code null})
      * @param numTimes the number of times (&ge;0)
      * @return a repetitious String
      */
@@ -610,8 +614,8 @@ final public class MyString {
     /**
      * Find the length of the shared prefix of 2 text sequences.
      *
-     * @param s1 the first string (not null)
-     * @param s2 the 2nd string (not null)
+     * @param s1 the first string (not {@code null})
+     * @param s2 the 2nd string (not {@code null})
      * @return number of characters in shared prefix (&ge;0)
      */
     public static int sharedPrefixLength(CharSequence s1, CharSequence s2) {
@@ -636,7 +640,7 @@ final public class MyString {
      * than Collection.toArray() because the elements of the resulting array
      * will all be strings.
      *
-     * @param collection the collection to convert (not null)
+     * @param collection the collection to convert (not {@code null})
      * @return a new array containing the same strings in the same order
      */
     public static String[] toArray(Collection<String> collection) {
@@ -648,8 +652,8 @@ final public class MyString {
      * Trim any trailing zeros and one trailing decimal point from a string
      * representation of a float. Also remove any leading minus sign from zero.
      *
-     * @param input the String to trim (not null)
-     * @return a trimmed String (not null)
+     * @param input the String to trim (not {@code null})
+     * @return a trimmed String (not {@code null})
      */
     public static String trimFloat(String input) {
         String result;
@@ -685,8 +689,8 @@ final public class MyString {
     /**
      * Undo character escape sequences added by {@link #escape(CharSequence)}.
      *
-     * @param escaped the input sequence (not null)
-     * @return an unescaped string (not null)
+     * @param escaped the input sequence (not {@code null})
+     * @return an unescaped string (not {@code null})
      */
     public static String unEscape(CharSequence escaped) {
         int length = escaped.length();
