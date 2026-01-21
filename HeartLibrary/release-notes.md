@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 9.3.0 released on TBD
+## Version 9.3.0 released on 21 January 2026
 
 + Added 5 public methods:
   + `MyBuffer.loadFileAsBytes()`
