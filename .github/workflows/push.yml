@@ -15,7 +15,7 @@ jobs:
           java-version: 17
       - uses: actions/checkout@v6
       - uses: gradle/actions/wrapper-validation@v5
-      - run: ./gradlew build javadoc --console=plain --stacktrace
+      - run: ./gradlew build install javadoc --console=plain --stacktrace
 
   Java21-MacOS:
     if: contains(toJson(github.event.commits), '[ci skip] ') == false
@@ -26,7 +26,7 @@ jobs:
           distribution: 'zulu'
           java-version: 21
       - uses: actions/checkout@v6
-      - run: ./gradlew build javadoc --console=plain --stacktrace
+      - run: ./gradlew build install javadoc --console=plain --stacktrace
 
   Java25-Windows:
     if: contains(toJson(github.event.commits), '[ci skip] ') == false
@@ -37,5 +37,5 @@ jobs:
           distribution: 'liberica'
           java-version: 25
       - uses: actions/checkout@v6
-      - run: ./gradlew build javadoc --console=plain --stacktrace
+      - run: ./gradlew build install javadoc --console=plain --stacktrace
         shell: bash
