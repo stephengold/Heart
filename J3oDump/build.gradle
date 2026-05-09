@@ -9,7 +9,7 @@ plugins {
 }
 
 tasks.withType(JavaCompile).configureEach { // Java compile-time options:
-    options.deprecation = true
+    options.deprecation = true // to provide detailed deprecation warnings
 }
 
 application {
@@ -28,7 +28,7 @@ dependencies {
     implementation(libs.jme3.plugins)
 
     //implementation 'com.github.stephengold:Heart:' + heartVersion // for published library
-    implementation project(':HeartLibrary') // for latest sourcecode
+    implementation project(':HeartLibrary') // for current sourcecode
 }
 
 distTar.dependsOn(':HeartLibrary:build')

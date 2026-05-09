@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021-2023, Stephen Gold
+ Copyright (c) 2021-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -262,12 +262,12 @@ final public class J3oDump {
         }
         assetManager = new DesktopAssetManager();
 
-        // Register loaders.
+        // Register loaders:
         assetManager.registerLoader(AWTLoader.class, "jpg", "png");
         assetManager.registerLoader(BinaryLoader.class, "j3o");
         assetManager.registerLoader(J3MLoader.class, "j3m", "j3md");
 
-        // Register locators.
+        // Register locators:
         assetManager.registerLocator(assetRoot, FileLocator.class);
         assetManager.registerLocator(null, ClasspathLocator.class);
     }
