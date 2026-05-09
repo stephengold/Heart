@@ -38,7 +38,7 @@ import com.jme3.material.Material;
 import com.jme3.material.plugins.J3MLoader;
 import com.jme3.scene.Spatial;
 import com.jme3.texture.Texture;
-import com.jme3.texture.plugins.AWTLoader;
+import com.jme3.texture.plugins.StbImageLoader;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -263,9 +263,9 @@ final public class J3oDump {
         assetManager = new DesktopAssetManager();
 
         // Register loaders:
-        assetManager.registerLoader(AWTLoader.class, "jpg", "png");
         assetManager.registerLoader(BinaryLoader.class, "j3o");
         assetManager.registerLoader(J3MLoader.class, "j3m", "j3md");
+        assetManager.registerLoader(StbImageLoader.class, "jpg", "png");
 
         // Register locators:
         assetManager.registerLocator(assetRoot, FileLocator.class);
