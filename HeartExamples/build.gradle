@@ -8,6 +8,10 @@ plugins {
     id 'application' // to build JVM applications
 }
 
+tasks.withType(JavaCompile).configureEach { // Java compile-time options:
+    //options.deprecation = true // to provide detailed deprecation warnings
+}
+
 if (!hasProperty('mainClass')) {
     ext.mainClass = 'jme3utilities.test.AppChooser'
 }

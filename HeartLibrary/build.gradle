@@ -10,6 +10,10 @@ plugins {
     id 'signing'       // to sign artifacts for publication
 }
 
+tasks.withType(JavaCompile).configureEach { // Java compile-time options:
+    //options.deprecation = true // to provide detailed deprecation warnings
+}
+
 ext {
     group = 'com.github.stephengold'
     artifact = 'Heart'
