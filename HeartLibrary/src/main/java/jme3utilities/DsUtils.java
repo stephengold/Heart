@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2018-2024 Stephen Gold
+ Copyright (c) 2018-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -61,6 +61,7 @@ final public class DsUtils {
     final private static Pattern dimensionsPattern
             = Pattern.compile("^\\s*(\\d+)\\s*[x,]\\s*(\\d+)\\s*");
 
+    final private static boolean hasGlfw;
     final private static boolean hasLwjglVersion2;
     final private static boolean hasLwjglVersion3;
     final private static Field lwjglListenerField;
@@ -98,6 +99,15 @@ final public class DsUtils {
         }
         hasLwjglVersion3 = foundVersion3;
 
+        boolean foundGlfw;
+        try {
+            Class.forName("org.lwjgl.glfw.GLFW");
+            foundGlfw = true;
+        } catch (ClassNotFoundException exception) {
+            foundGlfw = false;
+        }
+        hasGlfw = foundGlfw;
+
         try {
             Class<?> contextClass
                     = Class.forName("com.jme3.system.lwjgl.LwjglContext");
@@ -131,7 +141,7 @@ final public class DsUtils {
                 getModeHeight = displayModeClass.getDeclaredMethod("getHeight");
                 getModeWidth = displayModeClass.getDeclaredMethod("getWidth");
 
-            } else if (foundVersion3) {
+            } else if (foundVersion3 && foundGlfw) {
                 getBitsPerPixel = null;
 
                 Class<?> glfwClass = Class.forName("org.lwjgl.glfw.GLFW");
@@ -230,8 +240,8 @@ final public class DsUtils {
         if (hasLwjglVersion2) {
             result = displayMode2();
 
-        } else if (hasLwjglVersion3) {
-            result = displayMode3();
+        } else if (hasLwjglVersion3 && hasGlfw) {
+            result = displayMode3Glfw();
 
         } else { // use AWT
             GraphicsEnvironment environment
@@ -261,10 +271,9 @@ final public class DsUtils {
         List<DisplayMode> result;
         if (hasLwjglVersion2) {
             result = listDisplayModes2();
-        } else if (hasLwjglVersion3) {
-            result = listDisplayModes3();
-        } else {
-            // LWJGL v2 and v3 are unavailable, so use AWT instead.
+        } else if (hasLwjglVersion3 && hasGlfw) {
+            result = listDisplayModes3Glfw();
+        } else { // use AWT
             GraphicsEnvironment environment
                     = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice device = environment.getDefaultScreenDevice();
@@ -322,12 +331,14 @@ final public class DsUtils {
     }
 
     /**
-     * Return the default monitor's current display mode.
+     * Return the default monitor's current display mode, assuming LWJGL3 and
+     * GLFW are available.
      *
      * @return a new instance (not null)
      */
-    private static DisplayMode displayMode3() {
+    private static DisplayMode displayMode3Glfw() {
         assert hasLwjglVersion3;
+        assert hasGlfw;
 
         try {
             // long monitorId = GLFW.glfwGetPrimaryMonitor();
@@ -369,12 +380,14 @@ final public class DsUtils {
     }
 
     /**
-     * Enumerate the default monitor's available display modes.
+     * Enumerate the default monitor's available display modes, assuming LWJGL3
+     * and GLFW are available.
      *
      * @return a new list of modes (not null)
      */
-    private static List<DisplayMode> listDisplayModes3() {
+    private static List<DisplayMode> listDisplayModes3Glfw() {
         assert hasLwjglVersion3;
+        assert hasGlfw;
 
         try {
             // long monitorId = GLFW.glfwGetPrimaryMonitor();
