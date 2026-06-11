@@ -103,7 +103,7 @@ final public class J3oDump {
      * @param arguments array of command-line arguments (not null)
      */
     public static void main(String[] arguments) {
-        // Mute a disruptive logger.
+        // Mute a disruptive logger:
         Logger materialLogger = Logger.getLogger(Material.class.getName());
         materialLogger.setLevel(Level.SEVERE);
 

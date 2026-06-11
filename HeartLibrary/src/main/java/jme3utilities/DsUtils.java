@@ -311,7 +311,8 @@ final public class DsUtils {
     // private methods
 
     /**
-     * Return the default monitor's current display mode.
+     * Return the default monitor's current display mode, assuming LWJGL2 is
+     * available.
      *
      * @return a new instance (not null)
      */
@@ -356,7 +357,8 @@ final public class DsUtils {
     }
 
     /**
-     * Enumerate the default monitor's available display modes.
+     * Enumerate the default monitor's available display modes, assuming LWJGL2
+     * is available.
      *
      * @return a new list of modes (not null)
      */
