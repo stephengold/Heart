@@ -254,6 +254,24 @@ final public class DsUtils {
     }
 
     /**
+     * Test whether jme3-glfw is in the classpath.
+     *
+     * @return true if present, otherwise false
+     */
+    public static boolean hasGlfw() {
+        return hasGlfw;
+    }
+
+    /**
+     * Test whether jme3-lwjgl2 is in the classpath.
+     *
+     * @return true if present, otherwise false
+     */
+    public static boolean hasLwjglVersion2() {
+        return hasLwjglVersion2;
+    }
+
+    /**
      * Test whether jme3-lwjgl3 is in the classpath.
      *
      * @return true if present, otherwise false
