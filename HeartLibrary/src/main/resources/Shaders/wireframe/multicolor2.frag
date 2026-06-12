@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, Stephen Gold
+ Copyright (c) 2017-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -62,8 +62,8 @@ void main(){
         #endif
 
         #ifdef POINT_SHAPE
-                vec4 sample = texture2D(m_PointShape, gl_PointCoord);
-                color *= sample;
+                vec4 sampleColor = texture2D(m_PointShape, gl_PointCoord);
+                color *= sampleColor;
         #endif
 
         gl_FragColor = color;
