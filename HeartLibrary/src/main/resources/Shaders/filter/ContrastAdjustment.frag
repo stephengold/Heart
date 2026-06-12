@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, Stephen Gold
+ Copyright (c) 2017-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -29,12 +29,14 @@
  * fragment shader used by ContrastAdjustment.j3md
  */
 
+#import "Common/ShaderLib/GLSLCompat.glsllib"
+
 uniform float m_Exponent;
 uniform sampler2D m_Texture;
 varying vec2 texCoord;
 
 void main() {
     vec4 color = texture2D(m_Texture, texCoord);
-    color.rgb = pow(color.rgb, m_Exponent);
+    color.rgb = pow(color.rgb, vec3(m_Exponent));
     gl_FragColor = color;
 }
