@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022-2025 Stephen Gold
+ Copyright (c) 2022-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -32,11 +32,13 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.system.AppSettings;
 import com.jme3.system.JmeSystem;
 import com.jme3.system.Platform;
+import java.awt.DisplayMode;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Logger;
+import jme3utilities.DsUtils;
 import jme3utilities.Heart;
 import jme3utilities.MyString;
 import jme3utilities.debug.test.TestBoundsVisualizer;
@@ -174,6 +176,22 @@ final class AppChooser extends AcorusDemo {
      */
     @Override
     public void acorusInit() {
+        for (DisplayMode mode : DsUtils.listDisplayModes()) {
+            System.out.printf("%d x %d, %d bits, %d Hz%n",
+                    mode.getWidth(), mode.getHeight(),
+                    mode.getBitDepth(), mode.getRefreshRate());
+        }
+
+        System.out.println(" current mode is:");
+        DisplayMode mode = DsUtils.displayMode();
+        System.out.printf("%d x %d, %d bits, %d Hz%n",
+                mode.getWidth(), mode.getHeight(),
+                mode.getBitDepth(), mode.getRefreshRate());
+
+        System.out.println("hasGlfw = " + DsUtils.hasGlfw());
+        System.out.println("hasLwjglVersion2 = " + DsUtils.hasLwjglVersion2());
+        System.out.println("hasLwjglVersion3 = " + DsUtils.hasLwjglVersion3());
+
         script = findScriptToExecute();
 
         // environment variables that will be passed to the executor
