@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2022-2024 Stephen Gold
+ Copyright (c) 2022-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -141,6 +141,7 @@ public class TestRotate extends AcorusDemo {
         boolean loadDefaults = true;
         AppSettings settings = new AppSettings(loadDefaults);
         settings.setAudioRenderer(null);
+        settings.setRenderer(AppSettings.LWJGL_OPENGL32); // default=ANGLE_GLES3
         settings.setResizable(true);
         settings.setSamples(4); // anti-aliasing
         settings.setTitle(title); // Customize the window's title bar.
