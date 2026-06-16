@@ -324,6 +324,7 @@ final class AppChooser extends AcorusDemo {
         Class<?> mainClass = mainClasses[selectedAppIndex];
         String mainClassName = mainClass.getName();
         commandLine.addArgument(mainClassName);
+        System.out.println("Execute " + mainClassName);
 
         DefaultExecutor executor = new DefaultExecutor();
         try {
