@@ -85,7 +85,7 @@ final public class DsUtils {
         try {
             Class.forName("org.lwjgl.opengl.Display");
             foundVersion2 = true;
-        } catch (ClassNotFoundException exception) {
+        } catch (ClassNotFoundException | UnsatisfiedLinkError exception) {
             foundVersion2 = false;
         }
         hasLwjglVersion2 = foundVersion2;
