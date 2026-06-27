@@ -17,7 +17,7 @@ tasks.withType(JavaCompile).configureEach { // Java compile-time options:
 ext {
     group = 'com.github.stephengold'
     artifact = 'Heart'
-    version = heartVersion
+    version = providers.gradleProperty('heartVersion').get()
     baseName = "${artifact}-${version}" // for artifacts
     websiteUrl = 'https://github.com/stephengold/Heart'
 }
