@@ -33,7 +33,7 @@ dependencies {
     runtimeOnly(libs.jme3.plugins)
 
     //implementation 'com.github.stephengold:Heart:' + providers.gradleProperty('heartVersion').get() // for published library
-    implementation project(':HeartLibrary') // for current sourcecode
+    implementation project(':HeartLibrary') // for local library build
 }
 
 import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
