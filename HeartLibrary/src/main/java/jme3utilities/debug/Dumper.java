@@ -205,7 +205,7 @@ public class Dumper implements Cloneable {
 
                 for (int i = 0; i < times.length; ++i) {
                     addLine(mmIndent);
-                    stream.printf("%7.3f:  %7.3", times[i], weights[i]);
+                    stream.printf("%7.3f:  %7.3f", times[i], weights[i]);
                 }
 
             } else if (track instanceof TransformTrack) {
