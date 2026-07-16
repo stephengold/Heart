@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013-2023, Stephen Gold
+ Copyright (c) 2013-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -45,6 +45,8 @@ import com.jme3.light.LightList;
 import com.jme3.material.MatParam;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.Quaternion;
+import com.jme3.math.Vector3f;
 import com.jme3.post.SceneProcessor;
 import com.jme3.renderer.Camera;
 import com.jme3.renderer.RenderManager;
@@ -72,6 +74,8 @@ import jme3utilities.MyString;
 import jme3utilities.NamedAppState;
 import jme3utilities.Validate;
 import jme3utilities.math.MyColor;
+import jme3utilities.math.MyQuaternion;
+import jme3utilities.math.MyVector3f;
 
 /**
  * Dump portions of a jME3 scene graph for debugging.
@@ -196,17 +200,13 @@ public class Dumper implements Cloneable {
                 String desc = describer.describeTrackTarget(target);
                 stream.print(desc);
 
-                addLine(mmIndent);
-                stream.print("times");
                 float[] times = morphTrack.getTimes(); // alias
-                desc = describer.describeFloats(times);
-                stream.print(desc);
-
-                addLine(mmIndent);
-                stream.print("weights");
                 float[] weights = morphTrack.getWeights(); // alias
-                desc = describer.describeFloats(weights);
-                stream.print(desc);
+
+                for (int i = 0; i < times.length; ++i) {
+                    addLine(mmIndent);
+                    stream.printf("%7.3f:  %7.3", times[i], weights[i]);
+                }
 
             } else if (track instanceof TransformTrack) {
                 TransformTrack transformTrack = (TransformTrack) track;
@@ -214,11 +214,24 @@ public class Dumper implements Cloneable {
                 String desc = describer.describeTrackTarget(target);
                 stream.print(desc);
 
-                addLine(mmIndent);
-                stream.print("times");
                 float[] times = transformTrack.getTimes(); // alias
-                desc = describer.describeFloats(times);
-                stream.print(desc);
+                Quaternion[] rotations = transformTrack.getRotations(); // alias
+                Vector3f[] scales
+                        = transformTrack.getScales(); // alias
+                Vector3f[] translations
+                        = transformTrack.getTranslations(); // alias
+
+                for (int i = 0; i < times.length; ++i) {
+                    addLine(mmIndent);
+                    String ts = (translations == null) ? ""
+                            : MyVector3f.describe(translations[i]);
+                    String rs = (rotations == null) ? ""
+                            : MyQuaternion.describe(rotations[i]);
+                    String ss = (scales == null) ? ""
+                            : MyVector3f.describe(scales[i]);
+                    stream.printf(
+                            "%7.3f:  %-30s %-30s %-30s", times[i], ts, rs, ss);
+                }
             }
         }
         stream.println();
