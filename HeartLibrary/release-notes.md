@@ -1,5 +1,19 @@
 # release log for the Heart Library and related tests
 
+## Version 9.4.0-test1 released on TBD
+
++ Bugfixes:
+  + `RendererException` due to reserved word `sample` in "multicolor2.frag"
+  + `RendererException` in "ContrastAdjustment.frag"
+  + uncaught `UnsatisfiedLinkError` exception in `DsUtils`
+
++ Added 2 public methods:
+  + `DsUtils.hasGlfw()`
+  + `DsUtils.hasLwjglVersion2()`
++ Enhanced the `Dumper` class to print more information about each `AnimClip`.
++ Targeted jMonkeyEngine version 3.10.0-beta2.
++ Updated the Gradle build tool to v9.7.0
+
 ## Version 9.3.0 released on 21 January 2026
 
 + Added 5 public methods:
