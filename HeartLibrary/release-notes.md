@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 9.4.0-test1 released on TBD
+## Version 9.4.0-test1 released on 13 August 2026
 
 + Bugfixes:
   + `RendererException` due to reserved word `sample` in "multicolor2.frag"
