@@ -83,7 +83,8 @@ final public class DsUtils {
     static {
         boolean foundVersion2;
         try {
-            Class.forName("org.lwjgl.opengl.Display");
+            Class.forName("org.lwjgl.opengl.Display", false,
+                    DsUtils.class.getClassLoader());
             foundVersion2 = true;
         } catch (ClassNotFoundException | UnsatisfiedLinkError exception) {
             foundVersion2 = false;
@@ -125,8 +126,9 @@ final public class DsUtils {
                 getRedBits = null;
                 hasRemaining = null;
 
-                Class<?> displayClass
-                        = Class.forName("org.lwjgl.opengl.Display");
+                Class<?> displayClass = Class.forName(
+                        "org.lwjgl.opengl.Display", false,
+                        DsUtils.class.getClassLoader());
                 getMode = displayClass.getDeclaredMethod(
                         "getDesktopDisplayMode");
                 getModes = displayClass.getDeclaredMethod(
