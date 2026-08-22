@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2014-2023, Stephen Gold
+ Copyright (c) 2014-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -40,6 +40,7 @@ import com.jme3.scene.Mesh;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.texture.Texture;
+import com.jme3.texture.image.ColorSpace;
 import com.jme3.util.SkyFactory;
 import java.util.logging.Logger;
 import jme3utilities.mesh.RectangleMesh;
@@ -548,6 +549,7 @@ final public class MyAsset {
         TextureKey key = new TextureKey(path, flipY);
         key.setGenerateMips(true);
         Texture texture = assetManager.loadTexture(key);
+        texture.getImage().setColorSpace(ColorSpace.sRGB);
 
         assert texture != null;
         return texture;
