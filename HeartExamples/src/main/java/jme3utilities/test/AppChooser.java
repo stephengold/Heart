@@ -323,12 +323,12 @@ final class AppChooser extends AcorusDemo {
      * Execute the selected app.
      */
     private static void executeSelectedApp() {
-        CommandLine commandLine = new CommandLine(script);
-
         Class<?> mainClass = mainClasses[selectedAppIndex];
         String mainClassName = mainClass.getName();
+        logger.warning("Execute " + mainClassName);
+
+        CommandLine commandLine = new CommandLine(script);
         commandLine.addArgument(mainClassName);
-        System.out.println("Execute " + mainClassName);
 
         DefaultExecutor.Builder builder = new DefaultExecutor.Builder();
         ExecuteStreamHandler handler = new PumpStreamHandler();
