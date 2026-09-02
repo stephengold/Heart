@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2020-2024 Stephen Gold
+ Copyright (c) 2020-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -189,7 +189,7 @@ public class CapsuleMesh extends Mesh {
         // System.out.println("numFaces        = " + faces.size() / vpt);
         // System.out.println("numCacheEntries = " + midpointCache.size());
         // System.out.println();
-        //
+
         midpointCache.clear();
         assert faces.size() == vpt << (3 + 2 * numRefineSteps);
 
