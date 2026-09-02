@@ -308,7 +308,7 @@ public class TestSubdivide extends AcorusDemo {
      */
     private static void configureDumper() {
         dumper.setDumpTransform(true);
-        //dumper.setDumpVertex(true);
+        // dumper.setDumpVertex(true);
     }
 
     /**

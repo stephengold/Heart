@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2019-2023, Stephen Gold
+ Copyright (c) 2019-2026 Stephen Gold
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
@@ -208,8 +208,8 @@ public class TestVectorSet {
         float[] fa = vectorSet.toFloatArray();
         assert fa != null;
         assert fa.length == 2 * MyVector3f.numAxes;
-        Vector3f[] va  = vectorSet.toVectorArray();
-        assert va  != null;
+        Vector3f[] va = vectorSet.toVectorArray();
+        assert va != null;
         assert va.length == 2;
 
         // Add the 4th vector.
