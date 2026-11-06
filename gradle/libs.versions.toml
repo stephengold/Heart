@@ -3,7 +3,7 @@
 [versions]
 
 checkstyle = "14.4.0"
-jme = "3.10.0-beta2"
+jme = "3.10.0-beta3"
 
 [libraries]
 
@@ -18,7 +18,7 @@ jme3-desktop = { module = "org.jmonkeyengine:jme3-desktop", version.ref = "jme" 
 jme3-effects = { module = "org.jmonkeyengine:jme3-effects", version.ref = "jme" }
 jme3-jogg = { module = "org.jmonkeyengine:jme3-jogg", version.ref = "jme" }
 jme3-plugins = { module = "org.jmonkeyengine:jme3-plugins", version.ref = "jme" }
-jme3-testdata = { module = "org.jmonkeyengine:jme3-testdata", version.ref = "jme" }
+jme3-testdata = { module = "org.jmonkeyengine:jme3-testdata", version = "3.9.0-stable" }
 junit4 = "junit:junit:4.13.2"
 
 [bundles]
