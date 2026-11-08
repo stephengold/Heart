@@ -5,43 +5,46 @@ name: CI at GitHub
 on: [push]
 
 jobs:
-  Java17-Linux:
+  Java17-Linux64:
     if: contains(toJson(github.event.commits), '[ci skip] ') == false
     runs-on: ubuntu-slim
     steps:
       - uses: actions/setup-java@v6
         with:
           distribution: 'zulu'
-          java-version: 21
+          java-version: '21'
       - uses: actions/setup-java@v6
         with:
           distribution: 'zulu'
-          java-version: 17
+          java-version: '17'
       - uses: actions/checkout@v7
       - uses: gradle/actions/setup-gradle@v6
-      - run: ./gradlew build install javadoc --console=plain --stacktrace
+      - run: |
+          ./gradlew build install javadoc --console=plain --stacktrace
 
-  Java21-MacOS:
+  Java21-MacOSX_ARM64:
     if: contains(toJson(github.event.commits), '[ci skip] ') == false
     runs-on: macos-26
     steps:
       - uses: actions/setup-java@v6
         with:
           distribution: 'zulu'
-          java-version: 21
+          java-version: '21'
       - uses: actions/checkout@v7
       - uses: gradle/actions/setup-gradle@v6
-      - run: ./gradlew build install javadoc --console=plain --stacktrace
+      - run: |
+          ./gradlew build install javadoc --console=plain --stacktrace
 
-  Java27-Windows:
+  Java27-Windows64:
     if: contains(toJson(github.event.commits), '[ci skip] ') == false
     runs-on: windows-2025
     steps:
       - uses: actions/setup-java@v6
         with:
           distribution: 'liberica'
-          java-version: 27
+          java-version: '27'
       - uses: actions/checkout@v7
       - uses: gradle/actions/setup-gradle@v6
-      - run: ./gradlew build install javadoc --console=plain --stacktrace
+      - run: |
+          ./gradlew build install javadoc --console=plain --stacktrace
         shell: bash
