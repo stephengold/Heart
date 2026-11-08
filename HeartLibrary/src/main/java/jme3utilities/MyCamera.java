@@ -435,7 +435,7 @@ final public class MyCamera {
         Validate.positive(newNear, "near");
         if (!(newFar > newNear)) {
             logger.log(Level.SEVERE, "far={0} near={1}",
-                    new Object[]{newFar, newNear});
+                    new Object[] {newFar, newNear});
             throw new IllegalArgumentException(
                     "far should be greater than near");
         }

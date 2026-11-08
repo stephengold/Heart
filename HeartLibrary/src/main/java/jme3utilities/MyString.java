@@ -553,7 +553,7 @@ final public class MyString {
     public static String remainder(String input, String prefix) {
         Validate.nonNull(prefix, "prefix");
         if (!input.startsWith(prefix)) {
-            logger.log(Level.SEVERE, "input={0}, prefix={1}", new Object[]{
+            logger.log(Level.SEVERE, "input={0}, prefix={1}", new Object[] {
                 quote(input), quote(prefix)
             });
             throw new IllegalArgumentException("input must start with prefix.");
@@ -577,7 +577,7 @@ final public class MyString {
     public static String removeSuffix(String input, String suffix) {
         Validate.nonNull(suffix, "suffix");
         if (!input.endsWith(suffix)) {
-            logger.log(Level.SEVERE, "input={0}, suffix={1}", new Object[]{
+            logger.log(Level.SEVERE, "input={0}, suffix={1}", new Object[] {
                 quote(input), quote(suffix)
             });
             throw new IllegalArgumentException("input must end with suffix.");

@@ -104,7 +104,7 @@ public class SignalTracker {
             return;
         }
         if (logger.isLoggable(Level.INFO)) {
-            logger.log(Level.INFO, "name = {0}, newState = {1}", new Object[]{
+            logger.log(Level.INFO, "name = {0}, newState = {1}", new Object[] {
                 MyString.quote(signalName), newState
             });
         }

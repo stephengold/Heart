@@ -71,13 +71,14 @@ public class RectangleOutlineMesh extends Mesh {
     public RectangleOutlineMesh(float x1, float x2, float y1, float y2) {
         setMode(Mode.LineLoop);
 
-        setBuffer(VertexBuffer.Type.Position, MyVector3f.numAxes, new float[]{
+        setBuffer(VertexBuffer.Type.Position, MyVector3f.numAxes, new float[] {
             x1, y1, 0f,
             x1, y2, 0f,
             x2, y2, 0f,
             x2, y1, 0f});
 
-        setBuffer(VertexBuffer.Type.Index, MyMesh.vpe, new short[]{0, 1, 2, 3});
+        setBuffer(VertexBuffer.Type.Index, MyMesh.vpe,
+                new short[] {0, 1, 2, 3});
 
         updateBound();
         setStatic();

@@ -74,7 +74,7 @@ public class Perlin2 implements Noise2 {
     public Perlin2(int period, int numGradients, long gSeed, long pSeed) {
         if (period < numGradients) {
             logger.log(Level.SEVERE, "period={0}, numGradients={1}",
-                    new Object[]{period, numGradients});
+                    new Object[] {period, numGradients});
             String message = "period shouldn't be less than numGradients";
             throw new IllegalArgumentException(message);
         }

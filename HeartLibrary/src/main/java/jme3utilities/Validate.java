@@ -102,7 +102,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, dValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, dValue});
             String message = what + " must be a finite number.";
             throw new IllegalArgumentException(message);
         }
@@ -126,7 +126,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, fValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, fValue});
             String message = what + " must be a finite number.";
             throw new IllegalArgumentException(message);
         }
@@ -155,7 +155,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, vector});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, vector});
             String message = what + " must have all components finite.";
             throw new IllegalArgumentException(message);
         }
@@ -209,7 +209,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, dValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, dValue});
             String message = String.format(
                     "%s must be greater than or equal to %f.", what, min);
             throw new IllegalArgumentException(message);
@@ -222,7 +222,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, dValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, dValue});
             String message = String.format(
                     "%s must be less than or equal to %f.", what, max);
             throw new IllegalArgumentException(message);
@@ -251,7 +251,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, fValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, fValue});
             String message = String.format(
                     "%s must be greater than or equal to %f.", what, min);
             throw new IllegalArgumentException(message);
@@ -264,7 +264,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, fValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, fValue});
             String message = String.format(
                     "%s must be less than or equal to %f.", what, max);
             throw new IllegalArgumentException(message);
@@ -295,7 +295,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, iValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, iValue});
             String message = String.format(
                     "%s must be greater than or equal to %d.", what, min);
             throw new IllegalArgumentException(message);
@@ -308,7 +308,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, iValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, iValue});
             String message = String.format(
                     "%s must be less than or equal to %d.", what, max);
             throw new IllegalArgumentException(message);
@@ -468,7 +468,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, dValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, dValue});
             String message = what + " must not be negative.";
             throw new IllegalArgumentException(message);
         }
@@ -492,7 +492,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, fValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, fValue});
             String message = what + " must not be negative or NaN.";
             throw new IllegalArgumentException(message);
         }
@@ -516,7 +516,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, iValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, iValue});
             String message = what + " must not be negative.";
             throw new IllegalArgumentException(message);
         }
@@ -545,7 +545,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, vector});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, vector});
             String message = what + " must not have a negative component.";
             throw new IllegalArgumentException(message);
         }
@@ -574,7 +574,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, vector});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, vector});
             String message = what + " must not have a negative component.";
             throw new IllegalArgumentException(message);
         }
@@ -825,7 +825,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, dValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, dValue});
             String message = what + " must be a number.";
             throw new IllegalArgumentException(message);
         }
@@ -849,7 +849,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, fValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, fValue});
             String message = what + " must be a number.";
             throw new IllegalArgumentException(message);
         }
@@ -873,7 +873,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, dValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, dValue});
             String message = what + " must be positive.";
             throw new IllegalArgumentException(message);
         }
@@ -897,7 +897,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, fValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, fValue});
             String message = what + " must be positive.";
             throw new IllegalArgumentException(message);
         }
@@ -921,7 +921,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, iValue});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, iValue});
             String message = what + " must be positive.";
             throw new IllegalArgumentException(message);
         }
@@ -949,7 +949,7 @@ final public class Validate {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "{0}={1}", new Object[]{what, vector});
+            logger.log(Level.SEVERE, "{0}={1}", new Object[] {what, vector});
             String message = what + " must have all components positive.";
             throw new IllegalArgumentException(message);
         }

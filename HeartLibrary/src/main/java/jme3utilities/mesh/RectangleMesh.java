@@ -121,26 +121,26 @@ public class RectangleMesh extends Mesh {
 
         setMode(Mode.TriangleFan);
 
-        setBuffer(Type.Position, 3, new float[]{
+        setBuffer(Type.Position, 3, new float[] {
             x1, y1, 0f,
             x2, y1, 0f,
             x2, y2, 0f,
             x1, y2, 0f});
 
-        setBuffer(Type.TexCoord, 2, new float[]{
+        setBuffer(Type.TexCoord, 2, new float[] {
             s1, t1,
             s2, t1,
             s2, t2,
             s1, t2});
 
-        setBuffer(Type.Normal, 3, new float[]{
+        setBuffer(Type.Normal, 3, new float[] {
             0f, 0f, zNorm,
             0f, 0f, zNorm,
             0f, 0f, zNorm,
             0f, 0f, zNorm});
 
         if ((x2 - x1) * (y2 - y1) * zNorm < 0f) {
-            setBuffer(Type.Index, vpt, new byte[]{0, 3, 2, 1});
+            setBuffer(Type.Index, vpt, new byte[] {0, 3, 2, 1});
         }
 
         updateBound();

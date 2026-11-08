@@ -550,7 +550,7 @@ final public class MySpatial {
                     Float.NEGATIVE_INFINITY, Float.NEGATIVE_INFINITY);
             Vector3f minima = new Vector3f(Float.POSITIVE_INFINITY,
                     Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY);
-            result = new Vector3f[]{minima, maxima};
+            result = new Vector3f[] {minima, maxima};
             Node node = (Node) subtree;
             for (Spatial child : node.getChildren()) {
                 Vector3f[] childMm = findMinMaxCoords(child);

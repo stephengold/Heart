@@ -636,7 +636,7 @@ final public class Heart {
             if (!success) {
                 logger.log(Level.SEVERE,
                         "write to {0} failed; no writer for {1} format",
-                        new Object[]{
+                        new Object[] {
                             quotedPath, MyString.quote(formatName)
                         });
             }
@@ -644,7 +644,7 @@ final public class Heart {
                 int height = image.getHeight();
                 int width = image.getWidth();
                 logger.log(Level.INFO, "wrote {0}-by-{1} texture to {2}",
-                        new Object[]{width, height, quotedPath});
+                        new Object[] {width, height, quotedPath});
             }
 
         } catch (IOException exception) {
@@ -683,7 +683,7 @@ final public class Heart {
         if (logger.isLoggable(Level.INFO)) {
             int version = FormatVersion.VERSION;
             logger.log(Level.INFO, "wrote version-{0} binary to {1}",
-                    new Object[]{version, MyString.quote(filePath)});
+                    new Object[] {version, MyString.quote(filePath)});
         }
     }
 }

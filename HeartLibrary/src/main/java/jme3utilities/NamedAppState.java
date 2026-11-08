@@ -128,7 +128,7 @@ public class NamedAppState extends AbstractAppState {
         }
         if (appState.isEnabled() != isEnabled()) {
             logger.log(Level.WARNING,
-                    "influenced state {0} out-of-synch with {1}", new Object[]{
+                    "influenced state {0} out-of-synch with {1}", new Object[] {
                         appState, this
                     });
         }

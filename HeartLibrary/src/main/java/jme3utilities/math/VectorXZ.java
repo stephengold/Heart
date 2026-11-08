@@ -48,8 +48,7 @@ import jme3utilities.Validate;
  *
  * @author Stephen Gold sgold@sonic.net
  */
-public class VectorXZ
-        implements Comparable<ReadXZ>, ReadXZ, Savable {
+public class VectorXZ implements Comparable<ReadXZ>, ReadXZ, Savable {
     // *************************************************************************
     // constants and loggers
 

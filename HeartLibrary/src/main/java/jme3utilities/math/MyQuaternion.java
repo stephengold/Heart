@@ -807,7 +807,8 @@ final public class MyQuaternion {
             } else {
                 what = description;
             }
-            logger.log(Level.SEVERE, "norm({0})={1}", new Object[]{what, norm});
+            logger.log(Level.SEVERE, "norm({0})={1}",
+                    new Object[] {what, norm});
             String message = String.format(
                     "norm(%s) must be within %f of 1.", what, tolerance);
             throw new IllegalArgumentException(message);
