@@ -1,5 +1,13 @@
 # release log for the Heart Library and related tests
 
+## Version 9.4.0-test2 released on TBD
+
++ Bugfix:  link errors during `DsUtils` initialization with LWJGL v2
++ Targeted jMonkeyEngine version 3.10.0-beta3 and Java v11 .
++ Began overriding the color space of star-map textures.
++ Began publishing releases from GitHub Actions.
++ Updated the Gradle build tool to v9.9.0
+
 ## Version 9.4.0-test1 released on 13 August 2026
 
 + Bugfixes:
@@ -11,7 +19,7 @@
   + `DsUtils.hasGlfw()`
   + `DsUtils.hasLwjglVersion2()`
 + Enhanced the `Dumper` class to print more information about each `AnimClip`.
-+ Targeted jMonkeyEngine version 3.10.0-beta2.
++ Targeted jMonkeyEngine version 3.10.0-beta2 .
 + Updated the Gradle build tool to v9.7.0
 
 ## Version 9.3.0 released on 21 January 2026
