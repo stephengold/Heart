@@ -1,6 +1,6 @@
 # release log for the Heart Library and related tests
 
-## Version 9.4.0-test2 released on TBD
+## Version 9.4.0-test2 released on 8 November 2026
 
 + Bugfix:  link errors during `DsUtils` initialization with LWJGL v2
 + Targeted jMonkeyEngine version 3.10.0-beta3 and Java v11 .
